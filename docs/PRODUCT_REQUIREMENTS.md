@@ -269,6 +269,8 @@ Documentation must include:
 - Theming guide
 - Progressive enhancement guide
 - Browser support notes
+- Testing strategy
+- Per-element verification checklist
 
 ## Milestones
 

@@ -601,12 +601,21 @@ The documentation should identify whether a feature is required, optional, or pr
 
 ## Testing Strategy
 
+Relements uses browser-based component verification as the primary confidence layer. The test stack is documented in detail in `docs/TESTING_STRATEGY.md`.
+
+Primary tools:
+
+- Playwright Test for browser behavior, keyboard interaction, form behavior, dialogs, custom elements, visual snapshots, and ARIA snapshots.
+- `@axe-core/playwright` for automated accessibility smoke tests.
+- Vitest for pure utility logic only.
+
 ### Static Checks
 
 - HTML validation for examples.
 - CSS linting if tooling is added.
 - JavaScript linting if tooling is added.
 - Type checks if TypeScript is added.
+- Package export checks.
 
 ### Manual Browser Checks
 
@@ -614,6 +623,8 @@ The documentation should identify whether a feature is required, optional, or pr
 - JavaScript examples work after ESM import.
 - Components remain usable when JavaScript is disabled where possible.
 - Components work inside at least one framework example before release.
+- Playwright tests cover Chromium during development.
+- Playwright tests cover Chromium, Firefox, and WebKit before release.
 
 ### Accessibility Checks
 
@@ -622,6 +633,7 @@ The documentation should identify whether a feature is required, optional, or pr
 - Native form submission.
 - Basic screen reader smoke tests.
 - High contrast and forced colors review.
+- axe-core smoke tests for example pages and component states.
 
 ### Visual Checks
 
@@ -633,6 +645,17 @@ The documentation should identify whether a feature is required, optional, or pr
 - Disabled states.
 - Error states.
 - Loading or pending states where relevant.
+- Visual snapshots for stable component states.
+
+Per-element completion requires:
+
+- Plain HTML example.
+- Browser behavior test.
+- Keyboard test if interactive.
+- Accessibility smoke test.
+- Focus visibility check.
+- Visual snapshot for core states.
+- Documentation for usage and edge cases.
 
 ## Packaging Strategy
 

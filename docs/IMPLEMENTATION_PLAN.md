@@ -37,6 +37,7 @@ docs/
   PRODUCT_REQUIREMENTS.md
   TECHNICAL_DOCUMENTATION.md
   IMPLEMENTATION_PLAN.md
+  TESTING_STRATEGY.md
   examples/
 ```
 
@@ -50,15 +51,31 @@ Deliverables:
 - Root package metadata.
 - Basic formatting and linting decisions.
 - Root README.
-- Product, technical, and implementation docs.
+- Product, technical, implementation, and testing docs.
 - Initial `docs/examples` directory.
+- Playwright Test configuration.
+- axe-core accessibility test setup.
+- Vitest setup for pure utility tests.
+- Initial test directories.
 
 Acceptance criteria:
 
 - Repository has a clear entry point for contributors.
 - Planned package name is `@relements/core`.
 - Public naming conventions are fixed: `re-`, `data-re-*`, `--re-*`, `re-*` custom elements.
+- Test commands are defined for unit, browser, accessibility, and visual checks.
+- Browser tests run against at least Chromium locally.
 - No component implementation is blocked by missing structure.
+
+Target test directories:
+
+```txt
+tests/
+  elements/
+  a11y/
+  visual/
+  unit/
+```
 
 ## Phase 1: CSS Foundation
 
@@ -89,6 +106,7 @@ Acceptance criteria:
 - Default text, links, forms, and focus states are readable.
 - Tokens can be overridden at `:root` or within a subtree.
 - CSS does not require JavaScript or a build step for local examples.
+- Browser smoke tests verify CSS loading and token overrides.
 
 ## Phase 2: Native Element Styling
 
@@ -136,6 +154,7 @@ Acceptance criteria:
 - Labels and descriptions are documented.
 - Invalid states support native validation and `aria-invalid`.
 - Examples work without JavaScript.
+- Each element has browser, accessibility, and visual tests before it is marked complete.
 
 ## Phase 3: Native Interactive Elements
 
@@ -312,6 +331,9 @@ Every new element must include:
 - Accessibility notes.
 - Keyboard behavior.
 - Example markup.
+- Playwright behavior tests.
+- axe-core accessibility smoke tests.
+- Visual snapshot coverage for stable states.
 - Manual verification steps.
 
 ## Release Sequence

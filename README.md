@@ -33,6 +33,7 @@ import { enhanceTabs } from "@relements/core/tabs";
 - [Product requirements](./docs/PRODUCT_REQUIREMENTS.md)
 - [Technical documentation](./docs/TECHNICAL_DOCUMENTATION.md)
 - [Implementation plan](./docs/IMPLEMENTATION_PLAN.md)
+- [Testing strategy](./docs/TESTING_STRATEGY.md)
 
 ## Status
 
