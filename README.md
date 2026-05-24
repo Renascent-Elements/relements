@@ -30,8 +30,9 @@ import { enhanceTabs } from "@renascent-elements/core/tabs";
 
 ## Documentation
 
-- [Product requirements](./PRODUCT_REQUIREMENTS.md)
-- [Technical documentation](./TECHNICAL_DOCUMENTATION.md)
+- [Product requirements](./docs/PRODUCT_REQUIREMENTS.md)
+- [Technical documentation](./docs/TECHNICAL_DOCUMENTATION.md)
+- [Implementation plan](./docs/IMPLEMENTATION_PLAN.md)
 
 ## Status
 
