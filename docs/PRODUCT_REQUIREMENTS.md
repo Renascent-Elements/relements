@@ -10,6 +10,8 @@ Relements is a small, framework-neutral frontend design system by Renascent Elem
 
 Relements should be usable in plain HTML and in applications built with React, Vue, Svelte, Angular, server-rendered templates, static sites, and other frontend stacks.
 
+Plain HTML plus CSS is a first-class product requirement, not a fallback. Framework support must be added progressively through thin wrappers over the canonical platform API.
+
 ## Problem
 
 Modern frontend teams often need consistent UI primitives, but many design systems are tied to a specific framework, build pipeline, rendering model, or styling philosophy. This creates friction when teams use multiple frameworks, migrate between frameworks, or need simple UI primitives in server-rendered or static environments.
@@ -24,7 +26,9 @@ This project exists to provide a minimal design foundation that treats the brows
 - Use low-specificity CSS that can be overridden by product teams.
 - Provide progressive enhancement through small JavaScript modules.
 - Support framework-neutral usage as the default path.
+- Preserve HTML/CSS-only usage for basic elements and styles.
 - Allow optional Web Components for UI that needs encapsulated behavior.
+- Add framework wrappers only after the underlying HTML, CSS, JavaScript, and event APIs are stable.
 - Keep installation, usage, and mental model simple.
 - Make accessibility and keyboard behavior part of the default component contract.
 
@@ -35,6 +39,7 @@ This project exists to provide a minimal design foundation that treats the brows
 - Do not require React, Vue, Svelte, Angular, or any other UI framework.
 - Do not require CSS-in-JS.
 - Do not require a build step for basic usage.
+- Do not make framework wrappers the canonical API.
 - Do not hide native HTML controls behind custom components unless there is a clear benefit.
 - Do not enforce a strong visual brand by default.
 - Do not provide complex application patterns such as data grids, charts, or rich text editors in the first release.
@@ -57,7 +62,7 @@ This project exists to provide a minimal design foundation that treats the brows
 ## Product Principles
 
 1. **HTML First**
-   Use native HTML elements before creating abstractions.
+   Use native HTML elements before creating abstractions. Basic usage must remain possible with plain HTML and CSS.
 
 2. **CSS Before JavaScript**
    Use CSS for visual styling, layout, state styling, theming, and responsive behavior.
@@ -68,13 +73,16 @@ This project exists to provide a minimal design foundation that treats the brows
 4. **Framework-Neutral Core**
    The public API should be HTML, CSS, DOM APIs, ESM modules, attributes, events, and CSS custom properties.
 
-5. **Small Surface Area**
+5. **Wrappers Are Adapters**
+   Framework wrappers may improve ergonomics, but they must render and preserve the same canonical platform API.
+
+6. **Small Surface Area**
    Every primitive should justify its existence. The system should be easy to learn and easy to replace.
 
-6. **Unopinionated By Default**
+7. **Unopinionated By Default**
    Provide usable defaults, but make styling and composition easy to override.
 
-7. **Accessibility Is Part Of The Contract**
+8. **Accessibility Is Part Of The Contract**
    Keyboard behavior, focus management, semantics, labels, and form behavior are product requirements, not polish.
 
 ## User Stories

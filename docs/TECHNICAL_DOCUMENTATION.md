@@ -11,6 +11,8 @@ The system should work in four usage modes:
 3. Framework templates using the same HTML, CSS, and attributes.
 4. Optional custom elements for behavior-heavy components.
 
+The canonical API is the platform API: HTML elements, native attributes, CSS classes, CSS custom properties, `data-*` attributes, ESM behavior modules, and DOM events. Framework wrappers are optional adapters and must not introduce a separate source of truth.
+
 ## Architecture
 
 ```txt
@@ -46,6 +48,14 @@ docs/
 
 The implementation is organized into four layers.
 
+Layer order is mandatory:
+
+1. HTML.
+2. CSS.
+3. JavaScript enhancement.
+4. Custom element, only when justified.
+5. Framework wrapper, only after the core API is stable.
+
 ### 1. HTML Layer
 
 The HTML layer defines the semantic contract.
@@ -73,6 +83,7 @@ Rules:
 - Do not require JavaScript for static content.
 - Use `data-*` attributes for variants and state hooks.
 - Keep DOM structure shallow and documented.
+- Treat the documented HTML shape as the compatibility contract.
 
 ### 2. CSS Layer
 

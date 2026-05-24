@@ -38,6 +38,7 @@ docs/
   TECHNICAL_DOCUMENTATION.md
   IMPLEMENTATION_PLAN.md
   TESTING_STRATEGY.md
+  HTML_FIRST_POLICY.md
   examples/
 ```
 
@@ -52,6 +53,7 @@ Deliverables:
 - Basic formatting and linting decisions.
 - Root README.
 - Product, technical, implementation, and testing docs.
+- HTML-first compatibility policy.
 - Initial `docs/examples` directory.
 - Playwright Test configuration.
 - axe-core accessibility test setup.
@@ -63,6 +65,7 @@ Acceptance criteria:
 - Repository has a clear entry point for contributors.
 - Planned package name is `@relements/core`.
 - Public naming conventions are fixed: `re-`, `data-re-*`, `--re-*`, `re-*` custom elements.
+- HTML/CSS-only usage is documented as a first-class integration path.
 - Test commands are defined for unit, browser, accessibility, and visual checks.
 - Browser tests run against at least Chromium locally.
 - No component implementation is blocked by missing structure.
@@ -316,6 +319,8 @@ Acceptance criteria:
 - Custom elements are documented for each framework.
 - Any framework-specific caveats are documented.
 - Wrappers are considered only after the platform API is stable.
+- Framework wrappers render the same canonical HTML, class, attribute, token, and event contract.
+- No wrapper-only component behavior is introduced.
 
 ## Element Development Checklist
 
