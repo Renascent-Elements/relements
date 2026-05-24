@@ -56,7 +56,7 @@ Deliverables:
 Acceptance criteria:
 
 - Repository has a clear entry point for contributors.
-- Planned package name is `@renascent-elements/core`.
+- Planned package name is `@relements/core`.
 - Public naming conventions are fixed: `re-`, `data-re-*`, `--re-*`, `re-*` custom elements.
 - No component implementation is blocked by missing structure.
 

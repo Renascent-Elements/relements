@@ -246,8 +246,8 @@ The package should support:
 Example imports:
 
 ```js
-import "@renascent-elements/core/index.css";
-import { enhanceTabs } from "@renascent-elements/core/tabs";
+import "@relements/core/index.css";
+import { enhanceTabs } from "@relements/core/tabs";
 ```
 
 ```html
@@ -355,7 +355,7 @@ Success criteria:
 ## Open Questions
 
 - What browser support baseline should be officially documented?
-- Should the package name use a short prefix such as `ds`, or a product-specific name?
+- Should the npm `@relements` scope be registered as an organization or owned by an individual maintainer account?
 - Should the first documentation site remain plain HTML or use a static site generator later?
 - Should Shadow DOM be used by default for custom elements, or only for specific components?
 - What visual personality should the default theme have: neutral utility, editorial, application-focused, or brand-ready?

@@ -640,7 +640,7 @@ Recommended `package.json` exports:
 
 ```json
 {
-  "name": "@renascent-elements/core",
+  "name": "@relements/core",
   "type": "module",
   "sideEffects": [
     "**/*.css",

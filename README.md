@@ -24,8 +24,8 @@ It starts with semantic HTML, adds CSS tokens and component styles, and uses Jav
 ```
 
 ```js
-import "@renascent-elements/core/index.css";
-import { enhanceTabs } from "@renascent-elements/core/tabs";
+import "@relements/core/index.css";
+import { enhanceTabs } from "@relements/core/tabs";
 ```
 
 ## Documentation
