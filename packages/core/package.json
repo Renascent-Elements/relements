@@ -1,0 +1,27 @@
+{
+  "name": "@relements/core",
+  "version": "0.0.0",
+  "description": "HTML-first design system core: tokens, styles, and progressive enhancement.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "exports": {
+    ".": "./src/index.js",
+    "./index.css": "./src/index.css",
+    "./tokens.css": "./src/tokens.css",
+    "./reset.css": "./src/reset.css",
+    "./base.css": "./src/base.css",
+    "./components/*": "./src/components/*",
+    "./behaviors/*": "./src/behaviors/*.js",
+    "./elements/*": "./src/elements/*.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
