@@ -1,0 +1,55 @@
+playwright.config.ts
+  s_8b941d379971d4::t_9ae609fcd2cbf7 1-11,13-15,18-24
+  s_8b941d379971d4::t_10e63dfb3bb42b 17
+  s_8b941d379971d4::t_e71046b5a098fc 12
+  s_8b941d379971d4::t_2676b64c72d654 16
+tests/elements/smoke.spec.ts
+  s_8b941d379971d4::t_17a48b09c1eb2d 4
+  s_8b941d379971d4::t_de346b47ac6b47 1-3,5-6
+packages/core/src/index.css
+  s_8b941d379971d4::t_f758fac50d719b 1
+.prettierrc.json
+  s_8b941d379971d4::t_2eef3ceb21b558 1-9
+package.json
+  s_8b941d379971d4::t_3d890c8ba47f9e 8-14
+  s_8b941d379971d4::t_4d9135fb90d4ba 33
+tests/unit/exports.spec.ts
+  s_8b941d379971d4::t_03a31b4596e920 1-16
+docs/examples/index.html
+  s_8b941d379971d4::t_924cfad4dcbd08 1-15
+packages/core/src/index.js
+  s_8b941d379971d4::t_d070ffdaf5523f 1
+.editorconfig
+  s_8b941d379971d4::t_8e54f8f757b7a7 1-12
+.prettierignore
+  s_8b941d379971d4::t_a4373cd228e882 1-4
+vitest.config.ts
+  s_8b941d379971d4::t_aae9f17734bfde 1-9
+pnpm-workspace.yaml
+  s_8b941d379971d4::t_642ad2b08a065e 1-2
+eslint.config.js
+  s_8b941d379971d4::t_80aa674975975e 1-21
+.gitignore
+  s_8b941d379971d4::t_3330602c9a41f2 1,3-21
+  s_8b941d379971d4::t_c1117854db628f 2
+packages/core/package.json
+  s_8b941d379971d4::t_16cc59490b27ec 1-27
+tsconfig.json
+  s_8b941d379971d4::t_4463b58316255f 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "f0a04a0c6e76f2d3f20fc79255fc1b4bf409397a",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
