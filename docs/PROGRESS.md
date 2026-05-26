@@ -29,7 +29,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] disclosure (`details` / `summary`)
 - [x] dialog
 - [x] progress
-- [ ] meter
+- [x] meter
 
 ## Phase 4: JavaScript Enhancement API
 

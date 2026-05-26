@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Meter</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="meter">
+    <header>
+      <h1>Meter</h1>
+      <p>Native <code>&lt;meter&gt;</code> styled with <code>.re-meter</code>.</p>
+    </header>
+
+    <section aria-labelledby="ranges-heading" data-testid="ranges">
+      <h2 id="ranges-heading">Optimum / suboptimum / danger ranges</h2>
+      <div class="stack">
+        <label class="re-field">
+          <span class="re-field__label">Disk usage (optimum 0–60)</span>
+          <meter
+            class="re-meter"
+            id="mt-ok"
+            min="0"
+            max="100"
+            low="60"
+            high="85"
+            optimum="30"
+            value="40"
+          ></meter>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Disk usage (suboptimum)</span>
+          <meter
+            class="re-meter"
+            id="mt-warn"
+            min="0"
+            max="100"
+            low="60"
+            high="85"
+            optimum="30"
+            value="75"
+          ></meter>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Disk usage (critical)</span>
+          <meter
+            class="re-meter"
+            id="mt-bad"
+            min="0"
+            max="100"
+            low="60"
+            high="85"
+            optimum="30"
+            value="95"
+          ></meter>
+        </label>
+      </div>
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <div class="stack">
+        <meter class="re-meter" id="mt-sm" data-size="sm" min="0" max="100" value="50"></meter>
+        <meter class="re-meter" id="mt-md" min="0" max="100" value="50"></meter>
+        <meter class="re-meter" id="mt-lg" data-size="lg" min="0" max="100" value="50"></meter>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Use <code>&lt;meter&gt;</code> for measurements with a known range, not for progress over time.</li>
+        <li><code>low</code>, <code>high</code>, and <code>optimum</code> drive the green/yellow/red tone choice in the browser.</li>
+      </ul>
+    </article>
+  </body>
+</html>
