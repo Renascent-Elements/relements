@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Field group</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="field-group">
+    <header>
+      <h1>Field group</h1>
+      <p>Wraps related controls (typically radios or checkboxes) under a shared accessible legend.</p>
+    </header>
+
+    <section aria-labelledby="vertical-heading" data-testid="vertical">
+      <h2 id="vertical-heading">Vertical (default)</h2>
+      <fieldset class="re-field-group" id="fg-vertical">
+        <legend class="re-field-group__legend">Notifications</legend>
+        <div class="re-field-group__items">
+          <label class="re-field re-field--inline">
+            <input class="re-checkbox" type="checkbox" name="email" checked />
+            <span class="re-field__label">Email</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-checkbox" type="checkbox" name="sms" />
+            <span class="re-field__label">SMS</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-checkbox" type="checkbox" name="push" />
+            <span class="re-field__label">Push</span>
+          </label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section aria-labelledby="horizontal-heading" data-testid="horizontal">
+      <h2 id="horizontal-heading">Horizontal</h2>
+      <fieldset class="re-field-group" data-orientation="horizontal" id="fg-horizontal">
+        <legend class="re-field-group__legend">Theme</legend>
+        <div class="re-field-group__items">
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="theme" value="light" checked />
+            <span class="re-field__label">Light</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="theme" value="dark" />
+            <span class="re-field__label">Dark</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="theme" value="system" />
+            <span class="re-field__label">System</span>
+          </label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section aria-labelledby="disabled-heading" data-testid="disabled">
+      <h2 id="disabled-heading">Disabled group</h2>
+      <fieldset class="re-field-group" id="fg-disabled" disabled>
+        <legend class="re-field-group__legend">Frozen options</legend>
+        <div class="re-field-group__items">
+          <label class="re-field re-field--inline">
+            <input class="re-checkbox" type="checkbox" id="fg-disabled-cb" />
+            <span class="re-field__label">Cannot toggle</span>
+          </label>
+        </div>
+      </fieldset>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Use <code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> so screen readers announce the group name on each child.</li>
+        <li><code>data-orientation="horizontal"</code> wraps items in a row; otherwise items stack.</li>
+        <li>Disabling the fieldset cascades to native controls — no extra wiring needed.</li>
+      </ul>
+    </article>
+  </body>
+</html>

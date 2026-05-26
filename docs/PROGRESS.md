@@ -21,7 +21,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] checkbox
 - [x] radio
 - [x] field
-- [ ] field-group
+- [x] field-group
 - [ ] validation-message
 
 ## Phase 3: Native Interactive
