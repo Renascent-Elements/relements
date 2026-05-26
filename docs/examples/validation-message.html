@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Validation message</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-2);
+      }
+    </style>
+  </head>
+  <body data-page="validation-message">
+    <header>
+      <h1>Validation message</h1>
+      <p>Inline status text styled with <code>.re-validation-message</code>.</p>
+    </header>
+
+    <section aria-labelledby="error-heading" data-testid="error">
+      <h2 id="error-heading">Error (default)</h2>
+      <label class="re-field">
+        <span class="re-field__label">Email</span>
+        <input class="re-input" id="vm-error-input" aria-invalid="true" aria-describedby="vm-error" />
+        <span id="vm-error" class="re-validation-message">Not a valid email address.</span>
+      </label>
+    </section>
+
+    <section aria-labelledby="success-heading" data-testid="success">
+      <h2 id="success-heading">Success</h2>
+      <label class="re-field">
+        <span class="re-field__label">Username</span>
+        <input class="re-input" id="vm-success-input" aria-describedby="vm-success" value="ada" />
+        <span id="vm-success" class="re-validation-message" data-tone="success">Username is available.</span>
+      </label>
+    </section>
+
+    <section aria-labelledby="hint-heading" data-testid="hint">
+      <h2 id="hint-heading">Hint</h2>
+      <label class="re-field">
+        <span class="re-field__label">Password</span>
+        <input class="re-input" id="vm-hint-input" type="password" aria-describedby="vm-hint" />
+        <span id="vm-hint" class="re-validation-message" data-tone="hint">At least 8 characters.</span>
+      </label>
+    </section>
+
+    <section aria-labelledby="warning-heading" data-testid="warning">
+      <h2 id="warning-heading">Warning</h2>
+      <label class="re-field">
+        <span class="re-field__label">Coupon code</span>
+        <input class="re-input" id="vm-warning-input" aria-describedby="vm-warning" value="EXPIRED" />
+        <span id="vm-warning" class="re-validation-message" data-tone="warning">This coupon will expire soon.</span>
+      </label>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Default tone is error (danger color). Switch via <code>data-tone="success|hint|warning"</code>.</li>
+        <li>Link to the message from the control via <code>aria-describedby</code>.</li>
+        <li>Pair error with <code>aria-invalid="true"</code> on the control for proper announcement.</li>
+      </ul>
+    </article>
+  </body>
+</html>

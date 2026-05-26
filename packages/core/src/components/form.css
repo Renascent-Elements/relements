@@ -323,12 +323,12 @@
   }
 
   .re-validation-message[data-tone="success"] {
-    color: var(--re-color-success-600);
+    color: var(--re-color-success-700);
   }
   .re-validation-message[data-tone="hint"] {
     color: var(--re-color-text-muted);
   }
   .re-validation-message[data-tone="warning"] {
-    color: var(--re-color-warning-600);
+    color: var(--re-color-warning-700);
   }
 }

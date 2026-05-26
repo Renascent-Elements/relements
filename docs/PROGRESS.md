@@ -22,7 +22,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] radio
 - [x] field
 - [x] field-group
-- [ ] validation-message
+- [x] validation-message
 
 ## Phase 3: Native Interactive
 
