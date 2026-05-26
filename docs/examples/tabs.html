@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Tabs</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .re-tabpanel {
+        padding: var(--re-space-4);
+        background-color: var(--re-color-bg-subtle);
+        border-radius: var(--re-radius-md);
+      }
+    </style>
+  </head>
+  <body data-page="tabs">
+    <header>
+      <h1>Tabs</h1>
+      <p>ARIA tabs pattern. Server-rendered initial state; JS adds keyboard nav.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <div class="re-tabs" data-re-tabs id="tabs-1">
+        <div class="re-tabs__list" role="tablist" aria-label="Account">
+          <button class="re-tab" role="tab" id="t-profile" aria-controls="p-profile" aria-selected="true">
+            Profile
+          </button>
+          <button class="re-tab" role="tab" id="t-security" aria-controls="p-security" aria-selected="false" tabindex="-1">
+            Security
+          </button>
+          <button class="re-tab" role="tab" id="t-billing" aria-controls="p-billing" aria-selected="false" tabindex="-1">
+            Billing
+          </button>
+        </div>
+
+        <section class="re-tabpanel" role="tabpanel" id="p-profile" aria-labelledby="t-profile" tabindex="0">
+          <p>Manage your name and email here.</p>
+        </section>
+        <section class="re-tabpanel" role="tabpanel" id="p-security" aria-labelledby="t-security" tabindex="0" hidden>
+          <p>Two-factor authentication, password rotation, sessions.</p>
+        </section>
+        <section class="re-tabpanel" role="tabpanel" id="p-billing" aria-labelledby="t-billing" tabindex="0" hidden>
+          <p>Plan, invoices, payment method.</p>
+        </section>
+      </div>
+    </section>
+
+    <section aria-labelledby="event-heading" data-testid="event">
+      <h2 id="event-heading">Cancelable re-change event</h2>
+      <p>Listen for <code>re-change</code>; <code>preventDefault()</code> keeps the current tab.</p>
+      <p><output id="last-tab">none</output></p>
+      <script>
+        document.getElementById("tabs-1").addEventListener("re-change", (event) => {
+          document.getElementById("last-tab").textContent = event.detail.tabId;
+        });
+      </script>
+    </section>
+
+    <script type="module">
+      import { enhanceTabs } from "/packages/core/src/behaviors/tabs.js";
+      window.__tabsController = enhanceTabs(document);
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Server-rendered: <code>aria-selected="true"</code> on the active tab, <code>hidden</code> on inactive panels.</li>
+        <li>Keyboard: <kbd>←</kbd>/<kbd>→</kbd> moves focus, <kbd>Home</kbd>/<kbd>End</kbd> jumps, <kbd>Enter</kbd>/<kbd>Space</kbd> activates.</li>
+        <li>Plain HTML fallback: without JavaScript, the initially selected panel is visible and the page is still usable.</li>
+      </ul>
+    </article>
+  </body>
+</html>

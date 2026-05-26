@@ -38,7 +38,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 
 ## Phase 5: Composite Behaviors
 
-- [ ] tabs
+- [x] tabs
 - [ ] menu-button
 - [ ] popover
 - [ ] toast
