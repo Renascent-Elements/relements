@@ -1,0 +1,23 @@
+tests/elements/field.spec.ts
+  s_8b941d379971d4::t_d32a6746279010 1-42
+tests/a11y/field.a11y.spec.ts
+  s_8b941d379971d4::t_da300541d1e215 1-10
+tests/visual/field.visual.spec.ts
+  s_8b941d379971d4::t_324f47fb883733 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "b08268f5bf5141d1e2c85a56f900aefd212f1e78",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
