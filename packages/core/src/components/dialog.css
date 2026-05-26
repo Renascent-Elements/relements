@@ -1,0 +1,99 @@
+/**
+ * Relements dialog.
+ *
+ * Styled native <dialog>. The browser owns showModal/show/close, focus
+ * trap, backdrop, and Escape-to-dismiss. This stylesheet supplies
+ * surface, header/body/footer slots, and the backdrop look.
+ *
+ *   <dialog class="re-dialog">
+ *     <header class="re-dialog__header">
+ *       <h2 class="re-dialog__title">…</h2>
+ *       <button class="re-dialog__close" aria-label="Close">×</button>
+ *     </header>
+ *     <div class="re-dialog__body">…</div>
+ *     <footer class="re-dialog__footer">…</footer>
+ *   </dialog>
+ */
+
+@layer re.components {
+  .re-dialog {
+    box-sizing: border-box;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-lg);
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    padding: 0;
+    inline-size: min(90vw, 32rem);
+    max-block-size: min(85vh, 40rem);
+    box-shadow: var(--re-shadow-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Backdrop owned by the browser; tint with tokens. */
+  .re-dialog::backdrop {
+    background-color: rgb(0 0 0 / 0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  .re-dialog:focus-visible {
+    outline: none;
+  }
+
+  .re-dialog__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--re-space-3);
+    padding: var(--re-space-4);
+    border-block-end: var(--re-border-default);
+  }
+
+  .re-dialog__title {
+    margin: 0;
+    font-size: var(--re-size-text-lg);
+    font-weight: var(--re-font-weight-semibold);
+    line-height: var(--re-line-height-tight);
+    color: var(--re-color-text);
+  }
+
+  .re-dialog__close {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: var(--re-space-1) var(--re-space-2);
+    border-radius: var(--re-radius-md);
+    color: var(--re-color-text-muted);
+    font: inherit;
+    font-size: var(--re-size-text-xl);
+    line-height: 1;
+    transition: background-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-dialog__close:hover {
+    background-color: var(--re-color-bg-subtle);
+    color: var(--re-color-text);
+  }
+
+  .re-dialog__close:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-dialog__body {
+    padding: var(--re-space-4);
+    overflow-y: auto;
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-dialog__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--re-space-3);
+    padding: var(--re-space-4);
+    border-block-start: var(--re-border-default);
+    background-color: var(--re-color-bg-subtle);
+  }
+}
