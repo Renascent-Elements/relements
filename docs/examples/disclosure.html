@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Disclosure</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="disclosure">
+    <header>
+      <h1>Disclosure</h1>
+      <p>Styled <code>&lt;details&gt;</code> / <code>&lt;summary&gt;</code> — no JavaScript required.</p>
+    </header>
+
+    <section aria-labelledby="default-heading" data-testid="default">
+      <h2 id="default-heading">Default</h2>
+      <div class="stack">
+        <details class="re-disclosure" id="disc-1">
+          <summary class="re-disclosure__summary">What is Relements?</summary>
+          <div class="re-disclosure__body">
+            A small, framework-neutral design system that starts with semantic HTML
+            and adds CSS tokens and progressive enhancement.
+          </div>
+        </details>
+        <details class="re-disclosure" id="disc-2" open>
+          <summary class="re-disclosure__summary">Pre-opened panel</summary>
+          <div class="re-disclosure__body">
+            <p>This disclosure ships in the open state via the native <code>open</code> attribute.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section aria-labelledby="plain-heading" data-testid="plain">
+      <h2 id="plain-heading">Plain variant</h2>
+      <details class="re-disclosure" data-variant="plain" id="disc-plain">
+        <summary class="re-disclosure__summary">More information</summary>
+        <div class="re-disclosure__body">No border or surface — just inline disclosure.</div>
+      </details>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Toggle, keyboard activation, and focus are all native browser behavior.</li>
+        <li>Default marker is hidden; a CSS chevron rotates on <code>[open]</code>.</li>
+        <li>Use the plain variant when nesting disclosures inside cards or other surfaces.</li>
+      </ul>
+    </article>
+  </body>
+</html>

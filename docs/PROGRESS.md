@@ -26,7 +26,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 
 ## Phase 3: Native Interactive
 
-- [ ] disclosure (`details` / `summary`)
+- [x] disclosure (`details` / `summary`)
 - [ ] dialog
 - [ ] progress
 - [ ] meter
