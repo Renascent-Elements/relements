@@ -1,0 +1,334 @@
+/**
+ * Relements form controls and field layout.
+ *
+ * One stylesheet covers all native form primitives plus the layout helpers
+ * for label/hint/error around them:
+ *
+ *   .re-input          — <input type="text|email|number|password|search|tel|url|date|...">
+ *   .re-textarea       — <textarea>
+ *   .re-select         — <select>
+ *   .re-checkbox       — <input type="checkbox">
+ *   .re-radio          — <input type="radio">
+ *   .re-field          — <label> wrapping a control + parts
+ *   .re-field__label   — span/label text
+ *   .re-field__hint    — span/p secondary text
+ *   .re-field-group    — wrapper for multiple related fields
+ *   .re-field-group__legend — legend or span heading
+ *   .re-validation-message — span/p error or success text
+ *
+ * Sizes via data-size: sm, md (default), lg
+ * Invalid via [aria-invalid="true"] OR :invalid (when interacted)
+ */
+
+@layer re.components {
+  /* ============================================================
+     Shared control surface
+     ============================================================ */
+  .re-input,
+  .re-textarea,
+  .re-select {
+    display: block;
+    inline-size: 100%;
+    box-sizing: border-box;
+
+    min-block-size: var(--re-control-height-md);
+    padding-inline: var(--re-control-padding-x);
+    padding-block: var(--re-control-padding-y);
+
+    font: inherit;
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    appearance: none;
+
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard),
+      background-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-input::placeholder,
+  .re-textarea::placeholder {
+    color: var(--re-color-text-subtle);
+    opacity: 1;
+  }
+
+  .re-input:hover,
+  .re-textarea:hover,
+  .re-select:hover {
+    border-color: var(--re-color-border-strong);
+  }
+
+  .re-input:focus-visible,
+  .re-textarea:focus-visible,
+  .re-select:focus-visible {
+    outline: none;
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* Native invalid state — only after the user interacts (via :user-invalid)
+     where supported, plus an explicit hook via aria-invalid. */
+  .re-input[aria-invalid="true"],
+  .re-textarea[aria-invalid="true"],
+  .re-select[aria-invalid="true"],
+  .re-input:user-invalid,
+  .re-textarea:user-invalid,
+  .re-select:user-invalid {
+    border-color: var(--re-color-border-danger);
+  }
+  .re-input[aria-invalid="true"]:focus-visible,
+  .re-textarea[aria-invalid="true"]:focus-visible,
+  .re-select[aria-invalid="true"]:focus-visible,
+  .re-input:user-invalid:focus-visible,
+  .re-textarea:user-invalid:focus-visible,
+  .re-select:user-invalid:focus-visible {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
+  }
+
+  /* Disabled */
+  .re-input:disabled,
+  .re-textarea:disabled,
+  .re-select:disabled,
+  .re-checkbox:disabled,
+  .re-radio:disabled {
+    cursor: not-allowed;
+    background-color: var(--re-color-bg-muted);
+    color: var(--re-color-text-subtle);
+    opacity: 0.7;
+  }
+
+  /* Sizes */
+  .re-input[data-size="sm"],
+  .re-textarea[data-size="sm"],
+  .re-select[data-size="sm"] {
+    min-block-size: var(--re-control-height-sm);
+    font-size: var(--re-size-text-sm);
+    padding-inline: var(--re-space-2);
+  }
+  .re-input[data-size="lg"],
+  .re-textarea[data-size="lg"],
+  .re-select[data-size="lg"] {
+    min-block-size: var(--re-control-height-lg);
+    font-size: var(--re-size-text-lg);
+    padding-inline: var(--re-space-4);
+  }
+
+  /* ============================================================
+     Textarea
+     ============================================================ */
+  .re-textarea {
+    min-block-size: calc(var(--re-control-height-md) * 2);
+    resize: vertical;
+    line-height: var(--re-line-height-relaxed);
+  }
+
+  /* ============================================================
+     Select
+     ============================================================ */
+  .re-select {
+    padding-inline-end: var(--re-space-8);
+    background-image:
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+      right var(--re-space-4) top 55%,
+      right calc(var(--re-space-4) - 5px) top 55%;
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    color: var(--re-color-text);
+  }
+  .re-select[multiple] {
+    background-image: none;
+    padding-inline-end: var(--re-control-padding-x);
+    min-block-size: calc(var(--re-control-height-md) * 3);
+  }
+  .re-select[multiple] option {
+    padding-block: var(--re-space-1);
+  }
+
+  /* ============================================================
+     Checkbox & radio (native, styled)
+     ============================================================ */
+  .re-checkbox,
+  .re-radio {
+    appearance: none;
+    -webkit-appearance: none;
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    background-color: var(--re-color-bg);
+    border: var(--re-border-width-strong) solid var(--re-color-border-strong);
+    cursor: pointer;
+    display: inline-grid;
+    place-content: center;
+    color: var(--re-color-text-on-accent);
+    transition:
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-checkbox {
+    border-radius: var(--re-radius-sm);
+  }
+  .re-radio {
+    border-radius: var(--re-radius-pill);
+  }
+
+  .re-checkbox:hover,
+  .re-radio:hover {
+    border-color: var(--re-color-accent-600);
+  }
+
+  .re-checkbox:focus-visible,
+  .re-radio:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+    border-color: var(--re-color-focus-ring);
+  }
+
+  /* Checked state — drawn via ::before glyph so they remain native. */
+  .re-checkbox:checked,
+  .re-radio:checked {
+    background-color: var(--re-color-accent-600);
+    border-color: var(--re-color-accent-600);
+  }
+  .re-checkbox:checked::before {
+    content: "";
+    inline-size: 0.65rem;
+    block-size: 0.65rem;
+    background-color: currentColor;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0, 43% 62%);
+  }
+  .re-radio:checked::before {
+    content: "";
+    inline-size: 0.55rem;
+    block-size: 0.55rem;
+    border-radius: var(--re-radius-pill);
+    background-color: currentColor;
+  }
+
+  /* Indeterminate (checkbox) */
+  .re-checkbox:indeterminate {
+    background-color: var(--re-color-accent-600);
+    border-color: var(--re-color-accent-600);
+  }
+  .re-checkbox:indeterminate::before {
+    content: "";
+    inline-size: 0.7rem;
+    block-size: 0.18rem;
+    background-color: currentColor;
+    border-radius: var(--re-radius-sm);
+  }
+
+  /* Invalid */
+  .re-checkbox[aria-invalid="true"],
+  .re-radio[aria-invalid="true"] {
+    border-color: var(--re-color-border-danger);
+  }
+
+  /* ============================================================
+     Field (label-wrapped control)
+     ============================================================ */
+  .re-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-2);
+    /* Make the field itself a focus container without changing semantics. */
+    color: var(--re-color-text);
+  }
+
+  .re-field__label {
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    color: var(--re-color-text);
+    line-height: 1.2;
+  }
+
+  .re-field__label[data-required]::after {
+    content: " *";
+    color: var(--re-color-text-danger);
+    margin-inline-start: 0.1em;
+  }
+
+  .re-field__hint {
+    font-size: var(--re-size-text-sm);
+    color: var(--re-color-text-muted);
+    line-height: var(--re-line-height-normal);
+  }
+
+  /* Checkbox / radio inline layout helper:
+     <label class="re-field re-field--inline">
+       <input type="checkbox" class="re-checkbox" />
+       <span class="re-field__label">Subscribe</span>
+     </label>
+  */
+  .re-field--inline {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--re-space-3);
+  }
+
+  /* ============================================================
+     Field group (fieldset/legend or div/span pattern)
+     ============================================================ */
+  .re-field-group {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-2);
+  }
+
+  .re-field-group__legend {
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    color: var(--re-color-text);
+    line-height: 1.2;
+    padding: 0;
+  }
+
+  .re-field-group[data-orientation="horizontal"] > .re-field-group__items {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--re-space-4);
+  }
+  .re-field-group__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-2);
+  }
+
+  /* ============================================================
+     Validation message
+     ============================================================ */
+  .re-validation-message {
+    display: block;
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-danger);
+  }
+
+  .re-validation-message[data-tone="success"] {
+    color: var(--re-color-success-600);
+  }
+  .re-validation-message[data-tone="hint"] {
+    color: var(--re-color-text-muted);
+  }
+  .re-validation-message[data-tone="warning"] {
+    color: var(--re-color-warning-600);
+  }
+}
