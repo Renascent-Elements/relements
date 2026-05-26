@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Checkbox</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="checkbox">
+    <header>
+      <h1>Checkbox</h1>
+      <p>Native checkbox styled with <code>.re-checkbox</code>.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <div class="stack">
+        <label class="re-field re-field--inline">
+          <input class="re-checkbox" type="checkbox" id="cb-news" name="news" />
+          <span class="re-field__label">Subscribe to newsletter</span>
+        </label>
+        <label class="re-field re-field--inline">
+          <input class="re-checkbox" type="checkbox" id="cb-default" checked />
+          <span class="re-field__label">Already checked</span>
+        </label>
+      </div>
+    </section>
+
+    <section aria-labelledby="indeterminate-heading" data-testid="indeterminate">
+      <h2 id="indeterminate-heading">Indeterminate</h2>
+      <label class="re-field re-field--inline">
+        <input class="re-checkbox" type="checkbox" id="cb-indeterminate" />
+        <span class="re-field__label">Some children selected</span>
+      </label>
+      <script>
+        document.getElementById("cb-indeterminate").indeterminate = true;
+      </script>
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="stack">
+        <label class="re-field re-field--inline">
+          <input class="re-checkbox" type="checkbox" id="cb-disabled" disabled />
+          <span class="re-field__label">Disabled</span>
+        </label>
+        <label class="re-field re-field--inline">
+          <input
+            class="re-checkbox"
+            type="checkbox"
+            id="cb-invalid"
+            aria-invalid="true"
+            aria-describedby="cb-invalid-msg"
+          />
+          <span class="re-field__label">Required terms</span>
+        </label>
+        <span id="cb-invalid-msg" class="re-validation-message">Please accept the terms.</span>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Uses native <code>&lt;input type="checkbox"&gt;</code>. Click, keyboard space, and form serialization stay native.</li>
+        <li>Checked glyph drawn via <code>::before</code> + <code>clip-path</code> — no SVG asset required.</li>
+        <li>Indeterminate state is a DOM property; the visual is supplied via <code>:indeterminate</code>.</li>
+      </ul>
+    </article>
+  </body>
+</html>

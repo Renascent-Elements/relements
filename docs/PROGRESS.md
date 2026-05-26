@@ -18,7 +18,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] input
 - [x] textarea
 - [x] select
-- [ ] checkbox
+- [x] checkbox
 - [ ] radio
 - [ ] field
 - [ ] field-group
