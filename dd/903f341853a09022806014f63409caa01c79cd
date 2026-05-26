@@ -1,0 +1,27 @@
+tests/elements/textarea.spec.ts
+  s_8b941d379971d4::t_796ebdb38877fc 1-50
+tests/a11y/textarea.a11y.spec.ts
+  s_8b941d379971d4::t_291f078904aea3 1-10
+docs/examples/textarea.html
+  s_8b941d379971d4::t_124f8dd2fe1e35 1-80
+docs/PROGRESS.md
+  s_8b941d379971d4::t_259c0b782b0d5b 19
+tests/visual/textarea.visual.spec.ts
+  s_8b941d379971d4::t_35aef415d73c41 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "dd903f341853a09022806014f63409caa01c79cd",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
