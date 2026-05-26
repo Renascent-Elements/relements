@@ -84,6 +84,11 @@
     overflow-wrap: break-word;
   }
 
+  /* Honor the [hidden] attribute even when component CSS sets display. */
+  [hidden] {
+    display: none !important;
+  }
+
   /* Respect users who request reduced motion. */
   @media (prefers-reduced-motion: reduce) {
     *,

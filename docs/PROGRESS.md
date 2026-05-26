@@ -33,7 +33,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 
 ## Phase 4: JavaScript Enhancement API
 
-- [ ] `enhanceDismissible`
+- [x] `enhanceDismissible`
 - [ ] `enhanceDialog`
 
 ## Phase 5: Composite Behaviors
