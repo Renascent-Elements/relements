@@ -47,7 +47,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 
 ## Phase 6: Custom Elements
 
-- [ ] `re-tabs`
+- [x] `re-tabs`
 - [ ] `re-toast`
 - [ ] `re-menu`
 - [ ] `re-popover`

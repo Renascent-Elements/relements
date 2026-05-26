@@ -39,6 +39,15 @@ export function enhanceTabs(root = document) {
   /** @type {Array<{ host: Element; cleanup: () => void }>} */
   const hosts = [];
 
+  // Include the root itself when it carries the marker (e.g. a custom element host).
+  if (
+    root instanceof Element &&
+    /** @type {Element} */ (root).matches?.("[data-re-tabs]")
+  ) {
+    const cleanup = wireOne(/** @type {HTMLElement} */ (root));
+    hosts.push({ host: root, cleanup });
+  }
+
   /** @type {NodeListOf<Element>} */
   const tabsList = root.querySelectorAll("[data-re-tabs]");
   tabsList.forEach((host) => {
