@@ -1,0 +1,25 @@
+docs/examples/index.html
+  s_8b941d379971d4::t_5ef9e5140fa262 39
+tests/elements/meter.spec.ts
+  s_8b941d379971d4::t_4572a32636b2cc 1-44
+tests/visual/meter.visual.spec.ts
+  s_8b941d379971d4::t_b0f1e3346b74fe 1-12
+tests/a11y/meter.a11y.spec.ts
+  s_8b941d379971d4::t_ef239ecfaeb644 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "857ed664261b3f2a569ebfbed750b2563fba9c1d",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
