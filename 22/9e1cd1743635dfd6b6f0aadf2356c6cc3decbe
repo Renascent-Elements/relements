@@ -1,0 +1,25 @@
+tests/elements/validation-message.spec.ts
+  s_8b941d379971d4::t_4ba08b9b3dffba 1-53
+docs/examples/validation-message.html
+  s_8b941d379971d4::t_a3b3dff6fae225 1-74
+docs/examples/index.html
+  s_8b941d379971d4::t_a5b0d13b495e6e 35
+docs/PROGRESS.md
+  s_8b941d379971d4::t_3ca4f148f96343 25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "229e1cd1743635dfd6b6f0aadf2356c6cc3decbe",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
