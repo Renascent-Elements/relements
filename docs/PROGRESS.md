@@ -50,7 +50,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] `re-tabs`
 - [x] `re-toast`
 - [x] `re-menu`
-- [ ] `re-popover`
+- [x] `re-popover`
 
 ## Acceptance per element
 

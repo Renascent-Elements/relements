@@ -30,6 +30,10 @@ export function enhancePopover(root = document) {
   /** @type {Array<() => void>} */
   const cleanups = [];
 
+  if (root instanceof Element && /** @type {Element} */ (root).matches?.("[data-re-popover]")) {
+    cleanups.push(wireOne(/** @type {HTMLElement} */ (root)));
+  }
+
   /** @type {NodeListOf<HTMLElement>} */
   const popovers = root.querySelectorAll("[data-re-popover]");
   popovers.forEach((pop) => {
