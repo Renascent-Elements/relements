@@ -1,0 +1,61 @@
+/**
+ * Relements link.
+ *
+ * Opt-in styling for anchors. Native <a> defaults are already set by base.css;
+ * `.re-link` adds underline emphasis, hover/visited states, and explicit focus.
+ *
+ * Variants (data-variant):
+ *   default   — text-colored underline, accent on hover
+ *   muted     — muted color, default underline
+ *   subtle    — no underline until hover
+ *   external  — appends ↗ glyph hint (does not replace aria-label)
+ */
+
+@layer re.components {
+  .re-link {
+    color: var(--re-color-link);
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.18em;
+    text-decoration-color: currentColor;
+    border-radius: var(--re-radius-sm);
+    transition:
+      color var(--re-duration-fast) var(--re-easing-standard),
+      text-decoration-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-link:hover {
+    color: var(--re-color-link-hover);
+  }
+
+  .re-link:visited {
+    color: var(--re-color-link-visited);
+  }
+
+  .re-link:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* ---- Variants -------------------------------------------------------- */
+  .re-link[data-variant="muted"] {
+    color: var(--re-color-text-muted);
+    text-decoration-color: var(--re-color-border-strong);
+  }
+  .re-link[data-variant="muted"]:hover {
+    color: var(--re-color-text);
+    text-decoration-color: currentColor;
+  }
+
+  .re-link[data-variant="subtle"] {
+    text-decoration-line: none;
+  }
+  .re-link[data-variant="subtle"]:hover {
+    text-decoration-line: underline;
+  }
+
+  .re-link[data-variant="external"]::after {
+    content: " \2197"; /* ↗ */
+    speak: none;
+  }
+}

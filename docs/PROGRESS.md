@@ -14,7 +14,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 ## Phase 2: Native Form Elements
 
 - [x] button
-- [ ] link
+- [x] link
 - [ ] input
 - [ ] textarea
 - [ ] select
