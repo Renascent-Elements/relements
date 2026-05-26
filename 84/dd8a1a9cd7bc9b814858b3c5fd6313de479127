@@ -1,0 +1,21 @@
+packages/core/src/elements/re-popover.js
+  s_8b941d379971d4::t_b9821206b70295 1-59
+tests/visual/re-popover.visual.spec.ts
+  s_8b941d379971d4::t_db92d0dbed0629 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "84dd8a1a9cd7bc9b814858b3c5fd6313de479127",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
