@@ -20,5 +20,6 @@ coverage/
 # OS
 Thumbs.db
 
-# Claude Code local settings (personal/per-machine)
+# Claude Code local state (personal/per-machine)
 .claude/settings.local.json
+.claude/*.local.*
