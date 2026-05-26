@@ -1,0 +1,31 @@
+docs/examples/re-tabs.html
+  ai_agent 60-61
+  s_8b941d379971d4::t_5896383bdbdbb9 1-59,62-79
+packages/core/src/behaviors/tabs.js
+  s_8b941d379971d4::t_b72539fb37cfaf 42-50
+docs/examples/index.html
+  s_8b941d379971d4::t_1bea7bb57a1b9a 46
+tests/elements/re-tabs.spec.ts
+  s_8b941d379971d4::t_f8bf988aca02e5 1-68
+packages/core/src/elements/re-tabs.js
+  s_8b941d379971d4::t_87d357a433961e 1-35,40-92
+  ai_agent 36-39
+docs/PROGRESS.md
+  ai_agent 50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "80ac62f99840973ed32cd9b368f6b131c69753e1",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
