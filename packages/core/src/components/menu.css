@@ -1,0 +1,70 @@
+/**
+ * Relements menu / menu-button.
+ *
+ * ARIA menu-button pattern over server-rendered markup:
+ *
+ *   <div class="re-menu" data-re-menu>
+ *     <button class="re-menu__button" aria-haspopup="menu" aria-expanded="false" aria-controls="m-1" id="b-1">
+ *       Actions
+ *     </button>
+ *     <div class="re-menu__panel" role="menu" id="m-1" aria-labelledby="b-1" hidden>
+ *       <button role="menuitem" class="re-menu__item">Rename</button>
+ *       <button role="menuitem" class="re-menu__item">Duplicate</button>
+ *       <button role="menuitem" class="re-menu__item">Delete</button>
+ *     </div>
+ *   </div>
+ */
+
+@layer re.components {
+  .re-menu {
+    position: relative;
+    display: inline-block;
+  }
+
+  .re-menu__panel {
+    position: absolute;
+    inset-block-start: calc(100% + var(--re-space-1));
+    inset-inline-start: 0;
+    min-inline-size: 12rem;
+    background-color: var(--re-color-surface);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    box-shadow: var(--re-shadow-md);
+    padding: var(--re-space-1);
+    z-index: var(--re-z-popover);
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .re-menu__item {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    text-align: start;
+    padding: var(--re-space-2) var(--re-space-3);
+    border-radius: var(--re-radius-sm);
+    color: var(--re-color-text);
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-menu__item:hover,
+  .re-menu__item:focus-visible {
+    background-color: var(--re-color-bg-subtle);
+    outline: none;
+  }
+
+  .re-menu__item[aria-disabled="true"],
+  .re-menu__item:disabled {
+    color: var(--re-color-text-subtle);
+    cursor: not-allowed;
+  }
+
+  .re-menu__separator {
+    block-size: 1px;
+    background-color: var(--re-color-border);
+    margin-block: var(--re-space-1);
+  }
+}
