@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Field</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="field">
+    <header>
+      <h1>Field</h1>
+      <p>
+        Layout helper that wraps a label, a control, and optional hint/error in a single
+        accessible <code>&lt;label&gt;</code>.
+      </p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic field</h2>
+      <label class="re-field" id="field-basic">
+        <span class="re-field__label">Email</span>
+        <input class="re-input" type="email" name="email" id="field-basic-input" required />
+        <span class="re-field__hint" id="field-basic-hint">Use your work email.</span>
+      </label>
+    </section>
+
+    <section aria-labelledby="required-heading" data-testid="required">
+      <h2 id="required-heading">Required marker</h2>
+      <label class="re-field">
+        <span class="re-field__label" data-required>Full name</span>
+        <input class="re-input" type="text" name="name" required id="field-required-input" />
+      </label>
+    </section>
+
+    <section aria-labelledby="invalid-heading" data-testid="invalid">
+      <h2 id="invalid-heading">With validation message</h2>
+      <label class="re-field">
+        <span class="re-field__label">Password</span>
+        <input
+          class="re-input"
+          type="password"
+          name="password"
+          aria-invalid="true"
+          aria-describedby="field-invalid-msg"
+          id="field-invalid-input"
+        />
+        <span id="field-invalid-msg" class="re-validation-message">
+          Must be at least 8 characters.
+        </span>
+      </label>
+    </section>
+
+    <section aria-labelledby="inline-heading" data-testid="inline">
+      <h2 id="inline-heading">Inline (checkbox / radio)</h2>
+      <div class="stack">
+        <label class="re-field re-field--inline">
+          <input class="re-checkbox" type="checkbox" id="field-inline-cb" />
+          <span class="re-field__label">Receive marketing email</span>
+        </label>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>The field is a native <code>&lt;label&gt;</code>; the wrapped control inherits the implicit label.</li>
+        <li><code>.re-field__label[data-required]</code> appends a visual asterisk; pair with the native <code>required</code> attribute.</li>
+        <li>For checkbox / radio rows, add <code>.re-field--inline</code> to flip to a row layout.</li>
+      </ul>
+    </article>
+  </body>
+</html>

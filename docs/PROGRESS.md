@@ -20,7 +20,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] select
 - [x] checkbox
 - [x] radio
-- [ ] field
+- [x] field
 - [ ] field-group
 - [ ] validation-message
 
