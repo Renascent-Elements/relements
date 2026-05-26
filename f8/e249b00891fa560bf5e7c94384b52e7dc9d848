@@ -1,0 +1,25 @@
+docs/examples/radio.html
+  s_8b941d379971d4::t_b5bf31d92288e9 1-107
+tests/elements/radio.spec.ts
+  s_8b941d379971d4::t_912c38db32208c 1-48
+docs/PROGRESS.md
+  s_8b941d379971d4::t_2aaebcf9b93eca 22
+tests/a11y/radio.a11y.spec.ts
+  s_8b941d379971d4::t_45a6e0641df273 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "f8e249b00891fa560bf5e7c94384b52e7dc9d848",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
