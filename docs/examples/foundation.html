@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Foundation</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      /* Page-level layout only — not part of the design system. */
+      body {
+        padding: var(--re-space-8);
+        max-width: 60rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-8);
+      }
+      .swatch {
+        display: inline-block;
+        width: 4rem;
+        height: 2rem;
+        border-radius: var(--re-radius-md);
+        border: var(--re-border-default);
+        vertical-align: middle;
+        margin-inline-end: var(--re-space-2);
+      }
+      .row {
+        display: flex;
+        gap: var(--re-space-3);
+        flex-wrap: wrap;
+        align-items: center;
+        margin-block-end: var(--re-space-2);
+      }
+      /* Subtree theme demo — local token override wins via cascade. */
+      .themed {
+        --re-color-bg: var(--re-color-accent-50);
+        --re-color-text: var(--re-color-accent-900);
+        background-color: var(--re-color-bg);
+        color: var(--re-color-text);
+        padding: var(--re-space-4);
+        border-radius: var(--re-radius-lg);
+      }
+    </style>
+  </head>
+  <body data-page="foundation">
+    <header>
+      <h1>Foundation</h1>
+      <p>Tokens, reset, and base styles for Relements. Plain HTML — no JavaScript.</p>
+    </header>
+
+    <section aria-labelledby="typography-heading">
+      <h2 id="typography-heading">Typography</h2>
+      <p>
+        Body text uses <code>--re-font-sans</code> at <code>--re-size-text-md</code> with
+        <code>--re-line-height-normal</code>. Headings step through the type scale.
+      </p>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <small>Small / caption text in <code>--re-color-text-muted</code>.</small>
+    </section>
+
+    <section aria-labelledby="color-heading">
+      <h2 id="color-heading">Color roles</h2>
+      <div class="row">
+        <span class="swatch" style="background: var(--re-color-bg)" title="bg"></span>
+        <span class="swatch" style="background: var(--re-color-bg-subtle)" title="bg-subtle"></span>
+        <span class="swatch" style="background: var(--re-color-bg-muted)" title="bg-muted"></span>
+        <span class="swatch" style="background: var(--re-color-border)" title="border"></span>
+        <span class="swatch" style="background: var(--re-color-accent-500)" title="accent-500"></span>
+        <span class="swatch" style="background: var(--re-color-danger-500)" title="danger-500"></span>
+        <span class="swatch" style="background: var(--re-color-success-500)" title="success-500"></span>
+      </div>
+    </section>
+
+    <section aria-labelledby="links-heading">
+      <h2 id="links-heading">Links and focus</h2>
+      <p>
+        <a href="#typography-heading">Native link</a> inherits color from the token role. Tab into
+        the link to see the focus ring from <code>--re-shadow-focus</code>.
+      </p>
+    </section>
+
+    <section aria-labelledby="theme-heading" class="themed">
+      <h2 id="theme-heading">Subtree theming</h2>
+      <p>
+        Token overrides on this <code>section</code> cascade to descendants only. The page
+        background is unchanged.
+      </p>
+    </section>
+
+    <article id="foundation-notes" hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Public API: CSS classes (<code>.re-*</code>), data attributes (<code>data-re-*</code>), and CSS custom properties (<code>--re-*</code>).</li>
+        <li>The foundation imports <code>tokens.css</code>, <code>reset.css</code>, and <code>base.css</code> into named cascade layers, so consumer styles always win without specificity hacks.</li>
+        <li>Component styles will register under the <code>re.components</code> layer in later phases.</li>
+      </ul>
+    </article>
+  </body>
+</html>

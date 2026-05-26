@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Relements Examples</title>
     <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      ul {
+        line-height: 2;
+      }
+    </style>
   </head>
-  <body>
+  <body data-page="index">
     <main>
       <h1>Relements</h1>
-      <p>Examples will appear here as components are implemented.</p>
+      <p>HTML-first design system examples. Each page renders a single element or set in plain HTML.</p>
+      <nav aria-label="Examples">
+        <ul>
+          <li><a href="./foundation.html">Foundation — tokens, reset, base</a></li>
+        </ul>
+      </nav>
     </main>
   </body>
 </html>

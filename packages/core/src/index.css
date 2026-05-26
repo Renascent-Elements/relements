@@ -1,1 +1,18 @@
+/**
+ * Relements core entry stylesheet.
+ *
+ * Cascade layer order (lowest → highest specificity-wins):
+ *   1. re.tokens     — design tokens
+ *   2. re.reset      — minimal cross-browser normalization
+ *   3. re.base       — document-level typography & native element defaults
+ *   4. re.components — opt-in `.re-*` component styles
+ *
+ * Consumer overrides land in the unlayered cascade and win automatically.
+ * Subtree theming: redeclare tokens on any ancestor element.
+ */
+
 @layer re.tokens, re.reset, re.base, re.components;
+
+@import "./tokens.css" layer(re.tokens);
+@import "./reset.css" layer(re.reset);
+@import "./base.css" layer(re.base);

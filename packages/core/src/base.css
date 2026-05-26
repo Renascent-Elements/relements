@@ -1,0 +1,129 @@
+/**
+ * Relements base styles.
+ *
+ * Document-level defaults driven by tokens. Applies to plain HTML without
+ * any `re-*` classes — loading `index.css` should already produce a readable
+ * page. Component styles in `re.components` take precedence.
+ */
+
+@layer re.base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  html {
+    font-family: var(--re-font-sans);
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+  }
+
+  ::selection {
+    background-color: var(--re-color-selection-bg);
+    color: var(--re-color-selection-text);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: var(--re-line-height-tight);
+    font-weight: var(--re-font-weight-semibold);
+    color: var(--re-color-text);
+  }
+
+  h1 {
+    font-size: var(--re-size-text-4xl);
+  }
+  h2 {
+    font-size: var(--re-size-text-3xl);
+  }
+  h3 {
+    font-size: var(--re-size-text-2xl);
+  }
+  h4 {
+    font-size: var(--re-size-text-xl);
+  }
+  h5 {
+    font-size: var(--re-size-text-lg);
+  }
+  h6 {
+    font-size: var(--re-size-text-md);
+  }
+
+  p {
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text);
+  }
+
+  small {
+    font-size: var(--re-size-text-sm);
+    color: var(--re-color-text-muted);
+  }
+
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: var(--re-font-mono);
+    font-size: 0.95em;
+  }
+
+  pre {
+    overflow: auto;
+    padding: var(--re-space-3) var(--re-space-4);
+    background-color: var(--re-color-bg-muted);
+    border-radius: var(--re-radius-md);
+  }
+
+  code {
+    padding: 0.1em 0.3em;
+    background-color: var(--re-color-bg-muted);
+    border-radius: var(--re-radius-sm);
+  }
+
+  pre code {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
+
+  hr {
+    border: 0;
+    border-top: var(--re-border-default);
+    margin-block: var(--re-space-6);
+  }
+
+  /* Native link default — `.re-link` overrides per component contract. */
+  a {
+    color: var(--re-color-link);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    color: var(--re-color-link-hover);
+  }
+
+  a:visited {
+    color: var(--re-color-link-visited);
+  }
+
+  /* Visible focus for all interactive elements unless a component opts out. */
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+    border-radius: var(--re-radius-sm);
+  }
+
+  /* Native form controls inherit token colors. Component CSS may override. */
+  input,
+  textarea,
+  select {
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+  }
+}
