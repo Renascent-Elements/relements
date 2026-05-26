@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · enhanceDialog</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="enhance-dialog">
+    <header>
+      <h1>enhanceDialog</h1>
+      <p>Trigger binding and click-outside-to-close for native <code>&lt;dialog&gt;</code>.</p>
+    </header>
+
+    <section aria-labelledby="trigger-heading" data-testid="trigger">
+      <h2 id="trigger-heading">Trigger binding</h2>
+      <button
+        type="button"
+        class="re-button"
+        data-re-dialog-trigger
+        data-re-dialog-target="ed-confirm"
+        id="ed-open"
+      >
+        Open confirm
+      </button>
+
+      <dialog class="re-dialog" id="ed-confirm" aria-labelledby="ed-confirm-title" data-re-dialog-close-on-backdrop>
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="ed-confirm-title">Confirm</h2>
+          <button class="re-dialog__close" data-re-dialog-close value="x" aria-label="Close">×</button>
+        </header>
+        <div class="re-dialog__body">
+          <p>Confirm with the buttons below or click outside to close.</p>
+        </div>
+        <footer class="re-dialog__footer">
+          <button type="button" class="re-button" data-variant="ghost" data-re-dialog-close value="cancel">Cancel</button>
+          <button type="button" class="re-button" data-variant="danger" data-re-dialog-close value="confirm" id="ed-confirm-btn">Confirm</button>
+        </footer>
+      </dialog>
+
+      <p><output id="ed-result"></output></p>
+      <script>
+        document.getElementById("ed-confirm").addEventListener("close", (event) => {
+          const dlg = event.currentTarget;
+          document.getElementById("ed-result").textContent =
+            "Returned: " + (dlg.returnValue || "(none)");
+        });
+      </script>
+    </section>
+
+    <script type="module">
+      import { enhanceDialog } from "/packages/core/src/behaviors/dialog.js";
+      window.__edController = enhanceDialog(document);
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li><code>data-re-dialog-trigger</code> + <code>data-re-dialog-target="id"</code> opens the referenced dialog via <code>showModal()</code>.</li>
+        <li><code>data-re-dialog-close</code> on any descendant closes the parent dialog and sets its <code>returnValue</code> to the element's <code>value</code>.</li>
+        <li>Add <code>data-re-dialog-close-on-backdrop</code> on the <code>&lt;dialog&gt;</code> to dismiss on outside clicks.</li>
+      </ul>
+    </article>
+  </body>
+</html>

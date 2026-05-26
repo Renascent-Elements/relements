@@ -6,3 +6,4 @@
  */
 
 export { enhanceDismissible } from "./behaviors/dismissible.js";
+export { enhanceDialog } from "./behaviors/dialog.js";
