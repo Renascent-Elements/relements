@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Textarea</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .grid {
+        display: grid;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="textarea">
+    <header>
+      <h1>Textarea</h1>
+      <p>Multiline text input styled with <code>.re-textarea</code>.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <label class="re-field">
+        <span class="re-field__label">Message</span>
+        <textarea class="re-textarea" id="ta-basic" name="message" rows="4" placeholder="Tell us…"></textarea>
+        <span class="re-field__hint">Plain text. Resize vertically.</span>
+      </label>
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <div class="grid">
+        <label class="re-field">
+          <span class="re-field__label">Small</span>
+          <textarea class="re-textarea" data-size="sm" id="ta-sm" rows="2"></textarea>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Large</span>
+          <textarea class="re-textarea" data-size="lg" id="ta-lg" rows="3"></textarea>
+        </label>
+      </div>
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="grid">
+        <label class="re-field">
+          <span class="re-field__label">Disabled</span>
+          <textarea class="re-textarea" id="ta-disabled" disabled>Locked</textarea>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Invalid</span>
+          <textarea
+            class="re-textarea"
+            id="ta-invalid"
+            aria-invalid="true"
+            aria-describedby="ta-invalid-msg"
+          >wrong</textarea>
+          <span id="ta-invalid-msg" class="re-validation-message">Please revise.</span>
+        </label>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Vertical resize only — horizontal resize is locked to prevent layout breakage.</li>
+        <li>Uses <code>--re-line-height-relaxed</code> for comfortable multiline reading.</li>
+      </ul>
+    </article>
+  </body>
+</html>
