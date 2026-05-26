@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Popover</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="popover">
+    <header>
+      <h1>Popover</h1>
+      <p>Native <code>popover</code> attribute with anchored positioning.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <p>
+        <button type="button" class="re-button" popovertarget="pop-1" id="pop-1-btn">
+          Toggle popover
+        </button>
+      </p>
+      <div class="re-popover" id="pop-1" popover data-re-popover>
+        <p>Native browser popover with custom styling.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="tones-heading" data-testid="tones">
+      <h2 id="tones-heading">Tones</h2>
+      <p>
+        <button type="button" class="re-button" data-variant="secondary" popovertarget="pop-info" id="pop-info-btn">Info</button>
+        <button type="button" class="re-button" data-variant="secondary" popovertarget="pop-warn" id="pop-warn-btn">Warning</button>
+        <button type="button" class="re-button" data-variant="secondary" popovertarget="pop-danger" id="pop-danger-btn">Danger</button>
+      </p>
+      <div class="re-popover" id="pop-info" popover data-tone="info" data-re-popover>Info popover.</div>
+      <div class="re-popover" id="pop-warn" popover data-tone="warning" data-re-popover>Warning popover.</div>
+      <div class="re-popover" id="pop-danger" popover data-tone="danger" data-re-popover>Danger popover.</div>
+    </section>
+
+    <script type="module">
+      import { enhancePopover } from "/packages/core/src/behaviors/popover.js";
+      window.__popController = enhancePopover(document);
+
+      // Demonstrate the re-toggle event.
+      document.getElementById("pop-1").addEventListener("re-toggle", (event) => {
+        document.getElementById("toggle-state").textContent = event.detail.open ? "open" : "closed";
+      });
+    </script>
+
+    <p><output id="toggle-state">closed</output></p>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Uses the native <code>popover</code> attribute. The browser handles light dismiss and focus.</li>
+        <li>The helper subscribes to <code>toggle</code> and re-dispatches a typed <code>re-toggle</code> CustomEvent.</li>
+        <li>Position is anchored under the trigger by the helper (CSS anchor positioning fallback).</li>
+      </ul>
+    </article>
+  </body>
+</html>

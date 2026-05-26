@@ -1,0 +1,50 @@
+/**
+ * Relements popover.
+ *
+ * Styles for elements using the native `popover` attribute (toggled via
+ * `popovertarget` buttons or showPopover()/hidePopover()) and a JS-enhanced
+ * fallback marked with [data-re-popover].
+ *
+ *   <button class="re-button" popovertarget="tip">Toggle</button>
+ *   <div class="re-popover" id="tip" popover>
+ *     <p>Hello!</p>
+ *   </div>
+ */
+
+@layer re.components {
+  .re-popover {
+    margin: 0;
+    inset: auto;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    padding: var(--re-space-3) var(--re-space-4);
+    box-shadow: var(--re-shadow-md);
+    max-inline-size: 22rem;
+    line-height: var(--re-line-height-normal);
+    /* Position is anchored by consumer styles or the JS helper. */
+  }
+
+  /* Override UA default popover positioning so the helper can place it. */
+  .re-popover:popover-open {
+    /* Reset to auto so JS-based positioning takes over. */
+    margin: 0;
+  }
+
+  .re-popover[data-tone="info"] {
+    background-color: var(--re-color-accent-50);
+    border-color: var(--re-color-accent-300);
+    color: var(--re-color-accent-900);
+  }
+  .re-popover[data-tone="warning"] {
+    background-color: #fffbeb; /* warning-50 surrogate */
+    border-color: var(--re-color-warning-500);
+    color: var(--re-color-warning-700);
+  }
+  .re-popover[data-tone="danger"] {
+    background-color: #fef2f2;
+    border-color: var(--re-color-danger-500);
+    color: var(--re-color-danger-700);
+  }
+}
