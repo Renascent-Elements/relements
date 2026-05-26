@@ -1,0 +1,111 @@
+/**
+ * Relements progress and meter.
+ *
+ * Two native indicator elements share visuals:
+ *   .re-progress  — <progress> for task completion (indeterminate or value/max)
+ *   .re-meter     — <meter> for measurement within a range (e.g., disk usage)
+ *
+ * Both are styled by tinting the native track/fill via vendor pseudo-elements
+ * plus a CSS overlay for cross-browser consistency. Native semantics, value
+ * ranges, and accessibility are preserved.
+ */
+
+@layer re.components {
+  .re-progress,
+  .re-meter {
+    inline-size: 100%;
+    block-size: 0.5rem;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-bg-muted);
+    overflow: hidden;
+    color: var(--re-color-accent-600); /* used as fill on some engines */
+  }
+
+  /* ---- WebKit / Blink track + fill ---------------------------------- */
+  .re-progress::-webkit-progress-bar {
+    background-color: var(--re-color-bg-muted);
+    border-radius: var(--re-radius-pill);
+  }
+  .re-progress::-webkit-progress-value {
+    background-color: var(--re-color-accent-600);
+    border-radius: var(--re-radius-pill);
+    transition: inline-size var(--re-duration-normal) var(--re-easing-standard);
+  }
+  /* ---- Firefox ----------------------------------------------------- */
+  .re-progress::-moz-progress-bar {
+    background-color: var(--re-color-accent-600);
+    border-radius: var(--re-radius-pill);
+  }
+
+  /* Indeterminate animation */
+  .re-progress:indeterminate {
+    background:
+      linear-gradient(
+          90deg,
+          transparent 0%,
+          var(--re-color-accent-300) 50%,
+          transparent 100%
+        )
+        no-repeat,
+      var(--re-color-bg-muted);
+    background-size: 40% 100%, 100% 100%;
+    animation: re-progress-indeterminate 1200ms linear infinite;
+  }
+  @keyframes re-progress-indeterminate {
+    0% {
+      background-position: -40% 0, 0 0;
+    }
+    100% {
+      background-position: 140% 0, 0 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .re-progress:indeterminate {
+      animation-duration: 0.01ms;
+    }
+  }
+
+  /* ---- Meter ranges (low / optimum / high) ------------------------- */
+  /* WebKit */
+  .re-meter::-webkit-meter-bar {
+    background-color: var(--re-color-bg-muted);
+    border-radius: var(--re-radius-pill);
+    border: 0;
+  }
+  .re-meter::-webkit-meter-optimum-value {
+    background-color: var(--re-color-success-600);
+    border-radius: var(--re-radius-pill);
+  }
+  .re-meter::-webkit-meter-suboptimum-value {
+    background-color: var(--re-color-warning-600);
+    border-radius: var(--re-radius-pill);
+  }
+  .re-meter::-webkit-meter-even-less-good-value {
+    background-color: var(--re-color-danger-600);
+    border-radius: var(--re-radius-pill);
+  }
+  /* Firefox */
+  .re-meter::-moz-meter-bar {
+    background-color: var(--re-color-success-600);
+    border-radius: var(--re-radius-pill);
+  }
+  .re-meter:-moz-meter-sub-optimum::-moz-meter-bar {
+    background-color: var(--re-color-warning-600);
+  }
+  .re-meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background-color: var(--re-color-danger-600);
+  }
+
+  /* Sizes via data-size */
+  .re-progress[data-size="sm"],
+  .re-meter[data-size="sm"] {
+    block-size: 0.25rem;
+  }
+  .re-progress[data-size="lg"],
+  .re-meter[data-size="lg"] {
+    block-size: 0.75rem;
+  }
+}
