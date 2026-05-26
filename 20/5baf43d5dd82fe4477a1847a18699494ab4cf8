@@ -1,0 +1,124 @@
+packages/core/src/behaviors/toast.js
+  s_8b941d379971d4::t_063cef346739e0 81
+tests/elements/tabs.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 75-77
+docs/examples/foundation.html
+  s_8b941d379971d4::t_c7418cc70b46ff 69-83,106-117
+docs/examples/input.html
+  s_8b941d379971d4::t_c7418cc70b46ff 34-40,109-120
+docs/TECHNICAL_DOCUMENTATION.md
+  s_8b941d379971d4::t_c7418cc70b46ff 70,122,169,188,190,249-251,353,362,430,527,550,671
+docs/examples/field-group.html
+  s_8b941d379971d4::t_c7418cc70b46ff 22-24,85-91
+docs/PRODUCT_REQUIREMENTS.md
+  s_8b941d379971d4::t_c7418cc70b46ff 262
+docs/TESTING_STRATEGY.md
+  s_8b941d379971d4::t_c7418cc70b46ff 116-129
+docs/examples/re-popover.html
+  s_8b941d379971d4::t_c7418cc70b46ff 48-51
+README.md
+  s_8b941d379971d4::t_c7418cc70b46ff 21,23
+docs/HTML_FIRST_POLICY.md
+  s_8b941d379971d4::t_c7418cc70b46ff 59,61,78,131
+docs/examples/checkbox.html
+  s_8b941d379971d4::t_c7418cc70b46ff 79-90
+docs/examples/enhance-dialog.html
+  s_8b941d379971d4::t_c7418cc70b46ff 37-42,45-47,53-71,93-104
+docs/examples/enhance-dismissible.html
+  s_8b941d379971d4::t_c7418cc70b46ff 58-65,73-75,100-109
+tests/elements/dialog.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 23,37
+tests/elements/validation-message.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 9,24
+tests/elements/link.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 57-58
+docs/examples/link.html
+  s_8b941d379971d4::t_c7418cc70b46ff 41-42,50-52,76-82
+docs/examples/validation-message.html
+  s_8b941d379971d4::t_c7418cc70b46ff 33-38,48-50,59-61,69-77,84-87,89-91
+docs/PROGRESS.md
+  s_8b941d379971d4::t_c7418cc70b46ff 46
+package.json
+  s_8b941d379971d4::t_489328c35c2d2e 36
+docs/examples/tabs.html
+  s_8b941d379971d4::t_c7418cc70b46ff 34-40,43-50,53-60,65-71,74-81,84-91,116-127
+docs/examples/textarea.html
+  s_8b941d379971d4::t_c7418cc70b46ff 33-39,72-74
+docs/examples/toast.html
+  s_8b941d379971d4::t_c7418cc70b46ff 34-36,50-67,76-87
+docs/examples/re-toast.html
+  s_8b941d379971d4::t_c7418cc70b46ff 34-36,46-58,64-71
+docs/examples/disclosure.html
+  s_8b941d379971d4::t_c7418cc70b46ff 26-28,37-38,44-46
+docs/examples/meter.html
+  s_8b941d379971d4::t_c7418cc70b46ff 86-93
+docs/examples/radio.html
+  s_8b941d379971d4::t_c7418cc70b46ff 86,95-104
+docs/examples/popover.html
+  s_8b941d379971d4::t_c7418cc70b46ff 40-66,68-76,94-104
+docs/examples/button.html
+  s_8b941d379971d4::t_c7418cc70b46ff 31-34,60-62,72-74,116-127
+packages/core/src/behaviors/menu-button.js
+  s_8b941d379971d4::t_c7418cc70b46ff 73-75
+tests/elements/foundation.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 69-70
+packages/core/src/components/progress.css
+  s_8b941d379971d4::t_c7418cc70b46ff 46,49-51,56-58,61-63
+packages/core/src/tokens.css
+  s_8b941d379971d4::t_c7418cc70b46ff 80
+docs/IMPLEMENTATION_PLAN.md
+  s_8b941d379971d4::t_c7418cc70b46ff 147
+docs/examples/field.html
+  s_8b941d379971d4::t_c7418cc70b46ff 27-28,80-90
+tests/elements/enhance-dialog.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 10
+tests/elements/meter.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 29
+docs/examples/re-tabs.html
+  s_8b941d379971d4::t_c7418cc70b46ff 34-62,64-70,73-80,83-90,99-101,122-125
+docs/examples/dialog.html
+  s_8b941d379971d4::t_c7418cc70b46ff 22-25,41-46,53-61,86-88,108-115
+tests/elements/popover.spec.ts
+  s_8b941d379971d4::t_f3aaddac40d857 6-8
+  s_8b941d379971d4::t_866753aaeb62b8 23-26
+docs/examples/index.html
+  s_8b941d379971d4::t_c7418cc70b46ff 22-24
+.prettierignore
+  s_8b941d379971d4::t_d1527ab1113c82 6-7
+docs/examples/re-menu.html
+  s_8b941d379971d4::t_c7418cc70b46ff 40-48,64-66
+playwright.config.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 21
+tests/elements/textarea.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 25
+tests/visual/validation-message.visual.spec.ts
+  s_8b941d379971d4::t_c7418cc70b46ff 8-10
+docs/examples/progress.html
+  s_8b941d379971d4::t_c7418cc70b46ff 63-66
+eslint.config.js
+  s_8b941d379971d4::t_9b155cddafe1b2 1-3,10-11,15,25-35
+docs/examples/select.html
+  s_8b941d379971d4::t_c7418cc70b46ff 95-98
+.claude/ralph-loop.local.md
+  s_8b941d379971d4::t_c7418cc70b46ff 1-9
+docs/examples/menu-button.html
+  s_8b941d379971d4::t_c7418cc70b46ff 40-45,47-49,68-75,77-80
+packages/core/src/behaviors/tabs.js
+  s_8b941d379971d4::t_c7418cc70b46ff 43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "205baf43d5dd82fe4477a1847a18699494ab4cf8",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
