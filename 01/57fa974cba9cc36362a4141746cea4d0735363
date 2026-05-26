@@ -1,0 +1,29 @@
+tests/visual/enhance-dismissible.visual.spec.ts
+  s_8b941d379971d4::t_59ef15f841da3c 1-10
+tests/elements/enhance-dismissible.spec.ts
+  s_8b941d379971d4::t_ce162fb19a7955 1-60
+packages/core/src/reset.css
+  s_8b941d379971d4::t_2f282555119d45 87-91
+docs/PROGRESS.md
+  s_8b941d379971d4::t_a0f5421259a4c2 36
+docs/examples/index.html
+  s_8b941d379971d4::t_9654cd8444e691 40
+docs/examples/enhance-dismissible.html
+  s_8b941d379971d4::t_af9cacd3591317 1-97
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.1",
+  "base_commit_sha": "0157fa974cba9cc36362a4141746cea4d0735363",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
