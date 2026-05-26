@@ -41,7 +41,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] tabs
 - [x] menu-button
 - [x] popover
-- [ ] toast
+- [x] toast
 
 *(accordion skipped — `details` covers the case)*
 
