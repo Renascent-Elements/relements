@@ -259,7 +259,7 @@ import { enhanceTabs } from "@relements/core/tabs";
 ```
 
 ```html
-<link rel="stylesheet" href="/relements/index.css">
+<link rel="stylesheet" href="/relements/index.css" />
 <script type="module" src="/relements/index.js"></script>
 ```
 

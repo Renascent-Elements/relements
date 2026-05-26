@@ -144,7 +144,7 @@ Canonical examples:
 
 <label class="re-field">
   <span class="re-field__label">Email</span>
-  <input class="re-input" type="email" name="email">
+  <input class="re-input" type="email" name="email" />
   <span class="re-field__hint">Use your work email.</span>
 </label>
 ```

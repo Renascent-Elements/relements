@@ -37,10 +37,16 @@
           Actions
         </button>
         <div class="re-menu__panel" role="menu" id="mb-1-panel" aria-labelledby="mb-1-btn" hidden>
-          <button class="re-menu__item" role="menuitem" data-value="rename" id="mi-rename">Rename</button>
-          <button class="re-menu__item" role="menuitem" data-value="duplicate" id="mi-duplicate">Duplicate</button>
+          <button class="re-menu__item" role="menuitem" data-value="rename" id="mi-rename">
+            Rename
+          </button>
+          <button class="re-menu__item" role="menuitem" data-value="duplicate" id="mi-duplicate">
+            Duplicate
+          </button>
           <div class="re-menu__separator" role="separator"></div>
-          <button class="re-menu__item" role="menuitem" data-value="delete" id="mi-delete">Delete</button>
+          <button class="re-menu__item" role="menuitem" data-value="delete" id="mi-delete">
+            Delete
+          </button>
         </div>
       </div>
       <p><output id="last-action">none</output></p>
@@ -59,10 +65,19 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li><kbd>ArrowDown</kbd>/<kbd>Enter</kbd>/<kbd>Space</kbd> on the button opens and focuses the first item.</li>
-        <li><kbd>ArrowUp</kbd>/<kbd>Down</kbd>/<kbd>Home</kbd>/<kbd>End</kbd> traverse within the menu.</li>
+        <li>
+          <kbd>ArrowDown</kbd>/<kbd>Enter</kbd>/<kbd>Space</kbd> on the button opens and focuses the
+          first item.
+        </li>
+        <li>
+          <kbd>ArrowUp</kbd>/<kbd>Down</kbd>/<kbd>Home</kbd>/<kbd>End</kbd> traverse within the
+          menu.
+        </li>
         <li><kbd>Escape</kbd> closes and returns focus to the button.</li>
-        <li>Selecting an item dispatches <code>re-select</code>; <code>preventDefault</code> keeps the menu open.</li>
+        <li>
+          Selecting an item dispatches <code>re-select</code>; <code>preventDefault</code> keeps the
+          menu open.
+        </li>
       </ul>
     </article>
   </body>

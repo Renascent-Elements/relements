@@ -66,8 +66,8 @@ test.describe("Foundation: CSS loading and tokens", () => {
     await page.keyboard.press("Tab");
     const focused = await page.evaluate(() => document.activeElement?.tagName);
     expect(focused).toBe("A");
-    const boxShadow = await page.evaluate(() =>
-      getComputedStyle(document.activeElement as Element).boxShadow,
+    const boxShadow = await page.evaluate(
+      () => getComputedStyle(document.activeElement as Element).boxShadow,
     );
     expect(boxShadow).not.toBe("none");
   });

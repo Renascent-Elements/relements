@@ -72,11 +72,9 @@ test.describe("Tabs", () => {
 
   test("preventDefault on re-change cancels the change", async ({ page }) => {
     await page.evaluate(() => {
-      document.getElementById("tabs-1")!.addEventListener(
-        "re-change",
-        (event) => event.preventDefault(),
-        { once: true },
-      );
+      document
+        .getElementById("tabs-1")!
+        .addEventListener("re-change", (event) => event.preventDefault(), { once: true });
     });
     await page.locator("#t-security").click();
     await expect(page.locator("#t-profile")).toHaveAttribute("aria-selected", "true");

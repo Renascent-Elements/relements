@@ -7,9 +7,7 @@ test.describe("enhanceDialog", () => {
 
   test("trigger opens the dialog", async ({ page }) => {
     await page.locator("#ed-open").click();
-    const open = await page
-      .locator("#ed-confirm")
-      .evaluate((el) => (el as HTMLDialogElement).open);
+    const open = await page.locator("#ed-confirm").evaluate((el) => (el as HTMLDialogElement).open);
     expect(open).toBe(true);
   });
 

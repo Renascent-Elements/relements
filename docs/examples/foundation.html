@@ -66,9 +66,21 @@
         <span class="swatch" style="background: var(--re-color-bg-subtle)" title="bg-subtle"></span>
         <span class="swatch" style="background: var(--re-color-bg-muted)" title="bg-muted"></span>
         <span class="swatch" style="background: var(--re-color-border)" title="border"></span>
-        <span class="swatch" style="background: var(--re-color-accent-500)" title="accent-500"></span>
-        <span class="swatch" style="background: var(--re-color-danger-500)" title="danger-500"></span>
-        <span class="swatch" style="background: var(--re-color-success-500)" title="success-500"></span>
+        <span
+          class="swatch"
+          style="background: var(--re-color-accent-500)"
+          title="accent-500"
+        ></span>
+        <span
+          class="swatch"
+          style="background: var(--re-color-danger-500)"
+          title="danger-500"
+        ></span>
+        <span
+          class="swatch"
+          style="background: var(--re-color-success-500)"
+          title="success-500"
+        ></span>
       </div>
     </section>
 
@@ -91,9 +103,18 @@
     <article id="foundation-notes" hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Public API: CSS classes (<code>.re-*</code>), data attributes (<code>data-re-*</code>), and CSS custom properties (<code>--re-*</code>).</li>
-        <li>The foundation imports <code>tokens.css</code>, <code>reset.css</code>, and <code>base.css</code> into named cascade layers, so consumer styles always win without specificity hacks.</li>
-        <li>Component styles will register under the <code>re.components</code> layer in later phases.</li>
+        <li>
+          Public API: CSS classes (<code>.re-*</code>), data attributes (<code>data-re-*</code>),
+          and CSS custom properties (<code>--re-*</code>).
+        </li>
+        <li>
+          The foundation imports <code>tokens.css</code>, <code>reset.css</code>, and
+          <code>base.css</code> into named cascade layers, so consumer styles always win without
+          specificity hacks.
+        </li>
+        <li>
+          Component styles will register under the <code>re.components</code> layer in later phases.
+        </li>
       </ul>
     </article>
   </body>

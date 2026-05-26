@@ -56,11 +56,9 @@ Every feature should follow this order:
 Consumers must be able to use the foundation like this:
 
 ```html
-<link rel="stylesheet" href="/relements/index.css">
+<link rel="stylesheet" href="/relements/index.css" />
 
-<button class="re-button" data-variant="primary">
-  Save
-</button>
+<button class="re-button" data-variant="primary">Save</button>
 ```
 
 This usage must not require:
@@ -77,9 +75,7 @@ This usage must not require:
 JavaScript should enhance existing markup:
 
 ```html
-<div class="re-tabs" data-re-tabs>
-  ...
-</div>
+<div class="re-tabs" data-re-tabs>...</div>
 ```
 
 ```js
@@ -132,9 +128,7 @@ Wrappers should stay thin:
 The wrapper should render the same platform-level contract:
 
 ```html
-<button class="re-button" data-variant="primary">
-  Save
-</button>
+<button class="re-button" data-variant="primary">Save</button>
 ```
 
 ## Component Acceptance Rule

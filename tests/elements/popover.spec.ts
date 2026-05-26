@@ -3,6 +3,9 @@ import { expect, test } from "@playwright/test";
 test.describe("Popover", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("./popover.html");
+    // Wait for the example's module script to register the helper.
+    // @ts-expect-error
+    await page.waitForFunction(() => Boolean(window.__popController));
   });
 
   test("popovertarget button toggles the popover", async ({ page }) => {
@@ -17,6 +20,10 @@ test.describe("Popover", () => {
   test("light dismiss closes popover on outside click", async ({ page }) => {
     await page.locator("#pop-1-btn").click();
     await expect(page.locator("#pop-1")).toBeVisible();
+    await page.waitForFunction(() => {
+      const el = document.getElementById("pop-1") as HTMLElement;
+      return el && el.style.top !== "" && el.style.top !== "auto";
+    });
     await page.mouse.click(2, 2);
     await expect(page.locator("#pop-1")).toBeHidden();
   });
@@ -34,6 +41,11 @@ test.describe("Popover", () => {
 
   test("popover positions under its trigger", async ({ page }) => {
     await page.locator("#pop-1-btn").click();
+    // Wait for the helper to apply inline position styles.
+    await page.waitForFunction(() => {
+      const el = document.getElementById("pop-1") as HTMLElement;
+      return el && el.style.top !== "" && el.style.top !== "auto";
+    });
     const positions = await page.evaluate(() => {
       const t = document.getElementById("pop-1-btn")!.getBoundingClientRect();
       const p = document.getElementById("pop-1")!.getBoundingClientRect();

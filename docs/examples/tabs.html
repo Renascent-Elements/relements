@@ -31,24 +31,64 @@
       <h2 id="basic-heading">Basic</h2>
       <div class="re-tabs" data-re-tabs id="tabs-1">
         <div class="re-tabs__list" role="tablist" aria-label="Account">
-          <button class="re-tab" role="tab" id="t-profile" aria-controls="p-profile" aria-selected="true">
+          <button
+            class="re-tab"
+            role="tab"
+            id="t-profile"
+            aria-controls="p-profile"
+            aria-selected="true"
+          >
             Profile
           </button>
-          <button class="re-tab" role="tab" id="t-security" aria-controls="p-security" aria-selected="false" tabindex="-1">
+          <button
+            class="re-tab"
+            role="tab"
+            id="t-security"
+            aria-controls="p-security"
+            aria-selected="false"
+            tabindex="-1"
+          >
             Security
           </button>
-          <button class="re-tab" role="tab" id="t-billing" aria-controls="p-billing" aria-selected="false" tabindex="-1">
+          <button
+            class="re-tab"
+            role="tab"
+            id="t-billing"
+            aria-controls="p-billing"
+            aria-selected="false"
+            tabindex="-1"
+          >
             Billing
           </button>
         </div>
 
-        <section class="re-tabpanel" role="tabpanel" id="p-profile" aria-labelledby="t-profile" tabindex="0">
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="p-profile"
+          aria-labelledby="t-profile"
+          tabindex="0"
+        >
           <p>Manage your name and email here.</p>
         </section>
-        <section class="re-tabpanel" role="tabpanel" id="p-security" aria-labelledby="t-security" tabindex="0" hidden>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="p-security"
+          aria-labelledby="t-security"
+          tabindex="0"
+          hidden
+        >
           <p>Two-factor authentication, password rotation, sessions.</p>
         </section>
-        <section class="re-tabpanel" role="tabpanel" id="p-billing" aria-labelledby="t-billing" tabindex="0" hidden>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="p-billing"
+          aria-labelledby="t-billing"
+          tabindex="0"
+          hidden
+        >
           <p>Plan, invoices, payment method.</p>
         </section>
       </div>
@@ -73,9 +113,18 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Server-rendered: <code>aria-selected="true"</code> on the active tab, <code>hidden</code> on inactive panels.</li>
-        <li>Keyboard: <kbd>←</kbd>/<kbd>→</kbd> moves focus, <kbd>Home</kbd>/<kbd>End</kbd> jumps, <kbd>Enter</kbd>/<kbd>Space</kbd> activates.</li>
-        <li>Plain HTML fallback: without JavaScript, the initially selected panel is visible and the page is still usable.</li>
+        <li>
+          Server-rendered: <code>aria-selected="true"</code> on the active tab,
+          <code>hidden</code> on inactive panels.
+        </li>
+        <li>
+          Keyboard: <kbd>←</kbd>/<kbd>→</kbd> moves focus, <kbd>Home</kbd>/<kbd>End</kbd> jumps,
+          <kbd>Enter</kbd>/<kbd>Space</kbd> activates.
+        </li>
+        <li>
+          Plain HTML fallback: without JavaScript, the initially selected panel is visible and the
+          page is still usable.
+        </li>
       </ul>
     </article>
   </body>

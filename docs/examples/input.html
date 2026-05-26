@@ -31,7 +31,13 @@
       <form class="grid" id="basic-form">
         <label class="re-field">
           <span class="re-field__label">Name</span>
-          <input class="re-input" name="name" type="text" id="input-text" placeholder="Ada Lovelace" />
+          <input
+            class="re-input"
+            name="name"
+            type="text"
+            id="input-text"
+            placeholder="Ada Lovelace"
+          />
         </label>
         <label class="re-field">
           <span class="re-field__label">Email</span>
@@ -100,9 +106,18 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Native types (<code>text</code>, <code>email</code>, <code>number</code>, …) are preserved — keyboard, autocomplete, and validation all stay native.</li>
-        <li><code>aria-invalid="true"</code> and the user-invalid pseudo-class both light up the danger border.</li>
-        <li>Use <code>data-size</code> on the input itself; the wrapping <code>.re-field</code> stays unchanged.</li>
+        <li>
+          Native types (<code>text</code>, <code>email</code>, <code>number</code>, …) are preserved
+          — keyboard, autocomplete, and validation all stay native.
+        </li>
+        <li>
+          <code>aria-invalid="true"</code> and the user-invalid pseudo-class both light up the
+          danger border.
+        </li>
+        <li>
+          Use <code>data-size</code> on the input itself; the wrapping <code>.re-field</code> stays
+          unchanged.
+        </li>
       </ul>
     </article>
   </body>

@@ -31,7 +31,9 @@
       <h2 id="basic-heading">Trigger toasts</h2>
       <div class="row">
         <button type="button" class="re-button" id="rt-default">Default</button>
-        <button type="button" class="re-button" data-variant="secondary" id="rt-success">Success</button>
+        <button type="button" class="re-button" data-variant="secondary" id="rt-success">
+          Success
+        </button>
         <button type="button" class="re-button" data-variant="danger" id="rt-danger">Danger</button>
       </div>
     </section>
@@ -41,22 +43,32 @@
     <script type="module">
       import "/packages/core/src/elements/re-toast.js";
       const toaster = document.getElementById("toaster");
-      document.getElementById("rt-default").addEventListener("click", () =>
-        toaster.show("Saved.", { duration: 0 }),
-      );
-      document.getElementById("rt-success").addEventListener("click", () =>
-        toaster.show("Upload complete.", { tone: "success", duration: 0 }),
-      );
-      document.getElementById("rt-danger").addEventListener("click", () =>
-        toaster.show("Network error.", { tone: "danger", duration: 0 }),
-      );
+      document
+        .getElementById("rt-default")
+        .addEventListener("click", () => toaster.show("Saved.", { duration: 0 }));
+      document
+        .getElementById("rt-success")
+        .addEventListener("click", () =>
+          toaster.show("Upload complete.", { tone: "success", duration: 0 }),
+        );
+      document
+        .getElementById("rt-danger")
+        .addEventListener("click", () =>
+          toaster.show("Network error.", { tone: "danger", duration: 0 }),
+        );
     </script>
 
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li><code>.show(message, options)</code> returns the same controller as <code>showToast()</code>.</li>
-        <li>The element is light-DOM and inherits all page CSS; toasts use the standard toast.css styles.</li>
+        <li>
+          <code>.show(message, options)</code> returns the same controller as
+          <code>showToast()</code>.
+        </li>
+        <li>
+          The element is light-DOM and inherits all page CSS; toasts use the standard toast.css
+          styles.
+        </li>
       </ul>
     </article>
   </body>

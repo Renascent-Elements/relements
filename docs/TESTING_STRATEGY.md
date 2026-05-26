@@ -113,20 +113,20 @@ An element is not complete until it has:
 
 ## Element Test Matrix
 
-| Element | Browser | Keyboard | Form | A11y | Visual | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| Button | Required | Required | Required | Required | Required | Test `button`, `a`, `disabled`, `aria-disabled`, variants. |
-| Link | Required | Required | Not applicable | Required | Required | Test focus and visited/hover-safe styling where practical. |
-| Input | Required | Required | Required | Required | Required | Test label, value, required, invalid, disabled. |
-| Textarea | Required | Required | Required | Required | Required | Test resize and long text. |
-| Select | Required | Required | Required | Required | Required | Test native option behavior by browser where practical. |
-| Checkbox | Required | Required | Required | Required | Required | Test checked, indeterminate if supported, disabled. |
-| Radio | Required | Required | Required | Required | Required | Test grouped behavior and arrow key behavior. |
-| Field | Required | Required | Required | Required | Required | Test label, hint, error, `aria-describedby`. |
-| Disclosure | Required | Required | Not applicable | Required | Required | Test `details` and `summary` without JavaScript. |
-| Dialog | Required | Required | Required | Required | Required | Test `showModal`, close, escape, focus return, `method="dialog"`. |
-| Tabs | Required | Required | Not applicable | Required | Required | Test ARIA roles, arrows, Home/End, selected panel. |
-| `re-tabs` | Required | Required | Not applicable | Required | Required | Test attributes, events, slots/light DOM, framework usage. |
+| Element    | Browser  | Keyboard | Form           | A11y     | Visual   | Notes                                                             |
+| ---------- | -------- | -------- | -------------- | -------- | -------- | ----------------------------------------------------------------- |
+| Button     | Required | Required | Required       | Required | Required | Test `button`, `a`, `disabled`, `aria-disabled`, variants.        |
+| Link       | Required | Required | Not applicable | Required | Required | Test focus and visited/hover-safe styling where practical.        |
+| Input      | Required | Required | Required       | Required | Required | Test label, value, required, invalid, disabled.                   |
+| Textarea   | Required | Required | Required       | Required | Required | Test resize and long text.                                        |
+| Select     | Required | Required | Required       | Required | Required | Test native option behavior by browser where practical.           |
+| Checkbox   | Required | Required | Required       | Required | Required | Test checked, indeterminate if supported, disabled.               |
+| Radio      | Required | Required | Required       | Required | Required | Test grouped behavior and arrow key behavior.                     |
+| Field      | Required | Required | Required       | Required | Required | Test label, hint, error, `aria-describedby`.                      |
+| Disclosure | Required | Required | Not applicable | Required | Required | Test `details` and `summary` without JavaScript.                  |
+| Dialog     | Required | Required | Required       | Required | Required | Test `showModal`, close, escape, focus return, `method="dialog"`. |
+| Tabs       | Required | Required | Not applicable | Required | Required | Test ARIA roles, arrows, Home/End, selected panel.                |
+| `re-tabs`  | Required | Required | Not applicable | Required | Required | Test attributes, events, slots/light DOM, framework usage.        |
 
 ## Playwright Test Guidelines
 

@@ -40,10 +40,7 @@ export function enhanceTabs(root = document) {
   const hosts = [];
 
   // Include the root itself when it carries the marker (e.g. a custom element host).
-  if (
-    root instanceof Element &&
-    /** @type {Element} */ (root).matches?.("[data-re-tabs]")
-  ) {
+  if (root instanceof Element && /** @type {Element} */ (root).matches?.("[data-re-tabs]")) {
     const cleanup = wireOne(/** @type {HTMLElement} */ (root));
     hosts.push({ host: root, cleanup });
   }

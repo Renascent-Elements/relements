@@ -6,9 +6,7 @@ test.describe("Validation message", () => {
   });
 
   test("error tone uses danger color", async ({ page }) => {
-    const color = await page
-      .locator("#vm-error")
-      .evaluate((el) => getComputedStyle(el).color);
+    const color = await page.locator("#vm-error").evaluate((el) => getComputedStyle(el).color);
     // danger-700 is #b91c1c → rgb(185, 28, 28).
     expect(color).toMatch(/rgb\(\s*1\d\d/);
   });
@@ -23,9 +21,7 @@ test.describe("Validation message", () => {
   });
 
   test("hint tone is muted", async ({ page }) => {
-    const color = await page
-      .locator("#vm-hint")
-      .evaluate((el) => getComputedStyle(el).color);
+    const color = await page.locator("#vm-hint").evaluate((el) => getComputedStyle(el).color);
     expect(color).toMatch(/rgb/);
   });
 

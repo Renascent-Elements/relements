@@ -43,7 +43,7 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] popover
 - [x] toast
 
-*(accordion skipped — `details` covers the case)*
+_(accordion skipped — `details` covers the case)_
 
 ## Phase 6: Custom Elements
 

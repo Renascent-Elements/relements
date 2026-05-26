@@ -55,7 +55,14 @@
       <h2 id="banner-heading">Banner</h2>
       <aside class="re-banner" data-re-dismissible id="banner">
         <span>This site uses cookies for analytics.</span>
-        <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="Dismiss banner">×</button>
+        <button
+          type="button"
+          class="re-banner__dismiss"
+          data-re-dismiss
+          aria-label="Dismiss banner"
+        >
+          ×
+        </button>
       </aside>
     </section>
 
@@ -63,7 +70,9 @@
       <h2 id="event-heading">Cancelable event</h2>
       <aside class="re-banner" data-re-dismissible id="banner-cancel">
         <span>Refuses to be dismissed (preventDefault).</span>
-        <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="Dismiss">×</button>
+        <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="Dismiss">
+          ×
+        </button>
       </aside>
       <p><output id="cancel-count">0</output> dismiss attempts blocked.</p>
     </section>
@@ -88,9 +97,16 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Markup-driven: add <code>data-re-dismissible</code> to the host and <code>data-re-dismiss</code> to any descendant button.</li>
-        <li>The enhancer dispatches <code>re-dismiss</code> as a cancelable <code>CustomEvent</code>.</li>
-        <li><code>controller.destroy()</code> removes listeners; useful in framework lifecycles.</li>
+        <li>
+          Markup-driven: add <code>data-re-dismissible</code> to the host and
+          <code>data-re-dismiss</code> to any descendant button.
+        </li>
+        <li>
+          The enhancer dispatches <code>re-dismiss</code> as a cancelable <code>CustomEvent</code>.
+        </li>
+        <li>
+          <code>controller.destroy()</code> removes listeners; useful in framework lifecycles.
+        </li>
       </ul>
     </article>
   </body>

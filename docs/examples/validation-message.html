@@ -30,7 +30,12 @@
       <h2 id="error-heading">Error (default)</h2>
       <label class="re-field">
         <span class="re-field__label">Email</span>
-        <input class="re-input" id="vm-error-input" aria-invalid="true" aria-describedby="vm-error" />
+        <input
+          class="re-input"
+          id="vm-error-input"
+          aria-invalid="true"
+          aria-describedby="vm-error"
+        />
         <span id="vm-error" class="re-validation-message">Not a valid email address.</span>
       </label>
     </section>
@@ -40,7 +45,9 @@
       <label class="re-field">
         <span class="re-field__label">Username</span>
         <input class="re-input" id="vm-success-input" aria-describedby="vm-success" value="ada" />
-        <span id="vm-success" class="re-validation-message" data-tone="success">Username is available.</span>
+        <span id="vm-success" class="re-validation-message" data-tone="success"
+          >Username is available.</span
+        >
       </label>
     </section>
 
@@ -49,7 +56,9 @@
       <label class="re-field">
         <span class="re-field__label">Password</span>
         <input class="re-input" id="vm-hint-input" type="password" aria-describedby="vm-hint" />
-        <span id="vm-hint" class="re-validation-message" data-tone="hint">At least 8 characters.</span>
+        <span id="vm-hint" class="re-validation-message" data-tone="hint"
+          >At least 8 characters.</span
+        >
       </label>
     </section>
 
@@ -57,17 +66,29 @@
       <h2 id="warning-heading">Warning</h2>
       <label class="re-field">
         <span class="re-field__label">Coupon code</span>
-        <input class="re-input" id="vm-warning-input" aria-describedby="vm-warning" value="EXPIRED" />
-        <span id="vm-warning" class="re-validation-message" data-tone="warning">This coupon will expire soon.</span>
+        <input
+          class="re-input"
+          id="vm-warning-input"
+          aria-describedby="vm-warning"
+          value="EXPIRED"
+        />
+        <span id="vm-warning" class="re-validation-message" data-tone="warning"
+          >This coupon will expire soon.</span
+        >
       </label>
     </section>
 
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Default tone is error (danger color). Switch via <code>data-tone="success|hint|warning"</code>.</li>
+        <li>
+          Default tone is error (danger color). Switch via
+          <code>data-tone="success|hint|warning"</code>.
+        </li>
         <li>Link to the message from the control via <code>aria-describedby</code>.</li>
-        <li>Pair error with <code>aria-invalid="true"</code> on the control for proper announcement.</li>
+        <li>
+          Pair error with <code>aria-invalid="true"</code> on the control for proper announcement.
+        </li>
       </ul>
     </article>
   </body>

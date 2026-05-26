@@ -70,7 +70,9 @@ function wireOne(host) {
   if (!button || !panel) return () => {};
 
   const items = () =>
-    /** @type {HTMLElement[]} */ (Array.from(panel.querySelectorAll('[role="menuitem"]:not([disabled])')));
+    /** @type {HTMLElement[]} */ (
+      Array.from(panel.querySelectorAll('[role="menuitem"]:not([disabled])'))
+    );
 
   const isOpen = () => button.getAttribute("aria-expanded") === "true";
 

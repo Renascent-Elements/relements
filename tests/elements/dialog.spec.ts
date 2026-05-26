@@ -20,9 +20,7 @@ test.describe("Dialog", () => {
   test("close button closes and reports returnValue", async ({ page }) => {
     await page.locator("#open-modal").click();
     await page.locator("#modal-close-x").click();
-    const isOpen = await page
-      .locator("#modal")
-      .evaluate((el) => (el as HTMLDialogElement).open);
+    const isOpen = await page.locator("#modal").evaluate((el) => (el as HTMLDialogElement).open);
     expect(isOpen).toBe(false);
     await expect(page.locator("#modal-result")).toHaveText(/dismissed/);
   });
@@ -36,9 +34,7 @@ test.describe("Dialog", () => {
   test("Escape closes the modal natively", async ({ page }) => {
     await page.locator("#open-modal").click();
     await page.keyboard.press("Escape");
-    const isOpen = await page
-      .locator("#modal")
-      .evaluate((el) => (el as HTMLDialogElement).open);
+    const isOpen = await page.locator("#modal").evaluate((el) => (el as HTMLDialogElement).open);
     expect(isOpen).toBe(false);
   });
 

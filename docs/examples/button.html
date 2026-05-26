@@ -28,7 +28,10 @@
   <body data-page="button">
     <header>
       <h1>Button</h1>
-      <p>Applies to <code>&lt;button&gt;</code>, <code>&lt;a class="re-button"&gt;</code>, and submit/reset inputs.</p>
+      <p>
+        Applies to <code>&lt;button&gt;</code>, <code>&lt;a class="re-button"&gt;</code>, and
+        submit/reset inputs.
+      </p>
     </header>
 
     <section aria-labelledby="variants-heading" data-testid="variants">
@@ -54,7 +57,9 @@
       <h2 id="states-heading">States</h2>
       <div class="row">
         <button type="button" class="re-button" id="state-default">Default</button>
-        <button type="button" class="re-button" disabled id="state-disabled">Native disabled</button>
+        <button type="button" class="re-button" disabled id="state-disabled">
+          Native disabled
+        </button>
         <button type="button" class="re-button" aria-disabled="true" id="state-aria-disabled">
           aria-disabled
         </button>
@@ -64,7 +69,9 @@
     <section aria-labelledby="anchor-heading" data-testid="anchor">
       <h2 id="anchor-heading">Link as button</h2>
       <div class="row">
-        <a class="re-button" data-variant="secondary" href="./index.html" id="anchor-button">Back</a>
+        <a class="re-button" data-variant="secondary" href="./index.html" id="anchor-button"
+          >Back</a
+        >
       </div>
     </section>
 
@@ -106,9 +113,18 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Uses native <code>&lt;button&gt;</code>. Submission, focus, and keyboard activation are browser-native.</li>
-        <li>Disabled buttons use the native <code>disabled</code> attribute; <code>aria-disabled="true"</code> keeps focusability for cases where the button must remain in the tab order.</li>
-        <li>Variants and sizes are <code>data-*</code> attributes so the public API stays declarative.</li>
+        <li>
+          Uses native <code>&lt;button&gt;</code>. Submission, focus, and keyboard activation are
+          browser-native.
+        </li>
+        <li>
+          Disabled buttons use the native <code>disabled</code> attribute;
+          <code>aria-disabled="true"</code> keeps focusability for cases where the button must
+          remain in the tab order.
+        </li>
+        <li>
+          Variants and sizes are <code>data-*</code> attributes so the public API stays declarative.
+        </li>
       </ul>
     </article>
   </body>

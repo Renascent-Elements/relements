@@ -22,9 +22,7 @@ test.describe("Textarea", () => {
   });
 
   test("resize is vertical only", async ({ page }) => {
-    const resize = await page
-      .locator("#ta-basic")
-      .evaluate((el) => getComputedStyle(el).resize);
+    const resize = await page.locator("#ta-basic").evaluate((el) => getComputedStyle(el).resize);
     expect(resize).toBe("vertical");
   });
 

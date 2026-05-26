@@ -19,7 +19,10 @@
   <body data-page="dialog">
     <header>
       <h1>Dialog</h1>
-      <p>Styled native <code>&lt;dialog&gt;</code> with <code>showModal()</code> and form <code>method="dialog"</code>.</p>
+      <p>
+        Styled native <code>&lt;dialog&gt;</code> with <code>showModal()</code> and form
+        <code>method="dialog"</code>.
+      </p>
     </header>
 
     <section aria-labelledby="modal-heading" data-testid="modal">
@@ -35,17 +38,27 @@
           <p>Are you sure you want to continue? This action cannot be undone.</p>
         </div>
         <footer class="re-dialog__footer">
-          <button type="button" class="re-button" data-variant="ghost" id="modal-cancel">Cancel</button>
-          <button type="button" class="re-button" data-variant="danger" id="modal-confirm">Delete</button>
+          <button type="button" class="re-button" data-variant="ghost" id="modal-cancel">
+            Cancel
+          </button>
+          <button type="button" class="re-button" data-variant="danger" id="modal-confirm">
+            Delete
+          </button>
         </footer>
       </dialog>
 
       <script>
         const modal = document.getElementById("modal");
         document.getElementById("open-modal").addEventListener("click", () => modal.showModal());
-        document.getElementById("modal-close-x").addEventListener("click", () => modal.close("dismissed"));
-        document.getElementById("modal-cancel").addEventListener("click", () => modal.close("cancel"));
-        document.getElementById("modal-confirm").addEventListener("click", () => modal.close("confirm"));
+        document
+          .getElementById("modal-close-x")
+          .addEventListener("click", () => modal.close("dismissed"));
+        document
+          .getElementById("modal-cancel")
+          .addEventListener("click", () => modal.close("cancel"));
+        document
+          .getElementById("modal-confirm")
+          .addEventListener("click", () => modal.close("confirm"));
         modal.addEventListener("close", () => {
           document.getElementById("modal-result").textContent =
             "Returned: " + (modal.returnValue || "(none)");
@@ -70,7 +83,9 @@
             </label>
           </div>
           <footer class="re-dialog__footer">
-            <button type="submit" class="re-button" data-variant="ghost" value="cancel">Cancel</button>
+            <button type="submit" class="re-button" data-variant="ghost" value="cancel">
+              Cancel
+            </button>
             <button type="submit" class="re-button" value="save" id="fd-save">Save</button>
           </footer>
         </form>
@@ -90,8 +105,14 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Use <code>showModal()</code> for modal dialogs — browser owns focus trap, Escape close, and inert page background.</li>
-        <li><code>form method="dialog"</code> closes the dialog and sets <code>returnValue</code> to the submitting button's <code>value</code>.</li>
+        <li>
+          Use <code>showModal()</code> for modal dialogs — browser owns focus trap, Escape close,
+          and inert page background.
+        </li>
+        <li>
+          <code>form method="dialog"</code> closes the dialog and sets <code>returnValue</code> to
+          the submitting button's <code>value</code>.
+        </li>
         <li><code>::backdrop</code> styles the page tint behind the modal.</li>
       </ul>
     </article>

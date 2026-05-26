@@ -31,17 +31,63 @@
       <h2 id="basic-heading">Basic</h2>
       <re-tabs class="re-tabs" id="rt-1" aria-label="Account">
         <div class="re-tabs__list" role="tablist" aria-label="Account">
-          <button class="re-tab" role="tab" id="rt-t-profile" aria-controls="rt-p-profile" aria-selected="true">Profile</button>
-          <button class="re-tab" role="tab" id="rt-t-security" aria-controls="rt-p-security" aria-selected="false" tabindex="-1">Security</button>
-          <button class="re-tab" role="tab" id="rt-t-billing" aria-controls="rt-p-billing" aria-selected="false" tabindex="-1">Billing</button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="rt-t-profile"
+            aria-controls="rt-p-profile"
+            aria-selected="true"
+          >
+            Profile
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="rt-t-security"
+            aria-controls="rt-p-security"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Security
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="rt-t-billing"
+            aria-controls="rt-p-billing"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Billing
+          </button>
         </div>
-        <section class="re-tabpanel" role="tabpanel" id="rt-p-profile" aria-labelledby="rt-t-profile" tabindex="0">
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="rt-p-profile"
+          aria-labelledby="rt-t-profile"
+          tabindex="0"
+        >
           <p>Profile content.</p>
         </section>
-        <section class="re-tabpanel" role="tabpanel" id="rt-p-security" aria-labelledby="rt-t-security" tabindex="0" hidden>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="rt-p-security"
+          aria-labelledby="rt-t-security"
+          tabindex="0"
+          hidden
+        >
           <p>Security content.</p>
         </section>
-        <section class="re-tabpanel" role="tabpanel" id="rt-p-billing" aria-labelledby="rt-t-billing" tabindex="0" hidden>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="rt-p-billing"
+          aria-labelledby="rt-t-billing"
+          tabindex="0"
+          hidden
+        >
           <p>Billing content.</p>
         </section>
       </re-tabs>
@@ -50,7 +96,9 @@
         <output id="rt-value">none</output>
       </p>
       <p>
-        <button type="button" class="re-button" data-variant="secondary" id="rt-set-billing">Programmatically select Billing</button>
+        <button type="button" class="re-button" data-variant="secondary" id="rt-set-billing">
+          Programmatically select Billing
+        </button>
       </p>
     </section>
 
@@ -71,7 +119,10 @@
       <h2>Notes</h2>
       <ul>
         <li>The element wraps light-DOM markup; no Shadow DOM. Consumer styles still apply.</li>
-        <li><code>element.value</code> reads/writes the selected tab id (matches <code>id</code> of the tab button).</li>
+        <li>
+          <code>element.value</code> reads/writes the selected tab id (matches <code>id</code> of
+          the tab button).
+        </li>
         <li><code>re-change</code> still bubbles — listen on the host element.</li>
       </ul>
     </article>

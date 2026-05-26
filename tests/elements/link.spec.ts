@@ -54,8 +54,8 @@ test.describe("Link", () => {
     await page.locator("#link-default").focus();
     const focused = await page.evaluate(() => document.activeElement?.id);
     expect(focused).toBe("link-default");
-    const shadow = await page.evaluate(() =>
-      getComputedStyle(document.activeElement as Element).boxShadow,
+    const shadow = await page.evaluate(
+      () => getComputedStyle(document.activeElement as Element).boxShadow,
     );
     expect(typeof shadow).toBe("string");
   });

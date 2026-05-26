@@ -78,7 +78,7 @@ export function showToast(message, options = {}) {
  */
 function ensureRegion(root) {
   const scope =
-    root instanceof Document ? root : /** @type {Element} */ (root).ownerDocument ?? document;
+    root instanceof Document ? root : /** @type {Element} */ (root.ownerDocument ?? document);
   /** @type {HTMLElement | null} */
   let region = /** @type {HTMLElement | null} */ (scope.querySelector("[data-re-toast-region]"));
   if (region) return region;

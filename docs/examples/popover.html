@@ -37,13 +37,43 @@
     <section aria-labelledby="tones-heading" data-testid="tones">
       <h2 id="tones-heading">Tones</h2>
       <p>
-        <button type="button" class="re-button" data-variant="secondary" popovertarget="pop-info" id="pop-info-btn">Info</button>
-        <button type="button" class="re-button" data-variant="secondary" popovertarget="pop-warn" id="pop-warn-btn">Warning</button>
-        <button type="button" class="re-button" data-variant="secondary" popovertarget="pop-danger" id="pop-danger-btn">Danger</button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          popovertarget="pop-info"
+          id="pop-info-btn"
+        >
+          Info
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          popovertarget="pop-warn"
+          id="pop-warn-btn"
+        >
+          Warning
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          popovertarget="pop-danger"
+          id="pop-danger-btn"
+        >
+          Danger
+        </button>
       </p>
-      <div class="re-popover" id="pop-info" popover data-tone="info" data-re-popover>Info popover.</div>
-      <div class="re-popover" id="pop-warn" popover data-tone="warning" data-re-popover>Warning popover.</div>
-      <div class="re-popover" id="pop-danger" popover data-tone="danger" data-re-popover>Danger popover.</div>
+      <div class="re-popover" id="pop-info" popover data-tone="info" data-re-popover>
+        Info popover.
+      </div>
+      <div class="re-popover" id="pop-warn" popover data-tone="warning" data-re-popover>
+        Warning popover.
+      </div>
+      <div class="re-popover" id="pop-danger" popover data-tone="danger" data-re-popover>
+        Danger popover.
+      </div>
     </section>
 
     <script type="module">
@@ -61,9 +91,17 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Uses the native <code>popover</code> attribute. The browser handles light dismiss and focus.</li>
-        <li>The helper subscribes to <code>toggle</code> and re-dispatches a typed <code>re-toggle</code> CustomEvent.</li>
-        <li>Position is anchored under the trigger by the helper (CSS anchor positioning fallback).</li>
+        <li>
+          Uses the native <code>popover</code> attribute. The browser handles light dismiss and
+          focus.
+        </li>
+        <li>
+          The helper subscribes to <code>toggle</code> and re-dispatches a typed
+          <code>re-toggle</code> CustomEvent.
+        </li>
+        <li>
+          Position is anchored under the trigger by the helper (CSS anchor positioning fallback).
+        </li>
       </ul>
     </article>
   </body>

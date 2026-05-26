@@ -19,7 +19,9 @@
   <body data-page="field-group">
     <header>
       <h1>Field group</h1>
-      <p>Wraps related controls (typically radios or checkboxes) under a shared accessible legend.</p>
+      <p>
+        Wraps related controls (typically radios or checkboxes) under a shared accessible legend.
+      </p>
     </header>
 
     <section aria-labelledby="vertical-heading" data-testid="vertical">
@@ -80,8 +82,13 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li>Use <code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> so screen readers announce the group name on each child.</li>
-        <li><code>data-orientation="horizontal"</code> wraps items in a row; otherwise items stack.</li>
+        <li>
+          Use <code>&lt;fieldset&gt;</code> + <code>&lt;legend&gt;</code> so screen readers announce
+          the group name on each child.
+        </li>
+        <li>
+          <code>data-orientation="horizontal"</code> wraps items in a row; otherwise items stack.
+        </li>
         <li>Disabling the fieldset cascades to native controls — no extra wiring needed.</li>
       </ul>
     </article>

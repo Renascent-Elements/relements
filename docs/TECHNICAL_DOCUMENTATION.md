@@ -67,7 +67,7 @@ Examples:
 
 <label class="re-field">
   <span class="re-field__label">Email</span>
-  <input class="re-input" type="email" name="email" autocomplete="email">
+  <input class="re-input" type="email" name="email" autocomplete="email" />
 </label>
 
 <details class="re-disclosure">
@@ -119,7 +119,7 @@ export function enhanceTabs(root = document) {
       for (const instance of instances) {
         instance.destroy();
       }
-    }
+    },
   };
 }
 ```
@@ -166,7 +166,7 @@ Use a stable prefix:
 
 ```html
 <button class="re-button">Save</button>
-<input class="re-input">
+<input class="re-input" />
 <div class="re-field">...</div>
 ```
 
@@ -185,13 +185,9 @@ Recommended naming:
 Use data attributes for variant and behavior hooks:
 
 ```html
-<button class="re-button" data-variant="primary" data-size="sm">
-  Save
-</button>
+<button class="re-button" data-variant="primary" data-size="sm">Save</button>
 
-<div class="re-tabs" data-re-tabs>
-  ...
-</div>
+<div class="re-tabs" data-re-tabs>...</div>
 ```
 
 Recommended attributes:
@@ -250,9 +246,9 @@ element.dispatchEvent(
     bubbles: true,
     composed: true,
     detail: {
-      value
-    }
-  })
+      value,
+    },
+  }),
 );
 ```
 
@@ -354,7 +350,7 @@ export function enhanceDismissible(root = document) {
     const target = document.getElementById(trigger.dataset.dsDismiss);
     if (!target) continue;
 
-    const onClick = () => target.hidden = true;
+    const onClick = () => (target.hidden = true);
     trigger.addEventListener("click", onClick);
 
     controllers.push(() => trigger.removeEventListener("click", onClick));
@@ -363,7 +359,7 @@ export function enhanceDismissible(root = document) {
   return {
     destroy() {
       for (const cleanup of controllers) cleanup();
-    }
+    },
   };
 }
 ```
@@ -431,7 +427,7 @@ Canonical markup:
 ```html
 <label class="re-field">
   <span class="re-field__label">Email</span>
-  <input class="re-input" type="email" name="email">
+  <input class="re-input" type="email" name="email" />
   <span class="re-field__hint">Use your work email.</span>
 </label>
 ```
@@ -528,9 +524,7 @@ Use the same classes and attributes:
 
 ```vue
 <template>
-  <button class="re-button" data-variant="primary">
-    Save
-  </button>
+  <button class="re-button" data-variant="primary">Save</button>
 </template>
 ```
 
@@ -553,9 +547,7 @@ Custom elements can be used directly when registered.
 Use standard markup:
 
 ```html
-<button class="re-button" data-variant="primary">
-  Save
-</button>
+<button class="re-button" data-variant="primary">Save</button>
 ```
 
 Angular projects may need custom element schema configuration when using `re-*` custom elements.
@@ -676,11 +668,7 @@ Recommended `package.json` exports:
 {
   "name": "@relements/core",
   "type": "module",
-  "sideEffects": [
-    "**/*.css",
-    "**/define-*.js",
-    "**/auto-init.js"
-  ],
+  "sideEffects": ["**/*.css", "**/define-*.js", "**/auto-init.js"],
   "exports": {
     ".": {
       "import": "./dist/index.js",

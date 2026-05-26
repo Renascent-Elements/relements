@@ -18,11 +18,9 @@ The baseline usage path is plain HTML plus CSS. Framework integrations should re
 ## Planned Usage
 
 ```html
-<link rel="stylesheet" href="/relements/index.css">
+<link rel="stylesheet" href="/relements/index.css" />
 
-<button class="re-button" data-variant="primary">
-  Save
-</button>
+<button class="re-button" data-variant="primary">Save</button>
 ```
 
 ```js

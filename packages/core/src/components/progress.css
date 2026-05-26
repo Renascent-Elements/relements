@@ -43,23 +43,24 @@
   /* Indeterminate animation */
   .re-progress:indeterminate {
     background:
-      linear-gradient(
-          90deg,
-          transparent 0%,
-          var(--re-color-accent-300) 50%,
-          transparent 100%
-        )
+      linear-gradient(90deg, transparent 0%, var(--re-color-accent-300) 50%, transparent 100%)
         no-repeat,
       var(--re-color-bg-muted);
-    background-size: 40% 100%, 100% 100%;
+    background-size:
+      40% 100%,
+      100% 100%;
     animation: re-progress-indeterminate 1200ms linear infinite;
   }
   @keyframes re-progress-indeterminate {
     0% {
-      background-position: -40% 0, 0 0;
+      background-position:
+        -40% 0,
+        0 0;
     }
     100% {
-      background-position: 140% 0, 0 0;
+      background-position:
+        140% 0,
+        0 0;
     }
   }
   @media (prefers-reduced-motion: reduce) {

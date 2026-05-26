@@ -90,10 +90,10 @@ function positionUnderTrigger(popover) {
   if (!trigger) return;
   const tRect = trigger.getBoundingClientRect();
   popover.style.position = "fixed";
-  popover.style.insetInlineStart = `${tRect.left}px`;
-  popover.style.insetBlockStart = `${tRect.bottom + 4}px`;
-  popover.style.insetInlineEnd = "auto";
-  popover.style.insetBlockEnd = "auto";
+  popover.style.top = `${tRect.bottom + 4}px`;
+  popover.style.left = `${tRect.left}px`;
+  popover.style.right = "auto";
+  popover.style.bottom = "auto";
   popover.style.margin = "0";
 }
 

@@ -34,17 +34,41 @@
         Open confirm
       </button>
 
-      <dialog class="re-dialog" id="ed-confirm" aria-labelledby="ed-confirm-title" data-re-dialog-close-on-backdrop>
+      <dialog
+        class="re-dialog"
+        id="ed-confirm"
+        aria-labelledby="ed-confirm-title"
+        data-re-dialog-close-on-backdrop
+      >
         <header class="re-dialog__header">
           <h2 class="re-dialog__title" id="ed-confirm-title">Confirm</h2>
-          <button class="re-dialog__close" data-re-dialog-close value="x" aria-label="Close">×</button>
+          <button class="re-dialog__close" data-re-dialog-close value="x" aria-label="Close">
+            ×
+          </button>
         </header>
         <div class="re-dialog__body">
           <p>Confirm with the buttons below or click outside to close.</p>
         </div>
         <footer class="re-dialog__footer">
-          <button type="button" class="re-button" data-variant="ghost" data-re-dialog-close value="cancel">Cancel</button>
-          <button type="button" class="re-button" data-variant="danger" data-re-dialog-close value="confirm" id="ed-confirm-btn">Confirm</button>
+          <button
+            type="button"
+            class="re-button"
+            data-variant="ghost"
+            data-re-dialog-close
+            value="cancel"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="re-button"
+            data-variant="danger"
+            data-re-dialog-close
+            value="confirm"
+            id="ed-confirm-btn"
+          >
+            Confirm
+          </button>
         </footer>
       </dialog>
 
@@ -66,9 +90,18 @@
     <article hidden>
       <h2>Notes</h2>
       <ul>
-        <li><code>data-re-dialog-trigger</code> + <code>data-re-dialog-target="id"</code> opens the referenced dialog via <code>showModal()</code>.</li>
-        <li><code>data-re-dialog-close</code> on any descendant closes the parent dialog and sets its <code>returnValue</code> to the element's <code>value</code>.</li>
-        <li>Add <code>data-re-dialog-close-on-backdrop</code> on the <code>&lt;dialog&gt;</code> to dismiss on outside clicks.</li>
+        <li>
+          <code>data-re-dialog-trigger</code> + <code>data-re-dialog-target="id"</code> opens the
+          referenced dialog via <code>showModal()</code>.
+        </li>
+        <li>
+          <code>data-re-dialog-close</code> on any descendant closes the parent dialog and sets its
+          <code>returnValue</code> to the element's <code>value</code>.
+        </li>
+        <li>
+          Add <code>data-re-dialog-close-on-backdrop</code> on the <code>&lt;dialog&gt;</code> to
+          dismiss on outside clicks.
+        </li>
       </ul>
     </article>
   </body>

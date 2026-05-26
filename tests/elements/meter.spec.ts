@@ -26,9 +26,7 @@ test.describe("Meter", () => {
   });
 
   test("critical value exceeds high threshold", async ({ page }) => {
-    const badValue = await page
-      .locator("#mt-bad")
-      .evaluate((el) => (el as HTMLMeterElement).value);
+    const badValue = await page.locator("#mt-bad").evaluate((el) => (el as HTMLMeterElement).value);
     expect(badValue).toBeGreaterThan(85);
   });
 
