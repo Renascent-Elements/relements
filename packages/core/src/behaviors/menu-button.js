@@ -38,6 +38,10 @@ export function enhanceMenuButton(root = document) {
   /** @type {Array<() => void>} */
   const cleanups = [];
 
+  if (root instanceof Element && /** @type {Element} */ (root).matches?.("[data-re-menu]")) {
+    cleanups.push(wireOne(/** @type {HTMLElement} */ (root)));
+  }
+
   /** @type {NodeListOf<Element>} */
   const hosts = root.querySelectorAll("[data-re-menu]");
   hosts.forEach((host) => {
