@@ -16,3 +16,6 @@
 @import "./tokens.css" layer(re.tokens);
 @import "./reset.css" layer(re.reset);
 @import "./base.css" layer(re.base);
+
+/* Components */
+@import "./components/button.css";

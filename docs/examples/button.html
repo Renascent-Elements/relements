@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Button</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 64rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        gap: var(--re-space-3);
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      h2 {
+        margin-block-end: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="button">
+    <header>
+      <h1>Button</h1>
+      <p>Applies to <code>&lt;button&gt;</code>, <code>&lt;a class="re-button"&gt;</code>, and submit/reset inputs.</p>
+    </header>
+
+    <section aria-labelledby="variants-heading" data-testid="variants">
+      <h2 id="variants-heading">Variants</h2>
+      <div class="row">
+        <button type="button" class="re-button">Primary</button>
+        <button type="button" class="re-button" data-variant="secondary">Secondary</button>
+        <button type="button" class="re-button" data-variant="ghost">Ghost</button>
+        <button type="button" class="re-button" data-variant="danger">Danger</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <div class="row">
+        <button type="button" class="re-button" data-size="sm">Small</button>
+        <button type="button" class="re-button" data-size="md">Medium</button>
+        <button type="button" class="re-button" data-size="lg">Large</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="row">
+        <button type="button" class="re-button" id="state-default">Default</button>
+        <button type="button" class="re-button" disabled id="state-disabled">Native disabled</button>
+        <button type="button" class="re-button" aria-disabled="true" id="state-aria-disabled">
+          aria-disabled
+        </button>
+      </div>
+    </section>
+
+    <section aria-labelledby="anchor-heading" data-testid="anchor">
+      <h2 id="anchor-heading">Link as button</h2>
+      <div class="row">
+        <a class="re-button" data-variant="secondary" href="./index.html" id="anchor-button">Back</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="form-heading" data-testid="submit-form">
+      <h2 id="form-heading">Inside a form</h2>
+      <form id="demo-form" data-submitted="false">
+        <label class="re-field">
+          <span>Name</span>
+          <input type="text" name="name" value="ok" />
+        </label>
+        <div class="row" style="margin-top: var(--re-space-3)">
+          <button type="submit" class="re-button" id="submit-btn">Save</button>
+          <button type="reset" class="re-button" data-variant="ghost">Reset</button>
+        </div>
+      </form>
+      <script>
+        document.getElementById("demo-form").addEventListener("submit", (event) => {
+          event.preventDefault();
+          event.currentTarget.dataset.submitted = "true";
+        });
+      </script>
+    </section>
+
+    <section aria-labelledby="counter-heading" data-testid="counter">
+      <h2 id="counter-heading">Click count</h2>
+      <p>Native click events drive a counter.</p>
+      <div class="row">
+        <button type="button" class="re-button" id="increment">Increment</button>
+        <output id="count">0</output>
+      </div>
+      <script>
+        document.getElementById("increment").addEventListener("click", () => {
+          const out = document.getElementById("count");
+          out.value = String(Number(out.value || "0") + 1);
+        });
+      </script>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>Uses native <code>&lt;button&gt;</code>. Submission, focus, and keyboard activation are browser-native.</li>
+        <li>Disabled buttons use the native <code>disabled</code> attribute; <code>aria-disabled="true"</code> keeps focusability for cases where the button must remain in the tab order.</li>
+        <li>Variants and sizes are <code>data-*</code> attributes so the public API stays declarative.</li>
+      </ul>
+    </article>
+  </body>
+</html>
