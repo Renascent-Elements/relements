@@ -32,18 +32,25 @@
     margin: 0;
   }
 
+  /* Tones: color-mix() blends 12% of the tone colour into the surface so
+     the tinted background works in both light and dark mode without
+     hardcoded hex values. */
   .re-popover[data-tone="info"] {
-    background-color: var(--re-color-accent-50);
-    border-color: var(--re-color-accent-300);
-    color: var(--re-color-accent-900);
+    background-color: color-mix(in srgb, var(--re-color-accent-500) 12%, var(--re-color-surface));
+    border-color: var(--re-color-accent-500);
+    color: var(--re-color-accent-700);
   }
   .re-popover[data-tone="warning"] {
-    background-color: #fffbeb; /* warning-50 surrogate */
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-warning-500) 12%,
+      var(--re-color-surface)
+    );
     border-color: var(--re-color-warning-500);
     color: var(--re-color-warning-700);
   }
   .re-popover[data-tone="danger"] {
-    background-color: #fef2f2;
+    background-color: color-mix(in srgb, var(--re-color-danger-500) 12%, var(--re-color-surface));
     border-color: var(--re-color-danger-500);
     color: var(--re-color-danger-700);
   }
