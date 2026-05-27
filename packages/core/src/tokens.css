@@ -186,6 +186,11 @@
       --re-color-focus-ring: var(--re-color-accent-400);
       --re-color-selection-bg: var(--re-color-accent-900);
       --re-color-selection-text: var(--re-color-neutral-50);
+
+      /* On dark backgrounds the offset gap is invisible, so the border and
+         the outer ring appear as two separate blue lines. Remove the gap. */
+      --re-focus-ring-offset: 0px;
+      --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
     }
   }
 }

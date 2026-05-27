@@ -17,35 +17,36 @@ test.describe("Dialog", () => {
     expect(isOpen).toBe(true);
   });
 
+  test("dialog is hidden when closed", async ({ page }) => {
+    await expect(page.locator("#modal")).toBeHidden();
+    await expect(page.locator("#form-dialog")).toBeHidden();
+  });
+
   test("close button closes and reports returnValue", async ({ page }) => {
     await page.locator("#open-modal").click();
     await page.locator("#modal-close-x").click();
-    const isOpen = await page.locator("#modal").evaluate((el) => (el as HTMLDialogElement).open);
-    expect(isOpen).toBe(false);
+    await expect(page.locator("#modal")).toBeHidden();
     await expect(page.locator("#modal-result")).toHaveText(/dismissed/);
   });
 
   test("confirm sets returnValue to confirm", async ({ page }) => {
     await page.locator("#open-modal").click();
     await page.locator("#modal-confirm").click();
+    await expect(page.locator("#modal")).toBeHidden();
     await expect(page.locator("#modal-result")).toHaveText(/confirm/);
   });
 
   test("Escape closes the modal natively", async ({ page }) => {
     await page.locator("#open-modal").click();
     await page.keyboard.press("Escape");
-    const isOpen = await page.locator("#modal").evaluate((el) => (el as HTMLDialogElement).open);
-    expect(isOpen).toBe(false);
+    await expect(page.locator("#modal")).toBeHidden();
   });
 
   test("form method=dialog closes and surfaces button value", async ({ page }) => {
     await page.locator("#open-form-dialog").click();
     await page.locator("#fd-title").fill("Hello");
     await page.locator("#fd-save").click();
-    const isOpen = await page
-      .locator("#form-dialog")
-      .evaluate((el) => (el as HTMLDialogElement).open);
-    expect(isOpen).toBe(false);
+    await expect(page.locator("#form-dialog")).toBeHidden();
     await expect(page.locator("#fd-result")).toHaveText(/save/);
   });
 

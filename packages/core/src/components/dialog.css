@@ -16,6 +16,13 @@
  */
 
 @layer re.components {
+  /* Restore the native hide-when-closed behaviour.
+     CSS layers beat the UA stylesheet, so display:flex without this
+     override makes ALL .re-dialog elements visible at all times. */
+  .re-dialog:not([open]) {
+    display: none;
+  }
+
   .re-dialog {
     box-sizing: border-box;
     border: var(--re-border-default);
