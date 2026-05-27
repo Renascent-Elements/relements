@@ -32,13 +32,12 @@
     margin: 0;
   }
 
-  /* Tones: color-mix() blends 12% of the tone colour into the surface so
-     the tinted background works in both light and dark mode without
-     hardcoded hex values. */
+  /* Tones: tinted background + colored border; text stays at default
+     contrast. Same pattern as toast — tone is communicated via bg + border,
+     not by making the text itself hard to read. */
   .re-popover[data-tone="info"] {
     background-color: color-mix(in srgb, var(--re-color-accent-500) 12%, var(--re-color-surface));
     border-color: var(--re-color-accent-500);
-    color: var(--re-color-accent-700);
   }
   .re-popover[data-tone="warning"] {
     background-color: color-mix(
@@ -47,11 +46,9 @@
       var(--re-color-surface)
     );
     border-color: var(--re-color-warning-500);
-    color: var(--re-color-warning-700);
   }
   .re-popover[data-tone="danger"] {
     background-color: color-mix(in srgb, var(--re-color-danger-500) 12%, var(--re-color-surface));
     border-color: var(--re-color-danger-500);
-    color: var(--re-color-danger-700);
   }
 }
