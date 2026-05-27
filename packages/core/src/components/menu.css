@@ -50,10 +50,18 @@
     line-height: var(--re-line-height-normal);
   }
 
-  .re-menu__item:hover,
-  .re-menu__item:focus-visible {
-    background-color: var(--re-color-bg-subtle);
+  .re-menu__item:hover {
+    /* bg-muted always differs from surface in both light and dark modes.
+       bg-subtle collapses to the same value as surface in dark mode,
+       making hover invisible. */
+    background-color: var(--re-color-bg-muted);
     outline: none;
+  }
+
+  .re-menu__item:focus-visible {
+    background-color: var(--re-color-bg-muted);
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--re-color-focus-ring);
   }
 
   .re-menu__item[aria-disabled="true"],
