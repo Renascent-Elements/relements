@@ -1,0 +1,28 @@
+packages/core/src/components/popover.css
+  s_8b941d379971d4::t_f8d40bc231b37a 43
+packages/core/src/themes/renascent.css
+  s_8b941d379971d4::t_f8d40bc231b37a 24-27,30-32,35,41-50,53-56,71-73,82,97,99,101-103,106-108,117-122,124,126-131,133,135-143,146
+packages/core/package.json
+  s_8b941d379971d4::t_d3ef5044c9c7a5 3,16-79
+  s_8b941d379971d4::t_f8d40bc231b37a 8-9,12-13
+packages/core/src/components/toast.css
+  s_8b941d379971d4::t_f8d40bc231b37a 73,78,83
+packages/core/build-css.mjs
+  s_8b941d379971d4::t_6ad07b712d2860 1-96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "b63532a31792bafe927f1f2942f7f32e5775bdd7",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
