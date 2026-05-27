@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Progress</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="progress">
+    <header>
+      <h1>Progress</h1>
+      <p>Native <code>&lt;progress&gt;</code> styled with <code>.re-progress</code>.</p>
+    </header>
+
+    <section aria-labelledby="determinate-heading" data-testid="determinate">
+      <h2 id="determinate-heading">Determinate</h2>
+      <div class="stack">
+        <label class="re-field">
+          <span class="re-field__label">Upload (50%)</span>
+          <progress class="re-progress" id="pg-50" value="50" max="100"></progress>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Almost done (90%)</span>
+          <progress class="re-progress" id="pg-90" value="90" max="100"></progress>
+        </label>
+      </div>
+    </section>
+
+    <section aria-labelledby="indeterminate-heading" data-testid="indeterminate">
+      <h2 id="indeterminate-heading">Indeterminate</h2>
+      <label class="re-field">
+        <span class="re-field__label">Loading…</span>
+        <progress class="re-progress" id="pg-indeterminate"></progress>
+      </label>
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <div class="stack">
+        <progress class="re-progress" id="pg-sm" data-size="sm" value="60" max="100"></progress>
+        <progress class="re-progress" id="pg-md" value="60" max="100"></progress>
+        <progress class="re-progress" id="pg-lg" data-size="lg" value="60" max="100"></progress>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Determinate progress sets <code>value</code> and <code>max</code>; omit
+          <code>value</code> for indeterminate.
+        </li>
+        <li>Indeterminate animation respects <code>prefers-reduced-motion</code>.</li>
+      </ul>
+    </article>
+  </body>
+</html>

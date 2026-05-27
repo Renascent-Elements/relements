@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · enhanceDismissible</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .re-banner {
+        display: flex;
+        gap: var(--re-space-3);
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--re-space-3) var(--re-space-4);
+        background-color: var(--re-color-bg-subtle);
+        border: var(--re-border-default);
+        border-radius: var(--re-radius-md);
+      }
+      .re-banner__dismiss {
+        appearance: none;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        padding: var(--re-space-1) var(--re-space-2);
+        border-radius: var(--re-radius-sm);
+        font-size: var(--re-size-text-lg);
+        line-height: 1;
+        color: var(--re-color-text-muted);
+      }
+      .re-banner__dismiss:hover {
+        color: var(--re-color-text);
+        background: var(--re-color-bg-muted);
+      }
+      .re-banner__dismiss:focus-visible {
+        outline: none;
+        box-shadow: var(--re-shadow-focus);
+      }
+    </style>
+  </head>
+  <body data-page="enhance-dismissible">
+    <header>
+      <h1>enhanceDismissible</h1>
+      <p>Wires up close buttons inside <code>[data-re-dismissible]</code> containers.</p>
+    </header>
+
+    <section aria-labelledby="banner-heading" data-testid="banner">
+      <h2 id="banner-heading">Banner</h2>
+      <aside class="re-banner" data-re-dismissible id="banner">
+        <span>This site uses cookies for analytics.</span>
+        <button
+          type="button"
+          class="re-banner__dismiss"
+          data-re-dismiss
+          aria-label="Dismiss banner"
+        >
+          ×
+        </button>
+      </aside>
+    </section>
+
+    <section aria-labelledby="event-heading" data-testid="event">
+      <h2 id="event-heading">Cancelable event</h2>
+      <aside class="re-banner" data-re-dismissible id="banner-cancel">
+        <span>Refuses to be dismissed (preventDefault).</span>
+        <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="Dismiss">
+          ×
+        </button>
+      </aside>
+      <p><output id="cancel-count">0</output> dismiss attempts blocked.</p>
+    </section>
+
+    <script type="module">
+      import { enhanceDismissible } from "/packages/core/src/behaviors/dismissible.js";
+
+      // Global enhancement.
+      const controller = enhanceDismissible(document);
+
+      // Cancelable demo.
+      const out = document.getElementById("cancel-count");
+      document.getElementById("banner-cancel").addEventListener("re-dismiss", (event) => {
+        event.preventDefault();
+        out.textContent = String(Number(out.textContent || "0") + 1);
+      });
+
+      // Expose for tests.
+      window.__reController = controller;
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Markup-driven: add <code>data-re-dismissible</code> to the host and
+          <code>data-re-dismiss</code> to any descendant button.
+        </li>
+        <li>
+          The enhancer dispatches <code>re-dismiss</code> as a cancelable <code>CustomEvent</code>.
+        </li>
+        <li>
+          <code>controller.destroy()</code> removes listeners; useful in framework lifecycles.
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>

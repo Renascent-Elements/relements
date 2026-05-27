@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Toast</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        gap: var(--re-space-3);
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body data-page="toast">
+    <header>
+      <h1>Toast</h1>
+      <p>Transient notifications via an <code>aria-live</code> region.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Trigger toasts</h2>
+      <div class="row">
+        <button type="button" class="re-button" id="t-default">Default</button>
+        <button type="button" class="re-button" data-variant="secondary" id="t-success">
+          Success
+        </button>
+        <button type="button" class="re-button" data-variant="danger" id="t-danger">Danger</button>
+        <button type="button" class="re-button" data-variant="ghost" id="t-warning">Warning</button>
+      </div>
+    </section>
+
+    <!-- Optional pre-existing region; otherwise showToast creates one on the body. -->
+    <div class="re-toast-region" role="region" aria-label="Notifications" data-re-toast-region>
+      <div class="re-toast-list" aria-live="polite" aria-relevant="additions"></div>
+    </div>
+
+    <script type="module">
+      import { showToast } from "/packages/core/src/behaviors/toast.js";
+
+      document
+        .getElementById("t-default")
+        .addEventListener("click", () => showToast("File saved.", { duration: 0 }));
+      document
+        .getElementById("t-success")
+        .addEventListener("click", () =>
+          showToast("Upload complete.", { tone: "success", duration: 0 }),
+        );
+      document
+        .getElementById("t-danger")
+        .addEventListener("click", () =>
+          showToast("Could not connect.", { tone: "danger", duration: 0 }),
+        );
+      document
+        .getElementById("t-warning")
+        .addEventListener("click", () =>
+          showToast("Connection unstable.", { tone: "warning", duration: 0 }),
+        );
+
+      // Expose for tests.
+      window.__showToast = showToast;
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          <code>showToast(message, { tone, duration })</code> appends a toast to the live region.
+          <code>duration: 0</code> disables auto-dismiss.
+        </li>
+        <li>
+          Danger tone uses <code>role="alert"</code> for interruptive announcements; others use
+          <code>role="status"</code>.
+        </li>
+        <li>
+          If no region exists, one is created and appended to <code>document.body</code> on first
+          call.
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>

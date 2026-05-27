@@ -1,0 +1,83 @@
+/**
+ * Relements disclosure.
+ *
+ * Styled native <details>/<summary>. Toggle behavior, keyboard, and
+ * accessibility are owned by the browser; this stylesheet supplies layout
+ * and visual affordances only.
+ *
+ *   <details class="re-disclosure">
+ *     <summary class="re-disclosure__summary">Title</summary>
+ *     <div class="re-disclosure__body">…</div>
+ *   </details>
+ *
+ * Variants (data-variant on <details>):
+ *   default — bordered card
+ *   plain   — borderless, just a hover background on the summary
+ */
+
+@layer re.components {
+  .re-disclosure {
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    background-color: var(--re-color-surface);
+    overflow: hidden; /* keep summary corners aligned with the border-radius */
+  }
+
+  .re-disclosure__summary {
+    list-style: none; /* hide default marker; replaced with our chevron */
+    cursor: pointer;
+    padding: var(--re-space-3) var(--re-space-4);
+    font-weight: var(--re-font-weight-medium);
+    color: var(--re-color-text);
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-3);
+    user-select: none;
+    transition: background-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-disclosure__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .re-disclosure__summary::before {
+    content: "";
+    flex-shrink: 0;
+    inline-size: 0.6rem;
+    block-size: 0.6rem;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform var(--re-duration-fast) var(--re-easing-standard);
+    margin-inline-end: var(--re-space-1);
+  }
+
+  .re-disclosure[open] > .re-disclosure__summary::before {
+    transform: rotate(45deg);
+  }
+
+  .re-disclosure__summary:hover {
+    background-color: var(--re-color-bg-subtle);
+  }
+
+  .re-disclosure__summary:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-disclosure__body {
+    padding: var(--re-space-3) var(--re-space-4) var(--re-space-4);
+    border-block-start: var(--re-border-default);
+    color: var(--re-color-text);
+    line-height: var(--re-line-height-normal);
+  }
+
+  /* ---- Variants -------------------------------------------------------- */
+  .re-disclosure[data-variant="plain"] {
+    border: 0;
+    background: transparent;
+  }
+  .re-disclosure[data-variant="plain"] > .re-disclosure__body {
+    border-block-start: 0;
+    padding-block-start: var(--re-space-2);
+  }
+}

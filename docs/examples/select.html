@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Select</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .grid {
+        display: grid;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="select">
+    <header>
+      <h1>Select</h1>
+      <p>Native dropdown styled with <code>.re-select</code>.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <label class="re-field">
+        <span class="re-field__label">Country</span>
+        <select class="re-select" id="sel-basic" name="country">
+          <option value="">Choose one…</option>
+          <option value="hu">Hungary</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="jp">Japan</option>
+        </select>
+      </label>
+    </section>
+
+    <section aria-labelledby="optgroup-heading" data-testid="optgroup">
+      <h2 id="optgroup-heading">Option groups</h2>
+      <label class="re-field">
+        <span class="re-field__label">Currency</span>
+        <select class="re-select" id="sel-optgroup">
+          <optgroup label="Europe">
+            <option value="EUR">Euro</option>
+            <option value="GBP">Pound</option>
+            <option value="HUF">Forint</option>
+          </optgroup>
+          <optgroup label="Americas">
+            <option value="USD">Dollar</option>
+            <option value="BRL">Real</option>
+          </optgroup>
+        </select>
+      </label>
+    </section>
+
+    <section aria-labelledby="multiple-heading" data-testid="multiple">
+      <h2 id="multiple-heading">Multiple</h2>
+      <label class="re-field">
+        <span class="re-field__label">Languages</span>
+        <select class="re-select" id="sel-multiple" multiple size="4">
+          <option value="en">English</option>
+          <option value="hu">Hungarian</option>
+          <option value="de">German</option>
+          <option value="ja">Japanese</option>
+        </select>
+      </label>
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="grid">
+        <label class="re-field">
+          <span class="re-field__label">Disabled</span>
+          <select class="re-select" id="sel-disabled" disabled>
+            <option>Frozen</option>
+          </select>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Invalid</span>
+          <select class="re-select" id="sel-invalid" aria-invalid="true">
+            <option value="">Choose…</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Native <code>&lt;select&gt;</code> dropdown UI is preserved — the browser owns the option
+          list.
+        </li>
+        <li>Custom arrow drawn with CSS gradients so no SVG/image asset is required.</li>
+        <li><code>multiple</code> hides the arrow and provides a list view.</li>
+      </ul>
+    </article>
+  </body>
+</html>

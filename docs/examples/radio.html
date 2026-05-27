@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Radio</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: var(--re-space-3);
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+        gap: var(--re-space-4);
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body data-page="radio">
+    <header>
+      <h1>Radio</h1>
+      <p>Native radio buttons styled with <code>.re-radio</code>.</p>
+    </header>
+
+    <section aria-labelledby="vertical-heading" data-testid="vertical">
+      <h2 id="vertical-heading">Vertical group</h2>
+      <fieldset class="re-field-group">
+        <legend class="re-field-group__legend">Plan</legend>
+        <div class="re-field-group__items">
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="plan" id="rd-free" value="free" checked />
+            <span class="re-field__label">Free</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="plan" id="rd-pro" value="pro" />
+            <span class="re-field__label">Pro</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="plan" id="rd-team" value="team" />
+            <span class="re-field__label">Team</span>
+          </label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section aria-labelledby="horizontal-heading" data-testid="horizontal">
+      <h2 id="horizontal-heading">Horizontal group</h2>
+      <fieldset class="re-field-group" data-orientation="horizontal">
+        <legend class="re-field-group__legend">Size</legend>
+        <div class="re-field-group__items">
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="size" id="rd-s" value="s" />
+            <span class="re-field__label">S</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="size" id="rd-m" value="m" />
+            <span class="re-field__label">M</span>
+          </label>
+          <label class="re-field re-field--inline">
+            <input class="re-radio" type="radio" name="size" id="rd-l" value="l" />
+            <span class="re-field__label">L</span>
+          </label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="stack">
+        <label class="re-field re-field--inline">
+          <input class="re-radio" type="radio" name="state" id="rd-disabled" disabled />
+          <span class="re-field__label">Disabled</span>
+        </label>
+        <label class="re-field re-field--inline">
+          <input class="re-radio" type="radio" name="state" id="rd-invalid" aria-invalid="true" />
+          <span class="re-field__label">Invalid</span>
+        </label>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Native <code>name</code> groups radios; arrow keys traverse within the group
+          automatically.
+        </li>
+        <li>
+          Dot indicator is drawn with <code>::before</code> on the <code>:checked</code> state.
+        </li>
+        <li>
+          <code>fieldset</code> + <code>legend</code> provide the accessible label for the group.
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>

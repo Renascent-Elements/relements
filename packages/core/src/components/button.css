@@ -1,0 +1,141 @@
+/**
+ * Relements button.
+ *
+ * Applies to <button>, <a class="re-button">, and <input type="submit|button|reset">.
+ * Native semantics stay intact — this is purely styling on top of the host element.
+ *
+ * Variants (data-variant):
+ *   primary    — accent fill, white text. Default if data-variant absent.
+ *   secondary  — outlined neutral
+ *   ghost      — transparent, neutral text, no border
+ *   danger     — danger fill
+ *
+ * Sizes (data-size):
+ *   sm, md (default), lg
+ *
+ * States:
+ *   :disabled, :hover, :active, :focus-visible, [aria-disabled="true"]
+ */
+
+@layer re.components {
+  .re-button {
+    /* token-bound layout */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--re-space-2);
+    box-sizing: border-box;
+
+    /* default = primary md */
+    block-size: var(--re-control-height-md);
+    padding-inline: var(--re-space-4);
+    padding-block: 0;
+
+    /* type */
+    font: inherit;
+    font-weight: var(--re-font-weight-medium);
+    font-size: var(--re-size-text-md);
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+
+    /* surface */
+    color: var(--re-color-text-on-accent);
+    background-color: var(--re-color-accent-600);
+    border: var(--re-border-width) solid transparent;
+    border-radius: var(--re-radius-md);
+    cursor: pointer;
+
+    transition:
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      color var(--re-duration-fast) var(--re-easing-standard),
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  /* Make link-as-button visually identical and behave on tap. */
+  a.re-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .re-button:hover {
+    background-color: var(--re-color-accent-700);
+  }
+
+  .re-button:active {
+    background-color: var(--re-color-accent-800);
+  }
+
+  .re-button:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* ---- Disabled (native + aria) ---------------------------------------- */
+  .re-button:disabled,
+  .re-button[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  /* Allow aria-disabled link buttons to keep keyboard focus. */
+  a.re-button[aria-disabled="true"] {
+    pointer-events: none;
+  }
+
+  /* ---- Variants -------------------------------------------------------- */
+  .re-button[data-variant="secondary"] {
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+    border-color: var(--re-color-border-strong);
+  }
+  .re-button[data-variant="secondary"]:hover {
+    background-color: var(--re-color-bg-subtle);
+  }
+  .re-button[data-variant="secondary"]:active {
+    background-color: var(--re-color-bg-muted);
+  }
+
+  .re-button[data-variant="ghost"] {
+    color: var(--re-color-text);
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .re-button[data-variant="ghost"]:hover {
+    background-color: var(--re-color-bg-subtle);
+  }
+  .re-button[data-variant="ghost"]:active {
+    background-color: var(--re-color-bg-muted);
+  }
+
+  .re-button[data-variant="danger"] {
+    color: var(--re-color-text-on-accent);
+    background-color: var(--re-color-danger-600);
+  }
+  .re-button[data-variant="danger"]:hover {
+    background-color: var(--re-color-danger-700);
+  }
+  .re-button[data-variant="danger"]:active {
+    background-color: var(--re-color-danger-700);
+    filter: brightness(0.95);
+  }
+
+  /* ---- Sizes ----------------------------------------------------------- */
+  .re-button[data-size="sm"] {
+    block-size: var(--re-control-height-sm);
+    padding-inline: var(--re-space-3);
+    font-size: var(--re-size-text-sm);
+  }
+  .re-button[data-size="lg"] {
+    block-size: var(--re-control-height-lg);
+    padding-inline: var(--re-space-5);
+    font-size: var(--re-size-text-lg);
+  }
+
+  /* ---- Full-width modifier -------------------------------------------- */
+  .re-button[data-full-width] {
+    inline-size: 100%;
+  }
+}

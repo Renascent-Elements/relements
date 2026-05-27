@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Input</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .grid {
+        display: grid;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="input">
+    <header>
+      <h1>Input</h1>
+      <p>Text-style inputs styled with <code>.re-input</code>.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic types</h2>
+      <form class="grid" id="basic-form">
+        <label class="re-field">
+          <span class="re-field__label">Name</span>
+          <input
+            class="re-input"
+            name="name"
+            type="text"
+            id="input-text"
+            placeholder="Ada Lovelace"
+          />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Email</span>
+          <input class="re-input" name="email" type="email" id="input-email" required />
+          <span class="re-field__hint">We use this to contact you.</span>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Search</span>
+          <input class="re-input" name="q" type="search" id="input-search" />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Password</span>
+          <input class="re-input" name="password" type="password" id="input-password" />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Number</span>
+          <input class="re-input" name="age" type="number" id="input-number" min="0" max="120" />
+        </label>
+      </form>
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <div class="grid">
+        <label class="re-field">
+          <span class="re-field__label">Small</span>
+          <input class="re-input" data-size="sm" type="text" id="input-sm" />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Medium</span>
+          <input class="re-input" data-size="md" type="text" id="input-md" />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Large</span>
+          <input class="re-input" data-size="lg" type="text" id="input-lg" />
+        </label>
+      </div>
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="grid">
+        <label class="re-field">
+          <span class="re-field__label">Disabled</span>
+          <input class="re-input" type="text" id="input-disabled" disabled value="Locked" />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Invalid</span>
+          <input
+            class="re-input"
+            type="text"
+            id="input-invalid"
+            aria-invalid="true"
+            aria-describedby="invalid-msg"
+            value="bad-value"
+          />
+          <span id="invalid-msg" class="re-validation-message">Not a valid value.</span>
+        </label>
+        <label class="re-field">
+          <span class="re-field__label" data-required>Required</span>
+          <input class="re-input" type="text" id="input-required" required />
+        </label>
+      </div>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Native types (<code>text</code>, <code>email</code>, <code>number</code>, …) are preserved
+          — keyboard, autocomplete, and validation all stay native.
+        </li>
+        <li>
+          <code>aria-invalid="true"</code> and the user-invalid pseudo-class both light up the
+          danger border.
+        </li>
+        <li>
+          Use <code>data-size</code> on the input itself; the wrapping <code>.re-field</code> stays
+          unchanged.
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>

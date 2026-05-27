@@ -1,0 +1,86 @@
+/**
+ * Relements tabs.
+ *
+ * Visual layer for the ARIA tab pattern. The DOM contract:
+ *
+ *   <div class="re-tabs" data-re-tabs>
+ *     <div class="re-tabs__list" role="tablist" aria-label="…">
+ *       <button class="re-tab" role="tab" id="t-1" aria-controls="p-1" aria-selected="true">Profile</button>
+ *       <button class="re-tab" role="tab" id="t-2" aria-controls="p-2" aria-selected="false" tabindex="-1">Security</button>
+ *     </div>
+ *     <section class="re-tabpanel" role="tabpanel" id="p-1" aria-labelledby="t-1">…</section>
+ *     <section class="re-tabpanel" role="tabpanel" id="p-2" aria-labelledby="t-2" hidden>…</section>
+ *   </div>
+ *
+ * Server-rendered initial state shows the selected tab; enhanceTabs adds
+ * keyboard navigation and runtime selection.
+ */
+
+@layer re.components {
+  .re-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-4);
+  }
+
+  .re-tabs__list {
+    display: flex;
+    gap: var(--re-space-1);
+    flex-wrap: wrap;
+    border-block-end: var(--re-border-default);
+    padding-block-end: 0;
+  }
+
+  .re-tab {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    color: var(--re-color-text-muted);
+    padding: var(--re-space-2) var(--re-space-4);
+    border-radius: var(--re-radius-md) var(--re-radius-md) 0 0;
+    position: relative;
+    line-height: 1.4;
+    font-weight: var(--re-font-weight-medium);
+    transition:
+      color var(--re-duration-fast) var(--re-easing-standard),
+      background-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-tab:hover {
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg-subtle);
+  }
+
+  .re-tab:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-tab[aria-selected="true"] {
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+  }
+
+  /* Active underline indicator */
+  .re-tab[aria-selected="true"]::after {
+    content: "";
+    position: absolute;
+    inset-inline: var(--re-space-2);
+    inset-block-end: calc(var(--re-border-width) * -1);
+    block-size: 2px;
+    background-color: var(--re-color-accent-600);
+    border-radius: var(--re-radius-sm);
+  }
+
+  .re-tabpanel {
+    color: var(--re-color-text);
+    line-height: var(--re-line-height-normal);
+  }
+  .re-tabpanel:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+    border-radius: var(--re-radius-md);
+  }
+}

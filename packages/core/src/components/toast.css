@@ -1,0 +1,99 @@
+/**
+ * Relements toast.
+ *
+ *   <div class="re-toast-region" role="region" aria-label="Notifications" data-re-toast-region>
+ *     <div class="re-toast-list" aria-live="polite" aria-relevant="additions"></div>
+ *   </div>
+ *
+ * showToast(message, { tone, duration }) appends a <div class="re-toast"> item
+ * with the appropriate tone. Items are removed on timeout or dismiss.
+ */
+
+@layer re.components {
+  .re-toast-region {
+    position: fixed;
+    inset-block-end: var(--re-space-6);
+    inset-inline-end: var(--re-space-6);
+    z-index: var(--re-z-toast);
+    pointer-events: none;
+  }
+
+  .re-toast-list {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--re-space-2);
+    margin: 0;
+    padding: 0;
+    min-inline-size: 16rem;
+    max-inline-size: 24rem;
+  }
+
+  .re-toast {
+    pointer-events: auto;
+    display: flex;
+    gap: var(--re-space-3);
+    align-items: flex-start;
+    padding: var(--re-space-3) var(--re-space-4);
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    box-shadow: var(--re-shadow-md);
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-toast__body {
+    flex: 1 1 auto;
+  }
+
+  .re-toast__dismiss {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    color: var(--re-color-text-muted);
+    font: inherit;
+    font-size: var(--re-size-text-lg);
+    line-height: 1;
+    padding: 0 var(--re-space-1);
+    border-radius: var(--re-radius-sm);
+  }
+  .re-toast__dismiss:hover {
+    color: var(--re-color-text);
+    background: var(--re-color-bg-subtle);
+  }
+  .re-toast__dismiss:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* Tone variants: tinted background + colored border + colored label.
+     color-mix() adapts to both light and dark surface colours. */
+  .re-toast[data-tone="success"] {
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-success-600) 12%,
+      var(--re-color-surface)
+    );
+    border-color: var(--re-color-success-600);
+    color: var(--re-color-text);
+  }
+  .re-toast[data-tone="danger"] {
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-danger-600) 12%,
+      var(--re-color-surface)
+    );
+    border-color: var(--re-color-danger-600);
+    color: var(--re-color-text);
+  }
+  .re-toast[data-tone="warning"] {
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-warning-600) 12%,
+      var(--re-color-surface)
+    );
+    border-color: var(--re-color-warning-600);
+    color: var(--re-color-text);
+  }
+}

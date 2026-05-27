@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · &lt;re-menu&gt;</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="re-menu">
+    <header>
+      <h1>&lt;re-menu&gt;</h1>
+      <p>Custom element wrapper for the menu-button pattern.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <re-menu id="rm-1">
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="rm-1-panel"
+          id="rm-1-btn"
+        >
+          Actions
+        </button>
+        <div class="re-menu__panel" role="menu" id="rm-1-panel" aria-labelledby="rm-1-btn" hidden>
+          <button class="re-menu__item" role="menuitem" data-value="rename" id="rm-rename">
+            Rename
+          </button>
+          <button class="re-menu__item" role="menuitem" data-value="duplicate" id="rm-duplicate">
+            Duplicate
+          </button>
+          <button class="re-menu__item" role="menuitem" data-value="delete" id="rm-delete">
+            Delete
+          </button>
+        </div>
+      </re-menu>
+      <p><output id="rm-action">none</output></p>
+    </section>
+
+    <script type="module">
+      import "/packages/core/src/elements/re-menu.js";
+      document.getElementById("rm-1").addEventListener("re-select", (event) => {
+        document.getElementById("rm-action").textContent = event.detail.value;
+      });
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          The element keeps light DOM and reuses every ARIA attribute from the underlying pattern.
+        </li>
+        <li><code>el.open</code> reflects and controls the open state.</li>
+      </ul>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Dialog</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="dialog">
+    <header>
+      <h1>Dialog</h1>
+      <p>
+        Styled native <code>&lt;dialog&gt;</code> with <code>showModal()</code> and form
+        <code>method="dialog"</code>.
+      </p>
+    </header>
+
+    <section aria-labelledby="modal-heading" data-testid="modal">
+      <h2 id="modal-heading">Modal dialog</h2>
+      <button type="button" class="re-button" id="open-modal">Open modal</button>
+
+      <dialog class="re-dialog" id="modal" aria-labelledby="modal-title">
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="modal-title">Confirm</h2>
+          <button class="re-dialog__close" id="modal-close-x" aria-label="Close">×</button>
+        </header>
+        <div class="re-dialog__body">
+          <p>Are you sure you want to continue? This action cannot be undone.</p>
+        </div>
+        <footer class="re-dialog__footer">
+          <button type="button" class="re-button" data-variant="ghost" id="modal-cancel">
+            Cancel
+          </button>
+          <button type="button" class="re-button" data-variant="danger" id="modal-confirm">
+            Delete
+          </button>
+        </footer>
+      </dialog>
+
+      <script>
+        const modal = document.getElementById("modal");
+        document.getElementById("open-modal").addEventListener("click", () => modal.showModal());
+        document
+          .getElementById("modal-close-x")
+          .addEventListener("click", () => modal.close("dismissed"));
+        document
+          .getElementById("modal-cancel")
+          .addEventListener("click", () => modal.close("cancel"));
+        document
+          .getElementById("modal-confirm")
+          .addEventListener("click", () => modal.close("confirm"));
+        modal.addEventListener("close", () => {
+          document.getElementById("modal-result").textContent =
+            "Returned: " + (modal.returnValue || "(none)");
+        });
+      </script>
+      <p><output id="modal-result"></output></p>
+    </section>
+
+    <section aria-labelledby="form-heading" data-testid="form-dialog">
+      <h2 id="form-heading">Form <code>method="dialog"</code></h2>
+      <button type="button" class="re-button" id="open-form-dialog">Open form dialog</button>
+
+      <dialog class="re-dialog" id="form-dialog" aria-labelledby="form-title">
+        <form method="dialog">
+          <header class="re-dialog__header">
+            <h2 class="re-dialog__title" id="form-title">Quick edit</h2>
+          </header>
+          <div class="re-dialog__body">
+            <label class="re-field">
+              <span class="re-field__label">Title</span>
+              <input class="re-input" name="title" id="fd-title" required />
+            </label>
+          </div>
+          <footer class="re-dialog__footer">
+            <button type="submit" class="re-button" data-variant="ghost" value="cancel">
+              Cancel
+            </button>
+            <button type="submit" class="re-button" value="save" id="fd-save">Save</button>
+          </footer>
+        </form>
+      </dialog>
+
+      <script>
+        const fd = document.getElementById("form-dialog");
+        document.getElementById("open-form-dialog").addEventListener("click", () => fd.showModal());
+        fd.addEventListener("close", () => {
+          document.getElementById("fd-result").textContent =
+            "Submitted with: " + (fd.returnValue || "(none)");
+        });
+      </script>
+      <p><output id="fd-result"></output></p>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Use <code>showModal()</code> for modal dialogs — browser owns focus trap, Escape close,
+          and inert page background.
+        </li>
+        <li>
+          <code>form method="dialog"</code> closes the dialog and sets <code>returnValue</code> to
+          the submitting button's <code>value</code>.
+        </li>
+        <li><code>::backdrop</code> styles the page tint behind the modal.</li>
+      </ul>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Menu button</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="menu-button">
+    <header>
+      <h1>Menu button</h1>
+      <p>ARIA menu-button pattern with full keyboard support.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <div class="re-menu" data-re-menu id="mb-1">
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="mb-1-panel"
+          id="mb-1-btn"
+        >
+          Actions
+        </button>
+        <div class="re-menu__panel" role="menu" id="mb-1-panel" aria-labelledby="mb-1-btn" hidden>
+          <button class="re-menu__item" role="menuitem" data-value="rename" id="mi-rename">
+            Rename
+          </button>
+          <button class="re-menu__item" role="menuitem" data-value="duplicate" id="mi-duplicate">
+            Duplicate
+          </button>
+          <div class="re-menu__separator" role="separator"></div>
+          <button class="re-menu__item" role="menuitem" data-value="delete" id="mi-delete">
+            Delete
+          </button>
+        </div>
+      </div>
+      <p><output id="last-action">none</output></p>
+      <script>
+        document.getElementById("mb-1").addEventListener("re-select", (event) => {
+          document.getElementById("last-action").textContent = event.detail.value;
+        });
+      </script>
+    </section>
+
+    <script type="module">
+      import { enhanceMenuButton } from "/packages/core/src/behaviors/menu-button.js";
+      window.__mbController = enhanceMenuButton(document);
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          <kbd>ArrowDown</kbd>/<kbd>Enter</kbd>/<kbd>Space</kbd> on the button opens and focuses the
+          first item.
+        </li>
+        <li>
+          <kbd>ArrowUp</kbd>/<kbd>Down</kbd>/<kbd>Home</kbd>/<kbd>End</kbd> traverse within the
+          menu.
+        </li>
+        <li><kbd>Escape</kbd> closes and returns focus to the button.</li>
+        <li>
+          Selecting an item dispatches <code>re-select</code>; <code>preventDefault</code> keeps the
+          menu open.
+        </li>
+      </ul>
+    </article>
+  </body>
+</html>

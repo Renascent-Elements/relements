@@ -1,0 +1,103 @@
+/**
+ * Relements reset.
+ *
+ * A minimal, opinionated normalization. Keeps native semantics intact;
+ * only removes obvious cross-browser inconsistencies and unifies box sizing.
+ * Native form controls retain native behavior — components opt in via classes.
+ */
+
+@layer re.reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    tab-size: 4;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    line-height: var(--re-line-height-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Reset margins on common block elements; opt in via base.css. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Inherit fonts in form controls — natural for typography tokens to apply. */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  /* Avoid orphaned text-flow problems. */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* Honor the [hidden] attribute even when component CSS sets display. */
+  [hidden] {
+    display: none !important;
+  }
+
+  /* Respect users who request reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

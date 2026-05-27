@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · &lt;re-popover&gt;</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="re-popover">
+    <header>
+      <h1>&lt;re-popover&gt;</h1>
+      <p>Custom-element wrapper around the native popover attribute.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <p>
+        <button type="button" class="re-button" popovertarget="rp-1" id="rp-1-btn">Toggle</button>
+      </p>
+      <re-popover id="rp-1">
+        <p>Hello from a custom-element popover.</p>
+      </re-popover>
+    </section>
+
+    <p><output id="rp-state">closed</output></p>
+
+    <script type="module">
+      import "/packages/core/src/elements/re-popover.js";
+      document.getElementById("rp-1").addEventListener("re-toggle", (event) => {
+        document.getElementById("rp-state").textContent = event.detail.open ? "open" : "closed";
+      });
+    </script>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>The custom element auto-adopts <code>popover="auto"</code> on connect.</li>
+        <li>
+          <code>.show()</code>, <code>.hide()</code>, <code>.toggle()</code> map to the native
+          popover API.
+        </li>
+        <li><code>re-toggle</code> bubbles with <code>detail.open</code>.</li>
+      </ul>
+    </article>
+  </body>
+</html>

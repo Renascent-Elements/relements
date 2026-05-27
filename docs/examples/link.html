@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Link</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 56rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      p {
+        margin-block: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="link">
+    <header>
+      <h1>Link</h1>
+      <p>Opt-in styling for anchors. Use <code>.re-link</code> on any <code>&lt;a&gt;</code>.</p>
+    </header>
+
+    <section aria-labelledby="default-heading" data-testid="default">
+      <h2 id="default-heading">Default</h2>
+      <p>
+        Read the
+        <a href="./foundation.html" class="re-link" id="link-default">foundation page</a>
+        for token details.
+      </p>
+    </section>
+
+    <section aria-labelledby="muted-heading" data-testid="muted">
+      <h2 id="muted-heading">Muted</h2>
+      <p>
+        Quiet inline link:
+        <a href="./button.html" class="re-link" data-variant="muted" id="link-muted">view button</a
+        >.
+      </p>
+    </section>
+
+    <section aria-labelledby="subtle-heading" data-testid="subtle">
+      <h2 id="subtle-heading">Subtle</h2>
+      <p>
+        Underline appears on hover only:
+        <a href="./index.html" class="re-link" data-variant="subtle" id="link-subtle"
+          >back to index</a
+        >.
+      </p>
+    </section>
+
+    <section aria-labelledby="external-heading" data-testid="external">
+      <h2 id="external-heading">External</h2>
+      <p>
+        Visit
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+          class="re-link"
+          data-variant="external"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="link-external"
+          >MDN HTML reference</a
+        >
+        for native element semantics.
+      </p>
+    </section>
+
+    <article hidden>
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          Style is opt-in via <code>.re-link</code>; unstyled native links keep base.css colors.
+        </li>
+        <li>
+          External variant adds a typographic glyph hint and pairs naturally with
+          <code>target="_blank"</code> + <code>rel="noopener noreferrer"</code>.
+        </li>
+        <li>Focus ring uses <code>--re-shadow-focus</code> like every other component.</li>
+      </ul>
+    </article>
+  </body>
+</html>
