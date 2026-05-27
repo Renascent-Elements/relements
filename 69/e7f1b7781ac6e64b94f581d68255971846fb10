@@ -1,0 +1,23 @@
+tests/elements/dialog.spec.ts
+  s_8b941d379971d4::t_3d34d967e2bcce 20-24,28,35,42,49
+packages/core/src/tokens.css
+  s_8b941d379971d4::t_6c84151c6ddb88 189-193
+packages/core/src/components/dialog.css
+  s_8b941d379971d4::t_698e33c543f085 19-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "69e7f1b7781ac6e64b94f581d68255971846fb10",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
