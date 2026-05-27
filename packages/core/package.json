@@ -1,25 +1,82 @@
 {
   "name": "@relements/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "HTML-first design system core: tokens, styles, and progressive enhancement.",
   "license": "MIT",
   "type": "module",
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "dist/**/*.css"
   ],
   "files": [
-    "src",
-    "dist"
+    "dist",
+    "src"
   ],
   "exports": {
-    ".": "./src/index.js",
-    "./index.css": "./src/index.css",
-    "./tokens.css": "./src/tokens.css",
-    "./reset.css": "./src/reset.css",
-    "./base.css": "./src/base.css",
-    "./components/*": "./src/components/*",
-    "./behaviors/*": "./src/behaviors/*.js",
-    "./elements/*": "./src/elements/*.js"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./index.css": "./dist/index.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./reset.css": "./dist/reset.css",
+    "./base.css": "./dist/base.css",
+    "./components/button.css": "./dist/components/button.css",
+    "./components/link.css": "./dist/components/link.css",
+    "./components/form.css": "./dist/components/form.css",
+    "./components/disclosure.css": "./dist/components/disclosure.css",
+    "./components/dialog.css": "./dist/components/dialog.css",
+    "./components/progress.css": "./dist/components/progress.css",
+    "./components/tabs.css": "./dist/components/tabs.css",
+    "./components/menu.css": "./dist/components/menu.css",
+    "./components/popover.css": "./dist/components/popover.css",
+    "./components/toast.css": "./dist/components/toast.css",
+    "./themes/renascent.css": "./dist/themes/renascent.css",
+    "./behaviors/dismissible": {
+      "import": "./dist/behaviors/dismissible.js",
+      "types": "./dist/behaviors/dismissible.d.ts"
+    },
+    "./behaviors/dialog": {
+      "import": "./dist/behaviors/dialog.js",
+      "types": "./dist/behaviors/dialog.d.ts"
+    },
+    "./behaviors/tabs": {
+      "import": "./dist/behaviors/tabs.js",
+      "types": "./dist/behaviors/tabs.d.ts"
+    },
+    "./behaviors/menu-button": {
+      "import": "./dist/behaviors/menu-button.js",
+      "types": "./dist/behaviors/menu-button.d.ts"
+    },
+    "./behaviors/popover": {
+      "import": "./dist/behaviors/popover.js",
+      "types": "./dist/behaviors/popover.d.ts"
+    },
+    "./behaviors/toast": {
+      "import": "./dist/behaviors/toast.js",
+      "types": "./dist/behaviors/toast.d.ts"
+    },
+    "./elements/re-tabs": {
+      "import": "./dist/elements/re-tabs.js",
+      "types": "./dist/elements/re-tabs.d.ts"
+    },
+    "./elements/re-toast": {
+      "import": "./dist/elements/re-toast.js",
+      "types": "./dist/elements/re-toast.d.ts"
+    },
+    "./elements/re-menu": {
+      "import": "./dist/elements/re-menu.js",
+      "types": "./dist/elements/re-menu.d.ts"
+    },
+    "./elements/re-popover": {
+      "import": "./dist/elements/re-popover.js",
+      "types": "./dist/elements/re-popover.d.ts"
+    }
+  },
+  "scripts": {
+    "build:css": "node build-css.mjs",
+    "build:js": "tsup",
+    "build": "node build-css.mjs && tsup"
   },
   "publishConfig": {
     "access": "public"

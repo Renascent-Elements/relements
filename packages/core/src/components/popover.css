@@ -40,11 +40,7 @@
     border-color: var(--re-color-accent-500);
   }
   .re-popover[data-tone="warning"] {
-    background-color: color-mix(
-      in srgb,
-      var(--re-color-warning-500) 12%,
-      var(--re-color-surface)
-    );
+    background-color: color-mix(in srgb, var(--re-color-warning-500) 12%, var(--re-color-surface));
     border-color: var(--re-color-warning-500);
   }
   .re-popover[data-tone="danger"] {

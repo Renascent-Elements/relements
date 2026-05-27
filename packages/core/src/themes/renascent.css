@@ -21,39 +21,39 @@
   color-scheme: dark;
 
   /* ----- Backgrounds ---------------------------------------- */
-  --re-color-bg:          #0f131a;   /* hsl(220 27% 8%)  — page background  */
-  --re-color-bg-subtle:   #171c26;   /* hsl(220 25% 12%) — card / surface   */
-  --re-color-bg-muted:    #1f2430;   /* hsl(220 20% 15%) — muted section    */
-  --re-color-surface:     #171c26;
+  --re-color-bg: #0f131a; /* hsl(220 27% 8%)  — page background  */
+  --re-color-bg-subtle: #171c26; /* hsl(220 25% 12%) — card / surface   */
+  --re-color-bg-muted: #1f2430; /* hsl(220 20% 15%) — muted section    */
+  --re-color-surface: #171c26;
 
   /* ----- Text ----------------------------------------------- */
-  --re-color-text:        #f8fafc;   /* hsl(210 40% 98%) — primary text     */
-  --re-color-text-muted:  #97a3b4;   /* hsl(215 16% 65%) — secondary text   */
-  --re-color-text-subtle: #6b7a90;   /* dimmer tertiary text                */
+  --re-color-text: #f8fafc; /* hsl(210 40% 98%) — primary text     */
+  --re-color-text-muted: #97a3b4; /* hsl(215 16% 65%) — secondary text   */
+  --re-color-text-subtle: #6b7a90; /* dimmer tertiary text                */
 
   /* ----- Border --------------------------------------------- */
-  --re-color-border:        #29303d; /* hsl(220 20% 20%) */
+  --re-color-border: #29303d; /* hsl(220 20% 20%) */
   --re-color-border-strong: #353d4d;
 
   /* ----- Brand: electric blue (primary interactive) ---------
      Their --primary is hsl(217 91% 60%) = #3c83f6.
      Buttons use accent-600 as their base, so we anchor 600 = primary.  */
-  --re-color-accent-50:   #eff6ff;
-  --re-color-accent-100:  #dbeafe;
-  --re-color-accent-200:  #bdd6fe;
-  --re-color-accent-300:  #93c3fd;
-  --re-color-accent-400:  #60a5fa;
-  --re-color-accent-500:  #60a5fa;   /* tint — for backgrounds, indicators  */
-  --re-color-accent-600:  #3c83f6;   /* hsl(217 91% 60%) — button base      */
-  --re-color-accent-700:  #2563eb;   /* hover                               */
-  --re-color-accent-800:  #1d4ed8;   /* active / pressed                    */
-  --re-color-accent-900:  #1e3a8a;
+  --re-color-accent-50: #eff6ff;
+  --re-color-accent-100: #dbeafe;
+  --re-color-accent-200: #bdd6fe;
+  --re-color-accent-300: #93c3fd;
+  --re-color-accent-400: #60a5fa;
+  --re-color-accent-500: #60a5fa; /* tint — for backgrounds, indicators  */
+  --re-color-accent-600: #3c83f6; /* hsl(217 91% 60%) — button base      */
+  --re-color-accent-700: #2563eb; /* hover                               */
+  --re-color-accent-800: #1d4ed8; /* active / pressed                    */
+  --re-color-accent-900: #1e3a8a;
 
   /* ----- Semantic role colors ------------------------------- */
-  --re-color-link:          #3c83f6;
-  --re-color-link-hover:    #60a5fa;
-  --re-color-link-visited:  #a78bfa;
-  --re-color-focus-ring:    #3c83f6;
+  --re-color-link: #3c83f6;
+  --re-color-link-hover: #60a5fa;
+  --re-color-link-visited: #a78bfa;
+  --re-color-focus-ring: #3c83f6;
   --re-color-text-on-accent: #0f131a;
 
   /* ----- Semantic feedback ---------------------------------- */
@@ -68,9 +68,9 @@
   --re-color-warning-700: #d4a020;
 
   /* Danger: red (hsl(0 84% 60%) — their --destructive)        */
-  --re-color-danger-500:  #ef4444;
-  --re-color-danger-600:  #dc2626;
-  --re-color-danger-700:  #b91c1c;
+  --re-color-danger-500: #ef4444;
+  --re-color-danger-600: #dc2626;
+  --re-color-danger-700: #b91c1c;
 
   /* ----- Focus ring on dark background ----------------------
      Remove the offset gap: the "white gap" trick is for light
@@ -79,7 +79,7 @@
   --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
 
   /* ----- Selection ------------------------------------------ */
-  --re-color-selection-bg:   rgba(60, 131, 246, 0.3);
+  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
   --re-color-selection-text: #f8fafc;
 
   /* ----- Text danger for validation messages ---------------- */
@@ -94,18 +94,18 @@
    Use these for decorative highlights, badges, gradients.
    ============================================================ */
 :root {
-  --re-color-phoenix:       #f3753f;   /* hsl(18 88% 60%)  — brand orange   */
+  --re-color-phoenix: #f3753f; /* hsl(18 88% 60%)  — brand orange   */
   --re-color-phoenix-light: #f9a07a;
-  --re-color-phoenix-dark:  #d45a26;
+  --re-color-phoenix-dark: #d45a26;
 
-  --re-color-purple:        #a855f7;   /* hsl(271 91% 65%) — their --accent */
-  --re-color-purple-light:  #c084fc;
-  --re-color-purple-dark:   #7c3aed;
+  --re-color-purple: #a855f7; /* hsl(271 91% 65%) — their --accent */
+  --re-color-purple-light: #c084fc;
+  --re-color-purple-dark: #7c3aed;
 
   /* Gradients as custom properties (for use in CSS backgrounds) */
-  --re-gradient-brand:    linear-gradient(135deg, #3c83f6, #a855f7);
-  --re-gradient-phoenix:  linear-gradient(135deg, #f3753f, #f9cf53);
-  --re-gradient-hero:     linear-gradient(135deg, #3c83f6 0%, #a855f7 50%, #f3753f 100%);
+  --re-gradient-brand: linear-gradient(135deg, #3c83f6, #a855f7);
+  --re-gradient-phoenix: linear-gradient(135deg, #f3753f, #f9cf53);
+  --re-gradient-hero: linear-gradient(135deg, #3c83f6 0%, #a855f7 50%, #f3753f 100%);
 }
 
 /* ============================================================
@@ -114,36 +114,36 @@
 .theme-renascent {
   color-scheme: dark;
 
-  --re-color-bg:          #0f131a;
-  --re-color-bg-subtle:   #171c26;
-  --re-color-bg-muted:    #1f2430;
-  --re-color-surface:     #171c26;
-  --re-color-text:        #f8fafc;
-  --re-color-text-muted:  #97a3b4;
+  --re-color-bg: #0f131a;
+  --re-color-bg-subtle: #171c26;
+  --re-color-bg-muted: #1f2430;
+  --re-color-surface: #171c26;
+  --re-color-text: #f8fafc;
+  --re-color-text-muted: #97a3b4;
   --re-color-text-subtle: #6b7a90;
-  --re-color-border:        #29303d;
+  --re-color-border: #29303d;
   --re-color-border-strong: #353d4d;
-  --re-color-accent-500:  #3c83f6;
-  --re-color-accent-600:  #2563eb;
-  --re-color-accent-700:  #1d4ed8;
-  --re-color-link:          #3c83f6;
-  --re-color-link-hover:    #60a5fa;
-  --re-color-focus-ring:    #3c83f6;
+  --re-color-accent-500: #3c83f6;
+  --re-color-accent-600: #2563eb;
+  --re-color-accent-700: #1d4ed8;
+  --re-color-link: #3c83f6;
+  --re-color-link-hover: #60a5fa;
+  --re-color-focus-ring: #3c83f6;
   --re-color-text-on-accent: #0f131a;
-  --re-color-text-danger:   #f87171;
+  --re-color-text-danger: #f87171;
   --re-color-border-danger: #ef4444;
-  --re-color-success-500:   #2fe9d0;
-  --re-color-success-600:   #0fd4bb;
-  --re-color-success-700:   #0ab8a2;
-  --re-color-warning-500:   #f9cf53;
-  --re-color-warning-600:   #f0b929;
-  --re-color-warning-700:   #d4a020;
-  --re-color-danger-500:    #ef4444;
-  --re-color-danger-600:    #dc2626;
-  --re-color-danger-700:    #b91c1c;
+  --re-color-success-500: #2fe9d0;
+  --re-color-success-600: #0fd4bb;
+  --re-color-success-700: #0ab8a2;
+  --re-color-warning-500: #f9cf53;
+  --re-color-warning-600: #f0b929;
+  --re-color-warning-700: #d4a020;
+  --re-color-danger-500: #ef4444;
+  --re-color-danger-600: #dc2626;
+  --re-color-danger-700: #b91c1c;
   --re-focus-ring-offset: 0px;
   --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
-  --re-color-selection-bg:   rgba(60, 131, 246, 0.3);
+  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
   --re-color-selection-text: #f8fafc;
 
   background-color: var(--re-color-bg);
