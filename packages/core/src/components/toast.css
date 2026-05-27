@@ -67,13 +67,33 @@
     box-shadow: var(--re-shadow-focus);
   }
 
+  /* Tone variants: tinted background + colored border + colored label.
+     color-mix() adapts to both light and dark surface colours. */
   .re-toast[data-tone="success"] {
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-success-600) 12%,
+      var(--re-color-surface)
+    );
     border-color: var(--re-color-success-600);
+    color: var(--re-color-text);
   }
   .re-toast[data-tone="danger"] {
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-danger-600) 12%,
+      var(--re-color-surface)
+    );
     border-color: var(--re-color-danger-600);
+    color: var(--re-color-text);
   }
   .re-toast[data-tone="warning"] {
+    background-color: color-mix(
+      in srgb,
+      var(--re-color-warning-600) 12%,
+      var(--re-color-surface)
+    );
     border-color: var(--re-color-warning-600);
+    color: var(--re-color-text);
   }
 }
