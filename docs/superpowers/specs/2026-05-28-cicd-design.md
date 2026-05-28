@@ -128,30 +128,23 @@ The `changesets/action@v1` step automatically detects mode:
 
 ## Visual Snapshots — Per-Platform Strategy
 
-Configure Playwright to write per-OS snapshot filenames so macOS dev and Linux CI baselines coexist.
+Playwright (v1.30+) defaults to a snapshot path template that already includes `{projectName}` and `{platform}` segments. Existing snapshots under `tests/visual/**-snapshots/` are named like `button-default-chromium-darwin.png` — no rename is needed.
 
 **`playwright.config.ts` change:**
 
+Pin the path template explicitly so the convention survives Playwright version upgrades:
+
 ```ts
-snapshotPathTemplate: '{testDir}/{testFilePath}-snapshots/{arg}-{platform}{ext}',
+snapshotPathTemplate: '{testFilePath}-snapshots/{arg}-{projectName}-{platform}{ext}',
 ```
 
-Resulting files:
-
-```
-tests/visual/button.spec.ts-snapshots/
-  button-default-darwin.png
-  button-default-linux.png
-```
-
-Playwright selects the right one per OS at test time.
+This matches the existing default, so committed `-darwin` snapshots remain valid.
 
 **Migration steps (one-time):**
 
-1. Rename existing macOS snapshots: a one-shot bash loop using `git mv` to append `-darwin` before `.png` for every file under `tests/visual/**-snapshots/`. Commit.
-2. Add a `workflow_dispatch`-only job called `update-snapshots` in `ci.yml`. It runs `pnpm test:update-snapshots`, then uploads the generated `tests/visual/**-snapshots/*-linux.png` files as an artifact.
-3. Trigger the `update-snapshots` job once from the Actions UI, download the artifact, unzip into the repo, commit the new `-linux.png` files.
-4. Subsequent CI `e2e` runs find both `-darwin.png` and `-linux.png` baselines and pass on Linux.
+1. Add a `workflow_dispatch`-only job called `update-snapshots` in `ci.yml`. It runs `pnpm test:update-snapshots`, then uploads the generated `tests/visual/**-snapshots/*-linux.png` files as an artifact.
+2. Trigger the `update-snapshots` job once from the Actions UI, download the artifact, unzip into the repo, commit the new `-linux.png` files.
+3. Subsequent CI `e2e` runs find both `-darwin.png` and `-linux.png` baselines and pass on Linux.
 
 ## Root Script Additions
 
