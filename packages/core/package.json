@@ -92,6 +92,7 @@
     "prepublishOnly": "node build-css.mjs && tsup"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
