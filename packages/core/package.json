@@ -2,6 +2,13 @@
   "name": "@relements/core",
   "version": "0.1.1",
   "description": "HTML-first design system core: tokens, styles, and progressive enhancement.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renascent-Elements/relements.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/Renascent-Elements/relements#readme",
+  "bugs": "https://github.com/Renascent-Elements/relements/issues",
   "keywords": [
     "design-system",
     "css",
