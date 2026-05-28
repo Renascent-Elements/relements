@@ -19,10 +19,15 @@
     "test:update-snapshots": "playwright test --update-snapshots",
     "build": "pnpm -F @relements/core build",
     "lint": "prettier --check . && eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.31.0",
     "@playwright/test": "^1.48.0",
     "@types/node": "^22.7.0",
     "eslint": "^9.13.0",
