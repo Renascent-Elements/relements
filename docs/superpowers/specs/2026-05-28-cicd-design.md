@@ -135,7 +135,7 @@ Playwright (v1.30+) defaults to a snapshot path template that already includes `
 Pin the path template explicitly so the convention survives Playwright version upgrades:
 
 ```ts
-snapshotPathTemplate: '{testFilePath}-snapshots/{arg}-{projectName}-{platform}{ext}',
+snapshotPathTemplate: '{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{-projectName}{-platform}{ext}',
 ```
 
 This matches the existing default, so committed `-darwin` snapshots remain valid.
