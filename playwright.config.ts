@@ -12,6 +12,7 @@ export default defineConfig({
     baseURL: "http://localhost:4173/docs/examples/",
     trace: "on-first-retry",
   },
+  snapshotPathTemplate: "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{-projectName}{-platform}{ext}",
   webServer: {
     command: "pnpm exec http-server . -p 4173 -s -c-1",
     url: "http://localhost:4173/docs/examples/",
