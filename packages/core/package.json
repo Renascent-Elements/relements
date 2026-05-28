@@ -2,6 +2,18 @@
   "name": "@relements/core",
   "version": "0.1.0",
   "description": "HTML-first design system core: tokens, styles, and progressive enhancement.",
+  "keywords": [
+    "design-system",
+    "css",
+    "html-first",
+    "accessible",
+    "progressive-enhancement",
+    "framework-agnostic",
+    "tokens",
+    "components",
+    "web-components",
+    "aria"
+  ],
   "license": "MIT",
   "type": "module",
   "sideEffects": [
