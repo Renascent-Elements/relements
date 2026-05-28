@@ -1,0 +1,19 @@
+packages/core/package.json
+  s_8b941d379971d4::t_9d1c1c6274d384 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "dce22645eb70327c6537d6004f0777aba812f47f",
+  "prompts": {},
+  "sessions": {
+    "s_8b941d379971d4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5d0c4604-549b-486d-9ed5-d7b7605fbf38",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
