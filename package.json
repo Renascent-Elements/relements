@@ -21,11 +21,6 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write ."
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@playwright/test": "^1.48.0",
