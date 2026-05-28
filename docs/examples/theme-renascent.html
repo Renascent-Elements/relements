@@ -65,20 +65,20 @@
       <h2 id="palette-heading">Palette</h2>
       <div class="row">
         <span class="swatch">
-          <span class="swatch__dot" style="background:#3c83f6"></span> Electric blue (primary)
+          <span class="swatch__dot" style="background: #3c83f6"></span> Electric blue (primary)
         </span>
         <span class="swatch">
-          <span class="swatch__dot" style="background:#a855f7"></span> Purple (accent)
+          <span class="swatch__dot" style="background: #a855f7"></span> Purple (accent)
         </span>
         <span class="swatch">
-          <span class="swatch__dot" style="background:var(--re-color-phoenix)"></span>
+          <span class="swatch__dot" style="background: var(--re-color-phoenix)"></span>
           Phoenix orange
         </span>
         <span class="swatch">
-          <span class="swatch__dot" style="background:#2fe9d0"></span> Success teal
+          <span class="swatch__dot" style="background: #2fe9d0"></span> Success teal
         </span>
         <span class="swatch">
-          <span class="swatch__dot" style="background:#f9cf53"></span> Warning amber
+          <span class="swatch__dot" style="background: #f9cf53"></span> Warning amber
         </span>
       </div>
     </section>
@@ -111,7 +111,11 @@
         </label>
         <label class="re-field">
           <span class="re-field__label">Message</span>
-          <textarea class="re-textarea" rows="3" placeholder="Tell us about your project…"></textarea>
+          <textarea
+            class="re-textarea"
+            rows="3"
+            placeholder="Tell us about your project…"
+          ></textarea>
         </label>
         <button type="submit" class="re-button" style="justify-self: start">
           Árajánlatot kérek
@@ -123,7 +127,13 @@
       <h2 id="tabs-heading">Tabs</h2>
       <div class="re-tabs" data-re-tabs>
         <div class="re-tabs__list" role="tablist" aria-label="Services">
-          <button class="re-tab" role="tab" id="tab-smb" aria-controls="panel-smb" aria-selected="true">
+          <button
+            class="re-tab"
+            role="tab"
+            id="tab-smb"
+            aria-controls="panel-smb"
+            aria-selected="true"
+          >
             KKV csomag
           </button>
           <button
@@ -137,7 +147,14 @@
             Nagyvállalati
           </button>
         </div>
-        <section class="re-tabpanel" role="tabpanel" id="panel-smb" aria-labelledby="tab-smb" tabindex="0" style="padding: var(--re-space-4)">
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="panel-smb"
+          aria-labelledby="tab-smb"
+          tabindex="0"
+          style="padding: var(--re-space-4)"
+        >
           <p>Komplett KKV digitalizáció a DIMOP Plusz program keretein belül.</p>
         </section>
         <section
