@@ -1,0 +1,23 @@
+docs/examples/frameworks/react/package.json
+  s_abd3e0e9bbbfdd::t_d361cd76d96787 1-19
+docs/examples/frameworks/react/vite.config.js
+  s_abd3e0e9bbbfdd::t_48442922004823 1-7
+docs/examples/frameworks/react/README.md
+  s_abd3e0e9bbbfdd::t_74dddcc470c511 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "f2f8f7d5dcb4735c548afe83892c5d326bfb711c",
+  "prompts": {},
+  "sessions": {
+    "s_abd3e0e9bbbfdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "36e3e578-7db5-49f9-b701-ae643e461d2d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
