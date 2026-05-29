@@ -2,12 +2,6 @@ name: Update Linux snapshots
 
 on:
   workflow_dispatch:
-  # Temporary trigger to bootstrap Linux baselines on this branch.
-  # Removed in the same PR once baselines land — see Task 9 of the CI/CD plan.
-  push:
-    branches: [feat/cicd]
-    paths:
-      - .github/workflows/update-snapshots.yml
 
 permissions:
   contents: read
