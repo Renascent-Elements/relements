@@ -21,6 +21,7 @@ Every example renders this exact structure and produces comparable DOM. IDs are 
 `enhanceTabs` is scoped to the `#enhanced` element only (never `document`), so it does not double-enhance the `<re-tabs>` element (which enhances itself in `connectedCallback`).
 
 The shared assertions are:
+
 - `.re-button` is visible.
 - Focusing `#e-tab-1` and pressing `ArrowRight` makes `#e-tab-2` the selected tab (`enhanceTabs` auto-selects on arrow keys).
 - Clicking `#c-tab-2` inside `<re-tabs>` sets `<output id="last-tab">` text to `c-tab-2`.
@@ -66,6 +67,7 @@ Modified: `pnpm-workspace.yaml`, root `package.json` (scripts), `.github/workflo
 ## Task 1: Workspace wiring, scripts, and frameworks index
 
 **Files:**
+
 - Modify: `pnpm-workspace.yaml`
 - Modify: `package.json` (root, scripts)
 - Create: `docs/examples/frameworks/README.md`
@@ -146,13 +148,13 @@ pnpm exec playwright test tests/frameworks
 
 ## Per-framework caveats
 
-| Framework | Custom element | Custom event (`re-change`) |
-| --- | --- | --- |
-| HTML | works as-is | `addEventListener('re-change', …)` |
-| React | renders as-is (React 19) | no `onReChange` prop — `ref` + `addEventListener` in `useEffect` |
-| Vue | needs `isCustomElement` compiler option | `@re-change` binds the native event |
-| Svelte | works as-is | `onre-change={…}` (event attrs are case-sensitive) |
-| Angular | needs `CUSTOM_ELEMENTS_SCHEMA` | `(re-change)="…($event)"` |
+| Framework | Custom element                          | Custom event (`re-change`)                                       |
+| --------- | --------------------------------------- | ---------------------------------------------------------------- |
+| HTML      | works as-is                             | `addEventListener('re-change', …)`                               |
+| React     | renders as-is (React 19)                | no `onReChange` prop — `ref` + `addEventListener` in `useEffect` |
+| Vue       | needs `isCustomElement` compiler option | `@re-change` binds the native event                              |
+| Svelte    | works as-is                             | `onre-change={…}` (event attrs are case-sensitive)               |
+| Angular   | needs `CUSTOM_ELEMENTS_SCHEMA`          | `(re-change)="…($event)"`                                        |
 
 See each app's own README for details.
 ````
@@ -190,10 +192,20 @@ Create `docs/examples/frameworks/_index.html`:
       <nav aria-label="Framework examples">
         <ul>
           <li><a href="./html/index.html">Plain HTML</a> — no build</li>
-          <li><a href="./react/dist/index.html">React</a> — run <code>pnpm build:examples</code> first</li>
-          <li><a href="./vue/dist/index.html">Vue</a> — run <code>pnpm build:examples</code> first</li>
-          <li><a href="./svelte/dist/index.html">Svelte</a> — run <code>pnpm build:examples</code> first</li>
-          <li><a href="./angular/dist/index.html">Angular</a> — run <code>pnpm build:examples</code> first</li>
+          <li>
+            <a href="./react/dist/index.html">React</a> — run <code>pnpm build:examples</code> first
+          </li>
+          <li>
+            <a href="./vue/dist/index.html">Vue</a> — run <code>pnpm build:examples</code> first
+          </li>
+          <li>
+            <a href="./svelte/dist/index.html">Svelte</a> — run
+            <code>pnpm build:examples</code> first
+          </li>
+          <li>
+            <a href="./angular/dist/index.html">Angular</a> — run
+            <code>pnpm build:examples</code> first
+          </li>
         </ul>
       </nav>
       <p>See <code>README.md</code> in this folder for setup and caveats.</p>
@@ -216,6 +228,7 @@ git commit -m "chore(examples): scaffold frameworks workspace + build:examples s
 This task is done first because the HTML example needs no build, and it establishes the shared Playwright helper that every later spec reuses.
 
 **Files:**
+
 - Create: `docs/examples/frameworks/html/index.html`
 - Create: `tests/frameworks/_contract.ts`
 - Create: `tests/frameworks/html.spec.ts`
@@ -286,13 +299,65 @@ Create `docs/examples/frameworks/html/index.html`. This mirrors the existing exa
       <h2 id="enh-h">enhanceTabs</h2>
       <div class="re-tabs" data-re-tabs id="enhanced">
         <div class="re-tabs__list" role="tablist" aria-label="Enhanced">
-          <button class="re-tab" role="tab" id="e-tab-1" aria-controls="e-panel-1" aria-selected="true">One</button>
-          <button class="re-tab" role="tab" id="e-tab-2" aria-controls="e-panel-2" aria-selected="false" tabindex="-1">Two</button>
-          <button class="re-tab" role="tab" id="e-tab-3" aria-controls="e-panel-3" aria-selected="false" tabindex="-1">Three</button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="e-tab-1"
+            aria-controls="e-panel-1"
+            aria-selected="true"
+          >
+            One
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="e-tab-2"
+            aria-controls="e-panel-2"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Two
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="e-tab-3"
+            aria-controls="e-panel-3"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Three
+          </button>
         </div>
-        <section class="re-tabpanel" role="tabpanel" id="e-panel-1" aria-labelledby="e-tab-1" tabindex="0">Panel one</section>
-        <section class="re-tabpanel" role="tabpanel" id="e-panel-2" aria-labelledby="e-tab-2" tabindex="0" hidden>Panel two</section>
-        <section class="re-tabpanel" role="tabpanel" id="e-panel-3" aria-labelledby="e-tab-3" tabindex="0" hidden>Panel three</section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="e-panel-1"
+          aria-labelledby="e-tab-1"
+          tabindex="0"
+        >
+          Panel one
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="e-panel-2"
+          aria-labelledby="e-tab-2"
+          tabindex="0"
+          hidden
+        >
+          Panel two
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="e-panel-3"
+          aria-labelledby="e-tab-3"
+          tabindex="0"
+          hidden
+        >
+          Panel three
+        </section>
       </div>
     </section>
 
@@ -300,13 +365,65 @@ Create `docs/examples/frameworks/html/index.html`. This mirrors the existing exa
       <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
       <re-tabs id="ce" aria-label="Custom element">
         <div class="re-tabs__list" role="tablist" aria-label="Custom element">
-          <button class="re-tab" role="tab" id="c-tab-1" aria-controls="c-panel-1" aria-selected="true">Alpha</button>
-          <button class="re-tab" role="tab" id="c-tab-2" aria-controls="c-panel-2" aria-selected="false" tabindex="-1">Beta</button>
-          <button class="re-tab" role="tab" id="c-tab-3" aria-controls="c-panel-3" aria-selected="false" tabindex="-1">Gamma</button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="c-tab-1"
+            aria-controls="c-panel-1"
+            aria-selected="true"
+          >
+            Alpha
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="c-tab-2"
+            aria-controls="c-panel-2"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Beta
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="c-tab-3"
+            aria-controls="c-panel-3"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            Gamma
+          </button>
         </div>
-        <section class="re-tabpanel" role="tabpanel" id="c-panel-1" aria-labelledby="c-tab-1" tabindex="0">Alpha panel</section>
-        <section class="re-tabpanel" role="tabpanel" id="c-panel-2" aria-labelledby="c-tab-2" tabindex="0" hidden>Beta panel</section>
-        <section class="re-tabpanel" role="tabpanel" id="c-panel-3" aria-labelledby="c-tab-3" tabindex="0" hidden>Gamma panel</section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="c-panel-1"
+          aria-labelledby="c-tab-1"
+          tabindex="0"
+        >
+          Alpha panel
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="c-panel-2"
+          aria-labelledby="c-tab-2"
+          tabindex="0"
+          hidden
+        >
+          Beta panel
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="c-panel-3"
+          aria-labelledby="c-tab-3"
+          tabindex="0"
+          hidden
+        >
+          Gamma panel
+        </section>
       </re-tabs>
       <p>Last tab: <output id="last-tab">none</output></p>
     </section>
@@ -360,6 +477,7 @@ git commit -m "feat(examples): plain-HTML framework reference + shared Playwrigh
 ## Task 3: React example
 
 **Files:**
+
 - Create: `docs/examples/frameworks/react/package.json`
 - Create: `docs/examples/frameworks/react/vite.config.js`
 - Create: `docs/examples/frameworks/react/index.html`
@@ -477,13 +595,65 @@ export default function App() {
         <h2 id="enh-h">enhanceTabs</h2>
         <div className="re-tabs" data-re-tabs id="enhanced" ref={enhancedRef}>
           <div className="re-tabs__list" role="tablist" aria-label="Enhanced">
-            <button className="re-tab" role="tab" id="e-tab-1" aria-controls="e-panel-1" aria-selected="true">One</button>
-            <button className="re-tab" role="tab" id="e-tab-2" aria-controls="e-panel-2" aria-selected="false" tabIndex={-1}>Two</button>
-            <button className="re-tab" role="tab" id="e-tab-3" aria-controls="e-panel-3" aria-selected="false" tabIndex={-1}>Three</button>
+            <button
+              className="re-tab"
+              role="tab"
+              id="e-tab-1"
+              aria-controls="e-panel-1"
+              aria-selected="true"
+            >
+              One
+            </button>
+            <button
+              className="re-tab"
+              role="tab"
+              id="e-tab-2"
+              aria-controls="e-panel-2"
+              aria-selected="false"
+              tabIndex={-1}
+            >
+              Two
+            </button>
+            <button
+              className="re-tab"
+              role="tab"
+              id="e-tab-3"
+              aria-controls="e-panel-3"
+              aria-selected="false"
+              tabIndex={-1}
+            >
+              Three
+            </button>
           </div>
-          <section className="re-tabpanel" role="tabpanel" id="e-panel-1" aria-labelledby="e-tab-1" tabIndex={0}>Panel one</section>
-          <section className="re-tabpanel" role="tabpanel" id="e-panel-2" aria-labelledby="e-tab-2" tabIndex={0} hidden>Panel two</section>
-          <section className="re-tabpanel" role="tabpanel" id="e-panel-3" aria-labelledby="e-tab-3" tabIndex={0} hidden>Panel three</section>
+          <section
+            className="re-tabpanel"
+            role="tabpanel"
+            id="e-panel-1"
+            aria-labelledby="e-tab-1"
+            tabIndex={0}
+          >
+            Panel one
+          </section>
+          <section
+            className="re-tabpanel"
+            role="tabpanel"
+            id="e-panel-2"
+            aria-labelledby="e-tab-2"
+            tabIndex={0}
+            hidden
+          >
+            Panel two
+          </section>
+          <section
+            className="re-tabpanel"
+            role="tabpanel"
+            id="e-panel-3"
+            aria-labelledby="e-tab-3"
+            tabIndex={0}
+            hidden
+          >
+            Panel three
+          </section>
         </div>
       </section>
 
@@ -491,15 +661,69 @@ export default function App() {
         <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
         <re-tabs id="ce" ref={ceRef} aria-label="Custom element">
           <div className="re-tabs__list" role="tablist" aria-label="Custom element">
-            <button className="re-tab" role="tab" id="c-tab-1" aria-controls="c-panel-1" aria-selected="true">Alpha</button>
-            <button className="re-tab" role="tab" id="c-tab-2" aria-controls="c-panel-2" aria-selected="false" tabIndex={-1}>Beta</button>
-            <button className="re-tab" role="tab" id="c-tab-3" aria-controls="c-panel-3" aria-selected="false" tabIndex={-1}>Gamma</button>
+            <button
+              className="re-tab"
+              role="tab"
+              id="c-tab-1"
+              aria-controls="c-panel-1"
+              aria-selected="true"
+            >
+              Alpha
+            </button>
+            <button
+              className="re-tab"
+              role="tab"
+              id="c-tab-2"
+              aria-controls="c-panel-2"
+              aria-selected="false"
+              tabIndex={-1}
+            >
+              Beta
+            </button>
+            <button
+              className="re-tab"
+              role="tab"
+              id="c-tab-3"
+              aria-controls="c-panel-3"
+              aria-selected="false"
+              tabIndex={-1}
+            >
+              Gamma
+            </button>
           </div>
-          <section className="re-tabpanel" role="tabpanel" id="c-panel-1" aria-labelledby="c-tab-1" tabIndex={0}>Alpha panel</section>
-          <section className="re-tabpanel" role="tabpanel" id="c-panel-2" aria-labelledby="c-tab-2" tabIndex={0} hidden>Beta panel</section>
-          <section className="re-tabpanel" role="tabpanel" id="c-panel-3" aria-labelledby="c-tab-3" tabIndex={0} hidden>Gamma panel</section>
+          <section
+            className="re-tabpanel"
+            role="tabpanel"
+            id="c-panel-1"
+            aria-labelledby="c-tab-1"
+            tabIndex={0}
+          >
+            Alpha panel
+          </section>
+          <section
+            className="re-tabpanel"
+            role="tabpanel"
+            id="c-panel-2"
+            aria-labelledby="c-tab-2"
+            tabIndex={0}
+            hidden
+          >
+            Beta panel
+          </section>
+          <section
+            className="re-tabpanel"
+            role="tabpanel"
+            id="c-panel-3"
+            aria-labelledby="c-tab-3"
+            tabIndex={0}
+            hidden
+          >
+            Gamma panel
+          </section>
         </re-tabs>
-        <p>Last tab: <output id="last-tab">{lastTab}</output></p>
+        <p>
+          Last tab: <output id="last-tab">{lastTab}</output>
+        </p>
       </section>
     </main>
   );
@@ -567,6 +791,7 @@ git commit -m "feat(examples): React framework example + smoke test"
 ## Task 4: Vue example
 
 **Files:**
+
 - Create: `docs/examples/frameworks/vue/package.json`
 - Create: `docs/examples/frameworks/vue/vite.config.js`
 - Create: `docs/examples/frameworks/vue/index.html`
@@ -683,13 +908,65 @@ onUnmounted(() => {
       <h2 id="enh-h">enhanceTabs</h2>
       <div class="re-tabs" data-re-tabs id="enhanced" ref="enhanced">
         <div class="re-tabs__list" role="tablist" aria-label="Enhanced">
-          <button class="re-tab" role="tab" id="e-tab-1" aria-controls="e-panel-1" aria-selected="true">One</button>
-          <button class="re-tab" role="tab" id="e-tab-2" aria-controls="e-panel-2" aria-selected="false" :tabindex="-1">Two</button>
-          <button class="re-tab" role="tab" id="e-tab-3" aria-controls="e-panel-3" aria-selected="false" :tabindex="-1">Three</button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="e-tab-1"
+            aria-controls="e-panel-1"
+            aria-selected="true"
+          >
+            One
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="e-tab-2"
+            aria-controls="e-panel-2"
+            aria-selected="false"
+            :tabindex="-1"
+          >
+            Two
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="e-tab-3"
+            aria-controls="e-panel-3"
+            aria-selected="false"
+            :tabindex="-1"
+          >
+            Three
+          </button>
         </div>
-        <section class="re-tabpanel" role="tabpanel" id="e-panel-1" aria-labelledby="e-tab-1" :tabindex="0">Panel one</section>
-        <section class="re-tabpanel" role="tabpanel" id="e-panel-2" aria-labelledby="e-tab-2" :tabindex="0" hidden>Panel two</section>
-        <section class="re-tabpanel" role="tabpanel" id="e-panel-3" aria-labelledby="e-tab-3" :tabindex="0" hidden>Panel three</section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="e-panel-1"
+          aria-labelledby="e-tab-1"
+          :tabindex="0"
+        >
+          Panel one
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="e-panel-2"
+          aria-labelledby="e-tab-2"
+          :tabindex="0"
+          hidden
+        >
+          Panel two
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="e-panel-3"
+          aria-labelledby="e-tab-3"
+          :tabindex="0"
+          hidden
+        >
+          Panel three
+        </section>
       </div>
     </section>
 
@@ -697,15 +974,69 @@ onUnmounted(() => {
       <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
       <re-tabs id="ce" aria-label="Custom element" @re-change="onChange">
         <div class="re-tabs__list" role="tablist" aria-label="Custom element">
-          <button class="re-tab" role="tab" id="c-tab-1" aria-controls="c-panel-1" aria-selected="true">Alpha</button>
-          <button class="re-tab" role="tab" id="c-tab-2" aria-controls="c-panel-2" aria-selected="false" :tabindex="-1">Beta</button>
-          <button class="re-tab" role="tab" id="c-tab-3" aria-controls="c-panel-3" aria-selected="false" :tabindex="-1">Gamma</button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="c-tab-1"
+            aria-controls="c-panel-1"
+            aria-selected="true"
+          >
+            Alpha
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="c-tab-2"
+            aria-controls="c-panel-2"
+            aria-selected="false"
+            :tabindex="-1"
+          >
+            Beta
+          </button>
+          <button
+            class="re-tab"
+            role="tab"
+            id="c-tab-3"
+            aria-controls="c-panel-3"
+            aria-selected="false"
+            :tabindex="-1"
+          >
+            Gamma
+          </button>
         </div>
-        <section class="re-tabpanel" role="tabpanel" id="c-panel-1" aria-labelledby="c-tab-1" :tabindex="0">Alpha panel</section>
-        <section class="re-tabpanel" role="tabpanel" id="c-panel-2" aria-labelledby="c-tab-2" :tabindex="0" hidden>Beta panel</section>
-        <section class="re-tabpanel" role="tabpanel" id="c-panel-3" aria-labelledby="c-tab-3" :tabindex="0" hidden>Gamma panel</section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="c-panel-1"
+          aria-labelledby="c-tab-1"
+          :tabindex="0"
+        >
+          Alpha panel
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="c-panel-2"
+          aria-labelledby="c-tab-2"
+          :tabindex="0"
+          hidden
+        >
+          Beta panel
+        </section>
+        <section
+          class="re-tabpanel"
+          role="tabpanel"
+          id="c-panel-3"
+          aria-labelledby="c-tab-3"
+          :tabindex="0"
+          hidden
+        >
+          Gamma panel
+        </section>
       </re-tabs>
-      <p>Last tab: <output id="last-tab">{{ lastTab }}</output></p>
+      <p>
+        Last tab: <output id="last-tab">{{ lastTab }}</output>
+      </p>
     </section>
   </main>
 </template>
@@ -770,6 +1101,7 @@ git commit -m "feat(examples): Vue framework example + smoke test"
 ## Task 5: Svelte example
 
 **Files:**
+
 - Create: `docs/examples/frameworks/svelte/package.json`
 - Create: `docs/examples/frameworks/svelte/vite.config.js`
 - Create: `docs/examples/frameworks/svelte/index.html`
@@ -960,6 +1292,7 @@ git commit -m "feat(examples): Svelte framework example + smoke test"
 This is a minimal hand-written standalone Angular app (no `ng new` boilerplate, no test runner).
 
 **Files:**
+
 - Create: `docs/examples/frameworks/angular/package.json`
 - Create: `docs/examples/frameworks/angular/angular.json`
 - Create: `docs/examples/frameworks/angular/tsconfig.json`
@@ -1135,13 +1468,65 @@ import "@relements/core/elements/re-tabs";
         <h2 id="enh-h">enhanceTabs</h2>
         <div class="re-tabs" data-re-tabs id="enhanced" #enhanced>
           <div class="re-tabs__list" role="tablist" aria-label="Enhanced">
-            <button class="re-tab" role="tab" id="e-tab-1" aria-controls="e-panel-1" aria-selected="true">One</button>
-            <button class="re-tab" role="tab" id="e-tab-2" aria-controls="e-panel-2" aria-selected="false" tabindex="-1">Two</button>
-            <button class="re-tab" role="tab" id="e-tab-3" aria-controls="e-panel-3" aria-selected="false" tabindex="-1">Three</button>
+            <button
+              class="re-tab"
+              role="tab"
+              id="e-tab-1"
+              aria-controls="e-panel-1"
+              aria-selected="true"
+            >
+              One
+            </button>
+            <button
+              class="re-tab"
+              role="tab"
+              id="e-tab-2"
+              aria-controls="e-panel-2"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Two
+            </button>
+            <button
+              class="re-tab"
+              role="tab"
+              id="e-tab-3"
+              aria-controls="e-panel-3"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Three
+            </button>
           </div>
-          <section class="re-tabpanel" role="tabpanel" id="e-panel-1" aria-labelledby="e-tab-1" tabindex="0">Panel one</section>
-          <section class="re-tabpanel" role="tabpanel" id="e-panel-2" aria-labelledby="e-tab-2" tabindex="0" hidden>Panel two</section>
-          <section class="re-tabpanel" role="tabpanel" id="e-panel-3" aria-labelledby="e-tab-3" tabindex="0" hidden>Panel three</section>
+          <section
+            class="re-tabpanel"
+            role="tabpanel"
+            id="e-panel-1"
+            aria-labelledby="e-tab-1"
+            tabindex="0"
+          >
+            Panel one
+          </section>
+          <section
+            class="re-tabpanel"
+            role="tabpanel"
+            id="e-panel-2"
+            aria-labelledby="e-tab-2"
+            tabindex="0"
+            hidden
+          >
+            Panel two
+          </section>
+          <section
+            class="re-tabpanel"
+            role="tabpanel"
+            id="e-panel-3"
+            aria-labelledby="e-tab-3"
+            tabindex="0"
+            hidden
+          >
+            Panel three
+          </section>
         </div>
       </section>
 
@@ -1149,15 +1534,69 @@ import "@relements/core/elements/re-tabs";
         <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
         <re-tabs id="ce" aria-label="Custom element" (re-change)="onChange($event)">
           <div class="re-tabs__list" role="tablist" aria-label="Custom element">
-            <button class="re-tab" role="tab" id="c-tab-1" aria-controls="c-panel-1" aria-selected="true">Alpha</button>
-            <button class="re-tab" role="tab" id="c-tab-2" aria-controls="c-panel-2" aria-selected="false" tabindex="-1">Beta</button>
-            <button class="re-tab" role="tab" id="c-tab-3" aria-controls="c-panel-3" aria-selected="false" tabindex="-1">Gamma</button>
+            <button
+              class="re-tab"
+              role="tab"
+              id="c-tab-1"
+              aria-controls="c-panel-1"
+              aria-selected="true"
+            >
+              Alpha
+            </button>
+            <button
+              class="re-tab"
+              role="tab"
+              id="c-tab-2"
+              aria-controls="c-panel-2"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Beta
+            </button>
+            <button
+              class="re-tab"
+              role="tab"
+              id="c-tab-3"
+              aria-controls="c-panel-3"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Gamma
+            </button>
           </div>
-          <section class="re-tabpanel" role="tabpanel" id="c-panel-1" aria-labelledby="c-tab-1" tabindex="0">Alpha panel</section>
-          <section class="re-tabpanel" role="tabpanel" id="c-panel-2" aria-labelledby="c-tab-2" tabindex="0" hidden>Beta panel</section>
-          <section class="re-tabpanel" role="tabpanel" id="c-panel-3" aria-labelledby="c-tab-3" tabindex="0" hidden>Gamma panel</section>
+          <section
+            class="re-tabpanel"
+            role="tabpanel"
+            id="c-panel-1"
+            aria-labelledby="c-tab-1"
+            tabindex="0"
+          >
+            Alpha panel
+          </section>
+          <section
+            class="re-tabpanel"
+            role="tabpanel"
+            id="c-panel-2"
+            aria-labelledby="c-tab-2"
+            tabindex="0"
+            hidden
+          >
+            Beta panel
+          </section>
+          <section
+            class="re-tabpanel"
+            role="tabpanel"
+            id="c-panel-3"
+            aria-labelledby="c-tab-3"
+            tabindex="0"
+            hidden
+          >
+            Gamma panel
+          </section>
         </re-tabs>
-        <p>Last tab: <output id="last-tab">{{ lastTab }}</output></p>
+        <p>
+          Last tab: <output id="last-tab">{{ lastTab }}</output>
+        </p>
       </section>
     </main>
   `,
@@ -1241,6 +1680,7 @@ git commit -m "feat(examples): Angular framework example + smoke test"
 ## Task 7: CI wiring, examples index link, and changeset
 
 **Files:**
+
 - Modify: `.github/workflows/ci.yml`
 - Modify: `docs/examples/index.html`
 - Create: `.changeset/<generated-name>.md`
@@ -1250,8 +1690,8 @@ git commit -m "feat(examples): Angular framework example + smoke test"
 In `.github/workflows/ci.yml`, in the `e2e` job, add a build step immediately **before** the `- run: pnpm test:browser` line:
 
 ```yaml
-      - run: pnpm build:examples
-      - run: pnpm test:browser
+- run: pnpm build:examples
+- run: pnpm test:browser
 ```
 
 (The framework specs read each app's built `dist/`; the html spec needs no build.)
@@ -1261,7 +1701,7 @@ In `.github/workflows/ci.yml`, in the `e2e` job, add a build step immediately **
 In `docs/examples/index.html`, add this list item as the first child of the `<ul>` inside `<nav aria-label="Examples">`:
 
 ```html
-          <li><a href="./frameworks/_index.html">Framework examples — React, Vue, Svelte, Angular</a></li>
+<li><a href="./frameworks/_index.html">Framework examples — React, Vue, Svelte, Angular</a></li>
 ```
 
 - [ ] **Step 3: Create the changeset**

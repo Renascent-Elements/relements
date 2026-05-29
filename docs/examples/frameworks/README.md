@@ -43,12 +43,12 @@ pnpm exec playwright test tests/frameworks
 
 ## Per-framework caveats
 
-| Framework | Custom element | Custom event (`re-change`) |
-| --- | --- | --- |
-| HTML | works as-is | `addEventListener('re-change', …)` |
-| React | renders as-is (React 19) | no `onReChange` prop — `ref` + `addEventListener` in `useEffect` |
-| Vue | needs `isCustomElement` compiler option | `@re-change` binds the native event |
-| Svelte | works as-is | `onre-change={…}` (event attrs are case-sensitive) |
-| Angular | needs `CUSTOM_ELEMENTS_SCHEMA` | `(re-change)="…($event)"` |
+| Framework | Custom element                          | Custom event (`re-change`)                                       |
+| --------- | --------------------------------------- | ---------------------------------------------------------------- |
+| HTML      | works as-is                             | `addEventListener('re-change', …)`                               |
+| React     | renders as-is (React 19)                | no `onReChange` prop — `ref` + `addEventListener` in `useEffect` |
+| Vue       | needs `isCustomElement` compiler option | `@re-change` binds the native event                              |
+| Svelte    | works as-is                             | `onre-change={…}` (event attrs are case-sensitive)               |
+| Angular   | needs `CUSTOM_ELEMENTS_SCHEMA`          | `(re-change)="…($event)"`                                        |
 
 See each app's own README for details.

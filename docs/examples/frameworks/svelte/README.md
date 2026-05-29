@@ -15,3 +15,8 @@ pnpm dev      # or: pnpm build
   `re-change` `CustomEvent`. Read `event.detail.tabId`.
 - **Behavior lifecycle:** run `enhanceTabs(node)` in `onMount` and return
   `() => controller.destroy()` for teardown.
+- **A11y advisories:** Svelte's compiler emits `a11y_no_noninteractive_element_to_interactive_role`
+  warnings for the standard WAI-ARIA tabs markup (`role="tab"` on `<button>`,
+  `role="tablist"` on `<div>`). These are false positives for the tabs pattern and do
+  not affect runtime; suppress per-element with `<!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->`
+  if you want a clean build.
