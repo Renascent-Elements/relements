@@ -4,6 +4,10 @@ node_modules/
 *.log
 .DS_Store
 
+# Angular build cache / TS output
+.angular/
+out-tsc/
+
 # Playwright
 test-results/
 playwright-report/
