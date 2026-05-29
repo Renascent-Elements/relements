@@ -1,0 +1,27 @@
+docs/superpowers/specs/2026-05-28-cicd-design.md
+  s_5bd540b3c44188::t_4b7b680a281bb5 60-65
+docs/superpowers/plans/2026-05-28-cicd.md
+  s_5bd540b3c44188::t_4b7b680a281bb5 18,28,40,112,146,174-175,206,343,412,467,548,668
+packages/core/README.md
+  s_5bd540b3c44188::t_4b7b680a281bb5 51-70,84-91,103-105,112-117,129,150-159
+playwright.config.ts
+  s_5bd540b3c44188::t_4b7b680a281bb5 15-16
+README.md
+  s_5bd540b3c44188::t_4b7b680a281bb5 7-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "8804550c9878a4fc9df63cecd7a3d32487bce876",
+  "prompts": {},
+  "sessions": {
+    "s_5bd540b3c44188": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a89ae3cb-de73-41c7-b531-65df5e4c713a",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
