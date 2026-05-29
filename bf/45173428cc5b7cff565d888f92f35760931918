@@ -1,0 +1,19 @@
+docs/IMPLEMENTATION_PLAN.md
+  s_5bd540b3c44188::t_99236acba0c69c 325-348
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "bf45173428cc5b7cff565d888f92f35760931918",
+  "prompts": {},
+  "sessions": {
+    "s_5bd540b3c44188": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a89ae3cb-de73-41c7-b531-65df5e4c713a",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
