@@ -18,6 +18,7 @@
     "test:visual": "playwright test tests/visual",
     "test:update-snapshots": "playwright test --update-snapshots",
     "build": "pnpm -F @relements/core build",
+    "build:examples": "pnpm -F @relements/core build && pnpm --filter \"./docs/examples/frameworks/*\" run build",
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "changeset": "changeset",
