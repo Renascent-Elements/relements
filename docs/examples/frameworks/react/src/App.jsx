@@ -1,14 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { enhanceTabs } from "@relements/core/behaviors/tabs";
-import { ReTabsElement } from "@relements/core/elements/re-tabs";
-
-// Register the custom element explicitly. A bare `import ".../re-tabs"` would be
-// dropped by bundler tree-shaking (the module is side-effect-free per the
-// package's `sideEffects` field), so the self-registration never runs. Importing
-// the class and defining it here guarantees <re-tabs> is upgraded.
-if (!customElements.get("re-tabs")) {
-  customElements.define("re-tabs", ReTabsElement);
-}
+import "@relements/core/elements/re-tabs";
 
 export default function App() {
   const enhancedRef = useRef(null);

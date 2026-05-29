@@ -25,7 +25,9 @@
   "type": "module",
   "sideEffects": [
     "**/*.css",
-    "dist/**/*.css"
+    "dist/**/*.css",
+    "dist/elements/*.js",
+    "src/elements/*.js"
   ],
   "files": [
     "dist",
