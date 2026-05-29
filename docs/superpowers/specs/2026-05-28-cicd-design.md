@@ -89,7 +89,7 @@ New devDependency at workspace root: `@changesets/cli`.
 
 - `contents: write` — push the Version Packages PR branch + create tag.
 - `pull-requests: write` — open/update the Version Packages PR.
-- `id-token: write` — required for npm provenance (OIDC token from GitHub).
+- `id-token: write` — required for npm Trusted Publishing OIDC and provenance attestation.
 
 **Single job:**
 
@@ -98,7 +98,7 @@ release:
   runs-on: ubuntu-latest
   steps:
     - checkout (fetch-depth: 0)
-    - setup pnpm + Node 20 with cache
+    - setup pnpm + Node 22 with cache (Node 22.14+ ships npm 11.5.1+, required for Trusted Publishing)
     - pnpm install --frozen-lockfile
     - pnpm build
     - changesets/action@v1
@@ -107,8 +107,9 @@ release:
           publish: pnpm changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN:    ${{ secrets.NPM_TOKEN }}
 ```
+
+**npm Trusted Publishing (OIDC):** publishing uses npm's Trusted Publishing flow rather than a long-lived `NPM_TOKEN`. At publish time, GitHub Actions mints a short-lived OIDC token; npm verifies that the token's claims match the trusted-publisher record (org + repo + workflow filename) registered on npmjs.com for `@relements/core`. No secret is stored in GitHub.
 
 The `changesets/action@v1` step automatically detects mode:
 
@@ -171,9 +172,14 @@ The workflow runs `pnpm build` and `pnpm changeset publish` directly (not via th
 
 ## Manual Setup Steps (One-Time, Maintainer)
 
-1. **npm:** Create a granular automation token at npmjs.com → Access Tokens → Granular Access Token → scope: publish on `@relements/core`. No 2FA prompt on publish from this token type.
-2. **GitHub:** Settings → Secrets and variables → Actions → New repository secret → name `NPM_TOKEN`, value the token from step 1.
-3. **GitHub:** Settings → Actions → General → Workflow permissions → enable "Allow GitHub Actions to create and approve pull requests" (needed so `changesets/action@v1` can open the Version Packages PR).
+1. **npm Trusted Publisher:** on the `@relements/core` package page on npmjs.com → Settings → Trusted Publisher → Add. Choose **GitHub Actions** and fill in:
+   - Organization or user: `Renascent-Elements`
+   - Repository: `relements`
+   - Workflow filename: `release.yml`
+   - Environment name: leave blank (no GitHub Environments in use)
+2. **GitHub:** Settings → Actions → General → Workflow permissions → enable "Allow GitHub Actions to create and approve pull requests" (needed so `changesets/action@v1` can open the Version Packages PR).
+
+No `NPM_TOKEN` secret is required — Trusted Publishing handles authentication via OIDC.
 
 ## Out of Scope
 
