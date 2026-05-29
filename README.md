@@ -4,9 +4,9 @@ A small, framework-neutral design system by [Renascent Elements](https://renasce
 
 ## Packages
 
-| Package | Version | Description |
-|---|---|---|
-| [`@relements/core`](./packages/core) | 0.1.1 | Tokens, component styles, JS behaviors, custom elements |
+| Package                              | Version | Description                                             |
+| ------------------------------------ | ------- | ------------------------------------------------------- |
+| [`@relements/core`](./packages/core) | 0.1.1   | Tokens, component styles, JS behaviors, custom elements |
 
 ## Principles
 

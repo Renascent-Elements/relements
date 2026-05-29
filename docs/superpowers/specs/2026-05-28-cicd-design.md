@@ -57,12 +57,12 @@ New devDependency at workspace root: `@changesets/cli`.
 
 **Jobs (parallel, single OS / single Node version):**
 
-| Job                | Trigger                | Steps                                                                  |
-| ------------------ | ---------------------- | ---------------------------------------------------------------------- |
-| `lint`             | PR + push to main      | checkout → setup pnpm/node → install → `pnpm lint`                     |
-| `unit-build`       | PR + push to main      | checkout → setup pnpm/node → install → `pnpm test:unit` → `pnpm build` |
-| `e2e`              | PR + push to main      | checkout → setup pnpm/node → install → install Chromium → `pnpm test:browser` |
-| `update-snapshots` | `workflow_dispatch`    | checkout → setup pnpm/node → install → install Chromium → `pnpm test:update-snapshots` → upload `-linux.png` artifact |
+| Job                | Trigger             | Steps                                                                                                                 |
+| ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `lint`             | PR + push to main   | checkout → setup pnpm/node → install → `pnpm lint`                                                                    |
+| `unit-build`       | PR + push to main   | checkout → setup pnpm/node → install → `pnpm test:unit` → `pnpm build`                                                |
+| `e2e`              | PR + push to main   | checkout → setup pnpm/node → install → install Chromium → `pnpm test:browser`                                         |
+| `update-snapshots` | `workflow_dispatch` | checkout → setup pnpm/node → install → install Chromium → `pnpm test:update-snapshots` → upload `-linux.png` artifact |
 
 **Shared setup steps** in every job:
 
