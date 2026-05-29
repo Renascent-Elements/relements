@@ -322,6 +322,30 @@ Acceptance criteria:
 - Framework wrappers render the same canonical HTML, class, attribute, token, and event contract.
 - No wrapper-only component behavior is introduced.
 
+## Phase 9: CI/CD
+
+Goal: automate validation on every PR and ship npm releases via Changesets with provenance.
+
+Workflows:
+
+- `.github/workflows/ci.yml` — parallel jobs (lint, unit-build, e2e) on PR and push to main.
+- `.github/workflows/update-snapshots.yml` — `workflow_dispatch`-only job that regenerates Linux Playwright baselines and uploads them as an artifact.
+- `.github/workflows/release.yml` — Changesets action on push to main; opens "Version Packages" PR or publishes to npm with provenance.
+
+Tooling:
+
+- `@changesets/cli` + `@changesets/changelog-github` at workspace root.
+- `.changeset/config.json` configures base branch `main`, public access, GitHub changelog generator.
+- `packages/core/CHANGELOG.md` maintained by Changesets.
+
+Acceptance criteria:
+
+- Opening a PR triggers three parallel jobs; failures block merge.
+- Pushing to main with a pending changeset opens or updates a Version Packages PR.
+- Merging the Version Packages PR publishes `@relements/core` to npm with provenance.
+- macOS contributors update visual snapshots locally; CI uses Linux baselines without conflict.
+- Phase 9 is documented in this plan.
+
 ## Element Development Checklist
 
 Every new element must include:
