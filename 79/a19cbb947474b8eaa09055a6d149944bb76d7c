@@ -1,0 +1,23 @@
+docs/examples/frameworks/svelte/package.json
+  s_abd3e0e9bbbfdd::t_d351707516df28 1-18
+docs/examples/frameworks/svelte/vite.config.js
+  s_abd3e0e9bbbfdd::t_a01b78f3596661 1-7
+pnpm-lock.yaml
+  ai_agent 70-85,956-975,1003-1005,1170-1173,1189-1192,1273-1276,1331-1334,1343-1345,1433-1435,1449-1456,1670-1672,1724-1727,1817-1819,2207-2210,2401-2408,2474-2476,3178-3203,3237-3238,3470-3471,3480-3481,3559-3560,3597-3598,3603-3604,3774-3775,3788-3793,4002-4005,4045-4046,4107-4108,4449-4469,4617-4620,4691-4692
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "79a19cbb947474b8eaa09055a6d149944bb76d7c",
+  "prompts": {},
+  "sessions": {
+    "s_abd3e0e9bbbfdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "36e3e578-7db5-49f9-b701-ae643e461d2d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
