@@ -1,0 +1,19 @@
+packages/core/src/elements/re-tabs.js
+  s_abd3e0e9bbbfdd::t_e2175052a3dd45 67-69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "f8521b52f43a8361cb87b801eefbaa4b6d1e89fc",
+  "prompts": {},
+  "sessions": {
+    "s_abd3e0e9bbbfdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "36e3e578-7db5-49f9-b701-ae643e461d2d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
