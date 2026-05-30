@@ -1,0 +1,9 @@
+docs/examples/frameworks/html/index.html
+  ai_agent 29-30,32,38-52,54-92,94-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "166bac5117a67686fd22e7ef47188d3f1f020c94",
+  "prompts": {}
+}
