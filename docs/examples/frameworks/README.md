@@ -14,6 +14,9 @@ Every example renders:
 The DOM, class names, `--re-*` tokens, and `re-change` event contract are identical
 across all five. Only the framework glue differs.
 
+Browse all five side by side: open [`_index.html`](./_index.html) (after
+`pnpm build:examples`).
+
 ## Run a single app
 
 ```bash
