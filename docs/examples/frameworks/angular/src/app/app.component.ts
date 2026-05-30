@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   ElementRef,
@@ -88,7 +87,7 @@ import "@relements/core/elements/re-tabs";
 
       <section aria-labelledby="ce-h">
         <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
-        <re-tabs id="ce" #ce aria-label="Custom element" (re-change)="onChange($event)">
+        <re-tabs id="ce" aria-label="Custom element" (re-change)="onChange($event)">
           <div class="re-tabs__list" role="tablist" aria-label="Custom element">
             <button
               class="re-tab"
@@ -157,29 +156,13 @@ import "@relements/core/elements/re-tabs";
     </main>
   `,
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy {
   @ViewChild("enhanced", { static: true }) enhanced!: ElementRef<HTMLElement>;
-  @ViewChild("ce", { static: true }) ce!: ElementRef<HTMLElement>;
   lastTab = "none";
   private controller: { destroy: () => void } | null = null;
 
   ngOnInit(): void {
     this.controller = enhanceTabs(this.enhanced.nativeElement);
-  }
-
-  ngAfterViewInit(): void {
-    // Angular connects the <re-tabs> host to the DOM before projecting its
-    // children, so the element's connectedCallback runs enhanceTabs() against
-    // an empty host and wires nothing. Once the view (and the projected tabs)
-    // exist, detach and re-attach the host so its disconnected/connected
-    // lifecycle re-runs with the tab markup present.
-    const host = this.ce.nativeElement;
-    const parent = host.parentNode;
-    const next = host.nextSibling;
-    if (parent) {
-      parent.removeChild(host);
-      parent.insertBefore(host, next);
-    }
   }
 
   ngOnDestroy(): void {
