@@ -26,148 +26,73 @@
 
     <p><button class="re-button" type="button">Save</button></p>
 
-    <section aria-labelledby="enh-h">
-      <h2 id="enh-h">enhanceTabs</h2>
-      <div class="re-tabs" data-re-tabs id="enhanced">
-        <div class="re-tabs__list" role="tablist" aria-label="Enhanced">
-          <button
-            class="re-tab"
-            role="tab"
-            id="e-tab-1"
-            aria-controls="e-panel-1"
-            aria-selected="true"
-          >
-            One
-          </button>
-          <button
-            class="re-tab"
-            role="tab"
-            id="e-tab-2"
-            aria-controls="e-panel-2"
-            aria-selected="false"
-            tabindex="-1"
-          >
-            Two
-          </button>
-          <button
-            class="re-tab"
-            role="tab"
-            id="e-tab-3"
-            aria-controls="e-panel-3"
-            aria-selected="false"
-            tabindex="-1"
-          >
-            Three
-          </button>
-        </div>
-        <section
-          class="re-tabpanel"
-          role="tabpanel"
-          id="e-panel-1"
-          aria-labelledby="e-tab-1"
-          tabindex="0"
-        >
-          Panel one
-        </section>
-        <section
-          class="re-tabpanel"
-          role="tabpanel"
-          id="e-panel-2"
-          aria-labelledby="e-tab-2"
-          tabindex="0"
-          hidden
-        >
-          Panel two
-        </section>
-        <section
-          class="re-tabpanel"
-          role="tabpanel"
-          id="e-panel-3"
-          aria-labelledby="e-tab-3"
-          tabindex="0"
-          hidden
-        >
-          Panel three
-        </section>
-      </div>
-    </section>
+    <!-- Lifecycle demo: mount/unmount the enhanced subtree to exercise destroy(). -->
+    <p><button id="toggle" type="button">Toggle tabs</button></p>
 
-    <section aria-labelledby="ce-h">
-      <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
-      <re-tabs id="ce" aria-label="Custom element">
-        <div class="re-tabs__list" role="tablist" aria-label="Custom element">
-          <button
-            class="re-tab"
-            role="tab"
-            id="c-tab-1"
-            aria-controls="c-panel-1"
-            aria-selected="true"
-          >
-            Alpha
-          </button>
-          <button
-            class="re-tab"
-            role="tab"
-            id="c-tab-2"
-            aria-controls="c-panel-2"
-            aria-selected="false"
-            tabindex="-1"
-          >
-            Beta
-          </button>
-          <button
-            class="re-tab"
-            role="tab"
-            id="c-tab-3"
-            aria-controls="c-panel-3"
-            aria-selected="false"
-            tabindex="-1"
-          >
-            Gamma
-          </button>
-        </div>
-        <section
-          class="re-tabpanel"
-          role="tabpanel"
-          id="c-panel-1"
-          aria-labelledby="c-tab-1"
-          tabindex="0"
-        >
-          Alpha panel
-        </section>
-        <section
-          class="re-tabpanel"
-          role="tabpanel"
-          id="c-panel-2"
-          aria-labelledby="c-tab-2"
-          tabindex="0"
-          hidden
-        >
-          Beta panel
-        </section>
-        <section
-          class="re-tabpanel"
-          role="tabpanel"
-          id="c-panel-3"
-          aria-labelledby="c-tab-3"
-          tabindex="0"
-          hidden
-        >
-          Gamma panel
-        </section>
-      </re-tabs>
-      <p>Last tab: <output id="last-tab">none</output></p>
-    </section>
+    <div id="demo"></div>
 
     <script type="module">
       import { enhanceTabs } from "/packages/core/src/behaviors/tabs.js";
       import "/packages/core/src/elements/re-tabs.js";
 
-      enhanceTabs(document.getElementById("enhanced"));
+      const demo = document.getElementById("demo");
+      const markup = `
+        <section aria-labelledby="enh-h">
+          <h2 id="enh-h">enhanceTabs</h2>
+          <div class="re-tabs" data-re-tabs id="enhanced">
+            <div class="re-tabs__list" role="tablist" aria-label="Enhanced">
+              <button class="re-tab" role="tab" id="e-tab-1" aria-controls="e-panel-1" aria-selected="true">One</button>
+              <button class="re-tab" role="tab" id="e-tab-2" aria-controls="e-panel-2" aria-selected="false" tabindex="-1">Two</button>
+              <button class="re-tab" role="tab" id="e-tab-3" aria-controls="e-panel-3" aria-selected="false" tabindex="-1">Three</button>
+            </div>
+            <section class="re-tabpanel" role="tabpanel" id="e-panel-1" aria-labelledby="e-tab-1" tabindex="0">Panel one</section>
+            <section class="re-tabpanel" role="tabpanel" id="e-panel-2" aria-labelledby="e-tab-2" tabindex="0" hidden>Panel two</section>
+            <section class="re-tabpanel" role="tabpanel" id="e-panel-3" aria-labelledby="e-tab-3" tabindex="0" hidden>Panel three</section>
+          </div>
+        </section>
 
-      document.getElementById("ce").addEventListener("re-change", (event) => {
-        document.getElementById("last-tab").textContent = event.detail.tabId;
+        <section aria-labelledby="ce-h">
+          <h2 id="ce-h">&lt;re-tabs&gt; custom element</h2>
+          <re-tabs id="ce" aria-label="Custom element">
+            <div class="re-tabs__list" role="tablist" aria-label="Custom element">
+              <button class="re-tab" role="tab" id="c-tab-1" aria-controls="c-panel-1" aria-selected="true">Alpha</button>
+              <button class="re-tab" role="tab" id="c-tab-2" aria-controls="c-panel-2" aria-selected="false" tabindex="-1">Beta</button>
+              <button class="re-tab" role="tab" id="c-tab-3" aria-controls="c-panel-3" aria-selected="false" tabindex="-1">Gamma</button>
+            </div>
+            <section class="re-tabpanel" role="tabpanel" id="c-panel-1" aria-labelledby="c-tab-1" tabindex="0">Alpha panel</section>
+            <section class="re-tabpanel" role="tabpanel" id="c-panel-2" aria-labelledby="c-tab-2" tabindex="0" hidden>Beta panel</section>
+            <section class="re-tabpanel" role="tabpanel" id="c-panel-3" aria-labelledby="c-tab-3" tabindex="0" hidden>Gamma panel</section>
+          </re-tabs>
+          <p>Last tab: <output id="last-tab">none</output></p>
+        </section>
+      `;
+
+      let controller = null;
+
+      function mount() {
+        demo.innerHTML = markup;
+        // Scope enhanceTabs to #enhanced so it does not double-enhance <re-tabs>
+        // (which enhances itself in connectedCallback).
+        controller = enhanceTabs(demo.querySelector("#enhanced"));
+        demo.querySelector("#ce").addEventListener("re-change", (event) => {
+          demo.querySelector("#last-tab").textContent = event.detail.tabId;
+        });
+      }
+
+      function unmount() {
+        // Tear down the enhancer, then remove the subtree (its listeners and the
+        // <re-tabs> element — whose disconnectedCallback also runs — go with it).
+        controller?.destroy();
+        controller = null;
+        demo.innerHTML = "";
+      }
+
+      document.getElementById("toggle").addEventListener("click", () => {
+        if (controller) unmount();
+        else mount();
       });
+
+      mount();
     </script>
   </body>
 </html>
