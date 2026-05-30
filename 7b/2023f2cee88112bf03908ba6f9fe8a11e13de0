@@ -1,0 +1,19 @@
+docs/examples/frameworks/svelte/src/Tabs.svelte
+  s_abd3e0e9bbbfdd::t_5ce3d1441e8aca 1-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "7b2023f2cee88112bf03908ba6f9fe8a11e13de0",
+  "prompts": {},
+  "sessions": {
+    "s_abd3e0e9bbbfdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "36e3e578-7db5-49f9-b701-ae643e461d2d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
