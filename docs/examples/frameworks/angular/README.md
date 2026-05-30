@@ -15,4 +15,7 @@ pnpm dev      # or: pnpm build
   `detail.tabId`.
 - **Behavior lifecycle:** run `enhanceTabs(el.nativeElement)` in `ngOnInit` and
   call `controller.destroy()` in `ngOnDestroy`.
+- **Mount/unmount:** the "Toggle tabs" button demonstrates teardown — `@if`
+  removing `<app-tabs>` runs `ngOnDestroy` (`controller.destroy()`); re-adding
+  runs `ngOnInit`.
 - **Global CSS:** import `@relements/core/index.css` from `src/styles.css`.
