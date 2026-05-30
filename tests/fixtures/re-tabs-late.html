@@ -7,12 +7,16 @@
   <body>
     <re-tabs id="late" aria-label="Late"></re-tabs>
     <output id="last-tab">none</output>
+    <output id="change-count">0</output>
     <script type="module">
       import "/packages/core/src/elements/re-tabs.js";
 
       const host = document.getElementById("late");
+      let count = 0;
       host.addEventListener("re-change", (event) => {
+        count += 1;
         document.getElementById("last-tab").textContent = event.detail.tabId;
+        document.getElementById("change-count").textContent = String(count);
       });
 
       // Project children AFTER the element has connected (simulates frameworks

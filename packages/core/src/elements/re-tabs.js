@@ -64,6 +64,9 @@ export class ReTabsElement extends HTMLElement {
   }
 
   #enhance() {
+    // Idempotent: tear down any prior controller first so a reconnected or
+    // moved host (with children already present) does not double-wire listeners.
+    this.#controller?.destroy();
     this.#controller = enhanceTabs(this);
     // Honor a value attribute if present and different from initial state.
     const initial = this.getAttribute("value");
