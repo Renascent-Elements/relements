@@ -1,0 +1,19 @@
+tests/frameworks/_teardown.ts
+  s_abd3e0e9bbbfdd::t_21bdaf7896d966 5-17,36-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "be768d1191dc4c47a3b79dcd8f84d6e4f8a5b182",
+  "prompts": {},
+  "sessions": {
+    "s_abd3e0e9bbbfdd": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "36e3e578-7db5-49f9-b701-ae643e461d2d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
