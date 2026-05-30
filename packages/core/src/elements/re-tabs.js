@@ -25,6 +25,8 @@ import { enhanceTabs } from "../behaviors/tabs.js";
 export class ReTabsElement extends HTMLElement {
   /** @type {{ destroy: () => void } | null} */
   #controller = null;
+  /** @type {MutationObserver | null} */
+  #observer = null;
 
   static get observedAttributes() {
     return ["value"];
@@ -33,15 +35,42 @@ export class ReTabsElement extends HTMLElement {
   connectedCallback() {
     // Mark the host so enhanceTabs picks it up.
     this.setAttribute("data-re-tabs", "");
+    if (this.#hasTabs()) {
+      this.#enhance();
+    } else {
+      // Some frameworks (e.g. Angular) connect the host before projecting its
+      // children. Enhance once the tabs appear, then stop observing.
+      this.#observer = new MutationObserver(() => {
+        if (this.#hasTabs()) {
+          this.#observer?.disconnect();
+          this.#observer = null;
+          this.#enhance();
+        }
+      });
+      this.#observer.observe(this, { childList: true, subtree: true });
+    }
+  }
+
+  disconnectedCallback() {
+    this.#observer?.disconnect();
+    this.#observer = null;
+    this.#controller?.destroy();
+    this.#controller = null;
+  }
+
+  /** @returns {boolean} */
+  #hasTabs() {
+    return !!this.querySelector('[role="tablist"] [role="tab"]');
+  }
+
+  #enhance() {
+    // Idempotent: tear down any prior controller first so a reconnected or
+    // moved host (with children already present) does not double-wire listeners.
+    this.#controller?.destroy();
     this.#controller = enhanceTabs(this);
     // Honor a value attribute if present and different from initial state.
     const initial = this.getAttribute("value");
     if (initial) this.#selectById(initial);
-  }
-
-  disconnectedCallback() {
-    this.#controller?.destroy();
-    this.#controller = null;
   }
 
   /**

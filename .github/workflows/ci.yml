@@ -63,6 +63,7 @@ jobs:
       - name: Install Playwright system deps (cache hit)
         if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: pnpm exec playwright install-deps chromium
+      - run: pnpm build:examples
       - run: pnpm test:browser
       - name: Upload Playwright report on failure
         if: failure()

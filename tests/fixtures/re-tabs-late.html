@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>re-tabs late children fixture</title>
+  </head>
+  <body>
+    <re-tabs id="late" aria-label="Late"></re-tabs>
+    <output id="last-tab">none</output>
+    <output id="change-count">0</output>
+    <script type="module">
+      import "/packages/core/src/elements/re-tabs.js";
+
+      const host = document.getElementById("late");
+      let count = 0;
+      host.addEventListener("re-change", (event) => {
+        count += 1;
+        document.getElementById("last-tab").textContent = event.detail.tabId;
+        document.getElementById("change-count").textContent = String(count);
+      });
+
+      // Project children AFTER the element has connected (simulates frameworks
+      // like Angular that connect the host before its children exist).
+      requestAnimationFrame(() => {
+        host.innerHTML = `
+          <div class="re-tabs__list" role="tablist" aria-label="Late">
+            <button class="re-tab" role="tab" id="l-tab-1" aria-controls="l-panel-1" aria-selected="true">One</button>
+            <button class="re-tab" role="tab" id="l-tab-2" aria-controls="l-panel-2" aria-selected="false" tabindex="-1">Two</button>
+          </div>
+          <section class="re-tabpanel" role="tabpanel" id="l-panel-1" aria-labelledby="l-tab-1" tabindex="0">One</section>
+          <section class="re-tabpanel" role="tabpanel" id="l-panel-2" aria-labelledby="l-tab-2" tabindex="0" hidden>Two</section>
+        `;
+      });
+    </script>
+  </body>
+</html>
