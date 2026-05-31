@@ -62,7 +62,11 @@ test.describe("Foundation: CSS loading and tokens", () => {
     expect(themedBg).not.toBe(bodyBg);
   });
 
-  test("applies the focus ring on tab into a link", async ({ page }) => {
+  test("applies the focus ring on tab into a link", async ({ page, browserName }) => {
+    // WebKit omits links from sequential (Tab) focus navigation unless macOS
+    // "Full Keyboard Access" is enabled — a browser/OS policy, not a styling
+    // gap. The focus-ring CSS is exercised on Tab-focusable controls elsewhere.
+    test.skip(browserName === "webkit", "WebKit does not Tab to links by default");
     await page.keyboard.press("Tab");
     const focused = await page.evaluate(() => document.activeElement?.tagName);
     expect(focused).toBe("A");

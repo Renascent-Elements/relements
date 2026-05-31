@@ -17,7 +17,7 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - name: Regenerate Linux snapshots
         run: pnpm test:update-snapshots
       - name: Upload Linux snapshots

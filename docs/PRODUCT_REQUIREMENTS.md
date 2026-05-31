@@ -219,7 +219,7 @@ The stable public API should avoid:
 
 ## Browser Support
 
-The design system targets modern evergreen browsers.
+The design system targets modern evergreen browsers. The official support tiers and tested floor are documented in [BROWSER_SUPPORT.md](./BROWSER_SUPPORT.md).
 
 Baseline usage should work with:
 
@@ -364,7 +364,6 @@ Success criteria:
 
 ## Open Questions
 
-- What browser support baseline should be officially documented?
 - Should the npm `@relements` scope be registered as an organization or owned by an individual maintainer account?
 - Should the first documentation site remain plain HTML or use a static site generator later?
 - Should Shadow DOM be used by default for custom elements, or only for specific components?

@@ -4,9 +4,9 @@ A small, framework-neutral design system by [Renascent Elements](https://renasce
 
 ## Packages
 
-| Package                              | Version | Description                                             |
-| ------------------------------------ | ------- | ------------------------------------------------------- |
-| [`@relements/core`](./packages/core) | 0.1.1   | Tokens, component styles, JS behaviors, custom elements |
+| Package                              | Version                                                                                               | Description                                             |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [`@relements/core`](./packages/core) | [![npm](https://img.shields.io/npm/v/@relements/core)](https://www.npmjs.com/package/@relements/core) | Tokens, component styles, JS behaviors, custom elements |
 
 ## Principles
 
@@ -15,6 +15,10 @@ A small, framework-neutral design system by [Renascent Elements](https://renasce
 - **Framework-neutral** — the public API is HTML attributes, CSS classes, and DOM events
 - **Accessible by default** — native elements, ARIA patterns, keyboard navigation
 - **Small surface** — one CSS file for consumers with no build step required
+
+## Browser support
+
+Modern evergreen browsers, in two tiers — a broad HTML + CSS baseline plus progressively-enhanced features that degrade gracefully. CI runs the full suite on Chromium, Firefox, and WebKit. See [docs/BROWSER_SUPPORT.md](./docs/BROWSER_SUPPORT.md).
 
 ## Repository structure
 
@@ -56,13 +60,22 @@ pnpm exec http-server . -p 4173 -c-1
 # open http://localhost:4173/docs/examples/
 ```
 
-## Publishing
+## Releasing
 
-```bash
-pnpm --filter @relements/core publish
-```
+Releases are automated with [Changesets](https://github.com/changesets/changesets) and GitHub Actions — no manual `npm publish`.
 
-`prepublishOnly` builds `dist/` automatically before the package goes out.
+1. In your PR, add a changeset describing the change:
+   ```bash
+   pnpm changeset
+   ```
+2. Merge the PR to `main`. The release workflow opens (or updates) a **"version packages"** PR that bumps the version and updates the changelog.
+3. Merge that PR. The workflow builds `dist/` in CI and publishes `@relements/core` to npm via [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC) with SLSA provenance.
+
+See `.github/workflows/release.yml`.
+
+## Versioning
+
+Relements follows semantic versioning. The public API surface and what counts as a breaking change are defined in [docs/VERSIONING.md](./docs/VERSIONING.md).
 
 ## License
 

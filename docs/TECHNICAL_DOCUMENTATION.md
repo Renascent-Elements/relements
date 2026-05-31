@@ -695,7 +695,7 @@ Build output should preserve:
 
 ## Versioning
 
-Use semantic versioning.
+Use semantic versioning. See [VERSIONING.md](./VERSIONING.md) for the authoritative policy — the public API surface, breaking-change rules (including visual changes), and the deprecation policy.
 
 Breaking changes include:
 
