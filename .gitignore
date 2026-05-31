@@ -28,3 +28,6 @@ Thumbs.db
 .claude/settings.local.json
 .claude/*.local.*
 .playwright-mcp/
+
+# Superpowers planning artifacts (agent-generated, not published docs)
+docs/superpowers/
