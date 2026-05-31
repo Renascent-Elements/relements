@@ -1,0 +1,19 @@
+.gitignore
+  s_029230726e9701::t_8f455ee9e7fbae 31-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "5f74024046abd920303ddd0c8d5999e17010043b",
+  "prompts": {},
+  "sessions": {
+    "s_029230726e9701": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "21deed3e-6d03-4095-b849-7e577b8e2fe0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
