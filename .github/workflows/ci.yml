@@ -56,13 +56,15 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
-      - name: Install Playwright Chromium
+          # Hash playwright.config.ts so changing the browser set busts the cache
+          # (otherwise a stale chromium-only cache skips installing firefox/webkit).
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}-${{ hashFiles('playwright.config.ts') }}
+      - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
       - name: Install Playwright system deps (cache hit)
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps chromium
+        run: pnpm exec playwright install-deps chromium firefox webkit
       - run: pnpm build:examples
       - run: pnpm test:browser
       - name: Upload Playwright report on failure
