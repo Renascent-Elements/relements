@@ -1,0 +1,19 @@
+.github/workflows/update-snapshots.yml
+  s_c58f0f42bb63b7::t_53d3a1bd088cd1 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "425b696b6602b137bed9269c4eadb7287f1560ae",
+  "prompts": {},
+  "sessions": {
+    "s_c58f0f42bb63b7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "683279e2-285a-45a8-996c-fa924a559d76",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
