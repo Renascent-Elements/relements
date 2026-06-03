@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Tag</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="tag">
+    <header>
+      <h1>Tag</h1>
+      <p>Compact labels, optionally removable.</p>
+    </header>
+
+    <section aria-labelledby="variants-heading" data-testid="variants">
+      <h2 id="variants-heading">Variants</h2>
+      <div class="row">
+        <span class="re-tag">Neutral</span>
+        <span class="re-tag" data-variant="info">Info</span>
+        <span class="re-tag" data-variant="success">Success</span>
+        <span class="re-tag" data-variant="warning">Warning</span>
+        <span class="re-tag" data-variant="danger">Danger</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="removable-heading" data-testid="removable">
+      <h2 id="removable-heading">Removable</h2>
+      <div class="row" id="filters">
+        <span class="re-tag" data-re-dismissible>
+          Design
+          <button class="re-tag__remove" type="button" data-re-dismiss aria-label="Remove Design">
+            ×
+          </button>
+        </span>
+        <span class="re-tag" data-re-dismissible>
+          Engineering
+          <button
+            class="re-tag__remove"
+            type="button"
+            data-re-dismiss
+            aria-label="Remove Engineering"
+          >
+            ×
+          </button>
+        </span>
+      </div>
+    </section>
+
+    <script type="module">
+      import { enhanceDismissible } from "/packages/core/src/behaviors/dismissible.js";
+      window.__reController = enhanceDismissible(document);
+    </script>
+  </body>
+</html>

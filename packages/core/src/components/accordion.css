@@ -1,0 +1,38 @@
+/**
+ * Relements accordion.
+ *
+ * A group of <details> disclosures. Give every <details> the same `name`
+ * attribute and the browser keeps a single panel open at a time — natively,
+ * with no JavaScript.
+ *
+ *   <div class="re-accordion">
+ *     <details class="re-disclosure" name="faq" open>
+ *       <summary class="re-disclosure__summary">First</summary>
+ *       <div class="re-disclosure__body">…</div>
+ *     </details>
+ *     <details class="re-disclosure" name="faq">…</details>
+ *   </div>
+ *
+ * Progressive enhancement: browsers without exclusive `<details name>`
+ * support simply allow multiple panels open — still fully functional.
+ * Reuses the disclosure component for each item's summary / chevron / body.
+ */
+
+@layer re.components {
+  .re-accordion {
+    display: flex;
+    flex-direction: column;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    overflow: hidden; /* clip joined items to the rounded corners */
+  }
+
+  /* Items sit flush; the group owns the outer border + radius. */
+  .re-accordion > .re-disclosure {
+    border-width: 0;
+    border-radius: 0;
+  }
+  .re-accordion > .re-disclosure + .re-disclosure {
+    border-block-start: var(--re-border-default);
+  }
+}

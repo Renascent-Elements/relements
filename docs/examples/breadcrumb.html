@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Breadcrumb</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="breadcrumb">
+    <header>
+      <h1>Breadcrumb</h1>
+      <p>Navigation trail with <code>aria-current="page"</code> on the last item.</p>
+    </header>
+
+    <section aria-labelledby="trail-heading" data-testid="breadcrumb">
+      <h2 id="trail-heading">Trail</h2>
+      <nav class="re-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Components</a></li>
+          <li><a aria-current="page">Breadcrumb</a></li>
+        </ol>
+      </nav>
+    </section>
+  </body>
+</html>
