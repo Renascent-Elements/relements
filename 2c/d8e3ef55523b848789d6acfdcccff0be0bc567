@@ -1,0 +1,99 @@
+packages/core/src/components/accordion.css
+  s_3e611cd326f406::t_0af057d7c567bd 1-38
+docs/examples/tag.html
+  s_3e611cd326f406::t_660c062825dd90 47
+  s_3e611cd326f406::t_e7a82b18efa8a5 1-46,48-70
+packages/core/src/components/card.css
+  s_3e611cd326f406::t_bd6733a8c66440 28-32
+  s_3e611cd326f406::t_190646388fa9f2 1-27,33-65
+tests/a11y/switch.a11y.spec.ts
+  s_3e611cd326f406::t_a9b0cf88bf0d62 1-10
+tests/visual/tag.visual.spec.ts
+  s_3e611cd326f406::t_a2501d12b01c11 1-11
+packages/core/src/index.css
+  s_3e611cd326f406::t_e7a3e27d84b06e 31-38
+packages/core/src/components/switch.css
+  s_3e611cd326f406::t_c503fc632e686c 1-66
+tests/a11y/accordion.a11y.spec.ts
+  s_3e611cd326f406::t_c85f0185a125af 1-10
+tests/visual/alert.visual.spec.ts
+  s_3e611cd326f406::t_45e3fce38e1541 1-11
+packages/core/src/tokens.css
+  s_3e611cd326f406::t_660c062825dd90 82-86,89-93,96-100,103-107,225-229,232-236,239-243,246-250
+  s_3e611cd326f406::t_d6490b7340f2f3 223-224,230-231,237-238,244-245,251-253
+  s_3e611cd326f406::t_d3dc58b739891d 78-81,87-88,94-95,101-102,108-110
+tests/visual/switch.visual.spec.ts
+  s_3e611cd326f406::t_c5e288bc1e76c8 1-11
+docs/PROGRESS.md
+  s_3e611cd326f406::t_8e864184385bf9 53-66
+packages/core/src/components/badge.css
+  s_3e611cd326f406::t_32ac3184708b58 1-44
+packages/core/src/components/avatar.css
+  s_3e611cd326f406::t_26029f5a5a516f 1-48
+docs/examples/switch.html
+  s_3e611cd326f406::t_660c062825dd90 38-40
+  s_3e611cd326f406::t_2016325e801af8 1-37,41-50
+tests/a11y/tag.a11y.spec.ts
+  s_3e611cd326f406::t_364af5d25a5575 1-10
+docs/examples/breadcrumb.html
+  s_3e611cd326f406::t_4aeb9b1aa57c57 1-36
+tests/visual/avatar.visual.spec.ts
+  s_3e611cd326f406::t_f29ef45982bb23 1-11
+tests/visual/accordion.visual.spec.ts
+  s_3e611cd326f406::t_351c29bbfde78a 1-11
+tests/a11y/badge.a11y.spec.ts
+  s_3e611cd326f406::t_ec18f7c28ba8a1 1-10
+tests/a11y/card.a11y.spec.ts
+  s_3e611cd326f406::t_43838d05304df0 1-10
+packages/core/src/components/tag.css
+  s_3e611cd326f406::t_8a5f1748f59f0a 1-80
+docs/examples/accordion.html
+  s_3e611cd326f406::t_13fb84f875b831 1-50
+tests/a11y/breadcrumb.a11y.spec.ts
+  s_3e611cd326f406::t_5d678334fb5ce3 1-10
+docs/examples/avatar.html
+  s_3e611cd326f406::t_647ab53a7a7051 1-50
+.changeset/eight-new-components.md
+  s_3e611cd326f406::t_6fdffc6526deec 1-9
+packages/core/src/components/alert.css
+  s_3e611cd326f406::t_65b2cea06edd1c 1-89
+docs/examples/alert.html
+  s_3e611cd326f406::t_660c062825dd90 66-68
+  s_3e611cd326f406::t_fe3937b9535602 1-65,69-77
+tests/a11y/avatar.a11y.spec.ts
+  s_3e611cd326f406::t_ef120c3ca990a3 1-10
+docs/examples/badge.html
+  s_3e611cd326f406::t_034413622f9bb2 1-47
+tests/visual/badge.visual.spec.ts
+  s_3e611cd326f406::t_4b2d77e6cfd40d 1-11
+packages/core/package.json
+  s_3e611cd326f406::t_adc49ba3ea654c 55-62
+docs/examples/index.html
+  s_3e611cd326f406::t_3509bd53b570aa 45-52
+docs/examples/card.html
+  s_3e611cd326f406::t_731d8a973749e3 1-51
+tests/visual/card.visual.spec.ts
+  s_3e611cd326f406::t_2f41fc3befaa71 1-11
+packages/core/src/components/breadcrumb.css
+  s_3e611cd326f406::t_c3d5700dae8325 1-62
+packages/core/README.md
+  s_3e611cd326f406::t_27d707f90c25be 71-78
+tests/visual/breadcrumb.visual.spec.ts
+  s_3e611cd326f406::t_2c09e7f87cb681 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "2cd8e3ef55523b848789d6acfdcccff0be0bc567",
+  "prompts": {},
+  "sessions": {
+    "s_3e611cd326f406": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9672fee-6e8d-44ff-915e-eac0ef5a66c1",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
