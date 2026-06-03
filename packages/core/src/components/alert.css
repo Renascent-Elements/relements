@@ -1,0 +1,89 @@
+/**
+ * Relements alert / callout.
+ *
+ * A status message block. Add role="status" (polite) or role="alert"
+ * (assertive) on the host element for screen-reader semantics.
+ *
+ *   <div class="re-alert" data-variant="success" role="status">
+ *     <div class="re-alert__content">
+ *       <p class="re-alert__title">Saved</p>
+ *       Your changes are live.
+ *     </div>
+ *   </div>
+ *
+ * Dismissible: mark the host [data-re-dismissible], add a [data-re-dismiss]
+ * button, and call enhanceDismissible().
+ *
+ * Variants (data-variant): info (default), success, warning, danger.
+ */
+
+@layer re.components {
+  .re-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--re-space-3);
+    padding: var(--re-space-3) var(--re-space-4);
+    border: var(--re-border-width) solid var(--re-color-info-border);
+    border-radius: var(--re-radius-md);
+    background-color: var(--re-color-info-surface);
+    color: var(--re-color-text);
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-alert__content {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+  }
+
+  .re-alert__title {
+    margin: 0 0 var(--re-space-1);
+    font-weight: var(--re-font-weight-semibold);
+    color: var(--re-color-info-text);
+  }
+
+  .re-alert__dismiss {
+    appearance: none;
+    flex-shrink: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: var(--re-space-1) var(--re-space-2);
+    border-radius: var(--re-radius-sm);
+    font-size: var(--re-size-text-lg);
+    line-height: 1;
+    color: var(--re-color-text-muted);
+  }
+  .re-alert__dismiss:hover {
+    color: var(--re-color-text);
+    background: color-mix(in oklab, var(--re-color-text) 10%, transparent);
+  }
+  .re-alert__dismiss:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* ---- Variants -------------------------------------------------------- */
+  .re-alert[data-variant="success"] {
+    border-color: var(--re-color-success-border);
+    background-color: var(--re-color-success-surface);
+  }
+  .re-alert[data-variant="success"] .re-alert__title {
+    color: var(--re-color-success-text);
+  }
+
+  .re-alert[data-variant="warning"] {
+    border-color: var(--re-color-warning-border);
+    background-color: var(--re-color-warning-surface);
+  }
+  .re-alert[data-variant="warning"] .re-alert__title {
+    color: var(--re-color-warning-text);
+  }
+
+  .re-alert[data-variant="danger"] {
+    border-color: var(--re-color-danger-border);
+    background-color: var(--re-color-danger-surface);
+  }
+  .re-alert[data-variant="danger"] .re-alert__title {
+    color: var(--re-color-danger-text);
+  }
+}

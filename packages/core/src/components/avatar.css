@@ -1,0 +1,48 @@
+/**
+ * Relements avatar.
+ *
+ * Circular user image, or a text-initials fallback.
+ *
+ *   <span class="re-avatar"><img src="…" alt="Ada Lovelace" /></span>
+ *   <span class="re-avatar" data-size="lg" role="img" aria-label="Ada Lovelace">AL</span>
+ *
+ * Sizes (data-size): sm, md (default), lg.
+ */
+
+@layer re.components {
+  .re-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    inline-size: var(--re-control-height-md);
+    block-size: var(--re-control-height-md);
+    border-radius: var(--re-radius-pill);
+    overflow: hidden;
+    background-color: var(--re-color-bg-muted);
+    color: var(--re-color-text-muted);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    line-height: 1;
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  .re-avatar > img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- Sizes ----------------------------------------------------------- */
+  .re-avatar[data-size="sm"] {
+    inline-size: var(--re-control-height-sm);
+    block-size: var(--re-control-height-sm);
+    font-size: var(--re-size-text-xs);
+  }
+  .re-avatar[data-size="lg"] {
+    inline-size: var(--re-control-height-lg);
+    block-size: var(--re-control-height-lg);
+    font-size: var(--re-size-text-md);
+  }
+}

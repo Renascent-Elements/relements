@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Badge</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="badge">
+    <header>
+      <h1>Badge</h1>
+      <p>Small inline labels for counts and statuses.</p>
+    </header>
+
+    <section aria-labelledby="variants-heading" data-testid="variants">
+      <h2 id="variants-heading">Variants</h2>
+      <div class="row">
+        <span class="re-badge">Neutral</span>
+        <span class="re-badge" data-variant="info">Info</span>
+        <span class="re-badge" data-variant="success">Success</span>
+        <span class="re-badge" data-variant="warning">Warning</span>
+        <span class="re-badge" data-variant="danger">Danger</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="inline-heading" data-testid="inline">
+      <h2 id="inline-heading">Inline</h2>
+      <p>Notifications <span class="re-badge" data-variant="danger">3</span></p>
+    </section>
+  </body>
+</html>

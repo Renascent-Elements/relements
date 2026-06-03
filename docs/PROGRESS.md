@@ -43,14 +43,27 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] popover
 - [x] toast
 
-_(accordion skipped — `details` covers the case)_
-
 ## Phase 6: Custom Elements
 
 - [x] `re-tabs`
 - [x] `re-toast`
 - [x] `re-menu`
 - [x] `re-popover`
+
+## Component expansion (0.2.0)
+
+High-value commons, pure CSS in the `re.components` layer. Visual snapshot
+baselines are generated on CI (Linux); marked `[x]` once `pnpm test` is green
+and the work is committed.
+
+- [~] alert (reuses `enhanceDismissible`)
+- [~] badge
+- [~] card
+- [~] tag (removable via `enhanceDismissible`)
+- [~] avatar
+- [~] breadcrumb
+- [~] accordion — grouped exclusive `<details name>` (adds single-open over the existing disclosure)
+- [~] switch (`<input type="checkbox" role="switch">`)
 
 ## Acceptance per element
 

@@ -1,0 +1,65 @@
+/**
+ * Relements card.
+ *
+ * A surface container with optional header / body / footer regions.
+ *
+ *   <article class="re-card">
+ *     <header class="re-card__header">Title</header>
+ *     <div class="re-card__body">…</div>
+ *     <footer class="re-card__footer">…</footer>
+ *   </article>
+ *
+ * Modifiers:
+ *   [data-interactive] — hover elevation + focus ring for clickable cards.
+ */
+
+@layer re.components {
+  .re-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--re-color-surface);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-lg);
+    box-shadow: var(--re-shadow-sm);
+    overflow: hidden; /* clip children to the rounded corners */
+    color: var(--re-color-text);
+  }
+
+  /* Card-as-link: shed the default anchor underline (color already inherits). */
+  a.re-card {
+    text-decoration: none;
+  }
+
+  .re-card__header {
+    padding: var(--re-space-4);
+    font-weight: var(--re-font-weight-semibold);
+    border-block-end: var(--re-border-default);
+  }
+
+  .re-card__body {
+    padding: var(--re-space-4);
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-card__footer {
+    padding: var(--re-space-3) var(--re-space-4);
+    border-block-start: var(--re-border-default);
+    background-color: var(--re-color-bg-subtle);
+  }
+
+  /* ---- Interactive ----------------------------------------------------- */
+  .re-card[data-interactive] {
+    cursor: pointer;
+    transition:
+      box-shadow var(--re-duration-fast) var(--re-easing-standard),
+      border-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-card[data-interactive]:hover {
+    box-shadow: var(--re-shadow-md);
+    border-color: var(--re-color-border-strong);
+  }
+  .re-card[data-interactive]:focus-within {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+}

@@ -1,0 +1,44 @@
+/**
+ * Relements badge.
+ *
+ * Small inline label for counts and statuses. Soft tinted per status.
+ *
+ *   <span class="re-badge">New</span>
+ *   <span class="re-badge" data-variant="success">Active</span>
+ *
+ * Variants (data-variant): neutral (default), info, success, warning, danger.
+ */
+
+@layer re.components {
+  .re-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--re-space-1);
+    padding-inline: var(--re-space-2);
+    padding-block: calc(var(--re-space-1) / 2);
+    font-size: var(--re-size-text-xs);
+    font-weight: var(--re-font-weight-medium);
+    line-height: 1.4;
+    white-space: nowrap;
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-bg-muted);
+    color: var(--re-color-text-muted);
+  }
+
+  .re-badge[data-variant="info"] {
+    background-color: var(--re-color-info-surface);
+    color: var(--re-color-info-text);
+  }
+  .re-badge[data-variant="success"] {
+    background-color: var(--re-color-success-surface);
+    color: var(--re-color-success-text);
+  }
+  .re-badge[data-variant="warning"] {
+    background-color: var(--re-color-warning-surface);
+    color: var(--re-color-warning-text);
+  }
+  .re-badge[data-variant="danger"] {
+    background-color: var(--re-color-danger-surface);
+    color: var(--re-color-danger-text);
+  }
+}

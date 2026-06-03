@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Switch</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-3);
+      }
+      .opt {
+        display: flex;
+        align-items: center;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="switch">
+    <header>
+      <h1>Switch</h1>
+      <p>On/off toggle built on a native checkbox with <code>role="switch"</code>.</p>
+    </header>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <div class="stack">
+        <label class="opt"><input type="checkbox" role="switch" class="re-switch" /> Off</label>
+        <label class="opt"
+          ><input type="checkbox" role="switch" class="re-switch" checked /> On</label
+        >
+        <label class="opt">
+          <input type="checkbox" role="switch" class="re-switch" disabled /> Disabled
+        </label>
+        <label class="opt">
+          <input type="checkbox" role="switch" class="re-switch" checked disabled /> Disabled on
+        </label>
+      </div>
+    </section>
+  </body>
+</html>

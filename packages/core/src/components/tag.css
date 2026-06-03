@@ -1,0 +1,80 @@
+/**
+ * Relements tag / chip.
+ *
+ * Compact label, optionally removable. For removable tags, mark the tag
+ * [data-re-dismissible], add a [data-re-dismiss] button, and call
+ * enhanceDismissible().
+ *
+ *   <span class="re-tag">Design</span>
+ *   <span class="re-tag" data-re-dismissible>
+ *     Filter
+ *     <button class="re-tag__remove" type="button" data-re-dismiss
+ *       aria-label="Remove Filter">×</button>
+ *   </span>
+ *
+ * Variants (data-variant): neutral (default), info, success, warning, danger.
+ */
+
+@layer re.components {
+  .re-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--re-space-1);
+    padding-inline: var(--re-space-2);
+    padding-block: calc(var(--re-space-1) / 2);
+    font-size: var(--re-size-text-xs);
+    line-height: 1.4;
+    white-space: nowrap;
+    border: var(--re-border-width) solid var(--re-color-border);
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-bg-subtle);
+    color: var(--re-color-text);
+  }
+
+  .re-tag__remove {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 1rem;
+    block-size: 1rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--re-radius-pill);
+    background: transparent;
+    color: var(--re-color-text-muted);
+    font-size: var(--re-size-text-sm);
+    line-height: 1;
+    cursor: pointer;
+  }
+  .re-tag__remove:hover {
+    color: var(--re-color-text);
+    background: color-mix(in oklab, var(--re-color-text) 12%, transparent);
+  }
+  .re-tag__remove:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* ---- Variants -------------------------------------------------------- */
+  .re-tag[data-variant="info"] {
+    border-color: var(--re-color-info-border);
+    background-color: var(--re-color-info-surface);
+    color: var(--re-color-info-text);
+  }
+  .re-tag[data-variant="success"] {
+    border-color: var(--re-color-success-border);
+    background-color: var(--re-color-success-surface);
+    color: var(--re-color-success-text);
+  }
+  .re-tag[data-variant="warning"] {
+    border-color: var(--re-color-warning-border);
+    background-color: var(--re-color-warning-surface);
+    color: var(--re-color-warning-text);
+  }
+  .re-tag[data-variant="danger"] {
+    border-color: var(--re-color-danger-border);
+    background-color: var(--re-color-danger-surface);
+    color: var(--re-color-danger-text);
+  }
+}

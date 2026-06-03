@@ -75,6 +75,39 @@
     --re-color-selection-bg: var(--re-color-accent-100);
     --re-color-selection-text: var(--re-color-neutral-900);
 
+    /* ----- Color: status surfaces -------------------------------------- */
+    /* Soft tinted background + border + readable text per status, for
+       alerts, badges, and tags. `info` maps to the accent (brand) scale.
+       Surfaces are derived from the 500 step so subtree theming follows. */
+    --re-color-info-surface: color-mix(
+      in oklab,
+      var(--re-color-accent-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-info-border: var(--re-color-accent-500);
+    --re-color-info-text: var(--re-color-accent-700);
+    --re-color-success-surface: color-mix(
+      in oklab,
+      var(--re-color-success-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-success-border: var(--re-color-success-500);
+    --re-color-success-text: var(--re-color-success-700);
+    --re-color-warning-surface: color-mix(
+      in oklab,
+      var(--re-color-warning-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-warning-border: var(--re-color-warning-500);
+    --re-color-warning-text: var(--re-color-warning-700);
+    --re-color-danger-surface: color-mix(
+      in oklab,
+      var(--re-color-danger-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-danger-border: var(--re-color-danger-500);
+    --re-color-danger-text: var(--re-color-danger-700);
+
     /* ----- Typography -------------------------------------------------- */
     --re-font-sans:
       system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
@@ -186,6 +219,37 @@
       --re-color-focus-ring: var(--re-color-accent-400);
       --re-color-selection-bg: var(--re-color-accent-900);
       --re-color-selection-text: var(--re-color-neutral-50);
+
+      /* Status surfaces: mix harder toward the near-black bg so the tint
+         reads, and lift border/text to brighter steps for contrast. */
+      --re-color-info-surface: color-mix(
+        in oklab,
+        var(--re-color-accent-500) 20%,
+        var(--re-color-bg)
+      );
+      --re-color-info-border: var(--re-color-accent-400);
+      --re-color-info-text: var(--re-color-accent-200);
+      --re-color-success-surface: color-mix(
+        in oklab,
+        var(--re-color-success-500) 20%,
+        var(--re-color-bg)
+      );
+      --re-color-success-border: var(--re-color-success-500);
+      --re-color-success-text: var(--re-color-success-500);
+      --re-color-warning-surface: color-mix(
+        in oklab,
+        var(--re-color-warning-500) 20%,
+        var(--re-color-bg)
+      );
+      --re-color-warning-border: var(--re-color-warning-500);
+      --re-color-warning-text: var(--re-color-warning-500);
+      --re-color-danger-surface: color-mix(
+        in oklab,
+        var(--re-color-danger-500) 20%,
+        var(--re-color-bg)
+      );
+      --re-color-danger-border: var(--re-color-danger-500);
+      --re-color-danger-text: var(--re-color-danger-500);
 
       /* On dark backgrounds the offset gap is invisible, so the border and
          the outer ring appear as two separate blue lines. Remove the gap. */

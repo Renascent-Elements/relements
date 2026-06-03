@@ -1,0 +1,66 @@
+/**
+ * Relements switch.
+ *
+ * A styled on/off toggle built on a native checkbox. Add role="switch" so
+ * assistive tech announces it as a switch; label it like any checkbox.
+ *
+ *   <label>
+ *     <input type="checkbox" role="switch" class="re-switch" />
+ *     Email notifications
+ *   </label>
+ *
+ * States: :checked, :focus-visible, :disabled.
+ */
+
+@layer re.components {
+  .re-switch {
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    inline-size: 2.25rem; /* 36 */
+    block-size: 1.25rem; /* 20 */
+    margin: 0;
+    border: var(--re-border-width) solid var(--re-color-border-strong);
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-bg-muted);
+    cursor: pointer;
+    vertical-align: middle;
+    transition:
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      border-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  /* Thumb — absolutely positioned so travel is symmetric. */
+  .re-switch::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 2px;
+    inset-inline-start: 2px;
+    inline-size: 0.875rem; /* 14 */
+    block-size: 0.875rem;
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-surface);
+    box-shadow: var(--re-shadow-sm);
+    transition: transform var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-switch:checked {
+    background-color: var(--re-color-accent-600);
+    border-color: var(--re-color-accent-600);
+  }
+  .re-switch:checked::before {
+    transform: translateX(1rem); /* 16 */
+  }
+
+  .re-switch:focus-visible {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-switch:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}

@@ -68,6 +68,14 @@ All styled with CSS classes and `data-*` attributes. No JavaScript needed for st
 | `.re-toast-region`       | live region host                | —                                                                  |
 | `.re-progress`           | `<progress>`                    | `data-size`: sm, md, lg                                            |
 | `.re-meter`              | `<meter>`                       | `data-size`: sm, md, lg                                            |
+| `.re-alert`              | `<div>` + `role`                | `data-variant`: info, success, warning, danger; dismissible        |
+| `.re-badge`              | `<span>`                        | `data-variant`: neutral, info, success, warning, danger            |
+| `.re-card`               | `<article>`                     | `__header` / `__body` / `__footer`; `data-interactive`             |
+| `.re-tag`                | `<span>`                        | `data-variant`: neutral, info, success, warning, danger; removable |
+| `.re-avatar`             | `<span>`                        | `data-size`: sm, md, lg; `<img>` or initials                       |
+| `.re-breadcrumb`         | `<nav>` / `<ol>`                | `aria-current="page"` on current                                   |
+| `.re-accordion`          | `<details name>` group          | native single-open; wraps `.re-disclosure`                         |
+| `.re-switch`             | `<input type="checkbox">`       | `role="switch"`; `:checked`, `:disabled`                           |
 
 ## JavaScript behaviors
 

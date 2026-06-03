@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Alert</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="alert">
+    <header>
+      <h1>Alert</h1>
+      <p>Status message blocks. Add <code>role="status"</code> or <code>role="alert"</code>.</p>
+    </header>
+
+    <section aria-labelledby="variants-heading" data-testid="variants">
+      <h2 id="variants-heading">Variants</h2>
+      <div class="stack">
+        <div class="re-alert" role="status">
+          <div class="re-alert__content">
+            <p class="re-alert__title">Heads up</p>
+            This is an informational message.
+          </div>
+        </div>
+        <div class="re-alert" data-variant="success" role="status">
+          <div class="re-alert__content">
+            <p class="re-alert__title">Saved</p>
+            Your changes are live.
+          </div>
+        </div>
+        <div class="re-alert" data-variant="warning" role="status">
+          <div class="re-alert__content">
+            <p class="re-alert__title">Check your input</p>
+            Some fields need attention.
+          </div>
+        </div>
+        <div class="re-alert" data-variant="danger" role="alert">
+          <div class="re-alert__content">
+            <p class="re-alert__title">Something went wrong</p>
+            We couldn't save your changes.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="dismiss-heading" data-testid="dismissible">
+      <h2 id="dismiss-heading">Dismissible</h2>
+      <div class="re-alert" role="status" data-re-dismissible id="dismissible-alert">
+        <div class="re-alert__content">
+          <p class="re-alert__title">Tip</p>
+          You can close this alert.
+        </div>
+        <button type="button" class="re-alert__dismiss" data-re-dismiss aria-label="Dismiss">
+          ×
+        </button>
+      </div>
+    </section>
+
+    <script type="module">
+      import { enhanceDismissible } from "/packages/core/src/behaviors/dismissible.js";
+      window.__reController = enhanceDismissible(document);
+    </script>
+  </body>
+</html>

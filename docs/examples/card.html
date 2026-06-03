@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Card</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .re-card {
+        max-width: 22rem;
+      }
+    </style>
+  </head>
+  <body data-page="card">
+    <header>
+      <h1>Card</h1>
+      <p>Surface container with optional header, body, and footer.</p>
+    </header>
+
+    <section aria-labelledby="card-heading" data-testid="card">
+      <h2 id="card-heading">Header / body / footer</h2>
+      <article class="re-card">
+        <header class="re-card__header">Project settings</header>
+        <div class="re-card__body">
+          <p>Manage how your project builds and deploys.</p>
+        </div>
+        <footer class="re-card__footer">
+          <button class="re-button" data-size="sm">Save</button>
+        </footer>
+      </article>
+    </section>
+
+    <section aria-labelledby="interactive-heading" data-testid="interactive">
+      <h2 id="interactive-heading">Interactive</h2>
+      <a class="re-card" data-interactive href="#">
+        <div class="re-card__body">
+          <strong>Clickable card</strong>
+          <p>The whole card is a link.</p>
+        </div>
+      </a>
+    </section>
+  </body>
+</html>
