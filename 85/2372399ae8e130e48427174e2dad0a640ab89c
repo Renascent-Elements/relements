@@ -1,0 +1,159 @@
+docs/examples/accordion.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 30
+  s_64efcca27e9ec5::t_9586aea3a0cd45 49
+docs/examples/re-toast.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 32
+  s_64efcca27e9ec5::t_9586aea3a0cd45 40
+docs/web/src/content/docs/components/field-group.mdx
+  s_64efcca27e9ec5::t_0d51151885e63e 1-20
+docs/examples/input.html
+  s_64efcca27e9ec5::t_fe66c022eed502 61,66
+  s_64efcca27e9ec5::t_592cd21c5999e5 109
+  s_64efcca27e9ec5::t_60f5087adb0c04 81,86
+  s_64efcca27e9ec5::t_d1b5869ef56aa3 31
+docs/examples/card.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 40,52
+  s_64efcca27e9ec5::t_abd7f2e21551be 30,45
+docs/examples/re-tabs.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 32,95
+docs/examples/tabs.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 32
+  s_64efcca27e9ec5::t_9586aea3a0cd45 96
+docs/web/src/content/docs/components/input.mdx
+  s_64efcca27e9ec5::t_bb67bcf29222ce 1-20
+docs/web/src/content/docs/components/meter.mdx
+  s_64efcca27e9ec5::t_ae5d6fd2661eb4 1-16
+docs/examples/toast.html
+  s_64efcca27e9ec5::t_65dea1f14d36e9 32,41
+docs/examples/breadcrumb.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 27
+  s_64efcca27e9ec5::t_9586aea3a0cd45 35
+docs/examples/textarea.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 31,48,64
+  s_64efcca27e9ec5::t_9586aea3a0cd45 43,59,83
+docs/examples/re-menu.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 27,52
+docs/examples/disclosure.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 51,61
+  s_64efcca27e9ec5::t_abd7f2e21551be 33,56
+docs/web/src/content/docs/components/breadcrumb.mdx
+  s_64efcca27e9ec5::t_97a0edf34fbd66 1-12
+docs/examples/checkbox.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 32,48,53,61
+  s_64efcca27e9ec5::t_9586aea3a0cd45 43,79
+docs/web/src/content/docs/components/re-tabs.mdx
+  s_64efcca27e9ec5::t_fe00880e33c1f8 1-12
+docs/web/src/content/docs/components/avatar.mdx
+  s_64efcca27e9ec5::t_1aa9e77373e184 1-16
+docs/web/src/content/docs/components/popover.mdx
+  s_64efcca27e9ec5::t_dc6a9183979aca 1-16
+docs/examples/select.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 42,62,77,97
+  s_64efcca27e9ec5::t_abd7f2e21551be 31,47,67,82
+docs/examples/popover.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 27,41
+  s_64efcca27e9ec5::t_9586aea3a0cd45 36,80
+docs/web/src/content/docs/components/toast.mdx
+  s_64efcca27e9ec5::t_432062a48971c5 1-12
+docs/web/src/content/docs/components/card.mdx
+  s_64efcca27e9ec5::t_766bc178417b6e 1-16
+docs/web/src/content/docs/components/alert.mdx
+  s_64efcca27e9ec5::t_2bdd42944b22dd 1-16
+docs/examples/tag.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 33,46
+  s_64efcca27e9ec5::t_9586aea3a0cd45 41,66
+docs/web/src/content/docs/components/switch.mdx
+  s_64efcca27e9ec5::t_e3a04584b6134c 1-12
+docs/web/src/content/docs/components/tabs.mdx
+  s_64efcca27e9ec5::t_0f5e6e53ff14d1 1-12
+docs/examples/alert.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 31,63
+  s_64efcca27e9ec5::t_9586aea3a0cd45 58,73
+docs/web/src/content/docs/components/link.mdx
+  s_64efcca27e9ec5::t_3284256286b73b 1-24
+docs/web/src/content/docs/components/disclosure.mdx
+  s_64efcca27e9ec5::t_989ced906631b7 1-16
+docs/examples/radio.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 38,61,84
+  s_64efcca27e9ec5::t_9586aea3a0cd45 56,79,95
+docs/web/src/content/docs/components/menu-button.mdx
+  s_64efcca27e9ec5::t_f2e6a2727ecb07 1-12
+docs/web/src/content/docs/components/re-toast.mdx
+  s_64efcca27e9ec5::t_af142f98ccd551 1-12
+docs/web/src/content/docs/components/validation-message.mdx
+  s_64efcca27e9ec5::t_e141a76f63af97 1-24
+docs/examples/link.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 36,47,59,78
+  s_64efcca27e9ec5::t_abd7f2e21551be 30,41,52,64
+docs/web/src/content/docs/components/tag.mdx
+  s_64efcca27e9ec5::t_e2557cb5c09cff 1-16
+docs/web/src/content/docs/components/accordion.mdx
+  s_64efcca27e9ec5::t_e47647ef00c882 1-12
+docs/examples/dialog.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 30,51,74,97
+docs/web/src/content/docs/components/progress.mdx
+  s_64efcca27e9ec5::t_64dd3bd4100522 1-20
+docs/web/src/content/docs/components/re-menu.mdx
+  s_64efcca27e9ec5::t_785848c5b40b20 1-12
+docs/web/src/content/docs/components/checkbox.mdx
+  s_64efcca27e9ec5::t_32929842796844 1-20
+docs/examples/meter.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 73,84
+  s_64efcca27e9ec5::t_abd7f2e21551be 31,78
+docs/web/src/content/docs/components/radio.mdx
+  s_64efcca27e9ec5::t_9b5b0a2fa7b7a0 1-20
+docs/web/src/content/docs/components/dialog.mdx
+  s_64efcca27e9ec5::t_46fcdf9f07725d 1-16
+docs/web/src/content/docs/components/badge.mdx
+  s_64efcca27e9ec5::t_9e225ceff12a35 1-16
+docs/examples/badge.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 33,46
+  s_64efcca27e9ec5::t_9586aea3a0cd45 41,48
+docs/examples/field-group.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 47,70,85
+  s_64efcca27e9ec5::t_abd7f2e21551be 29,52,75
+docs/examples/progress.html
+  s_64efcca27e9ec5::t_9586aea3a0cd45 42,52,63
+  s_64efcca27e9ec5::t_abd7f2e21551be 31,47,57
+docs/web/src/content/docs/components/textarea.mdx
+  s_64efcca27e9ec5::t_b215e71cd0abf2 1-20
+docs/examples/field.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 34,45,55,75
+  s_64efcca27e9ec5::t_9586aea3a0cd45 40,50,70,82
+docs/examples/validation-message.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 31,47,60,73
+  s_64efcca27e9ec5::t_9586aea3a0cd45 42,55,68,86
+docs/examples/switch.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 36
+  s_64efcca27e9ec5::t_9586aea3a0cd45 49
+docs/web/src/content/docs/components/select.mdx
+  s_64efcca27e9ec5::t_888dda79231865 1-24
+docs/examples/avatar.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 33,44
+  s_64efcca27e9ec5::t_9586aea3a0cd45 39,51
+docs/web/src/content/docs/components/field.mdx
+  s_64efcca27e9ec5::t_cebbcf452cc831 1-24
+docs/examples/re-popover.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 27
+  s_64efcca27e9ec5::t_9586aea3a0cd45 34
+docs/web/src/content/docs/components/re-popover.mdx
+  s_64efcca27e9ec5::t_a21e6b3f8f17ff 1-12
+docs/examples/menu-button.html
+  s_64efcca27e9ec5::t_abd7f2e21551be 27,53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "852372399ae8e130e48427174e2dad0a640ab89c",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
