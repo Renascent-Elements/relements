@@ -1,0 +1,23 @@
+README.md
+  s_64efcca27e9ec5::t_ca3ee438d157ad 5-6
+.github/workflows/docs.yml
+  s_64efcca27e9ec5::t_e16573e3b85851 1-47
+.github/workflows/ci.yml
+  s_64efcca27e9ec5::t_9165af934af757 41-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "2ab04f25d3242d9b987987f547b29e86a3d7a2d5",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
