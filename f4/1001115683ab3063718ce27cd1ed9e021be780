@@ -1,0 +1,25 @@
+docs/web/src/content/docs/guides/versioning.md
+  s_64efcca27e9ec5::t_6ea9ec12fc2bfa 1-72
+docs/web/src/content/docs/guides/html-first.md
+  s_64efcca27e9ec5::t_24da84e0df8453 1-153
+docs/web/src/content/docs/guides/theming.md
+  s_64efcca27e9ec5::t_3f0b4a0116a3a8 1-81
+docs/web/src/content/docs/guides/browser-support.md
+  s_64efcca27e9ec5::t_4b9dc991818390 1-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "f41001115683ab3063718ce27cd1ed9e021be780",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
