@@ -14,5 +14,9 @@
     "@relements/core": "workspace:*",
     "astro": "^5.14.0",
     "sharp": "^0.34.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^5.6.3"
   }
 }
