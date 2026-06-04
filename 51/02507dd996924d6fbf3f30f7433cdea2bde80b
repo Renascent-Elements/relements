@@ -1,0 +1,21 @@
+docs/web/src/lib/demo.ts
+  s_64efcca27e9ec5::t_6571ba4cc0d299 1-44
+tests/unit/demo-extract.spec.ts
+  s_64efcca27e9ec5::t_97c1f7138f1e8a 1-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "5102507dd996924d6fbf3f30f7433cdea2bde80b",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
