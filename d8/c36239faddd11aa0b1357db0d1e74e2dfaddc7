@@ -1,0 +1,37 @@
+pnpm-workspace.yaml
+  s_64efcca27e9ec5::t_aa73cca17bfd0f 4
+docs/web/package.json
+  s_64efcca27e9ec5::t_7ae1abcb4432f9 1-18
+docs/web/src/content.config.ts
+  s_64efcca27e9ec5::t_26972728a77033 1-7
+docs/web/astro.config.mjs
+  s_64efcca27e9ec5::t_19839d91d441b4 1-33
+docs/web/tsconfig.json
+  s_64efcca27e9ec5::t_146dc00bf7df38 1-5
+.prettierignore
+  s_64efcca27e9ec5::t_74bec8ecf8a2b4 3
+docs/web/src/content/docs/index.mdx
+  s_64efcca27e9ec5::t_b37e68aad224c2 1-6
+docs/web/.gitignore
+  s_64efcca27e9ec5::t_0ddbba2de5edce 1-16
+docs/web/src/styles/site.css
+  s_64efcca27e9ec5::t_9870c13652de54 1
+docs/web/src/components/Head.astro
+  s_64efcca27e9ec5::t_67bca32556768f 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "d8c36239faddd11aa0b1357db0d1e74e2dfaddc7",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
