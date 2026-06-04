@@ -1,6 +1,34 @@
 ---
 title: Relements
 description: HTML-first, framework-agnostic design system.
+template: splash
+hero:
+  tagline: An HTML-first, framework-agnostic design system. Native elements, progressive enhancement, zero runtime lock-in.
+  actions:
+    - text: Get started
+      link: /relements/guides/html-first/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/Renascent-Elements/relements
+      icon: external
+      variant: minimal
 ---
 
-Placeholder home page. Replaced in Task 7.
+import Demo from "../../components/Demo.astro";
+
+## Install
+
+```sh
+pnpm add @relements/core
+```
+
+```js
+import "@relements/core/index.css";
+```
+
+## A 30-second example
+
+<Demo src="button.html" name="variants" />
+
+Relements styles native HTML and layers in optional behaviors. No wrappers, no
+framework lock-in — the same class and attribute API works everywhere.
