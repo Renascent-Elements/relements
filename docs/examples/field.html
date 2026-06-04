@@ -31,23 +31,28 @@
 
     <section aria-labelledby="basic-heading" data-testid="basic">
       <h2 id="basic-heading">Basic field</h2>
+      <!-- demo:start name="basic" -->
       <label class="re-field" id="field-basic">
         <span class="re-field__label">Email</span>
         <input class="re-input" type="email" name="email" id="field-basic-input" required />
         <span class="re-field__hint" id="field-basic-hint">Use your work email.</span>
       </label>
+      <!-- demo:end -->
     </section>
 
     <section aria-labelledby="required-heading" data-testid="required">
       <h2 id="required-heading">Required marker</h2>
+      <!-- demo:start name="required" -->
       <label class="re-field">
         <span class="re-field__label" data-required>Full name</span>
         <input class="re-input" type="text" name="name" required id="field-required-input" />
       </label>
+      <!-- demo:end -->
     </section>
 
     <section aria-labelledby="invalid-heading" data-testid="invalid">
       <h2 id="invalid-heading">With validation message</h2>
+      <!-- demo:start name="invalid" -->
       <label class="re-field">
         <span class="re-field__label">Password</span>
         <input
@@ -62,16 +67,19 @@
           Must be at least 8 characters.
         </span>
       </label>
+      <!-- demo:end -->
     </section>
 
     <section aria-labelledby="inline-heading" data-testid="inline">
       <h2 id="inline-heading">Inline (checkbox / radio)</h2>
+      <!-- demo:start name="inline" -->
       <div class="stack">
         <label class="re-field re-field--inline">
           <input class="re-checkbox" type="checkbox" id="field-inline-cb" />
           <span class="re-field__label">Receive marketing email</span>
         </label>
       </div>
+      <!-- demo:end -->
     </section>
 
     <article hidden>

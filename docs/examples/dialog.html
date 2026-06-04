@@ -27,6 +27,7 @@
 
     <section aria-labelledby="modal-heading" data-testid="modal">
       <h2 id="modal-heading">Modal dialog</h2>
+      <!-- demo:start name="modal" -->
       <button type="button" class="re-button" id="open-modal">Open modal</button>
 
       <dialog class="re-dialog" id="modal" aria-labelledby="modal-title">
@@ -47,6 +48,7 @@
         </footer>
       </dialog>
 
+      <!-- demo:end -->
       <script>
         const modal = document.getElementById("modal");
         document.getElementById("open-modal").addEventListener("click", () => modal.showModal());
@@ -69,6 +71,7 @@
 
     <section aria-labelledby="form-heading" data-testid="form-dialog">
       <h2 id="form-heading">Form <code>method="dialog"</code></h2>
+      <!-- demo:start name="form-dialog" -->
       <button type="button" class="re-button" id="open-form-dialog">Open form dialog</button>
 
       <dialog class="re-dialog" id="form-dialog" aria-labelledby="form-title">
@@ -91,6 +94,7 @@
         </form>
       </dialog>
 
+      <!-- demo:end -->
       <script>
         const fd = document.getElementById("form-dialog");
         document.getElementById("open-form-dialog").addEventListener("click", () => fd.showModal());
