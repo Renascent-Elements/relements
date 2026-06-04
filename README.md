@@ -2,6 +2,8 @@
 
 A small, framework-neutral design system by [Renascent Elements](https://renascentelements.hu).
 
+**Docs:** https://renascent-elements.github.io/relements/
+
 ## Packages
 
 | Package                              | Version                                                                                               | Description                                             |
