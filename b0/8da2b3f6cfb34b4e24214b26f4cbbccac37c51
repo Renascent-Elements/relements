@@ -1,0 +1,19 @@
+docs/examples/dialog.html
+  s_64efcca27e9ec5::t_8e62067c94fe19 31-39,41-46,49-57,63-70,73-80,110-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "b08da2b3f6cfb34b4e24214b26f4cbbccac37c51",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
