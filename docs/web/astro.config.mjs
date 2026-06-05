@@ -28,6 +28,9 @@ export default defineConfig({
     }),
   ],
   vite: {
-    server: { fs: { allow: [".."] } },
+    // Allow the monorepo root (resolved relative to this package) so the dev
+    // server can read both the example pages (docs/examples) and hoisted deps
+    // in the root node_modules.
+    server: { fs: { allow: ["../.."] } },
   },
 });

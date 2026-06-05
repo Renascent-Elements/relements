@@ -24,7 +24,7 @@ const code = extractDemo(raw, name);
 ---
 
 <figure class="demo">
-  <div class="demo__preview" set:html={code} />
+  <div class="demo__preview not-content" set:html={code} />
   <figcaption class="sr-only">Live example</figcaption>
   <pre class="demo__code"><code>{code}</code></pre>
 </figure>
