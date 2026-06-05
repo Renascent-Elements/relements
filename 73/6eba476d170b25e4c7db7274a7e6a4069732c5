@@ -1,0 +1,21 @@
+docs/web/src/components/Demo.astro
+  s_64efcca27e9ec5::t_e742c48623b956 27
+docs/web/astro.config.mjs
+  ai_agent 31-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "736eba476d170b25e4c7db7274a7e6a4069732c5",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
