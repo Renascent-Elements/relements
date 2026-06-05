@@ -4,6 +4,7 @@ import {
   enhanceTabs,
   enhanceMenuButton,
   enhancePopover,
+  showToast,
 } from "@relements/core";
 
 // Side-effect imports: each module calls customElements.define() on load.
@@ -18,6 +19,22 @@ function init() {
   enhanceTabs(document);
   enhanceMenuButton(document);
   enhancePopover(document);
+
+  // showToast is imperative (no declarative markup form). For the docs demos,
+  // wire buttons that carry `data-demo-toast` to fire a real toast. This is a
+  // docs-site affordance, not a `@relements/core` API — the page also shows the
+  // real `showToast(...)` call.
+  document.addEventListener("click", (event) => {
+    const trigger = (event.target as Element | null)?.closest<HTMLElement>("[data-demo-toast]");
+    if (!trigger) return;
+    const tone = trigger.dataset.demoToastTone as
+      | "default"
+      | "success"
+      | "warning"
+      | "danger"
+      | undefined;
+    showToast(trigger.dataset.demoToast ?? "", { tone });
+  });
 }
 
 if (document.readyState !== "loading") {
