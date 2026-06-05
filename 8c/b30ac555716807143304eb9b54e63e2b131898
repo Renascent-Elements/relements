@@ -1,0 +1,21 @@
+docs/web/src/client/enhance.ts
+  s_64efcca27e9ec5::t_283c9c50324668 7
+docs/examples/toast.html
+  s_64efcca27e9ec5::t_d75b162f13f637 35-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "8cb30ac555716807143304eb9b54e63e2b131898",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
