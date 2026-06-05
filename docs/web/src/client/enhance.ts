@@ -20,6 +20,12 @@ function init() {
   enhanceMenuButton(document);
   enhancePopover(document);
 
+  // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it
+  // for any demo checkbox that opts in with `data-demo-indeterminate`.
+  for (const el of document.querySelectorAll<HTMLInputElement>("[data-demo-indeterminate]")) {
+    el.indeterminate = true;
+  }
+
   // showToast is imperative (no declarative markup form). For the docs demos,
   // wire buttons that carry `data-demo-toast` to fire a real toast. This is a
   // docs-site affordance, not a `@relements/core` API — the page also shows the
