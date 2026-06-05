@@ -1,0 +1,9 @@
+CLAUDE.md
+  ai_agent 1-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "be9d32e516d386e9a2d278c38d7ed5d7c2a1d0d1",
+  "prompts": {}
+}
