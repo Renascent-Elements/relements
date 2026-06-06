@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - "docs/web/**"
+      - "docs/public/**"
       - "docs/examples/**"
       - "packages/core/**"
       - ".github/workflows/docs.yml"
@@ -31,11 +31,11 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm -F @relements/core build
-      - run: pnpm -F @relements/web build
+      - run: pnpm -F @relements/docs build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/web/dist
+          path: docs/public/dist
   deploy:
     needs: build
     runs-on: ubuntu-latest

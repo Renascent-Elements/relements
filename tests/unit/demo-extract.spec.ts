@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractDemo } from "../../docs/web/src/lib/demo.ts";
+import { extractDemo } from "../../docs/public/src/lib/demo.ts";
 
 const page = `<!doctype html>
 <html>

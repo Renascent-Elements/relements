@@ -37,7 +37,7 @@ packages/
       themes/         renascent.css — brand dark theme
 docs/
   examples/           Plain HTML example pages (served at localhost:4173; also the Playwright fixtures)
-  web/                Documentation site — Astro + Starlight, deployed to GitHub Pages
+  public/             Documentation site (@relements/docs) — Astro + Starlight, deployed to GitHub Pages
 tests/
   elements/           Playwright behavior tests
   a11y/               axe-core accessibility tests
@@ -67,7 +67,7 @@ Run the documentation site:
 
 ```bash
 pnpm -F @relements/core build      # the site consumes the built core
-pnpm -F @relements/web dev         # open http://localhost:4321/relements/
+pnpm -F @relements/docs dev        # open http://localhost:4321/relements/
 ```
 
 The site is built and deployed to GitHub Pages by `.github/workflows/docs.yml` on push to `main`.

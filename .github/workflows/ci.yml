@@ -49,7 +49,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm -F @relements/core build
-      - run: pnpm -F @relements/web build
+      - run: pnpm -F @relements/docs build
 
   e2e:
     runs-on: ubuntu-latest
