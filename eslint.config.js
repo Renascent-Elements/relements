@@ -1,3 +1,4 @@
+import eslintPluginAstro from "eslint-plugin-astro";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
@@ -5,6 +6,8 @@ export default tseslint.config(
     ignores: [
       "node_modules/**",
       "dist/**",
+      "**/dist/**",
+      "**/.astro/**",
       "test-results/**",
       "playwright-report/**",
       "**/*-snapshots/**",
@@ -32,4 +35,5 @@ export default tseslint.config(
       "@typescript-eslint/ban-ts-comment": "off",
     },
   })),
+  ...eslintPluginAstro.configs.recommended,
 );

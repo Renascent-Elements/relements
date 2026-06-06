@@ -1,6 +1,7 @@
 packages:
   - "packages/*"
   - "docs/examples/frameworks/*"
+  - "docs/public"
 
 onlyBuiltDependencies:
   - esbuild

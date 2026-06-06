@@ -1,0 +1,30 @@
+---
+import { extractDemo } from "../lib/demo.ts";
+
+interface Props {
+  src: string;
+  name?: string;
+}
+
+const { src, name } = Astro.props;
+
+const pages = import.meta.glob("../../../examples/**/*.html", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
+const key = `../../../examples/${src}`;
+const raw = pages[key];
+if (raw === undefined) {
+  throw new Error(`Demo source not found: docs/examples/${src}`);
+}
+
+const code = extractDemo(raw, name);
+---
+
+<figure class="demo">
+  <div class="demo__preview not-content" set:html={code} />
+  <figcaption class="sr-only">Live example</figcaption>
+  <pre class="demo__code"><code>{code}</code></pre>
+</figure>

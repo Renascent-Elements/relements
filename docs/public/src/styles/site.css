@@ -1,0 +1,240 @@
+/* Site-only styling. */
+
+/* ============================================================
+   Renascent Elements brand theme for Starlight.
+   Mirrors packages/core/src/themes/renascent.css — electric blue
+   accent + dark navy scale. Overrides Starlight's --sl-color-*.
+   ============================================================ */
+
+/* Dark theme only. Scoped to [data-theme="dark"] (+ the pre-hydration default,
+   which Starlight renders dark) so the navy scale never leaks into the light
+   theme — Starlight's light block doesn't reset every gray, so a plain `:root`
+   override bleeds through and produces a mixed dark/light UI. */
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  /* Electric blue accent (brand --primary #3c83f6) */
+  --sl-color-accent-low: #1e3a8a;
+  --sl-color-accent: #3c83f6;
+  --sl-color-accent-high: #bdd6fe;
+  /* Links / accent text: vivid brand blue (accent-high is too pale on navy). */
+  --sl-color-text-accent: #60a5fa;
+
+  /* Dark navy scale (brightest → darkest) */
+  --sl-color-white: #f8fafc;
+  --sl-color-gray-1: #cdd6e2;
+  --sl-color-gray-2: #97a3b4; /* brand text-muted */
+  --sl-color-gray-3: #6b7a90; /* brand text-subtle */
+  --sl-color-gray-4: #4a5468;
+  --sl-color-gray-5: #29303d; /* brand border */
+  --sl-color-gray-6: #171c26; /* brand surface */
+  --sl-color-black: #0f131a; /* brand page background */
+}
+
+/* Light theme: brand the accent, keep Starlight's light neutrals */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #dbeafe;
+  --sl-color-accent: #2563eb;
+  --sl-color-accent-high: #1e3a8a;
+}
+
+/* ------------------------------------------------------------
+   Bind Relements' OWN color tokens to Starlight's theme.
+   @relements/core flips its --re-color-* palette via
+   `@media (prefers-color-scheme: dark)` — i.e. it follows the OS.
+   But Starlight's theme is the explicit `data-theme`, so on an
+   OS-dark machine viewing the light site the demo components (and
+   native form controls) rendered dark. Re-assert the palette per
+   data-theme so demos follow the site. Dark = the exact renascent.css
+   brand navy; light = a branded light variant (no brand light theme
+   exists in core yet — see renascent.css, which is dark-only).
+   ------------------------------------------------------------ */
+:root[data-theme="light"] {
+  color-scheme: light;
+  /* Branded light: cool navy-tinted surfaces, navy ink, brand-blue accent. */
+  --re-color-bg: #f6f8fc;
+  --re-color-bg-subtle: #eef2f8;
+  --re-color-bg-muted: #e3e9f2;
+  --re-color-surface: #ffffff;
+  --re-color-text: #0f131a; /* brand navy as ink */
+  --re-color-text-muted: #4a5568;
+  --re-color-text-subtle: #6b7a90;
+  --re-color-text-danger: #b91c1c;
+  --re-color-border: #d7dfea;
+  --re-color-border-strong: #c0cad9;
+  --re-color-link: #2563eb;
+  --re-color-link-hover: #1d4ed8;
+  --re-color-link-visited: #7c3aed;
+  --re-color-focus-ring: #3c83f6;
+  --re-color-selection-bg: rgba(60, 131, 246, 0.18);
+  --re-color-selection-text: #0f131a;
+  --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg));
+  --re-color-info-border: var(--re-color-accent-500);
+  --re-color-info-text: var(--re-color-accent-700);
+  --re-color-success-surface: color-mix(
+    in oklab,
+    var(--re-color-success-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-success-border: var(--re-color-success-500);
+  --re-color-success-text: var(--re-color-success-700);
+  --re-color-warning-surface: color-mix(
+    in oklab,
+    var(--re-color-warning-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-warning-border: var(--re-color-warning-500);
+  --re-color-warning-text: var(--re-color-warning-700);
+  --re-color-danger-surface: color-mix(
+    in oklab,
+    var(--re-color-danger-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-danger-border: var(--re-color-danger-500);
+  --re-color-danger-text: var(--re-color-danger-700);
+}
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  color-scheme: dark;
+  /* Brand dark: exact renascent.css navy (matches the Starlight chrome). */
+  --re-color-bg: #0f131a;
+  --re-color-bg-subtle: #171c26;
+  --re-color-bg-muted: #1f2430;
+  --re-color-surface: #171c26;
+  --re-color-text: #f8fafc;
+  --re-color-text-muted: #97a3b4;
+  --re-color-text-subtle: #6b7a90;
+  --re-color-text-danger: #f87171;
+  --re-color-border: #29303d;
+  --re-color-border-strong: #353d4d;
+  --re-color-link: #60a5fa;
+  --re-color-link-hover: #93c3fd;
+  --re-color-link-visited: #a78bfa;
+  --re-color-focus-ring: #3c83f6;
+  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
+  --re-color-selection-text: #f8fafc;
+  --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 20%, var(--re-color-bg));
+  --re-color-info-border: var(--re-color-accent-400);
+  --re-color-info-text: var(--re-color-accent-200);
+  --re-color-success-surface: color-mix(
+    in oklab,
+    var(--re-color-success-500) 20%,
+    var(--re-color-bg)
+  );
+  --re-color-success-border: var(--re-color-success-500);
+  --re-color-success-text: var(--re-color-success-500);
+  --re-color-warning-surface: color-mix(
+    in oklab,
+    var(--re-color-warning-500) 20%,
+    var(--re-color-bg)
+  );
+  --re-color-warning-border: var(--re-color-warning-500);
+  --re-color-warning-text: var(--re-color-warning-500);
+  --re-color-danger-surface: color-mix(
+    in oklab,
+    var(--re-color-danger-500) 20%,
+    var(--re-color-bg)
+  );
+  --re-color-danger-border: var(--re-color-danger-500);
+  --re-color-danger-text: var(--re-color-danger-500);
+}
+
+/* Brand gradient on the landing hero title */
+.hero h1 {
+  background: linear-gradient(135deg, #3c83f6, #a855f7 55%, #f3753f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ------------------------------------------------------------
+   Brand the interactive Starlight chrome (hover/active states).
+   ------------------------------------------------------------ */
+
+/* Hero primary call-to-action → brand gradient with branded hover */
+.sl-link-button.primary {
+  background: linear-gradient(135deg, #3c83f6, #a855f7);
+  border-color: transparent;
+  color: #fff;
+  transition:
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.sl-link-button.primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px -6px rgba(60, 131, 246, 0.6);
+}
+
+/* Secondary/minimal hero action → branded text on hover */
+.sl-link-button.minimal:hover {
+  color: var(--sl-color-text-accent);
+}
+
+/* Sidebar nav + table-of-contents links → brand accent on hover/focus */
+.sidebar a:hover,
+.sidebar a:focus-visible,
+starlight-toc a:hover,
+starlight-toc a:focus-visible {
+  color: var(--sl-color-text-accent);
+}
+
+/* In-content links → brand accent (already), brighten + keep underline on hover */
+.sl-markdown-content a:hover {
+  color: var(--sl-color-text-accent);
+  text-decoration-color: var(--sl-color-text-accent);
+}
+
+/* Previous / Next pagination → branded border + title on hover */
+.pagination-links a {
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.pagination-links a:hover {
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 0 0 1px var(--sl-color-accent);
+}
+.pagination-links a:hover .link-title {
+  color: var(--sl-color-text-accent);
+}
+
+.demo {
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.demo__preview {
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.demo__code {
+  margin: 0;
+  border-top: 1px solid var(--sl-color-gray-5);
+  border-radius: 0;
+}
+
+/* Starlight's reset applies a global, unlayered `* { margin: 0 }`, which
+   overrides the UA `dialog:modal { margin: auto }` that centers modal dialogs
+   in the top layer — leaving demo dialogs pinned to the top-left. Restore it. */
+.re-dialog:modal {
+  margin: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -29,16 +29,43 @@
 
     <section aria-labelledby="basic-heading" data-testid="basic">
       <h2 id="basic-heading">Trigger toasts</h2>
+      <!-- demo:start name="basic" -->
       <div class="row">
-        <button type="button" class="re-button" id="rt-default">Default</button>
-        <button type="button" class="re-button" data-variant="secondary" id="rt-success">
+        <button
+          type="button"
+          class="re-button"
+          id="rt-default"
+          data-demo-toast="Saved."
+          data-demo-toast-target="toaster"
+        >
+          Default
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          id="rt-success"
+          data-demo-toast="Upload complete."
+          data-demo-toast-tone="success"
+          data-demo-toast-target="toaster"
+        >
           Success
         </button>
-        <button type="button" class="re-button" data-variant="danger" id="rt-danger">Danger</button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="danger"
+          id="rt-danger"
+          data-demo-toast="Network error."
+          data-demo-toast-tone="danger"
+          data-demo-toast-target="toaster"
+        >
+          Danger
+        </button>
       </div>
+      <re-toast id="toaster"></re-toast>
+      <!-- demo:end -->
     </section>
-
-    <re-toast id="toaster"></re-toast>
 
     <script type="module">
       import "/packages/core/src/elements/re-toast.js";

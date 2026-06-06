@@ -1,6 +1,12 @@
+<p align="center">
+  <img src="./.github/assets/relements-logo.png" alt="Relements" width="128" height="128" />
+</p>
+
 # Relements
 
 A small, framework-neutral design system by [Renascent Elements](https://renascentelements.hu).
+
+**Docs:** https://renascent-elements.github.io/relements/
 
 ## Packages
 
@@ -34,7 +40,8 @@ packages/
       elements/       <re-tabs>, <re-toast>, <re-menu>, <re-popover>
       themes/         renascent.css — brand dark theme
 docs/
-  examples/           Plain HTML example pages (served at localhost:4173)
+  examples/           Plain HTML example pages (served at localhost:4173; also the Playwright fixtures)
+  public/             Documentation site (@relements/docs) — Astro + Starlight, deployed to GitHub Pages
 tests/
   elements/           Playwright behavior tests
   a11y/               axe-core accessibility tests
@@ -59,6 +66,15 @@ Serve the HTML examples:
 pnpm exec http-server . -p 4173 -c-1
 # open http://localhost:4173/docs/examples/
 ```
+
+Run the documentation site:
+
+```bash
+pnpm -F @relements/core build      # the site consumes the built core
+pnpm -F @relements/docs dev        # open http://localhost:4321/relements/
+```
+
+The site is built and deployed to GitHub Pages by `.github/workflows/docs.yml` on push to `main`.
 
 ## Releasing
 

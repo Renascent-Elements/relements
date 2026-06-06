@@ -29,6 +29,7 @@
 
     <section aria-labelledby="basic-heading" data-testid="basic">
       <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
       <div class="stack">
         <label class="re-field re-field--inline">
           <input class="re-checkbox" type="checkbox" id="cb-news" name="news" />
@@ -39,14 +40,17 @@
           <span class="re-field__label">Already checked</span>
         </label>
       </div>
+      <!-- demo:end -->
     </section>
 
     <section aria-labelledby="indeterminate-heading" data-testid="indeterminate">
       <h2 id="indeterminate-heading">Indeterminate</h2>
+      <!-- demo:start name="indeterminate" -->
       <label class="re-field re-field--inline">
-        <input class="re-checkbox" type="checkbox" id="cb-indeterminate" />
+        <input class="re-checkbox" type="checkbox" id="cb-indeterminate" data-demo-indeterminate />
         <span class="re-field__label">Some children selected</span>
       </label>
+      <!-- demo:end -->
       <script>
         document.getElementById("cb-indeterminate").indeterminate = true;
       </script>
@@ -54,6 +58,7 @@
 
     <section aria-labelledby="states-heading" data-testid="states">
       <h2 id="states-heading">States</h2>
+      <!-- demo:start name="states" -->
       <div class="stack">
         <label class="re-field re-field--inline">
           <input class="re-checkbox" type="checkbox" id="cb-disabled" disabled />
@@ -71,6 +76,7 @@
         </label>
         <span id="cb-invalid-msg" class="re-validation-message">Please accept the terms.</span>
       </div>
+      <!-- demo:end -->
     </section>
 
     <article hidden>

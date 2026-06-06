@@ -29,14 +29,43 @@
 
     <section aria-labelledby="basic-heading" data-testid="basic">
       <h2 id="basic-heading">Trigger toasts</h2>
+      <!-- demo:start name="basic" -->
       <div class="row">
-        <button type="button" class="re-button" id="t-default">Default</button>
-        <button type="button" class="re-button" data-variant="secondary" id="t-success">
+        <button type="button" class="re-button" id="t-default" data-demo-toast="File saved.">
+          Default
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          id="t-success"
+          data-demo-toast="Upload complete."
+          data-demo-toast-tone="success"
+        >
           Success
         </button>
-        <button type="button" class="re-button" data-variant="danger" id="t-danger">Danger</button>
-        <button type="button" class="re-button" data-variant="ghost" id="t-warning">Warning</button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="danger"
+          id="t-danger"
+          data-demo-toast="Could not connect."
+          data-demo-toast-tone="danger"
+        >
+          Danger
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="ghost"
+          id="t-warning"
+          data-demo-toast="Connection unstable."
+          data-demo-toast-tone="warning"
+        >
+          Warning
+        </button>
       </div>
+      <!-- demo:end -->
     </section>
 
     <!-- Optional pre-existing region; otherwise showToast creates one on the body. -->

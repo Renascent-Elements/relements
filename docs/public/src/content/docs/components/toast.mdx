@@ -1,0 +1,27 @@
+---
+title: Toast
+description: Transient notifications via an aria-live region.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Transient notifications announced through an `aria-live` region. Toasts are
+imperative — call `showToast()` to append one:
+
+```js
+import { showToast } from "@relements/core/behaviors/toast";
+
+showToast("File saved.");
+showToast("Upload complete.", { tone: "success" });
+showToast("Could not connect.", { tone: "danger", duration: 8000 });
+```
+
+`tone` is `"default" | "success" | "warning" | "danger"`; `duration` is the
+auto-dismiss time in ms (`0` keeps it until dismissed). With no existing
+`[data-re-toast-region]` on the page, `showToast` creates a region on `<body>`.
+
+## Trigger toasts
+
+The buttons below fire real toasts (wired with `showToast` on click):
+
+<Demo src="toast.html" name="basic" />
