@@ -54,7 +54,9 @@
   --re-color-link-hover: #60a5fa;
   --re-color-link-visited: #a78bfa;
   --re-color-focus-ring: #3c83f6;
-  --re-color-text-on-accent: #0f131a;
+  /* White on accent-600 (#2563eb) = 5.17:1; the dark navy used elsewhere
+     only reaches 3.6:1 on the blue/red button fills, below WCAG AA. */
+  --re-color-text-on-accent: #ffffff;
 
   /* ----- Semantic feedback ---------------------------------- */
   /* Success: teal (hsl(172 81% 55%) — their --success)        */
@@ -71,6 +73,25 @@
   --re-color-danger-500: #ef4444;
   --re-color-danger-600: #dc2626;
   --re-color-danger-700: #b91c1c;
+
+  /* ----- Status surfaces (dark) -----------------------------
+     Defined explicitly so they mix against this theme's dark bg.
+     Without these they inherit the un-themed :root tokens, whose
+     color-mix captured the light-mode bg → light alert surfaces
+     under dark-section body text (≈1.05:1). White body text on
+     these 20%/dark mixes clears AA (≥4.5:1).                    */
+  --re-color-info-surface: color-mix(in oklab, #3c83f6 20%, var(--re-color-bg));
+  --re-color-info-border: #60a5fa;
+  --re-color-info-text: #93c3fd;
+  --re-color-success-surface: color-mix(in oklab, #2fe9d0 20%, var(--re-color-bg));
+  --re-color-success-border: #2fe9d0;
+  --re-color-success-text: #2fe9d0;
+  --re-color-warning-surface: color-mix(in oklab, #f9cf53 20%, var(--re-color-bg));
+  --re-color-warning-border: #f9cf53;
+  --re-color-warning-text: #f9cf53;
+  --re-color-danger-surface: color-mix(in oklab, #ef4444 20%, var(--re-color-bg));
+  --re-color-danger-border: #ef4444;
+  --re-color-danger-text: #f87171;
 
   /* ----- Focus ring on dark background ----------------------
      Remove the offset gap: the "white gap" trick is for light
@@ -130,7 +151,7 @@
   --re-color-link: #3c83f6;
   --re-color-link-hover: #60a5fa;
   --re-color-focus-ring: #3c83f6;
-  --re-color-text-on-accent: #0f131a;
+  --re-color-text-on-accent: #ffffff;
   --re-color-text-danger: #f87171;
   --re-color-border-danger: #ef4444;
   --re-color-success-500: #2fe9d0;
@@ -142,6 +163,18 @@
   --re-color-danger-500: #ef4444;
   --re-color-danger-600: #dc2626;
   --re-color-danger-700: #b91c1c;
+  --re-color-info-surface: color-mix(in oklab, #3c83f6 20%, var(--re-color-bg));
+  --re-color-info-border: #60a5fa;
+  --re-color-info-text: #93c3fd;
+  --re-color-success-surface: color-mix(in oklab, #2fe9d0 20%, var(--re-color-bg));
+  --re-color-success-border: #2fe9d0;
+  --re-color-success-text: #2fe9d0;
+  --re-color-warning-surface: color-mix(in oklab, #f9cf53 20%, var(--re-color-bg));
+  --re-color-warning-border: #f9cf53;
+  --re-color-warning-text: #f9cf53;
+  --re-color-danger-surface: color-mix(in oklab, #ef4444 20%, var(--re-color-bg));
+  --re-color-danger-border: #ef4444;
+  --re-color-danger-text: #f87171;
   --re-focus-ring-offset: 0px;
   --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
   --re-color-selection-bg: rgba(60, 131, 246, 0.3);
@@ -164,6 +197,11 @@
     --re-color-text-muted: #475569;
     --re-color-text-subtle: #64748b;
     --re-color-text-on-accent: #ffffff;
+    /* On light bg, white-on-accent buttons need accent-600 = #2563eb
+       (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
+    --re-color-accent-600: #2563eb;
+    --re-color-accent-700: #1d4ed8;
+    --re-color-accent-800: #1e40af;
     --re-color-text-danger: #b91c1c;
     --re-color-border: #d7dfea;
     --re-color-border-strong: #c0cad9;
@@ -217,6 +255,11 @@
   --re-color-text-muted: #475569;
   --re-color-text-subtle: #64748b;
   --re-color-text-on-accent: #ffffff;
+  /* On light bg, white-on-accent buttons need accent-600 = #2563eb
+     (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
+  --re-color-accent-600: #2563eb;
+  --re-color-accent-700: #1d4ed8;
+  --re-color-accent-800: #1e40af;
   --re-color-text-danger: #b91c1c;
   --re-color-border: #d7dfea;
   --re-color-border-strong: #c0cad9;
