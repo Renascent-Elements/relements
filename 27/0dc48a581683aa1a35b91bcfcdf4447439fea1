@@ -1,0 +1,24 @@
+docs/web/src/client/enhance.ts
+  s_64efcca27e9ec5::t_7041b9d5e52ac3 16-28,32-34
+  s_64efcca27e9ec5::t_b22c0b3a132894 45-46,56-63
+docs/examples/re-toast.html
+  s_64efcca27e9ec5::t_9efd2222c45117 34-51,54-64,66
+docs/web/src/content/docs/components/re-toast.mdx
+  s_64efcca27e9ec5::t_fed06e295536a2 8-19,23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "270dc48a581683aa1a35b91bcfcdf4447439fea1",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
