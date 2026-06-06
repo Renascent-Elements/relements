@@ -1,0 +1,24 @@
+packages/core/src/themes/renascent.css
+  s_64efcca27e9ec5::t_4e3c4cbfaf4fb0 200-204
+  s_64efcca27e9ec5::t_41cd64d3950605 57-59,77-94
+  s_64efcca27e9ec5::t_f0f784ed4db4bc 154,166-177
+  s_64efcca27e9ec5::t_1db286405ebae3 258-262
+tests/a11y/theme-renascent.a11y.spec.ts
+  s_64efcca27e9ec5::t_df6447316d9bcf 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "66be2940d62900eb10f3ca02bc3d3517cab39d8e",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
