@@ -16,6 +16,8 @@
   --sl-color-accent-low: #1e3a8a;
   --sl-color-accent: #3c83f6;
   --sl-color-accent-high: #bdd6fe;
+  /* Links / accent text: vivid brand blue (accent-high is too pale on navy). */
+  --sl-color-text-accent: #60a5fa;
 
   /* Dark navy scale (brightest → darkest) */
   --sl-color-white: #f8fafc;
@@ -167,6 +169,20 @@
 /* Secondary/minimal hero action → branded text on hover */
 .sl-link-button.minimal:hover {
   color: var(--sl-color-text-accent);
+}
+
+/* Sidebar nav + table-of-contents links → brand accent on hover/focus */
+.sidebar a:hover,
+.sidebar a:focus-visible,
+starlight-toc a:hover,
+starlight-toc a:focus-visible {
+  color: var(--sl-color-text-accent);
+}
+
+/* In-content links → brand accent (already), brighten + keep underline on hover */
+.sl-markdown-content a:hover {
+  color: var(--sl-color-text-accent);
+  text-decoration-color: var(--sl-color-text-accent);
 }
 
 /* Previous / Next pagination → branded border + title on hover */
