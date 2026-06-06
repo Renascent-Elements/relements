@@ -1,0 +1,21 @@
+docs/public/astro.config.mjs
+  s_64efcca27e9ec5::t_d767a9dd74db3d 14-15
+README.md
+  s_64efcca27e9ec5::t_d8b62eed6497d4 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "7d5003eb747bbec13b73bc16a484efd5d06aa5ad",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
