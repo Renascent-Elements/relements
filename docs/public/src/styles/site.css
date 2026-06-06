@@ -42,27 +42,29 @@
    But Starlight's theme is the explicit `data-theme`, so on an
    OS-dark machine viewing the light site the demo components (and
    native form controls) rendered dark. Re-assert the palette per
-   data-theme so demos follow the site. Values mirror tokens.css via
-   the theme-independent ramps (no hardcoded hexes).
+   data-theme so demos follow the site. Dark = the exact renascent.css
+   brand navy; light = a branded light variant (no brand light theme
+   exists in core yet — see renascent.css, which is dark-only).
    ------------------------------------------------------------ */
 :root[data-theme="light"] {
   color-scheme: light;
-  --re-color-bg: var(--re-color-neutral-0);
-  --re-color-bg-subtle: var(--re-color-neutral-50);
-  --re-color-bg-muted: var(--re-color-neutral-100);
-  --re-color-surface: var(--re-color-neutral-0);
-  --re-color-text: var(--re-color-neutral-900);
-  --re-color-text-muted: var(--re-color-neutral-600);
-  --re-color-text-subtle: var(--re-color-neutral-500);
-  --re-color-text-danger: var(--re-color-danger-700);
-  --re-color-border: var(--re-color-neutral-200);
-  --re-color-border-strong: var(--re-color-neutral-300);
-  --re-color-link: var(--re-color-accent-700);
-  --re-color-link-hover: var(--re-color-accent-800);
-  --re-color-link-visited: var(--re-color-accent-800);
-  --re-color-focus-ring: var(--re-color-accent-500);
-  --re-color-selection-bg: var(--re-color-accent-100);
-  --re-color-selection-text: var(--re-color-neutral-900);
+  /* Branded light: cool navy-tinted surfaces, navy ink, brand-blue accent. */
+  --re-color-bg: #f6f8fc;
+  --re-color-bg-subtle: #eef2f8;
+  --re-color-bg-muted: #e3e9f2;
+  --re-color-surface: #ffffff;
+  --re-color-text: #0f131a; /* brand navy as ink */
+  --re-color-text-muted: #4a5568;
+  --re-color-text-subtle: #6b7a90;
+  --re-color-text-danger: #b91c1c;
+  --re-color-border: #d7dfea;
+  --re-color-border-strong: #c0cad9;
+  --re-color-link: #2563eb;
+  --re-color-link-hover: #1d4ed8;
+  --re-color-link-visited: #7c3aed;
+  --re-color-focus-ring: #3c83f6;
+  --re-color-selection-bg: rgba(60, 131, 246, 0.18);
+  --re-color-selection-text: #0f131a;
   --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg));
   --re-color-info-border: var(--re-color-accent-500);
   --re-color-info-text: var(--re-color-accent-700);
@@ -92,22 +94,23 @@
 :root[data-theme="dark"],
 :root:not([data-theme]) {
   color-scheme: dark;
-  --re-color-bg: var(--re-color-neutral-950);
-  --re-color-bg-subtle: var(--re-color-neutral-900);
-  --re-color-bg-muted: var(--re-color-neutral-800);
-  --re-color-surface: var(--re-color-neutral-900);
-  --re-color-text: var(--re-color-neutral-50);
-  --re-color-text-muted: var(--re-color-neutral-300);
-  --re-color-text-subtle: var(--re-color-neutral-400);
-  --re-color-text-danger: var(--re-color-danger-500);
-  --re-color-border: var(--re-color-neutral-700);
-  --re-color-border-strong: var(--re-color-neutral-600);
-  --re-color-link: var(--re-color-accent-300);
-  --re-color-link-hover: var(--re-color-accent-200);
-  --re-color-link-visited: var(--re-color-accent-200);
-  --re-color-focus-ring: var(--re-color-accent-400);
-  --re-color-selection-bg: var(--re-color-accent-900);
-  --re-color-selection-text: var(--re-color-neutral-50);
+  /* Brand dark: exact renascent.css navy (matches the Starlight chrome). */
+  --re-color-bg: #0f131a;
+  --re-color-bg-subtle: #171c26;
+  --re-color-bg-muted: #1f2430;
+  --re-color-surface: #171c26;
+  --re-color-text: #f8fafc;
+  --re-color-text-muted: #97a3b4;
+  --re-color-text-subtle: #6b7a90;
+  --re-color-text-danger: #f87171;
+  --re-color-border: #29303d;
+  --re-color-border-strong: #353d4d;
+  --re-color-link: #60a5fa;
+  --re-color-link-hover: #93c3fd;
+  --re-color-link-visited: #a78bfa;
+  --re-color-focus-ring: #3c83f6;
+  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
+  --re-color-selection-text: #f8fafc;
   --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 20%, var(--re-color-bg));
   --re-color-info-border: var(--re-color-accent-400);
   --re-color-info-text: var(--re-color-accent-200);
