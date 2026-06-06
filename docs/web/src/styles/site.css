@@ -21,6 +21,13 @@
   border-radius: 0;
 }
 
+/* Starlight's reset applies a global, unlayered `* { margin: 0 }`, which
+   overrides the UA `dialog:modal { margin: auto }` that centers modal dialogs
+   in the top layer — leaving demo dialogs pinned to the top-left. Restore it. */
+.re-dialog:modal {
+  margin: auto;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
