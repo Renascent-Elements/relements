@@ -145,6 +145,44 @@
   color: transparent;
 }
 
+/* ------------------------------------------------------------
+   Brand the interactive Starlight chrome (hover/active states).
+   ------------------------------------------------------------ */
+
+/* Hero primary call-to-action → brand gradient with branded hover */
+.sl-link-button.primary {
+  background: linear-gradient(135deg, #3c83f6, #a855f7);
+  border-color: transparent;
+  color: #fff;
+  transition:
+    filter 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.sl-link-button.primary:hover {
+  color: #fff;
+  filter: brightness(1.08);
+  box-shadow: 0 6px 20px -6px rgba(60, 131, 246, 0.6);
+}
+
+/* Secondary/minimal hero action → branded text on hover */
+.sl-link-button.minimal:hover {
+  color: var(--sl-color-text-accent);
+}
+
+/* Previous / Next pagination → branded border + title on hover */
+.pagination-links a {
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.pagination-links a:hover {
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 0 0 1px var(--sl-color-accent);
+}
+.pagination-links a:hover .link-title {
+  color: var(--sl-color-text-accent);
+}
+
 .demo {
   margin: 0 0 1.5rem;
   border: 1px solid var(--sl-color-gray-5);
