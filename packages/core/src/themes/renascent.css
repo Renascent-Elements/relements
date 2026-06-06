@@ -111,7 +111,8 @@
 /* ============================================================
    Scoped class — apply on any container instead of :root
    ============================================================ */
-.theme-renascent {
+.theme-renascent,
+.theme-renascent-dark {
   color-scheme: dark;
 
   --re-color-bg: #0f131a;
@@ -145,6 +146,119 @@
   --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
   --re-color-selection-bg: rgba(60, 131, 246, 0.3);
   --re-color-selection-text: #f8fafc;
+
+  background-color: var(--re-color-bg);
+  color: var(--re-color-text);
+}
+
+/* LIGHT — when the OS prefers light (global import + the auto .theme-renascent). */
+@media (prefers-color-scheme: light) {
+  :root,
+  .theme-renascent {
+    color-scheme: light;
+    --re-color-bg: #f6f8fc;
+    --re-color-bg-subtle: #eef2f8;
+    --re-color-bg-muted: #e3e9f2;
+    --re-color-surface: #ffffff;
+    --re-color-text: #0f131a;
+    --re-color-text-muted: #475569;
+    --re-color-text-subtle: #64748b;
+    --re-color-text-on-accent: #ffffff;
+    --re-color-text-danger: #b91c1c;
+    --re-color-border: #d7dfea;
+    --re-color-border-strong: #c0cad9;
+    --re-color-border-danger: #dc2626;
+    --re-color-link: #2563eb;
+    --re-color-link-hover: #1d4ed8;
+    --re-color-link-visited: #7c3aed;
+    --re-color-focus-ring: #3c83f6;
+    --re-color-selection-bg: rgba(60, 131, 246, 0.18);
+    --re-color-selection-text: #0f131a;
+    --re-focus-ring-offset: 2px;
+    --re-shadow-focus:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-focus-ring);
+    --re-color-info-surface: color-mix(
+      in oklab,
+      var(--re-color-accent-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-info-border: var(--re-color-accent-500);
+    --re-color-info-text: var(--re-color-accent-700);
+    --re-color-success-surface: color-mix(
+      in oklab,
+      var(--re-color-success-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-success-border: #0fd4bb;
+    --re-color-success-text: #0f766e;
+    --re-color-warning-surface: color-mix(
+      in oklab,
+      var(--re-color-warning-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-warning-border: #f0b929;
+    --re-color-warning-text: #b45309;
+    --re-color-danger-surface: color-mix(
+      in oklab,
+      var(--re-color-danger-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-danger-border: #dc2626;
+    --re-color-danger-text: #b91c1c;
+  }
+}
+
+/* LIGHT — forced regardless of OS. */
+.theme-renascent-light {
+  color-scheme: light;
+  --re-color-bg: #f6f8fc;
+  --re-color-bg-subtle: #eef2f8;
+  --re-color-bg-muted: #e3e9f2;
+  --re-color-surface: #ffffff;
+  --re-color-text: #0f131a;
+  --re-color-text-muted: #475569;
+  --re-color-text-subtle: #64748b;
+  --re-color-text-on-accent: #ffffff;
+  --re-color-text-danger: #b91c1c;
+  --re-color-border: #d7dfea;
+  --re-color-border-strong: #c0cad9;
+  --re-color-border-danger: #dc2626;
+  --re-color-link: #2563eb;
+  --re-color-link-hover: #1d4ed8;
+  --re-color-link-visited: #7c3aed;
+  --re-color-focus-ring: #3c83f6;
+  --re-color-selection-bg: rgba(60, 131, 246, 0.18);
+  --re-color-selection-text: #0f131a;
+  --re-focus-ring-offset: 2px;
+  --re-shadow-focus:
+    0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+    0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring);
+  --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg));
+  --re-color-info-border: var(--re-color-accent-500);
+  --re-color-info-text: var(--re-color-accent-700);
+  --re-color-success-surface: color-mix(
+    in oklab,
+    var(--re-color-success-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-success-border: #0fd4bb;
+  --re-color-success-text: #0f766e;
+  --re-color-warning-surface: color-mix(
+    in oklab,
+    var(--re-color-warning-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-warning-border: #f0b929;
+  --re-color-warning-text: #b45309;
+  --re-color-danger-surface: color-mix(
+    in oklab,
+    var(--re-color-danger-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-danger-border: #dc2626;
+  --re-color-danger-text: #b91c1c;
 
   background-color: var(--re-color-bg);
   color: var(--re-color-text);
