@@ -11,6 +11,8 @@ export default defineConfig({
     starlight({
       title: "Relements",
       description: "HTML-first, framework-agnostic design system.",
+      logo: { src: "./src/assets/logo.png", alt: "Relements" },
+      favicon: "/favicon.png",
       social: [
         {
           icon: "github",

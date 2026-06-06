@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./.github/assets/relements-logo.png" alt="Relements" width="128" height="128" />
+</p>
+
 # Relements
 
 A small, framework-neutral design system by [Renascent Elements](https://renascentelements.hu).
