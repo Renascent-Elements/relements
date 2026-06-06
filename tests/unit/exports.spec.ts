@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { existsSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 import pkg from "../../packages/core/package.json" with { type: "json" };
 
@@ -73,5 +73,12 @@ describe("@relements/core dist", () => {
 
   it("theme CSS file exists", () => {
     expect(existsSync(join(distRoot, "themes", "renascent.css"))).toBe(true);
+  });
+
+  it("theme CSS exposes light + dark force classes and light scheme", () => {
+    const css = readFileSync(join(distRoot, "themes", "renascent.css"), "utf8");
+    expect(css).toContain(".theme-renascent-light");
+    expect(css).toContain(".theme-renascent-dark");
+    expect(css).toMatch(/prefers-color-scheme:\s*light/);
   });
 });
