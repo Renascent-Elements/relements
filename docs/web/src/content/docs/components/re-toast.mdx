@@ -5,8 +5,21 @@ description: Custom-element wrapper for the toast region.
 
 import Demo from "../../../components/Demo.astro";
 
-A custom-element wrapper for the toast region. `.show(message, options)` returns the same controller as `showToast()`.
+A custom-element wrapper that hosts a toast region in light DOM. Its
+`.show(message, options)` method matches the `showToast()` API and returns the
+same controller:
+
+```js
+import "@relements/core/elements/re-toast";
+
+const toaster = document.querySelector("re-toast");
+toaster.show("Saved.");
+toaster.show("Upload complete.", { tone: "success" });
+toaster.show("Network error.", { tone: "danger", duration: 8000 });
+```
 
 ## Trigger toasts
+
+The buttons below call `toaster.show(...)` on the `<re-toast>` element:
 
 <Demo src="re-toast.html" name="basic" />
