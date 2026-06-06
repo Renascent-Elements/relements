@@ -1,0 +1,38 @@
+README.md
+  s_64efcca27e9ec5::t_59820103c6b668 40
+  s_64efcca27e9ec5::t_e8dcecdcb4671e 70
+CLAUDE.md
+  s_64efcca27e9ec5::t_9f9275f4969985 15
+  s_64efcca27e9ec5::t_5b38f6eb892d8e 23
+  s_64efcca27e9ec5::t_d94fc43f3ef060 41
+  s_64efcca27e9ec5::t_8672022f629114 36
+pnpm-lock.yaml
+  ai_agent 148
+.github/workflows/ci.yml
+  s_64efcca27e9ec5::t_89591ef41897ea 52
+docs/public/package.json
+  s_64efcca27e9ec5::t_318649c0b8cf87 2
+.github/workflows/docs.yml
+  s_64efcca27e9ec5::t_ed30dfe2f55aa1 34,38
+  s_64efcca27e9ec5::t_51ea33685af604 7
+pnpm-workspace.yaml
+  s_64efcca27e9ec5::t_233bf40c5c6ecf 4
+tests/unit/demo-extract.spec.ts
+  s_64efcca27e9ec5::t_7102e6d7486b09 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "e7768b7269b17adfb94b44174480bea18652f231",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
