@@ -4,6 +4,9 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   site: "https://renascent-elements.github.io",
   base: "/relements",
+  // Project root is docs/public/, so the default static dir would be
+  // docs/public/public/. Use ./static instead to avoid the nested name.
+  publicDir: "./static",
   integrations: [
     starlight({
       title: "Relements",
