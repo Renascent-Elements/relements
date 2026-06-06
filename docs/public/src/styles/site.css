@@ -1,5 +1,44 @@
 /* Site-only styling. */
 
+/* ============================================================
+   Renascent Elements brand theme for Starlight.
+   Mirrors packages/core/src/themes/renascent.css — electric blue
+   accent + dark navy scale. Overrides Starlight's --sl-color-*.
+   ============================================================ */
+
+/* Dark theme (Starlight default = :root) */
+:root {
+  /* Electric blue accent (brand --primary #3c83f6) */
+  --sl-color-accent-low: #1e3a8a;
+  --sl-color-accent: #3c83f6;
+  --sl-color-accent-high: #bdd6fe;
+
+  /* Dark navy scale (brightest → darkest) */
+  --sl-color-white: #f8fafc;
+  --sl-color-gray-1: #cdd6e2;
+  --sl-color-gray-2: #97a3b4; /* brand text-muted */
+  --sl-color-gray-3: #6b7a90; /* brand text-subtle */
+  --sl-color-gray-4: #4a5468;
+  --sl-color-gray-5: #29303d; /* brand border */
+  --sl-color-gray-6: #171c26; /* brand surface */
+  --sl-color-black: #0f131a; /* brand page background */
+}
+
+/* Light theme: brand the accent, keep Starlight's light neutrals */
+:root[data-theme="light"] {
+  --sl-color-accent-low: #dbeafe;
+  --sl-color-accent: #2563eb;
+  --sl-color-accent-high: #1e3a8a;
+}
+
+/* Brand gradient on the landing hero title */
+.hero h1 {
+  background: linear-gradient(135deg, #3c83f6, #a855f7 55%, #f3753f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .demo {
   margin: 0 0 1.5rem;
   border: 1px solid var(--sl-color-gray-5);
