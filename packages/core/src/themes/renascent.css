@@ -179,13 +179,9 @@
       0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
       0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
         var(--re-color-focus-ring);
-    --re-color-info-surface: color-mix(
-      in oklab,
-      var(--re-color-accent-500) 12%,
-      var(--re-color-bg)
-    );
-    --re-color-info-border: var(--re-color-accent-500);
-    --re-color-info-text: var(--re-color-accent-700);
+    --re-color-info-surface: color-mix(in oklab, #3c83f6 12%, var(--re-color-bg));
+    --re-color-info-border: #3c83f6;
+    --re-color-info-text: #2563eb;
     --re-color-success-surface: color-mix(
       in oklab,
       var(--re-color-success-500) 12%,
@@ -235,9 +231,9 @@
   --re-shadow-focus:
     0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
     0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring);
-  --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg));
-  --re-color-info-border: var(--re-color-accent-500);
-  --re-color-info-text: var(--re-color-accent-700);
+  --re-color-info-surface: color-mix(in oklab, #3c83f6 12%, var(--re-color-bg));
+  --re-color-info-border: #3c83f6;
+  --re-color-info-text: #2563eb;
   --re-color-success-surface: color-mix(
     in oklab,
     var(--re-color-success-500) 12%,
