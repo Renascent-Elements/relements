@@ -15,12 +15,42 @@ hero:
 ---
 
 import Demo from "../../components/Demo.astro";
+import { Tabs, TabItem } from "@astrojs/starlight/components";
 
 ## Install
+
+<Tabs syncKey="pkg">
+  <TabItem label="npm">
+
+```sh
+npm install @relements/core
+```
+
+  </TabItem>
+  <TabItem label="pnpm">
 
 ```sh
 pnpm add @relements/core
 ```
+
+  </TabItem>
+  <TabItem label="yarn">
+
+```sh
+yarn add @relements/core
+```
+
+  </TabItem>
+  <TabItem label="bun">
+
+```sh
+bun add @relements/core
+```
+
+  </TabItem>
+</Tabs>
+
+Then import the stylesheet once at your app entry:
 
 ```js
 import "@relements/core/index.css";

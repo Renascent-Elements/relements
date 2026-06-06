@@ -6,8 +6,12 @@
    accent + dark navy scale. Overrides Starlight's --sl-color-*.
    ============================================================ */
 
-/* Dark theme (Starlight default = :root) */
-:root {
+/* Dark theme only. Scoped to [data-theme="dark"] (+ the pre-hydration default,
+   which Starlight renders dark) so the navy scale never leaks into the light
+   theme — Starlight's light block doesn't reset every gray, so a plain `:root`
+   override bleeds through and produces a mixed dark/light UI. */
+:root[data-theme="dark"],
+:root:not([data-theme]) {
   /* Electric blue accent (brand --primary #3c83f6) */
   --sl-color-accent-low: #1e3a8a;
   --sl-color-accent: #3c83f6;
