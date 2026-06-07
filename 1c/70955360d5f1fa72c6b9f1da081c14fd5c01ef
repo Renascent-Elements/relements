@@ -1,0 +1,32 @@
+packages/core/src/index.css
+  s_64efcca27e9ec5::t_96962f19ffc2a8 40
+tests/a11y/skeleton.a11y.spec.ts
+  s_64efcca27e9ec5::t_01badf9a8fd395 1-10
+packages/core/package.json
+  s_64efcca27e9ec5::t_4f56fc309bb858 64
+docs/examples/skeleton.html
+  s_64efcca27e9ec5::t_fd1ab4dbc24834 28-31,37-48
+  s_64efcca27e9ec5::t_245fd1dafbaeff 1-27,32-36,49-64
+tests/visual/skeleton.visual.spec.ts
+  s_64efcca27e9ec5::t_12f14b583fb10d 1-19
+docs/public/src/content/docs/components/skeleton.mdx
+  s_64efcca27e9ec5::t_33a3c0a4c7d9c9 1-16
+packages/core/src/components/skeleton.css
+  s_64efcca27e9ec5::t_c52160d29d2f01 1-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "1c70955360d5f1fa72c6b9f1da081c14fd5c01ef",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
