@@ -57,9 +57,9 @@
   --re-rn-dark-danger-border: #ef4444;
   --re-rn-dark-danger-text: #f87171;
   /* Interactive accent steps (button base/hover/active) for dark. */
-  --re-rn-dark-accent-600: #3c83f6;
-  --re-rn-dark-accent-700: #2563eb;
-  --re-rn-dark-accent-800: #1d4ed8;
+  --re-rn-dark-accent-600: #2563eb;
+  --re-rn-dark-accent-700: #1d4ed8;
+  --re-rn-dark-accent-800: #1e40af;
 
   /* ----- LIGHT palette -------------------------------------- */
   --re-rn-light-bg: #f6f8fc;
@@ -123,17 +123,19 @@
   --re-color-border-strong: var(--re-rn-dark-border-strong);
 
   /* ----- Brand: electric blue (primary interactive) ---------
-     Their --primary is hsl(217 91% 60%) = #3c83f6.
-     Buttons use accent-600 as their base, so we anchor 600 = primary.  */
+     The brand --primary is #3c83f6, but white text on it is only ~3.6:1
+     (below WCAG AA). Buttons use accent-600 as their base + white text, so
+     600 is anchored to #2563eb (white 5.17:1) — matching the light theme and
+     the forced-dark class. #3c83f6 stays the brand tint/gradient color.  */
   --re-color-accent-50: #eff6ff;
   --re-color-accent-100: #dbeafe;
   --re-color-accent-200: #bdd6fe;
   --re-color-accent-300: #93c3fd;
   --re-color-accent-400: #60a5fa;
   --re-color-accent-500: #60a5fa; /* tint — for backgrounds, indicators  */
-  --re-color-accent-600: #3c83f6; /* hsl(217 91% 60%) — button base      */
-  --re-color-accent-700: #2563eb; /* hover                               */
-  --re-color-accent-800: #1d4ed8; /* active / pressed                    */
+  --re-color-accent-600: #2563eb; /* button base (white text AA-safe)     */
+  --re-color-accent-700: #1d4ed8; /* hover                                */
+  --re-color-accent-800: #1e40af; /* active / pressed                     */
   --re-color-accent-900: #1e3a8a;
 
   /* ----- Semantic role colors ------------------------------- */

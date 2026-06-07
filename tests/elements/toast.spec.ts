@@ -36,12 +36,15 @@ test.describe("Toast", () => {
   });
 
   test("duration auto-dismisses", async ({ page }) => {
+    // Use a generous duration so the "appears" assertion reliably observes the
+    // toast before it dismisses (a short duration races the first poll under
+    // parallel load), then let toHaveCount(0) poll until it auto-dismisses —
+    // no fixed wait, so it's deterministic regardless of machine speed.
     await page.evaluate(() => {
       // @ts-expect-error
-      window.__showToast("Quick", { duration: 100 });
+      window.__showToast("Quick", { duration: 1000 });
     });
     await expect(page.locator(".re-toast-list .re-toast")).toHaveCount(1);
-    await page.waitForTimeout(300);
     await expect(page.locator(".re-toast-list .re-toast")).toHaveCount(0);
   });
 
