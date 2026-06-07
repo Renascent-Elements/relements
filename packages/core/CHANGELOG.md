@@ -1,5 +1,19 @@
 # @relements/core
 
+## 0.4.0
+
+### Minor Changes
+
+- [#23](https://github.com/Renascent-Elements/relements/pull/23) [`b461310`](https://github.com/Renascent-Elements/relements/commit/b46131080c342774ee8f21bf2a549f224b4dec37) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Expose the Renascent theme's per-scheme palette as `--re-rn-light-*` /
+  `--re-rn-dark-*` custom properties.
+
+  `themes/renascent.css` now defines its light and dark brand palettes as
+  always-available custom properties (backgrounds, text, borders, links,
+  selection, focus, status surfaces, and the interactive accent steps), and
+  references them internally. Consumers that drive theming with their own
+  mechanism (e.g. a `data-theme` attribute) can map these vars to `--re-color-*`
+  without duplicating the brand values. No visual change to the theme itself.
+
 ## 0.3.0
 
 ### Minor Changes
