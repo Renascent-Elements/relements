@@ -1,0 +1,24 @@
+tests/unit/exports.spec.ts
+  s_64efcca27e9ec5::t_3fbe14e999d710 84-91
+packages/core/src/themes/renascent.css
+  s_64efcca27e9ec5::t_8e63205a9191d9 59-62
+  s_64efcca27e9ec5::t_a4b4feea203dfd 97-101
+  s_64efcca27e9ec5::t_58f380f51d8394 287-289
+  s_64efcca27e9ec5::t_49f1654b79e455 328-330
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "fdf2c46604de2392f0a29923076163b1431f3f6a",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
