@@ -1,0 +1,47 @@
+/**
+ * Relements skeleton — decorative loading placeholder.
+ * Mark decorative instances with aria-hidden="true"; use aria-busy on the region.
+ * data-shape="circle" | "text" (default: rectangle). Size via width/height.
+ */
+@layer re.components {
+  .re-skeleton {
+    display: block;
+    inline-size: 100%;
+    block-size: 1rem;
+    background-color: var(--re-color-bg-muted);
+    border-radius: var(--re-radius-sm);
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in oklab, var(--re-color-text) 8%, transparent) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: re-skeleton-shimmer 1.4s ease-in-out infinite;
+  }
+
+  .re-skeleton[data-shape="circle"] {
+    border-radius: 9999px;
+  }
+
+  .re-skeleton[data-shape="text"] {
+    block-size: 1em;
+  }
+
+  @keyframes re-skeleton-shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .re-skeleton {
+      animation: none;
+      background-image: none;
+    }
+  }
+}
