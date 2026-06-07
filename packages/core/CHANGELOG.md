@@ -1,5 +1,21 @@
 # @relements/core
 
+## 0.5.0
+
+### Minor Changes
+
+- [#27](https://github.com/Renascent-Elements/relements/pull/27) [`6dc222d`](https://github.com/Renascent-Elements/relements/commit/6dc222d7166451e41f6f9c34177475230906124f) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add four HTML-first, CSS-only components: `table` (with zebra/hover/density/sticky-header
+  `data-*` options), `skeleton` (reduced-motion-safe shimmer), `spinner` (accessible busy
+  indicator), and `pagination` (native links, `aria-current`/`aria-disabled`).
+
+### Patch Changes
+
+- [#28](https://github.com/Renascent-Elements/relements/pull/28) [`8e9893f`](https://github.com/Renascent-Elements/relements/commit/8e9893f61fb26fb5b9402001546f7bbb5aca84f2) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Align the scoped Renascent theme's `--re-color-accent-500` tint with the global
+  dark ramp (`#60a5fa`). Previously `.theme-renascent` / `.theme-renascent-dark`
+  used `#3c83f6` for the 500 step while the global `:root` dark used `#60a5fa`, so
+  the accent tint differed depending on how the theme was applied. No change to
+  button/link colors (600/700 unchanged).
+
 ## 0.4.1
 
 ### Patch Changes
