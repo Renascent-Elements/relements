@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Spinner</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        gap: var(--re-space-3);
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body data-page="spinner">
+    <header>
+      <h1>Spinner</h1>
+      <p>
+        Accessible busy indicator. Give it an accessible name with <code>role="status"</code> +
+        <code>aria-label</code>.
+      </p>
+    </header>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <div class="row">
+        <span class="re-spinner" role="status" aria-label="Loading" data-size="sm"></span>
+        <span class="re-spinner" role="status" aria-label="Loading"></span>
+        <span class="re-spinner" role="status" aria-label="Loading" data-size="lg"></span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="inline-heading" data-testid="inline">
+      <h2 id="inline-heading">In a button</h2>
+      <!-- demo:start name="inline" -->
+      <button type="button" class="re-button" aria-busy="true">
+        <span
+          class="re-spinner"
+          data-size="sm"
+          aria-hidden="true"
+          style="
+            border-top-color: currentColor;
+            border-color: rgba(255, 255, 255, 0.4);
+            margin-inline-end: 0.5rem;
+          "
+        ></span>
+        Saving…
+      </button>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
