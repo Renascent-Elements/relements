@@ -1,0 +1,32 @@
+packages/core/src/index.css
+  s_64efcca27e9ec5::t_e4a953b72d5167 42
+packages/core/package.json
+  s_64efcca27e9ec5::t_4dfe436112b5a0 66
+packages/core/src/components/pagination.css
+  s_64efcca27e9ec5::t_c76e0539730869 1-57
+tests/a11y/pagination.a11y.spec.ts
+  s_64efcca27e9ec5::t_1e65325ad9989c 1-10
+tests/visual/pagination.visual.spec.ts
+  s_64efcca27e9ec5::t_0063e557f01f68 1-17
+docs/public/src/content/docs/components/pagination.mdx
+  s_64efcca27e9ec5::t_f7054dc6d4c8fc 1-16
+docs/examples/pagination.html
+  s_64efcca27e9ec5::t_595b7adeafebc2 1-21,26-56
+  s_64efcca27e9ec5::t_908527d4e74fa3 22-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "8db54ddb0298037d0a5b646f16f4e2d344eb140c",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
