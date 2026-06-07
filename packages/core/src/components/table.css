@@ -1,0 +1,53 @@
+/**
+ * Relements table — styles the native <table>.
+ * Wrap in <div class="re-table-wrap"> for horizontal scroll on narrow viewports.
+ * Opt-in via data-* on the table: data-zebra, data-hover, data-density="compact",
+ * data-sticky-header.
+ */
+@layer re.components {
+  .re-table-wrap {
+    overflow-x: auto;
+  }
+
+  .re-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    color: var(--re-color-text);
+    font-size: var(--re-size-text-sm);
+  }
+
+  .re-table th,
+  .re-table td {
+    padding: var(--re-space-3) var(--re-space-4);
+    text-align: start;
+    vertical-align: middle;
+    border-block-end: var(--re-border-default);
+  }
+
+  .re-table thead th {
+    font-weight: var(--re-font-weight-semibold);
+    border-block-end: var(--re-border-width) solid var(--re-color-border-strong);
+  }
+
+  .re-table tbody tr:last-child td {
+    border-block-end: 0;
+  }
+
+  .re-table[data-zebra] tbody tr:nth-child(even) {
+    background-color: var(--re-color-bg-subtle);
+  }
+
+  .re-table[data-hover] tbody tr:hover {
+    background-color: var(--re-color-bg-muted);
+  }
+
+  .re-table[data-density="compact"] :is(th, td) {
+    padding: var(--re-space-2) var(--re-space-3);
+  }
+
+  .re-table[data-sticky-header] thead th {
+    position: sticky;
+    inset-block-start: 0;
+    background-color: var(--re-color-surface);
+  }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Table</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="table">
+    <header>
+      <h1>Table</h1>
+      <p>
+        Styles the native <code>&lt;table&gt;</code>. Opt in to zebra, hover, density, and sticky
+        header with <code>data-*</code>.
+      </p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-table-wrap">
+        <table class="re-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ada Lovelace</td>
+              <td>Engineer</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Alan Turing</td>
+              <td>Researcher</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Grace Hopper</td>
+              <td>Admiral</td>
+              <td>Away</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="zebra-heading" data-testid="zebra">
+      <h2 id="zebra-heading">Zebra + hover + compact</h2>
+      <!-- demo:start name="zebra" -->
+      <div class="re-table-wrap">
+        <table class="re-table" data-zebra data-hover data-density="compact">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ada Lovelace</td>
+              <td>Engineer</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Alan Turing</td>
+              <td>Researcher</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Grace Hopper</td>
+              <td>Admiral</td>
+              <td>Away</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

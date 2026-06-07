@@ -60,6 +60,7 @@
     "./components/card.css": "./dist/components/card.css",
     "./components/switch.css": "./dist/components/switch.css",
     "./components/tag.css": "./dist/components/tag.css",
+    "./components/table.css": "./dist/components/table.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
