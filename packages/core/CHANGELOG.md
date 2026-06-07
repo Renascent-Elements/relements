@@ -1,5 +1,24 @@
 # @relements/core
 
+## 0.3.0
+
+### Minor Changes
+
+- [#21](https://github.com/Renascent-Elements/relements/pull/21) [`eecc90e`](https://github.com/Renascent-Elements/relements/commit/eecc90ea4cc1f1f481904396d07a68b6bbad429d) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add a light variant to the Renascent Elements theme.
+
+  `themes/renascent.css` now follows `prefers-color-scheme`: brand dark on dark
+  systems, brand light on light systems. The new `.theme-renascent-light` and
+  `.theme-renascent-dark` classes force a scheme regardless of the OS.
+
+  **Behavior change:** the theme was previously always dark. Add the
+  `.theme-renascent-dark` class to a container (or `:root`) to keep forced-dark
+  behavior.
+
+  **Accessibility:** fixed WCAG AA contrast in the theme — buttons now use white
+  text on accent/danger fills (was dark text), and status surfaces (alert tints)
+  now render correctly in dark scope. These adjust the dark theme's button text
+  and alert colors slightly.
+
 ## 0.2.0
 
 ### Minor Changes
