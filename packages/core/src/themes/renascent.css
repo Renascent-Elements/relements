@@ -234,7 +234,8 @@
   --re-color-text-subtle: var(--re-rn-dark-text-subtle);
   --re-color-border: var(--re-rn-dark-border);
   --re-color-border-strong: var(--re-rn-dark-border-strong);
-  --re-color-accent-500: #3c83f6;
+  /* Match the global dark ramp's tint so scoped/forced-dark and global agree. */
+  --re-color-accent-500: #60a5fa;
   --re-color-accent-600: #2563eb;
   --re-color-accent-700: #1d4ed8;
   --re-color-link: var(--re-rn-dark-link);
