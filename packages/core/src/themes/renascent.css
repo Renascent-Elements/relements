@@ -310,12 +310,14 @@
    ============================================================ */
 .re-button[data-variant="phoenix"] {
   background: var(--re-gradient-phoenix);
+  /* Paint the gradient from the border box so the 1px (transparent) border
+     doesn't show a seam where the padding-box gradient is clipped. */
+  background-origin: border-box;
   color: #fff;
   border-color: transparent;
 }
 .re-button[data-variant="phoenix"]:hover {
   filter: brightness(1.12);
-  background: var(--re-gradient-phoenix);
 }
 .re-button[data-variant="phoenix"]:active {
   filter: brightness(0.9);
@@ -331,12 +333,12 @@
 
 .re-button[data-variant="brand"] {
   background: var(--re-gradient-brand);
+  background-origin: border-box;
   color: #fff;
   border-color: transparent;
 }
 .re-button[data-variant="brand"]:hover {
   filter: brightness(1.12);
-  background: var(--re-gradient-brand);
 }
 .re-button[data-variant="brand"]:active {
   filter: brightness(0.9);
