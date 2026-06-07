@@ -1,0 +1,21 @@
+packages/core/src/themes/renascent.css
+  s_64efcca27e9ec5::t_d21451c57779b5 237-238
+.changeset/renascent-accent-tint.md
+  s_64efcca27e9ec5::t_c91cfbd0700511 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "ba0bf10a6c37a1e0499460cb90f8066c9c647438",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
