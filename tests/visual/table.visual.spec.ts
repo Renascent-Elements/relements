@@ -15,3 +15,13 @@ test("table zebra visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test("table sticky-header visual snapshot", async ({ page }) => {
+  await page.goto("./table.html");
+  // Scroll the wrapper a fixed amount so the sticky <thead> stays pinned at the
+  // top while rows scroll under it (a fixed scrollTop keeps the snapshot stable).
+  await page.locator('[data-testid="sticky"] .re-table-wrap').evaluate((el) => (el.scrollTop = 80));
+  await expect(page.getByTestId("sticky")).toHaveScreenshot("table-sticky.png", {
+    maxDiffPixelRatio: 0.01,
+  });
+});
