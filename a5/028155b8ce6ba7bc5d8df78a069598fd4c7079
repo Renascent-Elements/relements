@@ -1,0 +1,32 @@
+tests/visual/table.visual.spec.ts
+  s_64efcca27e9ec5::t_dd2bd3dcd213ec 1-17
+packages/core/src/components/table.css
+  s_64efcca27e9ec5::t_c3dde92c45a5fa 1-53
+packages/core/src/index.css
+  s_64efcca27e9ec5::t_1c49852a251376 39
+packages/core/package.json
+  s_64efcca27e9ec5::t_44741f8174ff01 63
+docs/examples/table.html
+  s_64efcca27e9ec5::t_fe449e3559f50c 23-24,34-38,41-55,68-72,75-89
+  s_64efcca27e9ec5::t_6e089ca030d23c 1-22,25-33,39-40,56-67,73-74,90-96
+tests/a11y/table.a11y.spec.ts
+  s_64efcca27e9ec5::t_11de626cc26ff1 1-10
+docs/public/src/content/docs/components/table.mdx
+  s_64efcca27e9ec5::t_4c6ac5c00b56af 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "a5028155b8ce6ba7bc5d8df78a069598fd4c7079",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
