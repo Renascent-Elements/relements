@@ -20,7 +20,11 @@ export default defineConfig({
           href: "https://github.com/Renascent-Elements/relements",
         },
       ],
-      customCss: ["@relements/core/index.css", "./src/styles/site.css"],
+      customCss: [
+        "@relements/core/index.css",
+        "@relements/core/themes/renascent.css",
+        "./src/styles/site.css",
+      ],
       components: {
         Head: "./src/components/Head.astro",
       },

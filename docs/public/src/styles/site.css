@@ -39,104 +39,82 @@
 
 /* ------------------------------------------------------------
    Bind Relements' OWN color tokens to Starlight's theme.
-   @relements/core flips its --re-color-* palette via
-   `@media (prefers-color-scheme: dark)` — i.e. it follows the OS.
-   But Starlight's theme is the explicit `data-theme`, so on an
-   OS-dark machine viewing the light site the demo components (and
-   native form controls) rendered dark. Re-assert the palette per
-   data-theme so demos follow the site. Dark = the exact renascent.css
-   brand navy; light = a branded light variant (no brand light theme
-   exists in core yet — see renascent.css, which is dark-only).
+   @relements/core's renascent theme flips its --re-color-* palette
+   via `prefers-color-scheme` (the OS). Starlight's theme is the
+   explicit `data-theme`, so map core's exposed per-scheme palette
+   (`--re-rn-{light,dark}-*`, from themes/renascent.css) to --re-color-*
+   per data-theme — so demos + native controls follow the site, not
+   the OS. Single source of truth lives in core; no values duplicated.
    ------------------------------------------------------------ */
 :root[data-theme="light"] {
   color-scheme: light;
-  /* Branded light: cool navy-tinted surfaces, navy ink, brand-blue accent. */
-  --re-color-bg: #f6f8fc;
-  --re-color-bg-subtle: #eef2f8;
-  --re-color-bg-muted: #e3e9f2;
-  --re-color-surface: #ffffff;
-  --re-color-text: #0f131a; /* brand navy as ink */
-  --re-color-text-muted: #4a5568;
-  --re-color-text-subtle: #6b7a90;
-  --re-color-text-danger: #b91c1c;
-  --re-color-border: #d7dfea;
-  --re-color-border-strong: #c0cad9;
-  --re-color-link: #2563eb;
-  --re-color-link-hover: #1d4ed8;
-  --re-color-link-visited: #7c3aed;
-  --re-color-focus-ring: #3c83f6;
-  --re-color-selection-bg: rgba(60, 131, 246, 0.18);
-  --re-color-selection-text: #0f131a;
-  --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg));
-  --re-color-info-border: var(--re-color-accent-500);
-  --re-color-info-text: var(--re-color-accent-700);
-  --re-color-success-surface: color-mix(
-    in oklab,
-    var(--re-color-success-500) 12%,
-    var(--re-color-bg)
-  );
-  --re-color-success-border: var(--re-color-success-500);
-  --re-color-success-text: var(--re-color-success-700);
-  --re-color-warning-surface: color-mix(
-    in oklab,
-    var(--re-color-warning-500) 12%,
-    var(--re-color-bg)
-  );
-  --re-color-warning-border: var(--re-color-warning-500);
-  --re-color-warning-text: var(--re-color-warning-700);
-  --re-color-danger-surface: color-mix(
-    in oklab,
-    var(--re-color-danger-500) 12%,
-    var(--re-color-bg)
-  );
-  --re-color-danger-border: var(--re-color-danger-500);
-  --re-color-danger-text: var(--re-color-danger-700);
+  --re-color-bg: var(--re-rn-light-bg);
+  --re-color-bg-subtle: var(--re-rn-light-bg-subtle);
+  --re-color-bg-muted: var(--re-rn-light-bg-muted);
+  --re-color-surface: var(--re-rn-light-surface);
+  --re-color-text: var(--re-rn-light-text);
+  --re-color-text-muted: var(--re-rn-light-text-muted);
+  --re-color-text-subtle: var(--re-rn-light-text-subtle);
+  --re-color-text-danger: var(--re-rn-light-text-danger);
+  --re-color-border: var(--re-rn-light-border);
+  --re-color-border-strong: var(--re-rn-light-border-strong);
+  --re-color-border-danger: var(--re-rn-light-border-danger);
+  --re-color-link: var(--re-rn-light-link);
+  --re-color-link-hover: var(--re-rn-light-link-hover);
+  --re-color-link-visited: var(--re-rn-light-link-visited);
+  --re-color-accent-600: var(--re-rn-light-accent-600);
+  --re-color-accent-700: var(--re-rn-light-accent-700);
+  --re-color-accent-800: var(--re-rn-light-accent-800);
+  --re-color-selection-bg: var(--re-rn-light-selection-bg);
+  --re-color-selection-text: var(--re-rn-light-selection-text);
+  --re-color-info-surface: var(--re-rn-light-info-surface);
+  --re-color-info-border: var(--re-rn-light-info-border);
+  --re-color-info-text: var(--re-rn-light-info-text);
+  --re-color-success-surface: var(--re-rn-light-success-surface);
+  --re-color-success-border: var(--re-rn-light-success-border);
+  --re-color-success-text: var(--re-rn-light-success-text);
+  --re-color-warning-surface: var(--re-rn-light-warning-surface);
+  --re-color-warning-border: var(--re-rn-light-warning-border);
+  --re-color-warning-text: var(--re-rn-light-warning-text);
+  --re-color-danger-surface: var(--re-rn-light-danger-surface);
+  --re-color-danger-border: var(--re-rn-light-danger-border);
+  --re-color-danger-text: var(--re-rn-light-danger-text);
 }
 
 :root[data-theme="dark"],
 :root:not([data-theme]) {
   color-scheme: dark;
-  /* Brand dark: exact renascent.css navy (matches the Starlight chrome). */
-  --re-color-bg: #0f131a;
-  --re-color-bg-subtle: #171c26;
-  --re-color-bg-muted: #1f2430;
-  --re-color-surface: #171c26;
-  --re-color-text: #f8fafc;
-  --re-color-text-muted: #97a3b4;
-  --re-color-text-subtle: #6b7a90;
-  --re-color-text-danger: #f87171;
-  --re-color-border: #29303d;
-  --re-color-border-strong: #353d4d;
-  --re-color-link: #60a5fa;
-  --re-color-link-hover: #93c3fd;
-  --re-color-link-visited: #a78bfa;
-  --re-color-focus-ring: #3c83f6;
-  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
-  --re-color-selection-text: #f8fafc;
-  --re-color-info-surface: color-mix(in oklab, var(--re-color-accent-500) 20%, var(--re-color-bg));
-  --re-color-info-border: var(--re-color-accent-400);
-  --re-color-info-text: var(--re-color-accent-200);
-  --re-color-success-surface: color-mix(
-    in oklab,
-    var(--re-color-success-500) 20%,
-    var(--re-color-bg)
-  );
-  --re-color-success-border: var(--re-color-success-500);
-  --re-color-success-text: var(--re-color-success-500);
-  --re-color-warning-surface: color-mix(
-    in oklab,
-    var(--re-color-warning-500) 20%,
-    var(--re-color-bg)
-  );
-  --re-color-warning-border: var(--re-color-warning-500);
-  --re-color-warning-text: var(--re-color-warning-500);
-  --re-color-danger-surface: color-mix(
-    in oklab,
-    var(--re-color-danger-500) 20%,
-    var(--re-color-bg)
-  );
-  --re-color-danger-border: var(--re-color-danger-500);
-  --re-color-danger-text: var(--re-color-danger-500);
+  --re-color-bg: var(--re-rn-dark-bg);
+  --re-color-bg-subtle: var(--re-rn-dark-bg-subtle);
+  --re-color-bg-muted: var(--re-rn-dark-bg-muted);
+  --re-color-surface: var(--re-rn-dark-surface);
+  --re-color-text: var(--re-rn-dark-text);
+  --re-color-text-muted: var(--re-rn-dark-text-muted);
+  --re-color-text-subtle: var(--re-rn-dark-text-subtle);
+  --re-color-text-danger: var(--re-rn-dark-text-danger);
+  --re-color-border: var(--re-rn-dark-border);
+  --re-color-border-strong: var(--re-rn-dark-border-strong);
+  --re-color-border-danger: var(--re-rn-dark-border-danger);
+  --re-color-link: var(--re-rn-dark-link);
+  --re-color-link-hover: var(--re-rn-dark-link-hover);
+  --re-color-link-visited: var(--re-rn-dark-link-visited);
+  --re-color-accent-600: var(--re-rn-dark-accent-600);
+  --re-color-accent-700: var(--re-rn-dark-accent-700);
+  --re-color-accent-800: var(--re-rn-dark-accent-800);
+  --re-color-selection-bg: var(--re-rn-dark-selection-bg);
+  --re-color-selection-text: var(--re-rn-dark-selection-text);
+  --re-color-info-surface: var(--re-rn-dark-info-surface);
+  --re-color-info-border: var(--re-rn-dark-info-border);
+  --re-color-info-text: var(--re-rn-dark-info-text);
+  --re-color-success-surface: var(--re-rn-dark-success-surface);
+  --re-color-success-border: var(--re-rn-dark-success-border);
+  --re-color-success-text: var(--re-rn-dark-success-text);
+  --re-color-warning-surface: var(--re-rn-dark-warning-surface);
+  --re-color-warning-border: var(--re-rn-dark-warning-border);
+  --re-color-warning-text: var(--re-rn-dark-warning-text);
+  --re-color-danger-surface: var(--re-rn-dark-danger-surface);
+  --re-color-danger-border: var(--re-rn-dark-danger-border);
+  --re-color-danger-text: var(--re-rn-dark-danger-text);
 }
 
 /* Brand gradient on the landing hero title */
