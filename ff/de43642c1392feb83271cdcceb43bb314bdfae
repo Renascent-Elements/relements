@@ -1,0 +1,23 @@
+docs/public/astro.config.mjs
+  s_64efcca27e9ec5::t_e07da2f600e9b5 23-27
+docs/public/src/styles/site.css
+  s_64efcca27e9ec5::t_2faef53d68ceb7 65-67
+  s_64efcca27e9ec5::t_2df84524f57edd 101-103
+  s_64efcca27e9ec5::t_467c66fe7bdfb0 42-47,51-64,68-81,87-100,104-117
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "ffde43642c1392feb83271cdcceb43bb314bdfae",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
