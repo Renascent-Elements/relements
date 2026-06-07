@@ -56,6 +56,10 @@
   --re-rn-dark-danger-surface: color-mix(in oklab, #ef4444 20%, #0f131a);
   --re-rn-dark-danger-border: #ef4444;
   --re-rn-dark-danger-text: #f87171;
+  /* Interactive accent steps (button base/hover/active) for dark. */
+  --re-rn-dark-accent-600: #3c83f6;
+  --re-rn-dark-accent-700: #2563eb;
+  --re-rn-dark-accent-800: #1d4ed8;
 
   /* ----- LIGHT palette -------------------------------------- */
   --re-rn-light-bg: #f6f8fc;
@@ -90,6 +94,11 @@
   --re-rn-light-danger-surface: color-mix(in oklab, #ef4444 12%, #f6f8fc);
   --re-rn-light-danger-border: #dc2626;
   --re-rn-light-danger-text: #b91c1c;
+  /* On light bg, white-on-accent buttons need accent-600 = #2563eb
+     (white 5.17:1); the dark #3c83f6 only reaches 3.64:1. */
+  --re-rn-light-accent-600: #2563eb;
+  --re-rn-light-accent-700: #1d4ed8;
+  --re-rn-light-accent-800: #1e40af;
 }
 
 /* ============================================================
@@ -275,11 +284,9 @@
     --re-color-text-muted: var(--re-rn-light-text-muted);
     --re-color-text-subtle: var(--re-rn-light-text-subtle);
     --re-color-text-on-accent: #ffffff;
-    /* On light bg, white-on-accent buttons need accent-600 = #2563eb
-       (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
-    --re-color-accent-600: #2563eb;
-    --re-color-accent-700: #1d4ed8;
-    --re-color-accent-800: #1e40af;
+    --re-color-accent-600: var(--re-rn-light-accent-600);
+    --re-color-accent-700: var(--re-rn-light-accent-700);
+    --re-color-accent-800: var(--re-rn-light-accent-800);
     --re-color-text-danger: var(--re-rn-light-text-danger);
     --re-color-border: var(--re-rn-light-border);
     --re-color-border-strong: var(--re-rn-light-border-strong);
@@ -318,11 +325,9 @@
   --re-color-text-muted: var(--re-rn-light-text-muted);
   --re-color-text-subtle: var(--re-rn-light-text-subtle);
   --re-color-text-on-accent: #ffffff;
-  /* On light bg, white-on-accent buttons need accent-600 = #2563eb
-     (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
-  --re-color-accent-600: #2563eb;
-  --re-color-accent-700: #1d4ed8;
-  --re-color-accent-800: #1e40af;
+  --re-color-accent-600: var(--re-rn-light-accent-600);
+  --re-color-accent-700: var(--re-rn-light-accent-700);
+  --re-color-accent-800: var(--re-rn-light-accent-800);
   --re-color-text-danger: var(--re-rn-light-text-danger);
   --re-color-border: var(--re-rn-light-border);
   --re-color-border-strong: var(--re-rn-light-border-strong);
