@@ -1,0 +1,25 @@
+docs/examples/table.html
+  s_64efcca27e9ec5::t_797ee5f02497ab 99-105
+  s_64efcca27e9ec5::t_6fc73a5b5bb718 95-98,106-169
+docs/public/src/content/docs/components/table.mdx
+  s_64efcca27e9ec5::t_723ca73eda64f0 17-22
+tests/visual/table.visual.spec.ts
+  s_64efcca27e9ec5::t_8f28e6699c5bed 18-22,24-27
+  s_64efcca27e9ec5::t_6f532f1c908b93 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "bd6af29b6620b9b94de12d7d0067dd7303fdf8f9",
+  "prompts": {},
+  "sessions": {
+    "s_64efcca27e9ec5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92a8bf0c-0814-47c3-a717-1772cbf48578",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
