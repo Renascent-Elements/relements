@@ -81,4 +81,12 @@ describe("@relements/core dist", () => {
     expect(css).toContain(".theme-renascent-dark");
     expect(css).toMatch(/prefers-color-scheme:\s*light/);
   });
+
+  it("theme CSS exposes the per-scheme --re-rn-* palette vars", () => {
+    const css = readFileSync(join(distRoot, "themes", "renascent.css"), "utf8");
+    expect(css).toContain("--re-rn-light-bg");
+    expect(css).toContain("--re-rn-dark-bg");
+    expect(css).toContain("--re-rn-light-accent-600");
+    expect(css).toContain("--re-rn-dark-accent-600");
+  });
 });

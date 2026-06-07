@@ -15,25 +15,112 @@
  */
 
 /* ============================================================
+   Per-scheme brand palette (concrete values, always available)
+
+   These --re-rn-{dark,light}-* custom properties expose the
+   Renascent palette as concrete values regardless of the active
+   scheme, so consumers can map them onto their own theme
+   mechanism. The scheme blocks below reference these instead of
+   repeating literals — single source of truth, no duplication.
+   Computed values are identical to the originals.
+   ============================================================ */
+:root {
+  /* ----- DARK palette --------------------------------------- */
+  --re-rn-dark-bg: #0f131a;
+  --re-rn-dark-bg-subtle: #171c26;
+  --re-rn-dark-bg-muted: #1f2430;
+  --re-rn-dark-surface: #171c26;
+  --re-rn-dark-text: #f8fafc;
+  --re-rn-dark-text-muted: #97a3b4;
+  --re-rn-dark-text-subtle: #6b7a90;
+  --re-rn-dark-text-danger: #f87171;
+  --re-rn-dark-border: #29303d;
+  --re-rn-dark-border-strong: #353d4d;
+  --re-rn-dark-border-danger: #ef4444;
+  --re-rn-dark-link: #3c83f6;
+  --re-rn-dark-link-hover: #60a5fa;
+  --re-rn-dark-link-visited: #a78bfa;
+  --re-rn-dark-selection-bg: rgba(60, 131, 246, 0.3);
+  --re-rn-dark-selection-text: #f8fafc;
+  --re-rn-dark-focus-ring-offset: 0px;
+  --re-rn-dark-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
+  --re-rn-dark-info-surface: color-mix(in oklab, #3c83f6 20%, #0f131a);
+  --re-rn-dark-info-border: #60a5fa;
+  --re-rn-dark-info-text: #93c3fd;
+  --re-rn-dark-success-surface: color-mix(in oklab, #2fe9d0 20%, #0f131a);
+  --re-rn-dark-success-border: #2fe9d0;
+  --re-rn-dark-success-text: #2fe9d0;
+  --re-rn-dark-warning-surface: color-mix(in oklab, #f9cf53 20%, #0f131a);
+  --re-rn-dark-warning-border: #f9cf53;
+  --re-rn-dark-warning-text: #f9cf53;
+  --re-rn-dark-danger-surface: color-mix(in oklab, #ef4444 20%, #0f131a);
+  --re-rn-dark-danger-border: #ef4444;
+  --re-rn-dark-danger-text: #f87171;
+  /* Interactive accent steps (button base/hover/active) for dark. */
+  --re-rn-dark-accent-600: #3c83f6;
+  --re-rn-dark-accent-700: #2563eb;
+  --re-rn-dark-accent-800: #1d4ed8;
+
+  /* ----- LIGHT palette -------------------------------------- */
+  --re-rn-light-bg: #f6f8fc;
+  --re-rn-light-bg-subtle: #eef2f8;
+  --re-rn-light-bg-muted: #e3e9f2;
+  --re-rn-light-surface: #ffffff;
+  --re-rn-light-text: #0f131a;
+  --re-rn-light-text-muted: #475569;
+  --re-rn-light-text-subtle: #64748b;
+  --re-rn-light-text-danger: #b91c1c;
+  --re-rn-light-border: #d7dfea;
+  --re-rn-light-border-strong: #c0cad9;
+  --re-rn-light-border-danger: #dc2626;
+  --re-rn-light-link: #2563eb;
+  --re-rn-light-link-hover: #1d4ed8;
+  --re-rn-light-link-visited: #7c3aed;
+  --re-rn-light-selection-bg: rgba(60, 131, 246, 0.18);
+  --re-rn-light-selection-text: #0f131a;
+  --re-rn-light-focus-ring-offset: 2px;
+  --re-rn-light-shadow-focus:
+    0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+    0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring);
+  --re-rn-light-info-surface: color-mix(in oklab, #3c83f6 12%, #f6f8fc);
+  --re-rn-light-info-border: #3c83f6;
+  --re-rn-light-info-text: #2563eb;
+  --re-rn-light-success-surface: color-mix(in oklab, #2fe9d0 12%, #f6f8fc);
+  --re-rn-light-success-border: #0fd4bb;
+  --re-rn-light-success-text: #0f766e;
+  --re-rn-light-warning-surface: color-mix(in oklab, #f9cf53 12%, #f6f8fc);
+  --re-rn-light-warning-border: #f0b929;
+  --re-rn-light-warning-text: #b45309;
+  --re-rn-light-danger-surface: color-mix(in oklab, #ef4444 12%, #f6f8fc);
+  --re-rn-light-danger-border: #dc2626;
+  --re-rn-light-danger-text: #b91c1c;
+  /* On light bg, white-on-accent buttons need accent-600 = #2563eb
+     (white 5.17:1); the dark #3c83f6 only reaches 3.64:1. */
+  --re-rn-light-accent-600: #2563eb;
+  --re-rn-light-accent-700: #1d4ed8;
+  --re-rn-light-accent-800: #1e40af;
+}
+
+/* ============================================================
    Global dark theme (matches the renascentelements.hu design)
    ============================================================ */
 :root {
   color-scheme: dark;
 
   /* ----- Backgrounds ---------------------------------------- */
-  --re-color-bg: #0f131a; /* hsl(220 27% 8%)  — page background  */
-  --re-color-bg-subtle: #171c26; /* hsl(220 25% 12%) — card / surface   */
-  --re-color-bg-muted: #1f2430; /* hsl(220 20% 15%) — muted section    */
-  --re-color-surface: #171c26;
+  --re-color-bg: var(--re-rn-dark-bg); /* hsl(220 27% 8%)  — page background  */
+  --re-color-bg-subtle: var(--re-rn-dark-bg-subtle); /* hsl(220 25% 12%) — card / surface   */
+  --re-color-bg-muted: var(--re-rn-dark-bg-muted); /* hsl(220 20% 15%) — muted section    */
+  --re-color-surface: var(--re-rn-dark-surface);
 
   /* ----- Text ----------------------------------------------- */
-  --re-color-text: #f8fafc; /* hsl(210 40% 98%) — primary text     */
-  --re-color-text-muted: #97a3b4; /* hsl(215 16% 65%) — secondary text   */
-  --re-color-text-subtle: #6b7a90; /* dimmer tertiary text                */
+  --re-color-text: var(--re-rn-dark-text); /* hsl(210 40% 98%) — primary text     */
+  --re-color-text-muted: var(--re-rn-dark-text-muted); /* hsl(215 16% 65%) — secondary text   */
+  --re-color-text-subtle: var(--re-rn-dark-text-subtle); /* dimmer tertiary text                */
 
   /* ----- Border --------------------------------------------- */
-  --re-color-border: #29303d; /* hsl(220 20% 20%) */
-  --re-color-border-strong: #353d4d;
+  --re-color-border: var(--re-rn-dark-border); /* hsl(220 20% 20%) */
+  --re-color-border-strong: var(--re-rn-dark-border-strong);
 
   /* ----- Brand: electric blue (primary interactive) ---------
      Their --primary is hsl(217 91% 60%) = #3c83f6.
@@ -50,9 +137,9 @@
   --re-color-accent-900: #1e3a8a;
 
   /* ----- Semantic role colors ------------------------------- */
-  --re-color-link: #3c83f6;
-  --re-color-link-hover: #60a5fa;
-  --re-color-link-visited: #a78bfa;
+  --re-color-link: var(--re-rn-dark-link);
+  --re-color-link-hover: var(--re-rn-dark-link-hover);
+  --re-color-link-visited: var(--re-rn-dark-link-visited);
   --re-color-focus-ring: #3c83f6;
   /* White on accent-600 (#2563eb) = 5.17:1; the dark navy used elsewhere
      only reaches 3.6:1 on the blue/red button fills, below WCAG AA. */
@@ -80,34 +167,34 @@
      color-mix captured the light-mode bg → light alert surfaces
      under dark-section body text (≈1.05:1). White body text on
      these 20%/dark mixes clears AA (≥4.5:1).                    */
-  --re-color-info-surface: color-mix(in oklab, #3c83f6 20%, var(--re-color-bg));
-  --re-color-info-border: #60a5fa;
-  --re-color-info-text: #93c3fd;
-  --re-color-success-surface: color-mix(in oklab, #2fe9d0 20%, var(--re-color-bg));
-  --re-color-success-border: #2fe9d0;
-  --re-color-success-text: #2fe9d0;
-  --re-color-warning-surface: color-mix(in oklab, #f9cf53 20%, var(--re-color-bg));
-  --re-color-warning-border: #f9cf53;
-  --re-color-warning-text: #f9cf53;
-  --re-color-danger-surface: color-mix(in oklab, #ef4444 20%, var(--re-color-bg));
-  --re-color-danger-border: #ef4444;
-  --re-color-danger-text: #f87171;
+  --re-color-info-surface: var(--re-rn-dark-info-surface);
+  --re-color-info-border: var(--re-rn-dark-info-border);
+  --re-color-info-text: var(--re-rn-dark-info-text);
+  --re-color-success-surface: var(--re-rn-dark-success-surface);
+  --re-color-success-border: var(--re-rn-dark-success-border);
+  --re-color-success-text: var(--re-rn-dark-success-text);
+  --re-color-warning-surface: var(--re-rn-dark-warning-surface);
+  --re-color-warning-border: var(--re-rn-dark-warning-border);
+  --re-color-warning-text: var(--re-rn-dark-warning-text);
+  --re-color-danger-surface: var(--re-rn-dark-danger-surface);
+  --re-color-danger-border: var(--re-rn-dark-danger-border);
+  --re-color-danger-text: var(--re-rn-dark-danger-text);
 
   /* ----- Focus ring on dark background ----------------------
      Remove the offset gap: the "white gap" trick is for light
      themes. On dark bg, offset + border = double blue line.     */
-  --re-focus-ring-offset: 0px;
-  --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
+  --re-focus-ring-offset: var(--re-rn-dark-focus-ring-offset);
+  --re-shadow-focus: var(--re-rn-dark-shadow-focus);
 
   /* ----- Selection ------------------------------------------ */
-  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
-  --re-color-selection-text: #f8fafc;
+  --re-color-selection-bg: var(--re-rn-dark-selection-bg);
+  --re-color-selection-text: var(--re-rn-dark-selection-text);
 
   /* ----- Text danger for validation messages ---------------- */
-  --re-color-text-danger: #f87171; /* lighter red for dark backgrounds */
+  --re-color-text-danger: var(--re-rn-dark-text-danger); /* lighter red for dark backgrounds */
 
   /* ----- Border danger -------------------------------------- */
-  --re-color-border-danger: #ef4444;
+  --re-color-border-danger: var(--re-rn-dark-border-danger);
 }
 
 /* ============================================================
@@ -136,24 +223,24 @@
 .theme-renascent-dark {
   color-scheme: dark;
 
-  --re-color-bg: #0f131a;
-  --re-color-bg-subtle: #171c26;
-  --re-color-bg-muted: #1f2430;
-  --re-color-surface: #171c26;
-  --re-color-text: #f8fafc;
-  --re-color-text-muted: #97a3b4;
-  --re-color-text-subtle: #6b7a90;
-  --re-color-border: #29303d;
-  --re-color-border-strong: #353d4d;
+  --re-color-bg: var(--re-rn-dark-bg);
+  --re-color-bg-subtle: var(--re-rn-dark-bg-subtle);
+  --re-color-bg-muted: var(--re-rn-dark-bg-muted);
+  --re-color-surface: var(--re-rn-dark-surface);
+  --re-color-text: var(--re-rn-dark-text);
+  --re-color-text-muted: var(--re-rn-dark-text-muted);
+  --re-color-text-subtle: var(--re-rn-dark-text-subtle);
+  --re-color-border: var(--re-rn-dark-border);
+  --re-color-border-strong: var(--re-rn-dark-border-strong);
   --re-color-accent-500: #3c83f6;
   --re-color-accent-600: #2563eb;
   --re-color-accent-700: #1d4ed8;
-  --re-color-link: #3c83f6;
-  --re-color-link-hover: #60a5fa;
+  --re-color-link: var(--re-rn-dark-link);
+  --re-color-link-hover: var(--re-rn-dark-link-hover);
   --re-color-focus-ring: #3c83f6;
   --re-color-text-on-accent: #ffffff;
-  --re-color-text-danger: #f87171;
-  --re-color-border-danger: #ef4444;
+  --re-color-text-danger: var(--re-rn-dark-text-danger);
+  --re-color-border-danger: var(--re-rn-dark-border-danger);
   --re-color-success-500: #2fe9d0;
   --re-color-success-600: #0fd4bb;
   --re-color-success-700: #0ab8a2;
@@ -163,22 +250,22 @@
   --re-color-danger-500: #ef4444;
   --re-color-danger-600: #dc2626;
   --re-color-danger-700: #b91c1c;
-  --re-color-info-surface: color-mix(in oklab, #3c83f6 20%, var(--re-color-bg));
-  --re-color-info-border: #60a5fa;
-  --re-color-info-text: #93c3fd;
-  --re-color-success-surface: color-mix(in oklab, #2fe9d0 20%, var(--re-color-bg));
-  --re-color-success-border: #2fe9d0;
-  --re-color-success-text: #2fe9d0;
-  --re-color-warning-surface: color-mix(in oklab, #f9cf53 20%, var(--re-color-bg));
-  --re-color-warning-border: #f9cf53;
-  --re-color-warning-text: #f9cf53;
-  --re-color-danger-surface: color-mix(in oklab, #ef4444 20%, var(--re-color-bg));
-  --re-color-danger-border: #ef4444;
-  --re-color-danger-text: #f87171;
-  --re-focus-ring-offset: 0px;
-  --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
-  --re-color-selection-bg: rgba(60, 131, 246, 0.3);
-  --re-color-selection-text: #f8fafc;
+  --re-color-info-surface: var(--re-rn-dark-info-surface);
+  --re-color-info-border: var(--re-rn-dark-info-border);
+  --re-color-info-text: var(--re-rn-dark-info-text);
+  --re-color-success-surface: var(--re-rn-dark-success-surface);
+  --re-color-success-border: var(--re-rn-dark-success-border);
+  --re-color-success-text: var(--re-rn-dark-success-text);
+  --re-color-warning-surface: var(--re-rn-dark-warning-surface);
+  --re-color-warning-border: var(--re-rn-dark-warning-border);
+  --re-color-warning-text: var(--re-rn-dark-warning-text);
+  --re-color-danger-surface: var(--re-rn-dark-danger-surface);
+  --re-color-danger-border: var(--re-rn-dark-danger-border);
+  --re-color-danger-text: var(--re-rn-dark-danger-text);
+  --re-focus-ring-offset: var(--re-rn-dark-focus-ring-offset);
+  --re-shadow-focus: var(--re-rn-dark-shadow-focus);
+  --re-color-selection-bg: var(--re-rn-dark-selection-bg);
+  --re-color-selection-text: var(--re-rn-dark-selection-text);
 
   background-color: var(--re-color-bg);
   color: var(--re-color-text);
@@ -189,115 +276,82 @@
   :root,
   .theme-renascent {
     color-scheme: light;
-    --re-color-bg: #f6f8fc;
-    --re-color-bg-subtle: #eef2f8;
-    --re-color-bg-muted: #e3e9f2;
-    --re-color-surface: #ffffff;
-    --re-color-text: #0f131a;
-    --re-color-text-muted: #475569;
-    --re-color-text-subtle: #64748b;
+    --re-color-bg: var(--re-rn-light-bg);
+    --re-color-bg-subtle: var(--re-rn-light-bg-subtle);
+    --re-color-bg-muted: var(--re-rn-light-bg-muted);
+    --re-color-surface: var(--re-rn-light-surface);
+    --re-color-text: var(--re-rn-light-text);
+    --re-color-text-muted: var(--re-rn-light-text-muted);
+    --re-color-text-subtle: var(--re-rn-light-text-subtle);
     --re-color-text-on-accent: #ffffff;
-    /* On light bg, white-on-accent buttons need accent-600 = #2563eb
-       (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
-    --re-color-accent-600: #2563eb;
-    --re-color-accent-700: #1d4ed8;
-    --re-color-accent-800: #1e40af;
-    --re-color-text-danger: #b91c1c;
-    --re-color-border: #d7dfea;
-    --re-color-border-strong: #c0cad9;
-    --re-color-border-danger: #dc2626;
-    --re-color-link: #2563eb;
-    --re-color-link-hover: #1d4ed8;
-    --re-color-link-visited: #7c3aed;
+    --re-color-accent-600: var(--re-rn-light-accent-600);
+    --re-color-accent-700: var(--re-rn-light-accent-700);
+    --re-color-accent-800: var(--re-rn-light-accent-800);
+    --re-color-text-danger: var(--re-rn-light-text-danger);
+    --re-color-border: var(--re-rn-light-border);
+    --re-color-border-strong: var(--re-rn-light-border-strong);
+    --re-color-border-danger: var(--re-rn-light-border-danger);
+    --re-color-link: var(--re-rn-light-link);
+    --re-color-link-hover: var(--re-rn-light-link-hover);
+    --re-color-link-visited: var(--re-rn-light-link-visited);
     --re-color-focus-ring: #3c83f6;
-    --re-color-selection-bg: rgba(60, 131, 246, 0.18);
-    --re-color-selection-text: #0f131a;
-    --re-focus-ring-offset: 2px;
-    --re-shadow-focus:
-      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
-      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
-        var(--re-color-focus-ring);
-    --re-color-info-surface: color-mix(in oklab, #3c83f6 12%, var(--re-color-bg));
-    --re-color-info-border: #3c83f6;
-    --re-color-info-text: #2563eb;
-    --re-color-success-surface: color-mix(
-      in oklab,
-      var(--re-color-success-500) 12%,
-      var(--re-color-bg)
-    );
-    --re-color-success-border: #0fd4bb;
-    --re-color-success-text: #0f766e;
-    --re-color-warning-surface: color-mix(
-      in oklab,
-      var(--re-color-warning-500) 12%,
-      var(--re-color-bg)
-    );
-    --re-color-warning-border: #f0b929;
-    --re-color-warning-text: #b45309;
-    --re-color-danger-surface: color-mix(
-      in oklab,
-      var(--re-color-danger-500) 12%,
-      var(--re-color-bg)
-    );
-    --re-color-danger-border: #dc2626;
-    --re-color-danger-text: #b91c1c;
+    --re-color-selection-bg: var(--re-rn-light-selection-bg);
+    --re-color-selection-text: var(--re-rn-light-selection-text);
+    --re-focus-ring-offset: var(--re-rn-light-focus-ring-offset);
+    --re-shadow-focus: var(--re-rn-light-shadow-focus);
+    --re-color-info-surface: var(--re-rn-light-info-surface);
+    --re-color-info-border: var(--re-rn-light-info-border);
+    --re-color-info-text: var(--re-rn-light-info-text);
+    --re-color-success-surface: var(--re-rn-light-success-surface);
+    --re-color-success-border: var(--re-rn-light-success-border);
+    --re-color-success-text: var(--re-rn-light-success-text);
+    --re-color-warning-surface: var(--re-rn-light-warning-surface);
+    --re-color-warning-border: var(--re-rn-light-warning-border);
+    --re-color-warning-text: var(--re-rn-light-warning-text);
+    --re-color-danger-surface: var(--re-rn-light-danger-surface);
+    --re-color-danger-border: var(--re-rn-light-danger-border);
+    --re-color-danger-text: var(--re-rn-light-danger-text);
   }
 }
 
 /* LIGHT — forced regardless of OS. */
 .theme-renascent-light {
   color-scheme: light;
-  --re-color-bg: #f6f8fc;
-  --re-color-bg-subtle: #eef2f8;
-  --re-color-bg-muted: #e3e9f2;
-  --re-color-surface: #ffffff;
-  --re-color-text: #0f131a;
-  --re-color-text-muted: #475569;
-  --re-color-text-subtle: #64748b;
+  --re-color-bg: var(--re-rn-light-bg);
+  --re-color-bg-subtle: var(--re-rn-light-bg-subtle);
+  --re-color-bg-muted: var(--re-rn-light-bg-muted);
+  --re-color-surface: var(--re-rn-light-surface);
+  --re-color-text: var(--re-rn-light-text);
+  --re-color-text-muted: var(--re-rn-light-text-muted);
+  --re-color-text-subtle: var(--re-rn-light-text-subtle);
   --re-color-text-on-accent: #ffffff;
-  /* On light bg, white-on-accent buttons need accent-600 = #2563eb
-     (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
-  --re-color-accent-600: #2563eb;
-  --re-color-accent-700: #1d4ed8;
-  --re-color-accent-800: #1e40af;
-  --re-color-text-danger: #b91c1c;
-  --re-color-border: #d7dfea;
-  --re-color-border-strong: #c0cad9;
-  --re-color-border-danger: #dc2626;
-  --re-color-link: #2563eb;
-  --re-color-link-hover: #1d4ed8;
-  --re-color-link-visited: #7c3aed;
+  --re-color-accent-600: var(--re-rn-light-accent-600);
+  --re-color-accent-700: var(--re-rn-light-accent-700);
+  --re-color-accent-800: var(--re-rn-light-accent-800);
+  --re-color-text-danger: var(--re-rn-light-text-danger);
+  --re-color-border: var(--re-rn-light-border);
+  --re-color-border-strong: var(--re-rn-light-border-strong);
+  --re-color-border-danger: var(--re-rn-light-border-danger);
+  --re-color-link: var(--re-rn-light-link);
+  --re-color-link-hover: var(--re-rn-light-link-hover);
+  --re-color-link-visited: var(--re-rn-light-link-visited);
   --re-color-focus-ring: #3c83f6;
-  --re-color-selection-bg: rgba(60, 131, 246, 0.18);
-  --re-color-selection-text: #0f131a;
-  --re-focus-ring-offset: 2px;
-  --re-shadow-focus:
-    0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
-    0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring);
-  --re-color-info-surface: color-mix(in oklab, #3c83f6 12%, var(--re-color-bg));
-  --re-color-info-border: #3c83f6;
-  --re-color-info-text: #2563eb;
-  --re-color-success-surface: color-mix(
-    in oklab,
-    var(--re-color-success-500) 12%,
-    var(--re-color-bg)
-  );
-  --re-color-success-border: #0fd4bb;
-  --re-color-success-text: #0f766e;
-  --re-color-warning-surface: color-mix(
-    in oklab,
-    var(--re-color-warning-500) 12%,
-    var(--re-color-bg)
-  );
-  --re-color-warning-border: #f0b929;
-  --re-color-warning-text: #b45309;
-  --re-color-danger-surface: color-mix(
-    in oklab,
-    var(--re-color-danger-500) 12%,
-    var(--re-color-bg)
-  );
-  --re-color-danger-border: #dc2626;
-  --re-color-danger-text: #b91c1c;
+  --re-color-selection-bg: var(--re-rn-light-selection-bg);
+  --re-color-selection-text: var(--re-rn-light-selection-text);
+  --re-focus-ring-offset: var(--re-rn-light-focus-ring-offset);
+  --re-shadow-focus: var(--re-rn-light-shadow-focus);
+  --re-color-info-surface: var(--re-rn-light-info-surface);
+  --re-color-info-border: var(--re-rn-light-info-border);
+  --re-color-info-text: var(--re-rn-light-info-text);
+  --re-color-success-surface: var(--re-rn-light-success-surface);
+  --re-color-success-border: var(--re-rn-light-success-border);
+  --re-color-success-text: var(--re-rn-light-success-text);
+  --re-color-warning-surface: var(--re-rn-light-warning-surface);
+  --re-color-warning-border: var(--re-rn-light-warning-border);
+  --re-color-warning-text: var(--re-rn-light-warning-text);
+  --re-color-danger-surface: var(--re-rn-light-danger-surface);
+  --re-color-danger-border: var(--re-rn-light-danger-border);
+  --re-color-danger-text: var(--re-rn-light-danger-text);
 
   background-color: var(--re-color-bg);
   color: var(--re-color-text);
