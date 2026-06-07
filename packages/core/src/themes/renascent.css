@@ -54,7 +54,9 @@
   --re-color-link-hover: #60a5fa;
   --re-color-link-visited: #a78bfa;
   --re-color-focus-ring: #3c83f6;
-  --re-color-text-on-accent: #0f131a;
+  /* White on accent-600 (#2563eb) = 5.17:1; the dark navy used elsewhere
+     only reaches 3.6:1 on the blue/red button fills, below WCAG AA. */
+  --re-color-text-on-accent: #ffffff;
 
   /* ----- Semantic feedback ---------------------------------- */
   /* Success: teal (hsl(172 81% 55%) — their --success)        */
@@ -71,6 +73,25 @@
   --re-color-danger-500: #ef4444;
   --re-color-danger-600: #dc2626;
   --re-color-danger-700: #b91c1c;
+
+  /* ----- Status surfaces (dark) -----------------------------
+     Defined explicitly so they mix against this theme's dark bg.
+     Without these they inherit the un-themed :root tokens, whose
+     color-mix captured the light-mode bg → light alert surfaces
+     under dark-section body text (≈1.05:1). White body text on
+     these 20%/dark mixes clears AA (≥4.5:1).                    */
+  --re-color-info-surface: color-mix(in oklab, #3c83f6 20%, var(--re-color-bg));
+  --re-color-info-border: #60a5fa;
+  --re-color-info-text: #93c3fd;
+  --re-color-success-surface: color-mix(in oklab, #2fe9d0 20%, var(--re-color-bg));
+  --re-color-success-border: #2fe9d0;
+  --re-color-success-text: #2fe9d0;
+  --re-color-warning-surface: color-mix(in oklab, #f9cf53 20%, var(--re-color-bg));
+  --re-color-warning-border: #f9cf53;
+  --re-color-warning-text: #f9cf53;
+  --re-color-danger-surface: color-mix(in oklab, #ef4444 20%, var(--re-color-bg));
+  --re-color-danger-border: #ef4444;
+  --re-color-danger-text: #f87171;
 
   /* ----- Focus ring on dark background ----------------------
      Remove the offset gap: the "white gap" trick is for light
@@ -111,7 +132,8 @@
 /* ============================================================
    Scoped class — apply on any container instead of :root
    ============================================================ */
-.theme-renascent {
+.theme-renascent,
+.theme-renascent-dark {
   color-scheme: dark;
 
   --re-color-bg: #0f131a;
@@ -129,7 +151,7 @@
   --re-color-link: #3c83f6;
   --re-color-link-hover: #60a5fa;
   --re-color-focus-ring: #3c83f6;
-  --re-color-text-on-accent: #0f131a;
+  --re-color-text-on-accent: #ffffff;
   --re-color-text-danger: #f87171;
   --re-color-border-danger: #ef4444;
   --re-color-success-500: #2fe9d0;
@@ -141,10 +163,141 @@
   --re-color-danger-500: #ef4444;
   --re-color-danger-600: #dc2626;
   --re-color-danger-700: #b91c1c;
+  --re-color-info-surface: color-mix(in oklab, #3c83f6 20%, var(--re-color-bg));
+  --re-color-info-border: #60a5fa;
+  --re-color-info-text: #93c3fd;
+  --re-color-success-surface: color-mix(in oklab, #2fe9d0 20%, var(--re-color-bg));
+  --re-color-success-border: #2fe9d0;
+  --re-color-success-text: #2fe9d0;
+  --re-color-warning-surface: color-mix(in oklab, #f9cf53 20%, var(--re-color-bg));
+  --re-color-warning-border: #f9cf53;
+  --re-color-warning-text: #f9cf53;
+  --re-color-danger-surface: color-mix(in oklab, #ef4444 20%, var(--re-color-bg));
+  --re-color-danger-border: #ef4444;
+  --re-color-danger-text: #f87171;
   --re-focus-ring-offset: 0px;
   --re-shadow-focus: 0 0 0 2px var(--re-color-focus-ring);
   --re-color-selection-bg: rgba(60, 131, 246, 0.3);
   --re-color-selection-text: #f8fafc;
+
+  background-color: var(--re-color-bg);
+  color: var(--re-color-text);
+}
+
+/* LIGHT — when the OS prefers light (global import + the auto .theme-renascent). */
+@media (prefers-color-scheme: light) {
+  :root,
+  .theme-renascent {
+    color-scheme: light;
+    --re-color-bg: #f6f8fc;
+    --re-color-bg-subtle: #eef2f8;
+    --re-color-bg-muted: #e3e9f2;
+    --re-color-surface: #ffffff;
+    --re-color-text: #0f131a;
+    --re-color-text-muted: #475569;
+    --re-color-text-subtle: #64748b;
+    --re-color-text-on-accent: #ffffff;
+    /* On light bg, white-on-accent buttons need accent-600 = #2563eb
+       (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
+    --re-color-accent-600: #2563eb;
+    --re-color-accent-700: #1d4ed8;
+    --re-color-accent-800: #1e40af;
+    --re-color-text-danger: #b91c1c;
+    --re-color-border: #d7dfea;
+    --re-color-border-strong: #c0cad9;
+    --re-color-border-danger: #dc2626;
+    --re-color-link: #2563eb;
+    --re-color-link-hover: #1d4ed8;
+    --re-color-link-visited: #7c3aed;
+    --re-color-focus-ring: #3c83f6;
+    --re-color-selection-bg: rgba(60, 131, 246, 0.18);
+    --re-color-selection-text: #0f131a;
+    --re-focus-ring-offset: 2px;
+    --re-shadow-focus:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-focus-ring);
+    --re-color-info-surface: color-mix(in oklab, #3c83f6 12%, var(--re-color-bg));
+    --re-color-info-border: #3c83f6;
+    --re-color-info-text: #2563eb;
+    --re-color-success-surface: color-mix(
+      in oklab,
+      var(--re-color-success-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-success-border: #0fd4bb;
+    --re-color-success-text: #0f766e;
+    --re-color-warning-surface: color-mix(
+      in oklab,
+      var(--re-color-warning-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-warning-border: #f0b929;
+    --re-color-warning-text: #b45309;
+    --re-color-danger-surface: color-mix(
+      in oklab,
+      var(--re-color-danger-500) 12%,
+      var(--re-color-bg)
+    );
+    --re-color-danger-border: #dc2626;
+    --re-color-danger-text: #b91c1c;
+  }
+}
+
+/* LIGHT — forced regardless of OS. */
+.theme-renascent-light {
+  color-scheme: light;
+  --re-color-bg: #f6f8fc;
+  --re-color-bg-subtle: #eef2f8;
+  --re-color-bg-muted: #e3e9f2;
+  --re-color-surface: #ffffff;
+  --re-color-text: #0f131a;
+  --re-color-text-muted: #475569;
+  --re-color-text-subtle: #64748b;
+  --re-color-text-on-accent: #ffffff;
+  /* On light bg, white-on-accent buttons need accent-600 = #2563eb
+     (white 5.17:1). The global #3c83f6 only reaches 3.64:1. */
+  --re-color-accent-600: #2563eb;
+  --re-color-accent-700: #1d4ed8;
+  --re-color-accent-800: #1e40af;
+  --re-color-text-danger: #b91c1c;
+  --re-color-border: #d7dfea;
+  --re-color-border-strong: #c0cad9;
+  --re-color-border-danger: #dc2626;
+  --re-color-link: #2563eb;
+  --re-color-link-hover: #1d4ed8;
+  --re-color-link-visited: #7c3aed;
+  --re-color-focus-ring: #3c83f6;
+  --re-color-selection-bg: rgba(60, 131, 246, 0.18);
+  --re-color-selection-text: #0f131a;
+  --re-focus-ring-offset: 2px;
+  --re-shadow-focus:
+    0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+    0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring);
+  --re-color-info-surface: color-mix(in oklab, #3c83f6 12%, var(--re-color-bg));
+  --re-color-info-border: #3c83f6;
+  --re-color-info-text: #2563eb;
+  --re-color-success-surface: color-mix(
+    in oklab,
+    var(--re-color-success-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-success-border: #0fd4bb;
+  --re-color-success-text: #0f766e;
+  --re-color-warning-surface: color-mix(
+    in oklab,
+    var(--re-color-warning-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-warning-border: #f0b929;
+  --re-color-warning-text: #b45309;
+  --re-color-danger-surface: color-mix(
+    in oklab,
+    var(--re-color-danger-500) 12%,
+    var(--re-color-bg)
+  );
+  --re-color-danger-border: #dc2626;
+  --re-color-danger-text: #b91c1c;
 
   background-color: var(--re-color-bg);
   color: var(--re-color-text);
@@ -157,12 +310,14 @@
    ============================================================ */
 .re-button[data-variant="phoenix"] {
   background: var(--re-gradient-phoenix);
+  /* Paint the gradient from the border box so the 1px (transparent) border
+     doesn't show a seam where the padding-box gradient is clipped. */
+  background-origin: border-box;
   color: #fff;
   border-color: transparent;
 }
 .re-button[data-variant="phoenix"]:hover {
   filter: brightness(1.12);
-  background: var(--re-gradient-phoenix);
 }
 .re-button[data-variant="phoenix"]:active {
   filter: brightness(0.9);
@@ -178,12 +333,12 @@
 
 .re-button[data-variant="brand"] {
   background: var(--re-gradient-brand);
+  background-origin: border-box;
   color: #fff;
   border-color: transparent;
 }
 .re-button[data-variant="brand"]:hover {
   filter: brightness(1.12);
-  background: var(--re-gradient-brand);
 }
 .re-button[data-variant="brand"]:active {
   filter: brightness(0.9);
