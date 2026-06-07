@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Pagination</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="pagination">
+    <header>
+      <h1>Pagination</h1>
+      <p>
+        Page navigation with native links. Mark the current page with
+        <code>aria-current="page"</code>.
+      </p>
+    </header>
+
+    <section aria-labelledby="links-heading" data-testid="links">
+      <h2 id="links-heading">Links</h2>
+      <!-- demo:start name="links" -->
+      <nav class="re-pagination" aria-label="Pagination">
+        <a class="re-pagination__item" href="#1" rel="prev">Previous</a>
+        <a class="re-pagination__item" href="#1">1</a>
+        <a class="re-pagination__item" aria-current="page" href="#2">2</a>
+        <a class="re-pagination__item" href="#3">3</a>
+        <span class="re-pagination__ellipsis" aria-hidden="true">…</span>
+        <a class="re-pagination__item" href="#9">9</a>
+        <a class="re-pagination__item" href="#3" rel="next">Next</a>
+      </nav>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="ends-heading" data-testid="ends">
+      <h2 id="ends-heading">First page (Previous disabled)</h2>
+      <!-- demo:start name="ends" -->
+      <nav class="re-pagination" aria-label="Pagination">
+        <span class="re-pagination__item" aria-disabled="true">Previous</span>
+        <a class="re-pagination__item" aria-current="page" href="#1">1</a>
+        <a class="re-pagination__item" href="#2">2</a>
+        <a class="re-pagination__item" href="#3">3</a>
+        <a class="re-pagination__item" href="#2" rel="next">Next</a>
+      </nav>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

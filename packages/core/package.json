@@ -60,6 +60,10 @@
     "./components/card.css": "./dist/components/card.css",
     "./components/switch.css": "./dist/components/switch.css",
     "./components/tag.css": "./dist/components/tag.css",
+    "./components/table.css": "./dist/components/table.css",
+    "./components/skeleton.css": "./dist/components/skeleton.css",
+    "./components/spinner.css": "./dist/components/spinner.css",
+    "./components/pagination.css": "./dist/components/pagination.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",

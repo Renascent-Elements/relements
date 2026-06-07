@@ -44,6 +44,10 @@ describe("@relements/core dist", () => {
       "popover.css",
       "toast.css",
       "progress.css",
+      "table.css",
+      "skeleton.css",
+      "spinner.css",
+      "pagination.css",
     ];
     for (const file of components) {
       expect(existsSync(join(distRoot, "components", file)), file).toBe(true);

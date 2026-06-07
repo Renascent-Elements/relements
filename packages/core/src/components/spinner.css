@@ -1,0 +1,39 @@
+/**
+ * Relements spinner — accessible busy indicator.
+ * Requires an accessible name: role="status" + aria-label (or a visually-hidden child).
+ * data-size="sm" | "md" (default) | "lg".
+ */
+@layer re.components {
+  .re-spinner {
+    display: inline-block;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    border: 2px solid var(--re-color-border);
+    border-block-start-color: var(--re-color-accent-600);
+    border-radius: 9999px;
+    animation: re-spin 0.6s linear infinite;
+  }
+
+  .re-spinner[data-size="sm"] {
+    inline-size: 1rem;
+    block-size: 1rem;
+  }
+
+  .re-spinner[data-size="lg"] {
+    inline-size: 2rem;
+    block-size: 2rem;
+    border-width: 3px;
+  }
+
+  @keyframes re-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .re-spinner {
+      animation: none;
+    }
+  }
+}

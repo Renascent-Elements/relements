@@ -1,0 +1,22 @@
+---
+title: Table
+description: Styled native table with optional zebra, hover, density, and sticky header.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Style the native `<table>` with `.re-table`. Wrap in `.re-table-wrap` for horizontal scroll. Opt in to behaviours with `data-*` attributes.
+
+## Basic
+
+<Demo src="table.html" name="basic" />
+
+## Zebra, hover, compact
+
+<Demo src="table.html" name="zebra" />
+
+## Sticky header
+
+Add `data-sticky-header` and give `.re-table-wrap` a constrained height with `overflow: auto` — the header stays pinned while the body scrolls.
+
+<Demo src="table.html" name="sticky" />
