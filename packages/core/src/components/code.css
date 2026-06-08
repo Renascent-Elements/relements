@@ -1,0 +1,41 @@
+/**
+ * Relements code block.
+ *
+ * Native <code>/<pre> are already styled by re.base. This component wraps a
+ * code block in a bordered container with an optional caption (filename),
+ * using a <figure> + <figcaption>.
+ *
+ *   <figure class="re-code">
+ *     <figcaption>app.css</figcaption>
+ *     <pre><code>.re-button { color: red; }</code></pre>
+ *   </figure>
+ *
+ * A plain bordered block also works: <pre class="re-code">…</pre>.
+ */
+
+@layer re.components {
+  .re-code {
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--re-color-bg-muted);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+  }
+
+  .re-code > figcaption {
+    padding: var(--re-space-2) var(--re-space-4);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-size-text-xs);
+    font-weight: var(--re-font-weight-medium);
+    color: var(--re-color-text-muted);
+    background-color: var(--re-color-bg-subtle);
+    border-block-end: var(--re-border-default);
+  }
+
+  /* Reset the base <pre> chrome — the container owns it now. */
+  .re-code > pre {
+    margin: 0;
+    background: none;
+    border-radius: 0;
+  }
+}

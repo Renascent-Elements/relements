@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Kbd</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--re-space-2);
+      }
+    </style>
+  </head>
+  <body data-page="kbd">
+    <header>
+      <h1>Kbd</h1>
+      <p>Keyboard key caps for documenting shortcuts.</p>
+    </header>
+
+    <section aria-labelledby="keys-heading" data-testid="keys">
+      <h2 id="keys-heading">Keys</h2>
+      <!-- demo:start name="keys" -->
+      <div class="row">
+        <kbd class="re-kbd">Esc</kbd>
+        <kbd class="re-kbd">Tab</kbd>
+        <kbd class="re-kbd">↵</kbd>
+        <kbd class="re-kbd">⌘</kbd>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="shortcut-heading" data-testid="shortcut">
+      <h2 id="shortcut-heading">Shortcut</h2>
+      <!-- demo:start name="shortcut" -->
+      <p>Open the palette with <kbd class="re-kbd">⌘</kbd> <kbd class="re-kbd">K</kbd>.</p>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

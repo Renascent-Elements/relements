@@ -40,3 +40,6 @@
 @import "./components/skeleton.css";
 @import "./components/spinner.css";
 @import "./components/pagination.css";
+@import "./components/separator.css";
+@import "./components/kbd.css";
+@import "./components/code.css";
