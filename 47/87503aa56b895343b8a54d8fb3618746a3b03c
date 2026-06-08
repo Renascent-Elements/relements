@@ -1,0 +1,51 @@
+docs/examples/kbd.html
+  s_ea5e20bbc10148::t_b6fa6d7e65bf84 46
+  s_ea5e20bbc10148::t_58d920c1999002 1-45,47-50
+packages/core/src/components/separator.css
+  s_ea5e20bbc10148::t_4080bb162d532f 1-37
+tests/a11y/kbd.a11y.spec.ts
+  s_ea5e20bbc10148::t_de609f1ad6c32c 1-10
+packages/core/src/components/kbd.css
+  s_ea5e20bbc10148::t_b979c260a8d309 1-29
+packages/core/src/components/code.css
+  s_ea5e20bbc10148::t_e9a73bc554b1b7 1-41
+tests/a11y/separator.a11y.spec.ts
+  s_ea5e20bbc10148::t_cc829cf43766ee 1-10
+docs/PROGRESS.md
+  s_ea5e20bbc10148::t_0ab8c92d469f71 68-75
+docs/examples/separator.html
+  s_ea5e20bbc10148::t_b6fa6d7e65bf84 39-44,46-51
+  s_ea5e20bbc10148::t_c5faaadfe00ba3 1-38,45,52-57
+tests/visual/kbd.visual.spec.ts
+  s_ea5e20bbc10148::t_bae76da76fc94e 1-11
+.changeset/fresh-pugs-cheer.md
+  s_ea5e20bbc10148::t_c4f9caaa03004f 1-8
+docs/examples/code.html
+  s_ea5e20bbc10148::t_f9bc2adf76ed25 1-44
+packages/core/package.json
+  s_ea5e20bbc10148::t_e8afaee5babeaa 67-69
+tests/a11y/code.a11y.spec.ts
+  s_ea5e20bbc10148::t_d795ff3b496b03 1-10
+packages/core/src/index.css
+  s_ea5e20bbc10148::t_adc4bafbd2a3f0 43-45
+tests/visual/separator.visual.spec.ts
+  s_ea5e20bbc10148::t_b40d627a687427 1-11
+tests/visual/code.visual.spec.ts
+  s_ea5e20bbc10148::t_e1a91ac35757f7 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "4787503aa56b895343b8a54d8fb3618746a3b03c",
+  "prompts": {},
+  "sessions": {
+    "s_ea5e20bbc10148": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba8eb9ef-a456-4ffc-be2a-1242b200c62f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
