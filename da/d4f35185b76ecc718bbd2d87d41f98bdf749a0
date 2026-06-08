@@ -1,0 +1,23 @@
+docs/public/src/content/docs/components/kbd.mdx
+  s_ea5e20bbc10148::t_17cbe798bd4c16 1-17
+docs/public/src/content/docs/components/separator.mdx
+  s_ea5e20bbc10148::t_b7b2f61d93a7f6 1-14
+docs/public/src/content/docs/components/code.mdx
+  s_ea5e20bbc10148::t_5a388e77b1fd29 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "dad4f35185b76ecc718bbd2d87d41f98bdf749a0",
+  "prompts": {},
+  "sessions": {
+    "s_ea5e20bbc10148": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba8eb9ef-a456-4ffc-be2a-1242b200c62f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
