@@ -1,5 +1,14 @@
 # @relements/core
 
+## 0.6.0
+
+### Minor Changes
+
+- [#30](https://github.com/Renascent-Elements/relements/pull/30) [`9298740`](https://github.com/Renascent-Elements/relements/commit/9298740fc7ebbe700590497248a23be47b03cada) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add separator, kbd, and code components. Pure-CSS enhancements over the native
+  `<hr>`, `<kbd>`, and `<pre>`/`<figure>` base styles: a `.re-separator` with a
+  vertical orientation for toolbars, a raised `.re-kbd` key cap, and a bordered
+  `.re-code` block with an optional `<figcaption>` filename.
+
 ## 0.5.0
 
 ### Minor Changes
