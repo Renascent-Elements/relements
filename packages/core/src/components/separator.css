@@ -1,0 +1,37 @@
+/**
+ * Relements separator.
+ *
+ * Native <hr> is already styled by re.base. This component adds an explicit
+ * class for consistency plus a vertical orientation for toolbars and inline
+ * groups.
+ *
+ *   <hr class="re-separator" />
+ *   <div class="re-separator" role="separator" aria-orientation="vertical"
+ *        data-orientation="vertical"></div>
+ *
+ * Orientation (data-orientation): horizontal (default), vertical.
+ */
+
+@layer re.components {
+  .re-separator {
+    border: 0;
+    color: var(--re-color-text-muted);
+  }
+
+  /* Horizontal rule (default). */
+  hr.re-separator {
+    block-size: 0;
+    border-top: var(--re-border-default);
+    margin-block: var(--re-space-4);
+  }
+
+  /* Vertical divider — sits between inline items in a flex row. */
+  .re-separator[data-orientation="vertical"] {
+    align-self: stretch;
+    inline-size: 0;
+    min-block-size: 1em;
+    margin-block: 0;
+    margin-inline: var(--re-space-2);
+    border-inline-start: var(--re-border-default);
+  }
+}

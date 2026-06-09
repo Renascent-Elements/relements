@@ -65,6 +65,14 @@ and the work is committed.
 - [~] accordion — grouped exclusive `<details name>` (adds single-open over the existing disclosure)
 - [~] switch (`<input type="checkbox" role="switch">`)
 
+## Component expansion (0.6.0)
+
+Pure-CSS enhancements over native elements already styled in `re.base`.
+
+- [x] separator (`<hr class="re-separator">` + vertical `data-orientation`)
+- [x] kbd (`<kbd class="re-kbd">` key cap)
+- [x] code (`<figure class="re-code">` block + `<figcaption>` filename)
+
 ## Acceptance per element
 
 Each box is checked only when:

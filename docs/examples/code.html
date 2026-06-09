@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Code</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="code">
+    <header>
+      <h1>Code</h1>
+      <p>Bordered code blocks with an optional filename caption.</p>
+    </header>
+
+    <section aria-labelledby="block-heading" data-testid="block">
+      <h2 id="block-heading">Captioned block</h2>
+      <!-- demo:start name="block" -->
+      <figure class="re-code">
+        <figcaption>app.css</figcaption>
+        <pre><code>.re-button { color: var(--re-color-text-on-accent); }</code></pre>
+      </figure>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="inline-heading" data-testid="inline">
+      <h2 id="inline-heading">Inline</h2>
+      <!-- demo:start name="inline" -->
+      <p>Import the stylesheet with <code>@relements/core/index.css</code>.</p>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

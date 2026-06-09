@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Separator</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="separator">
+    <header>
+      <h1>Separator</h1>
+      <p>Horizontal rules and vertical dividers.</p>
+    </header>
+
+    <section aria-labelledby="orientations-heading" data-testid="orientations">
+      <h2 id="orientations-heading">Orientations</h2>
+      <!-- demo:start name="orientations" -->
+      <p>Horizontal:</p>
+      <hr class="re-separator" />
+      <p>Vertical, between inline items:</p>
+      <div style="display: flex; align-items: center; gap: var(--re-space-3)">
+        <span>Edit</span>
+        <div
+          class="re-separator"
+          role="separator"
+          aria-orientation="vertical"
+          data-orientation="vertical"
+        ></div>
+        <span>Duplicate</span>
+        <div
+          class="re-separator"
+          role="separator"
+          aria-orientation="vertical"
+          data-orientation="vertical"
+        ></div>
+        <span>Delete</span>
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
