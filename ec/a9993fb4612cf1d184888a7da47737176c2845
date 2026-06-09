@@ -1,0 +1,19 @@
+docs/examples/code.html
+  s_ea5e20bbc10148::t_8cd6d02a9738a5 30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "eca9993fb4612cf1d184888a7da47737176c2845",
+  "prompts": {},
+  "sessions": {
+    "s_ea5e20bbc10148": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba8eb9ef-a456-4ffc-be2a-1242b200c62f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
