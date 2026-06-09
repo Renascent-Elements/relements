@@ -14,12 +14,6 @@
       section {
         margin-block: var(--re-space-6);
       }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: var(--re-space-3);
-      }
     </style>
   </head>
   <body data-page="separator">
@@ -34,7 +28,7 @@
       <p>Horizontal:</p>
       <hr class="re-separator" />
       <p>Vertical, between inline items:</p>
-      <div class="row">
+      <div style="display: flex; align-items: center; gap: var(--re-space-3)">
         <span>Edit</span>
         <div
           class="re-separator"
