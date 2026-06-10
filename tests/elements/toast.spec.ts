@@ -36,15 +36,17 @@ test.describe("Toast", () => {
   });
 
   test("duration auto-dismisses", async ({ page }) => {
-    // Use a generous duration so the "appears" assertion reliably observes the
-    // toast before it dismisses (a short duration races the first poll under
-    // parallel load), then let toHaveCount(0) poll until it auto-dismisses —
-    // no fixed wait, so it's deterministic regardless of machine speed.
-    await page.evaluate(() => {
+    // showToast appends synchronously, so observe the appearance inside the
+    // same evaluate call — the auto-dismiss timer can't fire mid-task. Polling
+    // with a locator instead races the duration under parallel load (the first
+    // poll can land after the toast already dismissed). Disappearance is then
+    // safe to poll for: it only converges.
+    const appeared = await page.evaluate(() => {
       // @ts-expect-error
-      window.__showToast("Quick", { duration: 1000 });
+      window.__showToast("Quick", { duration: 500 });
+      return document.querySelectorAll(".re-toast-list .re-toast").length;
     });
-    await expect(page.locator(".re-toast-list .re-toast")).toHaveCount(1);
+    expect(appeared).toBe(1);
     await expect(page.locator(".re-toast-list .re-toast")).toHaveCount(0);
   });
 

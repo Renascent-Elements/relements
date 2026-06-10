@@ -31,7 +31,7 @@ Order: `@layer re.tokens, re.reset, re.base, re.components;`. Component styles l
 
 - Playwright `baseURL` is `http://localhost:4173/docs/examples/` (served by the config's webServer). Behavior specs: `tests/elements/<name>.spec.ts`; a11y: `tests/a11y/<name>.a11y.spec.ts`; visual: `tests/visual/<name>.visual.spec.ts`.
 - Visual baselines: commit **both** `-darwin` and `-linux` PNGs. Generate the Linux baselines via the `update-snapshots` GitHub Action — **not** local Docker (it renders differently from the CI runner).
-- Known flaky: `tests/elements/toast.spec.ts › duration auto-dismisses` (timing race under parallel load; passes single-worker). Unrelated to most changes.
+- Per-component checklist: see "Acceptance per element" in `docs/PROGRESS.md` (example with demo delimiters, behavior + axe + visual tests, docs page, changeset).
 
 ## Docs site (`docs/public`)
 

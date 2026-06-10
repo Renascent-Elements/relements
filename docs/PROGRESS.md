@@ -56,14 +56,14 @@ High-value commons, pure CSS in the `re.components` layer. Visual snapshot
 baselines are generated on CI (Linux); marked `[x]` once `pnpm test` is green
 and the work is committed.
 
-- [~] alert (reuses `enhanceDismissible`)
-- [~] badge
-- [~] card
-- [~] tag (removable via `enhanceDismissible`)
-- [~] avatar
-- [~] breadcrumb
-- [~] accordion — grouped exclusive `<details name>` (adds single-open over the existing disclosure)
-- [~] switch (`<input type="checkbox" role="switch">`)
+- [x] alert (reuses `enhanceDismissible`)
+- [x] badge
+- [x] card
+- [x] tag (removable via `enhanceDismissible`)
+- [x] avatar
+- [x] breadcrumb
+- [x] accordion — grouped exclusive `<details name>` (adds single-open over the existing disclosure)
+- [x] switch (`<input type="checkbox" role="switch">`)
 
 ## Component expansion (0.6.0)
 
@@ -77,11 +77,14 @@ Pure-CSS enhancements over native elements already styled in `re.base`.
 
 Each box is checked only when:
 
-- HTML example at `docs/examples/<element>.html`
+- HTML example at `docs/examples/<element>.html`, with `<!-- demo:start name="X" -->`
+  … `<!-- demo:end -->` delimiters around each demo region
 - CSS / JS / element file in `packages/core/src/{components,behaviors,elements}/`
 - Playwright behavior test in `tests/elements/`
 - axe a11y test in `tests/a11y/`
-- Visual snapshot in `tests/visual/`
+- Visual snapshot in `tests/visual/` (both `-darwin` and `-linux` baselines committed)
 - `index.css` cascade-layered + `package.json` exports updated
+- Docs page at `docs/public/src/content/docs/components/<element>.mdx` using `<Demo />`
+- Changeset added (`pnpm changeset`)
 - `pnpm test` green
 - Atomic commit landed
