@@ -1,0 +1,19 @@
+tests/elements/toast.spec.ts
+  s_1dff16b0471842::t_c630d68143f6cf 39-44,46-47,49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a42499ea1e938d808659e3595e25050d78c97a13",
+  "prompts": {},
+  "sessions": {
+    "s_1dff16b0471842": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "305bd91e-6967-4de4-ab5b-11e3a67831f3",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
