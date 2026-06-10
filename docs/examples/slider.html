@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Slider</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="slider">
+    <header>
+      <h1>Slider</h1>
+      <p>A styled native range input.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <label class="re-field">
+        <span class="re-field__label">Volume</span>
+        <input type="range" class="re-slider" min="0" max="100" value="50" />
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <label class="re-field">
+        <span class="re-field__label">Small</span>
+        <input type="range" class="re-slider" data-size="sm" min="0" max="100" value="25" />
+      </label>
+      <label class="re-field">
+        <span class="re-field__label">Medium (default)</span>
+        <input type="range" class="re-slider" min="0" max="100" value="50" />
+      </label>
+      <label class="re-field">
+        <span class="re-field__label">Large</span>
+        <input type="range" class="re-slider" data-size="lg" min="0" max="100" value="75" />
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <!-- demo:start name="states" -->
+      <label class="re-field">
+        <span class="re-field__label">Disabled</span>
+        <input type="range" class="re-slider" min="0" max="100" value="40" disabled />
+      </label>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

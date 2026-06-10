@@ -67,6 +67,9 @@
     "./components/separator.css": "./dist/components/separator.css",
     "./components/kbd.css": "./dist/components/kbd.css",
     "./components/code.css": "./dist/components/code.css",
+    "./components/slider.css": "./dist/components/slider.css",
+    "./components/tooltip.css": "./dist/components/tooltip.css",
+    "./components/combobox.css": "./dist/components/combobox.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",

@@ -1,0 +1,26 @@
+---
+title: Combobox
+description: Native suggestion input built on datalist.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Pair `.re-combobox` with `.re-input` on a text input linked to a
+`<datalist>` via the `list` attribute. Filtering, keyboard navigation, and
+the suggestion popup are all provided by the browser — `.re-combobox` adds
+the chevron affordance (matching `.re-select`) and hides WebKit's redundant
+picker indicator.
+
+The suggestion popup itself is native UI and cannot be styled. If you need a
+fully styled listbox, free-form suggestions are usually not worth trading
+for the native behavior you'd have to rebuild.
+
+## Basic
+
+<Demo src="combobox.html" name="basic" />
+
+## Sizes
+
+`data-size` works the same as on `.re-input`.
+
+<Demo src="combobox.html" name="sizes" />

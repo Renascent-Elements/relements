@@ -73,6 +73,12 @@ Pure-CSS enhancements over native elements already styled in `re.base`.
 - [x] kbd (`<kbd class="re-kbd">` key cap)
 - [x] code (`<figure class="re-code">` block + `<figcaption>` filename)
 
+## Component expansion (0.7.0)
+
+- [x] slider (`<input type="range" class="re-slider">`, sizes via `data-size`)
+- [x] tooltip (`.re-tooltip` wrapper + `.re-tooltip__bubble`, hover/focus reveal, `data-placement`)
+- [x] combobox (`<input class="re-input re-combobox" list>` + `<datalist>`)
+
 ## Acceptance per element
 
 Each box is checked only when:

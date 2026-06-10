@@ -1,0 +1,27 @@
+---
+title: Slider
+description: A styled native range input.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Add `.re-slider` to a native `<input type="range">`. Keyboard interaction
+(arrows, Home/End, Page Up/Down), form participation, and `role="slider"`
+semantics stay native — the class only restyles the track and thumb.
+
+## Basic
+
+<Demo src="slider.html" name="basic" />
+
+## Sizes
+
+Set `data-size="sm"` or `data-size="lg"`; the default is medium. Track and
+thumb scale together via the `--re-slider-track-size` and
+`--re-slider-thumb-size` custom properties, which you can also override
+directly.
+
+<Demo src="slider.html" name="sizes" />
+
+## States
+
+<Demo src="slider.html" name="states" />

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Tooltip</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="tooltip">
+    <header>
+      <h1>Tooltip</h1>
+      <p>CSS-only tooltip on hover and keyboard focus.</p>
+    </header>
+
+    <section aria-labelledby="placements-heading" data-testid="placements">
+      <h2 id="placements-heading">Placements</h2>
+      <!-- demo:start name="placements" -->
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--re-space-4);
+          padding: var(--re-space-12) var(--re-space-16);
+        "
+      >
+        <span class="re-tooltip">
+          <button class="re-button" type="button" aria-describedby="tip-top">Top</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-top">Shown above</span>
+        </span>
+        <span class="re-tooltip" data-placement="bottom">
+          <button class="re-button" type="button" aria-describedby="tip-bottom">Bottom</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-bottom">Shown below</span>
+        </span>
+        <span class="re-tooltip" data-placement="start">
+          <button class="re-button" type="button" aria-describedby="tip-start">Start</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-start">Shown before</span>
+        </span>
+        <span class="re-tooltip" data-placement="end">
+          <button class="re-button" type="button" aria-describedby="tip-end">End</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-end">Shown after</span>
+        </span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="open-heading" data-testid="open">
+      <h2 id="open-heading">Forced open</h2>
+      <!-- demo:start name="open" -->
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--re-space-6);
+          padding: var(--re-space-12) var(--re-space-16);
+        "
+      >
+        <span class="re-tooltip" data-open>
+          <button class="re-button" type="button" aria-describedby="tip-open-top">Top</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-open-top">Shown above</span>
+        </span>
+        <span class="re-tooltip" data-placement="bottom" data-open>
+          <button class="re-button" type="button" aria-describedby="tip-open-bottom">Bottom</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-open-bottom">Shown below</span>
+        </span>
+        <span class="re-tooltip" data-placement="end" data-open>
+          <button class="re-button" type="button" aria-describedby="tip-open-end">End</button>
+          <span class="re-tooltip__bubble" role="tooltip" id="tip-open-end">Shown after</span>
+        </span>
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

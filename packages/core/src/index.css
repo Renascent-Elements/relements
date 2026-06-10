@@ -43,3 +43,6 @@
 @import "./components/separator.css";
 @import "./components/kbd.css";
 @import "./components/code.css";
+@import "./components/slider.css";
+@import "./components/tooltip.css";
+@import "./components/combobox.css";
