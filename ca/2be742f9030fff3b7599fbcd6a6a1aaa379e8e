@@ -1,0 +1,37 @@
+docs/public/src/content/docs/components/slider.mdx
+  s_2732c4df70b865::t_8c1a8710212875 1-27
+packages/core/package.json
+  s_2732c4df70b865::t_9c4c714f5fed40 70-72
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_d4b37385329ef9 51-53
+docs/PROGRESS.md
+  s_2732c4df70b865::t_61112faab9d69c 76-81
+tests/a11y/combobox.a11y.spec.ts
+  s_2732c4df70b865::t_44cb84477f1d21 1-10
+packages/core/src/components/combobox.css
+  s_2732c4df70b865::t_a185cd75a0f967 1-38
+tests/visual/slider.visual.spec.ts
+  s_2732c4df70b865::t_ff8ba91377ffa5 1-19
+packages/core/src/index.css
+  s_2732c4df70b865::t_71c41df5621ee7 46-48
+packages/core/src/components/slider.css
+  s_2732c4df70b865::t_5eea06a105d379 1-116
+.changeset/three-native-components.md
+  s_2732c4df70b865::t_f7792fbef3844c 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "ca2be742f9030fff3b7599fbcd6a6a1aaa379e8e",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
