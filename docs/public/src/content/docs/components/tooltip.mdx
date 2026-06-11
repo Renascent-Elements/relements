@@ -9,7 +9,8 @@ Wrap a trigger in `.re-tooltip` and add a `.re-tooltip__bubble` sibling with
 `role="tooltip"`. Point the trigger's `aria-describedby` at the bubble's `id`
 so assistive technology announces the text — the reference resolves even
 while the bubble is visually hidden. The bubble appears on hover and on
-keyboard focus (`:focus-within`); no JavaScript involved.
+keyboard focus (`:focus-within`); no JavaScript involved. A small arrow
+points at the trigger.
 
 The bubble stays hoverable and the gap to the trigger is bridged, so moving
 the pointer onto the tooltip doesn't dismiss it (WCAG 1.4.13). On touch
