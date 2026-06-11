@@ -1,5 +1,15 @@
 # @relements/core
 
+## 0.7.0
+
+### Minor Changes
+
+- [#33](https://github.com/Renascent-Elements/relements/pull/33) [`07f77c5`](https://github.com/Renascent-Elements/relements/commit/07f77c5e4018285a0d58b2cfd69686adb507a68e) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add three HTML-first components: **slider** (`.re-slider` on a native range
+  input with `data-size` variants), **tooltip** (CSS-only `.re-tooltip` wrapper +
+  `.re-tooltip__bubble` revealed on hover/focus, `data-placement="top|bottom|start|end"`,
+  force-show via `data-open`), and **combobox** (`.re-combobox` additive to
+  `.re-input` for `<input list>` + `<datalist>` suggestion inputs).
+
 ## 0.6.0
 
 ### Minor Changes
