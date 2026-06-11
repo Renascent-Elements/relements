@@ -11,3 +11,4 @@ export { enhanceTabs } from "./behaviors/tabs.js";
 export { enhanceMenuButton } from "./behaviors/menu-button.js";
 export { enhancePopover } from "./behaviors/popover.js";
 export { showToast } from "./behaviors/toast.js";
+export { enhanceCombobox } from "./behaviors/combobox.js";

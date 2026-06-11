@@ -65,6 +65,7 @@ describe("@relements/core dist", () => {
       "menu-button.js",
       "popover.js",
       "toast.js",
+      "combobox.js",
     ];
     for (const file of behaviors) {
       expect(existsSync(join(distRoot, "behaviors", file)), file).toBe(true);

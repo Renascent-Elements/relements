@@ -63,5 +63,41 @@
       </datalist>
       <!-- demo:end -->
     </section>
+
+    <!-- min-block-size keeps the open suggestion list inside the section's
+         box so the visual snapshot captures it. -->
+    <section
+      aria-labelledby="enhanced-heading"
+      data-testid="enhanced"
+      style="min-block-size: 26rem"
+    >
+      <h2 id="enhanced-heading">Enhanced</h2>
+      <!-- demo:start name="enhanced" -->
+      <label class="re-field">
+        <span class="re-field__label">Time zone</span>
+        <input
+          type="text"
+          class="re-input re-combobox"
+          list="zone-options"
+          data-re-combobox
+          placeholder="Type to filter…"
+        />
+      </label>
+      <datalist id="zone-options">
+        <option value="Europe/Budapest"></option>
+        <option value="Europe/Berlin"></option>
+        <option value="Europe/Lisbon"></option>
+        <option value="America/Argentina/Buenos_Aires"></option>
+        <option value="America/New_York"></option>
+        <option value="Asia/Tokyo"></option>
+        <option value="Australia/Lord_Howe"></option>
+      </datalist>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceCombobox } from "/packages/core/src/behaviors/combobox.js";
+      enhanceCombobox(document);
+    </script>
   </body>
 </html>

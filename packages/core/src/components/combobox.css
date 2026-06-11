@@ -38,4 +38,37 @@
     display: none;
     visibility: hidden;
   }
+
+  /* ---- Enhanced suggestion list (enhanceCombobox) -------------------- */
+  /* A manual popover positioned by the behavior: never narrower than the
+     input (min-inline-size set inline from the input's width), grows to
+     fit longer options. Resets the UA [popover] margin/inset/border. */
+  .re-combobox__list {
+    margin: 0;
+    inset: auto;
+    inline-size: max-content;
+    max-inline-size: calc(100vw - var(--re-space-4));
+    max-block-size: min(16rem, 40vh);
+    overflow: auto;
+    padding: var(--re-space-1);
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    box-shadow: var(--re-shadow-md);
+  }
+
+  .re-combobox__option {
+    padding: var(--re-space-2) var(--re-space-3);
+    border-radius: var(--re-radius-sm);
+    cursor: pointer;
+    line-height: var(--re-line-height-normal);
+  }
+
+  /* Keyboard highlight and pointer hover share one style; see menu.css for
+     why bg-muted (bg-subtle collapses into surface in dark mode). */
+  .re-combobox__option:hover,
+  .re-combobox__option[aria-selected="true"] {
+    background-color: var(--re-color-bg-muted);
+  }
 }

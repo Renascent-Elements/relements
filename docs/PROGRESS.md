@@ -79,6 +79,10 @@ Pure-CSS enhancements over native elements already styled in `re.base`.
 - [x] tooltip (`.re-tooltip` wrapper + `.re-tooltip__bubble`, hover/focus reveal, `data-placement`)
 - [x] combobox (`<input class="re-input re-combobox" list>` + `<datalist>`)
 
+## Behavior expansion (0.8.0)
+
+- [x] enhanceCombobox (`data-re-combobox` opt-in: styled listbox ≥ input width over the same `<datalist>`; native popup suppressed; ARIA editable-combobox keyboard pattern)
+
 ## Acceptance per element
 
 Each box is checked only when:
