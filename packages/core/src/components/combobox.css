@@ -12,50 +12,30 @@
  *     <option value="Apple"></option>
  *   </datalist>
  *
- * It adds a chevron affordance (same construction as .re-select) for the
- * resting state. Current Chrome paints its own indicator while the field
- * is hovered or focused and no longer exposes it to author CSS (the old
- * ::-webkit-calendar-picker-indicator hook is dead), so the decorative
- * chevron yields during interaction — exactly one affordance shows at a
- * time. Engines with no native indicator (Firefox, Safari) simply drop
- * the chevron while the field is in use.
+ * The chevron matches .re-select exactly. The browser's own indicator is
+ * suppressed: Chrome ≥149 ignores `display: none` on the picker pseudo but
+ * still honors `visibility: hidden`; older engines honor `display: none`.
+ * Clicking or typing in the input opens the native suggestion list
+ * regardless.
  */
 
 @layer re.components {
-  /* The chevron sits where Chrome paints its native indicator — at the end
-     of the content box, i.e. at the padding boundary — and at a similar
-     size, so the rest→interaction handoff doesn't visibly jump. The
-     padding therefore stays constant across data-size variants (the
-     compound selector outranks form.css's size rules). */
-  .re-combobox,
-  .re-input.re-combobox {
-    padding-inline-end: var(--re-space-8);
-  }
-  /* Chrome's indicator is font-proportional: ~0.62em × 0.55em, right edge
-     ~0.38em inside the content box, optical center at ~64% of the height.
-     Mirror that in em so the chevron tracks it across data-size variants.
-     Corner keywords (not 45deg) keep the diagonals on the box diagonal for
-     the non-square cells. */
   .re-combobox {
+    padding-inline-end: var(--re-space-8);
     background-image:
-      linear-gradient(to top right, transparent 50%, currentColor 50%),
-      linear-gradient(to bottom right, currentColor 50%, transparent 50%);
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
     background-position:
-      right calc(var(--re-space-8) + 0.69em) top 64%,
-      right calc(var(--re-space-8) + 0.38em) top 64%;
+      right var(--re-space-4) top 55%,
+      right calc(var(--re-space-4) - 5px) top 55%;
     background-size:
-      0.31em 0.55em,
-      0.31em 0.55em;
+      5px 5px,
+      5px 5px;
     background-repeat: no-repeat;
   }
 
-  .re-combobox:is(:hover, :focus) {
-    background-image: none;
-  }
-
-  /* Still effective in older Chrome versions, where it suppresses the
-     native indicator entirely. */
   .re-combobox::-webkit-calendar-picker-indicator {
     display: none;
+    visibility: hidden;
   }
 }

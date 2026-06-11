@@ -8,10 +8,8 @@ import Demo from "../../../components/Demo.astro";
 Pair `.re-combobox` with `.re-input` on a text input linked to a
 `<datalist>` via the `list` attribute. Filtering, keyboard navigation, and
 the suggestion popup are all provided by the browser — `.re-combobox` adds
-a resting chevron affordance (matching `.re-select`). Current Chrome paints
-its own indicator while the field is hovered or focused and doesn't let
-author CSS hide it, so the decorative chevron yields during interaction —
-exactly one affordance shows at a time.
+the same chevron as `.re-select` and suppresses the browser's own picker
+indicator, so the field looks like a select in every state.
 
 The suggestion popup itself is native browser UI: its width, alignment, and
 theme follow the browser, not your CSS — Chrome sizes it to the suggestion
