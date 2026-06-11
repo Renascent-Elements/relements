@@ -1,0 +1,39 @@
+packages/core/package.json
+  s_2732c4df70b865::t_c7d6a60943c703 98-101
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_5811e228ce840c 68
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_c95095a92b04b5 7
+packages/core/src/index.js
+  s_2732c4df70b865::t_d39de9d58deb7c 14
+tests/a11y/combobox.a11y.spec.ts
+  s_2732c4df70b865::t_287ce82e707c3f 12
+packages/core/src/behaviors/combobox.js
+  s_2732c4df70b865::t_85df74b2bdaeda 1-109,111-121,123-237,239,243-244,246-290
+  s_2732c4df70b865::t_ef0817fbb93e51 238,240-242,245
+  s_2732c4df70b865::t_287ce82e707c3f 110,122
+packages/core/src/components/combobox.css
+  s_2732c4df70b865::t_b57029325de099 41-73
+docs/public/src/content/docs/components/combobox.mdx
+  s_2732c4df70b865::t_5d334337fd96b9 30-51
+docs/PROGRESS.md
+  s_2732c4df70b865::t_1783e02da728af 82-85
+tests/elements/combobox.spec.ts
+  s_2732c4df70b865::t_2a5be209e8ec3d 15-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "355ac13bb454ba110ed5a1cf036e043a970dd6f6",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "unknown"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
