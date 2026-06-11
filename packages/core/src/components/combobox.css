@@ -22,17 +22,25 @@
  */
 
 @layer re.components {
-  .re-combobox {
+  /* The chevron sits where Chrome paints its native indicator — at the end
+     of the content box, i.e. at the padding boundary — and at a similar
+     size, so the rest→interaction handoff doesn't visibly jump. The
+     padding therefore stays constant across data-size variants (the
+     compound selector outranks form.css's size rules). */
+  .re-combobox,
+  .re-input.re-combobox {
     padding-inline-end: var(--re-space-8);
+  }
+  .re-combobox {
     background-image:
       linear-gradient(45deg, transparent 50%, currentColor 50%),
       linear-gradient(135deg, currentColor 50%, transparent 50%);
     background-position:
-      right var(--re-space-4) top 55%,
-      right calc(var(--re-space-4) - 5px) top 55%;
+      right calc(var(--re-space-8) + 7px) top 55%,
+      right var(--re-space-8) top 55%;
     background-size:
-      5px 5px,
-      5px 5px;
+      7px 7px,
+      7px 7px;
     background-repeat: no-repeat;
   }
 
