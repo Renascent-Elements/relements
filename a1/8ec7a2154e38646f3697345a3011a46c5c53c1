@@ -1,0 +1,23 @@
+packages/core/src/components/tooltip.css
+  s_2732c4df70b865::t_84c62200e8d2a3 137-149
+  s_2732c4df70b865::t_47328d49c353e2 97-99
+  s_2732c4df70b865::t_01f5143f031bda 126-135
+  s_2732c4df70b865::t_8cac7646e22191 83-87
+  s_2732c4df70b865::t_d5d9bc10babd41 60-70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a18ec7a2154e38646f3697345a3011a46c5c53c1",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
