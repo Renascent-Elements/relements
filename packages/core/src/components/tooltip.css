@@ -1,0 +1,164 @@
+/**
+ * Relements tooltip.
+ *
+ * A CSS-only tooltip: a positioned wrapper around a trigger plus a bubble
+ * revealed on hover and keyboard focus. The bubble is a real element so it
+ * can label the trigger via aria-describedby (the reference resolves even
+ * while visually hidden).
+ *
+ *   <span class="re-tooltip">
+ *     <button class="re-button" aria-describedby="save-tip">Save</button>
+ *     <span class="re-tooltip__bubble" role="tooltip" id="save-tip">
+ *       Save your changes
+ *     </span>
+ *   </span>
+ *
+ * Placement via data-placement on the wrapper: top (default), bottom,
+ * start, end. Force-show with data-open (also used by docs and visual
+ * tests). The bubble stays hoverable and the trigger-to-bubble gap is
+ * bridged by a pseudo-element strut, so moving the pointer onto the bubble
+ * does not dismiss it (WCAG 1.4.13).
+ *
+ * The inverse surface derives from the text/bg role tokens, so it adapts
+ * to dark mode and subtree themes without tooltip-specific tokens.
+ */
+
+@layer re.components {
+  .re-tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .re-tooltip__bubble {
+    position: absolute;
+    z-index: var(--re-z-popover);
+    inline-size: max-content;
+    max-inline-size: 18rem;
+    padding: var(--re-space-1) var(--re-space-2);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-regular);
+    line-height: var(--re-line-height-snug);
+    text-align: center;
+    color: var(--re-color-bg);
+    background-color: var(--re-color-text);
+    border-radius: var(--re-radius-md);
+    box-shadow: var(--re-shadow-md);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--re-duration-fast) var(--re-easing-standard),
+      visibility var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  /* Invisible strut bridging the gap to the trigger so the bubble stays
+     hovered while the pointer crosses over (WCAG 1.4.13 hoverable). */
+  .re-tooltip__bubble::before {
+    content: "";
+    position: absolute;
+  }
+
+  /* Arrow: a rotated square centered on the trigger-facing edge, so the
+     visible half reads as a triangle pointing at the trigger. */
+  .re-tooltip__bubble::after {
+    content: "";
+    position: absolute;
+    inline-size: var(--re-space-2);
+    block-size: var(--re-space-2);
+    background-color: inherit;
+    rotate: 45deg;
+  }
+
+  /* ---- Placements ---------------------------------------------------- */
+  /* top (default) */
+  .re-tooltip .re-tooltip__bubble {
+    inset-block-end: calc(100% + var(--re-space-2));
+    inset-inline-start: 50%;
+    translate: -50% 0;
+  }
+  .re-tooltip .re-tooltip__bubble::before {
+    inset-block-start: 100%;
+    inset-inline: 0;
+    block-size: var(--re-space-2);
+  }
+  .re-tooltip .re-tooltip__bubble::after {
+    inset-block-start: 100%;
+    inset-inline-start: 50%;
+    translate: -50% -50%;
+  }
+
+  .re-tooltip[data-placement="bottom"] .re-tooltip__bubble {
+    inset-block-end: auto;
+    inset-block-start: calc(100% + var(--re-space-2));
+  }
+  .re-tooltip[data-placement="bottom"] .re-tooltip__bubble::before {
+    inset-block-start: auto;
+    inset-block-end: 100%;
+  }
+  .re-tooltip[data-placement="bottom"] .re-tooltip__bubble::after {
+    inset-block-start: 0;
+  }
+
+  .re-tooltip[data-placement="start"] .re-tooltip__bubble,
+  .re-tooltip[data-placement="end"] .re-tooltip__bubble {
+    inset-block-end: auto;
+    inset-block-start: 50%;
+    inset-inline-start: auto;
+    translate: 0 -50%;
+  }
+  .re-tooltip[data-placement="start"] .re-tooltip__bubble {
+    inset-inline-end: calc(100% + var(--re-space-2));
+  }
+  .re-tooltip[data-placement="end"] .re-tooltip__bubble {
+    inset-inline-start: calc(100% + var(--re-space-2));
+  }
+  .re-tooltip[data-placement="start"] .re-tooltip__bubble::before,
+  .re-tooltip[data-placement="end"] .re-tooltip__bubble::before {
+    inset-block: 0;
+    block-size: auto;
+    inline-size: var(--re-space-2);
+  }
+  .re-tooltip[data-placement="start"] .re-tooltip__bubble::before {
+    inset-inline-start: 100%;
+  }
+  .re-tooltip[data-placement="end"] .re-tooltip__bubble::before {
+    inset-inline-end: 100%;
+  }
+  .re-tooltip[data-placement="start"] .re-tooltip__bubble::after,
+  .re-tooltip[data-placement="end"] .re-tooltip__bubble::after {
+    inset-block-start: 50%;
+  }
+  .re-tooltip[data-placement="start"] .re-tooltip__bubble::after {
+    inset-inline-start: 100%;
+  }
+  .re-tooltip[data-placement="end"] .re-tooltip__bubble::after {
+    inset-inline-start: 0;
+  }
+
+  /* In RTL the inline insets flip but `translate` stays physical, so the
+     -50% horizontal centering must flip sign. Engines without :dir() drop
+     these rules and keep the LTR offsets. */
+  .re-tooltip:dir(rtl) .re-tooltip__bubble {
+    translate: 50% 0;
+  }
+  .re-tooltip[data-placement="start"]:dir(rtl) .re-tooltip__bubble,
+  .re-tooltip[data-placement="end"]:dir(rtl) .re-tooltip__bubble {
+    translate: 0 -50%;
+  }
+  .re-tooltip:dir(rtl) .re-tooltip__bubble::after {
+    translate: 50% -50%;
+  }
+
+  /* ---- Reveal --------------------------------------------------------- */
+  .re-tooltip:hover .re-tooltip__bubble,
+  .re-tooltip:focus-within .re-tooltip__bubble,
+  .re-tooltip[data-open] .re-tooltip__bubble {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .re-tooltip__bubble {
+      transition-duration: var(--re-duration-instant);
+    }
+  }
+}

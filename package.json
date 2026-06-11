@@ -16,7 +16,7 @@
     "test:browser": "playwright test",
     "test:a11y": "playwright test tests/a11y",
     "test:visual": "playwright test tests/visual",
-    "test:update-snapshots": "playwright test --update-snapshots",
+    "test:update-snapshots": "playwright test tests/visual --update-snapshots all",
     "build": "pnpm -F @relements/core build",
     "build:examples": "pnpm -F @relements/core build && pnpm --filter \"./docs/examples/frameworks/*\" run build",
     "lint": "prettier --check . && eslint .",

@@ -205,6 +205,55 @@ starlight-toc a:focus-visible {
   margin: auto;
 }
 
+/* Starlight's `input, button, textarea, select { font: inherit }` reset lives
+   in the starlight.reset layer. In the bundle Starlight's layers are declared
+   after Relements' layers, so at the top level `starlight.*` outranks `re.*`
+   and that shorthand beats every font longhand re.components sets on those
+   elements — size variants, button weight, dismiss-glyph sizing. Re-assert
+   the component values for demos (unlayered, so it wins back); the values
+   stay single-sourced through the core tokens. Mirrors: form.css, button.css,
+   tabs.css, alert.css, toast.css, tag.css, pagination.css. */
+.demo__preview :is(.re-input, .re-textarea, .re-select) {
+  font-size: var(--re-size-text-md);
+  line-height: var(--re-line-height-normal);
+}
+.demo__preview :is(.re-input, .re-textarea, .re-select)[data-size="sm"] {
+  font-size: var(--re-size-text-sm);
+}
+.demo__preview :is(.re-input, .re-textarea, .re-select)[data-size="lg"] {
+  font-size: var(--re-size-text-lg);
+}
+.demo__preview .re-textarea {
+  line-height: var(--re-line-height-relaxed);
+}
+.demo__preview .re-button {
+  font-weight: var(--re-font-weight-medium);
+  font-size: var(--re-size-text-md);
+  line-height: 1;
+}
+.demo__preview .re-button[data-size="sm"] {
+  font-size: var(--re-size-text-sm);
+}
+.demo__preview .re-button[data-size="lg"] {
+  font-size: var(--re-size-text-lg);
+}
+.demo__preview .re-tab {
+  font-weight: var(--re-font-weight-medium);
+  line-height: 1.4;
+}
+.demo__preview :is(.re-alert__dismiss, .re-toast__dismiss) {
+  font-size: var(--re-size-text-lg);
+  line-height: 1;
+}
+.demo__preview .re-tag__remove {
+  font-size: var(--re-size-text-sm);
+  line-height: 1;
+}
+.demo__preview button.re-pagination__item {
+  font-size: var(--re-size-text-sm);
+  line-height: 1;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

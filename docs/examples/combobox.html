@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Combobox</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="combobox">
+    <header>
+      <h1>Combobox</h1>
+      <p>Native suggestion input built on <code>&lt;datalist&gt;</code>.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <label class="re-field">
+        <span class="re-field__label">Favorite fruit</span>
+        <input
+          type="text"
+          class="re-input re-combobox"
+          list="fruit-options"
+          placeholder="Start typing…"
+        />
+      </label>
+      <datalist id="fruit-options">
+        <option value="Apple"></option>
+        <option value="Banana"></option>
+        <option value="Cherry"></option>
+        <option value="Mango"></option>
+        <option value="Peach"></option>
+        <option value="Pear"></option>
+      </datalist>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <label class="re-field">
+        <span class="re-field__label">Small</span>
+        <input type="text" class="re-input re-combobox" data-size="sm" list="city-options" />
+      </label>
+      <label class="re-field">
+        <span class="re-field__label">Large</span>
+        <input type="text" class="re-input re-combobox" data-size="lg" list="city-options" />
+      </label>
+      <datalist id="city-options">
+        <option value="Budapest"></option>
+        <option value="Berlin"></option>
+        <option value="Lisbon"></option>
+      </datalist>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+/**
+ * Relements combobox.
+ *
+ * A native suggestion combobox: a text input paired with a <datalist>.
+ * Filtering, keyboard navigation, and the suggestion popup are provided by
+ * the browser — the popup itself is native UI and cannot be styled.
+ *
+ * .re-combobox is additive: pair it with .re-input on the same element.
+ *
+ *   <input class="re-input re-combobox" list="fruits" />
+ *   <datalist id="fruits">
+ *     <option value="Apple"></option>
+ *   </datalist>
+ *
+ * The chevron matches .re-select exactly. The browser's own indicator is
+ * suppressed: Chrome ≥149 ignores `display: none` on the picker pseudo but
+ * still honors `visibility: hidden`; older engines honor `display: none`.
+ * Clicking or typing in the input opens the native suggestion list
+ * regardless.
+ */
+
+@layer re.components {
+  .re-combobox {
+    padding-inline-end: var(--re-space-8);
+    background-image:
+      linear-gradient(45deg, transparent 50%, currentColor 50%),
+      linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position:
+      right var(--re-space-4) top 55%,
+      right calc(var(--re-space-4) - 5px) top 55%;
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .re-combobox::-webkit-calendar-picker-indicator {
+    display: none;
+    visibility: hidden;
+  }
+}

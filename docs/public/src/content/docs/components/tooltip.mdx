@@ -1,0 +1,32 @@
+---
+title: Tooltip
+description: CSS-only tooltip on hover and keyboard focus.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Wrap a trigger in `.re-tooltip` and add a `.re-tooltip__bubble` sibling with
+`role="tooltip"`. Point the trigger's `aria-describedby` at the bubble's `id`
+so assistive technology announces the text — the reference resolves even
+while the bubble is visually hidden. The bubble appears on hover and on
+keyboard focus (`:focus-within`); no JavaScript involved. A small arrow
+points at the trigger.
+
+The bubble stays hoverable and the gap to the trigger is bridged, so moving
+the pointer onto the tooltip doesn't dismiss it (WCAG 1.4.13). On touch
+devices, where there is no hover, the tooltip shows while the trigger has
+focus — don't put essential information only in a tooltip.
+
+## Placements
+
+Set `data-placement="bottom"`, `"start"`, or `"end"` on the wrapper; the
+default is `top`. Start/end follow the writing direction.
+
+<Demo src="tooltip.html" name="placements" />
+
+## Forced open
+
+Add `data-open` to the wrapper to keep the bubble visible — useful for
+debugging, documentation, and visual tests.
+
+<Demo src="tooltip.html" name="open" />
