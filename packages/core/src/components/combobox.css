@@ -12,9 +12,13 @@
  *     <option value="Apple"></option>
  *   </datalist>
  *
- * It adds a chevron affordance (same construction as .re-select) and hides
- * the redundant WebKit picker indicator — clicking or typing in the input
- * opens the native suggestion list regardless.
+ * It adds a chevron affordance (same construction as .re-select) for the
+ * resting state. Current Chrome paints its own indicator while the field
+ * is hovered or focused and no longer exposes it to author CSS (the old
+ * ::-webkit-calendar-picker-indicator hook is dead), so the decorative
+ * chevron yields during interaction — exactly one affordance shows at a
+ * time. Engines with no native indicator (Firefox, Safari) simply drop
+ * the chevron while the field is in use.
  */
 
 @layer re.components {
@@ -32,6 +36,12 @@
     background-repeat: no-repeat;
   }
 
+  .re-combobox:is(:hover, :focus) {
+    background-image: none;
+  }
+
+  /* Still effective in older Chrome versions, where it suppresses the
+     native indicator entirely. */
   .re-combobox::-webkit-calendar-picker-indicator {
     display: none;
   }
