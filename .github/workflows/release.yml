@@ -18,9 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      # CHANGESETS_PAT (fine-grained PAT: Contents + Pull requests read/write
+      # on this repo) makes the release PR author a real user instead of
+      # github-actions[bot]. Since 2026-06-11 GitHub holds workflow runs on
+      # bot-created PRs for manual approval — with the PAT, CI on the release
+      # PR runs unattended. Falls back to GITHUB_TOKEN (bot PR + manual
+      # approval) when the secret is absent or expired.
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.CHANGESETS_PAT || secrets.GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -38,4 +45,4 @@ jobs:
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CHANGESETS_PAT || secrets.GITHUB_TOKEN }}
