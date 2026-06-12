@@ -9,6 +9,7 @@ export default defineConfig({
     "behaviors/menu-button": "src/behaviors/menu-button.js",
     "behaviors/popover": "src/behaviors/popover.js",
     "behaviors/toast": "src/behaviors/toast.js",
+    "behaviors/combobox": "src/behaviors/combobox.js",
     "elements/re-tabs": "src/elements/re-tabs.js",
     "elements/re-toast": "src/elements/re-toast.js",
     "elements/re-menu": "src/elements/re-menu.js",

@@ -95,6 +95,10 @@
       "import": "./dist/behaviors/toast.js",
       "types": "./dist/behaviors/toast.d.ts"
     },
+    "./behaviors/combobox": {
+      "import": "./dist/behaviors/combobox.js",
+      "types": "./dist/behaviors/combobox.d.ts"
+    },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",
       "types": "./dist/elements/re-tabs.d.ts"

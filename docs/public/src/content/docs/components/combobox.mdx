@@ -27,3 +27,25 @@ reader behavior you'd have to rebuild.
 `data-size` works the same as on `.re-input`.
 
 <Demo src="combobox.html" name="sizes" />
+
+## Enhanced
+
+The native popup's geometry can't be controlled — Chrome sizes it to the
+suggestion text, not the input. If you need a list that is **never narrower
+than the input** (and styled to match your theme), opt into the
+`enhanceCombobox` behavior by adding `data-re-combobox`:
+
+```js
+import { enhanceCombobox } from "@relements/core";
+enhanceCombobox(document);
+```
+
+The same `<datalist>` stays the data source, so the markup works natively
+without JavaScript (and in engines without the Popover API, where the
+enhancement steps aside). Enhancing swaps the native popup for a styled
+`role="listbox"`: typing filters case-insensitively, Arrow keys move the
+highlight, Enter commits, Escape closes; focus never leaves the input
+(`aria-activedescendant`). Committing sets the value and fires `input` and
+`change`, so frameworks see it like typing.
+
+<Demo src="combobox.html" name="enhanced" />
