@@ -1,0 +1,20 @@
+.github/workflows/release.yml
+  s_2732c4df70b865::t_b07a9bd5e832c4 21-23,27
+  s_2732c4df70b865::t_aae884ccbb9cbb 37-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "d56907884d6b4646defd04d71294608901ea2f17",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
