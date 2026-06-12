@@ -1,5 +1,18 @@
 # @relements/core
 
+## 0.8.0
+
+### Minor Changes
+
+- [#35](https://github.com/Renascent-Elements/relements/pull/35) [`b8e444d`](https://github.com/Renascent-Elements/relements/commit/b8e444dd09593488b43a7cd20b34640b34be0b60) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add the `enhanceCombobox` behavior (`@relements/core/behaviors/combobox`):
+  an opt-in (`data-re-combobox`) styled suggestion list over the native
+  `<input list>` + `<datalist>` base. The list is never narrower than the
+  input, reads the same `<datalist>` as its live data source, follows the
+  ARIA editable-combobox pattern (filtering, Arrow/Enter/Escape,
+  `aria-activedescendant`), and fires `input`/`change` on commit. Without
+  JavaScript — or without the Popover API — the markup keeps the browser's
+  native suggestion popup.
+
 ## 0.7.0
 
 ### Minor Changes
