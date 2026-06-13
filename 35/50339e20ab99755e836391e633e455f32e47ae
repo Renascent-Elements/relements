@@ -1,0 +1,21 @@
+docs/examples/otp.html
+  s_2732c4df70b865::t_74eabc6c593d92 75
+  s_2732c4df70b865::t_b7453067252648 17-22
+  s_2732c4df70b865::t_88b86e28643ae9 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "3550339e20ab99755e836391e633e455f32e47ae",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
