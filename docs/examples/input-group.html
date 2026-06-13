@@ -14,6 +14,12 @@
       section {
         margin-block: var(--re-space-6);
       }
+      /* Standalone-page spacing between stacked fields. Lives here (not in a
+         demo region) so it does NOT leak into the docs <Demo>, where the
+         .demo__preview flex row lays the fields out side by side instead. */
+      .re-field + .re-field {
+        margin-block-start: var(--re-space-4);
+      }
     </style>
   </head>
   <body data-page="input-group">
@@ -33,7 +39,7 @@
           <span class="re-input-group__text">.com</span>
         </span>
       </label>
-      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+      <label class="re-field">
         <span class="re-field__label">Price</span>
         <span class="re-input-group">
           <span class="re-input-group__text">$</span>
@@ -64,7 +70,7 @@
           <input class="re-input" type="text" value="handle" disabled />
         </span>
       </label>
-      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+      <label class="re-field">
         <span class="re-field__label">Invalid</span>
         <span class="re-input-group">
           <span class="re-input-group__text">@</span>

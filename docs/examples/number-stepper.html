@@ -17,6 +17,9 @@
       .re-input-group {
         max-inline-size: 12rem;
       }
+      .re-field + .re-field {
+        margin-block-start: var(--re-space-4);
+      }
     </style>
   </head>
   <body data-page="number-stepper">
@@ -97,7 +100,7 @@
           </button>
         </span>
       </label>
-      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+      <label class="re-field">
         <span class="re-field__label">Float step</span>
         <span class="re-input-group">
           <button
