@@ -1,0 +1,27 @@
+---
+title: Number stepper
+description: Large +/- buttons over a native number input.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A native `<input type="number">` in an
+[input group](/relements/components/input-group/) flanked by two
+`.re-input-group__action` buttons marked `data-re-number-step="1"` / `"-1"`.
+The input is marked `data-re-number`. Opt into the behavior:
+
+```js
+import { enhanceNumberStepper } from "@relements/core";
+enhanceNumberStepper(document);
+```
+
+The native number input **is** the spinbutton — the behavior adds nothing to
+its semantics, it only gives pointer users bigger step targets. Pressing a
+button calls native `stepUp()`/`stepDown()` and then dispatches `input` +
+`change` (which those methods don't fire), so frameworks observe the change
+like typing. `min`/`max`/`step`, arrow keys, and form value stay native; the
+buttons are `tabindex="-1"` and disable at the matching bound and when the input
+is disabled or read-only. Without JavaScript it's a normal number input with its
+native spinner.
+
+<Demo src="number-stepper.html" name="basic" />

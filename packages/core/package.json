@@ -70,6 +70,8 @@
     "./components/slider.css": "./dist/components/slider.css",
     "./components/tooltip.css": "./dist/components/tooltip.css",
     "./components/combobox.css": "./dist/components/combobox.css",
+    "./components/input-group.css": "./dist/components/input-group.css",
+    "./components/segmented.css": "./dist/components/segmented.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
@@ -98,6 +100,14 @@
     "./behaviors/combobox": {
       "import": "./dist/behaviors/combobox.js",
       "types": "./dist/behaviors/combobox.d.ts"
+    },
+    "./behaviors/password-toggle": {
+      "import": "./dist/behaviors/password-toggle.js",
+      "types": "./dist/behaviors/password-toggle.d.ts"
+    },
+    "./behaviors/number-stepper": {
+      "import": "./dist/behaviors/number-stepper.js",
+      "types": "./dist/behaviors/number-stepper.d.ts"
     },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",

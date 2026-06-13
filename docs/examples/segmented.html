@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Segmented</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="segmented">
+    <header>
+      <h1>Segmented control</h1>
+      <p>Single-select pill group built on native radios.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <fieldset class="re-segmented" aria-label="View">
+        <label class="re-segmented__option">
+          <input type="radio" name="view" value="list" checked />
+          <span>List</span>
+        </label>
+        <label class="re-segmented__option">
+          <input type="radio" name="view" value="board" />
+          <span>Board</span>
+        </label>
+        <label class="re-segmented__option">
+          <input type="radio" name="view" value="calendar" />
+          <span>Calendar</span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes &amp; states</h2>
+      <!-- demo:start name="sizes" -->
+      <fieldset class="re-segmented" data-size="sm" aria-label="Density small">
+        <label class="re-segmented__option">
+          <input type="radio" name="d-sm" value="compact" checked />
+          <span>Compact</span>
+        </label>
+        <label class="re-segmented__option">
+          <input type="radio" name="d-sm" value="cozy" />
+          <span>Cozy</span>
+        </label>
+      </fieldset>
+      <fieldset
+        class="re-segmented"
+        data-size="lg"
+        aria-label="Density large"
+        style="margin-block-start: var(--re-space-4)"
+      >
+        <label class="re-segmented__option">
+          <input type="radio" name="d-lg" value="day" checked />
+          <span>Day</span>
+        </label>
+        <label class="re-segmented__option">
+          <input type="radio" name="d-lg" value="week" />
+          <span>Week</span>
+        </label>
+        <label class="re-segmented__option">
+          <input type="radio" name="d-lg" value="month" disabled />
+          <span>Month</span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

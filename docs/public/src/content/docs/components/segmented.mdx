@@ -1,0 +1,23 @@
+---
+title: Segmented control
+description: Single-select pill group built on native radios.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A `.re-segmented` fieldset wraps native radio inputs, each in a
+`.re-segmented__option` label with a `<span>` pill. Because it's real radios,
+arrow-key roving, single-selection, form submission, and `:disabled` are all
+native — no JavaScript. Give the fieldset an `aria-label` (or a `<legend>`) to
+name the group.
+
+## Basic
+
+<Demo src="segmented.html" name="basic" />
+
+## Sizes & states
+
+`data-size="sm"` or `"lg"` on the fieldset; individual options can be
+`disabled`.
+
+<Demo src="segmented.html" name="sizes" />

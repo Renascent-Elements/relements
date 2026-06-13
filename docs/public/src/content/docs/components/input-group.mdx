@@ -1,0 +1,33 @@
+---
+title: Input group
+description: Prefix/suffix affixes and attached controls that read as one field.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Wrap a `.re-input` in `.re-input-group` to attach prefix/suffix affixes,
+inline action buttons, or a trailing button — all reading as a single control.
+The group owns the border and the focus ring (via `:focus-within`); the inner
+input's own frame is stripped so there's no double outline. Size follows the
+inner input's `data-size`.
+
+## Affixes
+
+`.re-input-group__text` is a tinted, non-interactive prefix or suffix — units,
+currency, a protocol, an `@`.
+
+<Demo src="input-group.html" name="affixes" />
+
+## Attached button
+
+Drop a `.re-button` in the group as a trailing control; its corners are
+clipped to the group.
+
+<Demo src="input-group.html" name="button" />
+
+## States
+
+Disabled and invalid are reflected from the contained control (`:disabled`,
+`aria-invalid` / `:user-invalid`).
+
+<Demo src="input-group.html" name="states" />

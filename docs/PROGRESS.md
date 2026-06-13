@@ -83,6 +83,15 @@ Pure-CSS enhancements over native elements already styled in `re.base`.
 
 - [x] enhanceCombobox (`data-re-combobox` opt-in: styled listbox ≥ input width over the same `<datalist>`; native popup suppressed; ARIA editable-combobox keyboard pattern)
 
+## Form-input expansion (0.9.0)
+
+The HTML-first form-control family — native bases, CSS-first, optional enhance.
+
+- [x] input-group (`.re-input-group` wrapper: `:focus-within` ring + prefix/suffix `__text`, inline `__action` buttons, attached `.re-button`; shared foundation)
+- [x] segmented (`<fieldset class="re-segmented">` of hidden radios + label pills; CSS-only, native roving/single-select)
+- [x] password-toggle (`enhancePasswordToggle`: button flips `input.type`, `aria-pressed`/label swap, caret preserved)
+- [x] number-stepper (`enhanceNumberStepper`: ± buttons call native `stepUp/stepDown`, re-dispatch `input`/`change`, disable at bounds)
+
 ## Acceptance per element
 
 Each box is checked only when:

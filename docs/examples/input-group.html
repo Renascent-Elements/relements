@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Input group</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="input-group">
+    <header>
+      <h1>Input group</h1>
+      <p>Prefix/suffix affixes and attached controls that read as one field.</p>
+    </header>
+
+    <section aria-labelledby="affixes-heading" data-testid="affixes">
+      <h2 id="affixes-heading">Affixes</h2>
+      <!-- demo:start name="affixes" -->
+      <label class="re-field">
+        <span class="re-field__label">Website</span>
+        <span class="re-input-group">
+          <span class="re-input-group__text">https://</span>
+          <input class="re-input" type="text" placeholder="example" />
+          <span class="re-input-group__text">.com</span>
+        </span>
+      </label>
+      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+        <span class="re-field__label">Price</span>
+        <span class="re-input-group">
+          <span class="re-input-group__text">$</span>
+          <input class="re-input" type="number" inputmode="decimal" placeholder="0.00" />
+          <span class="re-input-group__text">USD</span>
+        </span>
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="button-heading" data-testid="button">
+      <h2 id="button-heading">Attached button</h2>
+      <!-- demo:start name="button" -->
+      <span class="re-input-group" role="search">
+        <input class="re-input" type="search" aria-label="Search" placeholder="Search…" />
+        <button class="re-button" type="submit">Search</button>
+      </span>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <!-- demo:start name="states" -->
+      <label class="re-field">
+        <span class="re-field__label">Disabled</span>
+        <span class="re-input-group">
+          <span class="re-input-group__text">@</span>
+          <input class="re-input" type="text" value="handle" disabled />
+        </span>
+      </label>
+      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+        <span class="re-field__label">Invalid</span>
+        <span class="re-input-group">
+          <span class="re-input-group__text">@</span>
+          <input class="re-input" type="text" value="bad value" aria-invalid="true" />
+        </span>
+      </label>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

@@ -51,6 +51,8 @@ describe("@relements/core dist", () => {
       "slider.css",
       "tooltip.css",
       "combobox.css",
+      "input-group.css",
+      "segmented.css",
     ];
     for (const file of components) {
       expect(existsSync(join(distRoot, "components", file)), file).toBe(true);
@@ -66,6 +68,8 @@ describe("@relements/core dist", () => {
       "popover.js",
       "toast.js",
       "combobox.js",
+      "password-toggle.js",
+      "number-stepper.js",
     ];
     for (const file of behaviors) {
       expect(existsSync(join(distRoot, "behaviors", file)), file).toBe(true);
