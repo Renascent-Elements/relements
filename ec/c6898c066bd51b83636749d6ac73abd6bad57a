@@ -1,0 +1,25 @@
+packages/core/src/components/otp.css
+  s_2732c4df70b865::t_b3f3538a8c688b 17-18
+  s_2732c4df70b865::t_f029e72802d3ff 31-32
+  s_2732c4df70b865::t_a6650557b77fb8 8
+  s_2732c4df70b865::t_9d8103340b31fa 41-46
+  s_2732c4df70b865::t_5ecdca98a8b3fa 78
+  s_2732c4df70b865::t_325137e6f78278 16
+  s_2732c4df70b865::t_ecfd9ab93ed3e3 28-30,33-39,51-60,72-75,77,82,99-102,107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "ecc6898c066bd51b83636749d6ac73abd6bad57a",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
