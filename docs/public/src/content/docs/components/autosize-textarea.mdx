@@ -1,0 +1,25 @@
+---
+title: Autosize textarea
+description: A textarea that grows with its content.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Add `data-autosize` to a `.re-textarea` to make it grow with its content.
+Modern engines do this in pure CSS via `field-sizing: content` (Chrome 123+,
+Safari 26.2+). For engines without it (Firefox at the floor), opt into the
+fallback behavior:
+
+```js
+import { enhanceAutosize } from "@relements/core/behaviors/autosize";
+enhanceAutosize(document); // no-op where field-sizing is supported
+```
+
+`enhanceAutosize` feature-detects `field-sizing` and, only when it's missing,
+measures `scrollHeight` on input. With no JavaScript and no `field-sizing`, the
+textarea stays a normal resizable textarea — nothing breaks. Cap the growth with
+`--re-autosize-max-block-size` (default `18rem`); past the cap it scrolls.
+
+## Basic
+
+<Demo src="autosize-textarea.html" name="basic" />

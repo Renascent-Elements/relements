@@ -1,0 +1,184 @@
+/**
+ * Relements drawer / sheet.
+ *
+ * An edge-anchored panel. It is a native modal <dialog> — add `.re-drawer`
+ * ALONGSIDE `.re-dialog` and open it with the same enhanceDialog wiring
+ * (data-re-dialog-trigger / -target / -close / -close-on-backdrop). The
+ * browser owns the top layer, ::backdrop, focus trap, Escape, and inert
+ * background. This file only changes the box geometry + slide motion;
+ * surface, header/body/footer come from .re-dialog.
+ *
+ *   <dialog class="re-dialog re-drawer" id="nav" data-side="end"
+ *           aria-labelledby="nav-title" data-re-dialog-close-on-backdrop>…</dialog>
+ *
+ * data-side: end (default), start, top, bottom — pinned with logical insets
+ * so start/end follow the writing direction. data-size: sm | md (default) | lg
+ * along the pin axis. The hidden state reuses .re-dialog:not([open]){display:none}
+ * (dialog.css), which doubles as the discrete-display exit for the transition.
+ */
+
+@layer re.components {
+  .re-drawer {
+    /* Local size knob; per-side rules map it to inline- or block-size. */
+    --re-drawer-size: 24rem; /* md */
+
+    /* Neutralize the centered-dialog geometry. */
+    margin: 0;
+    max-inline-size: none;
+    max-block-size: none;
+    border-radius: 0;
+
+    /* Default placement = end (inline-end edge, full block extent). The full
+       cross-axis extent comes from the 0/0 insets + auto size (floor-safe,
+       no dvh/dvw needed and dynamic-viewport-correct), not an explicit
+       100dvh/100dvw which would over-constrain on engines lacking dvh/dvw. */
+    inset-block: 0;
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    inline-size: var(--re-drawer-size);
+    block-size: auto;
+    border-inline-start: var(--re-border-default);
+
+    /* Slide off the inline-end edge when closed; [open] pulls it to 0.
+       display + overlay transition with allow-discrete keeps the panel in the
+       top layer through the exit animation. All of this degrades to an instant
+       show/hide on engines without @starting-style / allow-discrete, and to
+       instant under prefers-reduced-motion (reset.css forces ~0ms globally). */
+    translate: 100% 0;
+    transition:
+      translate var(--re-duration-normal) var(--re-easing-emphasized),
+      display var(--re-duration-normal) var(--re-easing-emphasized) allow-discrete,
+      overlay var(--re-duration-normal) var(--re-easing-emphasized) allow-discrete;
+  }
+
+  .re-drawer[open] {
+    translate: 0 0;
+  }
+  @starting-style {
+    .re-drawer[open] {
+      translate: 100% 0;
+    }
+  }
+
+  /* ---- Sizes --------------------------------------------------------- */
+  .re-drawer[data-size="sm"] {
+    --re-drawer-size: 18rem;
+  }
+  .re-drawer[data-size="lg"] {
+    --re-drawer-size: 32rem;
+  }
+
+  /* ---- Sides --------------------------------------------------------- */
+  .re-drawer[data-side="start"] {
+    inset-inline-start: 0;
+    inset-inline-end: auto;
+    border-inline-start: 0;
+    border-inline-end: var(--re-border-default);
+    translate: -100% 0;
+  }
+  .re-drawer[data-side="start"][open] {
+    translate: 0 0;
+  }
+  @starting-style {
+    .re-drawer[data-side="start"][open] {
+      translate: -100% 0;
+    }
+  }
+
+  .re-drawer[data-side="top"],
+  .re-drawer[data-side="bottom"] {
+    inset-inline: 0;
+    inline-size: auto; /* full width via the 0/0 inline insets */
+    block-size: var(--re-drawer-size);
+    border-inline-start: 0;
+  }
+  .re-drawer[data-side="top"] {
+    inset-block-start: 0;
+    inset-block-end: auto;
+    border-block-end: var(--re-border-default);
+    translate: 0 -100%;
+  }
+  .re-drawer[data-side="top"][open] {
+    translate: 0 0;
+  }
+  @starting-style {
+    .re-drawer[data-side="top"][open] {
+      translate: 0 -100%;
+    }
+  }
+  .re-drawer[data-side="bottom"] {
+    inset-block-start: auto;
+    inset-block-end: 0;
+    border-block-start: var(--re-border-default);
+    translate: 0 100%;
+  }
+  .re-drawer[data-side="bottom"][open] {
+    translate: 0 0;
+  }
+  @starting-style {
+    .re-drawer[data-side="bottom"][open] {
+      translate: 0 100%;
+    }
+  }
+
+  /* RTL: `translate` percentages are physical. Flip the inline-axis sign for
+     the inline sides; the bare `:dir(rtl)` rule would also clobber the block
+     sides' vertical slide, so RE-ASSERT top/bottom (their (0,3,0) rules
+     out-specify the bare (0,2,0) flip). Progressive: engines without :dir()
+     keep the LTR slide; placement still flips via the logical insets above. */
+  .re-drawer:dir(rtl) {
+    translate: -100% 0; /* end: off the inline-end (left) edge in RTL */
+  }
+  .re-drawer[data-side="start"]:dir(rtl) {
+    translate: 100% 0; /* start: off the inline-start (right) edge in RTL */
+  }
+  .re-drawer[data-side="top"]:dir(rtl) {
+    translate: 0 -100%;
+  }
+  .re-drawer[data-side="bottom"]:dir(rtl) {
+    translate: 0 100%;
+  }
+  /* Steady-state open docks every side. Placed last and at (0,3,0) it beats the
+     bare (0,2,0) end flip and ties-then-wins-by-order the (0,3,0) side flips —
+     without this an open RTL drawer stays slid off-screen. */
+  .re-drawer:dir(rtl)[open] {
+    translate: 0 0;
+  }
+  @starting-style {
+    .re-drawer:dir(rtl)[open] {
+      translate: -100% 0;
+    }
+    .re-drawer[data-side="start"]:dir(rtl)[open] {
+      translate: 100% 0;
+    }
+    .re-drawer[data-side="top"]:dir(rtl)[open] {
+      translate: 0 -100%;
+    }
+    .re-drawer[data-side="bottom"]:dir(rtl)[open] {
+      translate: 0 100%;
+    }
+  }
+
+  /* Fade the shared backdrop in/out with the panel. The reset's reduced-motion
+     rule targets `*`, which does NOT match `::backdrop`, so gate the transition
+     on no-preference here to honor reduced motion. */
+  .re-drawer::backdrop {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .re-drawer::backdrop {
+      transition:
+        opacity var(--re-duration-normal) var(--re-easing-standard),
+        display var(--re-duration-normal) var(--re-easing-standard) allow-discrete,
+        overlay var(--re-duration-normal) var(--re-easing-standard) allow-discrete;
+    }
+  }
+  .re-drawer[open]::backdrop {
+    opacity: 1;
+  }
+  @starting-style {
+    .re-drawer[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}

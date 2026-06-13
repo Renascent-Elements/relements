@@ -10,6 +10,9 @@
  *     setting the dialog's returnValue to the element's value attribute.
  *   - Click on the dialog's backdrop closes the dialog when the dialog
  *     element itself has `data-re-dialog-close-on-backdrop`.
+ *   - `data-re-dialog-no-dismiss` on a <dialog> blocks Escape and backdrop
+ *     dismissal (for an alertdialog forcing an explicit choice). Explicit
+ *     `[data-re-dialog-close]` buttons still close it — and one MUST exist.
  *
  * Usage:
  *
@@ -68,12 +71,14 @@ export function enhanceDialog(root = document) {
       return;
     }
 
-    // 3) Backdrop click → close (only when opted in)
+    // 3) Backdrop click → close (only when opted in, and never when the
+    //    dialog opts out of dismissal — see data-re-dialog-no-dismiss).
     if (target.tagName === "DIALOG") {
       const dialog = /** @type {HTMLDialogElement} */ (target);
       if (
         dialog.open &&
         dialog.hasAttribute("data-re-dialog-close-on-backdrop") &&
+        !dialog.hasAttribute("data-re-dialog-no-dismiss") &&
         isEventOnBackdrop(/** @type {MouseEvent} */ (event), dialog)
       ) {
         dialog.close("backdrop");
@@ -81,11 +86,34 @@ export function enhanceDialog(root = document) {
     }
   };
 
+  // Block Escape / platform dismissal for a dialog marked
+  // `data-re-dialog-no-dismiss` (e.g. an alertdialog forcing an explicit
+  // choice). The `cancel` event fires only for close *requests* — explicit
+  // [data-re-dialog-close] buttons and form[method=dialog] submits still
+  // close. `cancel` does NOT bubble, so listen in the capture phase.
+  /** @param {Event} event */
+  const onCancel = (event) => {
+    const dialog = /** @type {EventTarget | null} */ (event.target);
+    if (dialog instanceof HTMLDialogElement && dialog.hasAttribute("data-re-dialog-no-dismiss")) {
+      event.preventDefault();
+      // A no-dismiss dialog with no in-dialog close control is a keyboard trap.
+      if (!dialog.querySelector("[data-re-dialog-close]") && !dialog.dataset.reDialogWarned) {
+        dialog.dataset.reDialogWarned = "true";
+        console.warn(
+          "enhanceDialog: a [data-re-dialog-no-dismiss] dialog has no [data-re-dialog-close] control — users cannot dismiss it.",
+          dialog,
+        );
+      }
+    }
+  };
+
   root.addEventListener("click", onClick);
+  root.addEventListener("cancel", onCancel, true);
 
   return {
     destroy() {
       root.removeEventListener("click", onClick);
+      root.removeEventListener("cancel", onCancel, true);
     },
   };
 }

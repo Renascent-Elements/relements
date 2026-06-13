@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Alert dialog</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="alert-dialog">
+    <header>
+      <h1>Alert dialog</h1>
+      <p>A confirmation dialog that forces an explicit choice.</p>
+    </header>
+
+    <section aria-labelledby="destructive-heading" data-testid="destructive">
+      <h2 id="destructive-heading">Destructive confirmation</h2>
+      <!-- demo:start name="destructive" -->
+      <button
+        type="button"
+        class="re-button"
+        data-variant="danger"
+        data-re-dialog-trigger
+        data-re-dialog-target="confirm-delete"
+      >
+        Delete project
+      </button>
+
+      <dialog
+        class="re-dialog"
+        id="confirm-delete"
+        role="alertdialog"
+        aria-labelledby="confirm-delete-title"
+        aria-describedby="confirm-delete-desc"
+        data-re-dialog-no-dismiss
+      >
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="confirm-delete-title">Delete project?</h2>
+        </header>
+        <div class="re-dialog__body">
+          <p id="confirm-delete-desc">
+            This permanently deletes “Acme site” and all of its data. This action cannot be undone.
+          </p>
+        </div>
+        <footer class="re-dialog__footer">
+          <button
+            type="button"
+            class="re-button"
+            data-variant="ghost"
+            data-re-dialog-close
+            value="cancel"
+            autofocus
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="re-button"
+            data-variant="danger"
+            data-re-dialog-close
+            value="confirm"
+          >
+            Delete
+          </button>
+        </footer>
+      </dialog>
+      <!-- demo:end -->
+      <p>Result: <output id="ad-result">—</output></p>
+    </section>
+
+    <section aria-labelledby="dismissible-heading" data-testid="dismissible">
+      <h2 id="dismissible-heading">Dismissible alert</h2>
+      <!-- demo:start name="dismissible" -->
+      <button
+        type="button"
+        class="re-button"
+        data-variant="secondary"
+        data-re-dialog-trigger
+        data-re-dialog-target="session-expiring"
+      >
+        Show alert
+      </button>
+
+      <dialog
+        class="re-dialog"
+        id="session-expiring"
+        role="alertdialog"
+        aria-labelledby="session-expiring-title"
+        aria-describedby="session-expiring-desc"
+        data-re-dialog-close-on-backdrop
+      >
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="session-expiring-title">Session expiring</h2>
+        </header>
+        <div class="re-dialog__body">
+          <p id="session-expiring-desc">
+            You’ll be signed out in 2 minutes. Escape or backdrop dismisses this one.
+          </p>
+        </div>
+        <footer class="re-dialog__footer">
+          <button type="button" class="re-button" data-re-dialog-close value="ok" autofocus>
+            Stay signed in
+          </button>
+        </footer>
+      </dialog>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceDialog } from "/packages/core/src/behaviors/dialog.js";
+      window.__reController = enhanceDialog(document);
+      const dialog = document.getElementById("confirm-delete");
+      const result = document.getElementById("ad-result");
+      dialog.addEventListener("close", () => {
+        result.textContent = dialog.returnValue || "—";
+      });
+    </script>
+  </body>
+</html>

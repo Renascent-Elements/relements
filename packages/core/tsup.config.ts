@@ -12,6 +12,7 @@ export default defineConfig({
     "behaviors/combobox": "src/behaviors/combobox.js",
     "behaviors/password-toggle": "src/behaviors/password-toggle.js",
     "behaviors/number-stepper": "src/behaviors/number-stepper.js",
+    "behaviors/autosize": "src/behaviors/autosize.js",
     "elements/re-tabs": "src/elements/re-tabs.js",
     "elements/re-toast": "src/elements/re-toast.js",
     "elements/re-menu": "src/elements/re-menu.js",

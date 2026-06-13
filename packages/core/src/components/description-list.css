@@ -1,0 +1,124 @@
+/**
+ * Relements description list.
+ *
+ * Read-only key/value pairs on native <dl>/<dt>/<dd> — CSS only, no JS.
+ * Use the canonical FLAT form (dt/dd as direct children of the dl, term
+ * first); the horizontal grid relies on dt/dd being grid children, so the
+ * spec-permitted <div>-wrapped group form is not supported.
+ *
+ *   <dl class="re-description-list" data-layout="horizontal">
+ *     <dt class="re-description-list__term">Plan</dt>
+ *     <dd class="re-description-list__details">Pro</dd>
+ *   </dl>
+ *
+ * data-layout: stacked (default) | horizontal (term | details two columns).
+ * Modifiers: data-bordered, data-divided, data-density="compact".
+ * Term column width: --re-dl-term-width (default 12rem).
+ */
+
+@layer re.components {
+  .re-description-list {
+    margin: 0;
+    color: var(--re-color-text);
+  }
+
+  .re-description-list__term {
+    margin: 0;
+    color: var(--re-color-text-muted);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    line-height: var(--re-line-height-snug);
+  }
+
+  .re-description-list__details {
+    margin: 0;
+    color: var(--re-color-text);
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-normal);
+  }
+
+  /* ---- Stacked (default): normal block flow --------------------------- */
+  .re-description-list__term {
+    margin-block-start: var(--re-space-3);
+  }
+  .re-description-list__term:first-child {
+    margin-block-start: 0;
+  }
+  .re-description-list__details {
+    margin-block-start: var(--re-space-1);
+  }
+
+  /* ---- Horizontal: term | details two-column grid -------------------- */
+  .re-description-list[data-layout="horizontal"] {
+    display: grid;
+    grid-template-columns: var(--re-dl-term-width, 12rem) 1fr;
+    column-gap: var(--re-space-4);
+    row-gap: var(--re-space-3);
+  }
+  /* Explicit placement so every dd (incl. multiple per dt) lands in column 2. */
+  .re-description-list[data-layout="horizontal"] .re-description-list__term {
+    grid-column: 1;
+    margin-block-start: 0;
+    align-self: start;
+  }
+  .re-description-list[data-layout="horizontal"] .re-description-list__details {
+    grid-column: 2;
+    margin-block-start: 0;
+  }
+
+  /* ---- Density -------------------------------------------------------- */
+  .re-description-list[data-density="compact"][data-layout="horizontal"] {
+    row-gap: var(--re-space-2);
+  }
+  .re-description-list[data-density="compact"] .re-description-list__term {
+    margin-block-start: var(--re-space-2);
+  }
+  .re-description-list[data-density="compact"] .re-description-list__term:first-child {
+    margin-block-start: 0;
+  }
+
+  /* ---- Bordered ------------------------------------------------------- */
+  .re-description-list[data-bordered] {
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-lg);
+    padding: var(--re-space-4);
+  }
+
+  /* ---- Divided: rule above each row (except the first) ---------------- */
+  /* Column-local baseline: a top border on each term, suppressed on the
+     first. Floor-safe (no :has). Relies on the flat, term-first contract. */
+  .re-description-list[data-divided] .re-description-list__term {
+    border-block-start: var(--re-border-default);
+    padding-block-start: var(--re-space-3);
+    margin-block-start: var(--re-space-3);
+  }
+  .re-description-list[data-divided] .re-description-list__term:first-child {
+    border-block-start: 0;
+    padding-block-start: 0;
+    margin-block-start: 0;
+  }
+  /* Enhancement: extend the divider full-bleed across both columns where
+     :has() is available (above the FF121 line; build targets pass it through,
+     so guard it). Degrades to the column-local rule above. */
+  @supports selector(:has(*)) {
+    .re-description-list[data-divided][data-layout="horizontal"] {
+      row-gap: 0;
+    }
+    .re-description-list[data-divided][data-layout="horizontal"] .re-description-list__details {
+      border-block-start: var(--re-border-default);
+      padding-block-start: var(--re-space-3);
+      margin-block-start: var(--re-space-3);
+    }
+    .re-description-list[data-divided][data-layout="horizontal"] .re-description-list__term {
+      padding-block-end: 0;
+    }
+    /* The term's own top border already draws the line for its row; the
+       matching dd border completes it across column 2. First row: none. */
+    .re-description-list[data-divided][data-layout="horizontal"]
+      .re-description-list__details:nth-child(2) {
+      border-block-start: 0;
+      padding-block-start: 0;
+      margin-block-start: 0;
+    }
+  }
+}

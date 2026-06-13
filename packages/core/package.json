@@ -47,6 +47,7 @@
     "./components/form.css": "./dist/components/form.css",
     "./components/disclosure.css": "./dist/components/disclosure.css",
     "./components/dialog.css": "./dist/components/dialog.css",
+    "./components/drawer.css": "./dist/components/drawer.css",
     "./components/progress.css": "./dist/components/progress.css",
     "./components/tabs.css": "./dist/components/tabs.css",
     "./components/menu.css": "./dist/components/menu.css",
@@ -72,6 +73,7 @@
     "./components/combobox.css": "./dist/components/combobox.css",
     "./components/input-group.css": "./dist/components/input-group.css",
     "./components/segmented.css": "./dist/components/segmented.css",
+    "./components/description-list.css": "./dist/components/description-list.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
@@ -108,6 +110,10 @@
     "./behaviors/number-stepper": {
       "import": "./dist/behaviors/number-stepper.js",
       "types": "./dist/behaviors/number-stepper.d.ts"
+    },
+    "./behaviors/autosize": {
+      "import": "./dist/behaviors/autosize.js",
+      "types": "./dist/behaviors/autosize.d.ts"
     },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",

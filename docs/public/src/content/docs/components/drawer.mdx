@@ -1,0 +1,31 @@
+---
+title: Drawer
+description: An edge-anchored panel — a native modal dialog with a slide-in.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A drawer is a native `<dialog>` with `.re-drawer` added alongside `.re-dialog`.
+It opens with the same [dialog](/relements/components/dialog/) wiring —
+`enhanceDialog` and the `data-re-dialog-trigger` / `-target` / `-close` /
+`-close-on-backdrop` attributes — so the browser owns the top layer, backdrop,
+focus trap, Escape, and inert background. This file only changes the box
+geometry and adds a slide-in.
+
+```js
+import { enhanceDialog } from "@relements/core/behaviors/dialog";
+enhanceDialog(document);
+```
+
+Set the edge with `data-side`: `end` (default), `start`, `top`, `bottom` —
+pinned with logical insets, so `start`/`end` follow the writing direction. Size
+along the pin axis with `data-size="sm | md | lg"`. Give every drawer an
+accessible name (`aria-labelledby` → its `.re-dialog__title`, or `aria-label`).
+
+The slide uses `@starting-style` + `allow-discrete` and degrades to an instant
+show/hide on engines without them (and under `prefers-reduced-motion`).
+Dismissal is Escape or backdrop only — there's no swipe gesture.
+
+## Sides
+
+<Demo src="drawer.html" name="sides" />

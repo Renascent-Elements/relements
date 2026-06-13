@@ -1,0 +1,36 @@
+---
+title: Alert dialog
+description: A confirmation dialog that forces an explicit choice.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+An alert dialog is a [dialog](/relements/components/dialog/) recipe for
+confirmations — no new CSS or behavior. On the `<dialog class="re-dialog">` add
+`role="alertdialog"`, `aria-labelledby` (the title) and `aria-describedby` (the
+message), and put native `autofocus` on the **safe** action (Cancel) so the
+destructive button is never the default target. It's driven by the existing
+`enhanceDialog`.
+
+```js
+import { enhanceDialog } from "@relements/core/behaviors/dialog";
+enhanceDialog(document);
+```
+
+## Destructive confirmation
+
+For a critical choice, add `data-re-dialog-no-dismiss` to block Escape and
+backdrop dismissal so the user must pick an explicit action. **A no-dismiss
+dialog must always contain a close control** (the Cancel button) — otherwise
+it's a keyboard trap; `enhanceDialog` warns in the console if one is missing.
+The recipe drops the corner `×` for exactly this reason.
+
+<Demo src="alert-dialog.html" name="destructive" />
+
+## Dismissible alert
+
+Without `data-re-dialog-no-dismiss`, an alertdialog still dismisses on Escape
+(and backdrop, with `data-re-dialog-close-on-backdrop`) — use this for
+non-critical alerts.
+
+<Demo src="alert-dialog.html" name="dismissible" />
