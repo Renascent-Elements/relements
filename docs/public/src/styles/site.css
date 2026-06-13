@@ -213,6 +213,13 @@ starlight-toc a:focus-visible {
   margin: auto;
 }
 
+/* Same `* { margin: 0 }` reset also zeroes the empty-state's `margin-inline:
+   auto`, so the demo would left-align in the flex `.demo__preview` row. Restore
+   it (this unlayered selector beats `*`) so the block sits centered. */
+.demo__preview .re-empty-state {
+  margin-inline: auto;
+}
+
 /* Starlight's `input, button, textarea, select { font: inherit }` reset lives
    in the starlight.reset layer. In the bundle Starlight's layers are declared
    after Relements' layers, so at the top level `starlight.*` outranks `re.*`
