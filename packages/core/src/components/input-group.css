@@ -88,6 +88,17 @@
     white-space: nowrap;
     user-select: none;
   }
+  /* Divider between an edge affix and the field. Keeps the segments legible
+     even when the tint is low-contrast (e.g. the affix bg sits close to the
+     field bg in dark themes). Edge affixes are first/last child; inline
+     __action buttons and attached .re-button deliberately get no divider. */
+  .re-input-group__text:first-child {
+    border-inline-end: var(--re-border-default);
+  }
+  .re-input-group__text:last-child {
+    border-inline-start: var(--re-border-default);
+  }
+
   /* Track the inner input's data-size so affix text matches. */
   .re-input-group:has(.re-input[data-size="sm"]) .re-input-group__text {
     font-size: var(--re-size-text-sm);
