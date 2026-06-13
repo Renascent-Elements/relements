@@ -96,12 +96,17 @@
         var(--re-otp-gap)
     );
     z-index: -1;
+    /* A 1px hairline centered in each inter-cell gap (not the whole gap). */
     background-image: repeating-linear-gradient(
       to right,
       transparent 0,
-      transparent var(--re-otp-cell-size),
-      var(--re-color-border-strong) var(--re-otp-cell-size),
-      var(--re-color-border-strong) calc(var(--re-otp-cell-size) + var(--re-otp-gap))
+      transparent calc(var(--re-otp-cell-size) + (var(--re-otp-gap) - var(--re-border-width)) / 2),
+      var(--re-color-border-strong)
+        calc(var(--re-otp-cell-size) + (var(--re-otp-gap) - var(--re-border-width)) / 2),
+      var(--re-color-border-strong)
+        calc(var(--re-otp-cell-size) + (var(--re-otp-gap) + var(--re-border-width)) / 2),
+      transparent calc(var(--re-otp-cell-size) + (var(--re-otp-gap) + var(--re-border-width)) / 2),
+      transparent calc(var(--re-otp-cell-size) + var(--re-otp-gap))
     );
   }
 
