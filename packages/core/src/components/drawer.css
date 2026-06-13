@@ -28,12 +28,15 @@
     max-block-size: none;
     border-radius: 0;
 
-    /* Default placement = end (inline-end edge, full block extent). */
+    /* Default placement = end (inline-end edge, full block extent). The full
+       cross-axis extent comes from the 0/0 insets + auto size (floor-safe,
+       no dvh/dvw needed and dynamic-viewport-correct), not an explicit
+       100dvh/100dvw which would over-constrain on engines lacking dvh/dvw. */
     inset-block: 0;
     inset-inline-start: auto;
     inset-inline-end: 0;
     inline-size: var(--re-drawer-size);
-    block-size: 100dvh;
+    block-size: auto;
     border-inline-start: var(--re-border-default);
 
     /* Slide off the inline-end edge when closed; [open] pulls it to 0.
@@ -85,7 +88,7 @@
   .re-drawer[data-side="top"],
   .re-drawer[data-side="bottom"] {
     inset-inline: 0;
-    inline-size: 100dvw;
+    inline-size: auto; /* full width via the 0/0 inline insets */
     block-size: var(--re-drawer-size);
     border-inline-start: 0;
   }
@@ -118,33 +121,57 @@
     }
   }
 
-  /* RTL: `translate` percentages are physical, so flip the inline-axis sign
-     for start/end. Progressive (engines without :dir() keep the LTR slide;
-     placement still flips via the logical insets above). */
+  /* RTL: `translate` percentages are physical. Flip the inline-axis sign for
+     the inline sides; the bare `:dir(rtl)` rule would also clobber the block
+     sides' vertical slide, so RE-ASSERT top/bottom (their (0,3,0) rules
+     out-specify the bare (0,2,0) flip). Progressive: engines without :dir()
+     keep the LTR slide; placement still flips via the logical insets above. */
   .re-drawer:dir(rtl) {
-    translate: -100% 0;
+    translate: -100% 0; /* end: off the inline-end (left) edge in RTL */
+  }
+  .re-drawer[data-side="start"]:dir(rtl) {
+    translate: 100% 0; /* start: off the inline-start (right) edge in RTL */
+  }
+  .re-drawer[data-side="top"]:dir(rtl) {
+    translate: 0 -100%;
+  }
+  .re-drawer[data-side="bottom"]:dir(rtl) {
+    translate: 0 100%;
+  }
+  /* Steady-state open docks every side. Placed last and at (0,3,0) it beats the
+     bare (0,2,0) end flip and ties-then-wins-by-order the (0,3,0) side flips —
+     without this an open RTL drawer stays slid off-screen. */
+  .re-drawer:dir(rtl)[open] {
+    translate: 0 0;
   }
   @starting-style {
     .re-drawer:dir(rtl)[open] {
       translate: -100% 0;
     }
-  }
-  .re-drawer[data-side="start"]:dir(rtl) {
-    translate: 100% 0;
-  }
-  @starting-style {
     .re-drawer[data-side="start"]:dir(rtl)[open] {
       translate: 100% 0;
     }
+    .re-drawer[data-side="top"]:dir(rtl)[open] {
+      translate: 0 -100%;
+    }
+    .re-drawer[data-side="bottom"]:dir(rtl)[open] {
+      translate: 0 100%;
+    }
   }
 
-  /* Fade the shared backdrop in/out with the panel. */
+  /* Fade the shared backdrop in/out with the panel. The reset's reduced-motion
+     rule targets `*`, which does NOT match `::backdrop`, so gate the transition
+     on no-preference here to honor reduced motion. */
   .re-drawer::backdrop {
     opacity: 0;
-    transition:
-      opacity var(--re-duration-normal) var(--re-easing-standard),
-      display var(--re-duration-normal) var(--re-easing-standard) allow-discrete,
-      overlay var(--re-duration-normal) var(--re-easing-standard) allow-discrete;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .re-drawer::backdrop {
+      transition:
+        opacity var(--re-duration-normal) var(--re-easing-standard),
+        display var(--re-duration-normal) var(--re-easing-standard) allow-discrete,
+        overlay var(--re-duration-normal) var(--re-easing-standard) allow-discrete;
+    }
   }
   .re-drawer[open]::backdrop {
     opacity: 1;

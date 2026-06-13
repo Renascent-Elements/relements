@@ -76,4 +76,50 @@ test.describe("drawer", () => {
     expect(g.w).toBeCloseTo(g.vw, 0); // full width
     expect(g.h).toBeLessThan(g.vh); // not full height
   });
+
+  test("an open drawer settles fully on-screen (the slide ends at translate 0)", async ({
+    page,
+  }) => {
+    await page.goto("./drawer.html");
+    await page.getByRole("button", { name: "End", exact: true }).click();
+    // Wait for the slide to settle, then assert the panel is within the viewport.
+    await page.waitForFunction(() => {
+      const el = document.getElementById("drawer-end")!;
+      const b = el.getBoundingClientRect();
+      return Math.abs(b.right - innerWidth) < 1.5;
+    });
+    const onscreen = await page.locator("#drawer-end").evaluate((el) => {
+      const b = el.getBoundingClientRect();
+      return b.left >= -1 && b.right <= innerWidth + 1;
+    });
+    expect(onscreen).toBe(true);
+  });
+
+  test("RTL: open end and start drawers dock on-screen on the flipped edges", async ({ page }) => {
+    await page.goto("./drawer.html");
+    await page.evaluate(() => document.documentElement.setAttribute("dir", "rtl"));
+
+    // end → inline-end is the LEFT edge in RTL
+    await page.getByRole("button", { name: "End", exact: true }).click();
+    await page.waitForFunction(() => {
+      const b = document.getElementById("drawer-end")!.getBoundingClientRect();
+      return Math.abs(b.left) < 1.5 && b.right <= innerWidth + 1;
+    });
+    await page.keyboard.press("Escape");
+
+    // start → inline-start is the RIGHT edge in RTL
+    await page.getByRole("button", { name: "Start", exact: true }).click();
+    await page.waitForFunction(() => {
+      const b = document.getElementById("drawer-start")!.getBoundingClientRect();
+      return Math.abs(b.right - innerWidth) < 1.5 && b.left >= -1;
+    });
+  });
+
+  test("data-size maps to the pin axis", async ({ page }) => {
+    await page.goto("./drawer.html");
+    await page.locator("#drawer-end").evaluate((el) => el.setAttribute("data-size", "sm"));
+    await page.getByRole("button", { name: "End", exact: true }).click();
+    const w = (await page.locator("#drawer-end").boundingBox())!.width;
+    expect(w).toBeCloseTo(288, 0); // 18rem
+  });
 });

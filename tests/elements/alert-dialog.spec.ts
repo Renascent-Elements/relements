@@ -50,6 +50,31 @@ test.describe("alert dialog", () => {
     await expect(dialog).toBeHidden();
   });
 
+  test("warns only when a no-dismiss dialog has no close control", async ({ page }) => {
+    await page.goto("./alert-dialog.html");
+    const warnings: string[] = [];
+    page.on("console", (m) => {
+      if (m.type() === "warning") warnings.push(m.text());
+    });
+
+    // The shipped no-dismiss dialog HAS a Cancel control → no warning on cancel.
+    await page.getByRole("button", { name: "Delete project" }).click();
+    await page.keyboard.press("Escape"); // fires cancel (blocked), should NOT warn
+    expect(warnings.filter((w) => w.includes("no-dismiss"))).toHaveLength(0);
+
+    // A no-dismiss dialog with no close control → warns.
+    await page.evaluate(() => {
+      const d = document.createElement("dialog");
+      d.id = "trap";
+      d.setAttribute("data-re-dialog-no-dismiss", "");
+      d.textContent = "no way out";
+      document.body.append(d);
+      d.showModal();
+      d.dispatchEvent(new Event("cancel", { cancelable: true }));
+    });
+    expect(warnings.filter((w) => w.includes("no-dismiss")).length).toBeGreaterThan(0);
+  });
+
   test("destroy() removes the cancel guard", async ({ page }) => {
     await page.goto("./alert-dialog.html");
     await page.evaluate(() =>

@@ -19,8 +19,8 @@ test.describe("autosize textarea", () => {
     const ta = page.locator("#ta-autosize");
     const before = (await ta.boundingBox())!.height;
     await ta.fill("one\ntwo\nthree\nfour\nfive\nsix\nseven\neight");
-    const after = (await ta.boundingBox())!.height;
-    expect(after).toBeGreaterThan(before);
+    // poll: the JS fallback resizes on a rAF, so the height settles async.
+    await expect.poll(async () => (await ta.boundingBox())!.height).toBeGreaterThan(before);
   });
 
   test("a prefilled multi-line value sizes the box on load", async ({ page }) => {
@@ -38,6 +38,16 @@ test.describe("autosize textarea", () => {
     const h = (await ta.boundingBox())!.height;
     expect(h).toBeLessThanOrEqual(max + 1);
     expect(await ta.evaluate((el) => getComputedStyle(el).overflowY)).toBe("auto");
+  });
+
+  test("shrinks back when content is removed", async ({ page }) => {
+    await page.goto("./autosize-textarea.html");
+    const ta = page.locator("#ta-autosize");
+    await ta.fill("one\ntwo\nthree\nfour\nfive\nsix\nseven\neight");
+    let grown = 0;
+    await expect.poll(async () => (grown = (await ta.boundingBox())!.height)).toBeGreaterThan(60);
+    await ta.fill("one");
+    await expect.poll(async () => (await ta.boundingBox())!.height).toBeLessThan(grown);
   });
 
   test("destroy() restores the textarea (fallback path only)", async ({ page }) => {
