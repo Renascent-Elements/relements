@@ -52,12 +52,16 @@
     user-select: none;
   }
 
-  /* Selected: fill the checked star + all lower (DOM-following) stars. */
-  .re-rating input:checked ~ .re-rating__star {
+  /* Selected: fill the checked star + all lower (DOM-following) stars. Use a
+     bare `:checked` (no `input` type selector) so this stays at specificity
+     (0,3,0) — matching the hover rules below, which then win on source order. */
+  .re-rating :checked ~ .re-rating__star {
     color: var(--re-rating-fill);
   }
 
-  /* Hover preview: clear the checked fill, then fill the hovered star + lower. */
+  /* Hover preview overrides the selection: reset all stars, then fill the
+     hovered star + lower. Equal specificity to the rule above, so being later
+     in source wins while hovering. */
   .re-rating:hover .re-rating__star {
     color: var(--re-rating-track);
   }

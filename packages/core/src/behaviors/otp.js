@@ -71,10 +71,13 @@ function wireOne(input) {
       const cleaned = input.value.replace(/\D/g, "");
       if (cleaned !== input.value) {
         const at = input.selectionStart;
+        // Place the caret after the digits that survived before it (handles a
+        // multi-char paste/IME that drops more than one non-digit).
+        const keptBefore = at !== null ? input.value.slice(0, at).replace(/\D/g, "").length : null;
         input.value = cleaned;
-        if (at !== null) {
+        if (keptBefore !== null) {
           try {
-            input.setSelectionRange(at - 1, at - 1);
+            input.setSelectionRange(keptBefore, keptBefore);
           } catch {
             /* ignore */
           }

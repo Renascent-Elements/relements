@@ -72,6 +72,7 @@ function wireOne(input) {
   const origName = input.getAttribute("name");
   const origValue = input.value;
   const origClass = input.className;
+  const origAutocomplete = input.getAttribute("autocomplete");
 
   // Build the group wrapper around the editor input.
   const group = doc.createElement("div");
@@ -82,8 +83,12 @@ function wireOne(input) {
   const label = /** @type {HTMLElement | null} */ (
     input.id ? input.closest(".re-field")?.querySelector(`label[for="${input.id}"]`) : null
   );
+  let injectedLabelId = false;
   if (label) {
-    if (!label.id) label.id = `${id}-label`;
+    if (!label.id) {
+      label.id = `${id}-label`;
+      injectedLabelId = true;
+    }
     group.setAttribute("aria-labelledby", label.id);
   }
 
@@ -136,7 +141,9 @@ function wireOne(input) {
     const remove = doc.createElement("button");
     remove.type = "button";
     remove.className = "re-tag__remove";
-    remove.setAttribute("data-re-dismiss", "");
+    // A tags-specific hook (NOT data-re-dismiss) so chip removal can't be
+    // hijacked by a global enhanceDismissible listener on the same document.
+    remove.setAttribute("data-re-tags-remove", "");
     remove.setAttribute("aria-label", `Remove ${tag}`);
     remove.textContent = "×";
     chip.append(text, remove);
@@ -177,6 +184,7 @@ function wireOne(input) {
     .filter(Boolean)
     .forEach(addTag);
   input.value = "";
+  live.textContent = ""; // don't announce the seeded tags on enhance
 
   /** @param {KeyboardEvent} event */
   const onKeydown = (event) => {
@@ -205,13 +213,14 @@ function wireOne(input) {
     const remainder = parts.pop() ?? "";
     let added = false;
     for (const p of parts) added = addTag(p) || added;
-    input.value = remainder;
+    // Leading whitespace after a delimiter isn't part of the next token.
+    input.value = remainder.replace(/^\s+/, "");
     if (added) fireChange();
   };
 
   /** @param {Event} event */
   const onClick = (event) => {
-    const btn = /** @type {Element | null} */ (event.target)?.closest("[data-re-dismiss]");
+    const btn = /** @type {Element | null} */ (event.target)?.closest("[data-re-tags-remove]");
     if (!btn) return;
     const chip = btn.closest("[data-re-tags-chip]");
     if (chip) removeChip(/** @type {HTMLElement} */ (chip), true);
@@ -232,12 +241,15 @@ function wireOne(input) {
     input.removeEventListener("input", onInput);
     group.removeEventListener("click", onClick);
     group.removeEventListener("mousedown", onGroupClick);
-    // Restore the plain input in place of the group.
+    // Restore the plain input (with the current tokens) in place of the group.
     input.className = origClass;
     if (origName !== null) input.setAttribute("name", origName);
+    if (origAutocomplete !== null) input.setAttribute("autocomplete", origAutocomplete);
+    else input.removeAttribute("autocomplete");
     input.value = values().length ? values().join(", ") : origValue;
     input.removeAttribute("data-re-tags-input-ready");
     group.before(input);
     group.remove();
+    if (injectedLabelId && label) label.removeAttribute("id");
   };
 }

@@ -86,16 +86,75 @@ test.describe("tags input", () => {
     expect(bad).toBe(false);
   });
 
-  test("base degrades to a plain comma-separated input with no JS", async ({ page }) => {
-    // Strip the enhancer marker before scripts run to simulate no-JS.
+  test("commit and removal fire re-tags-change with the current values", async ({ page }) => {
     await page.goto("./tags-input.html");
+    const events = await page.evaluate(() => {
+      const log: string[][] = [];
+      const group = document.querySelector('[data-testid="basic"] .re-tags-input')!;
+      group.addEventListener("re-tags-change", (e) =>
+        log.push((e as CustomEvent).detail.values.slice()),
+      );
+      (window as never as { __log: string[][] }).__log = log;
+      return log;
+    });
+    expect(events).toEqual([]); // seeding does NOT fire
+    const ed = editor(page, "basic");
+    await ed.click();
+    await ed.fill("ops");
+    await ed.press("Enter");
+    await page.getByTestId("basic").locator("[data-re-tags-remove]").first().click();
+    const log = await page.evaluate(() => (window as never as { __log: string[][] }).__log);
+    expect(log).toEqual([
+      ["design", "engineering", "ops"], // commit → full array
+      ["engineering", "ops"], // remove → reduced array
+    ]);
+  });
+
+  test("a multi-delimiter paste commits each token and keeps the remainder", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const ed = editor(page, "basic");
+    await ed.click();
+    // Set the value + one input event, mirroring a paste of "qa, ops, dev".
+    await ed.evaluate((el: HTMLInputElement) => {
+      el.value = "qa, ops, dev";
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    expect(await hiddenValues(page, "basic")).toEqual(["design", "engineering", "qa", "ops"]);
+    await expect(ed).toHaveValue("dev"); // trailing token stays in the editor
+  });
+
+  test("re-enhancing is idempotent", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    await page.evaluate(async () => {
+      const { enhanceTagsInput } = await import("/packages/core/src/behaviors/tags-input.js");
+      enhanceTagsInput(document);
+    });
+    expect(await hiddenValues(page, "basic")).toEqual(["design", "engineering"]);
+    await expect(page.getByTestId("basic").locator(".re-tags-input")).toHaveCount(1);
+  });
+
+  test("destroy() round-trips the CURRENT tokens back into a plain input", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const ed = editor(page, "basic");
+    await ed.click();
+    await ed.fill("ops");
+    await ed.press("Enter");
+    await page.getByTestId("basic").locator("[data-re-tags-remove]").first().click(); // remove design
     const restored = await page.evaluate(() => {
       (window as never as { __reController: { destroy(): void } }).__reController.destroy();
       const input = document.getElementById("tags-basic") as HTMLInputElement;
-      return { name: input.getAttribute("name"), value: input.value, cls: input.className };
+      return {
+        name: input.getAttribute("name"),
+        value: input.value,
+        cls: input.className,
+        groups: document.querySelectorAll('[data-testid="basic"] .re-tags-input').length,
+        chips: document.querySelectorAll('[data-testid="basic"] [data-re-tags-chip]').length,
+      };
     });
     expect(restored.name).toBe("tags");
-    expect(restored.value).toBe("design, engineering");
+    expect(restored.value).toBe("engineering, ops"); // current tokens, not the seed
     expect(restored.cls).toContain("re-input");
+    expect(restored.groups).toBe(0);
+    expect(restored.chips).toBe(0);
   });
 });

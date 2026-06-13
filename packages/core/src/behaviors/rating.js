@@ -69,7 +69,9 @@ function wireOne(fieldset) {
 
     const current = /** @type {HTMLInputElement} */ (event.target);
     const idx = radios.indexOf(current);
-    const from = idx === -1 ? (dir > 0 ? -1 : radios.length) : idx;
+    // From the unselected ("no rating") state, both arrows enter at the lowest
+    // star (start just below index 0) rather than jumping to the highest.
+    const from = idx === -1 ? -1 : idx;
     const next = radios[Math.max(0, Math.min(from + dir, radios.length - 1))];
     if (!next || next === current) {
       event.preventDefault();

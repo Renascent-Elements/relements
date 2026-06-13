@@ -40,6 +40,21 @@ test.describe("rating", () => {
     expect(value).toBe("4");
   });
 
+  test("re-enhancing is idempotent (arrow moves once)", async ({ page }) => {
+    await page.goto("./rating.html");
+    await page.evaluate(async () => {
+      const { enhanceRating } = await import("/packages/core/src/behaviors/rating.js");
+      enhanceRating(document);
+    });
+    const fieldset = page.getByTestId("basic").locator(".re-rating");
+    const r3 = fieldset.getByLabel("3 stars");
+    await r3.check();
+    await r3.focus();
+    await page.mouse.move(0, 0);
+    await page.keyboard.press("ArrowRight");
+    await expect(fieldset.getByRole("radio", { checked: true })).toHaveValue("4"); // not 5
+  });
+
   test("the read-only display exposes an accessible label", async ({ page }) => {
     await page.goto("./rating.html");
     const display = page.getByTestId("display").locator(".re-rating-display");

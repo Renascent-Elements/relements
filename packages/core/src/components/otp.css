@@ -35,6 +35,15 @@
   .re-otp-field:focus-within {
     box-shadow: var(--re-shadow-focus);
   }
+  /* Keep the danger cue on focus when the input is invalid (progressive :has,
+     like input-group; degrades to the accent ring + the input's red border). */
+  .re-otp-field:has(.re-otp[aria-invalid="true"]):focus-within,
+  .re-otp-field:has(.re-otp:user-invalid):focus-within {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
+  }
 
   .re-otp {
     box-sizing: border-box;

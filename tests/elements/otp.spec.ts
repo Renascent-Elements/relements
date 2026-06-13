@@ -35,6 +35,24 @@ test.describe("otp", () => {
     await expect(input).toHaveValue("123");
   });
 
+  test("re-enhancing is idempotent (numeric strip runs once)", async ({ page }) => {
+    await page.goto("./otp.html");
+    await page.evaluate(async () => {
+      const { enhanceOtp } = await import("/packages/core/src/behaviors/otp.js");
+      enhanceOtp(document);
+    });
+    const input = page.getByTestId("basic").locator(".re-otp");
+    await input.pressSequentially("1a2");
+    await expect(input).toHaveValue("12");
+  });
+
+  test("a disabled OTP input is not editable", async ({ page }) => {
+    await page.goto("./otp.html");
+    const input = page.getByTestId("states").locator(".re-otp[disabled]");
+    await expect(input).toBeDisabled();
+    await expect(input).toHaveValue("123456");
+  });
+
   test("enhancer tracks the active cell and destroy() cleans up", async ({ page }) => {
     await page.goto("./otp.html");
     const field = page.getByTestId("basic").locator(".re-otp-field");
