@@ -1,0 +1,91 @@
+packages/core/src/components/toolbar.css
+  s_2732c4df70b865::t_548def14b7d76e 1-43,47-90
+  s_2732c4df70b865::t_3f4b42669514d6 44-46
+packages/core/src/index.js
+  s_2732c4df70b865::t_80fbd1ad69e99f 21
+packages/core/package.json
+  s_2732c4df70b865::t_97f35919414648 136-139
+  s_2732c4df70b865::t_f02ab2d0d3ff41 80-82
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_63203f9e40bcb2 61-63
+  s_2732c4df70b865::t_af86b7b45bd63f 85
+tests/a11y/empty-state.a11y.spec.ts
+  s_2732c4df70b865::t_5923d9d764a25f 1-25
+tests/a11y/button-group.a11y.spec.ts
+  s_2732c4df70b865::t_3804d68817596d 1-27
+packages/core/src/behaviors/toolbar.js
+  s_2732c4df70b865::t_4baf5e36baa4f8 33-34,126-129
+  s_2732c4df70b865::t_2418ad8e0fa234 91-97
+  s_2732c4df70b865::t_f9642e9135839e 31-32,35-37
+  s_2732c4df70b865::t_475597c1e28f49 117-122,124-125,130
+  s_2732c4df70b865::t_8410cd79ed4416 1-30,38-90,98-116,123,131-135,141-170,179-181,202
+  s_2732c4df70b865::t_a173912a158c99 136-140
+  s_2732c4df70b865::t_93eb859cd0724d 171-178,182-195,197-201
+  s_2732c4df70b865::t_bbcf39429089d6 196
+docs/public/src/content/docs/components/toolbar.mdx
+  s_2732c4df70b865::t_f7d0afc015e5f6 46-49
+  s_2732c4df70b865::t_96a87860ac1143 1-45,50-52
+tests/visual/button-group.visual.spec.ts
+  s_2732c4df70b865::t_4525d7f6fdf232 1-46
+docs/public/src/content/docs/components/button-group.mdx
+  s_2732c4df70b865::t_549d9d3402f731 1-41
+docs/public/src/content/docs/components/empty-state.mdx
+  s_2732c4df70b865::t_8941db08936256 1-43
+docs/examples/button-group.html
+  s_2732c4df70b865::t_ea8e0ad9260046 1-65
+tests/elements/button-group.spec.ts
+  s_2732c4df70b865::t_84a04c36df30ce 30-32,34-45,49-53
+  s_2732c4df70b865::t_ff21704dce234b 1-29,33,54-72,76-95
+  s_2732c4df70b865::t_4baf5e36baa4f8 46-48
+  s_2732c4df70b865::t_34e9ee6227a134 73-75
+packages/core/src/components/empty-state.css
+  s_2732c4df70b865::t_97e35cbf7c0b82 1-99,104-107
+  s_2732c4df70b865::t_146d5ea3fac3af 100-103
+tests/a11y/toolbar.a11y.spec.ts
+  s_2732c4df70b865::t_cd4dcd009739ee 1-32
+docs/examples/empty-state.html
+  s_2732c4df70b865::t_34e9ee6227a134 40,98-100
+  s_2732c4df70b865::t_ce3f84f25d4c3d 1-39,41-97,101-110
+tests/visual/toolbar.visual.spec.ts
+  s_2732c4df70b865::t_e9310cfdd41b5d 1-46
+tests/elements/toolbar.spec.ts
+  s_2732c4df70b865::t_cdbd07d1690e43 141,143-146,149-150,155
+  s_2732c4df70b865::t_8fb483b482e928 81-105
+  s_2732c4df70b865::t_8bcc009288c687 132-135
+  s_2732c4df70b865::t_fc97dc2bbeaa28 1-80,106-131,136,138-140,142,147-148,151-154,156-172
+  s_2732c4df70b865::t_34e9ee6227a134 137
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_0a1a4f5bc218c8 14
+  s_2732c4df70b865::t_e581081ed7f159 50-53
+tests/visual/empty-state.visual.spec.ts
+  s_2732c4df70b865::t_b88e6a768df2ab 1-40
+packages/core/src/components/button-group.css
+  s_2732c4df70b865::t_c3876a03b6eab3 1-80
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_c00c0bcaf9e25a 19
+tests/elements/empty-state.spec.ts
+  s_2732c4df70b865::t_b62951c5d92743 48-57
+  s_2732c4df70b865::t_8432d5485b64d4 1-47,58-68
+.changeset/structural-tier2-batch.md
+  s_2732c4df70b865::t_4c881aa0052c63 1-9
+packages/core/src/index.css
+  s_2732c4df70b865::t_5309a2553f93ea 56-58
+docs/examples/toolbar.html
+  s_2732c4df70b865::t_3a352b1c60415a 1-164
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e1976688e8cc4a3b08bd38676139a35c02af1c5c",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
