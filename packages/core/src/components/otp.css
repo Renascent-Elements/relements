@@ -5,7 +5,7 @@
  * SMS autofill (autocomplete="one-time-code"), IME, selection, and form
  * submission all keep working with zero JavaScript. (N separate cells would
  * break all of those.) Monospace + letter-spacing spreads the characters into
- * cells; the wrapper draws the cell dividers and owns the focus ring.
+ * cells; the wrapper draws the cell dividers and owns the border + focus ring.
  *
  *   <span class="re-otp-field" style="--re-otp-length: 6">
  *     <input class="re-otp" type="text" name="code" inputmode="numeric"
@@ -13,10 +13,9 @@
  *            data-re-otp />
  *   </span>
  *
- * Digits are left-biased within each cell (a single input can't truly center
- * per-cell); --re-otp-cell-text-offset nudges them. The optional enhanceOtp
- * adds an active-cell highlight + opt-in digit filtering without ever splitting
- * the field or breaking autofill.
+ * --re-otp-cell-text-offset centers each digit in its cell. The optional
+ * enhanceOtp adds an active-cell highlight + opt-in digit filtering without
+ * ever splitting the field or breaking autofill.
  */
 
 @layer re.components {
@@ -26,17 +25,39 @@
 
     position: relative;
     display: inline-block;
-    /* Shrink to the input even when this is a stretched flex item inside a
-       .re-field column (otherwise the divider gradient overflows to the side). */
-    inline-size: fit-content;
+    /* The wrapper IS the visible box: exactly length*cell + (length-1)*gap wide,
+       and it owns the border, radius and focus ring. The input inside is
+       deliberately WIDER — letter-spacing leaves an un-removable trailing
+       advance after the last digit — so the wrapper's `overflow` clips that
+       trailing whitespace. Net: every cell is the same width (no fat last cell) AND the
+       first digit never scroll-clips on focus, because the input never scrolls
+       internally: its own content fits its own (larger) width. */
+    inline-size: calc(
+      var(--re-otp-length, 6) * var(--re-otp-cell-size) + (var(--re-otp-length, 6) - 1) *
+        var(--re-otp-gap) + 2 * var(--re-border-width)
+    );
+    border: var(--re-border-default);
     border-radius: var(--re-radius-md);
-    overflow: hidden;
+    /* `clip`, not `hidden`: hidden makes the wrapper a scroll container, so
+       focusing the (wider) input scrolls it and clips the FIRST digit. `clip`
+       clips identically but is not scrollable, so focus can't move it. Below
+       the floor (Safari 15.4–15.6) it degrades to `visible` — the trailing
+       whitespace just spills invisibly past the edge; no clipped digit. */
+    overflow: clip;
   }
   .re-otp-field:focus-within {
     box-shadow: var(--re-shadow-focus);
   }
-  /* Keep the danger cue on focus when the input is invalid (progressive :has,
-     like input-group; degrades to the accent ring + the input's red border). */
+  /* Invalid / disabled live on the wrapper (it owns the border + background).
+     Progressive :has, like input-group; degrades to no cue below the floor. */
+  .re-otp-field:has(.re-otp[aria-invalid="true"]),
+  .re-otp-field:has(.re-otp:user-invalid) {
+    border-color: var(--re-color-border-danger);
+  }
+  .re-otp-field:has(.re-otp:disabled) {
+    background-color: var(--re-color-bg-muted);
+  }
+  /* Keep the danger cue on the focus ring too when the input is invalid. */
   .re-otp-field:has(.re-otp[aria-invalid="true"]):focus-within,
   .re-otp-field:has(.re-otp:user-invalid):focus-within {
     box-shadow:
@@ -48,22 +69,17 @@
   .re-otp {
     box-sizing: border-box;
     block-size: var(--re-otp-cell-size);
-    /* Each glyph's advance is (1ch + letter-spacing) = cell + gap, INCLUDING a
-       trailing advance after the last digit, so the content is exactly
-       length*(cell+gap) wide regardless of font metrics. The border-box width
-       must add the left padding + borders, else the focused caret-at-end
-       overflows and scroll-clips the first digit (platform-dependent). The 1ch
-       term cancels between the padding and this width, so the content area is
-       length*(cell+gap) on every platform. */
+    /* Wider than the wrapper on purpose (see above): left padding centers the
+       first digit in cell 1, then length*(cell+gap) of glyph advance, plus a
+       gap of slack so the focused caret-at-end never forces an internal scroll.
+       Everything past the wrapper's right edge is trailing whitespace, clipped. */
     inline-size: calc(
-      2 * var(--re-border-width) +
-        var(--re-otp-cell-text-offset, calc((var(--re-otp-cell-size) - 1ch) / 2)) +
-        var(--re-otp-length, 6) * (var(--re-otp-cell-size) + var(--re-otp-gap))
+      var(--re-otp-cell-text-offset, calc((var(--re-otp-cell-size) - 1ch) / 2)) +
+        var(--re-otp-length, 6) * (var(--re-otp-cell-size) + var(--re-otp-gap)) + var(--re-otp-gap)
     );
     padding: 0;
     padding-inline-start: var(--re-otp-cell-text-offset, calc((var(--re-otp-cell-size) - 1ch) / 2));
-    border: var(--re-border-default);
-    border-radius: var(--re-radius-md);
+    border: 0;
     background-color: transparent;
     /* Each glyph occupies one cell + the gap to the next. */
     letter-spacing: calc(var(--re-otp-cell-size) - 1ch + var(--re-otp-gap));
@@ -80,23 +96,20 @@
     outline: none;
   }
 
-  /* Cell dividers: vertical hairlines between cells, drawn on the wrapper behind
-     the transparent input. Capped to the inter-cell region (length-1 dividers)
-     so no divider lands in the trailing gap. */
+  /* Cell dividers: 1px vertical hairlines between cells, drawn on the wrapper
+     behind the transparent input. The gradient starts at the wrapper's content
+     edge (0) and is capped to the visible width, so the period (cell+gap) lays a
+     hairline in the middle of each inter-cell gap and none lands at an edge. */
   .re-otp-field::before {
     content: "";
     position: absolute;
     inset-block: 0;
-    /* Offset past the input's left border. With the centering padding, each
-       digit then lands in the middle of its gradient cell (the padding term
-       cancels: digit-center = border + cell/2 = gradient-cell center). */
-    inset-inline-start: var(--re-border-width);
+    inset-inline-start: 0;
     inline-size: calc(
       var(--re-otp-length, 6) * var(--re-otp-cell-size) + (var(--re-otp-length, 6) - 1) *
         var(--re-otp-gap)
     );
     z-index: -1;
-    /* A 1px hairline centered in each inter-cell gap (not the whole gap). */
     background-image: repeating-linear-gradient(
       to right,
       transparent 0,
@@ -110,16 +123,8 @@
     );
   }
 
-  /* Invalid — mirrors form.css. :user-invalid is progressive sugar above the
-     floor; aria-invalid always works. */
-  .re-otp[aria-invalid="true"],
-  .re-otp:user-invalid {
-    border-color: var(--re-color-border-danger);
-  }
-
   .re-otp:disabled {
     cursor: not-allowed;
-    background-color: var(--re-color-bg-muted);
     color: var(--re-color-text-subtle);
     opacity: 0.7;
   }
