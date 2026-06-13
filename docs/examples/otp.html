@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · OTP input</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      /* Standalone-page spacing between stacked fields; not in a demo region,
+         so the docs <Demo> lays them out via .demo__preview's flex gap instead
+         (an inline margin here would shove the item down in that centered row). */
+      .re-field + .re-field {
+        margin-block-start: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="otp">
+    <header>
+      <h1>OTP input</h1>
+      <p>A single native one-time-code input, styled segmented.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <form>
+        <label class="re-field">
+          <span class="re-field__label">One-time code</span>
+          <span class="re-otp-field" style="--re-otp-length: 6">
+            <input
+              class="re-otp"
+              type="text"
+              name="code"
+              inputmode="numeric"
+              autocomplete="one-time-code"
+              pattern="[0-9]{6}"
+              maxlength="6"
+              required
+              data-re-otp
+              data-re-otp-numeric
+            />
+          </span>
+          <span class="re-field__hint">Enter the 6-digit code we texted you.</span>
+        </label>
+      </form>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="length-heading" data-testid="length">
+      <h2 id="length-heading">Lengths &amp; sizes</h2>
+      <!-- demo:start name="length" -->
+      <label class="re-field">
+        <span class="re-field__label">4-digit PIN (small)</span>
+        <span class="re-otp-field" data-size="sm" style="--re-otp-length: 4">
+          <input
+            class="re-otp"
+            type="text"
+            name="pin"
+            inputmode="numeric"
+            pattern="[0-9]{4}"
+            maxlength="4"
+            data-re-otp
+            data-re-otp-numeric
+          />
+        </span>
+      </label>
+      <label class="re-field">
+        <span class="re-field__label">Alphanumeric (large)</span>
+        <span class="re-otp-field" data-size="lg" style="--re-otp-length: 6">
+          <input
+            class="re-otp"
+            type="text"
+            name="ref"
+            inputmode="text"
+            autocapitalize="characters"
+            pattern="[A-Za-z0-9]{6}"
+            maxlength="6"
+            data-re-otp
+          />
+        </span>
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <!-- demo:start name="states" -->
+      <label class="re-field">
+        <span class="re-field__label">Invalid</span>
+        <span class="re-otp-field" style="--re-otp-length: 6">
+          <input class="re-otp" type="text" value="12" maxlength="6" aria-invalid="true" />
+        </span>
+      </label>
+      <label class="re-field">
+        <span class="re-field__label">Disabled</span>
+        <span class="re-otp-field" style="--re-otp-length: 6">
+          <input class="re-otp" type="text" value="123456" maxlength="6" disabled />
+        </span>
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceOtp } from "/packages/core/src/behaviors/otp.js";
+      window.__reController = enhanceOtp(document);
+    </script>
+  </body>
+</html>

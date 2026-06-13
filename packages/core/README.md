@@ -1,6 +1,15 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Renascent-Elements/relements/main/.github/assets/relements-logo.png" alt="Relements" width="120" height="120" />
+</p>
+
 # @relements/core
 
-HTML-first design system by [Renascent Elements](https://renascentelements.hu). Semantic HTML + CSS tokens. JavaScript only where native behavior falls short.
+HTML-first, framework-agnostic design system by [Renascent Elements](https://renascentelements.hu). Semantic HTML + CSS tokens, with JavaScript only where native behavior falls short. The same class / attribute / event API works in React, Vue, Svelte, Angular, and plain HTML.
+
+**Docs & live examples:** https://renascent-elements.github.io/relements/
+
+[![npm version](https://img.shields.io/npm/v/@relements/core)](https://www.npmjs.com/package/@relements/core)
+[![license](https://img.shields.io/npm/l/@relements/core)](https://github.com/Renascent-Elements/relements/blob/main/LICENSE)
 
 ## Install
 
@@ -46,36 +55,80 @@ import "@relements/core/elements/re-tabs";
 
 ## Components
 
-All styled with CSS classes and `data-*` attributes. No JavaScript needed for static use.
+Every component is plain semantic HTML styled with `.re-*` classes and `data-*` attributes — no JavaScript needed for static use. Component CSS lives in the low-priority `re.components` cascade layer, so your own unlayered overrides win automatically, and you re-theme any subtree by redeclaring `--re-*` tokens on an ancestor.
 
-| Class                    | Element                         | Variants / options                                                 |
-| ------------------------ | ------------------------------- | ------------------------------------------------------------------ |
-| `.re-button`             | `<button>`, `<a>`, submit input | `data-variant`: primary, secondary, ghost, danger                  |
-| `.re-link`               | `<a>`                           | `data-variant`: muted, subtle, external                            |
-| `.re-input`              | `<input>`                       | `data-size`: sm, md, lg                                            |
-| `.re-textarea`           | `<textarea>`                    | `data-size`: sm, md, lg                                            |
-| `.re-select`             | `<select>`                      | `data-size`: sm, md, lg                                            |
-| `.re-checkbox`           | `<input type="checkbox">`       | —                                                                  |
-| `.re-radio`              | `<input type="radio">`          | —                                                                  |
-| `.re-field`              | `<label>`                       | `re-field--inline` for checkbox/radio rows                         |
-| `.re-field-group`        | `<fieldset>`                    | `data-orientation`: horizontal                                     |
-| `.re-validation-message` | `<span>`                        | `data-tone`: success, hint, warning                                |
-| `.re-disclosure`         | `<details>`                     | `data-variant`: plain                                              |
-| `.re-dialog`             | `<dialog>`                      | `showModal()` surface with header/body/footer slots                |
-| `.re-tabs`               | container                       | pairs with `[role="tablist"]`, `[role="tab"]`, `[role="tabpanel"]` |
-| `.re-menu`               | container                       | pairs with `[role="menu"]`, `[role="menuitem"]`                    |
-| `.re-popover`            | `[popover]` element             | `data-tone`: info, warning, danger                                 |
-| `.re-toast-region`       | live region host                | —                                                                  |
-| `.re-progress`           | `<progress>`                    | `data-size`: sm, md, lg                                            |
-| `.re-meter`              | `<meter>`                       | `data-size`: sm, md, lg                                            |
-| `.re-alert`              | `<div>` + `role`                | `data-variant`: info, success, warning, danger; dismissible        |
-| `.re-badge`              | `<span>`                        | `data-variant`: neutral, info, success, warning, danger            |
-| `.re-card`               | `<article>`                     | `__header` / `__body` / `__footer`; `data-interactive`             |
-| `.re-tag`                | `<span>`                        | `data-variant`: neutral, info, success, warning, danger; removable |
-| `.re-avatar`             | `<span>`                        | `data-size`: sm, md, lg; `<img>` or initials                       |
-| `.re-breadcrumb`         | `<nav>` / `<ol>`                | `aria-current="page"` on current                                   |
-| `.re-accordion`          | `<details name>` group          | native single-open; wraps `.re-disclosure`                         |
-| `.re-switch`             | `<input type="checkbox">`       | `role="switch"`; `:checked`, `:disabled`                           |
+### Forms & inputs
+
+| Class                       | Element                   | Variants / options                                                       |
+| --------------------------- | ------------------------- | ------------------------------------------------------------------------ |
+| `.re-input`                 | `<input>`                 | `data-size`: sm, md, lg                                                  |
+| `.re-textarea`              | `<textarea>`              | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                 |
+| `.re-select`                | `<select>`                | `data-size`: sm, md, lg                                                  |
+| `.re-checkbox`              | `<input type="checkbox">` | —                                                                        |
+| `.re-radio`                 | `<input type="radio">`    | —                                                                        |
+| `.re-switch`                | `<input type="checkbox">` | `role="switch"`; `:checked`, `:disabled`                                 |
+| `.re-field`                 | `<label>`                 | `__label` / `__hint`; `re-field--inline` for checkbox/radio rows         |
+| `.re-field-group`           | `<fieldset>`              | `data-orientation`: horizontal                                           |
+| `.re-validation-message`    | `<span>`                  | `data-tone`: success, hint, warning                                      |
+| `.re-input-group`           | wrapper                   | prefix/suffix text + attached buttons; base for password & number inputs |
+| `.re-segmented`             | `<fieldset>` radios       | single-select pill group; `data-size`: sm, lg                            |
+| `.re-slider`                | `<input type="range">`    | `data-size`: sm, md, lg                                                  |
+| `.re-combobox`              | `<input>` + `<datalist>`  | native autocomplete; styled listbox via `enhanceCombobox`                |
+| `.re-otp` / `.re-otp-field` | single `<input>`          | segmented one-time-code; `--re-otp-length`; `data-size`: sm, lg          |
+| `.re-rating`                | `<fieldset>` radios       | star rating; `.re-rating-display` (read-only, fractional); sizes sm/lg   |
+| `.re-tags-input`            | wrapper                   | chip/token editor via `enhanceTagsInput`; `data-size`: sm, lg            |
+
+### Actions
+
+| Class        | Element                         | Variants / options                                                         |
+| ------------ | ------------------------------- | -------------------------------------------------------------------------- |
+| `.re-button` | `<button>`, `<a>`, submit input | `data-variant`: primary, secondary, ghost, danger; `data-size`: sm, md, lg |
+| `.re-link`   | `<a>`                           | `data-variant`: muted, subtle, external                                    |
+
+### Feedback & status
+
+| Class              | Element          | Variants / options                                                 |
+| ------------------ | ---------------- | ------------------------------------------------------------------ |
+| `.re-alert`        | `<div>` + `role` | `data-variant`: info, success, warning, danger; dismissible        |
+| `.re-badge`        | `<span>`         | `data-variant`: neutral, info, success, warning, danger            |
+| `.re-tag`          | `<span>`         | `data-variant`: neutral, info, success, warning, danger; removable |
+| `.re-progress`     | `<progress>`     | `data-size`: sm, md, lg                                            |
+| `.re-meter`        | `<meter>`        | `data-size`: sm, md, lg                                            |
+| `.re-spinner`      | `<span>`         | `data-size`: sm, md, lg                                            |
+| `.re-skeleton`     | `<span>`         | `data-shape`: text, circle                                         |
+| `.re-toast-region` | live region host | pairs with `showToast`                                             |
+
+### Overlays
+
+| Class         | Element             | Variants / options                                                                              |
+| ------------- | ------------------- | ----------------------------------------------------------------------------------------------- |
+| `.re-dialog`  | `<dialog>`          | `showModal()` surface (header/body/footer); alert-dialog recipe via `data-re-dialog-no-dismiss` |
+| `.re-drawer`  | `<dialog>`          | edge sheet; `data-side`: start, end, top, bottom; `data-size`: sm, lg                           |
+| `.re-popover` | `[popover]` element | `data-tone`: info, warning, danger                                                              |
+| `.re-tooltip` | `<span>`            | `data-placement`: top, bottom, start, end                                                       |
+| `.re-menu`    | container           | pairs with `[role="menu"]`, `[role="menuitem"]`                                                 |
+
+### Navigation
+
+| Class            | Element                | Variants / options                                                 |
+| ---------------- | ---------------------- | ------------------------------------------------------------------ |
+| `.re-tabs`       | container              | pairs with `[role="tablist"]`, `[role="tab"]`, `[role="tabpanel"]` |
+| `.re-breadcrumb` | `<nav>` / `<ol>`       | `aria-current="page"` on current                                   |
+| `.re-pagination` | `<nav>` / `<ol>`       | page links with prev / next                                        |
+| `.re-accordion`  | `<details name>` group | native single-open; wraps `.re-disclosure`                         |
+| `.re-disclosure` | `<details>`            | `data-variant`: plain                                              |
+
+### Content & layout
+
+| Class                  | Element            | Variants / options                                                                                      |
+| ---------------------- | ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `.re-card`             | `<article>`        | `__header` / `__body` / `__footer`; `data-interactive`                                                  |
+| `.re-avatar`           | `<span>`           | `data-size`: sm, md, lg; `<img>` or initials                                                            |
+| `.re-table`            | `<table>`          | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll |
+| `.re-description-list` | `<dl>`             | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                   |
+| `.re-separator`        | `<hr>` / `[role]`  | `data-orientation`: vertical                                                                            |
+| `.re-kbd`              | `<kbd>`            | keyboard key                                                                                            |
+| `.re-code`             | `<code>` / `<pre>` | inline + block code                                                                                     |
 
 ## JavaScript behaviors
 
@@ -89,14 +142,21 @@ const controller = enhanceTabs(document);
 controller.destroy();
 ```
 
-| Behavior               | What it does                                     | Key event    |
-| ---------------------- | ------------------------------------------------ | ------------ |
-| `enhanceTabs`          | Arrow keys, Home/End, roving tabindex            | `re-change`  |
-| `enhanceMenuButton`    | Keyboard nav, outside-click close                | `re-select`  |
-| `enhanceDialog`        | Trigger binding, close buttons, backdrop dismiss | —            |
-| `enhancePopover`       | Anchored positioning, toggle event bridge        | `re-toggle`  |
-| `enhanceDismissible`   | Dismiss buttons via `[data-re-dismiss]`          | `re-dismiss` |
-| `showToast(msg, opts)` | `aria-live` toast notifications                  | —            |
+| Behavior                | What it does                                                                | Key event        |
+| ----------------------- | --------------------------------------------------------------------------- | ---------------- |
+| `enhanceTabs`           | Arrow keys, Home/End, roving tabindex                                       | `re-change`      |
+| `enhanceMenuButton`     | Keyboard nav, outside-click close                                           | `re-select`      |
+| `enhanceDialog`         | Trigger binding, close buttons, backdrop dismiss, alert-dialog cancel-guard | —                |
+| `enhancePopover`        | Anchored positioning, toggle event bridge                                   | `re-toggle`      |
+| `enhanceDismissible`    | Dismiss buttons via `[data-re-dismiss]`                                     | `re-dismiss`     |
+| `enhanceCombobox`       | Styled listbox over a native `<datalist>` (ARIA editable combobox)          | `change`         |
+| `enhanceAutosize`       | `<textarea>` grows to its content (`field-sizing` + fallback)               | —                |
+| `enhancePasswordToggle` | Show/hide password button (`aria-pressed`)                                  | —                |
+| `enhanceNumberStepper`  | +/− stepper buttons for `<input type="number">`                             | `input`/`change` |
+| `enhanceOtp`            | Optional OTP polish: active-cell hook + opt-in digit strip                  | —                |
+| `enhanceTagsInput`      | Chip/token editor backed by hidden inputs (submits an array)                | `re-tags-change` |
+| `enhanceRating`         | Cross-engine arrow-key normalization for the star rating                    | `input`/`change` |
+| `showToast(msg, opts)`  | `aria-live` toast notifications                                             | —                |
 
 ## Custom elements
 

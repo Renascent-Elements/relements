@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Tags input</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="tags-input">
+    <header>
+      <h1>Tags input</h1>
+      <p>A token editor over a plain text input — submits an array.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-field">
+        <label class="re-field__label" for="tags-basic">Tags</label>
+        <input
+          class="re-input"
+          type="text"
+          id="tags-basic"
+          name="tags"
+          value="design, engineering"
+          placeholder="Add tags, separated by commas"
+          autocomplete="off"
+          data-re-tags-input
+        />
+        <span class="re-field__hint">Press Enter or comma to add. Backspace removes the last.</span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="max-heading" data-testid="max">
+      <h2 id="max-heading">Max 3 tags</h2>
+      <!-- demo:start name="max" -->
+      <div class="re-field">
+        <label class="re-field__label" for="tags-max">Skills</label>
+        <input
+          class="re-input"
+          type="text"
+          id="tags-max"
+          name="skills"
+          value="html, css"
+          placeholder="Up to 3"
+          autocomplete="off"
+          data-re-tags-input
+          data-re-tags-max="3"
+        />
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="form-heading" data-testid="form">
+      <h2 id="form-heading">In a form</h2>
+      <!-- demo:start name="form" -->
+      <form>
+        <div class="re-field">
+          <label class="re-field__label" for="tags-form">Labels</label>
+          <input
+            class="re-input"
+            type="text"
+            id="tags-form"
+            name="labels"
+            value="bug, docs"
+            autocomplete="off"
+            data-re-tags-input
+          />
+        </div>
+        <button class="re-button" type="submit" style="margin-block-start: var(--re-space-3)">
+          Submit
+        </button>
+      </form>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceTagsInput } from "/packages/core/src/behaviors/tags-input.js";
+      window.__reController = enhanceTagsInput(document);
+    </script>
+  </body>
+</html>

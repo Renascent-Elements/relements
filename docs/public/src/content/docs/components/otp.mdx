@@ -1,0 +1,45 @@
+---
+title: OTP input
+description: A single native one-time-code input, styled segmented.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A one-time-code field is a **single** native `<input>` styled to look segmented —
+wrap it in `.re-otp-field` (which is the visible box: it draws the cell dividers
+and owns the border + focus ring) and add `.re-otp` to the input. Keeping it one
+input means native paste, mobile SMS autofill (`autocomplete="one-time-code"`),
+IME, and form submission all just work, with no JavaScript. N separate cells
+would break all of those.
+
+Set the cell count with `--re-otp-length` on the wrapper and `maxlength` on the
+input; `pattern` (e.g. `[0-9]{6}`) is the submit-time guard. Every cell is the
+same width and each digit is centered in its cell.
+
+## Basic
+
+<Demo src="otp.html" name="basic" />
+
+## Lengths & sizes
+
+`--re-otp-length` sets the cell count; `data-size="sm|lg"` on the wrapper scales
+the cells. Use `inputmode="numeric"` for digits or `inputmode="text"` +
+`autocapitalize="characters"` for alphanumeric codes.
+
+<Demo src="otp.html" name="length" />
+
+## Enhancement (optional)
+
+`enhanceOtp` is optional polish — it never splits the field or breaks autofill:
+
+```js
+import { enhanceOtp } from "@relements/core/behaviors/otp";
+enhanceOtp(document);
+```
+
+It tracks the caret to expose an active-cell hook (`--re-otp-active-index`), and
+with `data-re-otp-numeric` it strips non-digits on input.
+
+## States
+
+<Demo src="otp.html" name="states" />
