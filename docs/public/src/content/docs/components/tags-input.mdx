@@ -1,0 +1,41 @@
+---
+title: Tags input
+description: A token editor over a plain text input — submits an array.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+The base is a plain `.re-input` with `data-re-tags-input`. Without JavaScript it's
+a normal text field that submits one comma-separated value. Opt into the editor:
+
+```js
+import { enhanceTagsInput } from "@relements/core/behaviors/tags-input";
+enhanceTagsInput(document);
+```
+
+Enhancing wraps the input in a `role="group"` shell: typing + Enter or comma
+commits a chip (reusing the [tag](/relements/components/tag/) visuals), Backspace
+on an empty field removes the last, and each tag is backed by a hidden input so
+the form submits an **array** (`getAll(name)`). The editor itself is unnamed, so
+it never contributes a stray value. Commits/removals fire a bubbling
+`re-tags-change` event with `detail.values`.
+
+Options via `data-*`: `data-re-tags-max`, `data-re-tags-name` (the hidden-input
+name; defaults to the input's), `data-re-tags-allow-duplicates`,
+`data-re-tags-variant`. Duplicates are rejected case-insensitively by default.
+
+## Basic
+
+<Demo src="tags-input.html" name="basic" />
+
+## Max tags
+
+At the limit, further entries are rejected and the field is marked invalid.
+
+<Demo src="tags-input.html" name="max" />
+
+## In a form
+
+Submitting sends one `name` entry per tag.
+
+<Demo src="tags-input.html" name="form" />

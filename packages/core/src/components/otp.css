@@ -1,0 +1,109 @@
+/**
+ * Relements OTP / one-time-code input.
+ *
+ * A SINGLE native <input> styled to look segmented — so native paste, mobile
+ * SMS autofill (autocomplete="one-time-code"), IME, selection, and form
+ * submission all keep working with zero JavaScript. (N separate cells would
+ * break all of those.) Monospace + letter-spacing spreads the characters into
+ * cells; the wrapper draws the cell dividers and owns the focus ring.
+ *
+ *   <span class="re-otp-field" style="--re-otp-length: 6">
+ *     <input class="re-otp" type="text" name="code" inputmode="numeric"
+ *            autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6"
+ *            data-re-otp />
+ *   </span>
+ *
+ * Digits are left-biased within each cell (a single input can't truly center
+ * per-cell); --re-otp-cell-text-offset nudges them. The optional enhanceOtp
+ * adds an active-cell highlight + opt-in digit filtering without ever splitting
+ * the field or breaking autofill.
+ */
+
+@layer re.components {
+  .re-otp-field {
+    --re-otp-cell-size: 2.75rem;
+    --re-otp-gap: var(--re-space-2);
+
+    position: relative;
+    display: inline-block;
+    /* Shrink to the input even when this is a stretched flex item inside a
+       .re-field column (otherwise the divider gradient overflows to the side). */
+    inline-size: fit-content;
+    border-radius: var(--re-radius-md);
+    overflow: hidden;
+  }
+  .re-otp-field:focus-within {
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-otp {
+    box-sizing: border-box;
+    block-size: var(--re-otp-cell-size);
+    inline-size: calc(
+      var(--re-otp-length, 6) * var(--re-otp-cell-size) + (var(--re-otp-length, 6) - 1) *
+        var(--re-otp-gap)
+    );
+    padding: 0;
+    padding-inline-start: var(--re-otp-cell-text-offset, calc((var(--re-otp-cell-size) - 1ch) / 2));
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    background-color: transparent;
+    /* Each glyph occupies one cell + the gap to the next. */
+    letter-spacing: calc(var(--re-otp-cell-size) - 1ch + var(--re-otp-gap));
+    font-family: var(--re-font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--re-size-text-xl);
+    line-height: var(--re-otp-cell-size);
+    text-align: start;
+    color: var(--re-color-text);
+    caret-color: var(--re-color-accent-600);
+    direction: ltr;
+  }
+  .re-otp:focus-visible {
+    outline: none;
+  }
+
+  /* Cell dividers: vertical hairlines at each cell boundary, drawn on the
+     wrapper behind the transparent input. */
+  .re-otp-field::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent var(--re-otp-cell-size),
+      var(--re-color-border-strong) var(--re-otp-cell-size),
+      var(--re-color-border-strong) calc(var(--re-otp-cell-size) + var(--re-otp-gap))
+    );
+  }
+
+  /* Invalid — mirrors form.css. :user-invalid is progressive sugar above the
+     floor; aria-invalid always works. */
+  .re-otp[aria-invalid="true"],
+  .re-otp:user-invalid {
+    border-color: var(--re-color-border-danger);
+  }
+
+  .re-otp:disabled {
+    cursor: not-allowed;
+    background-color: var(--re-color-bg-muted);
+    color: var(--re-color-text-subtle);
+    opacity: 0.7;
+  }
+
+  /* ---- Sizes --------------------------------------------------------- */
+  .re-otp-field[data-size="sm"] {
+    --re-otp-cell-size: 2.25rem;
+  }
+  .re-otp-field[data-size="sm"] .re-otp {
+    font-size: var(--re-size-text-lg);
+  }
+  .re-otp-field[data-size="lg"] {
+    --re-otp-cell-size: 3.25rem;
+  }
+  .re-otp-field[data-size="lg"] .re-otp {
+    font-size: var(--re-size-text-2xl);
+  }
+}

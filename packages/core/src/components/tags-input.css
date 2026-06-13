@@ -1,0 +1,82 @@
+/**
+ * Relements tags / token input.
+ *
+ * The enhanced shell built by enhanceTagsInput around a plain .re-input. Chips
+ * reuse .re-tag / .re-tag__remove verbatim — no chip styles here. Without JS
+ * the base stays a normal .re-input (this file styles only the enhanced group).
+ *
+ *   <div class="re-tags-input" role="group" aria-labelledby="…">
+ *     <span class="re-tag" data-re-tags-chip>design<button class="re-tag__remove" …>×</button>
+ *       <input type="hidden" name="tags" value="design" /></span>
+ *     <input class="re-tags-input__field" />
+ *   </div>
+ */
+
+@layer re.components {
+  .re-tags-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--re-space-1);
+    box-sizing: border-box;
+    inline-size: 100%;
+    min-block-size: var(--re-control-height-md);
+    padding: calc(var(--re-control-padding-y) / 2) var(--re-space-2);
+    background-color: var(--re-color-bg);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    cursor: text;
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-tags-input:hover {
+    border-color: var(--re-color-border-strong);
+  }
+  .re-tags-input:focus-within {
+    outline: none;
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* The editor sheds the .re-input frame — the group owns it. */
+  .re-tags-input__field {
+    flex: 1 1 6ch;
+    min-inline-size: 6ch;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: var(--re-color-text);
+    font: inherit;
+    line-height: var(--re-line-height-normal);
+  }
+  .re-tags-input__field:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+  .re-tags-input__field::placeholder {
+    color: var(--re-color-text-subtle);
+    opacity: 1;
+  }
+
+  /* Invalid (e.g. max reached) — JS sets [data-invalid]; mirror form.css. */
+  .re-tags-input[data-invalid] {
+    border-color: var(--re-color-border-danger);
+  }
+  .re-tags-input[data-invalid]:focus-within {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
+  }
+
+  /* ---- Sizes --------------------------------------------------------- */
+  .re-tags-input[data-size="sm"] {
+    min-block-size: var(--re-control-height-sm);
+  }
+  .re-tags-input[data-size="lg"] {
+    min-block-size: var(--re-control-height-lg);
+    padding-inline: var(--re-space-3);
+  }
+}

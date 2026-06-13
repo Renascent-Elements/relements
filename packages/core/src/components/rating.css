@@ -1,0 +1,124 @@
+/**
+ * Relements star rating.
+ *
+ * Interactive: a <fieldset class="re-rating"> of visually-hidden radios (one per
+ * value, in DOM order HIGH→LOW) each paired with a star <label>. The fieldset is
+ * `direction: rtl`, which reverses the visual order to 1→5 left-to-right while
+ * the DOM stays high→low — so the floor-safe `input:checked ~ label` /
+ * `label:hover ~ label` chains fill the chosen star AND all lower ones, AND the
+ * native radio arrow keys read correctly (rtl flips Left/Right to match the
+ * visual order: Right = higher, Left = lower; Up/Down follow DOM = higher/lower).
+ * Native radios give keyboard + single-select + form value with no JavaScript.
+ *
+ *   <fieldset class="re-rating" aria-label="Rating">
+ *     <input class="re-sr-only" type="radio" name="r" id="r5" value="5" />
+ *     <label class="re-rating__star" for="r5" aria-label="5 stars">★</label>
+ *     … 4,3,2,1 …
+ *     <input class="re-sr-only" type="radio" name="r" id="r0" value="0" checked />
+ *     <label class="re-sr-only" for="r0">No rating</label>
+ *   </fieldset>
+ *
+ * The fieldset is always rtl (the stars are a low→high-left-to-right scale by
+ * convention, independent of the page's writing direction).
+ *
+ * Read-only display: <span class="re-rating-display" role="img"
+ * aria-label="Rated 3.5 of 5" style="--re-rating-value: 3.5">. A filled overlay
+ * clipped to value/max — supports fractional values.
+ */
+
+@layer re.components {
+  .re-rating {
+    --re-rating-size: 1.5rem;
+    --re-rating-fill: var(--re-color-warning-500);
+    --re-rating-track: var(--re-color-border-strong);
+
+    display: inline-flex;
+    /* rtl reverses DOM high→low into visual 1→5 left-to-right AND realigns the
+       native radio arrow keys with that visual order (see file header). */
+    direction: rtl;
+    align-items: center;
+    gap: var(--re-space-1);
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .re-rating__star {
+    color: var(--re-rating-track);
+    font-size: var(--re-rating-size);
+    line-height: 1;
+    cursor: pointer;
+    transition: color var(--re-duration-fast) var(--re-easing-standard);
+    user-select: none;
+  }
+
+  /* Selected: fill the checked star + all lower (DOM-following) stars. */
+  .re-rating input:checked ~ .re-rating__star {
+    color: var(--re-rating-fill);
+  }
+
+  /* Hover preview: clear the checked fill, then fill the hovered star + lower. */
+  .re-rating:hover .re-rating__star {
+    color: var(--re-rating-track);
+  }
+  .re-rating .re-rating__star:hover,
+  .re-rating .re-rating__star:hover ~ .re-rating__star {
+    color: var(--re-rating-fill);
+  }
+
+  /* Keyboard focus ring on the visible star for the focused radio. */
+  .re-rating input:focus-visible + .re-rating__star {
+    outline: none;
+    border-radius: var(--re-radius-sm);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-rating:disabled .re-rating__star,
+  .re-rating[aria-disabled="true"] .re-rating__star {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* ---- Sizes --------------------------------------------------------- */
+  .re-rating[data-size="sm"] {
+    --re-rating-size: 1.125rem;
+  }
+  .re-rating[data-size="lg"] {
+    --re-rating-size: 2rem;
+  }
+
+  /* ---- Read-only display (fractional) -------------------------------- */
+  .re-rating-display {
+    --re-rating-size: 1.5rem;
+    --re-rating-fill: var(--re-color-warning-500);
+    --re-rating-track: var(--re-color-border-strong);
+    --re-rating-value: 0;
+    --re-rating-max: 5;
+
+    position: relative;
+    display: inline-block;
+    font-size: var(--re-rating-size);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  /* Track row of stars (the element's text content = "★★★★★"). */
+  .re-rating-display {
+    color: var(--re-rating-track);
+  }
+  /* Filled overlay, clipped to value/max of the width. */
+  .re-rating-display::before {
+    content: attr(data-stars);
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    overflow: hidden;
+    inline-size: calc(var(--re-rating-value) / var(--re-rating-max) * 100%);
+    color: var(--re-rating-fill);
+  }
+  .re-rating-display[data-size="sm"] {
+    --re-rating-size: 1.125rem;
+  }
+  .re-rating-display[data-size="lg"] {
+    --re-rating-size: 2rem;
+  }
+}

@@ -8,6 +8,9 @@ import {
   enhancePasswordToggle,
   enhanceNumberStepper,
   enhanceAutosize,
+  enhanceOtp,
+  enhanceTagsInput,
+  enhanceRating,
   showToast,
 } from "@relements/core";
 
@@ -40,6 +43,9 @@ function init() {
   enhancePasswordToggle(document);
   enhanceNumberStepper(document);
   enhanceAutosize(document);
+  enhanceOtp(document);
+  enhanceTagsInput(document);
+  enhanceRating(document);
 
   // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it
   // for any demo checkbox that opts in with `data-demo-indeterminate`.
