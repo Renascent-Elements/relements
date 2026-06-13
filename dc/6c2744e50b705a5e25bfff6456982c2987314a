@@ -1,0 +1,99 @@
+packages/core/src/components/drawer.css
+  s_2732c4df70b865::t_5a4d00b0a4fad2 1-157
+docs/PROGRESS.md
+  s_2732c4df70b865::t_14c52673da6bbc 95-101
+docs/public/src/content/docs/components/alert-dialog.mdx
+  s_2732c4df70b865::t_783659be8cc76c 1-36
+packages/core/src/index.js
+  s_2732c4df70b865::t_e51cdf8f0a7947 17
+packages/core/src/behaviors/autosize.js
+  s_2732c4df70b865::t_0d7c633a0d94fe 1-61,63,68-102,104-106
+  s_2732c4df70b865::t_2080ee86123a69 62,64-67
+  s_2732c4df70b865::t_a7a36c45bd0e71 103
+tests/a11y/description-list.a11y.spec.ts
+  s_2732c4df70b865::t_4dded873c805dd 1-10
+docs/examples/autosize-textarea.html
+  s_2732c4df70b865::t_91e51bbc2b28a0 1-73
+tests/elements/alert-dialog.spec.ts
+  s_2732c4df70b865::t_d86571743daff3 1-64
+tests/visual/drawer.visual.spec.ts
+  s_2732c4df70b865::t_9824d8d2ec4bee 1-19
+packages/core/src/components/dialog.css
+  s_2732c4df70b865::t_3544a0c4fea09f 16-22
+tests/a11y/drawer.a11y.spec.ts
+  s_2732c4df70b865::t_35dcbcf8f6e992 1-20
+tests/elements/drawer.spec.ts
+  s_2732c4df70b865::t_bef082d0bf35ed 31-37,67-73
+  s_2732c4df70b865::t_c35b924c46a76c 1-2,7-24,42-62,78-79
+  s_2732c4df70b865::t_0dcf11bf285173 3-6
+  s_2732c4df70b865::t_098f8d6414be7b 25-30,38-41
+  s_2732c4df70b865::t_e22ca5090efb01 63-66,74-77
+docs/public/src/content/docs/components/autosize-textarea.mdx
+  s_2732c4df70b865::t_d3aa4164b06011 1-25
+tests/elements/autosize-textarea.spec.ts
+  s_2732c4df70b865::t_53df7454798f7a 1-54
+tests/visual/alert-dialog.visual.spec.ts
+  s_2732c4df70b865::t_8f94a72b77dab3 1-10
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_d8adcd03c9f33c 42
+  s_2732c4df70b865::t_57d89988af9211 10
+docs/examples/drawer.html
+  s_2732c4df70b865::t_7f6b310ee74a92 1-158
+packages/core/src/components/form.css
+  s_2732c4df70b865::t_4a0737bec70754 133-148
+packages/core/src/components/description-list.css
+  s_2732c4df70b865::t_d8d0bc06108aee 1-106,108-111,113-124
+  s_2732c4df70b865::t_bef082d0bf35ed 107,112
+tests/a11y/autosize-textarea.a11y.spec.ts
+  s_2732c4df70b865::t_935f494c1709d6 1-10
+tests/visual/description-list.visual.spec.ts
+  s_2732c4df70b865::t_f07599e2f43cde 1-12
+packages/core/src/behaviors/dialog.js
+  s_2732c4df70b865::t_6bcace5a9265ee 74-75,81,89-109,111,116
+  s_2732c4df70b865::t_d58a5a28e177c0 13-15
+docs/public/src/content/docs/components/description-list.mdx
+  s_2732c4df70b865::t_b8a52a498998dc 1-33
+docs/public/src/content/docs/components/drawer.mdx
+  s_2732c4df70b865::t_443350cea46d7a 1-31
+docs/examples/alert-dialog.html
+  s_2732c4df70b865::t_bef082d0bf35ed 105-107
+  s_2732c4df70b865::t_fb88d4cecbe099 1-104,108-128
+tests/a11y/alert-dialog.a11y.spec.ts
+  s_2732c4df70b865::t_6d9e002d40fd77 1-20
+tests/elements/description-list.spec.ts
+  s_2732c4df70b865::t_4bb8b332c68409 1-49
+.changeset/overlay-structure-batch.md
+  s_2732c4df70b865::t_2af2e668738283 1-23
+packages/core/src/index.css
+  s_2732c4df70b865::t_0574e6938d67dd 26
+  s_2732c4df70b865::t_303a2c1eec999d 52
+packages/core/package.json
+  s_2732c4df70b865::t_420b4955cf9e05 50
+  s_2732c4df70b865::t_8db58e42fd0647 76
+  s_2732c4df70b865::t_7da62e3f94e235 114-117
+docs/examples/description-list.html
+  s_2732c4df70b865::t_810b79c3d10e32 1-80
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_3aab92229dd63c 15
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_12c41919c5d88c 56-57
+  s_2732c4df70b865::t_2f7783ccf72d3b 75
+tests/visual/autosize-textarea.visual.spec.ts
+  s_2732c4df70b865::t_ad9cb0b902a983 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "dc6c2744e50b705a5e25bfff6456982c2987314a",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
