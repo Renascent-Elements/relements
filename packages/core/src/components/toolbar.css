@@ -70,22 +70,29 @@
     z-index: 2;
   }
 
-  /* The band is --re-color-surface. A ghost button's default hover is
-     --re-color-bg-subtle, which equals surface in dark mode (invisible hover),
-     so re-base hover on --re-color-bg-muted — it lifts off the band in both
-     themes. */
-  .re-toolbar .re-button[data-variant="ghost"]:hover {
+  /* The band is --re-color-surface; a ghost button's default hover is
+     --re-color-bg-subtle, which equals surface in dark mode (invisible). Re-base
+     the interactive states on the neutral ramp ABOVE surface so they read in
+     both themes AND stay distinct from each other: surface → hover (one step) →
+     active (a further step). */
+  .re-toolbar .re-button[data-variant="ghost"]:not([aria-pressed="true"]):hover {
     background-color: var(--re-color-bg-muted);
   }
-  /* A toggled-on control needs a persistent, distinct "on" state (hover is only
-     bg-muted), so fill it with the accent — clearly read as active in both
-     themes, unlike a transparent ghost. */
+  .re-toolbar .re-button[data-variant="ghost"]:not([aria-pressed="true"]):active {
+    background-color: var(--re-color-border);
+  }
+  /* A toggled-on control needs a persistent, distinct "on" state, so fill it
+     with the accent — clearly active in both themes, unlike a transparent ghost
+     and unlike the neutral hover. */
   .re-toolbar .re-button[aria-pressed="true"] {
     background-color: var(--re-color-accent-600);
     color: var(--re-color-text-on-accent);
   }
   .re-toolbar .re-button[aria-pressed="true"]:hover {
     background-color: var(--re-color-accent-700);
+  }
+  .re-toolbar .re-button[aria-pressed="true"]:active {
+    background-color: var(--re-color-accent-800);
   }
 
   /* A vertical toolbar flips its dividers to the block axis. Scoped to the
