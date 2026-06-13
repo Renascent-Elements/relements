@@ -1,0 +1,20 @@
+docs/public/src/styles/site.css
+  s_2732c4df70b865::t_6e7532d75eb5ca 157-162
+  s_2732c4df70b865::t_c8164cc8f7ad3e 21-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9e86a60baf1c06c59429f128409cbba5fbf7039c",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
