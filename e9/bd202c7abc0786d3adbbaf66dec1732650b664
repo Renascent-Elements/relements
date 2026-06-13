@@ -1,0 +1,31 @@
+packages/core/src/components/drawer.css
+  s_2732c4df70b865::t_8c66d4d3964f2a 130-134,145
+  s_2732c4df70b865::t_9c30f04b92129f 162-164,167-174
+  s_2732c4df70b865::t_a3ddd0052e8c40 31-34,39
+  s_2732c4df70b865::t_050d2e2bc5aca7 91
+  s_2732c4df70b865::t_93127ce3bffb63 124-128,135-144,154-158
+tests/elements/autosize-textarea.spec.ts
+  s_2732c4df70b865::t_eb11b6e355e0c5 47-48,50
+  s_2732c4df70b865::t_ec904c46cd7e10 43-46,49,51-52
+  s_2732c4df70b865::t_a16716d9627aa0 22-23
+tests/elements/alert-dialog.spec.ts
+  s_2732c4df70b865::t_2bf382713a05e8 53-77
+tests/elements/drawer.spec.ts
+  s_2732c4df70b865::t_cf7842bdf2eb8d 79-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e9bd202c7abc0786d3adbbaf66dec1732650b664",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
