@@ -1,0 +1,108 @@
+docs/examples/segmented.html
+  s_2732c4df70b865::t_edb785a6c9fc6d 1-80
+tests/a11y/segmented.a11y.spec.ts
+  s_2732c4df70b865::t_5b6f39d37154b0 1-10
+docs/public/src/content/docs/components/input-group.mdx
+  s_2732c4df70b865::t_92bac98696122f 1-33
+tests/elements/segmented.spec.ts
+  s_2732c4df70b865::t_9e148f069aa569 1-28,51
+  s_2732c4df70b865::t_4c92faafb0e4c2 29-41,49-50
+  s_2732c4df70b865::t_8384e657fc6793 42-48
+packages/core/src/components/segmented.css
+  s_2732c4df70b865::t_c5d0faa8f687d0 1-102
+docs/examples/number-stepper.html
+  s_2732c4df70b865::t_8384e657fc6793 81-88
+  s_2732c4df70b865::t_fef0e965d0b63e 67-80,89-134,137
+  s_2732c4df70b865::t_085b61147970dd 1-66,135-136,138-140
+packages/core/src/index.js
+  s_2732c4df70b865::t_862a8ecd05cab0 15-16
+tests/elements/input-group.spec.ts
+  s_2732c4df70b865::t_480d83f35d2668 1-22,54
+  s_2732c4df70b865::t_4ed15744f3516d 23-53
+packages/core/src/components/input-group.css
+  s_2732c4df70b865::t_282cbc2d8231e5 1-21,25-71,74-90,98-140,145-148,151-155
+  s_2732c4df70b865::t_b7804dd6f40071 72-73
+  s_2732c4df70b865::t_3ad7e749a770fe 91-97
+  s_2732c4df70b865::t_add0984a76ee7d 22-24
+  s_2732c4df70b865::t_6e9afe44c331e9 141-144,149-150
+packages/core/src/index.css
+  s_2732c4df70b865::t_0b3d55eb866a3f 49-50
+docs/examples/password-toggle.html
+  s_2732c4df70b865::t_e964ca9985312e 1-30,38-43,45,54-56,66-75,119-120,122-124
+  s_2732c4df70b865::t_b7804dd6f40071 31-37,46-53,57-65
+  s_2732c4df70b865::t_50fd7d288db092 44
+  s_2732c4df70b865::t_4898063ea7c76f 76-118,121
+tests/a11y/password-toggle.a11y.spec.ts
+  s_2732c4df70b865::t_123e4fc24c16d5 1-10
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_3cbc56dfae763b 8-9
+  s_2732c4df70b865::t_a28e2b56c72cec 39-40
+docs/public/src/content/docs/components/password-toggle.mdx
+  s_2732c4df70b865::t_4db3bcf011dee6 18-25
+  s_2732c4df70b865::t_c218ccaad08a42 1-17,26-30
+docs/public/src/content/docs/components/number-stepper.mdx
+  s_2732c4df70b865::t_03b2c8fb37a150 1-27
+packages/core/src/behaviors/number-stepper.js
+  s_2732c4df70b865::t_e9f4fdc1c8d616 1-66,73-118,120-121
+  s_2732c4df70b865::t_3f3d2a0ffc96ee 67-72
+  s_2732c4df70b865::t_dcf7d79e538f77 119
+tests/elements/password-toggle.spec.ts
+  s_2732c4df70b865::t_8384e657fc6793 67-68,78-80
+  s_2732c4df70b865::t_578b807b18ef5e 4-6,8-12,14,23-24,33,39-66,69-77,81-83
+  s_2732c4df70b865::t_db56d8bd7c7db0 1-3,7,13,15-17,19-22,25,27,29-32,34-38,84-85
+  s_2732c4df70b865::t_f91f51e7108859 18,26,28
+tests/a11y/number-stepper.a11y.spec.ts
+  s_2732c4df70b865::t_a2e8fec6d63680 1-10
+tests/a11y/input-group.a11y.spec.ts
+  s_2732c4df70b865::t_d9eb3befabb38e 1-10
+tests/visual/segmented.visual.spec.ts
+  s_2732c4df70b865::t_2e9f6f9425518a 1-17
+docs/PROGRESS.md
+  s_2732c4df70b865::t_bd1cf943fd5194 86-94
+.changeset/form-input-addons.md
+  s_2732c4df70b865::t_8aa8b739404d10 1-22
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_50986362e3868d 71-72
+  s_2732c4df70b865::t_d031c14825ee10 54-55
+docs/examples/input-group.html
+  s_2732c4df70b865::t_0f3ecb442fbc93 1-77
+tests/visual/input-group.visual.spec.ts
+  s_2732c4df70b865::t_2cdcbaab4c4918 1-24
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_c3938c34946f44 13-14
+tests/visual/password-toggle.visual.spec.ts
+  s_2732c4df70b865::t_fbcdc59ec3cf09 1-13,17-19
+  s_2732c4df70b865::t_93fb9dd74e0f51 14-16
+docs/public/src/content/docs/components/segmented.mdx
+  s_2732c4df70b865::t_50b7c7ff6d72c7 1-23
+tests/visual/number-stepper.visual.spec.ts
+  s_2732c4df70b865::t_a65808c3b45db1 1-10
+tests/elements/number-stepper.spec.ts
+  s_2732c4df70b865::t_c0eed8c7ebeafc 4-6,8-11,14-15,19,23,28-30,47-69,72-80,84-86
+  s_2732c4df70b865::t_8384e657fc6793 70-71,81-83
+  s_2732c4df70b865::t_107ee031193b9b 1-3,7,12-13,16-18,20-22,24-27,31-46,87-88
+packages/core/package.json
+  s_2732c4df70b865::t_4388c4973d4100 104-111
+  s_2732c4df70b865::t_9ea5fbd1ba98cf 73-74
+packages/core/src/behaviors/password-toggle.js
+  s_2732c4df70b865::t_f1e4ff6304a1dc 91-93,96
+  s_2732c4df70b865::t_2fb3b4c1d8a791 73-76,78-82,84-86,121-122
+  s_2732c4df70b865::t_838193391fdef5 12,22-23,27-30
+  s_2732c4df70b865::t_63748dfcc7e6db 1-11,13-21,24-26,31-72,77,83,87-90,94-95,97-120,123-124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e174f97a92e9322f4296d35eb657481168f05d5e",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
