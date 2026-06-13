@@ -48,9 +48,17 @@
   .re-otp {
     box-sizing: border-box;
     block-size: var(--re-otp-cell-size);
+    /* Each glyph's advance is (1ch + letter-spacing) = cell + gap, INCLUDING a
+       trailing advance after the last digit, so the content is exactly
+       length*(cell+gap) wide regardless of font metrics. The border-box width
+       must add the left padding + borders, else the focused caret-at-end
+       overflows and scroll-clips the first digit (platform-dependent). The 1ch
+       term cancels between the padding and this width, so the content area is
+       length*(cell+gap) on every platform. */
     inline-size: calc(
-      var(--re-otp-length, 6) * var(--re-otp-cell-size) + (var(--re-otp-length, 6) - 1) *
-        var(--re-otp-gap)
+      2 * var(--re-border-width) +
+        var(--re-otp-cell-text-offset, calc((var(--re-otp-cell-size) - 1ch) / 2)) +
+        var(--re-otp-length, 6) * (var(--re-otp-cell-size) + var(--re-otp-gap))
     );
     padding: 0;
     padding-inline-start: var(--re-otp-cell-text-offset, calc((var(--re-otp-cell-size) - 1ch) / 2));
@@ -72,12 +80,21 @@
     outline: none;
   }
 
-  /* Cell dividers: vertical hairlines at each cell boundary, drawn on the
-     wrapper behind the transparent input. */
+  /* Cell dividers: vertical hairlines between cells, drawn on the wrapper behind
+     the transparent input. Capped to the inter-cell region (length-1 dividers)
+     so no divider lands in the trailing gap. */
   .re-otp-field::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset-block: 0;
+    /* Offset past the input's left border. With the centering padding, each
+       digit then lands in the middle of its gradient cell (the padding term
+       cancels: digit-center = border + cell/2 = gradient-cell center). */
+    inset-inline-start: var(--re-border-width);
+    inline-size: calc(
+      var(--re-otp-length, 6) * var(--re-otp-cell-size) + (var(--re-otp-length, 6) - 1) *
+        var(--re-otp-gap)
+    );
     z-index: -1;
     background-image: repeating-linear-gradient(
       to right,
