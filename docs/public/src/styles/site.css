@@ -18,6 +18,11 @@
   --sl-color-accent-high: #bdd6fe;
   /* Links / accent text: vivid brand blue (accent-high is too pale on navy). */
   --sl-color-text-accent: #60a5fa;
+  /* Text drawn ON an accent background (e.g. the selected sidebar item, whose
+     background is --sl-color-text-accent). Must contrast with #60a5fa — the
+     default resolves to a dark navy that's nearly invisible on it, so pin it to
+     the near-black ink (AAA contrast). */
+  --sl-color-text-invert: var(--sl-color-black);
 
   /* Dark navy scale (brightest → darkest) */
   --sl-color-white: #f8fafc;
@@ -149,9 +154,12 @@
   color: var(--sl-color-text-accent);
 }
 
-/* Sidebar nav + table-of-contents links → brand accent on hover/focus */
-.sidebar a:hover,
-.sidebar a:focus-visible,
+/* Sidebar nav + table-of-contents links → brand accent on hover/focus.
+   Exclude the selected sidebar item: its background IS --sl-color-text-accent,
+   so recoloring its text to the same value would make it vanish — it keeps its
+   readable --sl-color-text-invert instead. */
+.sidebar a:not([aria-current="page"]):hover,
+.sidebar a:not([aria-current="page"]):focus-visible,
 starlight-toc a:hover,
 starlight-toc a:focus-visible {
   color: var(--sl-color-text-accent);
