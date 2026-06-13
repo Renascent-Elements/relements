@@ -1,0 +1,44 @@
+packages/core/src/components/otp.css
+  s_2732c4df70b865::t_4c78965f8a4997 38-43,46
+  s_2732c4df70b865::t_9258c07e38fd69 44-45
+packages/core/src/components/rating.css
+  s_2732c4df70b865::t_4db5838bf6814f 55-58,62-64
+docs/examples/otp.html
+  s_2732c4df70b865::t_634fb7184aee7e 45
+packages/core/src/behaviors/rating.js
+  s_2732c4df70b865::t_3fba73f8c200da 72-74
+tests/elements/otp.spec.ts
+  s_2732c4df70b865::t_e156af25ade6ea 38-55
+tests/a11y/tags-input.a11y.spec.ts
+  s_2732c4df70b865::t_c59ad94495b100 11-27
+tests/elements/tags-input.spec.ts
+  s_2732c4df70b865::t_fad57abc8d74e1 89,91-142,146-152,155,157-158
+packages/core/src/behaviors/otp.js
+  s_2732c4df70b865::t_0d2a52fb33c845 74-76,78,80
+tests/elements/rating.spec.ts
+  s_2732c4df70b865::t_cbc7d71eaaf715 43-57
+packages/core/src/behaviors/tags-input.js
+  s_2732c4df70b865::t_fc0debc64f8675 216-217
+  s_2732c4df70b865::t_96b6149798b599 144-146
+  s_2732c4df70b865::t_d7eb71d9d23503 244,247-248,253
+  s_2732c4df70b865::t_7222f11134444f 223
+  s_2732c4df70b865::t_424266c10b7380 75
+  s_2732c4df70b865::t_62947d5fb5b9d0 187
+  s_2732c4df70b865::t_d9065dede6ff51 86,88-91
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "61f8441716ed49b1eee702f61d06e28773ff1512",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
