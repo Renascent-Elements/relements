@@ -72,14 +72,15 @@
 
   /* The band is --re-color-surface; a ghost button's default hover is
      --re-color-bg-subtle, which equals surface in dark mode (invisible). Re-base
-     the interactive states on the neutral ramp ABOVE surface so they read in
-     both themes AND stay distinct from each other: surface → hover (one step) →
-     active (a further step). */
+     the interactive states on the border ramp so they're clearly visible AND
+     distinct in BOTH the default palette and brand themes whose dark neutral
+     ramp is compressed (where bg-muted barely separates from surface): surface →
+     hover (border) → active (border-strong). */
   .re-toolbar .re-button[data-variant="ghost"]:not([aria-pressed="true"]):hover {
-    background-color: var(--re-color-bg-muted);
+    background-color: var(--re-color-border);
   }
   .re-toolbar .re-button[data-variant="ghost"]:not([aria-pressed="true"]):active {
-    background-color: var(--re-color-border);
+    background-color: var(--re-color-border-strong);
   }
   /* A toggled-on control needs a persistent, distinct "on" state, so fill it
      with the accent — clearly active in both themes, unlike a transparent ghost
