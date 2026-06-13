@@ -14,6 +14,12 @@
       section {
         margin-block: var(--re-space-6);
       }
+      /* Standalone-page spacing between stacked fields; not in a demo region,
+         so the docs <Demo> lays them out via .demo__preview's flex gap instead
+         (an inline margin here would shove the item down in that centered row). */
+      .re-field + .re-field {
+        margin-block-start: var(--re-space-4);
+      }
     </style>
   </head>
   <body data-page="otp">
@@ -66,7 +72,7 @@
           />
         </span>
       </label>
-      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+      <label class="re-field">
         <span class="re-field__label">Alphanumeric (large)</span>
         <span class="re-otp-field" data-size="lg" style="--re-otp-length: 6">
           <input
@@ -93,7 +99,7 @@
           <input class="re-otp" type="text" value="12" maxlength="6" aria-invalid="true" />
         </span>
       </label>
-      <label class="re-field" style="margin-block-start: var(--re-space-4)">
+      <label class="re-field">
         <span class="re-field__label">Disabled</span>
         <span class="re-otp-field" style="--re-otp-length: 6">
           <input class="re-otp" type="text" value="123456" maxlength="6" disabled />
