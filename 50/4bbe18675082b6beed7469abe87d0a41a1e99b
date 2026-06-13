@@ -1,0 +1,26 @@
+docs/examples/input-group.html
+  s_2732c4df70b865::t_4e1ca26c49535e 17-22
+  s_2732c4df70b865::t_18b8bde961b147 42,73
+docs/examples/segmented.html
+  s_2732c4df70b865::t_8fedc1aabb0947 17-21
+  s_2732c4df70b865::t_ae3bbbaacb9d8a 63
+docs/examples/number-stepper.html
+  s_2732c4df70b865::t_011c907d80b6b9 20-22
+  s_2732c4df70b865::t_d88b72a8d90b5b 103
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "504bbe18675082b6beed7469abe87d0a41a1e99b",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
