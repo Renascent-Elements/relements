@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Number stepper</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .re-input-group {
+        max-inline-size: 12rem;
+      }
+      .re-field + .re-field {
+        margin-block-start: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="number-stepper">
+    <header>
+      <h1>Number stepper</h1>
+      <p>Large +/- buttons over a native number input.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <label class="re-field">
+        <span class="re-field__label">Quantity</span>
+        <span class="re-input-group">
+          <button
+            class="re-input-group__action"
+            type="button"
+            data-re-number-step="-1"
+            aria-label="Decrease"
+            tabindex="-1"
+          >
+            &minus;
+          </button>
+          <input
+            class="re-input"
+            type="number"
+            data-re-number
+            value="1"
+            min="0"
+            max="10"
+            step="1"
+            aria-label="Quantity"
+          />
+          <button
+            class="re-input-group__action"
+            type="button"
+            data-re-number-step="1"
+            aria-label="Increase"
+            tabindex="-1"
+          >
+            +
+          </button>
+        </span>
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="variants-heading" data-testid="variants">
+      <h2 id="variants-heading">Variants</h2>
+      <label class="re-field">
+        <span class="re-field__label">Read-only (unbounded)</span>
+        <span class="re-input-group">
+          <button
+            class="re-input-group__action"
+            type="button"
+            data-re-number-step="-1"
+            aria-label="Decrease"
+            tabindex="-1"
+          >
+            &minus;
+          </button>
+          <input
+            class="re-input"
+            type="number"
+            data-re-number
+            value="5"
+            readonly
+            aria-label="Read-only"
+          />
+          <button
+            class="re-input-group__action"
+            type="button"
+            data-re-number-step="1"
+            aria-label="Increase"
+            tabindex="-1"
+          >
+            +
+          </button>
+        </span>
+      </label>
+      <label class="re-field">
+        <span class="re-field__label">Float step</span>
+        <span class="re-input-group">
+          <button
+            class="re-input-group__action"
+            type="button"
+            data-re-number-step="-1"
+            aria-label="Decrease"
+            tabindex="-1"
+          >
+            &minus;
+          </button>
+          <input
+            class="re-input"
+            type="number"
+            data-re-number
+            value="0.5"
+            min="0"
+            max="2"
+            step="0.25"
+            aria-label="Float"
+          />
+          <button
+            class="re-input-group__action"
+            type="button"
+            data-re-number-step="1"
+            aria-label="Increase"
+            tabindex="-1"
+          >
+            +
+          </button>
+        </span>
+      </label>
+    </section>
+
+    <script type="module">
+      import { enhanceNumberStepper } from "/packages/core/src/behaviors/number-stepper.js";
+      window.__reController = enhanceNumberStepper(document);
+    </script>
+  </body>
+</html>

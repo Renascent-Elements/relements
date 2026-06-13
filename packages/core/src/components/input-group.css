@@ -1,0 +1,166 @@
+/**
+ * Relements input group (addons).
+ *
+ * A flex wrapper that makes an input plus prefix/suffix affixes read as one
+ * control. The GROUP owns the border and the focus ring (via :focus-within);
+ * the inner .re-input has its own border/ring stripped so there's no double
+ * outline. This is the shared foundation for password-reveal and the number
+ * stepper, and underpins search-with-button, $/unit affixes, and icons.
+ *
+ *   <div class="re-input-group">
+ *     <span class="re-input-group__text">https://</span>
+ *     <input class="re-input" />
+ *     <span class="re-input-group__text">.com</span>
+ *   </div>
+ *
+ * Parts:
+ *   .re-input-group__text   — tinted, non-interactive prefix/suffix (units, $, @)
+ *   .re-input-group__action — transparent inline icon button (eye, clear, ±)
+ *   .re-button (child)      — attached solid button (e.g. Search), corners clipped
+ *
+ * State reflection uses :has() (progressively; ancient engines just skip the
+ * tinting and keep a working control). The group has no height of its own —
+ * the inner .re-input's data-size drives the row height and affixes stretch to
+ * it; affix font-size tracks data-size via the :has() rules below.
+ */
+
+@layer re.components {
+  .re-input-group {
+    display: flex;
+    align-items: stretch;
+    inline-size: 100%;
+    box-sizing: border-box;
+    background-color: var(--re-color-bg);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    /* Clip attached children (buttons) to the rounded rect. The group's own
+       :focus-within box-shadow paints outside the border box and is NOT
+       clipped by overflow. */
+    overflow: hidden;
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-input-group:focus-within {
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* The inner field surrenders its frame to the group. */
+  .re-input-group > .re-input {
+    flex: 1 1 auto;
+    inline-size: auto;
+    min-inline-size: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  .re-input-group > .re-input:focus-visible {
+    box-shadow: none;
+  }
+
+  /* Invalid + disabled reflected from the contained control. */
+  .re-input-group:has(.re-input[aria-invalid="true"]),
+  .re-input-group:has(.re-input:user-invalid) {
+    border-color: var(--re-color-border-danger);
+  }
+  .re-input-group:has(.re-input[aria-invalid="true"]):focus-within,
+  .re-input-group:has(.re-input:user-invalid):focus-within {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
+  }
+  .re-input-group:has(.re-input:disabled) {
+    background-color: var(--re-color-bg-muted);
+    cursor: not-allowed;
+  }
+
+  /* ---- Tinted text affix (prefix / suffix) --------------------------- */
+  .re-input-group__text {
+    display: inline-flex;
+    align-items: center;
+    padding-inline: var(--re-control-padding-x);
+    color: var(--re-color-text-muted);
+    background-color: var(--re-color-bg-subtle);
+    font-size: var(--re-size-text-md);
+    white-space: nowrap;
+    user-select: none;
+  }
+  /* Divider between an edge affix and the field. Keeps the segments legible
+     even when the tint is low-contrast (e.g. the affix bg sits close to the
+     field bg in dark themes). Edge affixes are first/last child; inline
+     __action buttons and attached .re-button deliberately get no divider. */
+  .re-input-group__text:first-child {
+    border-inline-end: var(--re-border-default);
+  }
+  .re-input-group__text:last-child {
+    border-inline-start: var(--re-border-default);
+  }
+
+  /* Track the inner input's data-size so affix text matches. */
+  .re-input-group:has(.re-input[data-size="sm"]) .re-input-group__text {
+    font-size: var(--re-size-text-sm);
+  }
+  .re-input-group:has(.re-input[data-size="lg"]) .re-input-group__text {
+    font-size: var(--re-size-text-lg);
+  }
+
+  /* ---- Transparent inline action button (eye, clear, ±) -------------- */
+  .re-input-group__action {
+    appearance: none;
+    -webkit-appearance: none;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: var(--re-space-3);
+    border: 0;
+    background-color: transparent;
+    color: var(--re-color-text-muted);
+    font: inherit;
+    line-height: 1;
+    cursor: pointer;
+    transition: color var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-input-group__action:hover {
+    color: var(--re-color-text);
+  }
+  .re-input-group__action:focus-visible {
+    outline: none;
+    color: var(--re-color-text);
+    box-shadow: inset 0 0 0 var(--re-focus-ring-width) var(--re-color-focus-ring);
+  }
+  .re-input-group__action:disabled {
+    color: var(--re-color-text-subtle);
+    cursor: not-allowed;
+  }
+  .re-input-group__action > svg {
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    display: block;
+  }
+
+  /* ---- Attached solid button (e.g. Search) --------------------------- */
+  .re-input-group > .re-button {
+    border-radius: 0;
+    flex-shrink: 0;
+  }
+
+  /* ---- Number stepper spinner suppression ---------------------------- */
+  /* Gated on the JS-applied `data-re-number-ready` marker (set by
+     enhanceNumberStepper), NOT the declarative `data-re-number` opt-in: with
+     no JS the native spinner must survive, since the ± buttons aren't wired. */
+  .re-input[data-re-number-ready] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+    text-align: center;
+  }
+  .re-input[data-re-number-ready]::-webkit-outer-spin-button,
+  .re-input[data-re-number-ready]::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

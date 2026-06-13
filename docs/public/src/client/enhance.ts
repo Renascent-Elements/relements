@@ -5,6 +5,8 @@ import {
   enhanceMenuButton,
   enhancePopover,
   enhanceCombobox,
+  enhancePasswordToggle,
+  enhanceNumberStepper,
   showToast,
 } from "@relements/core";
 
@@ -34,6 +36,8 @@ function init() {
   enhanceScoped("[data-re-menu]", enhanceMenuButton);
   enhanceScoped("[data-re-popover]", enhancePopover);
   enhanceCombobox(document);
+  enhancePasswordToggle(document);
+  enhanceNumberStepper(document);
 
   // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it
   // for any demo checkbox that opts in with `data-demo-indeterminate`.

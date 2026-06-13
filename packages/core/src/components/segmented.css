@@ -1,0 +1,102 @@
+/**
+ * Relements segmented control.
+ *
+ * A single-select pill group built on native radio inputs — so arrow-key
+ * roving, single-selection, and form participation are all native. CSS-only;
+ * no JavaScript.
+ *
+ *   <fieldset class="re-segmented" aria-label="View">
+ *     <label class="re-segmented__option">
+ *       <input type="radio" name="view" value="list" checked />
+ *       <span>List</span>
+ *     </label>
+ *     <label class="re-segmented__option">
+ *       <input type="radio" name="view" value="grid" />
+ *       <span>Grid</span>
+ *     </label>
+ *   </fieldset>
+ *
+ * The radio is positioned over its label (transparent) so it stays focusable
+ * and clickable; the <span> is the visible pill. Size via data-size: sm, lg.
+ */
+
+@layer re.components {
+  .re-segmented {
+    display: inline-flex;
+    align-items: stretch;
+    gap: 2px;
+    margin: 0;
+    padding: 3px;
+    border: 0;
+    border-radius: var(--re-radius-md);
+    background-color: var(--re-color-bg-muted);
+  }
+
+  .re-segmented__option {
+    position: relative;
+    display: flex;
+  }
+
+  /* Keep the native radio focusable + clickable but invisible; it covers the
+     whole option so a click anywhere selects it. */
+  .re-segmented__option input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .re-segmented__option > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: var(--re-space-3);
+    padding-block: var(--re-space-1);
+    border-radius: var(--re-radius-sm);
+    color: var(--re-color-text-muted);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    line-height: var(--re-line-height-normal);
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-segmented__option:hover > span {
+    color: var(--re-color-text);
+  }
+
+  .re-segmented__option input:checked + span {
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    box-shadow: var(--re-shadow-sm);
+  }
+
+  .re-segmented__option input:focus-visible + span {
+    outline: none;
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-segmented__option input:disabled + span {
+    color: var(--re-color-text-subtle);
+    cursor: not-allowed;
+  }
+  .re-segmented__option input:disabled {
+    cursor: not-allowed;
+  }
+
+  /* ---- Sizes --------------------------------------------------------- */
+  .re-segmented[data-size="sm"] .re-segmented__option > span {
+    padding-inline: var(--re-space-2);
+    font-size: var(--re-size-text-xs);
+  }
+  .re-segmented[data-size="lg"] .re-segmented__option > span {
+    padding-inline: var(--re-space-4);
+    padding-block: var(--re-space-2);
+    font-size: var(--re-size-text-md);
+  }
+}
