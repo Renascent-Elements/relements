@@ -99,6 +99,12 @@ The HTML-first form-control family — native bases, CSS-first, optional enhance
 - [x] autosize-textarea (`.re-textarea[data-autosize]` CSS `field-sizing` + `enhanceAutosize` scrollHeight fallback)
 - [x] description-list (`.re-description-list` on `<dl>/<dt>/<dd>`; CSS-only; `data-layout` stacked/horizontal, `data-bordered`/`data-divided`/`data-density`)
 
+## Form-input expansion II (0.11.0)
+
+- [x] rating (`.re-rating` fieldset of hidden radios + star labels; CSS-only; `direction: rtl` aligns fill + arrow keys; `.re-rating-display` read-only fractional)
+- [x] otp (single native `<input class="re-otp">` in `.re-otp-field`; segmented look, native paste/autofill; optional `enhanceOtp` active-cell + numeric strip)
+- [x] tags-input (`enhanceTagsInput`: chips reuse `.re-tag`, hidden inputs submit an array, Enter/comma commit, max + dedupe; degrades to a comma-separated plain input)
+
 ## Acceptance per element
 
 Each box is checked only when:

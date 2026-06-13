@@ -1,0 +1,46 @@
+---
+title: Rating
+description: Star rating on a native radio group, plus a read-only display.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A `.re-rating` is a `<fieldset>` of visually-hidden radios (one per value) paired
+with star `<label>`s — so keyboard selection, single-choice, and form value are
+all native, with no JavaScript. Add a value-0 radio labelled "No rating" to allow
+clearing. CSS-only.
+
+The fieldset is `direction: rtl` as an implementation detail: the radios are in
+DOM order high→low so the floor-safe sibling selectors can fill the chosen star
+and all lower ones, and `rtl` flips both the visual order (to 1→5 left-to-right)
+and the arrow keys back into alignment (Right/Up select higher, Left/Down lower).
+Stars stay a low→high-left-to-right scale regardless of page direction.
+
+Native arrow-key direction in a reversed radio group varies by browser
+(Chromium honors `rtl`, WebKit doesn't). For consistent arrows everywhere, opt
+into the tiny `enhanceRating` behavior — it intercepts the arrow keys so
+Right/Up always raise and Left/Down always lower, identically across browsers.
+The CSS-only base stays fully usable without it.
+
+```js
+import { enhanceRating } from "@relements/core/behaviors/rating";
+enhanceRating(document);
+```
+
+## Interactive
+
+<Demo src="rating.html" name="basic" />
+
+## Sizes
+
+`data-size="sm"` or `"lg"` on the fieldset.
+
+<Demo src="rating.html" name="sizes" />
+
+## Read-only display
+
+For showing an average (no input), use `.re-rating-display` with `role="img"`, an
+`aria-label`, and `--re-rating-value` — the filled overlay is clipped to
+`value / max`, so fractional values render a partial star.
+
+<Demo src="rating.html" name="display" />

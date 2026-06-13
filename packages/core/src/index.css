@@ -50,3 +50,6 @@
 @import "./components/input-group.css";
 @import "./components/segmented.css";
 @import "./components/description-list.css";
+@import "./components/rating.css";
+@import "./components/otp.css";
+@import "./components/tags-input.css";

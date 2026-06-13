@@ -74,6 +74,9 @@
     "./components/input-group.css": "./dist/components/input-group.css",
     "./components/segmented.css": "./dist/components/segmented.css",
     "./components/description-list.css": "./dist/components/description-list.css",
+    "./components/rating.css": "./dist/components/rating.css",
+    "./components/otp.css": "./dist/components/otp.css",
+    "./components/tags-input.css": "./dist/components/tags-input.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
@@ -114,6 +117,18 @@
     "./behaviors/autosize": {
       "import": "./dist/behaviors/autosize.js",
       "types": "./dist/behaviors/autosize.d.ts"
+    },
+    "./behaviors/otp": {
+      "import": "./dist/behaviors/otp.js",
+      "types": "./dist/behaviors/otp.d.ts"
+    },
+    "./behaviors/tags-input": {
+      "import": "./dist/behaviors/tags-input.js",
+      "types": "./dist/behaviors/tags-input.d.ts"
+    },
+    "./behaviors/rating": {
+      "import": "./dist/behaviors/rating.js",
+      "types": "./dist/behaviors/rating.d.ts"
     },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",
