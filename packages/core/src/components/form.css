@@ -130,6 +130,22 @@
     line-height: var(--re-line-height-relaxed);
   }
 
+  /* Autosize (opt-in): grow with content. Modern engines do this natively via
+     field-sizing (Chrome 123+, Safari 26.2+); the property is ignored where
+     unsupported (Firefox at the floor), where the element stays a normal
+     resizable textarea until enhanceAutosize() wires the scrollHeight fallback.
+     Gated on @supports so the cap/overflow/resize:none NEVER apply without
+     field-sizing — preserving the graceful no-JS baseline. box-sizing:border-box
+     is inherited from the shared control rule and is required here. */
+  @supports (field-sizing: content) {
+    .re-textarea[data-autosize] {
+      field-sizing: content;
+      resize: none;
+      max-block-size: var(--re-autosize-max-block-size, 18rem);
+      overflow-y: auto;
+    }
+  }
+
   /* ============================================================
      Select
      ============================================================ */

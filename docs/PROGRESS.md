@@ -92,6 +92,13 @@ The HTML-first form-control family — native bases, CSS-first, optional enhance
 - [x] password-toggle (`enhancePasswordToggle`: button flips `input.type`, `aria-pressed`/label swap, caret preserved)
 - [x] number-stepper (`enhanceNumberStepper`: ± buttons call native `stepUp/stepDown`, re-dispatch `input`/`change`, disable at bounds)
 
+## Overlay + structure expansion (0.10.0)
+
+- [x] drawer (`.re-drawer` alongside `.re-dialog`, native modal `<dialog>` + `data-side` edge geometry + `@starting-style` slide; reuses `enhanceDialog`)
+- [x] alert-dialog (dialog recipe: `role="alertdialog"` + `autofocus` safe action + `data-re-dialog-no-dismiss` cancel-guard in `enhanceDialog`)
+- [x] autosize-textarea (`.re-textarea[data-autosize]` CSS `field-sizing` + `enhanceAutosize` scrollHeight fallback)
+- [x] description-list (`.re-description-list` on `<dl>/<dt>/<dd>`; CSS-only; `data-layout` stacked/horizontal, `data-bordered`/`data-divided`/`data-density`)
+
 ## Acceptance per element
 
 Each box is checked only when:

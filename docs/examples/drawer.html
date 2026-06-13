@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Drawer</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .drawer-triggers {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--re-space-3);
+      }
+    </style>
+  </head>
+  <body data-page="drawer">
+    <header>
+      <h1>Drawer</h1>
+      <p>An edge-anchored panel — a native modal dialog with a slide-in.</p>
+    </header>
+
+    <section aria-labelledby="sides-heading" data-testid="sides">
+      <h2 id="sides-heading">Sides</h2>
+      <!-- demo:start name="sides" -->
+      <div class="drawer-triggers">
+        <button
+          type="button"
+          class="re-button"
+          data-re-dialog-trigger
+          data-re-dialog-target="drawer-end"
+        >
+          End
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          data-re-dialog-trigger
+          data-re-dialog-target="drawer-start"
+        >
+          Start
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          data-re-dialog-trigger
+          data-re-dialog-target="drawer-top"
+        >
+          Top
+        </button>
+        <button
+          type="button"
+          class="re-button"
+          data-variant="secondary"
+          data-re-dialog-trigger
+          data-re-dialog-target="drawer-bottom"
+        >
+          Bottom
+        </button>
+      </div>
+
+      <dialog
+        class="re-dialog re-drawer"
+        id="drawer-end"
+        data-side="end"
+        aria-labelledby="drawer-end-title"
+        data-re-dialog-close-on-backdrop
+      >
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="drawer-end-title">Settings</h2>
+          <button class="re-dialog__close" aria-label="Close" data-re-dialog-close value="close">
+            &times;
+          </button>
+        </header>
+        <div class="re-dialog__body">
+          <p>Drawer pinned to the inline-end edge. Scrolls independently when tall.</p>
+        </div>
+        <footer class="re-dialog__footer">
+          <button
+            type="button"
+            class="re-button"
+            data-variant="ghost"
+            data-re-dialog-close
+            value="cancel"
+          >
+            Cancel
+          </button>
+          <button type="button" class="re-button" data-re-dialog-close value="save">Save</button>
+        </footer>
+      </dialog>
+
+      <dialog
+        class="re-dialog re-drawer"
+        id="drawer-start"
+        data-side="start"
+        aria-labelledby="drawer-start-title"
+        data-re-dialog-close-on-backdrop
+      >
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="drawer-start-title">Navigation</h2>
+          <button class="re-dialog__close" aria-label="Close" data-re-dialog-close value="close">
+            &times;
+          </button>
+        </header>
+        <div class="re-dialog__body"><p>Drawer pinned to the inline-start edge.</p></div>
+      </dialog>
+
+      <dialog
+        class="re-dialog re-drawer"
+        id="drawer-top"
+        data-side="top"
+        aria-labelledby="drawer-top-title"
+        data-re-dialog-close-on-backdrop
+      >
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="drawer-top-title">Notifications</h2>
+          <button class="re-dialog__close" aria-label="Close" data-re-dialog-close value="close">
+            &times;
+          </button>
+        </header>
+        <div class="re-dialog__body"><p>Sheet pinned to the block-start edge.</p></div>
+      </dialog>
+
+      <dialog
+        class="re-dialog re-drawer"
+        id="drawer-bottom"
+        data-side="bottom"
+        aria-labelledby="drawer-bottom-title"
+        data-re-dialog-close-on-backdrop
+      >
+        <header class="re-dialog__header">
+          <h2 class="re-dialog__title" id="drawer-bottom-title">Filters</h2>
+          <button class="re-dialog__close" aria-label="Close" data-re-dialog-close value="close">
+            &times;
+          </button>
+        </header>
+        <div class="re-dialog__body">
+          <p>Bottom sheet. Dismissal is Escape or backdrop — no swipe gesture.</p>
+        </div>
+      </dialog>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceDialog } from "/packages/core/src/behaviors/dialog.js";
+      window.__reController = enhanceDialog(document);
+    </script>
+  </body>
+</html>

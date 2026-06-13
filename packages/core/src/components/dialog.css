@@ -13,6 +13,13 @@
  *     <div class="re-dialog__body">…</div>
  *     <footer class="re-dialog__footer">…</footer>
  *   </dialog>
+ *
+ * Alert dialog (confirmation): add role="alertdialog" + aria-labelledby (title)
+ * + aria-describedby (message), put `autofocus` on the safe action (Cancel),
+ * and — for a critical, must-choose confirmation — `data-re-dialog-no-dismiss`
+ * (a JS-only hook read by enhanceDialog; no style here) to block Escape/backdrop.
+ *
+ * Drawer / sheet: add `.re-drawer` alongside `.re-dialog` (see drawer.css).
  */
 
 @layer re.components {

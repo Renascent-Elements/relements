@@ -1,0 +1,33 @@
+---
+title: Description list
+description: Read-only key/value pairs on a native dl.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A description list styles a native `<dl>` with `<dt>` terms and `<dd>` details —
+CSS only, no JavaScript. Use the flat form (terms and details as direct
+children, term first); add `.re-description-list` to the `<dl>`,
+`.re-description-list__term` to each `<dt>`, and `.re-description-list__details`
+to each `<dd>`.
+
+## Stacked
+
+The default — each term sits above its details, in normal block flow.
+
+<Demo src="description-list.html" name="stacked" />
+
+## Horizontal
+
+`data-layout="horizontal"` lays terms and details into two columns (a CSS grid).
+Set the term column width with `--re-dl-term-width` (default `12rem`). Multiple
+`<dd>` per `<dt>` each stack in the details column.
+
+<Demo src="description-list.html" name="horizontal" />
+
+## Bordered & divided
+
+`data-bordered` frames the list; `data-divided` rules between rows;
+`data-density="compact"` tightens the spacing.
+
+<Demo src="description-list.html" name="bordered" />

@@ -14,3 +14,4 @@ export { showToast } from "./behaviors/toast.js";
 export { enhanceCombobox } from "./behaviors/combobox.js";
 export { enhancePasswordToggle } from "./behaviors/password-toggle.js";
 export { enhanceNumberStepper } from "./behaviors/number-stepper.js";
+export { enhanceAutosize } from "./behaviors/autosize.js";

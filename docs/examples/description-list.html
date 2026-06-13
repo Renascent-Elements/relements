@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Description list</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 40rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="description-list">
+    <header>
+      <h1>Description list</h1>
+      <p>Read-only key/value pairs on a native <code>&lt;dl&gt;</code>.</p>
+    </header>
+
+    <section aria-labelledby="stacked-heading" data-testid="stacked">
+      <h2 id="stacked-heading">Stacked</h2>
+      <!-- demo:start name="stacked" -->
+      <dl class="re-description-list">
+        <dt class="re-description-list__term">Full name</dt>
+        <dd class="re-description-list__details">Ada Lovelace</dd>
+        <dt class="re-description-list__term">Role</dt>
+        <dd class="re-description-list__details">Engineer</dd>
+        <dt class="re-description-list__term">Location</dt>
+        <dd class="re-description-list__details">London</dd>
+      </dl>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="horizontal-heading" data-testid="horizontal">
+      <h2 id="horizontal-heading">Horizontal</h2>
+      <!-- demo:start name="horizontal" -->
+      <dl class="re-description-list" data-layout="horizontal" style="--re-dl-term-width: 8rem">
+        <dt class="re-description-list__term">Plan</dt>
+        <dd class="re-description-list__details">Pro</dd>
+        <dt class="re-description-list__term">Seats</dt>
+        <dd class="re-description-list__details">12 of 20 used</dd>
+        <dt class="re-description-list__term">Renews</dt>
+        <dd class="re-description-list__details">March 1, 2026</dd>
+      </dl>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="bordered-heading" data-testid="bordered">
+      <h2 id="bordered-heading">Bordered &amp; divided</h2>
+      <!-- demo:start name="bordered" -->
+      <dl class="re-description-list" data-layout="horizontal" data-bordered data-divided>
+        <dt class="re-description-list__term">Status</dt>
+        <dd class="re-description-list__details">Active</dd>
+        <dt class="re-description-list__term">Owner</dt>
+        <dd class="re-description-list__details">Ada Lovelace</dd>
+        <dt class="re-description-list__term">Created</dt>
+        <dd class="re-description-list__details">August 12, 1843</dd>
+      </dl>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="multi-heading" data-testid="multi">
+      <h2 id="multi-heading">Multiple details</h2>
+      <!-- demo:start name="multi" -->
+      <dl class="re-description-list" data-layout="horizontal">
+        <dt class="re-description-list__term">Authors</dt>
+        <dd class="re-description-list__details">Ada Lovelace</dd>
+        <dd class="re-description-list__details">Charles Babbage</dd>
+        <dt class="re-description-list__term">Year</dt>
+        <dd class="re-description-list__details">1843</dd>
+      </dl>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
