@@ -1,0 +1,22 @@
+packages/core/src/components/otp.css
+  s_2732c4df70b865::t_3abac1825006f5 83-85,89,94-97
+  s_2732c4df70b865::t_8fa3f293700a27 90-93
+  s_2732c4df70b865::t_2843c70c6b854b 51
+  s_2732c4df70b865::t_828280afbdc6c6 52-57,59-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9fbcff7873cabfd792ec4a5a618e80042099ecdd",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
