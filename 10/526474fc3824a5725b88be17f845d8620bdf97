@@ -1,0 +1,98 @@
+docs/PROGRESS.md
+  s_2732c4df70b865::t_a81a8a54b1d78d 102-107
+packages/core/src/behaviors/rating.js
+  s_2732c4df70b865::t_6a4ea0e70de895 1-91
+packages/core/src/behaviors/tags-input.js
+  s_2732c4df70b865::t_38fdd7869a034f 1-243
+packages/core/src/components/rating.css
+  s_2732c4df70b865::t_d0412646393d55 36-38
+  s_2732c4df70b865::t_9d519aa280d3a1 1-4,12-20,23-35,39-124
+  s_2732c4df70b865::t_e633ab455ae856 5-11,21-22
+docs/examples/otp.html
+  s_2732c4df70b865::t_a91807e6f7c9a2 1-111
+.changeset/form-tier2-batch.md
+  s_2732c4df70b865::t_33351e14f8ecf7 1-9,13-22
+  s_2732c4df70b865::t_b051875b0279dc 10-12
+docs/examples/rating.html
+  s_2732c4df70b865::t_af8f6b434cd1bc 1-84,90-91
+  s_2732c4df70b865::t_a42c112304b476 85-89
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_d1105bb25f41f5 16-17
+  s_2732c4df70b865::t_4f23368571d923 18
+packages/core/src/behaviors/otp.js
+  s_2732c4df70b865::t_921b649be51e86 1-104
+docs/public/src/content/docs/components/otp.mdx
+  s_2732c4df70b865::t_1b2e4b506a66b4 1-44
+packages/core/src/index.js
+  s_2732c4df70b865::t_4f23368571d923 20
+  s_2732c4df70b865::t_bde0b75ba55ccc 18-19
+tests/elements/rating.spec.ts
+  s_2732c4df70b865::t_97c3215da14fea 13-15
+  s_2732c4df70b865::t_c6b8fcb390a35b 1-7,9-12,16-21,26-49
+  s_2732c4df70b865::t_98a332b2cee3dc 8
+  s_2732c4df70b865::t_5719af0f694c9d 22-25
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_8ebf06aa2d8859 13
+  s_2732c4df70b865::t_ca054475c22394 48
+  s_2732c4df70b865::t_5f00d8928ec6d4 46-47
+  s_2732c4df70b865::t_cd5e9ccf066024 11-12
+tests/a11y/tags-input.a11y.spec.ts
+  s_2732c4df70b865::t_92ea5c86bdae72 1-10
+docs/examples/tags-input.html
+  s_2732c4df70b865::t_737dfb4333c4d1 1-93
+tests/elements/otp.spec.ts
+  s_2732c4df70b865::t_4e9eefa878c187 1-52
+tests/visual/tags-input.visual.spec.ts
+  s_2732c4df70b865::t_2ca8171f773100 1-29
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_5dfd630e495dbe 58-60
+  s_2732c4df70b865::t_4f23368571d923 81
+  s_2732c4df70b865::t_6175122fc152da 79-80
+packages/core/package.json
+  s_2732c4df70b865::t_25ab1bf2eb4021 121-128
+  s_2732c4df70b865::t_b84da9a6f92faf 129-132
+  s_2732c4df70b865::t_b1aa96a716391a 77-79
+tests/a11y/otp.a11y.spec.ts
+  s_2732c4df70b865::t_92ea5c86bdae72 1-10
+packages/core/src/base.css
+  s_2732c4df70b865::t_c885c721a56600 129-143
+packages/core/src/components/otp.css
+  s_2732c4df70b865::t_a69bd9a5bdf35c 29-31
+  s_2732c4df70b865::t_14e7037224a8df 1-28,32-42,45-46,48-109
+  s_2732c4df70b865::t_2dd9f995b67ce6 43-44,47
+tests/visual/otp.visual.spec.ts
+  s_2732c4df70b865::t_8678cf19d8601a 1-25
+packages/core/src/index.css
+  s_2732c4df70b865::t_cfe0b73a820c77 53-55
+tests/a11y/rating.a11y.spec.ts
+  s_2732c4df70b865::t_92ea5c86bdae72 1-10
+packages/core/src/components/tags-input.css
+  s_2732c4df70b865::t_120926a4616e1e 1-69,72-82
+  s_2732c4df70b865::t_2dd9f995b67ce6 70-71
+tests/visual/rating.visual.spec.ts
+  s_2732c4df70b865::t_4397ecb523779b 1-25
+tests/elements/tags-input.spec.ts
+  s_2732c4df70b865::t_246a1441e924d2 1-5,10-101
+  s_2732c4df70b865::t_2dd9f995b67ce6 6-9
+docs/public/src/content/docs/components/rating.mdx
+  s_2732c4df70b865::t_784fe30c2b1160 1-18,30-46
+  s_2732c4df70b865::t_af45abed72d0c4 19-29
+docs/public/src/content/docs/components/tags-input.mdx
+  s_2732c4df70b865::t_2b451dc52464da 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "10526474fc3824a5725b88be17f845d8620bdf97",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
