@@ -1,0 +1,80 @@
+/**
+ * Relements button-group.
+ *
+ * A visually-joined cluster of `.re-button`s that reads as one control: the
+ * inner seams collapse to a single hairline and only the outer corners stay
+ * rounded. CSS-only — no JavaScript. It composes existing buttons; it does not
+ * fork their visuals.
+ *
+ *   <div class="re-button-group" role="group" aria-label="Text formatting">
+ *     <button class="re-button" data-variant="secondary" type="button">Bold</button>
+ *     <button class="re-button" data-variant="secondary" type="button">Italic</button>
+ *     <button class="re-button" data-variant="secondary" type="button">Underline</button>
+ *   </div>
+ *
+ * Authoring contract: add `role="group"` + an accessible name; members are
+ * DIRECT `.re-button` children; keep the variant UNIFORM within a group.
+ * Toggle members use native `aria-pressed`. Disabled members: `<button disabled>`
+ * or, for links, `<a class="re-button" aria-disabled="true">`.
+ *
+ * Orientation (data-orientation): horizontal (default), vertical.
+ */
+
+@layer re.components {
+  .re-button-group {
+    display: inline-flex;
+  }
+  .re-button-group[data-orientation="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Flatten every member, then round only the group's outer corners. Logical
+     radius longhands → RTL and vertical writing modes mirror automatically. */
+  .re-button-group > .re-button {
+    border-radius: 0;
+  }
+
+  /* ---- Horizontal (default) ------------------------------------------- */
+  .re-button-group:not([data-orientation="vertical"]) > .re-button:first-child {
+    border-start-start-radius: var(--re-radius-md);
+    border-end-start-radius: var(--re-radius-md);
+  }
+  .re-button-group:not([data-orientation="vertical"]) > .re-button:last-child {
+    border-start-end-radius: var(--re-radius-md);
+    border-end-end-radius: var(--re-radius-md);
+  }
+  /* Collapse the shared 1px seam between adjacent members. */
+  .re-button-group:not([data-orientation="vertical"]) > .re-button:not(:first-child) {
+    margin-inline-start: calc(-1 * var(--re-border-width));
+  }
+
+  /* ---- Vertical -------------------------------------------------------- */
+  .re-button-group[data-orientation="vertical"] > .re-button:first-child {
+    border-start-start-radius: var(--re-radius-md);
+    border-start-end-radius: var(--re-radius-md);
+  }
+  .re-button-group[data-orientation="vertical"] > .re-button:last-child {
+    border-end-start-radius: var(--re-radius-md);
+    border-end-end-radius: var(--re-radius-md);
+  }
+  .re-button-group[data-orientation="vertical"] > .re-button:not(:first-child) {
+    margin-block-start: calc(-1 * var(--re-border-width));
+  }
+
+  /* Lift active members so the collapsed seam, the pressed fill, and the focus
+     ring (`--re-shadow-focus`, painted outside the border box) are never drawn
+     under a neighbor. The group sets no `overflow`, so the ring is never
+     clipped. Focus outranks hover/active/pressed. A single-child group matches
+     both :first-child and :last-child, keeping all four outer corners rounded. */
+  .re-button-group > .re-button:hover,
+  .re-button-group > .re-button:active,
+  .re-button-group > .re-button[aria-pressed="true"] {
+    position: relative;
+    z-index: 1;
+  }
+  .re-button-group > .re-button:focus-visible {
+    position: relative;
+    z-index: 2;
+  }
+}

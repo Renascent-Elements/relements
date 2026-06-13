@@ -58,6 +58,9 @@ describe("@relements/core dist", () => {
       "rating.css",
       "otp.css",
       "tags-input.css",
+      "button-group.css",
+      "empty-state.css",
+      "toolbar.css",
     ];
     for (const file of components) {
       expect(existsSync(join(distRoot, "components", file)), file).toBe(true);
@@ -79,6 +82,7 @@ describe("@relements/core dist", () => {
       "otp.js",
       "tags-input.js",
       "rating.js",
+      "toolbar.js",
     ];
     for (const file of behaviors) {
       expect(existsSync(join(distRoot, "behaviors", file)), file).toBe(true);

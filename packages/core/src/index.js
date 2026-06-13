@@ -18,3 +18,4 @@ export { enhanceAutosize } from "./behaviors/autosize.js";
 export { enhanceOtp } from "./behaviors/otp.js";
 export { enhanceTagsInput } from "./behaviors/tags-input.js";
 export { enhanceRating } from "./behaviors/rating.js";
+export { enhanceToolbar } from "./behaviors/toolbar.js";

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Button group</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      /* Standalone-page spacing between stacked groups; not in a demo region,
+         so the docs <Demo> lays them out via .demo__preview's flex gap. */
+      .re-button-group + .re-button-group {
+        margin-block-start: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="button-group">
+    <header>
+      <h1>Button group</h1>
+      <p>Buttons joined into one control — collapsed seams, outer corners only.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-button-group" role="group" aria-label="Text formatting">
+        <button class="re-button" data-variant="secondary" type="button">Bold</button>
+        <button class="re-button" data-variant="secondary" type="button">Italic</button>
+        <button class="re-button" data-variant="secondary" type="button" aria-pressed="true">
+          Underline
+        </button>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="orientation-heading" data-testid="orientation">
+      <h2 id="orientation-heading">Vertical</h2>
+      <!-- demo:start name="orientation" -->
+      <div class="re-button-group" data-orientation="vertical" role="group" aria-label="Alignment">
+        <button class="re-button" data-variant="secondary" type="button">Left</button>
+        <button class="re-button" data-variant="secondary" type="button">Center</button>
+        <button class="re-button" data-variant="secondary" type="button">Right</button>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="links-heading" data-testid="links">
+      <h2 id="links-heading">Link members</h2>
+      <!-- demo:start name="links" -->
+      <div class="re-button-group" role="group" aria-label="Export">
+        <a class="re-button" data-variant="secondary" href="#csv">CSV</a>
+        <a class="re-button" data-variant="secondary" href="#json">JSON</a>
+        <a class="re-button" data-variant="secondary" role="link" aria-disabled="true">PDF</a>
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Empty state</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="empty-state">
+    <header>
+      <h1>Empty state</h1>
+      <p>A centered placeholder for "no data" and "no results".</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-empty-state">
+        <div class="re-empty-state__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" focusable="false">
+            <path
+              d="M3 8.5 6 4h12l3 4.5M3 8.5V19a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8.5M3 8.5h6l1.5 3h3L15 8.5h6"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h3 class="re-empty-state__title">No projects yet</h3>
+        <p class="re-empty-state__description">Create your first project to start tracking work.</p>
+        <div class="re-empty-state__actions">
+          <button class="re-button" data-variant="primary" type="button">New project</button>
+          <a class="re-button" data-variant="secondary" href="#docs">Learn more</a>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="compact-heading" data-testid="compact">
+      <h2 id="compact-heading">Compact</h2>
+      <!-- demo:start name="compact" -->
+      <div class="re-empty-state" data-size="sm">
+        <h3 class="re-empty-state__title">No results</h3>
+        <p class="re-empty-state__description">Try a different search term.</p>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="bordered-heading" data-testid="bordered">
+      <h2 id="bordered-heading">Bordered drop-zone</h2>
+      <!-- demo:start name="bordered" -->
+      <div class="re-empty-state" data-bordered>
+        <div class="re-empty-state__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" focusable="false">
+            <path
+              d="M12 16V4m0 0L8 8m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+        <h3 class="re-empty-state__title">Drop files to upload</h3>
+        <p class="re-empty-state__description">or click to browse from your computer.</p>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="in-table-heading" data-testid="in-table">
+      <h2 id="in-table-heading">In a table</h2>
+      <!-- demo:start name="in-table" -->
+      <table class="re-table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3" class="re-empty-state-cell">
+              <div class="re-empty-state" data-size="sm">
+                <h3 class="re-empty-state__title">No matching rows</h3>
+                <p class="re-empty-state__description">Adjust your filters and try again.</p>
+                <div class="re-empty-state__actions">
+                  <button class="re-button" data-variant="ghost" type="button">
+                    Clear filters
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

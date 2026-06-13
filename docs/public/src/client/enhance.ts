@@ -11,6 +11,7 @@ import {
   enhanceOtp,
   enhanceTagsInput,
   enhanceRating,
+  enhanceToolbar,
   showToast,
 } from "@relements/core";
 
@@ -46,6 +47,10 @@ function init() {
   enhanceOtp(document);
   enhanceTagsInput(document);
   enhanceRating(document);
+  // Toolbar roving-tabindex. Its item filter excludes controls inside a nested
+  // [role=menu] panel, so it composes with the enhanceMenuButton pass above and
+  // doesn't rove into a hosted menu's items.
+  enhanceScoped("[data-re-toolbar]", enhanceToolbar);
 
   // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it
   // for any demo checkbox that opts in with `data-demo-indeterminate`.

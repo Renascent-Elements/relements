@@ -1,0 +1,107 @@
+/**
+ * Relements empty-state.
+ *
+ * A centered placeholder for "no data / no results": an optional decorative
+ * icon, a title, a description, and an optional action area. CSS-only.
+ *
+ *   <div class="re-empty-state">
+ *     <div class="re-empty-state__icon" aria-hidden="true"><svg …></svg></div>
+ *     <h2 class="re-empty-state__title">No projects yet</h2>
+ *     <p class="re-empty-state__description">Create your first project.</p>
+ *     <div class="re-empty-state__actions">
+ *       <button class="re-button" data-variant="primary">New project</button>
+ *     </div>
+ *   </div>
+ *
+ * Author the heading at the right level for the page outline (h2/h3/h4); the
+ * component doesn't force one. The icon slot is decorative — mark it
+ * `aria-hidden="true"` (inner SVG `focusable="false"`). To announce an empty
+ * state that appears after an async update, wrap it in a `role="status"
+ * aria-live="polite"` region that already exists in the DOM before the swap.
+ *
+ * Size (data-size): md (default, generous), sm (compact — cards, table cells).
+ * Variant (data-bordered): dashed drop-zone panel.
+ * In a table-empty cell, put `.re-empty-state-cell` on the <td> so the cell
+ * padding + small table font don't fight the block.
+ */
+
+@layer re.components {
+  .re-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--re-space-4);
+    max-inline-size: 28rem;
+    margin-inline: auto;
+    padding-block: var(--re-space-12);
+    padding-inline: var(--re-space-6);
+    color: inherit;
+
+    --re-empty-state-icon-size: 3rem;
+  }
+
+  .re-empty-state__icon {
+    color: var(--re-color-text-subtle);
+    line-height: 0;
+  }
+  .re-empty-state__icon > svg,
+  .re-empty-state__icon > img {
+    inline-size: var(--re-empty-state-icon-size);
+    block-size: var(--re-empty-state-icon-size);
+  }
+
+  .re-empty-state__title {
+    margin: 0;
+    font-size: var(--re-size-text-2xl);
+    font-weight: var(--re-font-weight-semibold);
+    line-height: var(--re-line-height-snug);
+    color: var(--re-color-text);
+  }
+
+  .re-empty-state__description {
+    margin: 0;
+    max-inline-size: 28rem;
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-muted);
+  }
+
+  .re-empty-state__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--re-space-3);
+  }
+
+  /* ---- Compact (sm) ---------------------------------------------------- */
+  .re-empty-state[data-size="sm"] {
+    gap: var(--re-space-3);
+    padding-block: var(--re-space-6);
+    padding-inline: var(--re-space-4);
+    max-inline-size: 22rem;
+
+    --re-empty-state-icon-size: 2rem;
+  }
+  .re-empty-state[data-size="sm"] .re-empty-state__title {
+    font-size: var(--re-size-text-lg);
+  }
+  .re-empty-state[data-size="sm"] .re-empty-state__description {
+    font-size: var(--re-size-text-sm);
+  }
+
+  /* ---- Bordered drop-zone panel ---------------------------------------- */
+  .re-empty-state[data-bordered] {
+    border: var(--re-border-width) dashed var(--re-color-border);
+    border-radius: var(--re-radius-lg);
+  }
+
+  /* In a table-empty cell: drop the cell's own padding + small table font so
+     the empty-state owns its spacing and type instead of inheriting them. The
+     `td` type selector matches `.re-table td`'s specificity (0,1,1) and wins by
+     source order (this file imports after table.css). */
+  td.re-empty-state-cell {
+    padding: 0;
+    font-size: var(--re-size-text-md);
+  }
+}

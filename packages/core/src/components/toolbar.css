@@ -1,0 +1,90 @@
+/**
+ * Relements toolbar.
+ *
+ * The ARIA toolbar pattern: a band that groups related controls (buttons,
+ * toggle buttons, a hosted menu, vertical separators). There is no native
+ * toolbar element, so the markup is a container with `role="toolbar"` + an
+ * accessible name. With ZERO JavaScript every control is a native button, so
+ * the toolbar is simply one Tab stop per control. The optional `enhanceToolbar`
+ * upgrades it to the APG single-Tab-stop + arrow-key roving model.
+ *
+ *   <div class="re-toolbar" role="toolbar" aria-label="Text formatting" data-re-toolbar>
+ *     <div class="re-toolbar__group" role="group" aria-label="Style">
+ *       <button class="re-button" data-variant="ghost" data-size="sm" aria-pressed="true">…</button>
+ *       …
+ *     </div>
+ *     <div class="re-separator" role="separator" aria-orientation="vertical"
+ *          data-orientation="vertical"></div>
+ *     …
+ *   </div>
+ *
+ * For genuinely attached, bordered clusters use the `.re-button-group`
+ * component inside the toolbar; `.re-toolbar__group` is a pure semantic
+ * grouping with a tighter gap.
+ *
+ * Orientation (data-orientation): horizontal (default), vertical.
+ * Layout (data-wrap): allow the band to wrap onto multiple rows.
+ */
+
+@layer re.components {
+  .re-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: var(--re-space-1);
+    /* 8px clears each button's focus ring (offset 2px + 2px) inside the band. */
+    padding: var(--re-space-2);
+    background-color: var(--re-color-surface);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+  }
+  .re-toolbar[data-orientation="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+    /* Shrink-wrap to the widest control so it reads as a narrow tool palette,
+       not a full-width band; align-items:stretch then equalizes the buttons. */
+    inline-size: fit-content;
+  }
+  .re-toolbar[data-wrap] {
+    flex-wrap: wrap;
+    row-gap: var(--re-space-1);
+  }
+
+  /* Semantic cluster — tighter gap, no border-collapse (that's button-group). */
+  .re-toolbar__group {
+    display: inline-flex;
+    align-items: inherit;
+    gap: var(--re-space-1);
+  }
+
+  /* Lift active members so a ring at the band edge or between grouped buttons
+     is never cramped or painted under a neighbor (focus outranks the rest). */
+  .re-toolbar .re-button:hover,
+  .re-toolbar .re-button:active,
+  .re-toolbar .re-button[aria-pressed="true"] {
+    position: relative;
+    z-index: 1;
+  }
+  .re-toolbar .re-button:focus-visible {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* A vertical toolbar flips its dividers to the block axis. Scoped to the
+     toolbar so standalone `.re-separator[data-orientation="vertical"]` is
+     untouched. */
+  .re-toolbar[data-orientation="vertical"] > .re-separator[data-orientation="vertical"] {
+    align-self: stretch;
+    inline-size: auto;
+    min-block-size: 0;
+    margin-block: var(--re-space-1);
+    margin-inline: 0;
+    border-inline-start: 0;
+    border-block-start: var(--re-border-default);
+  }
+
+  /* A full-height divider looks detached once items wrap onto new rows. */
+  .re-toolbar[data-wrap] > .re-separator[data-orientation="vertical"] {
+    display: none;
+  }
+}

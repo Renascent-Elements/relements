@@ -1,0 +1,52 @@
+---
+title: Toolbar
+description: A band of related controls with arrow-key roving.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A toolbar groups related controls into a band with one Tab stop: Arrow keys move
+focus between controls, Home/End jump to the ends. The markup is a container with
+`role="toolbar"` and an accessible name. **With zero JavaScript** every control
+is a native button, so the toolbar is just N Tab stops — `enhanceToolbar` upgrades
+it to the single-Tab-stop roving model.
+
+```js
+import { enhanceToolbar } from "@relements/core/behaviors/toolbar";
+const c = enhanceToolbar(document);
+c.destroy(); // restores N native Tab stops
+```
+
+## Basic
+
+Group related controls with `.re-toolbar__group` (`role="group"`) and divide them
+with a vertical `.re-separator`. A hosted menu uses the normal `.re-menu` markup —
+its trigger is a single toolbar item, and while the menu is open it governs its
+own keys.
+
+<Demo src="toolbar.html" name="basic" />
+
+## Vertical
+
+`data-orientation="vertical"` lays the band out as a column (Up/Down arrows roam)
+and sets `aria-orientation="vertical"`.
+
+<Demo src="toolbar.html" name="vertical" />
+
+## Wrapping
+
+`data-wrap` lets a long toolbar flow onto multiple rows; arrow navigation stays
+DOM-order linear and the single Tab stop is preserved.
+
+<Demo src="toolbar.html" name="wrap" />
+
+## Notes
+
+- Discoverable-but-disabled controls use `aria-disabled="true"` (they stay in the
+  roving order); native `disabled` controls are skipped. `aria-disabled` only
+  suppresses pointer activation via CSS — a real `<button>` still fires on
+  Enter/Space, so gate the action in your handler
+  (`if (el.getAttribute("aria-disabled") === "true") return`).
+- Arrow keys mirror in RTL (Right = previous, Left = next).
+- For attached, bordered button clusters use the
+  [Button group](/relements/components/button-group/) component.
