@@ -6,14 +6,15 @@ description: A single native one-time-code input, styled segmented.
 import Demo from "../../../components/Demo.astro";
 
 A one-time-code field is a **single** native `<input>` styled to look segmented —
-wrap it in `.re-otp-field` (which draws the cell dividers and owns the focus
-ring) and add `.re-otp` to the input. Keeping it one input means native paste,
-mobile SMS autofill (`autocomplete="one-time-code"`), IME, and form submission
-all just work, with no JavaScript. N separate cells would break all of those.
+wrap it in `.re-otp-field` (which is the visible box: it draws the cell dividers
+and owns the border + focus ring) and add `.re-otp` to the input. Keeping it one
+input means native paste, mobile SMS autofill (`autocomplete="one-time-code"`),
+IME, and form submission all just work, with no JavaScript. N separate cells
+would break all of those.
 
 Set the cell count with `--re-otp-length` on the wrapper and `maxlength` on the
-input; `pattern` (e.g. `[0-9]{6}`) is the submit-time guard. Characters are
-left-biased within each cell — a single input can't truly center per-cell.
+input; `pattern` (e.g. `[0-9]{6}`) is the submit-time guard. Every cell is the
+same width and each digit is centered in its cell.
 
 ## Basic
 
