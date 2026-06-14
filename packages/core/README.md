@@ -41,7 +41,9 @@ pnpm add @relements/core
 // Full bundle
 import "@relements/core/index.css";
 
-// Or import only what you use
+// Or import only what you use — tokens.css is REQUIRED first
+// (every component reads --re-* custom properties from it)
+import "@relements/core/tokens.css";
 import "@relements/core/components/button.css";
 import "@relements/core/components/form.css";
 
@@ -90,17 +92,17 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Feedback & status
 
-| Class              | Element            | Variants / options                                                                                                                                                                 |
-| ------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.re-alert`        | `<div>` + `role`   | `data-variant`: info, success, warning, danger; dismissible                                                                                                                        |
-| `.re-banner`       | `<aside>` + `role` | full-bleed announcement strip; `data-variant`: info, success, warning, danger; `data-emphasis="solid"`; `data-sticky`; `data-align="center"`; dismissible via `enhanceDismissible` |
-| `.re-badge`        | `<span>`           | `data-variant`: neutral, info, success, warning, danger                                                                                                                            |
-| `.re-tag`          | `<span>`           | `data-variant`: neutral, info, success, warning, danger; removable                                                                                                                 |
-| `.re-progress`     | `<progress>`       | `data-size`: sm, md, lg                                                                                                                                                            |
-| `.re-meter`        | `<meter>`          | `data-size`: sm, md, lg                                                                                                                                                            |
-| `.re-spinner`      | `<span>`           | `data-size`: sm, md, lg                                                                                                                                                            |
-| `.re-skeleton`     | `<span>`           | `data-shape`: text, circle                                                                                                                                                         |
-| `.re-toast-region` | live region host   | pairs with `showToast`                                                                                                                                                             |
+| Class              | Element            | Variants / options                                                                                                                                                              |
+| ------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.re-alert`        | `<div>` + `role`   | `data-tone`: info, success, warning, danger; dismissible                                                                                                                        |
+| `.re-banner`       | `<aside>` + `role` | full-bleed announcement strip; `data-tone`: info, success, warning, danger; `data-emphasis="solid"`; `data-sticky`; `data-align="center"`; dismissible via `enhanceDismissible` |
+| `.re-badge`        | `<span>`           | `data-tone`: neutral, info, success, warning, danger                                                                                                                            |
+| `.re-tag`          | `<span>`           | `data-tone`: neutral, info, success, warning, danger; removable                                                                                                                 |
+| `.re-progress`     | `<progress>`       | `data-size`: sm, md, lg                                                                                                                                                         |
+| `.re-meter`        | `<meter>`          | `data-size`: sm, md, lg                                                                                                                                                         |
+| `.re-spinner`      | `<span>`           | `data-size`: sm, md, lg                                                                                                                                                         |
+| `.re-skeleton`     | `<span>`           | `data-shape`: text, circle                                                                                                                                                      |
+| `.re-toast-region` | live region host   | pairs with `showToast`                                                                                                                                                          |
 
 ### Overlays
 

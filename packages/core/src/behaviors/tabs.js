@@ -13,9 +13,9 @@
  *   </div>
  *
  * Keyboard:
- *   ArrowLeft / ArrowRight — move focus across tabs (roving tabindex)
- *   Home / End             — jump to first / last
- *   Enter / Space          — activate focused tab (manual activation)
+ *   ArrowLeft / ArrowRight — move focus AND activate (automatic activation)
+ *   Home / End             — jump to first / last (and activate)
+ *   Enter / Space          — activate the focused tab
  *
  * Dispatches `re-change` (bubbles, cancelable) on the host `[data-re-tabs]`
  * with `detail = { tabId, panelId }` whenever the selected tab changes.

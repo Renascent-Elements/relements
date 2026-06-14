@@ -60,7 +60,9 @@
   }
   .re-toast__dismiss:hover {
     color: var(--re-color-text);
-    background: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle collapses to surface in dark, making
+       the hover invisible against the toast surface. */
+    background: var(--re-color-bg-muted);
   }
   .re-toast__dismiss:focus-visible {
     outline: none;

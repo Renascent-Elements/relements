@@ -12,7 +12,7 @@
  *       aria-label="Remove Filter">×</button>
  *   </span>
  *
- * Variants (data-variant): neutral (default), info, success, warning, danger.
+ * Variants (data-tone): neutral (default), info, success, warning, danger.
  */
 
 @layer re.components {
@@ -57,22 +57,22 @@
   }
 
   /* ---- Variants -------------------------------------------------------- */
-  .re-tag[data-variant="info"] {
+  .re-tag[data-tone="info"] {
     border-color: var(--re-color-info-border);
     background-color: var(--re-color-info-surface);
     color: var(--re-color-info-text);
   }
-  .re-tag[data-variant="success"] {
+  .re-tag[data-tone="success"] {
     border-color: var(--re-color-success-border);
     background-color: var(--re-color-success-surface);
     color: var(--re-color-success-text);
   }
-  .re-tag[data-variant="warning"] {
+  .re-tag[data-tone="warning"] {
     border-color: var(--re-color-warning-border);
     background-color: var(--re-color-warning-surface);
     color: var(--re-color-warning-text);
   }
-  .re-tag[data-variant="danger"] {
+  .re-tag[data-tone="danger"] {
     border-color: var(--re-color-danger-border);
     background-color: var(--re-color-danger-surface);
     color: var(--re-color-danger-text);

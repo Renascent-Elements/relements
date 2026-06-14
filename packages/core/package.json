@@ -30,14 +30,14 @@
     "src/elements/*.js"
   ],
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./package.json": "./package.json",
     "./index.css": "./dist/index.css",
     "./tokens.css": "./dist/tokens.css",
     "./reset.css": "./dist/reset.css",

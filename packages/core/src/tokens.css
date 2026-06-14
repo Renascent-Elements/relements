@@ -64,10 +64,8 @@
     --re-color-text-muted: var(--re-color-neutral-600);
     --re-color-text-subtle: var(--re-color-neutral-500);
     --re-color-text-on-accent: var(--re-color-neutral-0);
-    --re-color-text-danger: var(--re-color-danger-700);
     --re-color-border: var(--re-color-neutral-200);
     --re-color-border-strong: var(--re-color-neutral-300);
-    --re-color-border-danger: var(--re-color-danger-500);
     --re-color-link: var(--re-color-accent-700);
     --re-color-link-hover: var(--re-color-accent-800);
     --re-color-link-visited: var(--re-color-accent-800);
@@ -159,7 +157,7 @@
     --re-border-width-strong: 2px;
     --re-border-default: var(--re-border-width) solid var(--re-color-border);
     --re-border-strong: var(--re-border-width-strong) solid var(--re-color-border-strong);
-    --re-border-danger: var(--re-border-width) solid var(--re-color-border-danger);
+    --re-border-danger: var(--re-border-width) solid var(--re-color-danger-border);
 
     /* ----- Focus ring -------------------------------------------------- */
     --re-focus-ring-width: 2px;
@@ -210,7 +208,6 @@
       --re-color-text-muted: var(--re-color-neutral-300);
       --re-color-text-subtle: var(--re-color-neutral-400);
       --re-color-text-on-accent: var(--re-color-neutral-0);
-      --re-color-text-danger: var(--re-color-danger-500);
       --re-color-border: var(--re-color-neutral-700);
       --re-color-border-strong: var(--re-color-neutral-600);
       --re-color-link: var(--re-color-accent-300);

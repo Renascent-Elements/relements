@@ -33,10 +33,8 @@
   --re-rn-dark-text: #f8fafc;
   --re-rn-dark-text-muted: #97a3b4;
   --re-rn-dark-text-subtle: #6b7a90;
-  --re-rn-dark-text-danger: #f87171;
   --re-rn-dark-border: #29303d;
   --re-rn-dark-border-strong: #353d4d;
-  --re-rn-dark-border-danger: #ef4444;
   --re-rn-dark-link: #3c83f6;
   --re-rn-dark-link-hover: #60a5fa;
   --re-rn-dark-link-visited: #a78bfa;
@@ -69,10 +67,8 @@
   --re-rn-light-text: #0f131a;
   --re-rn-light-text-muted: #475569;
   --re-rn-light-text-subtle: #64748b;
-  --re-rn-light-text-danger: #b91c1c;
   --re-rn-light-border: #d7dfea;
   --re-rn-light-border-strong: #c0cad9;
-  --re-rn-light-border-danger: #dc2626;
   --re-rn-light-link: #2563eb;
   --re-rn-light-link-hover: #1d4ed8;
   --re-rn-light-link-visited: #7c3aed;
@@ -193,10 +189,8 @@
   --re-color-selection-text: var(--re-rn-dark-selection-text);
 
   /* ----- Text danger for validation messages ---------------- */
-  --re-color-text-danger: var(--re-rn-dark-text-danger); /* lighter red for dark backgrounds */
 
   /* ----- Border danger -------------------------------------- */
-  --re-color-border-danger: var(--re-rn-dark-border-danger);
 }
 
 /* ============================================================
@@ -242,8 +236,6 @@
   --re-color-link-hover: var(--re-rn-dark-link-hover);
   --re-color-focus-ring: #3c83f6;
   --re-color-text-on-accent: #ffffff;
-  --re-color-text-danger: var(--re-rn-dark-text-danger);
-  --re-color-border-danger: var(--re-rn-dark-border-danger);
   --re-color-success-500: #2fe9d0;
   --re-color-success-600: #0fd4bb;
   --re-color-success-700: #0ab8a2;
@@ -290,10 +282,8 @@
     --re-color-accent-600: var(--re-rn-light-accent-600);
     --re-color-accent-700: var(--re-rn-light-accent-700);
     --re-color-accent-800: var(--re-rn-light-accent-800);
-    --re-color-text-danger: var(--re-rn-light-text-danger);
     --re-color-border: var(--re-rn-light-border);
     --re-color-border-strong: var(--re-rn-light-border-strong);
-    --re-color-border-danger: var(--re-rn-light-border-danger);
     --re-color-link: var(--re-rn-light-link);
     --re-color-link-hover: var(--re-rn-light-link-hover);
     --re-color-link-visited: var(--re-rn-light-link-visited);
@@ -331,10 +321,8 @@
   --re-color-accent-600: var(--re-rn-light-accent-600);
   --re-color-accent-700: var(--re-rn-light-accent-700);
   --re-color-accent-800: var(--re-rn-light-accent-800);
-  --re-color-text-danger: var(--re-rn-light-text-danger);
   --re-color-border: var(--re-rn-light-border);
   --re-color-border-strong: var(--re-rn-light-border-strong);
-  --re-color-border-danger: var(--re-rn-light-border-danger);
   --re-color-link: var(--re-rn-light-link);
   --re-color-link-hover: var(--re-rn-light-link-hover);
   --re-color-link-visited: var(--re-rn-light-link-visited);

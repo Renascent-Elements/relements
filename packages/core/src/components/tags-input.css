@@ -62,7 +62,7 @@
 
   /* Invalid (e.g. max reached) — JS sets [data-invalid]; mirror form.css. */
   .re-tags-input[data-invalid] {
-    border-color: var(--re-color-border-danger);
+    border-color: var(--re-color-danger-border);
   }
   .re-tags-input[data-invalid]:focus-within {
     box-shadow:
