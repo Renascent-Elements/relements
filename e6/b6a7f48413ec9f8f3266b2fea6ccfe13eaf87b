@@ -1,0 +1,47 @@
+tests/visual/toast.visual.spec.ts
+  s_2732c4df70b865::t_441028efdd3c0f 21-36
+tests/visual/badge.visual.spec.ts
+  s_2732c4df70b865::t_34f8337f5cd603 12-22
+tests/visual/card.visual.spec.ts
+  s_2732c4df70b865::t_9d746712120bee 12-22
+.changeset/conformance-dark-scrim.md
+  s_2732c4df70b865::t_f687f852af0d3d 1-8
+tests/visual/alert.visual.spec.ts
+  s_2732c4df70b865::t_9556bc53c820be 12-22
+packages/core/src/tokens.css
+  s_2732c4df70b865::t_c07c51ac51b864 63
+tests/visual/tag.visual.spec.ts
+  s_2732c4df70b865::t_71ac6e9b4bbe06 12-22
+tests/visual/popover.visual.spec.ts
+  s_2732c4df70b865::t_934b35441dd297 20-31
+tests/visual/table.visual.spec.ts
+  s_2732c4df70b865::t_624b921b0f7c44 35-37
+  s_2732c4df70b865::t_2235e913e7fd53 28-34,38-42
+packages/core/src/components/dialog.css
+  s_2732c4df70b865::t_b93eb1c7d91ef2 50-51
+packages/core/README.md
+  s_2732c4df70b865::t_faf7a4e0eb5dc1 233-240,242-243
+  s_2732c4df70b865::t_beba357411a5a3 241
+tests/visual/combobox.visual.spec.ts
+  s_2732c4df70b865::t_d3ce507aebebc7 31-44
+tests/visual/dialog.visual.spec.ts
+  s_2732c4df70b865::t_e518c59aab6e29 20-31
+tests/visual/tabs.visual.spec.ts
+  s_2732c4df70b865::t_9913c2069833ad 19-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e6b6a7f48413ec9f8f3266b2fea6ccfe13eaf87b",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
