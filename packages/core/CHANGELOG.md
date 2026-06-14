@@ -1,5 +1,11 @@
 # @relements/core
 
+## 0.14.1
+
+### Patch Changes
+
+- [#52](https://github.com/Renascent-Elements/relements/pull/52) [`7049612`](https://github.com/Renascent-Elements/relements/commit/70496128ce0b1de74d16b2b6442969b60981d3d2) Thanks [@cstuncsik](https://github.com/cstuncsik)! - `enhanceCommandPalette`: the global hotkey now claims its combo. When the configured `data-re-command-hotkey` matches it also `stopPropagation()`s, so the keystroke doesn't bubble to a page-level `⌘K` search bound on `window`/`document` (e.g. a docs-site search) and open two things at once. The palette listens on `document`, which runs before any `window` listener in the bubble phase, so it reliably wins.
+
 ## 0.14.0
 
 ### Minor Changes
