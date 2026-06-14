@@ -1,5 +1,13 @@
 # @relements/core
 
+## 0.16.0
+
+### Minor Changes
+
+- [#56](https://github.com/Renascent-Elements/relements/pull/56) [`f222381`](https://github.com/Renascent-Elements/relements/commit/f2223817f415f0e5c5f96c1f40347e4cf510759f) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Conformance hardening (1/2) — dark-mode coverage + a themeable modal scrim.
+  - **New `--re-color-overlay` token** for the modal scrim. `dialog`/`drawer` `::backdrop` now reads it instead of a hardcoded `rgb(0 0 0 / 0.4)` literal, so the backdrop is themeable like everything else (value unchanged — purely additive).
+  - **Dark-mode visual baselines** added for the components that consume the risky dark tokens (status tints, surfaces, selected/active states) and previously had light-only coverage: alert, badge, tag, toast, card, table, dialog, popover, combobox, tabs. This locks in the documented dark-token behavior (e.g. status-surface remaps, the `bg-muted` vs `bg-subtle` hover distinction) so a dark regression now fails CI instead of shipping silently. No API or runtime change.
+
 ## 0.15.0
 
 ### Minor Changes
