@@ -18,7 +18,10 @@ enhanceCommandPalette(document);
 ```
 
 Open it with a `data-re-dialog-trigger` button or the `data-re-command-hotkey`
-shortcut (e.g. `"mod+k"` — `mod` is ⌘ on macOS, Ctrl elsewhere).
+shortcut (e.g. `"mod+k"` — `mod` is ⌘ on macOS, Ctrl elsewhere). The hotkey
+**claims the combo**: it stops the keystroke from bubbling to page-level handlers,
+so a site-wide ⌘K search won't also fire. (On this docs page, that's why ⌘K opens
+the demo rather than the site search — use `/` for search here.)
 
 ## Basic
 

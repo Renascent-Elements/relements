@@ -275,6 +275,11 @@ function wireOne(dialog) {
         if (a instanceof HTMLElement && a.isContentEditable) return;
       }
       event.preventDefault();
+      // Claim the combo: stop it bubbling to ancestor/window-level handlers so a
+      // page-wide ⌘K search (e.g. the docs site's Pagefind, or any app search
+      // bound on window) doesn't ALSO fire. We listen on `document`, which in the
+      // bubble phase runs before any `window` listener, so this reliably wins.
+      event.stopPropagation();
       if (!dialog.open) dialog.showModal();
     };
     doc.addEventListener("keydown", onHotkey);
