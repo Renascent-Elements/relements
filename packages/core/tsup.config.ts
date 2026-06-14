@@ -16,6 +16,7 @@ export default defineConfig({
     "behaviors/otp": "src/behaviors/otp.js",
     "behaviors/tags-input": "src/behaviors/tags-input.js",
     "behaviors/rating": "src/behaviors/rating.js",
+    "behaviors/toolbar": "src/behaviors/toolbar.js",
     "elements/re-tabs": "src/elements/re-tabs.js",
     "elements/re-toast": "src/elements/re-toast.js",
     "elements/re-menu": "src/elements/re-menu.js",

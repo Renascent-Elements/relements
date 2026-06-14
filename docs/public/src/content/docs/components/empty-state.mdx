@@ -1,0 +1,43 @@
+---
+title: Empty state
+description: A centered placeholder for "no data" and "no results".
+---
+
+import Demo from "../../../components/Demo.astro";
+
+An empty state is a centered placeholder for "nothing here yet" or "no results":
+an optional decorative icon, a title, a description, and an optional action area.
+CSS-only.
+
+Author the title at the right heading level for the page outline (the component
+doesn't force one). Mark the icon slot `aria-hidden="true"` — it's decorative.
+
+## Basic
+
+<Demo src="empty-state.html" name="basic" />
+
+## Compact
+
+`data-size="sm"` shrinks the padding, icon and type for cards and table cells.
+
+<Demo src="empty-state.html" name="compact" />
+
+## Bordered drop-zone
+
+`data-bordered` adds a dashed panel border — handy for upload affordances.
+
+<Demo src="empty-state.html" name="bordered" />
+
+## In a table
+
+Put `.re-empty-state-cell` on the `<td>` so the cell's own padding and small
+table font don't fight the block.
+
+<Demo src="empty-state.html" name="in-table" />
+
+## Notes
+
+- Vertical rhythm is `gap`-only, so omitting the icon or actions reflows cleanly.
+- To announce an empty state that appears after an async update, wrap it in a
+  `role="status" aria-live="polite"` region that already exists in the DOM
+  **before** the content swaps in.

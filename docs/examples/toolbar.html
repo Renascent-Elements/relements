@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Toolbar</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="toolbar">
+    <header>
+      <h1>Toolbar</h1>
+      <p>A band of related controls with arrow-key roving (one Tab stop).</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-toolbar" role="toolbar" aria-label="Text formatting" data-re-toolbar>
+        <div class="re-toolbar__group" role="group" aria-label="Style">
+          <button
+            class="re-button"
+            data-variant="ghost"
+            data-size="sm"
+            type="button"
+            aria-pressed="true"
+            aria-label="Bold"
+          >
+            B
+          </button>
+          <button
+            class="re-button"
+            data-variant="ghost"
+            data-size="sm"
+            type="button"
+            aria-pressed="false"
+            aria-label="Italic"
+          >
+            I
+          </button>
+          <button
+            class="re-button"
+            data-variant="ghost"
+            data-size="sm"
+            type="button"
+            aria-pressed="false"
+            aria-label="Underline"
+          >
+            U
+          </button>
+        </div>
+
+        <div
+          class="re-separator"
+          role="separator"
+          aria-orientation="vertical"
+          data-orientation="vertical"
+        ></div>
+
+        <div class="re-toolbar__group" role="group" aria-label="Align">
+          <button class="re-button" data-variant="ghost" data-size="sm" type="button">Left</button>
+          <button
+            class="re-button"
+            data-variant="ghost"
+            data-size="sm"
+            type="button"
+            aria-disabled="true"
+          >
+            Center
+          </button>
+        </div>
+
+        <div
+          class="re-separator"
+          role="separator"
+          aria-orientation="vertical"
+          data-orientation="vertical"
+        ></div>
+
+        <div class="re-menu" data-re-menu>
+          <button
+            class="re-button"
+            data-variant="ghost"
+            data-size="sm"
+            type="button"
+            id="tb-more-btn"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="tb-more"
+          >
+            More
+          </button>
+          <div class="re-menu__panel" role="menu" id="tb-more" aria-labelledby="tb-more-btn" hidden>
+            <button class="re-menu__item" role="menuitem" type="button">Clear formatting</button>
+            <button class="re-menu__item" role="menuitem" type="button">Insert link…</button>
+          </div>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="vertical-heading" data-testid="vertical">
+      <h2 id="vertical-heading">Vertical</h2>
+      <!-- demo:start name="vertical" -->
+      <div
+        class="re-toolbar"
+        role="toolbar"
+        aria-label="Drawing tools"
+        data-orientation="vertical"
+        data-re-toolbar
+      >
+        <button
+          class="re-button"
+          data-variant="ghost"
+          data-size="sm"
+          type="button"
+          aria-pressed="true"
+        >
+          Select
+        </button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Pen</button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Erase</button>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="wrap-heading" data-testid="wrap">
+      <h2 id="wrap-heading">Wrapping</h2>
+      <!-- demo:start name="wrap" -->
+      <div
+        class="re-toolbar"
+        role="toolbar"
+        aria-label="Many actions"
+        data-wrap
+        data-re-toolbar
+        style="max-inline-size: 18rem"
+      >
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Cut</button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Copy</button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Paste</button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Undo</button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Redo</button>
+        <button class="re-button" data-variant="ghost" data-size="sm" type="button">Delete</button>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceToolbar } from "/packages/core/src/behaviors/toolbar.js";
+      import { enhanceMenuButton } from "/packages/core/src/behaviors/menu-button.js";
+      window.__reController = enhanceToolbar(document);
+      enhanceMenuButton(document);
+    </script>
+  </body>
+</html>

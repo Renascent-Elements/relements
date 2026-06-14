@@ -1,0 +1,41 @@
+---
+title: Button group
+description: Buttons joined into a single control with collapsed seams.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A button group joins related `.re-button`s into one control: the inner seams
+collapse to a single hairline and only the group's outer corners stay rounded.
+It's CSS-only — wrap the buttons in `.re-button-group` with `role="group"` and
+an accessible name.
+
+Members must be **direct** `.re-button` children and share a **uniform
+variant**. Toggle members use native `aria-pressed`; disabled members use
+`<button disabled>` or, for links, `<a class="re-button" aria-disabled="true">`.
+
+## Basic
+
+<Demo src="button-group.html" name="basic" />
+
+## Vertical
+
+Add `data-orientation="vertical"` to stack the members; the collapse and corner
+rounding move to the block axis and `align-items: stretch` equalizes the widths.
+
+<Demo src="button-group.html" name="orientation" />
+
+## Link members
+
+Any `.re-button` element works — including `<a>`. A disabled link uses
+`aria-disabled="true"` (it stays keyboard-focusable).
+
+<Demo src="button-group.html" name="links" />
+
+## Notes
+
+- For a band of unrelated controls with arrow-key roving, use the
+  [Toolbar](/relements/components/toolbar/) instead.
+- The group sets no `overflow`, so a focused member's ring is never clipped; the
+  focused member lifts above its neighbors via `z-index`.
+- Everything is logical-property based, so it mirrors correctly in RTL.

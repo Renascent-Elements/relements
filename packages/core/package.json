@@ -77,6 +77,9 @@
     "./components/rating.css": "./dist/components/rating.css",
     "./components/otp.css": "./dist/components/otp.css",
     "./components/tags-input.css": "./dist/components/tags-input.css",
+    "./components/button-group.css": "./dist/components/button-group.css",
+    "./components/empty-state.css": "./dist/components/empty-state.css",
+    "./components/toolbar.css": "./dist/components/toolbar.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
@@ -129,6 +132,10 @@
     "./behaviors/rating": {
       "import": "./dist/behaviors/rating.js",
       "types": "./dist/behaviors/rating.d.ts"
+    },
+    "./behaviors/toolbar": {
+      "import": "./dist/behaviors/toolbar.js",
+      "types": "./dist/behaviors/toolbar.d.ts"
     },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",
