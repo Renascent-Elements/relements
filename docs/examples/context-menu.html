@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Context menu</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .re-context-region {
+        display: grid;
+        place-items: center;
+        min-block-size: 8rem;
+        padding: var(--re-space-6);
+        border: var(--re-border-width) dashed var(--re-color-border);
+        border-radius: var(--re-radius-md);
+        color: var(--re-color-text-muted);
+        text-align: center;
+      }
+      .re-context-region:focus-visible {
+        outline: none;
+        box-shadow: var(--re-shadow-focus);
+      }
+    </style>
+  </head>
+  <body data-page="context-menu">
+    <header>
+      <h1>Context menu</h1>
+      <p>A right-click menu (also ContextMenu key / Shift+F10).</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-context-region" data-re-context-menu="ctx-1" tabindex="0">
+        Right-click (or focus + press the Menu key / Shift+F10) anywhere in this region.
+      </div>
+
+      <div
+        id="ctx-1"
+        class="re-menu__panel re-context-menu__panel"
+        role="menu"
+        aria-label="Row actions"
+        hidden
+      >
+        <button class="re-menu__item" role="menuitem" type="button" data-value="open">Open</button>
+        <button class="re-menu__item" role="menuitem" type="button" data-value="rename">
+          Rename
+        </button>
+        <button class="re-menu__item" role="menuitem" type="button" data-value="duplicate">
+          Duplicate
+        </button>
+        <div class="re-menu__separator" role="separator"></div>
+        <button class="re-menu__item" role="menuitem" type="button" data-value="delete">
+          Delete
+        </button>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceContextMenu } from "/packages/core/src/behaviors/context-menu.js";
+      window.__reController = enhanceContextMenu(document);
+    </script>
+  </body>
+</html>

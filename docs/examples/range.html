@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Range</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="range">
+    <header>
+      <h1>Range</h1>
+      <p>A two-thumb min–max slider built from two native range inputs.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <fieldset
+        class="re-range"
+        data-re-range
+        style="--re-range-fill-start: 20%; --re-range-fill-end: 70%"
+      >
+        <legend class="re-field__label">Price range</legend>
+        <div class="re-range__track">
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-min
+            min="0"
+            max="1000"
+            step="10"
+            value="200"
+            aria-label="Minimum price"
+            name="price-min"
+          />
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-max
+            min="0"
+            max="1000"
+            step="10"
+            value="700"
+            aria-label="Maximum price"
+            name="price-max"
+          />
+        </div>
+        <output class="re-range__output" aria-hidden="true">200 – 700</output>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <fieldset
+        class="re-range"
+        data-size="sm"
+        data-re-range
+        style="--re-range-fill-start: 30%; --re-range-fill-end: 60%"
+      >
+        <legend class="re-field__label">Small</legend>
+        <div class="re-range__track">
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-min
+            min="0"
+            max="100"
+            value="30"
+            aria-label="Small minimum"
+          />
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-max
+            min="0"
+            max="100"
+            value="60"
+            aria-label="Small maximum"
+          />
+        </div>
+      </fieldset>
+      <fieldset
+        class="re-range"
+        data-size="lg"
+        data-re-range
+        style="--re-range-fill-start: 10%; --re-range-fill-end: 50%"
+      >
+        <legend class="re-field__label">Large</legend>
+        <div class="re-range__track">
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-min
+            min="0"
+            max="100"
+            value="10"
+            aria-label="Large minimum"
+          />
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-max
+            min="0"
+            max="100"
+            value="50"
+            aria-label="Large maximum"
+          />
+        </div>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="disabled-heading" data-testid="disabled">
+      <h2 id="disabled-heading">Disabled</h2>
+      <!-- demo:start name="disabled" -->
+      <fieldset
+        class="re-range"
+        data-re-range
+        disabled
+        style="--re-range-fill-start: 25%; --re-range-fill-end: 75%"
+      >
+        <legend class="re-field__label">Unavailable</legend>
+        <div class="re-range__track">
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-min
+            min="0"
+            max="100"
+            value="25"
+            aria-label="Disabled minimum"
+          />
+          <input
+            type="range"
+            class="re-slider re-range__input"
+            data-re-range-max
+            min="0"
+            max="100"
+            value="75"
+            aria-label="Disabled maximum"
+          />
+        </div>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceRange } from "/packages/core/src/behaviors/range.js";
+      window.__reController = enhanceRange(document);
+    </script>
+  </body>
+</html>

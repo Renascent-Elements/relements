@@ -12,6 +12,9 @@ import {
   enhanceTagsInput,
   enhanceRating,
   enhanceToolbar,
+  enhanceRange,
+  enhanceContextMenu,
+  enhanceCommandPalette,
   showToast,
 } from "@relements/core";
 
@@ -51,6 +54,9 @@ function init() {
   // [role=menu] panel, so it composes with the enhanceMenuButton pass above and
   // doesn't rove into a hosted menu's items.
   enhanceScoped("[data-re-toolbar]", enhanceToolbar);
+  enhanceRange(document);
+  enhanceScoped("[data-re-context-menu]", enhanceContextMenu);
+  enhanceCommandPalette(document);
 
   // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it
   // for any demo checkbox that opts in with `data-demo-indeterminate`.

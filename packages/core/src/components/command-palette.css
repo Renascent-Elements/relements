@@ -1,0 +1,149 @@
+/**
+ * Relements command palette.
+ *
+ * A modal launcher (⌘K) — a search input over a filterable, groupable list of
+ * commands/links. The modal shell IS a native <dialog class="re-dialog
+ * re-command-palette"> driven by the existing enhanceDialog (open/close/trap/
+ * backdrop/Escape). enhanceCommandPalette adds the combobox/listbox ARIA, the
+ * type-to-filter, arrow navigation and the optional global hotkey. With no JS
+ * it degrades to a dialog with a searchable list of real links/buttons.
+ *
+ * This file only resizes/top-anchors the dialog and lays out its search/list/
+ * footer slots; everything else (surface, backdrop, focus reset, closed-hide)
+ * is inherited from .re-dialog.
+ */
+
+@layer re.components {
+  .re-command-palette {
+    inline-size: min(92vw, 40rem);
+    max-block-size: min(70vh, 36rem);
+    /* Top-anchored (launcher convention) rather than vertically centered. */
+    margin: 12vh auto auto;
+  }
+
+  /* ---- Search header ------------------------------------------------- */
+  .re-command-palette__search {
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-2);
+    padding: var(--re-space-3) var(--re-space-4);
+    border-block-end: var(--re-border-default);
+  }
+  .re-command-palette__search-icon {
+    flex: none;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    color: var(--re-color-text-subtle);
+  }
+  .re-command-palette__input {
+    flex: 1;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--re-color-text);
+    font-size: var(--re-size-text-lg);
+    line-height: var(--re-line-height-normal);
+  }
+  .re-command-palette__input::placeholder {
+    color: var(--re-color-text-subtle);
+  }
+  /* Opt out of the global :focus-visible ring (base.css). The input is the
+     palette's permanent focus (caret + open modal indicate it), so a ring would
+     just hug this borderless field and read as a cramped, unpadded box. */
+  .re-command-palette__input:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* ---- Results list -------------------------------------------------- */
+  .re-command-palette__list {
+    flex: 1;
+    min-block-size: 0;
+    overflow-y: auto;
+    margin: 0;
+    padding: var(--re-space-1);
+    list-style: none;
+  }
+  .re-command-palette__group {
+    list-style: none;
+  }
+  .re-command-palette__group > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .re-command-palette__group-label {
+    display: block;
+    padding: var(--re-space-2) var(--re-space-2) var(--re-space-1);
+    font-size: var(--re-size-text-xs);
+    font-weight: var(--re-font-weight-semibold);
+    color: var(--re-color-text-subtle);
+  }
+  .re-command-palette__item {
+    list-style: none;
+  }
+
+  /* The visual row. Use an <a> (link) or a <span> (command) — NOT a <button>:
+     after enhancement the row is a role=option, which must not contain a
+     focusable widget. enhanceCommandPalette strips the link's href (lifting it
+     to data) and activates programmatically. */
+  .re-command-palette__action {
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-3);
+    inline-size: 100%;
+    padding: var(--re-space-2) var(--re-space-3);
+    border: 0;
+    border-radius: var(--re-radius-sm);
+    background: transparent;
+    color: var(--re-color-text);
+    font: inherit;
+    font-size: var(--re-size-text-md);
+    text-align: start;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .re-command-palette__item-icon {
+    flex: none;
+    display: inline-flex;
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    color: var(--re-color-text-muted);
+  }
+  .re-command-palette__item-label {
+    flex: 1;
+    min-inline-size: 0;
+  }
+  .re-command-palette__item-hint {
+    margin-inline-start: auto;
+  }
+
+  /* Highlight: the active (activedescendant) row or hover. Activation never
+     moves focus off the input, so there's no focus ring on rows. */
+  .re-command-palette__item[aria-selected="true"] > .re-command-palette__action,
+  .re-command-palette__action:hover {
+    background-color: var(--re-color-bg-muted);
+  }
+  .re-command-palette__item[aria-disabled="true"] > .re-command-palette__action {
+    color: var(--re-color-text-subtle);
+    cursor: not-allowed;
+  }
+
+  /* ---- Empty + footer ------------------------------------------------ */
+  .re-command-palette__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .re-command-palette__footer {
+    display: flex;
+    gap: var(--re-space-4);
+    padding: var(--re-space-2) var(--re-space-4);
+    border-block-start: var(--re-border-default);
+    color: var(--re-color-text-subtle);
+    font-size: var(--re-size-text-xs);
+  }
+}

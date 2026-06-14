@@ -1,0 +1,39 @@
+---
+title: Command palette
+description: A modal launcher with type-to-filter and arrow navigation.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A command palette is a modal launcher (⌘K) — a search input over a filterable,
+groupable list of commands and links. The modal shell is a native `<dialog>`
+driven by the existing [Dialog](/relements/components/dialog/) behavior
+(open/close/focus-trap/backdrop/Escape are all native); `enhanceCommandPalette`
+adds the combobox/listbox ARIA, type-to-filter, arrow navigation, and an
+optional global hotkey.
+
+```js
+import { enhanceCommandPalette } from "@relements/core/behaviors/command-palette";
+enhanceCommandPalette(document);
+```
+
+Open it with a `data-re-dialog-trigger` button or the `data-re-command-hotkey`
+shortcut (e.g. `"mod+k"` — `mod` is ⌘ on macOS, Ctrl elsewhere).
+
+## Basic
+
+<Demo src="command-palette.html" name="basic" />
+
+## Notes
+
+- **No-JS baseline:** the static markup is a plain `<input type="search">` over a
+  list of real links/`<span>` rows — no `role=combobox/listbox/option` is shipped
+  until JS can back it. `enhanceCommandPalette` adds the widget ARIA on enhance.
+- Link rows are real `<a href>` (navigable without JS); on enhance the href is
+  lifted to data and the row becomes a non-interactive option (so the listbox
+  has no nested interactive controls). Command rows are `<span data-command>`.
+- Activation dispatches `re-command` (bubbles, cancelable; `detail = { command,
+href, option }`); if not prevented and the row is a link, it navigates.
+- Focus stays in the input (aria-activedescendant). On close the query resets;
+  Escape and the backdrop are handled by the dialog. Always keep palettes
+  dismissible — never add `data-re-dialog-no-dismiss`.
