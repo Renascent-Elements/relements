@@ -49,8 +49,12 @@
   .re-command-palette__input::placeholder {
     color: var(--re-color-text-subtle);
   }
+  /* Opt out of the global :focus-visible ring (base.css). The input is the
+     palette's permanent focus (caret + open modal indicate it), so a ring would
+     just hug this borderless field and read as a cramped, unpadded box. */
   .re-command-palette__input:focus-visible {
     outline: none;
+    box-shadow: none;
   }
 
   /* ---- Results list -------------------------------------------------- */
