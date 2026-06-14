@@ -1,5 +1,14 @@
 # @relements/core
 
+## 0.12.0
+
+### Minor Changes
+
+- [#45](https://github.com/Renascent-Elements/relements/pull/45) [`a6b794b`](https://github.com/Renascent-Elements/relements/commit/a6b794b6944a83ee2a50d041060df7b16fa965fe) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add structural Tier-2 components:
+  - **button-group** — CSS-only cluster that joins `.re-button`s into one control (collapsed seams, outer corners only; horizontal/vertical).
+  - **empty-state** — CSS-only centered "no data / no results" placeholder (icon, title, description, actions; `data-size="sm"`, `data-bordered`, and a `.re-empty-state-cell` helper for table-empty cells).
+  - **toolbar** — `.re-toolbar` band (`role="toolbar"`) plus the optional `enhanceToolbar` behavior for the ARIA roving-tabindex model (one Tab stop, Arrow/Home/End, RTL-aware, composes with a hosted `.re-menu`). Fully usable with zero JS.
+
 ## 0.11.0
 
 ### Minor Changes
