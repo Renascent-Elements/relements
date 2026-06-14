@@ -1,0 +1,21 @@
+packages/core/src/components/tree.css
+  s_2732c4df70b865::t_1a0f829dd0ba4c 106-107,115-120
+  s_2732c4df70b865::t_595358833d1426 40-47
+  s_2732c4df70b865::t_1cbf4de895ffc5 108-109,113-114
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "b84f098f2e2b353181d40a0738809d18dddc5a69",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
