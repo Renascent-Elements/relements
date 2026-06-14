@@ -47,6 +47,10 @@ import "@relements/core/tokens.css";
 import "@relements/core/components/button.css";
 import "@relements/core/components/form.css";
 
+// Some component CSS builds on another component — import the base too:
+//   context-menu  → also import components/menu.css
+//   command-palette, drawer → also import components/dialog.css
+
 // JS behaviors — tree-shakable ESM, fully typed
 import { enhanceTabs } from "@relements/core/behaviors/tabs";
 import { showToast } from "@relements/core/behaviors/toast";
@@ -213,7 +217,9 @@ All values are `--re-*` CSS custom properties. Override globally or on any subtr
 }
 ```
 
-### Built-in dark theme
+### Dark mode & the Renascent theme
+
+Dark mode is automatic: the base `index.css` already follows `prefers-color-scheme`, so importing it gives light + dark with zero config. The **Renascent** theme below is an _optional_ brand palette (dark navy, electric blue, phoenix orange) layered on top — not a prerequisite for dark mode.
 
 ```html
 <link rel="stylesheet" href="node_modules/@relements/core/dist/index.css" />
