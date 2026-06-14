@@ -1,0 +1,45 @@
+scripts/gen-token-reference.mjs
+  s_2732c4df70b865::t_c93376b96524a4 1-72
+  s_2732c4df70b865::t_39b53f32f78bfb 73-75
+docs/public/src/content/docs/guides/dark-mode.md
+  s_2732c4df70b865::t_2bba9b915debfa 1-72,75-78,81-113,116-120
+  s_2732c4df70b865::t_a029ce565b6761 73-74,79-80,114-115
+tests/unit/token-reference.spec.ts
+  s_2732c4df70b865::t_2b900c18658f7d 1-6,8-21
+  s_2732c4df70b865::t_39b53f32f78bfb 7
+.changeset/docs-1.0-guides.md
+  s_2732c4df70b865::t_4130b7f5b7eefd 1-5
+CONTRIBUTING.md
+  s_2732c4df70b865::t_6529f61c95a8bf 27-36,117-118
+  s_2732c4df70b865::t_7bff9479b394e8 1-26,37-116,119-140
+docs/public/src/content/docs/guides/tokens.mdx
+  s_2732c4df70b865::t_ce0453efaf8f01 1-5,7,9-11,26-28,41-43,55-57,77-79,85,88,94-96,117-119,133-135,144-146,154-156,163-165,171-173,182-184,192-194
+  s_2732c4df70b865::t_0c8c00bb82e678 6,8
+  s_2732c4df70b865::t_39b53f32f78bfb 12-25,29-40,44-54,58-76,80-84,86-87,89-93,97-116,120-132,136-143,147-153,157-162,166-170,174-181,185-191,195-201
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_39b53f32f78bfb 109-114
+  s_2732c4df70b865::t_e91b77dff43659 1-108,115-130
+packages/core/README.md
+  s_2732c4df70b865::t_9ae295294c2276 220-222
+  s_2732c4df70b865::t_ee4e650ab78d3f 50-53
+docs/public/src/content/docs/guides/accessibility.md
+  s_2732c4df70b865::t_3519ae0322d6cf 1-25,27-78,80-101
+  s_2732c4df70b865::t_39b53f32f78bfb 79
+  s_2732c4df70b865::t_26722186a073a6 26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "4bf55f77151e22861c822538bf5925adaaa6f564",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
