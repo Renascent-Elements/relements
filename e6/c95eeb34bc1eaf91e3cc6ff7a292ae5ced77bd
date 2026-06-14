@@ -1,0 +1,19 @@
+packages/core/src/components/command-palette.css
+  s_2732c4df70b865::t_a29c6b57a83d84 52-54,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "e6c95eeb34bc1eaf91e3cc6ff7a292ae5ced77bd",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
