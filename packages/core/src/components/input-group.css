@@ -63,7 +63,7 @@
   /* Invalid + disabled reflected from the contained control. */
   .re-input-group:has(.re-input[aria-invalid="true"]),
   .re-input-group:has(.re-input:user-invalid) {
-    border-color: var(--re-color-border-danger);
+    border-color: var(--re-color-danger-border);
   }
   .re-input-group:has(.re-input[aria-invalid="true"]):focus-within,
   .re-input-group:has(.re-input:user-invalid):focus-within {

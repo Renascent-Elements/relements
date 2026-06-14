@@ -4,7 +4,7 @@
  * A status message block. Add role="status" (polite) or role="alert"
  * (assertive) on the host element for screen-reader semantics.
  *
- *   <div class="re-alert" data-variant="success" role="status">
+ *   <div class="re-alert" data-tone="success" role="status">
  *     <div class="re-alert__content">
  *       <p class="re-alert__title">Saved</p>
  *       Your changes are live.
@@ -14,7 +14,7 @@
  * Dismissible: mark the host [data-re-dismissible], add a [data-re-dismiss]
  * button, and call enhanceDismissible().
  *
- * Variants (data-variant): info (default), success, warning, danger.
+ * Variants (data-tone): info (default), success, warning, danger.
  */
 
 @layer re.components {
@@ -63,27 +63,27 @@
   }
 
   /* ---- Variants -------------------------------------------------------- */
-  .re-alert[data-variant="success"] {
+  .re-alert[data-tone="success"] {
     border-color: var(--re-color-success-border);
     background-color: var(--re-color-success-surface);
   }
-  .re-alert[data-variant="success"] .re-alert__title {
+  .re-alert[data-tone="success"] .re-alert__title {
     color: var(--re-color-success-text);
   }
 
-  .re-alert[data-variant="warning"] {
+  .re-alert[data-tone="warning"] {
     border-color: var(--re-color-warning-border);
     background-color: var(--re-color-warning-surface);
   }
-  .re-alert[data-variant="warning"] .re-alert__title {
+  .re-alert[data-tone="warning"] .re-alert__title {
     color: var(--re-color-warning-text);
   }
 
-  .re-alert[data-variant="danger"] {
+  .re-alert[data-tone="danger"] {
     border-color: var(--re-color-danger-border);
     background-color: var(--re-color-danger-surface);
   }
-  .re-alert[data-variant="danger"] .re-alert__title {
+  .re-alert[data-tone="danger"] .re-alert__title {
     color: var(--re-color-danger-text);
   }
 }

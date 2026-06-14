@@ -52,7 +52,7 @@
      Progressive :has, like input-group; degrades to no cue below the floor. */
   .re-otp-field:has(.re-otp[aria-invalid="true"]),
   .re-otp-field:has(.re-otp:user-invalid) {
-    border-color: var(--re-color-border-danger);
+    border-color: var(--re-color-danger-border);
   }
   .re-otp-field:has(.re-otp:disabled) {
     background-color: var(--re-color-bg-muted);

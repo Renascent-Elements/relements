@@ -17,7 +17,9 @@
  * start, end. Force-show with data-open (also used by docs and visual
  * tests). The bubble stays hoverable and the trigger-to-bubble gap is
  * bridged by a pseudo-element strut, so moving the pointer onto the bubble
- * does not dismiss it (WCAG 1.4.13).
+ * does not dismiss it — WCAG 1.4.13 Hoverable + Persistent. (The CSS-only
+ * tooltip does NOT meet 1.4.13 Dismissable, which needs an Escape-to-hide
+ * handler; add one in JS if you must clear it without moving focus/pointer.)
  *
  * The inverse surface derives from the text/bg role tokens, so it adapts
  * to dark mode and subtree themes without tooltip-specific tokens.

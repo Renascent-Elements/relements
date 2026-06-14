@@ -30,7 +30,7 @@ test.describe("input group", () => {
     const invalidColor = await invalid.evaluate((el) => getComputedStyle(el).borderTopColor);
     const validColor = await valid.evaluate((el) => getComputedStyle(el).borderTopColor);
     const danger = await invalid.evaluate((el) =>
-      getComputedStyle(el).getPropertyValue("--re-color-border-danger").trim(),
+      getComputedStyle(el).getPropertyValue("--re-color-danger-border").trim(),
     );
     expect(invalidColor).not.toBe(validColor);
     // The danger token resolves to the same computed color as the border.

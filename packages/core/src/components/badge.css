@@ -4,9 +4,9 @@
  * Small inline label for counts and statuses. Soft tinted per status.
  *
  *   <span class="re-badge">New</span>
- *   <span class="re-badge" data-variant="success">Active</span>
+ *   <span class="re-badge" data-tone="success">Active</span>
  *
- * Variants (data-variant): neutral (default), info, success, warning, danger.
+ * Variants (data-tone): neutral (default), info, success, warning, danger.
  */
 
 @layer re.components {
@@ -25,19 +25,19 @@
     color: var(--re-color-text-muted);
   }
 
-  .re-badge[data-variant="info"] {
+  .re-badge[data-tone="info"] {
     background-color: var(--re-color-info-surface);
     color: var(--re-color-info-text);
   }
-  .re-badge[data-variant="success"] {
+  .re-badge[data-tone="success"] {
     background-color: var(--re-color-success-surface);
     color: var(--re-color-success-text);
   }
-  .re-badge[data-variant="warning"] {
+  .re-badge[data-tone="warning"] {
     background-color: var(--re-color-warning-surface);
     color: var(--re-color-warning-text);
   }
-  .re-badge[data-variant="danger"] {
+  .re-badge[data-tone="danger"] {
     background-color: var(--re-color-danger-surface);
     color: var(--re-color-danger-text);
   }

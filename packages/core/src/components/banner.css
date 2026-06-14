@@ -35,7 +35,7 @@
  * Roles: <aside>/<div role="region"> + aria-label for a persistent
  * announcement; role="status" (polite) for a status strip injected at runtime.
  *
- * Variants (data-variant): info (default), success, warning, danger.
+ * Variants (data-tone): info (default), success, warning, danger.
  * Emphasis (data-emphasis): subtle (default), solid.
  * Sticky (data-sticky, boolean): pins to the scroll-container top.
  * Align (data-align): start (default), center.
@@ -144,16 +144,16 @@
     box-shadow: var(--re-shadow-focus);
   }
 
-  /* ---- Tone (data-variant), subtle by default -------------------------- */
-  .re-banner[data-variant="success"] {
+  /* ---- Tone (data-tone), subtle by default -------------------------- */
+  .re-banner[data-tone="success"] {
     --re-banner-bg: var(--re-color-success-surface);
     --re-banner-edge: var(--re-color-success-border);
   }
-  .re-banner[data-variant="warning"] {
+  .re-banner[data-tone="warning"] {
     --re-banner-bg: var(--re-color-warning-surface);
     --re-banner-edge: var(--re-color-warning-border);
   }
-  .re-banner[data-variant="danger"] {
+  .re-banner[data-tone="danger"] {
     --re-banner-bg: var(--re-color-danger-surface);
     --re-banner-edge: var(--re-color-danger-border);
   }
@@ -171,13 +171,13 @@
     --re-banner-fg: var(--re-color-text-on-accent);
     --re-banner-edge: transparent;
   }
-  .re-banner[data-emphasis="solid"][data-variant="success"] {
+  .re-banner[data-emphasis="solid"][data-tone="success"] {
     --re-banner-bg: var(--re-color-success-700);
   }
-  .re-banner[data-emphasis="solid"][data-variant="warning"] {
+  .re-banner[data-emphasis="solid"][data-tone="warning"] {
     --re-banner-bg: var(--re-color-warning-700);
   }
-  .re-banner[data-emphasis="solid"][data-variant="danger"] {
+  .re-banner[data-emphasis="solid"][data-tone="danger"] {
     --re-banner-bg: var(--re-color-danger-700);
   }
 

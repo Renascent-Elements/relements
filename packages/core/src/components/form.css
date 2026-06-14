@@ -79,7 +79,7 @@
   .re-input:user-invalid,
   .re-textarea:user-invalid,
   .re-select:user-invalid {
-    border-color: var(--re-color-border-danger);
+    border-color: var(--re-color-danger-border);
   }
   .re-input[aria-invalid="true"]:focus-visible,
   .re-textarea[aria-invalid="true"]:focus-visible,
@@ -252,7 +252,7 @@
   /* Invalid */
   .re-checkbox[aria-invalid="true"],
   .re-radio[aria-invalid="true"] {
-    border-color: var(--re-color-border-danger);
+    border-color: var(--re-color-danger-border);
   }
 
   /* ============================================================
@@ -275,7 +275,7 @@
 
   .re-field__label[data-required]::after {
     content: " *";
-    color: var(--re-color-text-danger);
+    color: var(--re-color-danger-text);
     margin-inline-start: 0.1em;
   }
 
@@ -335,7 +335,7 @@
     display: block;
     font-size: var(--re-size-text-sm);
     line-height: var(--re-line-height-normal);
-    color: var(--re-color-text-danger);
+    color: var(--re-color-danger-text);
   }
 
   .re-validation-message[data-tone="success"] {

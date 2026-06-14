@@ -17,7 +17,7 @@
  *
  * Options (data-*): data-re-tags-max, data-re-tags-name (hidden-input name;
  * default = the input's name), data-re-tags-allow-duplicates,
- * data-re-tags-variant (a .re-tag data-variant). Dispatches a bubbling
+ * data-re-tags-tone (a .re-tag data-tone). Dispatches a bubbling
  * `re-tags-change` ({ detail: { values } }) + `change` on the group on every
  * commit/remove. destroy() restores the plain input. Degrades to a usable
  * comma-separated text field with no JS.
@@ -66,7 +66,7 @@ function wireOne(input) {
   const tagsName = input.dataset.reTagsName || input.getAttribute("name") || "tags";
   const max = parseInt(input.dataset.reTagsMax || "", 10);
   const allowDupes = input.hasAttribute("data-re-tags-allow-duplicates");
-  const variant = input.dataset.reTagsVariant || "";
+  const tone = input.dataset.reTagsTone || "";
 
   // Stash original state for destroy().
   const origName = input.getAttribute("name");
@@ -134,7 +134,7 @@ function wireOne(input) {
     }
     const chip = doc.createElement("span");
     chip.className = "re-tag";
-    if (variant) chip.dataset.variant = variant;
+    if (tone) chip.dataset.tone = tone;
     chip.dataset.reTagsChip = "";
     const text = doc.createElement("span");
     text.textContent = tag;
