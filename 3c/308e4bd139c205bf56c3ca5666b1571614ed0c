@@ -1,0 +1,22 @@
+packages/core/README.md
+  s_2732c4df70b865::t_7be6fe15cce135 80,89
+  s_2732c4df70b865::t_7ecc537affbeb8 137
+  s_2732c4df70b865::t_45817ff4180ff8 62-79,84-88,106-114,128-136,151-166,168-169
+  s_2732c4df70b865::t_73bc3998391d74 167
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "3c308e4bd139c205bf56c3ca5666b1571614ed0c",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
