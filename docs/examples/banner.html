@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Banner</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="banner">
+    <header>
+      <h1>Banner</h1>
+      <p>A page-level announcement strip — full-bleed, optionally sticky.</p>
+    </header>
+
+    <section aria-labelledby="variants-heading" data-testid="variants">
+      <h2 id="variants-heading">Variants</h2>
+      <!-- demo:start name="variants" -->
+      <div style="display: flex; flex-direction: column; gap: var(--re-space-3)">
+        <aside class="re-banner" role="region" aria-label="Announcement">
+          <span class="re-banner__icon" aria-hidden="true">i</span>
+          <p class="re-banner__message">
+            We use cookies to improve your experience.
+            <a class="re-banner__action" href="#privacy">Learn more</a>
+          </p>
+        </aside>
+        <aside class="re-banner" data-variant="success" role="region" aria-label="Status">
+          <span class="re-banner__icon" aria-hidden="true">✓</span>
+          <p class="re-banner__message">All systems operational.</p>
+        </aside>
+        <aside class="re-banner" data-variant="warning" role="region" aria-label="Notice">
+          <span class="re-banner__icon" aria-hidden="true">!</span>
+          <p class="re-banner__message">
+            Your trial ends in 3 days.
+            <a class="re-banner__action" href="#billing">Upgrade now</a>
+          </p>
+        </aside>
+        <aside class="re-banner" data-variant="danger" role="region" aria-label="System status">
+          <span class="re-banner__icon" aria-hidden="true">!</span>
+          <p class="re-banner__message">
+            Scheduled maintenance tonight 02:00–03:00 UTC.
+            <a class="re-banner__action" href="#status">View status</a>
+          </p>
+        </aside>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="emphasis-heading" data-testid="emphasis">
+      <h2 id="emphasis-heading">Solid emphasis</h2>
+      <!-- demo:start name="emphasis" -->
+      <div style="display: flex; flex-direction: column; gap: var(--re-space-3)">
+        <aside class="re-banner" data-emphasis="solid" role="region" aria-label="Promo">
+          <span class="re-banner__icon" aria-hidden="true">★</span>
+          <p class="re-banner__message">
+            Black Friday: 40% off all plans this week.
+            <a class="re-banner__action" href="#pricing">See plans</a>
+          </p>
+        </aside>
+        <aside
+          class="re-banner"
+          data-variant="success"
+          data-emphasis="solid"
+          role="region"
+          aria-label="Status"
+        >
+          <span class="re-banner__icon" aria-hidden="true">✓</span>
+          <p class="re-banner__message">Payment received — your account is now active.</p>
+        </aside>
+        <aside
+          class="re-banner"
+          data-variant="warning"
+          data-emphasis="solid"
+          role="region"
+          aria-label="Notice"
+        >
+          <span class="re-banner__icon" aria-hidden="true">!</span>
+          <p class="re-banner__message">
+            Action required: confirm your email address.
+            <a class="re-banner__action" href="#verify">Confirm</a>
+          </p>
+        </aside>
+        <aside
+          class="re-banner"
+          data-variant="danger"
+          data-emphasis="solid"
+          role="region"
+          aria-label="Incident"
+        >
+          <span class="re-banner__icon" aria-hidden="true">!</span>
+          <p class="re-banner__message">
+            We are investigating an active service disruption.
+            <a class="re-banner__action" href="#status">Live updates</a>
+          </p>
+        </aside>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="dismissible-heading" data-testid="dismissible">
+      <h2 id="dismissible-heading">Dismissible</h2>
+      <!-- demo:start name="dismissible" -->
+      <aside
+        class="re-banner"
+        data-variant="warning"
+        role="region"
+        aria-label="Announcement"
+        data-re-dismissible
+        id="dismissible-banner"
+      >
+        <span class="re-banner__icon" aria-hidden="true">!</span>
+        <p class="re-banner__message">
+          This banner can be dismissed.
+          <a class="re-banner__action" href="#privacy">Learn more</a>
+        </p>
+        <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="Dismiss">
+          ×
+        </button>
+      </aside>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="align-heading" data-testid="align-center">
+      <h2 id="align-heading">Centered</h2>
+      <!-- demo:start name="align-center" -->
+      <aside
+        class="re-banner"
+        data-emphasis="solid"
+        data-align="center"
+        role="region"
+        aria-label="Promo"
+      >
+        <p class="re-banner__message">
+          Free shipping on every order this weekend.
+          <a class="re-banner__action" href="#shop">Shop now</a>
+        </p>
+      </aside>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sticky-heading" data-testid="sticky">
+      <h2 id="sticky-heading">Sticky</h2>
+      <!-- demo:start name="sticky" -->
+      <div
+        style="
+          block-size: 9rem;
+          overflow: auto;
+          border: var(--re-border-default);
+          border-radius: var(--re-radius-md);
+        "
+      >
+        <aside
+          class="re-banner"
+          data-variant="danger"
+          data-emphasis="solid"
+          data-sticky
+          role="region"
+          aria-label="System status"
+          data-re-dismissible
+        >
+          <span class="re-banner__icon" aria-hidden="true">!</span>
+          <p class="re-banner__message">
+            Scheduled maintenance tonight 02:00–03:00 UTC.
+            <a class="re-banner__action" href="#status">View status</a>
+          </p>
+          <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="Dismiss">
+            ×
+          </button>
+        </aside>
+        <div style="padding: var(--re-space-4); display: grid; gap: var(--re-space-3)">
+          <p>Scroll this region — the banner stays pinned to the top.</p>
+          <p>More content below to enable scrolling.</p>
+          <p>Even more content.</p>
+          <p>Keep scrolling.</p>
+          <p>Almost there.</p>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="rtl-heading" data-testid="rtl">
+      <h2 id="rtl-heading">RTL</h2>
+      <aside
+        class="re-banner"
+        data-variant="danger"
+        data-emphasis="solid"
+        dir="rtl"
+        role="region"
+        aria-label="إعلان"
+        data-re-dismissible
+      >
+        <span class="re-banner__icon" aria-hidden="true">!</span>
+        <p class="re-banner__message">
+          صيانة مجدولة الليلة 02:00–03:00 UTC.
+          <a class="re-banner__action" href="#status">عرض الحالة</a>
+        </p>
+        <button type="button" class="re-banner__dismiss" data-re-dismiss aria-label="إغلاق">
+          ×
+        </button>
+      </aside>
+    </section>
+
+    <script type="module">
+      import { enhanceDismissible } from "/packages/core/src/behaviors/dismissible.js";
+      window.__reController = enhanceDismissible(document);
+    </script>
+  </body>
+</html>

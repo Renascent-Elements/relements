@@ -256,9 +256,12 @@ starlight-toc a:focus-visible {
   font-weight: var(--re-font-weight-medium);
   line-height: 1.4;
 }
-.demo__preview :is(.re-alert__dismiss, .re-toast__dismiss) {
+.demo__preview :is(.re-alert__dismiss, .re-toast__dismiss, .re-banner__dismiss) {
   font-size: var(--re-size-text-lg);
   line-height: 1;
+}
+.demo__preview .re-banner__action {
+  font-weight: var(--re-font-weight-medium);
 }
 .demo__preview .re-tag__remove {
   font-size: var(--re-size-text-sm);
