@@ -1,0 +1,42 @@
+---
+title: Range
+description: A two-thumb min–max slider built from two native range inputs.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A range is a min–max slider: two native `<input type="range">` overlaid on one
+track. Each carries `.re-slider`, so the thumbs look exactly like a single
+slider. With **zero JS** both inputs work, are keyboard-operable, and submit
+their own `name=value`. `enhanceRange` keeps the thumbs from crossing, draws the
+fill between them, and routes a track click to the nearer thumb.
+
+```js
+import { enhanceRange } from "@relements/core/behaviors/range";
+enhanceRange(document);
+```
+
+## Basic
+
+<Demo src="range.html" name="basic" />
+
+## Sizes
+
+`data-size="sm|lg"` on the `.re-range` mirrors the slider sizes.
+
+<Demo src="range.html" name="sizes" />
+
+## Disabled
+
+<Demo src="range.html" name="disabled" />
+
+## Notes
+
+- Crossing is prevented by clamping the moved input's **value** — both inputs
+  keep their authored `min`/`max` (the full range), so each thumb maps to the
+  same track and `aria-value*` stays honest.
+- `data-re-range-gap` sets a minimum distance between thumbs (default = `step`).
+- When the two thumbs fully coincide, separate them with the keyboard (Tab to a
+  thumb, then arrow) — the focused thumb sits on top.
+- Native range thumb mirroring under `dir="rtl"` is engine-dependent; verify the
+  fill alignment if you ship RTL.

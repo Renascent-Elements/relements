@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Command palette</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="command-palette">
+    <header>
+      <h1>Command palette</h1>
+      <p>A modal launcher with type-to-filter and arrow navigation (⌘K).</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <button
+        type="button"
+        class="re-button"
+        data-variant="secondary"
+        data-re-dialog-trigger
+        data-re-dialog-target="cmdk"
+      >
+        Search… <kbd class="re-kbd">⌘K</kbd>
+      </button>
+
+      <dialog
+        id="cmdk"
+        class="re-dialog re-command-palette"
+        aria-label="Command palette"
+        data-re-dialog-close-on-backdrop
+        data-re-command-palette
+        data-re-command-hotkey="mod+k"
+      >
+        <form class="re-command-palette__search" role="search" method="dialog">
+          <svg
+            class="re-command-palette__search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+            <path d="m20 20-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input
+            type="search"
+            class="re-command-palette__input"
+            autocomplete="off"
+            autofocus
+            placeholder="Type a command or search…"
+            aria-label="Search commands"
+          />
+          <button type="submit" class="re-sr-only" data-re-dialog-close>Close</button>
+        </form>
+
+        <ul class="re-command-palette__list">
+          <li class="re-command-palette__group">
+            <span class="re-command-palette__group-label">Navigation</span>
+            <ul>
+              <li class="re-command-palette__item">
+                <a href="#dashboard" class="re-command-palette__action">
+                  <span class="re-command-palette__item-label">Go to Dashboard</span>
+                  <kbd class="re-kbd re-command-palette__item-hint">G D</kbd>
+                </a>
+              </li>
+              <li class="re-command-palette__item">
+                <a href="#settings" class="re-command-palette__action">
+                  <span class="re-command-palette__item-label">Go to Settings</span>
+                  <kbd class="re-kbd re-command-palette__item-hint">G S</kbd>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="re-command-palette__group">
+            <span class="re-command-palette__group-label">Actions</span>
+            <ul>
+              <li class="re-command-palette__item">
+                <span class="re-command-palette__action" data-command="new-doc">
+                  <span class="re-command-palette__item-label">Create document</span>
+                </span>
+              </li>
+              <li class="re-command-palette__item">
+                <span class="re-command-palette__action" data-command="invite">
+                  <span class="re-command-palette__item-label">Invite teammate</span>
+                </span>
+              </li>
+              <li class="re-command-palette__item" aria-disabled="true">
+                <span class="re-command-palette__action">
+                  <span class="re-command-palette__item-label">Delete workspace</span>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="re-command-palette__empty" hidden>
+          <div class="re-empty-state" data-size="sm" role="status">
+            <p class="re-empty-state__title">No results</p>
+            <p class="re-empty-state__description">Try a different search.</p>
+          </div>
+        </div>
+
+        <footer class="re-command-palette__footer" aria-hidden="true">
+          <span><kbd class="re-kbd">↑</kbd><kbd class="re-kbd">↓</kbd> navigate</span>
+          <span><kbd class="re-kbd">↵</kbd> select</span>
+          <span><kbd class="re-kbd">esc</kbd> close</span>
+        </footer>
+      </dialog>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceDialog } from "/packages/core/src/behaviors/dialog.js";
+      import { enhanceCommandPalette } from "/packages/core/src/behaviors/command-palette.js";
+      enhanceDialog(document);
+      window.__reController = enhanceCommandPalette(document);
+    </script>
+  </body>
+</html>

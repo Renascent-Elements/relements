@@ -56,3 +56,6 @@
 @import "./components/button-group.css";
 @import "./components/empty-state.css";
 @import "./components/toolbar.css";
+@import "./components/range.css";
+@import "./components/context-menu.css";
+@import "./components/command-palette.css";

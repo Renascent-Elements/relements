@@ -1,0 +1,27 @@
+/**
+ * Relements context menu.
+ *
+ * A right-click (or ContextMenu-key / Shift+F10) menu. The panel reuses
+ * `.re-menu__panel` / `.re-menu__item` / `.re-menu__separator` verbatim — the
+ * only difference is positioning: it's placed at the pointer with `position:
+ * fixed` (not anchored to a trigger), so it must sit ABOVE modals.
+ *
+ *   <div data-re-context-menu="ctx-1" tabindex="0">Right-click me</div>
+ *   <div id="ctx-1" class="re-menu__panel re-context-menu__panel" role="menu" hidden>
+ *     <button class="re-menu__item" role="menuitem" data-value="open">Open</button>
+ *   </div>
+ *
+ * With no JS the custom menu never opens — the native browser context menu is
+ * the fallback (enhanceContextMenu only preventDefaults once it's wired).
+ */
+
+@layer re.components {
+  .re-context-menu__panel {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    /* Above .re-dialog (z 300 > z-popover 200) so a context menu opened inside a
+       modal isn't trapped under it. */
+    z-index: var(--re-z-dialog);
+  }
+}

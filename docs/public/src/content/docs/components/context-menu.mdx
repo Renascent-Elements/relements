@@ -1,0 +1,36 @@
+---
+title: Context menu
+description: A right-click menu positioned at the pointer.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A context menu opens at the pointer on right-click — and from the keyboard via
+the ContextMenu key or Shift+F10 on the focused region. The panel reuses the
+[Menu](/relements/components/menu-button/) markup (`.re-menu__panel` /
+`.re-menu__item`); only the positioning differs (fixed, at the pointer, above
+modals). With **no JS** the native browser context menu is the fallback —
+`enhanceContextMenu` only preventDefaults the event once it's wired.
+
+```js
+import { enhanceContextMenu } from "@relements/core/behaviors/context-menu";
+enhanceContextMenu(document);
+```
+
+Mark the trigger region with `data-re-context-menu="<panel-id>"` and make it
+focusable (`tabindex="0"`) so keyboard invocation works.
+
+## Basic
+
+<Demo src="context-menu.html" name="basic" />
+
+## Notes
+
+- Keyboard: Up/Down (wrap), Home/End, first-character typeahead, Escape/Tab to
+  close (Escape returns focus to the region).
+- Dispatches `re-select` (bubbles, cancelable; `detail = { item, value,
+originalEvent }`) on the region — `preventDefault()` keeps the menu open.
+- The panel is `position: fixed` at `z-index: var(--re-z-dialog)`, so a context
+  menu opened inside a modal sits above it.
+- The Popover API (top layer) is used as a bonus on browsers that support it;
+  the fixed-position path is canonical (and what runs on the support floor).

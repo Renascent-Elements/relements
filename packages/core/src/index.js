@@ -19,3 +19,6 @@ export { enhanceOtp } from "./behaviors/otp.js";
 export { enhanceTagsInput } from "./behaviors/tags-input.js";
 export { enhanceRating } from "./behaviors/rating.js";
 export { enhanceToolbar } from "./behaviors/toolbar.js";
+export { enhanceRange } from "./behaviors/range.js";
+export { enhanceContextMenu } from "./behaviors/context-menu.js";
+export { enhanceCommandPalette } from "./behaviors/command-palette.js";
