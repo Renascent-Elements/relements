@@ -1,0 +1,50 @@
+---
+title: Tree
+description: Styled nested details/summary navigation tree — no JavaScript required.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A tree is a nested navigation list built on native `<details>`/`<summary>`:
+branches expand and collapse, leaves are real `<a href>` / `<button>`. It works
+with **zero JavaScript** — toggling, keyboard (Enter/Space on a branch), focus
+order, and navigation are all native. Put `role="list"` on every `<ul>` and wrap
+the whole thing in `<nav aria-label="…">`.
+
+It is deliberately **not** an ARIA `role="tree"` widget — that pattern requires a
+full keyboard model (Up/Down between items, Left/Right to collapse/expand, type-
+ahead) that this component doesn't ship. So it's a _styled nested-disclosure
+navigation tree_, and every control is independently Tab-focusable. The selected
+leaf uses `aria-current` (`page` for an `<a href>`, `true` for a `<button>`).
+
+## Default
+
+<Demo src="tree.html" name="default" />
+
+## Guide lines
+
+`data-variant="lines"` on the `.re-tree` root adds vertical guide lines.
+
+<Demo src="tree.html" name="lines" />
+
+## Compact
+
+`data-density="compact"` tightens the rows.
+
+<Demo src="tree.html" name="compact" />
+
+## Notes
+
+- Expand a branch by default with the native `open` attribute. Branches open
+  independently (no `<details name>` — single-open siblings would be an
+  [accordion](/relements/components/accordion/), not a tree).
+- Indentation is structural (each nested `<ul>` adds one `--re-tree-indent`
+  step), so it can't desync from the markup and mirrors correctly in RTL.
+- Tune metrics by overriding `--re-tree-indent`, `--re-tree-row-min`, etc. on the
+  root or any subtree.
+- Leaf labels can be a bare text node or a `.re-tree__label` span (the span adds
+  ellipsis truncation). The optional `.re-tree__icon` slot adds width before the
+  label, so use icons **consistently within a level** (all sibling rows or none)
+  to keep labels aligned.
+- A `<button>` leaf is an in-app action — wire your own click handler; only
+  `<a href>` leaves navigate on their own.

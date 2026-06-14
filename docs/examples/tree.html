@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Tree</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="tree">
+    <header>
+      <h1>Tree</h1>
+      <p>A nested-disclosure navigation tree — no JavaScript required.</p>
+    </header>
+
+    <section aria-labelledby="default-heading" data-testid="default">
+      <h2 id="default-heading">Default</h2>
+      <!-- demo:start name="default" -->
+      <nav class="re-tree" aria-label="Documentation">
+        <ul class="re-tree__list" role="list">
+          <li>
+            <details class="re-tree__branch">
+              <summary class="re-tree__row re-tree__summary">
+                <span class="re-tree__label">Getting started</span>
+              </summary>
+              <ul class="re-tree__list" role="list">
+                <li>
+                  <a class="re-tree__row re-tree__leaf" href="#install">
+                    <span class="re-tree__label">Install</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="re-tree__row re-tree__leaf" href="#usage">
+                    <span class="re-tree__label">Usage</span>
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details class="re-tree__branch" open>
+              <summary class="re-tree__row re-tree__summary">
+                <span class="re-tree__label">Components</span>
+              </summary>
+              <ul class="re-tree__list" role="list">
+                <li>
+                  <details class="re-tree__branch" open>
+                    <summary class="re-tree__row re-tree__summary">
+                      <span class="re-tree__label">Forms</span>
+                    </summary>
+                    <ul class="re-tree__list" role="list">
+                      <li>
+                        <a class="re-tree__row re-tree__leaf" href="#input">
+                          <span class="re-tree__icon" aria-hidden="true">
+                            <svg
+                              viewBox="0 0 16 16"
+                              width="16"
+                              height="16"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            >
+                              <rect x="2" y="5" width="12" height="6" rx="1" />
+                            </svg>
+                          </span>
+                          <span class="re-tree__label">Input</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="re-tree__row re-tree__leaf" href="#select" aria-current="page">
+                          <span class="re-tree__icon" aria-hidden="true">
+                            <svg
+                              viewBox="0 0 16 16"
+                              width="16"
+                              height="16"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                            >
+                              <path d="M5 6.5 8 9.5 11 6.5" stroke-linecap="round" />
+                            </svg>
+                          </span>
+                          <span class="re-tree__label">Select</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <a class="re-tree__row re-tree__leaf" href="#button">
+                    <span class="re-tree__label">Button</span>
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <a class="re-tree__row re-tree__leaf" href="#changelog">
+              <span class="re-tree__label">Changelog</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="lines-heading" data-testid="lines">
+      <h2 id="lines-heading">Guide lines</h2>
+      <!-- demo:start name="lines" -->
+      <nav class="re-tree" data-variant="lines" aria-label="Files">
+        <ul class="re-tree__list" role="list">
+          <li>
+            <details class="re-tree__branch" open>
+              <summary class="re-tree__row re-tree__summary">
+                <span class="re-tree__label">src</span>
+              </summary>
+              <ul class="re-tree__list" role="list">
+                <li>
+                  <details class="re-tree__branch" open>
+                    <summary class="re-tree__row re-tree__summary">
+                      <span class="re-tree__label">components</span>
+                    </summary>
+                    <ul class="re-tree__list" role="list">
+                      <li><a class="re-tree__row re-tree__leaf" href="#a">tree.css</a></li>
+                      <li><a class="re-tree__row re-tree__leaf" href="#b">menu.css</a></li>
+                    </ul>
+                  </details>
+                </li>
+                <li><a class="re-tree__row re-tree__leaf" href="#c">index.css</a></li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="compact-heading" data-testid="compact">
+      <h2 id="compact-heading">Compact</h2>
+      <!-- demo:start name="compact" -->
+      <nav class="re-tree" data-density="compact" aria-label="Settings">
+        <ul class="re-tree__list" role="list">
+          <li>
+            <details class="re-tree__branch" open>
+              <summary class="re-tree__row re-tree__summary">
+                <span class="re-tree__label">Account</span>
+              </summary>
+              <ul class="re-tree__list" role="list">
+                <li>
+                  <button class="re-tree__row re-tree__leaf" type="button" aria-current="true">
+                    <span class="re-tree__label">Profile</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="re-tree__row re-tree__leaf" type="button">
+                    <span class="re-tree__label">Security</span>
+                  </button>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="rtl-heading" data-testid="rtl">
+      <h2 id="rtl-heading">RTL</h2>
+      <div dir="rtl">
+        <nav class="re-tree" data-variant="lines" aria-label="التنقل">
+          <ul class="re-tree__list" role="list">
+            <li>
+              <details class="re-tree__branch" open>
+                <summary class="re-tree__row re-tree__summary">
+                  <span class="re-tree__label">المكونات</span>
+                </summary>
+                <ul class="re-tree__list" role="list">
+                  <li>
+                    <a class="re-tree__row re-tree__leaf" href="#x" aria-current="page">زر</a>
+                  </li>
+                  <li><a class="re-tree__row re-tree__leaf" href="#y">إدخال</a></li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </body>
+</html>
