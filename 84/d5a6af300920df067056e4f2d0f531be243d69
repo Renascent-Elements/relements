@@ -1,0 +1,53 @@
+packages/core/src/components/rating.css
+  s_2732c4df70b865::t_a9f45807e2e8d0 122-133,141
+  s_2732c4df70b865::t_9b3d15cd388a01 134-140
+packages/core/src/components/switch.css
+  s_2732c4df70b865::t_d87c1af6aa0893 53-59
+tests/a11y/forced-colors.spec.ts
+  s_2732c4df70b865::t_5c3badbee105cc 54-55
+  s_2732c4df70b865::t_0314dd5f0958ae 104-126
+  s_2732c4df70b865::t_58f6159743676c 83-103
+  s_2732c4df70b865::t_2973d3f33968f5 1-5,10-15,30,35,39-41,47-49,53,56,59-60,64,71-72,74,82,127
+  s_2732c4df70b865::t_97283c6a1c2c9a 6-9,16-29,31-34,42-46,50-52,57-58,61-63,65-70,73,75-81
+  s_2732c4df70b865::t_fc0762965f3497 36-38
+packages/core/src/components/tree.css
+  s_2732c4df70b865::t_f6e442393ce2ce 164-171
+CLAUDE.md
+  s_2732c4df70b865::t_4f61426b582da4 36
+packages/core/src/components/combobox.css
+  s_2732c4df70b865::t_084088f03c7b00 74-82
+packages/core/src/components/toolbar.css
+  s_2732c4df70b865::t_673ad6dff01db5 101-106
+  s_2732c4df70b865::t_f305ad88396f2f 98-100,107-110
+packages/core/src/components/pagination.css
+  s_2732c4df70b865::t_e19964a25be20f 46-53
+.changeset/conformance-forced-colors.md
+  s_2732c4df70b865::t_32d590c92975eb 1-12
+packages/core/src/components/tabs.css
+  s_2732c4df70b865::t_14d7ee721efa29 76-82
+packages/core/src/base.css
+  s_2732c4df70b865::t_e569cc7a58d11e 122-134
+packages/core/src/components/segmented.css
+  s_2732c4df70b865::t_f33214652069d4 78-85
+packages/core/src/components/command-palette.css
+  s_2732c4df70b865::t_120dbe5c59dce0 129-137
+packages/core/src/components/form.css
+  s_2732c4df70b865::t_836646b55f3cf2 239-243,245-249,251-255
+  s_2732c4df70b865::t_a8b3a8ff7889f1 244,250
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "84d5a6af300920df067056e4f2d0f531be243d69",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
