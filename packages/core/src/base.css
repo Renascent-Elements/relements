@@ -119,6 +119,19 @@
     border-radius: var(--re-radius-sm);
   }
 
+  /* Windows High Contrast / forced colors strips box-shadow, so EVERY focus ring
+     in the system (this base one + the inset box-shadow overrides in menu / tree /
+     command-palette / steps) would vanish, leaving no visible focus indicator.
+     Re-establish a real outline in a system color for all focusable elements.
+     !important is required to beat the components' `outline: none` opt-outs (a
+     non-important outline in re.base loses to their re.components rules). */
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline: 2px solid Highlight !important;
+      outline-offset: 1px;
+    }
+  }
+
   /* Native form controls inherit token colors. Component CSS may override. */
   input,
   textarea,

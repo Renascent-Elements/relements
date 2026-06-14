@@ -126,6 +126,15 @@
   .re-command-palette__action:hover {
     background-color: var(--re-color-bg-muted);
   }
+  /* The active option is tracked via aria-activedescendant (no real focus on
+     rows), so forced colors leave it with NO cue once the bg-muted flattens.
+     Mark it with system Highlight so keyboard navigation is visible in HCM. */
+  @media (forced-colors: active) {
+    .re-command-palette__item[aria-selected="true"] > .re-command-palette__action {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
   .re-command-palette__item[aria-disabled="true"] > .re-command-palette__action {
     color: var(--re-color-text-subtle);
     cursor: not-allowed;

@@ -71,4 +71,13 @@
   .re-combobox__option[aria-selected="true"] {
     background-color: var(--re-color-bg-muted);
   }
+  /* The active option is tracked via aria-activedescendant (no real focus on
+     options), so forced colors leave it cueless once bg-muted flattens — mark it
+     with system Highlight so the listbox highlight survives HCM. */
+  @media (forced-colors: active) {
+    .re-combobox__option[aria-selected="true"] {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
 }

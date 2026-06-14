@@ -43,6 +43,14 @@
     background-color: var(--re-color-accent-600);
     color: var(--re-color-text-on-accent);
   }
+  /* Forced colors flatten the accent fill — mark the current page with system
+     Highlight so it stays distinguishable from the other pages in HCM. */
+  @media (forced-colors: active) {
+    .re-pagination__item[aria-current="page"] {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
 
   .re-pagination__item[aria-disabled="true"] {
     opacity: 0.5;

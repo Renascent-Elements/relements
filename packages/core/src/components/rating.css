@@ -119,6 +119,26 @@
     inline-size: calc(var(--re-rating-value) / var(--re-rating-max) * 100%);
     color: var(--re-rating-fill);
   }
+
+  /* Forced colors flatten every star to CanvasText, erasing the fill-vs-track
+     colour difference (the glyph is identical). System Highlight is permitted in
+     HCM, so paint the filled stars (interactive + read-only overlay) with it so
+     the rating stays readable. */
+  @media (forced-colors: active) {
+    .re-rating :checked ~ .re-rating__star,
+    .re-rating .re-rating__star:hover,
+    .re-rating .re-rating__star:hover ~ .re-rating__star,
+    .re-rating-display::before {
+      color: Highlight;
+    }
+    /* The radio is sr-only, so the global :focus-visible outline lands on a 1px
+       clipped box (invisible) and the star's box-shadow ring is stripped — put a
+       real outline on the VISIBLE star instead. */
+    .re-rating input:focus-visible + .re-rating__star {
+      outline: 2px solid Highlight;
+      outline-offset: 1px;
+    }
+  }
   .re-rating-display[data-size="sm"] {
     --re-rating-size: 1.125rem;
   }

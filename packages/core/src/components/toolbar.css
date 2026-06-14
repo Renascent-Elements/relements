@@ -95,6 +95,19 @@
   .re-toolbar .re-button[aria-pressed="true"]:active {
     background-color: var(--re-color-accent-800);
   }
+  /* Forced colors flatten the accent fill — mark a toggled-on control with
+     system Highlight so the pressed state survives HCM. */
+  @media (forced-colors: active) {
+    /* also list :hover/:active — the authored accent hover/active rules carry
+       [aria-pressed] too (0,4,0), so the plain override would lose to them on
+       interaction and the Highlight cue would flicker away under the pointer. */
+    .re-toolbar .re-button[aria-pressed="true"],
+    .re-toolbar .re-button[aria-pressed="true"]:hover,
+    .re-toolbar .re-button[aria-pressed="true"]:active {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
 
   /* A vertical toolbar flips its dividers to the block axis. Scoped to the
      toolbar so standalone `.re-separator[data-orientation="vertical"]` is

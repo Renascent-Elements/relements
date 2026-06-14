@@ -75,6 +75,14 @@
     color: var(--re-color-text);
     box-shadow: var(--re-shadow-sm);
   }
+  /* Forced colors flatten the selected pill's surface + drop its shadow — mark
+     the checked option with system Highlight so the selection survives HCM. */
+  @media (forced-colors: active) {
+    .re-segmented__option input:checked + span {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
 
   .re-segmented__option input:focus-visible + span {
     outline: none;

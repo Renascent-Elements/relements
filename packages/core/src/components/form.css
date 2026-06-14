@@ -236,6 +236,23 @@
     background-color: currentColor;
   }
 
+  /* Forced colors flatten the accent fill of a checked box; re-establish it with
+     system Highlight + a HighlightText glyph so checked stays distinct from
+     unchecked (Canvas box + CanvasText border) in Windows High Contrast. */
+  @media (forced-colors: active) {
+    .re-checkbox:checked,
+    .re-checkbox:indeterminate,
+    .re-radio:checked {
+      background-color: Highlight;
+      border-color: Highlight;
+    }
+    .re-checkbox:checked::before,
+    .re-checkbox:indeterminate::before,
+    .re-radio:checked::before {
+      background-color: HighlightText;
+    }
+  }
+
   /* Indeterminate (checkbox) */
   .re-checkbox:indeterminate {
     background-color: var(--re-color-accent-600);
