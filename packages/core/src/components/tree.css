@@ -37,6 +37,14 @@
   .re-tree {
     --re-tree-indent: var(--re-space-4);
     --re-tree-chevron-size: 0.6rem;
+    /* The chevron is a corner-weighted border bracket: its ink centroid sits at
+       ~3/4 of the box, not the geometric center it rotates about — so a plain
+       rotate leaves the glyph visually low/off on the row. Recenter the centroid
+       onto the rotation pivot ((size − stroke) / 4 per axis) BEFORE rotating, so
+       it stays optically centered in every state. The horizontal shift is toward
+       inline-start, so it flips under RTL (where the border sides flip too). */
+    --re-tree-chevron-recenter: calc((var(--re-tree-chevron-size) - 2px) / 4);
+    --re-tree-chevron-recenter-x: calc(-1 * var(--re-tree-chevron-recenter));
     --re-tree-row-min: var(--re-control-height-sm);
     --re-tree-icon-size: 1rem;
     --re-tree-guide-color: var(--re-color-border);
@@ -95,11 +103,21 @@
     block-size: var(--re-tree-chevron-size);
     border-inline-end: 2px solid currentColor;
     border-block-end: 2px solid currentColor;
-    transform: rotate(-45deg);
+    /* recenter (rightmost → applied first, in local axes) THEN rotate about the
+       box center, so the recentered centroid stays put as the angle changes. */
+    transform: rotate(-45deg)
+      translate(var(--re-tree-chevron-recenter-x), calc(-1 * var(--re-tree-chevron-recenter)));
     transition: transform var(--re-duration-fast) var(--re-easing-standard);
   }
   .re-tree__branch[open] > .re-tree__summary::before {
-    transform: rotate(45deg);
+    transform: rotate(45deg)
+      translate(var(--re-tree-chevron-recenter-x), calc(-1 * var(--re-tree-chevron-recenter)));
+  }
+
+  /* Recenter shift is toward inline-start; flip its sign under RTL. */
+  [dir="rtl"] .re-tree,
+  .re-tree[dir="rtl"] {
+    --re-tree-chevron-recenter-x: var(--re-tree-chevron-recenter);
   }
 
   /* Leaf: native control reset + reserve the EXACT chevron gutter (one shared
