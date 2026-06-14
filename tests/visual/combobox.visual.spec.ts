@@ -28,3 +28,17 @@ test("combobox enhanced open visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test.describe("combobox visual — dark", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("enhanced open listbox in dark", async ({ page }) => {
+    await page.goto("./combobox.html");
+    const enhanced = page.getByTestId("enhanced");
+    await enhanced.getByRole("combobox").click();
+    await page.keyboard.press("ArrowDown");
+    await expect(page.locator(".re-combobox__list")).toBeVisible();
+    await expect(enhanced).toHaveScreenshot("combobox-enhanced-open-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

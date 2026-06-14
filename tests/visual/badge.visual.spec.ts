@@ -9,3 +9,14 @@ test("badge variants visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test.describe("badge visual — dark", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("badge variants visual snapshot — dark tones", async ({ page }) => {
+    await page.goto("./badge.html");
+    const variants = page.getByTestId("variants");
+    await expect(variants).toHaveScreenshot("badge-variants-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

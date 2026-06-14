@@ -16,3 +16,13 @@ test("tabs after switching visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test.describe("tabs visual — dark", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("tabs selected tab + panel surface in dark", async ({ page }) => {
+    await page.goto("./tabs.html");
+    await expect(page.getByTestId("basic")).toHaveScreenshot("tabs-basic-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});
