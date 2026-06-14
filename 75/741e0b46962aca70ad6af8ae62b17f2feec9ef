@@ -1,0 +1,25 @@
+docs/public/src/content/docs/components/command-palette.mdx
+  s_2732c4df70b865::t_24bab4ad84336e 21-24
+.changeset/command-palette-hotkey-ownership.md
+  s_2732c4df70b865::t_4a10d1d55aaa16 1-5
+tests/elements/command-palette.spec.ts
+  s_2732c4df70b865::t_937625e5750ec1 82-100
+packages/core/src/behaviors/command-palette.js
+  s_2732c4df70b865::t_d64986de6d0c17 278-282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "75741e0b46962aca70ad6af8ae62b17f2feec9ef",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
