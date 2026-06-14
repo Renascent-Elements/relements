@@ -1,0 +1,23 @@
+CLAUDE.md
+  s_2732c4df70b865::t_0ab04899288491 30-32,34-35,37-40
+  s_2732c4df70b865::t_378cf8925b331a 43-44,46-47
+  s_2732c4df70b865::t_a9fe9090604370 64
+  s_2732c4df70b865::t_d52b469ab7b68e 36
+  s_2732c4df70b865::t_b0e604d4f2777d 33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "89e91ec9f6a8931e94474436f2b5447e4ca7f9d0",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
