@@ -53,7 +53,7 @@ tests/
 
 ```bash
 pnpm install
-pnpm exec playwright install chromium
+pnpm exec playwright install chromium firefox webkit   # the browser suite runs on all three
 
 pnpm test                    # full suite (unit + browser + a11y + visual)
 pnpm run lint                # Prettier + ESLint
