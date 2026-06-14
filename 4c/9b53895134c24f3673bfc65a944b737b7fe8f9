@@ -1,0 +1,20 @@
+packages/core/README.md
+  s_2732c4df70b865::t_e1416f4fd82269 93-95,97-103,119-127
+  s_2732c4df70b865::t_29fc93b41202f0 96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "4c9b53895134c24f3673bfc65a944b737b7fe8f9",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
