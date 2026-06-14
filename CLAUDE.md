@@ -27,10 +27,24 @@ HTML-first, framework-agnostic design system. Published to npm as a **single pac
 
 Order: `@layer re.tokens, re.reset, re.base, re.components;`. Component styles live in the low-priority `re.components` layer **on purpose** — consumer overrides land in the unlayered cascade and win automatically. Subtree theming = redeclare token custom properties on any ancestor. Consequence: any unlayered third-party CSS (e.g. a host framework's) will beat Relements styles — isolate when embedding (see docs site below).
 
+## CSS authoring (the non-obvious parts)
+
+- **Browser floor: Chrome 99 / Firefox 97 / Safari 15.4.** Safe above the floor (use freely): `color-mix()`, `:has()`, the Popover API, anchor positioning, `<details name>` (exclusive accordion). **Above the floor — avoid:** the `lh` unit and `:dir()` (both Safari 16.4+). Center against line boxes with `calc(… - 1em * var(--re-line-height-normal))`; target RTL with `[dir="rtl"]` ancestor/self selectors, not `:dir()`.
+- **Tokens only.** Every value is a `--re-*` custom property; the only allowed literals are tiny structural ones (`1px`/`2px` borders, `0`, a `ch` measure). Seed geometry from real tokens (e.g. a marker diameter from `--re-control-height-*`), never a magic rem. Use logical properties (`padding-inline`, `inset-inline-start`, `inline-size`, `border-inline-*`) so RTL is free.
+- **Dark-mode trap:** `--re-color-bg-subtle` collapses to `surface` in dark and vanishes against cards — use `--re-color-bg-muted` (or a `color-mix` on `currentColor`) for hover/raised states. Capture a real dark **and a hovered** state in a visual baseline so this can't regress silently.
+- **Focus ring:** `base.css` gives a global `:focus-visible` **outer** ring (`box-shadow: var(--re-shadow-focus)`). Opt out to an **inset** ring (`box-shadow: inset 0 0 0 2px var(--re-color-focus-ring)`) only for tight/scrolled containers (menu, tree, command-palette, horizontal steps), where an outer ring clips at the edge and dark's ring-offset→0 swallows it. Padded rows (alert/toast/banner dismiss) keep the outer ring.
+- **Solid status fills that carry TEXT need AA contrast.** White-on-`*-600` is fine for _bars_ (progress/meter — no text) but fails 4.5:1 as text; use the `*-700` scale + `--re-color-text-on-accent` when text/icon sits on a solid status fill. Don't use a translucent `color-mix` for a control's visible glyph (the `×`) — it can drop below AA; full `currentColor` inherits the (already AA-verified) container foreground.
+- **`base.css` sets `color` directly on some elements** (`p`, headings, …), which **blocks inheritance** from a colored component container. A `<p>` message inside a tinted/solid banner needs explicit `color: inherit` to pick up the band foreground.
+- **List semantics differ by list type.** A `<ul>` nav list gets `role="list"` (restores "list, N items" in Safari VoiceOver under `list-style: none`). An **ordered** `<ol>` (stepper) must **not** — `role="list"` downgrades it to a generic list and drops the "N of M" position that's the whole point; strip the list visually in CSS instead (`list-style/margin/padding: 0`, like breadcrumb).
+- Be honest in code comments and docs about what reaches assistive tech: an `aria-hidden` glyph conveys nothing to AT, and status carried only by color/glyph is a WCAG 1.3.1 gap — back it with a real cue (`.re-sr-only` text, `aria-current`, a forced-colors `Highlight` ring).
+
 ## Testing conventions
 
-- Playwright `baseURL` is `http://localhost:4173/docs/examples/` (served by the config's webServer). Behavior specs: `tests/elements/<name>.spec.ts`; a11y: `tests/a11y/<name>.a11y.spec.ts`; visual: `tests/visual/<name>.visual.spec.ts`.
+- Playwright `baseURL` is `http://localhost:4173/docs/examples/` (served by the config's webServer — `http-server` at the repo root). Behavior specs: `tests/elements/<name>.spec.ts`; a11y: `tests/a11y/<name>.a11y.spec.ts`; visual: `tests/visual/<name>.visual.spec.ts`.
+- Example pages link **raw `src/index.css`**, so CSS edits show up in the browser/visual tests with no rebuild (only `dist`-consuming surfaces — the docs site, the unit `exports` test — need `pnpm build` first).
 - Visual baselines: commit **both** `-darwin` and `-linux` PNGs. Generate the Linux baselines via the `update-snapshots` GitHub Action — **not** local Docker (it renders differently from the CI runner).
+- Regenerate baselines with `--update-snapshots all` (what `pnpm test:update-snapshots` runs). Plain `--update-snapshots` is `changed` mode: a sub-`maxDiffPixelRatio` change still **passes**, so it leaves the baseline depicting the OLD render — stale-but-green. Use `all` to force the refresh.
+- a11y specs assert `results.violations` is empty — but axe **can't** catch presentation-only state (e.g. status conveyed by an `aria-hidden` glyph) and parks short decorative glyphs (a lone `×`) in `results.incomplete`, not `violations`. Don't let "axe clean" stand in for real semantics; verify the AT story yourself.
 - Per-component checklist: see "Acceptance per element" in `docs/PROGRESS.md` (example with demo delimiters, behavior + axe + visual tests, docs page, changeset).
 
 ## Docs site (`docs/public`)
@@ -47,3 +61,4 @@ Order: `@layer re.tokens, re.reset, re.base, re.components;`. Component styles l
 - `dist/` is gitignored — built at publish time and in CI.
 - Prettier style: double quotes, 2-space, semicolons, trailing commas. `.astro` files are covered by `prettier-plugin-astro` + `eslint-plugin-astro`.
 - Squash merges on `main` — after a merge, branch fresh from `origin/main` to avoid diff noise.
+- **Keep `packages/core/README.md` in sync.** It's the npm-facing surface — when you add or change a component, behavior, or custom element, update its row in the README's component tables / behaviors / elements lists in the same PR (alongside the changeset and the docs `.mdx`).
