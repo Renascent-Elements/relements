@@ -9,3 +9,14 @@ test("tag variants visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test.describe("tag visual — dark", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("tag variants visual snapshot (dark tones)", async ({ page }) => {
+    await page.goto("./tag.html");
+    const variants = page.getByTestId("variants");
+    await expect(variants).toHaveScreenshot("tag-variants-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

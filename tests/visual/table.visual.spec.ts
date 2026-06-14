@@ -25,3 +25,18 @@ test("table sticky-header visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test.describe("table visual — dark", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("sticky zebra table renders dark tokens", async ({ page }) => {
+    await page.goto("./table.html");
+    // Mirror the light sticky test: pin the sticky <thead> with a fixed scrollTop
+    // so its background, the zebra row striping, and cell borders all render in dark.
+    await page
+      .locator('[data-testid="sticky"] .re-table-wrap')
+      .evaluate((el) => (el.scrollTop = 80));
+    await expect(page.getByTestId("sticky")).toHaveScreenshot("table-sticky-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

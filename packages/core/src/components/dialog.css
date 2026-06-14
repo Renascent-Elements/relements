@@ -47,7 +47,8 @@
 
   /* Backdrop owned by the browser; tint with tokens. */
   .re-dialog::backdrop {
-    background-color: rgb(0 0 0 / 0.4);
+    /* themeable modal scrim (drawer reuses this via .re-dialog) */
+    background-color: var(--re-color-overlay);
     backdrop-filter: blur(2px);
   }
 

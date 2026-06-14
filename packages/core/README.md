@@ -230,16 +230,17 @@ The Renascent theme is the dark navy palette from [renascentelements.hu](https:/
 
 ## Key tokens
 
-| Token                   | Light default | Purpose                    |
-| ----------------------- | ------------- | -------------------------- |
-| `--re-color-accent-600` | `#2563eb`     | Buttons, links, focus ring |
-| `--re-color-bg`         | `#ffffff`     | Page background            |
-| `--re-color-surface`    | `#ffffff`     | Card / panel background    |
-| `--re-color-text`       | `#0f172a`     | Body text                  |
-| `--re-color-border`     | `#e2e8f0`     | Borders                    |
-| `--re-color-focus-ring` | `#3b82f6`     | Keyboard focus indicator   |
-| `--re-space-4`          | `1rem`        | Base spacing (4 px scale)  |
-| `--re-radius-md`        | `0.375rem`    | Default radius             |
+| Token                   | Light default      | Purpose                                |
+| ----------------------- | ------------------ | -------------------------------------- |
+| `--re-color-accent-600` | `#2563eb`          | Buttons, links, focus ring             |
+| `--re-color-bg`         | `#ffffff`          | Page background                        |
+| `--re-color-surface`    | `#ffffff`          | Card / panel background                |
+| `--re-color-text`       | `#0f172a`          | Body text                              |
+| `--re-color-border`     | `#e2e8f0`          | Borders                                |
+| `--re-color-focus-ring` | `#3b82f6`          | Keyboard focus indicator               |
+| `--re-color-overlay`    | `rgb(0 0 0 / 0.4)` | Modal scrim (dialog / drawer backdrop) |
+| `--re-space-4`          | `1rem`             | Base spacing (4 px scale)              |
+| `--re-radius-md`        | `0.375rem`         | Default radius                         |
 
 Full list in [`src/tokens.css`](./src/tokens.css).
 

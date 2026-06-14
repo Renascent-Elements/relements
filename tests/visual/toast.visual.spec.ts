@@ -18,3 +18,19 @@ test("toast with multiple tones visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+test.describe("toast visual — dark", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("toast tones with hovered dismiss visual snapshot", async ({ page }) => {
+    await page.goto("./toast.html");
+    await page.locator("#t-success").click();
+    await page.locator("#t-danger").click();
+    await page.locator("#t-warning").click();
+    // Hover the topmost toast's dismiss so the bg-muted hover (fixed from
+    // bg-subtle, which collapses to surface in dark) is exercised on a dark surface.
+    await page.locator(".re-toast .re-toast__dismiss").first().hover();
+    await expect(page.locator(".re-toast-region")).toHaveScreenshot("toast-region-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

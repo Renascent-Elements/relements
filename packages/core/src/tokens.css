@@ -60,6 +60,7 @@
     --re-color-bg-subtle: var(--re-color-neutral-50);
     --re-color-bg-muted: var(--re-color-neutral-100);
     --re-color-surface: var(--re-color-neutral-0);
+    --re-color-overlay: rgb(0 0 0 / 0.4); /* modal scrim (dialog/drawer backdrop) */
     --re-color-text: var(--re-color-neutral-900);
     --re-color-text-muted: var(--re-color-neutral-600);
     --re-color-text-subtle: var(--re-color-neutral-500);
