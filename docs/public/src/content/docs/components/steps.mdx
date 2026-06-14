@@ -1,0 +1,62 @@
+---
+title: Steps
+description: Ordered process indicator built on a native ordered list — no JavaScript.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Steps show where the user is in an ordered, multi-step flow (checkout,
+onboarding, a wizard). It is a native `<ol class="re-steps">` of
+`<li class="re-steps__step">`, each carrying `data-status` — `complete`,
+`current`, or `upcoming`. It works with **zero JavaScript**: markers auto-number
+via a CSS counter, a complete step swaps its number for a pure-CSS check, and the
+connecting rail is drawn entirely in CSS.
+
+It is a **display indicator**, not an ARIA `tablist` or navigation widget — there
+is no roving tabindex and no panel switching. The ordered-list semantics are kept
+(so assistive tech announces "2 of 4"); the list is stripped visually in CSS
+rather than with `role="list"`, which would discard that ordinal. The current
+step carries `aria-current="step"` on its `<li>`.
+
+## Vertical
+
+<Demo src="steps.html" name="vertical" />
+
+## Horizontal
+
+`data-orientation="horizontal"` flows the steps inline with the rail behind the
+markers.
+
+<Demo src="steps.html" name="horizontal" />
+
+## Sizes
+
+`data-size="sm"` and `data-size="lg"` scale the markers, gap, and type together
+(mirroring [progress](/relements/components/progress/)); `sm` drops the
+description line in horizontal layouts.
+
+<Demo src="steps.html" name="sizes" />
+
+## Notes
+
+- Set each step's `data-status` to `complete`, `current`, or `upcoming`, and put
+  `aria-current="step"` on the **same `<li>`** as `data-status="current"`
+  (exactly once). With no JavaScript, advancing the flow is your framework
+  re-rendering those attributes.
+- A completed step's `.re-steps__content` may be a real `<a href>` or
+  `<button>` — it becomes focusable and shows a hover/focus affordance. Leave it
+  a `<span>` for an inert step (upcoming steps should stay inert).
+- The rail tints accent up to the **last complete** step: a complete step colors
+  the segment leading **out** of it toward the next step. For a continuous
+  "percent done" bar, compose [progress](/relements/components/progress/) instead
+  — steps is deliberately discrete.
+- Markers carry `aria-hidden="true"` — the number and check are **visual only**.
+  Because of that, completion is not programmatically determinable from the
+  marker, so expose it to assistive tech with a visually-hidden status word on
+  each non-current step:
+  `<span class="re-sr-only">Completed: </span>` (or `Upcoming:`). The current
+  step is already announced via `aria-current`. The current step is also
+  distinguished without color (a bolder title, and a system-`Highlight` marker
+  ring under Windows High Contrast); the completed step by its check glyph.
+- Tune metrics by overriding `--re-steps-marker-size`, `--re-steps-gap`,
+  `--re-steps-rail-color`, etc. on the root or any subtree.

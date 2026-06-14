@@ -64,6 +64,9 @@ describe("@relements/core dist", () => {
       "range.css",
       "context-menu.css",
       "command-palette.css",
+      "tree.css",
+      "steps.css",
+      "banner.css",
     ];
     for (const file of components) {
       expect(existsSync(join(distRoot, "components", file)), file).toBe(true);

@@ -1,0 +1,185 @@
+/**
+ * Relements tree.
+ *
+ * A styled nested-disclosure NAVIGATION tree — branches are native nested
+ * <details>/<summary>, leaves are native <a href>/<button>. Zero JavaScript:
+ * expand/collapse, keyboard (Enter/Space on a summary), focus order, and
+ * navigation are all native. It is deliberately NOT an ARIA `role="tree"`
+ * widget (that keyboard model — Up/Down between items, Right/Left expand, etc. —
+ * is out of scope); claiming the roles without the model would mislead AT.
+ *
+ *   <nav class="re-tree" aria-label="Docs">
+ *     <ul class="re-tree__list" role="list">
+ *       <li>
+ *         <details class="re-tree__branch" open>
+ *           <summary class="re-tree__row re-tree__summary">
+ *             <span class="re-tree__label">Components</span>
+ *           </summary>
+ *           <ul class="re-tree__list" role="list">
+ *             <li><a class="re-tree__row re-tree__leaf" href="/button">Button</a></li>
+ *           </ul>
+ *         </details>
+ *       </li>
+ *       <li><a class="re-tree__row re-tree__leaf" href="/x" aria-current="page">Current</a></li>
+ *     </ul>
+ *   </nav>
+ *
+ * `role="list"` on every <ul> keeps "list, N items" in Safari/VoiceOver (which
+ * drops list semantics under `list-style: none`) and brings the reset's
+ * list-style/margin/padding reset for free. The selected leaf uses aria-current
+ * (`page` for an <a href> document, `true` for a <button> action).
+ *
+ * Variant (data-variant on .re-tree): lines — vertical guide lines.
+ * Density (data-density on .re-tree): comfortable (default), compact.
+ */
+
+@layer re.components {
+  .re-tree {
+    --re-tree-indent: var(--re-space-4);
+    --re-tree-chevron-size: 0.6rem;
+    /* The chevron is a corner-weighted border bracket: its ink centroid sits at
+       ~3/4 of the box, not the geometric center it rotates about — so a plain
+       rotate leaves the glyph visually low/off on the row. Recenter the centroid
+       onto the rotation pivot ((size − stroke) / 4 per axis) BEFORE rotating, so
+       it stays optically centered in every state. The horizontal shift is toward
+       inline-start, so it flips under RTL (where the border sides flip too). */
+    --re-tree-chevron-recenter: calc((var(--re-tree-chevron-size) - 2px) / 4);
+    --re-tree-chevron-recenter-x: calc(-1 * var(--re-tree-chevron-recenter));
+    --re-tree-row-min: var(--re-control-height-sm);
+    --re-tree-icon-size: 1rem;
+    --re-tree-guide-color: var(--re-color-border);
+
+    font-size: var(--re-size-text-sm);
+    color: var(--re-color-text);
+  }
+
+  /* Indent: nested lists only (top-level list stays flush). Logical property →
+     RTL-correct; compounds automatically at any depth; can't desync from the
+     DOM since the indent IS the nesting. (list-style/margin/padding come from
+     reset.css's ul[role="list"].) */
+  .re-tree__branch > .re-tree__list {
+    padding-inline-start: var(--re-tree-indent);
+  }
+
+  /* Shared row geometry for branch summaries AND leaves, so their labels align. */
+  .re-tree__row {
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-2);
+    min-block-size: var(--re-tree-row-min);
+    padding-block: var(--re-space-1);
+    padding-inline: var(--re-space-2);
+    border-radius: var(--re-radius-sm);
+    color: inherit;
+    cursor: pointer;
+    transition: background-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-tree__row:hover {
+    /* bg-muted, NOT bg-subtle: bg-subtle collapses to surface in dark mode. */
+    background-color: var(--re-color-bg-muted);
+  }
+  .re-tree__row:focus-visible {
+    /* Inset ring (overrides base.css's outer ring): a tree is a tight,
+       potentially scrolled container, so an outer ring would clip at edges. */
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--re-color-focus-ring);
+  }
+
+  /* Branch summary: native marker off, in-flow rotating chevron. Matches
+     disclosure.css's chevron values (0.6rem, same rotate-border technique) but
+     drops its trailing margin and reads the size from a token, so the summary
+     chevron and the leaf gutter (below) reserve the SAME width from one source. */
+  .re-tree__summary {
+    list-style: none;
+    user-select: none;
+  }
+  .re-tree__summary::-webkit-details-marker {
+    display: none;
+  }
+  .re-tree__summary::before {
+    content: "";
+    flex-shrink: 0;
+    inline-size: var(--re-tree-chevron-size);
+    block-size: var(--re-tree-chevron-size);
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    /* recenter (rightmost → applied first, in local axes) THEN rotate about the
+       box center, so the recentered centroid stays put as the angle changes. */
+    transform: rotate(-45deg)
+      translate(var(--re-tree-chevron-recenter-x), calc(-1 * var(--re-tree-chevron-recenter)));
+    transition: transform var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-tree__branch[open] > .re-tree__summary::before {
+    transform: rotate(45deg)
+      translate(var(--re-tree-chevron-recenter-x), calc(-1 * var(--re-tree-chevron-recenter)));
+  }
+
+  /* Recenter shift is toward inline-start; flip its sign under RTL. */
+  [dir="rtl"] .re-tree,
+  .re-tree[dir="rtl"] {
+    --re-tree-chevron-recenter-x: var(--re-tree-chevron-recenter);
+  }
+
+  /* Leaf: native control reset + reserve the EXACT chevron gutter (one shared
+     token) so leaf labels x-align under sibling branch labels. */
+  .re-tree__leaf {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    color: inherit;
+    text-align: start;
+    text-decoration: none;
+    inline-size: 100%;
+  }
+  .re-tree__leaf::before {
+    content: "";
+    flex-shrink: 0;
+    inline-size: var(--re-tree-chevron-size);
+  }
+
+  /* Optional icon + label slots. */
+  .re-tree__icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    inline-size: var(--re-tree-icon-size);
+    block-size: var(--re-tree-icon-size);
+    color: var(--re-color-text-muted);
+  }
+  .re-tree__label {
+    flex: 1;
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Selected leaf — reuses breadcrumb's emphasis, but KEEPS pointer-events
+     (re-navigating to the current node is valid in a nav tree). */
+  .re-tree__leaf[aria-current] {
+    background-color: var(--re-color-selection-bg);
+    color: var(--re-color-text);
+    font-weight: var(--re-font-weight-medium);
+  }
+
+  /* ---- Guide lines (opt-in) ----------------------------------------------
+     Per-LIST border (not per-row): continuous by construction, no last-child
+     over-draw, no sub-pixel seams. Decorative pseudo-element. */
+  .re-tree[data-variant="lines"] .re-tree__branch > .re-tree__list {
+    position: relative;
+  }
+  .re-tree[data-variant="lines"] .re-tree__branch > .re-tree__list::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: calc(var(--re-tree-chevron-size) / 2 + var(--re-space-2));
+    border-inline-start: 1px solid var(--re-tree-guide-color);
+  }
+
+  /* ---- Density ------------------------------------------------------------ */
+  .re-tree[data-density="compact"] {
+    --re-tree-row-min: 1.5rem;
+
+    font-size: var(--re-size-text-xs);
+  }
+}

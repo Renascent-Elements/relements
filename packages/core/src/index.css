@@ -30,6 +30,7 @@
 @import "./components/popover.css";
 @import "./components/toast.css";
 @import "./components/accordion.css";
+@import "./components/tree.css";
 @import "./components/alert.css";
 @import "./components/avatar.css";
 @import "./components/badge.css";
@@ -59,3 +60,5 @@
 @import "./components/range.css";
 @import "./components/context-menu.css";
 @import "./components/command-palette.css";
+@import "./components/steps.css";
+@import "./components/banner.css";

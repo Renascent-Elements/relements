@@ -90,16 +90,17 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Feedback & status
 
-| Class              | Element          | Variants / options                                                 |
-| ------------------ | ---------------- | ------------------------------------------------------------------ |
-| `.re-alert`        | `<div>` + `role` | `data-variant`: info, success, warning, danger; dismissible        |
-| `.re-badge`        | `<span>`         | `data-variant`: neutral, info, success, warning, danger            |
-| `.re-tag`          | `<span>`         | `data-variant`: neutral, info, success, warning, danger; removable |
-| `.re-progress`     | `<progress>`     | `data-size`: sm, md, lg                                            |
-| `.re-meter`        | `<meter>`        | `data-size`: sm, md, lg                                            |
-| `.re-spinner`      | `<span>`         | `data-size`: sm, md, lg                                            |
-| `.re-skeleton`     | `<span>`         | `data-shape`: text, circle                                         |
-| `.re-toast-region` | live region host | pairs with `showToast`                                             |
+| Class              | Element            | Variants / options                                                                                                                                                                 |
+| ------------------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.re-alert`        | `<div>` + `role`   | `data-variant`: info, success, warning, danger; dismissible                                                                                                                        |
+| `.re-banner`       | `<aside>` + `role` | full-bleed announcement strip; `data-variant`: info, success, warning, danger; `data-emphasis="solid"`; `data-sticky`; `data-align="center"`; dismissible via `enhanceDismissible` |
+| `.re-badge`        | `<span>`           | `data-variant`: neutral, info, success, warning, danger                                                                                                                            |
+| `.re-tag`          | `<span>`           | `data-variant`: neutral, info, success, warning, danger; removable                                                                                                                 |
+| `.re-progress`     | `<progress>`       | `data-size`: sm, md, lg                                                                                                                                                            |
+| `.re-meter`        | `<meter>`          | `data-size`: sm, md, lg                                                                                                                                                            |
+| `.re-spinner`      | `<span>`           | `data-size`: sm, md, lg                                                                                                                                                            |
+| `.re-skeleton`     | `<span>`           | `data-shape`: text, circle                                                                                                                                                         |
+| `.re-toast-region` | live region host   | pairs with `showToast`                                                                                                                                                             |
 
 ### Overlays
 
@@ -115,13 +116,15 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Navigation
 
-| Class            | Element                | Variants / options                                                 |
-| ---------------- | ---------------------- | ------------------------------------------------------------------ |
-| `.re-tabs`       | container              | pairs with `[role="tablist"]`, `[role="tab"]`, `[role="tabpanel"]` |
-| `.re-breadcrumb` | `<nav>` / `<ol>`       | `aria-current="page"` on current                                   |
-| `.re-pagination` | `<nav>` / `<ol>`       | page links with prev / next                                        |
-| `.re-accordion`  | `<details name>` group | native single-open; wraps `.re-disclosure`                         |
-| `.re-disclosure` | `<details>`            | `data-variant`: plain                                              |
+| Class            | Element                      | Variants / options                                                                                                           |
+| ---------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `.re-tabs`       | container                    | pairs with `[role="tablist"]`, `[role="tab"]`, `[role="tabpanel"]`                                                           |
+| `.re-breadcrumb` | `<nav>` / `<ol>`             | `aria-current="page"` on current                                                                                             |
+| `.re-pagination` | `<nav>` / `<ol>`             | page links with prev / next                                                                                                  |
+| `.re-steps`      | `<ol>`                       | ordered stepper; `data-status` per step (complete/current/upcoming); `data-orientation`: horizontal; `data-size`: sm, md, lg |
+| `.re-accordion`  | `<details name>` group       | native single-open; wraps `.re-disclosure`                                                                                   |
+| `.re-disclosure` | `<details>`                  | `data-variant`: plain                                                                                                        |
+| `.re-tree`       | `<nav>` + nested `<details>` | CSS-only disclosure tree; `data-variant="lines"`; `data-density="compact"`                                                   |
 
 ### Content & layout
 

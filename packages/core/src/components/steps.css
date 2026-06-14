@@ -1,0 +1,324 @@
+/**
+ * Relements steps (stepper).
+ *
+ * An ORDERED process indicator — where the user is in a multi-step flow
+ * (checkout, onboarding, wizard). Built HTML-first on a native ordered list:
+ *
+ *   <ol class="re-steps" data-orientation="vertical">
+ *     <li class="re-steps__step" data-status="complete">
+ *       <a class="re-steps__content" href="#account">
+ *         <span class="re-steps__marker" aria-hidden="true"></span>
+ *         <span class="re-steps__text">
+ *           <span class="re-steps__title">Account</span>
+ *           <span class="re-steps__description">Email and password</span>
+ *         </span>
+ *       </a>
+ *     </li>
+ *     <li class="re-steps__step" data-status="current" aria-current="step"> … </li>
+ *     <li class="re-steps__step" data-status="upcoming"> … </li>
+ *   </ol>
+ *
+ * Zero JavaScript. Markers auto-number via a CSS counter on the <ol>; a complete
+ * step swaps the number for a pure-CSS check. The connector is a per-step rail
+ * segment anchored to the <ol>'s own height (block-size: 100% + gap), so it
+ * meets the next marker's centre at ANY content height and the last step draws
+ * no trailing stub. Each step's data-status tints the segment leading OUT of it,
+ * giving a discrete "filled up to here" read WITHOUT a continuous bar (that is
+ * .re-progress's job — compose, don't merge).
+ *
+ * Semantics: ordered-list semantics are KEPT by stripping the list in CSS
+ * (list-style/margin/padding: 0, like breadcrumb) — NOT via role="list", which
+ * would downgrade the <ol> to a generic list and kill "N of M". aria-current
+ * ="step" sits on the <li> exactly once (stable across the link / non-link
+ * variants). Markers are aria-hidden (decorative — the number/check is visual
+ * only), so completion is NOT programmatically determinable from them: expose
+ * it to AT with a visually-hidden status word per step (the fixture ships
+ * `<span class="re-sr-only">Completed: </span>` / `Upcoming:` on non-current
+ * steps; the current step is covered by aria-current). This is a DISPLAY
+ * indicator, not a tablist — no roving tabindex, no role="tab", no panels.
+ *
+ * Marker fill / border by status — never bg-subtle (collapses to surface in
+ * dark); the upcoming marker is hollow against surface:
+ *   upcoming → surface fill + border-strong ring, muted number
+ *   current  → surface fill + accent ring, accent number + aria-current
+ *   complete → accent-600 fill + text-on-accent check
+ *
+ * Orientation: data-orientation = vertical (default) | horizontal.
+ * Size:        data-size = sm | md (default) | lg (mirrors progress).
+ * Geometry is token-seeded (no magic rems) and uses logical properties, so RTL
+ * is free; the check is a non-directional glyph (physical borders) so it never
+ * mirrors.
+ */
+
+@layer re.components {
+  .re-steps {
+    /* ---- token-seeded geometry knobs (no magic rems) ---- */
+    --re-steps-marker-size: var(--re-control-height-md);
+    --re-steps-rail-width: var(--re-border-width-strong); /* 2px structural */
+    --re-steps-gap: var(--re-space-4);
+    --re-steps-rail-color: var(--re-color-border);
+    --re-steps-rail-color-active: var(--re-color-accent-600);
+
+    /* status fills — explicit so no one reaches for bg-subtle in dark */
+    --re-steps-marker-fill-upcoming: var(--re-color-surface);
+    --re-steps-marker-border-upcoming: var(--re-color-border-strong);
+    --re-steps-marker-fill-current: var(--re-color-surface);
+    --re-steps-marker-border-current: var(--re-color-accent-600);
+    --re-steps-marker-fill-complete: var(--re-color-accent-600);
+    --re-steps-marker-glyph-complete: var(--re-color-text-on-accent);
+
+    /* check bracket — derived from the marker size so it scales with data-size */
+    --re-steps-check-size: calc(var(--re-steps-marker-size) * 0.22);
+
+    /* Strip the list IN CSS (not role="list") so ordered semantics survive. */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: re-steps;
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-steps-gap);
+    font-size: var(--re-size-text-sm);
+    color: var(--re-color-text);
+  }
+
+  /* ---- Step + content scaffolding -------------------------------------- */
+  .re-steps__step {
+    counter-increment: re-steps;
+    position: relative; /* anchors the per-step rail segment */
+    display: flex;
+  }
+
+  .re-steps__content {
+    position: relative; /* paints the marker ABOVE the rail segment */
+    display: flex;
+    align-items: flex-start;
+    gap: var(--re-space-3);
+    /* control reset so <a>/<button>/<span> render identically */
+    appearance: none;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: var(--re-space-1);
+    border-radius: var(--re-radius-md);
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+  }
+
+  /* Hover/focus affordances only when the content is actually interactive. */
+  a.re-steps__content,
+  button.re-steps__content {
+    cursor: pointer;
+  }
+  a.re-steps__content:hover,
+  button.re-steps__content:hover {
+    /* bg-muted, NOT bg-subtle (collapses to surface in dark). */
+    background-color: var(--re-color-bg-muted);
+  }
+  /* Vertical (the common wizard layout) is not a tight scroller, so interactive
+     steps inherit base.css's OUTER focus ring for free; horizontal opts into an
+     inset ring below. */
+
+  /* ---- Marker ---------------------------------------------------------- */
+  .re-steps__marker {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--re-steps-marker-size);
+    block-size: var(--re-steps-marker-size);
+    border-radius: var(--re-radius-pill);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-semibold);
+    line-height: 1;
+    /* upcoming defaults; the status rules below re-point fill/border/color */
+    background-color: var(--re-steps-marker-fill-upcoming);
+    border: var(--re-border-width-strong) solid var(--re-steps-marker-border-upcoming);
+    color: var(--re-color-text-muted);
+  }
+  /* Number for upcoming + current. Complete swaps to the check below. */
+  .re-steps__marker::before {
+    content: counter(re-steps);
+  }
+
+  .re-steps__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-1);
+    min-inline-size: 0;
+    /* Centre the title's line box against the marker by padding the text block
+       down by half the marker/line-box difference. The line box is 1em × the
+       normal line-height (em + calc are floor-safe, unlike the `lh` unit which
+       needs Safari 16.4); both terms scale with data-size automatically. */
+    line-height: var(--re-line-height-normal);
+    padding-block-start: calc(
+      (var(--re-steps-marker-size) - 1em * var(--re-line-height-normal)) / 2
+    );
+  }
+  .re-steps__title {
+    color: var(--re-color-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .re-steps__description {
+    font-size: var(--re-size-text-xs);
+    color: var(--re-color-text-subtle);
+  }
+
+  /* ---- Status ---------------------------------------------------------- */
+  .re-steps__step[data-status="current"] .re-steps__marker {
+    background-color: var(--re-steps-marker-fill-current);
+    border-color: var(--re-steps-marker-border-current);
+    color: var(--re-color-accent-600);
+  }
+  .re-steps__step[data-status="current"] .re-steps__title {
+    color: var(--re-color-text);
+    font-weight: var(--re-font-weight-semibold);
+  }
+
+  .re-steps__step[data-status="complete"] .re-steps__marker {
+    background-color: var(--re-steps-marker-fill-complete);
+    border-color: var(--re-steps-marker-fill-complete);
+    color: var(--re-steps-marker-glyph-complete);
+  }
+  .re-steps__step[data-status="complete"] .re-steps__title {
+    color: var(--re-color-text);
+  }
+  /* Number → check: a non-directional tick (physical right+bottom borders so it
+     never mirrors under RTL), nudged up to sit optically centred in the disc. */
+  .re-steps__step[data-status="complete"] .re-steps__marker::before {
+    content: "";
+    inline-size: var(--re-steps-check-size);
+    block-size: calc(var(--re-steps-check-size) * 1.9);
+    border-right: var(--re-border-width-strong) solid currentColor;
+    border-bottom: var(--re-border-width-strong) solid currentColor;
+    transform: translateY(-12%) rotate(45deg);
+  }
+
+  /* ---- Vertical (default) — rail runs the block axis ------------------- */
+  /* Segment from THIS marker's centre to the NEXT marker's centre: anchored to
+     the step height (100%) + the inter-step gap, so it lands exactly regardless
+     of how many lines the label wraps. Suppressed on the last step (no stub). */
+  .re-steps[data-orientation="vertical"] .re-steps__step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc(
+      var(--re-space-1) + var(--re-steps-marker-size) / 2 - var(--re-steps-rail-width) / 2
+    );
+    inset-block-start: calc(var(--re-space-1) + var(--re-steps-marker-size) / 2);
+    block-size: calc(100% + var(--re-steps-gap));
+    inline-size: var(--re-steps-rail-width);
+    background-color: var(--re-steps-rail-color);
+  }
+  /* A complete step has finished the segment leading OUT of it. */
+  .re-steps[data-orientation="vertical"]
+    .re-steps__step[data-status="complete"]:not(:last-child)::before {
+    background-color: var(--re-steps-rail-color-active);
+  }
+
+  /* ---- Horizontal — rail runs the inline axis -------------------------- */
+  .re-steps[data-orientation="horizontal"] {
+    flex-direction: row;
+    gap: 0;
+  }
+  .re-steps[data-orientation="horizontal"] .re-steps__step {
+    flex: 1 1 0;
+    min-inline-size: 0;
+  }
+  .re-steps[data-orientation="horizontal"] .re-steps__content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    inline-size: 100%;
+  }
+  .re-steps[data-orientation="horizontal"] .re-steps__text {
+    align-items: center;
+    text-align: center;
+    padding-block-start: var(--re-space-2);
+  }
+  /* Segment between this marker's centre and the next (gap is 0, steps adjacent,
+     so step width == marker-to-marker pitch). Logical insets → RTL mirrors. */
+  .re-steps[data-orientation="horizontal"] .re-steps__step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    inset-block-start: calc(
+      var(--re-space-1) + var(--re-steps-marker-size) / 2 - var(--re-steps-rail-width) / 2
+    );
+    inset-inline-start: calc(50% + var(--re-steps-marker-size) / 2);
+    inset-inline-end: calc(-50% + var(--re-steps-marker-size) / 2);
+    block-size: var(--re-steps-rail-width);
+    background-color: var(--re-steps-rail-color);
+  }
+  .re-steps[data-orientation="horizontal"]
+    .re-steps__step[data-status="complete"]:not(:last-child)::before {
+    background-color: var(--re-steps-rail-color-active);
+  }
+  /* Tight/scrollable row → INSET ring (override base.css's outer ring so it
+     never clips at a container edge; also dodges dark's offset→0 gap). */
+  .re-steps[data-orientation="horizontal"] a.re-steps__content:focus-visible,
+  .re-steps[data-orientation="horizontal"] button.re-steps__content:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--re-color-focus-ring);
+  }
+
+  /* ---- Sizes (mirrors progress's data-size) ---------------------------- */
+  .re-steps[data-size="sm"] {
+    --re-steps-marker-size: var(--re-control-height-sm);
+    --re-steps-gap: var(--re-space-3);
+
+    font-size: var(--re-size-text-xs);
+  }
+  .re-steps[data-size="sm"] .re-steps__marker {
+    font-size: var(--re-size-text-xs);
+  }
+  .re-steps[data-size="lg"] {
+    --re-steps-marker-size: var(--re-control-height-lg);
+  }
+  .re-steps[data-size="lg"] .re-steps__marker {
+    font-size: var(--re-size-text-md);
+  }
+  /* sm horizontal: drop the description to avoid crowding the narrow column. */
+  .re-steps[data-size="sm"][data-orientation="horizontal"] .re-steps__description {
+    display: none;
+  }
+
+  /* ---- Motion ---------------------------------------------------------- */
+  .re-steps__marker,
+  .re-steps__step::before {
+    transition:
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      border-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .re-steps__marker,
+    .re-steps__step::before,
+    .re-steps__content {
+      transition-duration: 0.01ms;
+    }
+  }
+
+  /* ---- Forced colors (Windows High Contrast) --------------------------
+     Backgrounds flatten to Canvas, collapsing the status fills. Carry status
+     with non-color cues that survive: the COMPLETE step keeps its check glyph
+     (number vs check), and the CURRENT step's marker takes a Highlight ring (a
+     system color, distinct from upcoming's CanvasText ring) plus its already
+     bolder title and aria-current. Deliberate, reviewed construct — Playwright
+     doesn't emulate forced-colors, so it is not visually tested. */
+  @media (forced-colors: active) {
+    .re-steps__marker {
+      border: var(--re-border-width-strong) solid CanvasText;
+      color: CanvasText;
+    }
+    .re-steps__step[data-status="current"] .re-steps__marker {
+      border-color: Highlight;
+    }
+    .re-steps__step[data-status="complete"] .re-steps__marker {
+      background-color: Canvas;
+    }
+    .re-steps__step:not(:last-child)::before {
+      background-color: CanvasText;
+    }
+  }
+}

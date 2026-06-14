@@ -1,0 +1,68 @@
+---
+title: Banner
+description: Full-bleed page-level announcement strip — optionally sticky, dismissible.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A banner is a page- or app-level announcement strip: a single full-bleed
+horizontal row (leading icon + message + optional inline action + dismiss) that
+spans its container edge-to-edge with no rounded card border, optionally pinned
+to the top. Use it for cookie notices, maintenance windows, promos, and system
+status.
+
+It is distinct from [alert](/relements/components/alert/) — alert is a rounded,
+inset, always-subtle inline status **card**; banner is a borderless full-bleed
+**band** and adds a `data-emphasis="solid"` fill that alert never has. Put it in
+a full-width slot (outside a centered max-width wrapper) to reach the edges.
+
+## Variants
+
+The status tone is `data-variant`: `info` (default), `success`, `warning`,
+`danger`.
+
+<Demo src="banner.html" name="variants" />
+
+## Solid emphasis
+
+`data-emphasis="solid"` swaps the tint for a bold fill — the `*-700` status
+scale with white text, which clears WCAG AA contrast. Reserve it for genuinely
+high-priority strips.
+
+<Demo src="banner.html" name="emphasis" />
+
+## Dismissible
+
+Mark the host `[data-re-dismissible]`, add a `[data-re-dismiss]` button, and call
+`enhanceDismissible()` (the same behavior [alert](/relements/components/alert/)
+and toast use).
+
+<Demo src="banner.html" name="dismissible" />
+
+## Centered
+
+`data-align="center"` caps the message at a readable measure and centers it while
+the fill stays full-bleed — the classic announcement-bar look.
+
+<Demo src="banner.html" name="align-center" />
+
+## Sticky
+
+`data-sticky` pins the banner to the top of its scroll container while content
+scrolls underneath. Under a fixed site header, override `--re-banner-sticky-top`.
+
+<Demo src="banner.html" name="sticky" />
+
+## Notes
+
+- **Roles:** use `<aside>` / `<div role="region">` + `aria-label` for a
+  persistent announcement, or `role="status"` (a polite live region) for a
+  status strip injected at runtime. The leading icon is `aria-hidden`.
+- **Sticky:** `data-sticky` pins the banner to the top of its scroll container.
+  Under a fixed site header, override `--re-banner-sticky-top` in one line.
+- **Persistence:** `enhanceDismissible` only sets `[hidden]` for the session. A
+  cookie notice that must stay dismissed across reloads needs your app to persist
+  that choice (e.g. `localStorage`) and conditionally render — by design, the
+  library adds no new JavaScript here.
+- **Full-bleed** is plain `inline-size: 100%` (no `calc(50% - 50vw)` hack): the
+  band fills whatever slot you place it in.

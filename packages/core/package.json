@@ -83,6 +83,9 @@
     "./components/range.css": "./dist/components/range.css",
     "./components/context-menu.css": "./dist/components/context-menu.css",
     "./components/command-palette.css": "./dist/components/command-palette.css",
+    "./components/tree.css": "./dist/components/tree.css",
+    "./components/steps.css": "./dist/components/steps.css",
+    "./components/banner.css": "./dist/components/banner.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",

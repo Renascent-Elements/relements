@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Steps</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 44rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="steps">
+    <header>
+      <h1>Steps</h1>
+      <p>An ordered process indicator — no JavaScript required.</p>
+    </header>
+
+    <section aria-labelledby="vertical-heading" data-testid="vertical">
+      <h2 id="vertical-heading">Vertical</h2>
+      <!-- demo:start name="vertical" -->
+      <ol class="re-steps" data-orientation="vertical">
+        <li class="re-steps__step" data-status="complete">
+          <a class="re-steps__content" href="#account">
+            <span class="re-sr-only">Completed: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Account</span>
+              <span class="re-steps__description">Email and password</span>
+            </span>
+          </a>
+        </li>
+        <li class="re-steps__step" data-status="complete">
+          <a class="re-steps__content" href="#profile">
+            <span class="re-sr-only">Completed: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Profile</span>
+              <span class="re-steps__description">Name and avatar</span>
+            </span>
+          </a>
+        </li>
+        <li class="re-steps__step" data-status="current" aria-current="step">
+          <span class="re-steps__content">
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Billing</span>
+              <span class="re-steps__description">Payment method</span>
+            </span>
+          </span>
+        </li>
+        <li class="re-steps__step" data-status="upcoming">
+          <span class="re-steps__content">
+            <span class="re-sr-only">Upcoming: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Review</span>
+              <span class="re-steps__description">Confirm your order</span>
+            </span>
+          </span>
+        </li>
+      </ol>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="horizontal-heading" data-testid="horizontal">
+      <h2 id="horizontal-heading">Horizontal</h2>
+      <!-- demo:start name="horizontal" -->
+      <ol class="re-steps" data-orientation="horizontal">
+        <li class="re-steps__step" data-status="complete">
+          <a class="re-steps__content" href="#plan">
+            <span class="re-sr-only">Completed: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Plan</span>
+              <span class="re-steps__description">Choose a tier</span>
+            </span>
+          </a>
+        </li>
+        <li class="re-steps__step" data-status="current" aria-current="step">
+          <span class="re-steps__content">
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Build</span>
+              <span class="re-steps__description">Set it up</span>
+            </span>
+          </span>
+        </li>
+        <li class="re-steps__step" data-status="upcoming">
+          <span class="re-steps__content">
+            <span class="re-sr-only">Upcoming: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Ship</span>
+              <span class="re-steps__description">Go live</span>
+            </span>
+          </span>
+        </li>
+      </ol>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <ol class="re-steps" data-orientation="horizontal" data-size="sm">
+        <li class="re-steps__step" data-status="complete">
+          <span class="re-steps__content">
+            <span class="re-sr-only">Completed: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Cart</span>
+              <span class="re-steps__description">Your items</span>
+            </span>
+          </span>
+        </li>
+        <li class="re-steps__step" data-status="current" aria-current="step">
+          <span class="re-steps__content">
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Shipping</span>
+              <span class="re-steps__description">Address</span>
+            </span>
+          </span>
+        </li>
+        <li class="re-steps__step" data-status="upcoming">
+          <span class="re-steps__content">
+            <span class="re-sr-only">Upcoming: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Pay</span>
+              <span class="re-steps__description">Card details</span>
+            </span>
+          </span>
+        </li>
+      </ol>
+
+      <ol class="re-steps" data-orientation="horizontal" data-size="lg">
+        <li class="re-steps__step" data-status="complete">
+          <span class="re-steps__content">
+            <span class="re-sr-only">Completed: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Cart</span>
+              <span class="re-steps__description">Your items</span>
+            </span>
+          </span>
+        </li>
+        <li class="re-steps__step" data-status="current" aria-current="step">
+          <span class="re-steps__content">
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Shipping</span>
+              <span class="re-steps__description">Address</span>
+            </span>
+          </span>
+        </li>
+        <li class="re-steps__step" data-status="upcoming">
+          <span class="re-steps__content">
+            <span class="re-sr-only">Upcoming: </span>
+            <span class="re-steps__marker" aria-hidden="true"></span>
+            <span class="re-steps__text">
+              <span class="re-steps__title">Pay</span>
+              <span class="re-steps__description">Card details</span>
+            </span>
+          </span>
+        </li>
+      </ol>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="rtl-heading" data-testid="rtl">
+      <h2 id="rtl-heading">RTL</h2>
+      <div dir="rtl">
+        <ol class="re-steps" data-orientation="horizontal">
+          <li class="re-steps__step" data-status="complete">
+            <a class="re-steps__content" href="#1">
+              <span class="re-sr-only">Completed: </span>
+              <span class="re-steps__marker" aria-hidden="true"></span>
+              <span class="re-steps__text"><span class="re-steps__title">الحساب</span></span>
+            </a>
+          </li>
+          <li class="re-steps__step" data-status="current" aria-current="step">
+            <span class="re-steps__content">
+              <span class="re-steps__marker" aria-hidden="true"></span>
+              <span class="re-steps__text"><span class="re-steps__title">الدفع</span></span>
+            </span>
+          </li>
+          <li class="re-steps__step" data-status="upcoming">
+            <span class="re-steps__content">
+              <span class="re-sr-only">Upcoming: </span>
+              <span class="re-steps__marker" aria-hidden="true"></span>
+              <span class="re-steps__text"><span class="re-steps__title">المراجعة</span></span>
+            </span>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </body>
+</html>
