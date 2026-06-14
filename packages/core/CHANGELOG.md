@@ -1,5 +1,15 @@
 # @relements/core
 
+## 0.14.0
+
+### Minor Changes
+
+- [#50](https://github.com/Renascent-Elements/relements/pull/50) [`1e122ac`](https://github.com/Renascent-Elements/relements/commit/1e122ac08308c5e6012502199c729ed598174d36) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add the **banner** component — a full-bleed, page-level announcement strip (cookie notice, maintenance window, promo, system status). A single horizontal row: leading icon + message + optional inline action + dismiss, spanning its container edge-to-edge with no rounded card border, optionally `data-sticky` pinned to the top. `data-variant="info|success|warning|danger"` tones; `data-emphasis="solid"` swaps the tint for a bold `*-700` fill + white text (AA-contrast verified); `data-align="center"` caps the message at a readable measure while the fill stays full-bleed. Dismiss reuses the existing `enhanceDismissible` behavior (`data-re-dismissible` / `data-re-dismiss`) — no new JavaScript. Distinct from `alert` (a rounded, inset, always-subtle inline card) on geometry + solid emphasis. (Docs note: `enhanceDismissible` hides for the session only; persist "don't show again" in the consumer.)
+
+- [#50](https://github.com/Renascent-Elements/relements/pull/50) [`1e122ac`](https://github.com/Renascent-Elements/relements/commit/1e122ac08308c5e6012502199c729ed598174d36) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add the **steps** component — an ordered process indicator (stepper) built on a native `<ol class="re-steps">` of `<li data-status>` steps. Zero JavaScript: markers auto-number via a CSS counter, a complete step swaps its number for a pure-CSS check, and the connecting rail (which tints accent up to the last complete step) is drawn entirely in CSS. `data-orientation="vertical"` (default) / `horizontal`, `data-size="sm|md|lg"` (mirrors progress). Ordered-list semantics are kept (stripped visually in CSS, not via `role="list"`, so "N of M" survives); `aria-current="step"` marks the current `<li>`; markers are decorative. A completed step's content may be a real `<a href>`/`<button>`. Deliberately not an ARIA `role="tree"`/`tablist` widget — a display indicator, honest about its semantics.
+
+- [#50](https://github.com/Renascent-Elements/relements/pull/50) [`1e122ac`](https://github.com/Renascent-Elements/relements/commit/1e122ac08308c5e6012502199c729ed598174d36) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add the **tree** component — a CSS-only nested-disclosure navigation tree built on native `<details>`/`<summary>` branches and `<a>`/`<button>` leaves. Zero JavaScript: expand/collapse, keyboard, focus order, and navigation are all native. Structural indentation (can't desync from the markup, RTL-correct), reused disclosure chevron, aligned leaf labels via a reserved gutter, `aria-current` selection, optional `data-variant="lines"` guide lines and `data-density="compact"`. Deliberately not an ARIA `role="tree"` widget (that keyboard model is out of scope), so it's honest about its semantics — every control is independently Tab-focusable.
+
 ## 0.13.0
 
 ### Minor Changes
