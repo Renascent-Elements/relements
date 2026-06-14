@@ -79,6 +79,25 @@ test.describe("command-palette", () => {
     await expect(page.locator("#cmdk")).toBeVisible();
   });
 
+  test("the hotkey claims the combo — a window-level ⌘K handler does NOT also fire", async ({
+    page,
+  }) => {
+    await page.goto("./command-palette.html");
+    // mimic a page-wide ⌘K search bound on window (e.g. the docs site's Pagefind)
+    const windowSawIt = await page.evaluate(() => {
+      let seen = false;
+      window.addEventListener("keydown", (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === "k") seen = true;
+      });
+      document.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "k", metaKey: true, ctrlKey: true, bubbles: true }),
+      );
+      return seen;
+    });
+    await expect(page.locator("#cmdk")).toBeVisible(); // palette opened
+    expect(windowSawIt).toBe(false); // …and the event never reached the window handler
+  });
+
   test("destroy() restores the input (combobox role) + list role + link href", async ({ page }) => {
     await openPalette(page);
     const firstAction = page
