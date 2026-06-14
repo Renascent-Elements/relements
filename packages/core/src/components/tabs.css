@@ -73,6 +73,13 @@
     background-color: var(--re-color-accent-600);
     border-radius: var(--re-radius-sm);
   }
+  /* Forced colors strip the underline's background — re-establish it as a system
+     color so the selected tab stays distinguishable in Windows High Contrast. */
+  @media (forced-colors: active) {
+    .re-tab[aria-selected="true"]::after {
+      background-color: Highlight;
+    }
+  }
 
   .re-tabpanel {
     color: var(--re-color-text);

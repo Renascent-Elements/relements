@@ -50,6 +50,13 @@
     background-color: var(--re-color-accent-600);
     border-color: var(--re-color-accent-600);
   }
+  /* Forced colors flatten the track fill; the thumb position still conveys
+     on/off, but tint the checked track with Highlight so it reads as active. */
+  @media (forced-colors: active) {
+    .re-switch:checked {
+      background-color: Highlight;
+    }
+  }
   .re-switch:checked::before {
     transform: translateX(1rem); /* 16 */
   }

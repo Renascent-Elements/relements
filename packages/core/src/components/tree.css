@@ -161,6 +161,14 @@
     color: var(--re-color-text);
     font-weight: var(--re-font-weight-medium);
   }
+  /* Forced colors flatten the selection background — mark the current leaf with
+     system Highlight so "you are here" survives HCM (the bolder weight helps too). */
+  @media (forced-colors: active) {
+    .re-tree__leaf[aria-current] {
+      background-color: Highlight;
+      color: HighlightText;
+    }
+  }
 
   /* ---- Guide lines (opt-in) ----------------------------------------------
      Per-LIST border (not per-row): continuous by construction, no last-child
