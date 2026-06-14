@@ -1,0 +1,109 @@
+tests/elements/range.spec.ts
+  s_2732c4df70b865::t_946c078669f8bd 1-53,87-94
+  s_2732c4df70b865::t_98e7928867eb42 54-55,69-72,85-86
+  s_2732c4df70b865::t_73eb87f0d22335 56-68,73-84
+packages/core/src/behaviors/context-menu.js
+  s_2732c4df70b865::t_ce98292c1d7a16 1-64,70-75,79-126,130-186,192-198,202-209,211-232,235-237
+  s_2732c4df70b865::t_a8550f84597b32 187-191
+  s_2732c4df70b865::t_683d95920b6b3f 233-234
+  s_2732c4df70b865::t_f220f7eac3ab17 127-129
+  s_2732c4df70b865::t_f03b5891c7e1de 76-78,199-201,210
+  s_2732c4df70b865::t_a64e1479f6d63d 65-69
+docs/examples/context-menu.html
+  s_2732c4df70b865::t_83cd21ca82c29d 1-73
+tests/elements/command-palette.spec.ts
+  s_2732c4df70b865::t_f03b5891c7e1de 92-95
+  s_2732c4df70b865::t_5ab3b37602b556 1-69,83,89-91,98-99
+  s_2732c4df70b865::t_79f14414303c08 70-82,84-88,96-97
+packages/core/src/behaviors/command-palette.js
+  s_2732c4df70b865::t_f03b5891c7e1de 61-63,65-67,128,192-196,262-264
+  s_2732c4df70b865::t_b28f3a7da411d4 163-174
+  s_2732c4df70b865::t_f3b786fadf29aa 198-200,202
+  s_2732c4df70b865::t_bebd960beb07ef 298-299,303,306-309,311-323
+  s_2732c4df70b865::t_97165e3d7e5570 1-60,64,68-71,76-77,79-83,86-87,89,94-98,100-103,106,111-116,121-122,124-127,129-150,152-162,175-191,197,201,203-231,237-261,265-297,300-302,310,324-331
+  s_2732c4df70b865::t_47a91d9afa0bb3 117-120,123
+  s_2732c4df70b865::t_53be2c9beab0ed 304-305
+  s_2732c4df70b865::t_a9f011a205d647 232-236
+  s_2732c4df70b865::t_c56ca18f9a42e1 151
+  s_2732c4df70b865::t_7b95ad37d2002b 72-75,78,84-85,88,90-93,99,104-105,107-110
+packages/core/src/components/range.css
+  s_2732c4df70b865::t_7ff84f30d9e8d4 74-85
+  s_2732c4df70b865::t_f40e626282467f 1-73,86-143
+tests/a11y/command-palette.a11y.spec.ts
+  s_2732c4df70b865::t_d5779a7b4d1950 1-31
+packages/core/src/components/command-palette.css
+  s_2732c4df70b865::t_485224b9d2f765 84-87
+  s_2732c4df70b865::t_f233814476c667 1-83,88-145
+docs/public/src/content/docs/components/command-palette.mdx
+  s_2732c4df70b865::t_4b8f58a25d8d9e 1-35,37-39
+  s_2732c4df70b865::t_f03b5891c7e1de 36
+docs/examples/range.html
+  s_2732c4df70b865::t_f03b5891c7e1de 28-32,66-71,74-91,94-99,102-119,128-133,136-153
+  s_2732c4df70b865::t_65c20cece850fe 1-27,33-65,72-73,92-93,100-101,120-127,134-135,154-164
+packages/core/src/behaviors/range.js
+  s_2732c4df70b865::t_377fd36f35ec0f 1-106,110-116,119-140
+  s_2732c4df70b865::t_36c82c5ebbe635 107-109
+  s_2732c4df70b865::t_f03b5891c7e1de 117-118
+tests/a11y/range.a11y.spec.ts
+  s_2732c4df70b865::t_1076c583379416 1-20
+tests/visual/range.visual.spec.ts
+  s_2732c4df70b865::t_f2a8ce77c36a4e 1-37
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_478845b652c54d 57-59
+  s_2732c4df70b865::t_72737bae7c1376 15-17
+tests/visual/command-palette.visual.spec.ts
+  s_2732c4df70b865::t_fa45017e5a9ab4 1-37
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_80fe20bf1bca80 64-66
+  s_2732c4df70b865::t_d8ee2734e3a4b4 89-91
+packages/core/src/index.css
+  s_2732c4df70b865::t_96c55ea64d0c75 59
+  s_2732c4df70b865::t_ca604fb628080e 61
+  s_2732c4df70b865::t_767565d380f424 60
+tests/a11y/context-menu.a11y.spec.ts
+  s_2732c4df70b865::t_8beda88bbfa1b9 1-25
+tests/visual/context-menu.visual.spec.ts
+  s_2732c4df70b865::t_d006ea0cdfbb51 1-31
+docs/public/src/content/docs/components/range.mdx
+  s_2732c4df70b865::t_9c959662189d9c 1-42
+.changeset/power-tier2-batch.md
+  s_2732c4df70b865::t_41b2424fa155fe 1-9
+docs/examples/command-palette.html
+  s_2732c4df70b865::t_8db66d05fb825b 90,92,95,97
+  s_2732c4df70b865::t_f03b5891c7e1de 47-53
+  s_2732c4df70b865::t_90b6832f9f5c4b 1-46,54-89,91,93-94,96,98-131
+packages/core/src/components/context-menu.css
+  s_2732c4df70b865::t_8ef326af59eb31 1-27
+packages/core/package.json
+  s_2732c4df70b865::t_bb5612db9fbfc8 83-85
+  s_2732c4df70b865::t_db204979a9eabc 143-154
+packages/core/src/index.js
+  s_2732c4df70b865::t_c76288efa47fa7 22-24
+docs/public/src/styles/site.css
+  s_2732c4df70b865::t_64d89d40424492 271-274
+docs/public/src/content/docs/components/context-menu.mdx
+  s_2732c4df70b865::t_f03b5891c7e1de 32
+  s_2732c4df70b865::t_ab05d130be413a 1-31,33-36
+tests/elements/context-menu.spec.ts
+  s_2732c4df70b865::t_5790e7179fcd0a 61-75,77-90
+  s_2732c4df70b865::t_4fc955b626e8a1 76
+  s_2732c4df70b865::t_a19cf3b69e22cc 1-60,91-108
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_2b80e8faa93476 20-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "1b647fd350d0bdf6a6dd3d44815469e29126c988",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
