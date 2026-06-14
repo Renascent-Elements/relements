@@ -1,0 +1,77 @@
+docs/examples/alert.html
+  s_2732c4df70b865::t_040b0b1f1d0baf 39,45,51
+packages/core/src/components/tag.css
+  s_2732c4df70b865::t_5b7260842d43e9 15
+  s_2732c4df70b865::t_040b0b1f1d0baf 60,65,70,75
+docs/examples/badge.html
+  s_2732c4df70b865::t_040b0b1f1d0baf 36-39,47
+docs/examples/banner.html
+  s_2732c4df70b865::t_040b0b1f1d0baf 36,40,47,71,81,94,114,163,194
+docs/examples/tag.html
+  s_2732c4df70b865::t_040b0b1f1d0baf 36-39
+docs/public/src/content/docs/components/badge.mdx
+  s_2732c4df70b865::t_5b7260842d43e9 8
+packages/core/package.json
+  s_2732c4df70b865::t_8a773ea81d9a22 33,40
+packages/core/src/components/otp.css
+  s_2732c4df70b865::t_4b484d3e465eb1 55
+packages/core/src/components/alert.css
+  s_2732c4df70b865::t_040b0b1f1d0baf 7,66,70,74,78,82,86
+  s_2732c4df70b865::t_5b7260842d43e9 17
+packages/core/src/behaviors/tags-input.js
+  s_2732c4df70b865::t_d63f0e64b59f6a 20
+  s_2732c4df70b865::t_c7c6188644b176 69
+  s_2732c4df70b865::t_96bd77f953fbb7 137
+docs/public/src/content/docs/components/banner.mdx
+  s_2732c4df70b865::t_5b7260842d43e9 21
+packages/core/src/components/form.css
+  s_2732c4df70b865::t_4b484d3e465eb1 82,255,278,338
+.changeset/pre-1.0-normalization.md
+  s_2732c4df70b865::t_86acc4a1b5f468 1-6,8-14
+  s_2732c4df70b865::t_4640bfc80a2a94 7
+packages/core/src/components/tooltip.css
+  s_2732c4df70b865::t_2142f74ac9e239 20-22
+packages/core/src/tokens.css
+  s_2732c4df70b865::t_4b484d3e465eb1 160
+packages/core/src/components/banner.css
+  s_2732c4df70b865::t_5b7260842d43e9 38,147
+  s_2732c4df70b865::t_040b0b1f1d0baf 148,152,156,174,177,180
+docs/public/src/content/docs/components/tags-input.mdx
+  s_2732c4df70b865::t_c4843a81584cc8 25
+docs/public/src/content/docs/components/tooltip.mdx
+  s_2732c4df70b865::t_1de4af6199a965 16-20
+packages/core/src/behaviors/tabs.js
+  s_2732c4df70b865::t_14f7857b318160 16-18
+packages/core/src/components/badge.css
+  s_2732c4df70b865::t_5b7260842d43e9 9
+  s_2732c4df70b865::t_040b0b1f1d0baf 7,28,32,36,40
+docs/examples/theme-renascent.html
+  s_2732c4df70b865::t_040b0b1f1d0baf 90,132
+  s_2732c4df70b865::t_b9bd85365e03f8 78,84,120,126
+packages/core/README.md
+  s_2732c4df70b865::t_48533ceb5c3b1c 44-46
+  s_2732c4df70b865::t_e8c2681c679e52 97-100
+  s_2732c4df70b865::t_4640bfc80a2a94 95-96,101-105
+packages/core/src/components/tags-input.css
+  s_2732c4df70b865::t_4b484d3e465eb1 65
+packages/core/src/components/toast.css
+  s_2732c4df70b865::t_6df906e707cd0d 63-65
+packages/core/src/components/input-group.css
+  s_2732c4df70b865::t_4b484d3e465eb1 66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "89c687d2849e37708ac12a3c60ab07b4d77b3dae",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
