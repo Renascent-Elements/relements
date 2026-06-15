@@ -1,0 +1,19 @@
+docs/public/src/content/docs/frameworks/react.md
+  s_2732c4df70b865::t_342d929763a457 90-119,122-168,171-179,181-186,188-217
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "434578afe53a2209a6c9630973d1626a7c47c347",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
