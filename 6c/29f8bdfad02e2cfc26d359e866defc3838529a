@@ -1,0 +1,50 @@
+packages/core/src/behaviors/command-palette.js
+  s_2732c4df70b865::t_b9917518a40446 214-219
+  s_2732c4df70b865::t_c0a80ef1515046 8
+tests/elements/accordion.spec.ts
+  s_2732c4df70b865::t_886d2bb39dc595 1-43
+packages/core/src/behaviors/menu-button.js
+  s_2732c4df70b865::t_2f7f938799ca7c 170-172
+  s_2732c4df70b865::t_fb5c539e993516 17-19
+  s_2732c4df70b865::t_21c159f7b0298f 164-169,173-177
+  s_2732c4df70b865::t_1361cde4435cca 186-187
+  s_2732c4df70b865::t_79a548c34c644f 217
+  s_2732c4df70b865::t_32960779cd7e7c 75-77,80-83
+tests/elements/switch.spec.ts
+  s_2732c4df70b865::t_cf3745cf959b78 1-26
+tests/elements/combobox.spec.ts
+  s_2732c4df70b865::t_f3ba89531ed005 107-113,117-125
+  s_2732c4df70b865::t_2f7f938799ca7c 114-116
+tests/elements/menu-button.spec.ts
+  s_2732c4df70b865::t_3e991a67f957a5 88-107
+tests/unit/exports.spec.ts
+  s_2732c4df70b865::t_d14a89574900c8 2,6-12
+  s_2732c4df70b865::t_67c55c75f77e4f 41-42,47-48,50-52,56-57,61-88
+.changeset/keyboard-and-hygiene.md
+  s_2732c4df70b865::t_f93b84ee78889f 1-9
+tests/a11y/accordion.a11y.spec.ts
+  s_2732c4df70b865::t_a8f0adda0812ea 11-21
+packages/core/build-css.mjs
+  s_2732c4df70b865::t_e3feda251d4200 12,20-24
+packages/core/src/behaviors/combobox.js
+  s_2732c4df70b865::t_f56b8fd76706d1 19-20
+  s_2732c4df70b865::t_42fd632136a277 217-226
+tests/elements/command-palette.spec.ts
+  s_2732c4df70b865::t_474c98399d235d 53-68
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "6c29f8bdfad02e2cfc26d359e866defc3838529a",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
