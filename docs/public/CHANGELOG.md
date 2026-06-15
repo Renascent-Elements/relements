@@ -1,5 +1,12 @@
 # @relements/docs
 
+## 0.0.21
+
+### Patch Changes
+
+- Updated dependencies [[`2144195`](https://github.com/Renascent-Elements/relements/commit/21441951948195b41133280d38224533dfeec15f)]:
+  - @relements/core@1.1.1
+
 ## 0.0.20
 
 ### Patch Changes
