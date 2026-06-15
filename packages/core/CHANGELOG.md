@@ -1,5 +1,11 @@
 # @relements/core
 
+## 0.17.1
+
+### Patch Changes
+
+- [#60](https://github.com/Renascent-Elements/relements/pull/60) [`3abfeee`](https://github.com/Renascent-Elements/relements/commit/3abfeeee86fa0cb36b2d07c840ffb554c8030395) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Docs/DX for 1.0: reframe the package README's dark-mode section (the base import already follows `prefers-color-scheme` automatically; the Renascent theme is an optional brand palette on top) and note cross-component CSS dependencies in the granular-import example (context-menu→menu, command-palette/drawer→dialog). New documentation site guides — an authoritative token reference, dark mode, accessibility, and a behaviors/custom-elements overview — plus a CONTRIBUTING guide ship alongside (docs-site/repo only).
+
 ## 0.17.0
 
 ### Minor Changes
