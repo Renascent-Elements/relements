@@ -5,7 +5,7 @@
  * command launcher. The modal lifecycle is the EXISTING enhanceDialog (the
  * trigger uses data-re-dialog-trigger/-target; Escape/backdrop/focus-return are
  * native). This adds: the combobox/listbox ARIA (applied here, NOT shipped in
- * static markup), type-to-filter, arrow-key activedescendant navigation, single
+ * static markup), type-to-filter, arrow-key (+ Home/End) activedescendant navigation, single
  * activation path, and an optional global hotkey.
  *
  *   <button data-re-dialog-trigger data-re-dialog-target="cmdk">Search…</button>
@@ -211,6 +211,12 @@ function wireOne(dialog) {
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       move(-1);
+    } else if (event.key === "Home" || event.key === "End") {
+      const vis = visibleItems();
+      if (vis.length) {
+        event.preventDefault();
+        setActive(event.key === "Home" ? vis[0] : vis[vis.length - 1]);
+      }
     } else if (event.key === "Enter") {
       const cur = active();
       if (cur) {

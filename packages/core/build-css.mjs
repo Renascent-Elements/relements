@@ -9,13 +9,19 @@
  */
 
 import { transform, bundle } from "lightningcss";
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, rmSync } from "fs";
 import { join, dirname, relative } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const src = join(__dirname, "src");
 const dist = join(__dirname, "dist");
+
+// Clean dist for a deterministic build. The CSS step runs first (before tsup,
+// which uses clean:false so it won't wipe the CSS we write here), so this is the
+// one place that clears stale outputs — without it, removed components/behaviors
+// leave orphan chunks behind in local dist.
+rmSync(dist, { recursive: true, force: true });
 
 /** @param {string} dir */
 function ensureDir(dir) {

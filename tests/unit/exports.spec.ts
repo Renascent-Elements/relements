@@ -1,9 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { existsSync, readFileSync } from "fs";
+import { existsSync, readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import pkg from "../../packages/core/package.json" with { type: "json" };
 
-const distRoot = join(import.meta.dirname, "../../packages/core/dist");
+const coreRoot = join(import.meta.dirname, "../../packages/core");
+const distRoot = join(coreRoot, "dist");
+const exportsMap = pkg.exports as Record<string, unknown>;
+const cssFiles = (dir: string) =>
+  readdirSync(join(coreRoot, "src", dir)).filter((f) => f.endsWith(".css"));
+const jsFiles = (dir: string) =>
+  readdirSync(join(coreRoot, "src", dir)).filter((f) => f.endsWith(".js"));
 
 describe("@relements/core package", () => {
   it("has the expected name", () => {
@@ -32,76 +38,54 @@ describe("@relements/core dist", () => {
     expect(existsSync(join(distRoot, "index.d.ts"))).toBe(true);
   });
 
-  it("per-component CSS files exist", () => {
-    const components = [
-      "button.css",
-      "link.css",
-      "form.css",
-      "dialog.css",
-      "disclosure.css",
-      "tabs.css",
-      "menu.css",
-      "popover.css",
-      "toast.css",
-      "progress.css",
-      "table.css",
-      "skeleton.css",
-      "spinner.css",
-      "pagination.css",
-      "slider.css",
-      "tooltip.css",
-      "combobox.css",
-      "input-group.css",
-      "segmented.css",
-      "drawer.css",
-      "description-list.css",
-      "rating.css",
-      "otp.css",
-      "tags-input.css",
-      "button-group.css",
-      "empty-state.css",
-      "toolbar.css",
-      "range.css",
-      "context-menu.css",
-      "command-palette.css",
-      "tree.css",
-      "steps.css",
-      "banner.css",
-    ];
-    for (const file of components) {
+  it("dist component CSS exists for every source component", () => {
+    for (const file of cssFiles("components")) {
       expect(existsSync(join(distRoot, "components", file)), file).toBe(true);
     }
   });
 
-  it("behavior JS files exist", () => {
-    const behaviors = [
-      "dismissible.js",
-      "dialog.js",
-      "tabs.js",
-      "menu-button.js",
-      "popover.js",
-      "toast.js",
-      "combobox.js",
-      "password-toggle.js",
-      "number-stepper.js",
-      "autosize.js",
-      "otp.js",
-      "tags-input.js",
-      "rating.js",
-      "toolbar.js",
-      "range.js",
-      "context-menu.js",
-      "command-palette.js",
-    ];
-    for (const file of behaviors) {
+  it("dist behavior JS + d.ts exist for every source behavior", () => {
+    for (const file of jsFiles("behaviors")) {
       expect(existsSync(join(distRoot, "behaviors", file)), file).toBe(true);
+      expect(existsSync(join(distRoot, "behaviors", file.replace(/\.js$/, ".d.ts"))), file).toBe(
+        true,
+      );
     }
   });
 
-  it("custom element JS files exist", () => {
-    const elements = ["re-tabs.js", "re-toast.js", "re-menu.js", "re-popover.js"];
-    for (const file of elements) {
+  it("dist custom-element JS exists for every source element", () => {
+    for (const file of jsFiles("elements")) {
       expect(existsSync(join(distRoot, "elements", file)), file).toBe(true);
+    }
+  });
+});
+
+// Drift guard: a new component/behavior/element must be wired everywhere, not
+// just dropped in src. Derives the lists from the source tree so the wiring
+// can't silently fall out of sync (no hand-maintained list to forget).
+describe("@relements/core wiring (no drift)", () => {
+  const indexCss = readFileSync(join(coreRoot, "src", "index.css"), "utf8");
+
+  it("every component CSS is @imported in index.css AND exported in package.json", () => {
+    for (const file of cssFiles("components")) {
+      expect(indexCss, `${file} missing from index.css`).toContain(`./components/${file}`);
+      expect(exportsMap[`./components/${file}`], `${file} missing from package.json exports`).toBe(
+        `./dist/components/${file}`,
+      );
+    }
+  });
+
+  it("every behavior is exported in package.json", () => {
+    for (const file of jsFiles("behaviors")) {
+      const key = `./behaviors/${file.replace(/\.js$/, "")}`;
+      expect(exportsMap[key], `${file} missing from package.json exports`).toBeTruthy();
+    }
+  });
+
+  it("every custom element is exported in package.json", () => {
+    for (const file of jsFiles("elements")) {
+      const key = `./elements/${file.replace(/\.js$/, "")}`;
+      expect(exportsMap[key], `${file} missing from package.json exports`).toBeTruthy();
     }
   });
 

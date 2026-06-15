@@ -85,4 +85,24 @@ test.describe("Menu button", () => {
     await page.locator("#mb-1-btn").click();
     await expect(page.locator("#mb-1-panel")).toBeHidden();
   });
+
+  test("first-character typeahead focuses a matching item", async ({ page }) => {
+    await page.locator("#mb-1-btn").focus();
+    await page.keyboard.press("ArrowDown"); // opens, focuses mi-rename
+    // "del" disambiguates Delete from Duplicate (a single "d" matches Duplicate first).
+    await page.keyboard.press("d");
+    await page.keyboard.press("e");
+    await page.keyboard.press("l");
+    expect(await page.evaluate(() => document.activeElement?.id)).toBe("mi-delete");
+  });
+
+  test("arrow navigation skips an aria-disabled item", async ({ page }) => {
+    await page.evaluate(() => {
+      document.getElementById("mi-duplicate")!.setAttribute("aria-disabled", "true");
+    });
+    await page.locator("#mb-1-btn").focus();
+    await page.keyboard.press("ArrowDown"); // → mi-rename
+    await page.keyboard.press("ArrowDown"); // skips disabled mi-duplicate → mi-delete
+    expect(await page.evaluate(() => document.activeElement?.id)).toBe("mi-delete");
+  });
 });
