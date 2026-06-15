@@ -40,3 +40,34 @@ enhanceRange(document);
   thumb, then arrow) — the focused thumb sits on top.
 - Native range thumb mirroring under `dir="rtl"` is engine-dependent; verify the
   fill alignment if you ship RTL.
+
+## Accessibility
+
+The range is two native `<input type="range">`, so each thumb is an independent,
+fully native slider — `enhanceRange` adds no `role` or `aria-*`. It only clamps
+the moved input's value (keeping each thumb's `aria-valuemin`/`max`/`now`
+honest), draws the fill, and routes track clicks. Everything below works with
+zero JS.
+
+- **Keyboard** — native per thumb: `Tab` focuses a thumb, arrow keys nudge by
+  `step`, `Page Up`/`Page Down` jump a larger increment, and `Home`/`End` go to
+  that input's `min`/`max`. When the two thumbs fully coincide, `Tab` to one and
+  arrow it off — the focused thumb sits on top (`z-index`) so it stays grabbable.
+- **Focus** — each thumb shows a visible `:focus-visible` ring
+  (`--re-shadow-focus` on the thumb pseudo-element; the native outline is
+  removed, not dropped). The focused thumb is raised above the other so its ring
+  is never clipped. Disabling the wrapping `<fieldset>` propagates `:disabled` to
+  both inputs (and dims the fill), taking them out of the tab order.
+- **Semantics** — both inputs keep the native `slider` role and surface their own
+  `aria-valuemin`/`max`/`now` from the authored `min`/`max`/`value`. The
+  `<fieldset>`/`<legend>` names the group, and each input also carries an
+  `aria-label` (e.g. "Minimum price" / "Maximum price") so the two thumbs are
+  told apart. The `.re-range__output` readout is `aria-hidden="true"` — it
+  duplicates the live thumb values, which AT already announces, so hiding it
+  avoids a double report.
+- **Notes** — the track and fill band are CSS pseudo-elements with no role, so
+  the measurement is never carried by color alone. Each thumb is a real native
+  range input, so it stays operable under `forced-colors: active` (Windows High
+  Contrast). See the [slider](/relements/components/slider/) and
+  [field](/relements/components/field/) pages and the
+  [accessibility guide](/relements/guides/accessibility/).

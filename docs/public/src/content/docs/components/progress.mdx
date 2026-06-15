@@ -18,3 +18,11 @@ Native `<progress>` styled with `.re-progress`. Set `value` and `max` for determ
 ## Sizes
 
 <Demo src="progress.html" name="sizes" />
+
+## Accessibility
+
+- **Semantics** — native `<progress>` exposes `role="progressbar"`. When `value` and `max` are set, browsers report `aria-valuenow`/`aria-valuemax` so assistive tech announces the completion percentage; omitting `value` (indeterminate) is conveyed as busy with no fixed value. Give each bar a visible label — the examples wrap it in a `.re-field` `<label>` (associated via `for`/`id`) so the label is announced with the value.
+- **Keyboard & focus** — none: `<progress>` is a non-interactive indicator, so it is not in the tab order and there is no focus ring. The accessible name comes from the associated label, not from focusing the element.
+- **Reduced motion** — the indeterminate scanning animation is effectively disabled under `prefers-reduced-motion: reduce`.
+
+For broader patterns, see the [accessibility guide](/relements/guides/accessibility/).

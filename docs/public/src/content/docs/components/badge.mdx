@@ -14,3 +14,8 @@ Small inline labels for counts and statuses. Pick a tone with `data-tone`.
 ## Inline
 
 <Demo src="badge.html" name="inline" />
+
+## Accessibility
+
+- **Semantics** — a badge is a plain `<span>` with no role or ARIA, so its text content _is_ its accessible name. The label is read inline with surrounding text (e.g. "Notifications 3"); it isn't a focusable or interactive control, so there's no keyboard model.
+- **Notes** — `data-tone` only tints the badge via dedicated surface/text token pairs (sized for contrast in both themes); meaning is always carried by the visible label, never by color alone. If a count needs live updates, announce it from the surrounding context (e.g. an `aria-live` region), since the badge itself isn't announced on change. See the [accessibility guide](/relements/guides/accessibility/).

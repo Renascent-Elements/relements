@@ -31,3 +31,35 @@ Disabled and invalid are reflected from the contained control (`:disabled`,
 `aria-invalid` / `:user-invalid`).
 
 <Demo src="input-group.html" name="states" />
+
+## Accessibility
+
+The input group is CSS-only — a passive flex wrapper with no behavior of its
+own. Keyboard, focus order, and announcements all come from the native controls
+you place inside it; the group only relocates the field's frame and focus ring.
+
+- **Keyboard** — native. `Tab` reaches the inner `.re-input` (type to edit) and
+  any attached `.re-button` (`Enter`/`Space` to activate) in source order. The
+  `.re-input-group__text` affix is non-interactive (`user-select: none`) and
+  takes no focus.
+- **Focus** — the group, not the field, shows the ring: `:focus-within` recolours
+  its border to `--re-color-focus-ring` and paints `--re-shadow-focus` outside
+  the border box, while the inner input's own `:focus-visible` ring is stripped
+  so there's no double outline. An optional `.re-input-group__action` icon button
+  carries its own **inset** `:focus-visible` ring so it stays visible against the
+  clipped, rounded group.
+- **Semantics** — associate a label by wrapping the group in
+  `<label class="re-field">` with a `.re-field__label` span (as the affix and
+  state demos do); a standalone group such as the search example labels its input
+  directly with `aria-label`. Affix text is real visible text, so it is read in
+  reading order — not hidden. Set `aria-invalid="true"` on the inner input to
+  recolour the group's border and ring to `--re-color-danger-border` /
+  `--re-color-danger-500`, announced as invalid; `:user-invalid` styles the same
+  way after the user has interacted. The search demo marks the group
+  `role="search"` so it's exposed as a search landmark.
+- **Notes** — invalid and disabled tinting is reflected with `:has()`, purely
+  cosmetic: on engines without `:has()` the styling is skipped but the contained
+  control and its native `:disabled` / `aria-invalid` state are unaffected. See
+  the [field](/relements/components/field/), [input](/relements/components/input/),
+  and [button](/relements/components/button/) pages and the
+  [accessibility guide](/relements/guides/accessibility/).

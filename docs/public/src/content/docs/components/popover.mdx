@@ -14,3 +14,11 @@ Uses the native `popover` attribute. The browser handles light dismiss and focus
 ## Tones
 
 <Demo src="popover.html" name="tones" />
+
+## Accessibility
+
+- **Keyboard** — All native. The trigger is a real `<button>`, so Tab focuses it and Enter/Space toggles the popover (the browser wires this through `popovertarget`). Because it's an auto popover, Escape and a click outside light-dismiss it. `enhancePopover` only anchors position and fires `re-toggle` — it adds no keyboard handling of its own.
+- **Focus** — The trigger shows the standard `:focus-visible` ring (`--re-shadow-focus`). The popover is non-modal, so there's no focus trap: focus stays on the trigger and the page behind remains interactive.
+- **Semantics** — The content is a native `[popover]` element; the browser owns the show/hide, light-dismiss, and top-layer behavior. No extra `role` or `aria-*` is applied — assistive tech relies on the native popover relationship established by `popovertarget`. Tones are conveyed by tinted background and border only; the `data-tone` value is not announced, so don't rely on color alone for meaning — put any essential status in the popover's text.
+
+See the [accessibility guide](/relements/guides/accessibility/) for cross-component conventions.

@@ -40,13 +40,37 @@ DOM-order linear and the single Tab stop is preserved.
 
 <Demo src="toolbar.html" name="wrap" />
 
-## Notes
+## Accessibility
 
-- Discoverable-but-disabled controls use `aria-disabled="true"` (they stay in the
-  roving order); native `disabled` controls are skipped. `aria-disabled` only
-  suppresses pointer activation via CSS — a real `<button>` still fires on
-  Enter/Space, so gate the action in your handler
-  (`if (el.getAttribute("aria-disabled") === "true") return`).
-- Arrow keys mirror in RTL (Right = previous, Left = next).
+- **Keyboard** — One Tab stop enters/leaves the band; within it the arrow keys
+  rove focus. Left/Right move (Up/Down when `data-orientation="vertical"`), and
+  Home/End jump to the first/last control, clamped at the ends with no wrap.
+  Horizontal arrows mirror in RTL (Right = previous, Left = next). Each control is
+  a native `<button>`, so Enter/Space activates it. Native text, range and
+  `<select>` controls keep their own Arrow/Home/End; a hosted `.re-menu` trigger
+  keeps its own ArrowDown/ArrowUp to open, and once the menu is open it owns the
+  keys. Without JavaScript every control is simply its own Tab stop —
+  `enhanceToolbar` only collapses them to the single-Tab-stop roving model.
+- **Focus** — Each button shows the standard `.re-button` `:focus-visible` ring;
+  the band's padding clears the ring's offset, and active/focused members are
+  lifted (`z-index`) so the ring is never cramped at the edge or painted under a
+  neighbor.
+- **Semantics** — A container with `role="toolbar"` and a required accessible name
+  (`aria-label`); `data-orientation="vertical"` adds `aria-orientation="vertical"`.
+  Clusters use `.re-toolbar__group` (`role="group"` with its own `aria-label`),
+  divided by a `.re-separator` (`role="separator"`). Toggle buttons carry
+  `aria-pressed`; a hosted menu trigger uses `aria-haspopup="menu"` /
+  `aria-expanded`.
+- **Notes** — Discoverable-but-disabled controls use `aria-disabled="true"` so
+  they stay focusable in the roving order; native `disabled` controls are skipped.
+  `aria-disabled` only suppresses pointer activation via CSS — a real `<button>`
+  still fires on Enter/Space, so gate the action in your handler
+  (`if (el.getAttribute("aria-disabled") === "true") return`). Under forced colors
+  a toggled-on control is marked with system `Highlight`/`HighlightText` so the
+  pressed state survives HCM. See the [accessibility
+  guide](/relements/guides/accessibility/).
+
+## Related
+
 - For attached, bordered button clusters use the
   [Button group](/relements/components/button-group/) component.

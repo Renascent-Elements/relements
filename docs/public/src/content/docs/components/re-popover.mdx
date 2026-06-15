@@ -10,3 +10,10 @@ A custom-element wrapper around the native `popover` attribute. It auto-adopts `
 ## Basic
 
 <Demo src="re-popover.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — all native. `Tab` moves to the `popovertarget` button; `Enter`/`Space` toggles the popover open and closed. While an `auto` popover is open, `Escape` dismisses it (native light-dismiss), as does a click outside — no scripting required. Opening one `auto` popover closes any other already-open one.
+- **Focus** — the trigger keeps its `.re-button` `:focus-visible` ring. An `auto` popover is **non-modal**: focus is not trapped and is not moved into the popover on open, so `Tab` continues into the popover's own focusable content in document order. Closing returns focus to the trigger per the native popover behavior.
+- **Semantics** — there is no wrapper element and no added roles: `<re-popover>` adopts the native `popover="auto"` attribute on connect, and the browser derives the relationship from `popovertarget`, exposing `aria-expanded` (and `aria-details`) on the trigger to assistive tech automatically. Author the popover's contents with normal semantic HTML.
+- **Notes** — `auto` is non-modal by design; for a flow that must trap focus and block the page behind it, use a [dialog](/relements/components/dialog/) instead. Tone variants (`data-tone="info" | "warning" | "danger"`) convey meaning through tinted background and border only — pair them with text, since color alone is not announced. See the [accessibility guide](/relements/guides/accessibility/) for the project-wide stance.

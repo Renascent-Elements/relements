@@ -15,3 +15,8 @@ filename. Inline `<code>` is styled by the base layer with no class needed.
 ## Inline
 
 <Demo src="code.html" name="inline" />
+
+## Accessibility
+
+- **Semantics** — A captioned block uses a native `<figure>` with a `<figcaption>` caption (the filename), wrapping `<pre><code>`. The `<figcaption>` gives the figure an accessible name, so assistive tech announces the filename alongside the code. Inline snippets use plain `<code>`, styled by the base layer. No ARIA is needed.
+- **Notes** — Display only: the code block is non-interactive and not in the tab order, so there is no keyboard model or focus styling to document. See the [accessibility guide](/relements/guides/accessibility/) for project-wide conventions.

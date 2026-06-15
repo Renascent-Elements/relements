@@ -39,3 +39,26 @@ Any `.re-button` element works — including `<a>`. A disabled link uses
 - The group sets no `overflow`, so a focused member's ring is never clipped; the
   focused member lifts above its neighbors via `z-index`.
 - Everything is logical-property based, so it mirrors correctly in RTL.
+
+## Accessibility
+
+- **Keyboard** — entirely native and per-member; the group adds no roving
+  tabindex or arrow-key navigation. <kbd>Tab</kbd>/<kbd>Shift+Tab</kbd> moves
+  through each member in order; <kbd>Enter</kbd>/<kbd>Space</kbd> activates a
+  `<button>` member and <kbd>Enter</kbd> follows an `<a>` member. (If you want
+  arrow-key roving across a band of controls, reach for the
+  [Toolbar](/relements/components/toolbar/) instead.)
+- **Focus** — each member shows the standard visible `:focus-visible` ring
+  (`--re-shadow-focus`); the group sets no `overflow` and lifts the focused
+  member via `z-index`, so the ring is never clipped by a neighbor (see Notes
+  above).
+- **Semantics** — the container is `role="group"` with an accessible name
+  (`aria-label`), so assistive tech announces the members as one labelled
+  cluster. Members keep their native roles (`button`, `link`). Toggle members
+  carry native `aria-pressed`, announced as a pressed/not-pressed state.
+  Disabled members use `<button disabled>` (removed from the tab order) or, for
+  links, `aria-disabled="true"` (announced disabled but still focusable).
+- **Notes** — the join is purely visual: members stay independent focus stops,
+  so the joined look never changes how the group is operated. See the
+  [accessibility guide](/relements/guides/accessibility/) for the project-wide
+  baseline.

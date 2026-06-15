@@ -14,3 +14,10 @@ Applies to `<button>`, `<a class="re-button">`, and submit/reset inputs.
 ## Sizes
 
 <Demo src="button.html" name="sizes" />
+
+## Accessibility
+
+- **Keyboard** — fully native. `Tab` moves focus to the control; `Enter` and `Space` activate a `<button>` (a `type="submit"` button also submits its form, `type="reset"` resets it). When the class is on an `<a href>`, anchor semantics apply: `Enter` follows the link.
+- **Focus** — a visible `:focus-visible` ring (`--re-shadow-focus` box-shadow) is drawn only for keyboard focus, so pointer clicks stay quiet while keyboard users get a clear indicator.
+- **Semantics** — relies entirely on the host element, so assistive tech announces the native `button` or `link` role and the visible text label — no `role` or `aria-*` is added. Variant and size are `data-*` attributes with no semantic effect.
+- **Notes** — use the native `disabled` attribute to remove a button from the tab order and the accessibility tree; use `aria-disabled="true"` instead when the control must stay focusable and discoverable (both render dimmed and set `pointer-events: none`). Because labels come from the host element, an icon-only button still needs accessible text (e.g. `aria-label` or `.re-sr-only`). See the [accessibility guide](/relements/guides/accessibility/).

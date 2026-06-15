@@ -10,3 +10,10 @@ An on/off toggle built on a native checkbox with `role="switch"`.
 ## States
 
 <Demo src="switch.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — fully native. <kbd>Tab</kbd> moves focus to the switch; <kbd>Space</kbd> toggles it on and off. There's no custom keyboard layer.
+- **Focus** — a visible ring shows only on `:focus-visible` (keyboard focus), drawn as a `box-shadow` (`--re-shadow-focus`) that replaces the default outline.
+- **Semantics** — it stays a real `<input type="checkbox">` with `role="switch"`, so assistive tech announces it as a switch and reports its on/off state, while click, keyboard, and form serialization stay native. Wrapping the input in a `<label>` (with the option text alongside it) gives an implicit label, so the text is announced as the switch's name and the whole label is a click/tap target.
+- **Notes** — the track fill, thumb, and travel are pure CSS (no SVG or extra markup), so the on/off state is conveyed visually by the thumb position rather than by an added glyph. Under `@media (forced-colors: active)` (Windows High Contrast) the checked track is tinted with system `Highlight` so "on" stays distinct from "off". `:disabled` dims the control and shows a `not-allowed` cursor; the native `disabled` attribute also removes it from the tab order and announces it as unavailable. See the [accessibility guide](/relements/guides/accessibility/).

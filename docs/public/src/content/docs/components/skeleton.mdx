@@ -14,3 +14,11 @@ A decorative placeholder shown while content loads. Mark instances `aria-hidden=
 ## Block
 
 <Demo src="skeleton.html" name="block" />
+
+## Accessibility
+
+- **Semantics** — Each `.re-skeleton` is a non-interactive `<div>` with no role and is not focusable, so there is no keyboard interaction. The placeholders are purely decorative: mark them `aria-hidden="true"` so assistive technology skips them.
+- **Loading state** — Announce the load on the region the skeleton replaces, not on the placeholder. The card demo wraps the placeholders in `role="status"` with `aria-busy="true"` and `aria-label="Loading"`, so screen readers announce "Loading" while the content is pending; clear `aria-busy` (or swap in the real content) once it arrives.
+- **Reduced motion** — The shimmer is animated by default but fully disabled under `prefers-reduced-motion: reduce` (both the animation and the moving gradient are removed), leaving a static muted block.
+
+See the [accessibility guide](/relements/guides/accessibility/) for shared patterns.

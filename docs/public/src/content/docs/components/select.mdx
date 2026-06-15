@@ -22,3 +22,32 @@ Native `<select>` dropdown styled with `.re-select`. The browser owns the option
 ## States
 
 <Demo src="select.html" name="states" />
+
+## Accessibility
+
+`.re-select` only styles a native `<select>` — there is no JavaScript, no added
+`role`, and no `aria-*` of its own. The browser owns the option list, so the
+keyboard, focus, and announcements are exactly the platform's.
+
+- **Keyboard** — native. `Tab` moves focus in and out; the browser's own keys
+  open the list and move through options (typeahead, arrows, `Home`/`End`,
+  `Enter`/`Escape`), and a `multiple` select adds the platform's range-extend
+  keys against its list view. The styling adds nothing on top.
+- **Focus** — the closed control shows a visible `:focus-visible` ring
+  (`--re-shadow-focus`, border recoloured to `--re-color-focus-ring`); the
+  default outline is replaced, not removed. An invalid select swaps in a
+  danger-coloured ring, and a `disabled` select is skipped by the tab order.
+- **Semantics** — wrap the select in `<label class="re-field">` with a
+  `.re-field__label` span (as every demo does) so the label is associated by
+  containment — no `for`/`id` pairing required. `<optgroup label="…">` is
+  announced as a group, and `multiple` exposes the native multi-select list.
+  Mark a failed select with `aria-invalid="true"` (as the States demo does) so
+  assistive tech reads it as invalid; the same danger border also appears
+  natively via `:user-invalid` once the user interacts.
+- **Notes** — the dropdown arrow is a pure-CSS gradient glyph (decorative, never
+  announced) and is dropped automatically for `multiple`. Don't rely on the
+  border colour alone to signal an error — keep `aria-invalid` (and a described
+  message) so the state is conveyed without sight. See the
+  [field](/relements/components/field/) page for label, hint, and validation
+  wiring, and the [accessibility guide](/relements/guides/accessibility/) for the
+  project-wide stance.

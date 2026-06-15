@@ -14,3 +14,8 @@ Native `<meter>` styled with `.re-meter`, for measurements within a known range.
 ## Sizes
 
 <Demo src="meter.html" name="sizes" />
+
+## Accessibility
+
+- **Semantics** — a native `<meter>` exposes the implicit `meter` role, and its `value`, `min`, `max`, `low`, `high`, and `optimum` attributes are surfaced to assistive tech as the current value and range. It isn't focusable or interactive, so there's no keyboard model. Give it an accessible name by wrapping it in a `.re-field` `<label>` (as the examples do) — the `.re-field__label` text is read with the value.
+- **Notes** — the green/yellow/red fill is derived by the browser from `low`/`high`/`optimum`, the same thresholds that define the element's value semantics, so the measurement's standing is never carried by color alone. `data-size` only changes the bar's thickness. Use `<meter>` for a measurement within a known range, not task completion over time — reach for [progress](/relements/components/progress/) instead. See the [accessibility guide](/relements/guides/accessibility/).

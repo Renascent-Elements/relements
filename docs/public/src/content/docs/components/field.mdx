@@ -22,3 +22,28 @@ A native `<label>` that wraps a label, a control, and an optional hint or valida
 ## Inline (checkbox / radio)
 
 <Demo src="field.html" name="inline" />
+
+## Accessibility
+
+The field is a layout helper with no behavior or JavaScript of its own — keyboard
+and focus come entirely from the native control you wrap.
+
+- **Keyboard** — Whatever the wrapped control offers natively: `Tab` moves into the
+  `.re-input` (or `.re-checkbox` / `.re-radio`) and `Space` toggles a checkbox/radio.
+  The field adds nothing on top.
+- **Focus** — The control shows a visible `:focus-visible` ring (`--re-shadow-focus`);
+  the default outline is replaced, not removed. An invalid control (below) swaps in a
+  danger-colored ring. The wrapping `<label>` is not itself focusable.
+- **Semantics** — `.re-field` is a native `<label>`, so the control it wraps inherits
+  the label implicitly — no `for`/`id` pairing required. Mark an error message with
+  `aria-invalid="true"` on the control and point `aria-describedby` at the
+  `.re-validation-message` (as the validation example does) so assistive tech reads the
+  message with the field. Hints work the same way: give `.re-field__hint` an `id` and
+  reference it from the control's `aria-describedby`.
+- **Notes** — The required asterisk from `.re-field__label[data-required]` is a CSS
+  `::after` glyph (visual only, not announced); always pair it with the native
+  `required` attribute so the requirement is actually conveyed. Validation tones
+  (`.re-validation-message[data-tone="…"]`) are carried by color and text, not by role,
+  so don't rely on color alone. Checkbox/radio checked states are re-established under
+  `forced-colors: active` (Windows High Contrast). See the
+  [accessibility guide](/relements/guides/accessibility/) for the project-wide stance.

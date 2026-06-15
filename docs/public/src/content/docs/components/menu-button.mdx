@@ -10,3 +10,10 @@ The ARIA menu-button pattern. Selecting an item dispatches a `re-select` event; 
 ## Basic
 
 <Demo src="menu-button.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — On the trigger: <kbd>ArrowDown</kbd>, <kbd>Enter</kbd>, or <kbd>Space</kbd> opens the menu and moves focus to the first item; <kbd>ArrowUp</kbd> opens it and moves focus to the last item; clicking toggles it. Within the open menu: <kbd>ArrowDown</kbd>/<kbd>ArrowUp</kbd> move between items (wrapping at the ends), <kbd>Home</kbd>/<kbd>End</kbd> jump to the first/last item, <kbd>Enter</kbd>/<kbd>Space</kbd> activate the focused item, and <kbd>Escape</kbd> closes the menu and returns focus to the trigger. <kbd>Tab</kbd> closes the menu rather than trapping focus.
+- **Focus** — The trigger and items are native `<button>`s, so they show the standard `:focus-visible` ring. Menu items draw an **inset** ring so it stays visible against the panel edge. Closing via <kbd>Escape</kbd> or selecting an item returns focus to the trigger.
+- **Semantics** — The trigger carries `aria-haspopup="menu"`, `aria-controls` pointing at the panel, and `aria-expanded`, which `enhanceMenuButton` toggles between `true` and `false` so assistive tech announces the open/closed state. The panel is `role="menu"` labelled by the trigger via `aria-labelledby`; each item is `role="menuitem"` and dividers are `role="separator"`.
+- **Notes** — Disabled items (`disabled` or `aria-disabled="true"`) are skipped by keyboard navigation and excluded from selection. See the [accessibility guide](/relements/guides/accessibility/).

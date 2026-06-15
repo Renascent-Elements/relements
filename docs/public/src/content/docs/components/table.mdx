@@ -20,3 +20,10 @@ Style the native `<table>` with `.re-table`. Wrap in `.re-table-wrap` for horizo
 Add `data-sticky-header` and give `.re-table-wrap` a constrained height with `overflow: auto` — the header stays pinned while the body scrolls.
 
 <Demo src="table.html" name="sticky" />
+
+## Accessibility
+
+- **Keyboard** — The native `<table>` is a static data table, not an interactive grid, so it has no special keyboard model. When the wrapper scrolls (horizontal overflow, or the constrained-height sticky-header case), make `.re-table-wrap` keyboard-operable by giving it `tabindex="0"` — it then becomes a focus stop that arrow keys can scroll, so keyboard-only users aren't trapped out of off-screen columns or rows.
+- **Focus** — A focusable scroll wrapper shows the shared `:focus-visible` ring; under forced-colors / Windows High Contrast it falls back to a system-color `outline`. Non-scrolling tables expose no focusable elements.
+- **Semantics** — Built entirely on native elements, so the table, row, column-header, and cell roles come for free. Keep `<th>` in `<thead>` for column headers (use `scope` if you also add row headers). No ARIA roles are applied — `data-zebra`, `data-hover`, `data-density`, and `data-sticky-header` are purely visual and don't change semantics. When the wrapper is focusable, mark it up as `role="region"` with an `aria-label` so assistive tech announces the scrollable area by name.
+- **Notes** — Zebra striping and hover use token background colors that meet contrast against the foreground text; the sticky header keeps a solid `--re-color-surface` background so scrolled rows never bleed through behind it. See the [accessibility guide](/relements/guides/accessibility/) for the focus-ring and forced-colors model.

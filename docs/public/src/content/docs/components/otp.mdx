@@ -43,3 +43,26 @@ with `data-re-otp-numeric` it strips non-digits on input.
 ## States
 
 <Demo src="otp.html" name="states" />
+
+## Accessibility
+
+Because the field is one native `<input>`, accessibility is the platform's — the
+segmented look is pure CSS and never reaches assistive tech.
+
+- **Keyboard** — fully native: Tab moves focus to the single input; typing,
+  caret movement, selection, and paste all behave like a normal text field. The
+  optional `enhanceOtp` adds **no** keys — it never auto-advances between cells or
+  auto-submits, so there are no surprise key behaviors to learn.
+- **Focus** — the `.re-otp-field` wrapper shows the visible `:focus-within` ring
+  (the inner input's own outline is suppressed so the ring frames the whole box);
+  an invalid field tints that ring and the border with the danger color.
+- **Semantics** — a screen reader announces one text input with its label (the
+  wrapping `<label>`), `autocomplete="one-time-code"` for SMS autofill, and
+  `inputmode`/`pattern`/`maxlength`/`required` as native constraints. `aria-invalid="true"`
+  (or native `:user-invalid`) marks the error state; the cell dividers are a
+  decorative `::before` gradient with no role.
+- **Notes** — one input is the accessible choice on purpose: N separate cells
+  would fragment the value for AT and break paste and autofill. Style the dividers
+  with `--re-color-border-strong` for sufficient contrast against the surface. See
+  the [accessibility guide](/relements/guides/accessibility/) and pair this with
+  the [field](/relements/components/field/) wrapper for label and hint markup.

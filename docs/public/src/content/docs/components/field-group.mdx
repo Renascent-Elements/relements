@@ -18,3 +18,10 @@ Wraps related controls (typically radios or checkboxes) in a `<fieldset>` with a
 ## Disabled group
 
 <Demo src="field-group.html" name="disabled" />
+
+## Accessibility
+
+- **Keyboard** — fully native. `Tab` moves between the controls in the group (radios within a shared `name` form a single tab stop; `Arrow` keys move the selection between them, as the browser provides). `Space` toggles a checkbox or selects a radio. There is no extra JavaScript keyboard model — the group is a `<fieldset>` and behaves exactly like native form controls.
+- **Focus** — each `.re-checkbox` / `.re-radio` shows a visible `:focus-visible` ring (`--re-shadow-focus`); the `<legend>` itself is not focusable.
+- **Semantics** — a native `<fieldset>` with a `<legend>` associates the group name with every control inside it, so screen readers announce it (e.g. "Notifications, Email checkbox") as you move through the controls. `data-orientation="horizontal"` is presentational only and changes nothing about the announced structure.
+- **Notes** — adding `disabled` to the `<fieldset>` natively cascades to every control inside it, no extra wiring; disabled controls render at reduced opacity with a `not-allowed` cursor. The checked-state glyph is drawn so the control stays a native input, and a `forced-colors` block re-establishes the checked fill with system `Highlight` / `HighlightText` so it stays distinct in Windows High Contrast. See the [accessibility guide](/relements/guides/accessibility/).

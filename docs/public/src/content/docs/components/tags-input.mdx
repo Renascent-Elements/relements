@@ -39,3 +39,25 @@ At the limit, further entries are rejected and the field is marked invalid.
 Submitting sends one `name` entry per tag.
 
 <Demo src="tags-input.html" name="form" />
+
+## Accessibility
+
+- **Keyboard** — the editor is a native text field, so it focuses with Tab and
+  types normally. **Enter** or a typed/pasted **comma** commits the current text
+  as a chip; **Backspace** on an empty field removes the last chip. Each chip's
+  `×` is a real `<button>` (Tab to reach it, Enter/Space to activate); removing a
+  chip by its button moves focus to the previous chip's remove button, or back to
+  the editor when none remain.
+- **Focus** — the whole group shows the visible focus ring on `:focus-within`
+  (the editor sheds its own ring so the shell owns it); chip remove buttons get
+  the same ring on `:focus-visible`. At the `data-re-tags-max` limit the group is
+  marked `[data-invalid]` and the ring turns danger-colored.
+- **Semantics** — enhancing wraps the input in a `role="group"` labelled from the
+  field's `<label for>` via `aria-labelledby`, so AT announces the group by its
+  label. Each `×` button carries an `aria-label="Remove <tag>"`, and a visually
+  hidden (`.re-sr-only`) `aria-live="polite"` region announces "Added …",
+  "Removed …", and "Maximum N tags reached" as you edit. Committed tags are backed
+  by hidden inputs that carry the submitted array values.
+- **Notes** — pre-seeded tags are not announced on enhance, only edits you make.
+  Without JavaScript the base degrades to a plain labelled `.re-input`. See the
+  [accessibility guide](/relements/guides/accessibility/).

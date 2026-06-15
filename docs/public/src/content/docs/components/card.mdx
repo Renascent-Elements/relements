@@ -14,3 +14,10 @@ A surface container with an optional header, body, and footer. Add `data-interac
 ## Interactive
 
 <Demo src="card.html" name="interactive" />
+
+## Accessibility
+
+- **Keyboard** — a plain card is a static container with no keyboard model. An interactive card is a native `<a href>`, so it joins the normal tab order: `Tab` focuses it and `Enter` follows the link. Keep any controls _inside_ a card (buttons, links) as the real interactive elements rather than nesting them in a card-as-link, which would produce invalid focusable-inside-focusable markup.
+- **Focus** — the interactive card lights up the whole surface on `:focus-within`, drawing the focus ring (`--re-shadow-focus`) around the card itself; the `border-radius` plus `overflow: hidden` keep the ring flush with the rounded corners.
+- **Semantics** — the card carries no role or ARIA: it's an `<article>` (or an `<a>` when interactive) whose accessible name and structure come entirely from its own content — the `header` / `body` / `footer` regions are styling hooks, not landmarks. Give the card a heading inside `re-card__header` if it needs an accessible name in context.
+- **Notes** — `data-interactive` only adds hover elevation and the focus ring; it does not change the element's role, so use a genuinely interactive element (`<a>` or `<button>`) when the whole card should be activatable. See the [accessibility guide](/relements/guides/accessibility/).

@@ -26,11 +26,33 @@ focusable (`tabindex="0"`) so keyboard invocation works.
 
 ## Notes
 
-- Keyboard: Up/Down (wrap), Home/End, first-character typeahead, Escape/Tab to
-  close (Escape returns focus to the region).
 - Dispatches `re-select` (bubbles, cancelable; `detail = { item, value,
 originalEvent }`) on the region — `preventDefault()` keeps the menu open.
 - The panel is `position: fixed` at `z-index: var(--re-z-dialog)`, so a context
   menu opened inside a modal sits above it.
 - The Popover API (top layer) is used as a bonus on browsers that support it;
   the fixed-position path is canonical (and what runs on the support floor).
+
+## Accessibility
+
+- **Keyboard** — open the menu with right-click, the **ContextMenu** key, or
+  **Shift+F10** while the region is focused; opening moves focus to the first
+  item. Within the menu: **Arrow Up / Arrow Down** move between items and wrap,
+  **Home / End** jump to first / last, and first-character **typeahead** focuses
+  the next matching item. **Escape** and **Tab** both close the menu and return
+  focus to the region; **Enter / Space** activate the focused `<button>`.
+- **Focus** — items are native buttons with a 2px **inset** `:focus-visible`
+  ring (the panel is `position: fixed`, so an inset ring stays visible against
+  the panel edge); the region itself shows a focus ring when tabbed to. Closing
+  via Escape, Tab, or selection returns focus to the region so native Tab order
+  resumes from a defined point.
+- **Semantics** — the panel is `role="menu"` with an `aria-label`; each item is
+  `role="menuitem"`, and the divider is `role="separator"`. Once
+  `enhanceContextMenu` wires a region it gains `aria-haspopup="menu"` and
+  `aria-controls` pointing at the panel, so assistive tech announces that a menu
+  is available.
+- **Notes** — with no JS the custom menu never opens and the **native browser
+  context menu** is the fallback; the behavior only `preventDefault`s the
+  `contextmenu` event once it's wired. See the
+  [accessibility guide](/relements/guides/accessibility/) and the shared
+  [Menu](/relements/components/menu-button/) markup it reuses.

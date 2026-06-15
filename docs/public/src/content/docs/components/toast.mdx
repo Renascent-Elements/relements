@@ -25,3 +25,24 @@ auto-dismiss time in ms (`0` keeps it until dismissed). With no existing
 The buttons below fire real toasts (wired with `showToast` on click):
 
 <Demo src="toast.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — Toasts never steal focus, so nothing is required to read them.
+  Each toast carries a native dismiss `<button>` (the `×`): reach it with `Tab`,
+  trigger with `Enter` or `Space`. There is no roving or `Escape` model — toasts
+  are not a focus-managed widget.
+- **Focus** — The dismiss button shows a visible `:focus-visible` ring
+  (`--re-shadow-focus`). Toasts appear in a `position: fixed` region and do not
+  trap or move focus.
+- **Semantics** — The region is `role="region"` with `aria-label="Notifications"`;
+  the toast list is an `aria-live` region (`aria-live="polite"`,
+  `aria-relevant="additions"`) so screen readers announce each new toast as it is
+  appended. The `danger` tone uses `role="alert"` for an interruptive
+  announcement; every other tone uses `role="status"` (polite). The dismiss button
+  has an `aria-label="Dismiss notification"` since its label is only the `×` glyph.
+- **Notes** — Tone is conveyed by `role` and live-region politeness, not by colour
+  alone; the tinted background, coloured border, and text all sit on the same
+  themed surface for contrast in light and dark mode. See the
+  [accessibility guide](/relements/guides/accessibility/) for the live-region
+  conventions used across Relements.

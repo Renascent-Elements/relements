@@ -60,3 +60,29 @@ description line in horizontal layouts.
   ring under Windows High Contrast); the completed step by its check glyph.
 - Tune metrics by overriding `--re-steps-marker-size`, `--re-steps-gap`,
   `--re-steps-rail-color`, etc. on the root or any subtree.
+
+## Accessibility
+
+- **Keyboard** — there is no widget keyboard model: steps is a display
+  indicator, not a tablist, so there's no roving tabindex, arrow navigation, or
+  panel switching. The only focusable parts are completed steps whose
+  `.re-steps__content` you make a real `<a href>` or `<button>` — reached with
+  **Tab** and activated with **Enter** (or **Space** for a `<button>`) like any
+  native link/button. Upcoming and current steps stay inert `<span>`s.
+- **Focus** — interactive steps show the standard `:focus-visible` ring. Vertical
+  layouts use the global outer ring; horizontal layouts (a tight, scrollable row)
+  swap to an **inset** ring so it never clips at a container edge.
+- **Semantics** — the native `<ol>`/`<li>` ordering is preserved (the list is
+  stripped in CSS, not with `role="list"`, which would discard the "2 of 4"
+  ordinal). The current step carries `aria-current="step"` on its `<li>`.
+  Markers are `aria-hidden="true"` — the number and check are visual only — so
+  completion is exposed to assistive tech with a visually-hidden status word
+  (`<span class="re-sr-only">Completed: </span>` / `Upcoming:`) on each
+  non-current step.
+- **Notes** — status is conveyed without relying on color: the current step has a
+  bolder title plus `aria-current`, and a complete step is marked by its check
+  glyph. Under Windows High Contrast (`forced-colors`) the current marker takes a
+  system `Highlight` ring and the focus ring is re-established as a real outline.
+  Marker and rail transitions are dropped under `prefers-reduced-motion`. See the
+  [accessibility guide](/relements/guides/accessibility/) for system-wide
+  conventions.

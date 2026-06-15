@@ -10,3 +10,10 @@ A custom-element wrapper for the menu-button pattern. It keeps light DOM and reu
 ## Basic
 
 <Demo src="re-menu.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — On the trigger button: <kbd>Enter</kbd>, <kbd>Space</kbd>, or <kbd>ArrowDown</kbd> open the menu and move focus to the first item; <kbd>ArrowUp</kbd> opens it and moves focus to the last item. Inside the menu: <kbd>ArrowDown</kbd>/<kbd>ArrowUp</kbd> move focus between items (wrapping at the ends), <kbd>Home</kbd>/<kbd>End</kbd> jump to the first/last item, <kbd>Escape</kbd> closes the menu and returns focus to the button, and <kbd>Tab</kbd> closes the menu without trapping focus. Clicking outside also closes it.
+- **Focus** — Items show a visible `:focus-visible` ring rendered as an inset box-shadow, so it stays clamped inside the menu panel's edges. Activating an item or pressing <kbd>Escape</kbd> returns focus to the trigger button.
+- **Semantics** — The trigger is a native `<button>` carrying `aria-haspopup="menu"`, `aria-controls` pointing at the panel, and `aria-expanded`, which the element keeps in sync with the open state (also reflected by `el.open`). The panel is `role="menu"`, labelled by the button via `aria-labelledby`, with each entry a `<button role="menuitem">` — assistive tech announces a menu and its item count.
+- **Notes** — This is a non-modal menu: it does not trap focus, and <kbd>Tab</kbd> moves on through the page after closing. Disabled items use `aria-disabled="true"`/`disabled` and are skipped by keyboard navigation. See the [accessibility guide](/relements/guides/accessibility/) for the project-wide conventions.

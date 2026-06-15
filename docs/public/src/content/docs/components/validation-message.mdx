@@ -22,3 +22,11 @@ Inline status text styled with `.re-validation-message`. Default tone is error; 
 ## Warning
 
 <Demo src="validation-message.html" name="warning" />
+
+## Accessibility
+
+The message is plain text — it has no keyboard interaction or focus of its own. Its accessibility comes entirely from how you wire it to the control.
+
+- **Semantics** — Render it as a `<span>` (or `<p>`) and give it an `id`, then point the control at it with `aria-describedby`. Screen readers then read the message as the control's description when the field receives focus. For errors, also set `aria-invalid="true"` on the control so the field is announced as invalid; this is what turns on the danger border styling (the CSS keys the invalid state off `[aria-invalid="true"]` and the native `:user-invalid`).
+- **Tone is visual only** — `data-tone="success|hint|warning"` (default is error) only changes the text colour. It carries no semantics, so assistive tech announces every tone the same way — the wording of the message must convey success, hint, or warning on its own.
+- **Notes** — The message is not a live region by default; pair it with `aria-describedby` (above) so it is announced on focus rather than relying on it being read out the moment it appears. If you need an already-focused field's error read out immediately, add `role="alert"` (or `aria-live="assertive"`) to the message yourself. The danger, success, and warning tones each pass WCAG AA contrast against the page background; under forced-colors / High Contrast Mode the colours are replaced by the system palette, so the message stays legible. See the [accessibility guide](/relements/guides/accessibility/) for the full form-control pattern, and [Field](/relements/components/field/) and [Input](/relements/components/input/) for the controls these messages describe.

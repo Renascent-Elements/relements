@@ -14,3 +14,10 @@ Status message blocks. Add `role="status"` or `role="alert"` for announcement; a
 ## Dismissible
 
 <Demo src="alert.html" name="dismissible" />
+
+## Accessibility
+
+- **Keyboard** — The alert block isn't focusable; it's a passive message. When dismissible, the dismiss control is a native `<button>`, so `Tab` reaches it and `Enter`/`Space` activate it. `enhanceDismissible` listens for those same keys (and click), so the button works with or without the script.
+- **Focus** — The dismiss button shows a visible `:focus-visible` ring (`--re-shadow-focus`); the default outline is replaced, not removed.
+- **Semantics** — The host carries an author-supplied live-region role: `role="status"` (polite) for info/success/warning, or `role="alert"` (assertive) for danger. Assistive tech announces the content when it appears or changes — `status` waits for a pause, `alert` interrupts. The `.re-alert__title` is a plain paragraph (visual emphasis only, not a heading). The dismiss button needs an accessible name; the example uses `aria-label="Dismiss"` since the `×` glyph isn't descriptive.
+- **Notes** — Dismissing sets `hidden` on the alert, removing it from the accessibility tree; it also dispatches a cancelable `re-dismiss` event if you need to keep it visible. Tones are conveyed by color and the title text, not by role alone — don't rely on color to carry the meaning. See the [accessibility guide](/relements/guides/accessibility/).

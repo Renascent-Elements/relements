@@ -14,3 +14,10 @@ Page navigation in a `<nav aria-label="Pagination">`. Mark the current page with
 ## Disabled ends
 
 <Demo src="pagination.html" name="ends" />
+
+## Accessibility
+
+- **Keyboard** — native links and buttons: Tab moves between page items, Enter follows a link (Space also activates a `<button>`). There's no JavaScript and no custom roving focus — disabled ends are non-interactive `<span>`s, so Tab simply skips them.
+- **Focus** — each item shows a visible `:focus-visible` ring (`--re-shadow-focus`).
+- **Semantics** — the `<nav aria-label="Pagination">` exposes a labelled navigation landmark. The current page carries `aria-current="page"` so assistive tech announces it; disabled prev/next render as `<span aria-disabled="true">` (with `pointer-events: none`) rather than focusable controls.
+- **Notes** — the `…` ellipsis is decorative and marked `aria-hidden="true"`. Under forced colors the accent fill flattens, so the current page is painted with the system `Highlight`/`HighlightText` colors to stay distinguishable. See the [accessibility guide](/relements/guides/accessibility/).

@@ -40,3 +40,37 @@ href, option }`); if not prevented and the row is a link, it navigates.
 - Focus stays in the input (aria-activedescendant). On close the query resets;
   Escape and the backdrop are handled by the dialog. Always keep palettes
   dismissible — never add `data-re-dialog-no-dismiss`.
+
+## Accessibility
+
+- **Keyboard** — type to filter (substring match on each row's label). **↓ / ↑**
+  move the active option, wrapping at the ends and skipping hidden or
+  `aria-disabled` rows. **Enter** activates the active option (dispatches
+  `re-command`, then navigates if it's a link). **Escape** and the backdrop
+  close the dialog (native). The optional `data-re-command-hotkey` (e.g.
+  `"mod+k"`) opens it from anywhere — see above. Focus never leaves the input, so
+  there is no Tab-through-rows; rows are non-interactive options, activated by
+  click or Enter.
+- **Focus** — the dialog opens with native `showModal()`, which traps focus and
+  makes the background inert; closing returns focus to the trigger. The search
+  input keeps focus the whole time and **opts out of the `:focus-visible` ring**
+  on purpose (the open modal and caret already mark it, and a ring would hug the
+  borderless field). The active row is indicated by a `bg-muted` highlight via
+  `aria-activedescendant` rather than real focus.
+- **Semantics** — on enhance the input becomes a `role="combobox"`
+  (`aria-autocomplete="list"`, `aria-controls` the list, `aria-expanded`
+  reflecting whether any rows match, and `aria-activedescendant` pointing at the
+  highlighted row); the list becomes `role="listbox"`, each group a labelled
+  `role="group"`, and each row a `role="option"` toggling `aria-selected`. The
+  empty-state carries `role="status"` and rewrites its text on the transition to
+  zero results, so the change is announced.
+- **Notes** — none of that ARIA ships in the static markup; the no-JS baseline is
+  a plain search field over real links/`<span>` rows (see Notes above). The
+  keyboard-hint footer is `aria-hidden`, the search icon is decorative
+  (`aria-hidden`), and the native close control is `.re-sr-only`. In forced-colors
+  mode the active option is painted with the system `Highlight` color so keyboard
+  navigation stays visible once the muted background flattens.
+
+See the [dialog component](/relements/components/dialog/) for the underlying
+modal behavior and the [accessibility guide](/relements/guides/accessibility/)
+for project-wide conventions.

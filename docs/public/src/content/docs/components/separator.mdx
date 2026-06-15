@@ -12,3 +12,23 @@ a vertical divider for toolbars via `data-orientation="vertical"` (pair it with
 ## Orientations
 
 <Demo src="separator.html" name="orientations" />
+
+## Accessibility
+
+A separator is decorative structure, not an interactive control — it takes no
+focus and has no keyboard interaction.
+
+- **Semantics** — the horizontal rule is a native `<hr>`, which carries an
+  implicit `role="separator"`, so assistive tech announces the boundary with no
+  extra markup. The vertical divider is a non-semantic `<div>`, so it declares
+  `role="separator"` and `aria-orientation="vertical"` explicitly to expose the
+  same boundary. (`<hr>`'s default orientation is horizontal, so no
+  `aria-orientation` is needed there.)
+- **Notes** — the divider is drawn with a `--re-border-default` border against
+  `--re-color-text-muted`; it conveys grouping visually but the labels it sits
+  between (Edit / Duplicate / Delete) remain the meaningful content. If a
+  divider is purely cosmetic and adds no grouping information, give it
+  `role="presentation"` instead so it is ignored by assistive tech.
+
+See the [accessibility guide](/relements/guides/accessibility/) for system-wide
+conventions.

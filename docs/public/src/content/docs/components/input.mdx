@@ -18,3 +18,10 @@ Text-style inputs styled with `.re-input`. Native types, keyboard, autocomplete,
 ## States
 
 <Demo src="input.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — fully native. `Tab` moves focus to and from the input; typing, caret movement, selection, and per-type controls (e.g. the number type's `Arrow` step and spinner) all stay native. There is no extra JavaScript keyboard model — `.re-input` only styles the element.
+- **Focus** — a visible `:focus-visible` ring (`--re-shadow-focus`, drawn with `border-color: --re-color-focus-ring` and a box-shadow) on keyboard focus; an invalid input keeps a ring in the danger color while focused.
+- **Semantics** — the native `<input>` keeps its `type`, so the browser exposes the right role and announces autocomplete and constraint-validation messages itself. Wrapping the control in a `<label class="re-field">` (with a `.re-field__label` span) associates the label, and `.re-field__hint` text should be wired to the input via `aria-describedby`. Mark a label `data-required` to render the visual `*`; pair it with the native `required` attribute so it is also announced.
+- **Notes** — the danger border lights up on `[aria-invalid="true"]` or the native `:user-invalid` pseudo-class (only after the user interacts), so error styling never fires prematurely; point the input's `aria-describedby` at the `.re-validation-message` so the message is announced. Disabled inputs render at reduced opacity with a `not-allowed` cursor. See the [accessibility guide](/relements/guides/accessibility/).

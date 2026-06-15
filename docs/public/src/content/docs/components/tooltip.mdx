@@ -32,3 +32,27 @@ Add `data-open` to the wrapper to keep the bubble visible — useful for
 debugging, documentation, and visual tests.
 
 <Demo src="tooltip.html" name="open" />
+
+## Accessibility
+
+- **Keyboard** — the tooltip has no keyboard model of its own; it's CSS-only.
+  Tab to the trigger (a native control such as a `<button>`) and the bubble
+  appears via `:focus-within`; it also appears on `:hover`. There is no
+  Escape-to-dismiss (see 1.4.13 caveat above) — add a JS handler if you need
+  one.
+- **Focus** — only the trigger is focusable, so it keeps its own visible
+  `:focus-visible` ring; the bubble is never a focus target. The bubble is
+  hidden with `visibility: hidden` / `opacity: 0` (not `display: none`) so its
+  `id` stays referenceable while invisible.
+- **Semantics** — the bubble is a real element with `role="tooltip"`, and the
+  trigger's `aria-describedby` points at the bubble's `id`. Assistive
+  technology announces the bubble text as the trigger's description even while
+  the bubble is visually hidden. Don't put essential information only in a
+  tooltip — on touch devices, where there is no hover, it shows only while the
+  trigger has focus.
+- **Notes** — fade in/out is shortened to an instant transition under
+  `prefers-reduced-motion: reduce`. The bubble derives its colors from the
+  text/bg role tokens, inverting in dark mode and subtree themes without
+  tooltip-specific tokens. See the
+  [accessibility guide](/relements/guides/accessibility/) for the broader
+  WCAG 1.4.13 stance.
