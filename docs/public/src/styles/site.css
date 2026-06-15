@@ -216,6 +216,20 @@ starlight-toc a:focus-visible {
   margin-inline: auto;
 }
 
+/* Example pages wrap multi-control demos in a page-local `.stack` helper that
+   lives in each page's own <head> <style>. Demo.astro extracts only the markup
+   between the demo delimiters — not that <style> — so on the site `.stack`
+   collapses to a plain block and the stacked controls lose their row gap,
+   sitting flush (the cramped "under each other" look — unlike the field-group
+   demos, which stack via the shipped `.re-field-group__items` class). Restore a
+   vertical stack with a gap for demos. (`.stack` is grid/flex-column with a
+   space-3/4 gap across the example pages; a single grid + space-3 rule covers
+   all of them — the exact gap is cosmetic in a demo.) */
+.demo__preview .stack {
+  display: grid;
+  gap: var(--re-space-3);
+}
+
 /* Starlight's `input, button, textarea, select { font: inherit }` reset lives
    in the starlight.reset layer. In the bundle Starlight's layers are declared
    after Relements' layers, so at the top level `starlight.*` outranks `re.*`
