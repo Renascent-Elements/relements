@@ -1,0 +1,23 @@
+packages/core/src/components/tooltip.css
+  s_2732c4df70b865::t_6eecb223e44644 139-144,147-150,153-154
+tests/elements/tooltip.spec.ts
+  s_2732c4df70b865::t_be3b4052ea93f8 39-52
+packages/core/src/components/drawer.css
+  s_2732c4df70b865::t_3f004dcfc312da 124-133,136-137,140-141,144-145,151-152,156-157,160-161,164-165,168-169
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a79ec8d6044e444f200c123282b6cfe86c799b40",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
