@@ -1,0 +1,143 @@
+docs/public/src/content/docs/components/tag.mdx
+  s_2732c4df70b865::t_42ae47f4aad602 17-24
+docs/public/src/content/docs/components/progress.mdx
+  s_2732c4df70b865::t_8ea9c383247b17 21-28
+docs/public/src/content/docs/components/code.mdx
+  s_2732c4df70b865::t_2cdf4de26638e1 18-22
+docs/public/src/content/docs/components/radio.mdx
+  s_2732c4df70b865::t_b901b5256b181e 21-27
+docs/public/src/content/docs/components/context-menu.mdx
+  s_2732c4df70b865::t_72ab733e978be6 35-58
+docs/public/src/content/docs/components/re-toast.mdx
+  s_2732c4df70b865::t_02b4fe57bb1987 41
+  s_2732c4df70b865::t_0b04c7af288047 26-40,42-47
+docs/public/src/content/docs/components/disclosure.mdx
+  s_2732c4df70b865::t_7a43d8b7df1327 17-23
+docs/public/src/content/docs/components/pagination.mdx
+  s_2732c4df70b865::t_f21f4ad01453ab 17-23
+docs/public/src/content/docs/components/steps.mdx
+  s_2732c4df70b865::t_7721a3a067c626 63-88
+docs/public/src/content/docs/components/meter.mdx
+  s_2732c4df70b865::t_d9fc6766f7a4cb 17-21
+docs/public/src/content/docs/components/field.mdx
+  s_2732c4df70b865::t_954ec058cce485 25-49
+docs/public/src/content/docs/components/tree.mdx
+  s_2732c4df70b865::t_f16e8f654648a3 51-76
+docs/public/src/content/docs/components/spinner.mdx
+  s_2732c4df70b865::t_14443615ad025c 17-22
+docs/public/src/content/docs/components/separator.mdx
+  s_2732c4df70b865::t_a0da72f2a48bc5 15-34
+docs/public/src/content/docs/components/input.mdx
+  s_2732c4df70b865::t_a689c886815386 21-27
+docs/public/src/content/docs/components/badge.mdx
+  s_2732c4df70b865::t_f6fa61004d6803 17-21
+docs/public/src/content/docs/components/dialog.mdx
+  s_2732c4df70b865::t_ebaa68357f948c 17-40
+docs/public/src/content/docs/components/drawer.mdx
+  s_2732c4df70b865::t_44e77ab2185cd0 32-54
+docs/public/src/content/docs/components/card.mdx
+  s_2732c4df70b865::t_6e73b4f4f4aba9 17-23
+docs/public/src/content/docs/components/toolbar.mdx
+  s_2732c4df70b865::t_7170afe3de19b7 43-74
+docs/public/src/content/docs/components/description-list.mdx
+  s_2732c4df70b865::t_75f06ddeb658c6 34-44
+docs/public/src/content/docs/components/validation-message.mdx
+  s_2732c4df70b865::t_70ddcffa1d8a9e 25-32
+docs/public/src/content/docs/components/skeleton.mdx
+  s_2732c4df70b865::t_e1aee4ad6c4b65 17-24
+docs/public/src/content/docs/components/menu-button.mdx
+  s_2732c4df70b865::t_ba3a59094e21a8 13-19
+docs/public/src/content/docs/components/toast.mdx
+  s_2732c4df70b865::t_a65ef9c3b9b90d 28-48
+docs/public/src/content/docs/components/button.mdx
+  s_2732c4df70b865::t_3af30bae8daf53 17-23
+docs/public/src/content/docs/components/select.mdx
+  s_2732c4df70b865::t_d206393ddfb4d1 25-53
+docs/public/src/content/docs/components/tooltip.mdx
+  s_2732c4df70b865::t_e7accd2ddc2c15 35-58
+docs/public/src/content/docs/components/button-group.mdx
+  s_2732c4df70b865::t_31d292851e163b 42-64
+docs/public/src/content/docs/components/field-group.mdx
+  s_2732c4df70b865::t_57d2757d49c11c 21-27
+docs/public/src/content/docs/components/number-stepper.mdx
+  s_2732c4df70b865::t_bdf5247a7bbc7f 28-54
+docs/public/src/content/docs/components/tags-input.mdx
+  s_2732c4df70b865::t_5b68649e635b23 42-63
+docs/public/src/content/docs/components/textarea.mdx
+  s_2732c4df70b865::t_3268a104dfc159 21-27
+docs/public/src/content/docs/components/re-menu.mdx
+  s_2732c4df70b865::t_d82ca80762435c 16
+  s_2732c4df70b865::t_1f1a66970d80e3 13-15,17-19
+docs/public/src/content/docs/components/autosize-textarea.mdx
+  s_2732c4df70b865::t_6fc7d41281b082 26-50
+docs/public/src/content/docs/components/re-tabs.mdx
+  s_2732c4df70b865::t_dda3f17361d8be 13-19
+docs/public/src/content/docs/components/banner.mdx
+  s_2732c4df70b865::t_6faccdedffe386 66-92
+docs/public/src/content/docs/components/popover.mdx
+  s_2732c4df70b865::t_87e3827238df33 17-24
+docs/public/src/content/docs/components/link.mdx
+  s_2732c4df70b865::t_d27933e32dfbc5 25-31
+docs/public/src/content/docs/components/tabs.mdx
+  s_2732c4df70b865::t_a1794afb69cb54 13-19
+docs/public/src/content/docs/components/segmented.mdx
+  s_2732c4df70b865::t_659bea6b1d4f52 24-42
+docs/public/src/content/docs/components/rating.mdx
+  s_2732c4df70b865::t_1abf512cf659e1 47-71
+docs/public/src/content/docs/components/accordion.mdx
+  s_2732c4df70b865::t_b9816dca14834b 13-19
+docs/public/src/content/docs/components/input-group.mdx
+  s_2732c4df70b865::t_dd304232dc2f92 34-65
+docs/public/src/content/docs/components/password-toggle.mdx
+  s_2732c4df70b865::t_f99b4edf14cab8 31-51
+docs/public/src/content/docs/components/re-popover.mdx
+  s_2732c4df70b865::t_52a9a458b03793 19
+  s_2732c4df70b865::t_fa040c149e36c9 13-18
+docs/public/src/content/docs/components/otp.mdx
+  s_2732c4df70b865::t_b8290e1ac569c7 46-68
+docs/public/src/content/docs/components/breadcrumb.mdx
+  s_2732c4df70b865::t_2885a3a9253a4f 13-19
+docs/public/src/content/docs/components/alert.mdx
+  s_2732c4df70b865::t_d58113f83515e7 17-23
+docs/public/src/content/docs/components/combobox.mdx
+  s_2732c4df70b865::t_5ebf6023290b02 52-88
+docs/public/src/content/docs/components/switch.mdx
+  s_2732c4df70b865::t_f683ddd761641a 13-17,19
+  s_2732c4df70b865::t_5e42fb7da2bca6 18
+docs/public/src/content/docs/components/checkbox.mdx
+  s_2732c4df70b865::t_52493823b68913 21-27
+docs/public/src/content/docs/components/empty-state.mdx
+  s_2732c4df70b865::t_b0a8b548e799ce 39-60
+  s_2732c4df70b865::t_7bd5245039a20e 10-11
+docs/public/src/content/docs/components/kbd.mdx
+  s_2732c4df70b865::t_75ac552c2cae72 18-22
+docs/public/src/content/docs/components/alert-dialog.mdx
+  s_2732c4df70b865::t_96de73faa2905f 37-59
+docs/public/src/content/docs/components/slider.mdx
+  s_2732c4df70b865::t_c497c9bd8209bf 8-10
+  s_2732c4df70b865::t_83d8b6b4a764c1 28-50
+docs/public/src/content/docs/components/command-palette.mdx
+  s_2732c4df70b865::t_eec4d84572e3e2 43-76
+docs/public/src/content/docs/components/range.mdx
+  s_2732c4df70b865::t_25e9559cf5820d 43-73
+docs/public/src/content/docs/components/table.mdx
+  s_2732c4df70b865::t_964f48ab9d22f9 23-29
+docs/public/src/content/docs/components/avatar.mdx
+  s_2732c4df70b865::t_916fe56c4bfb44 17-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "b7c3496f79ae72fe5abf80c0ec1b0bdc2ea0660f",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
