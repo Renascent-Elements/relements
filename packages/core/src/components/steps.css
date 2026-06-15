@@ -192,7 +192,11 @@
     content: "";
     inline-size: var(--re-steps-check-size);
     block-size: calc(var(--re-steps-check-size) * 1.9);
+    /* PHYSICAL borders on purpose: the check is a non-directional glyph and must
+       NOT mirror under RTL (a logical border-inline-end would flip it). */
+    /* stylelint-disable-next-line property-disallowed-list */
     border-right: var(--re-border-width-strong) solid currentColor;
+    /* stylelint-disable-next-line property-disallowed-list */
     border-bottom: var(--re-border-width-strong) solid currentColor;
     transform: translateY(-12%) rotate(45deg);
   }

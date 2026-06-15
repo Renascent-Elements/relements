@@ -121,40 +121,52 @@
     }
   }
 
-  /* RTL: `translate` percentages are physical. Flip the inline-axis sign for
-     the inline sides; the bare `:dir(rtl)` rule would also clobber the block
-     sides' vertical slide, so RE-ASSERT top/bottom (their (0,3,0) rules
-     out-specify the bare (0,2,0) flip). Progressive: engines without :dir()
-     keep the LTR slide; placement still flips via the logical insets above. */
-  .re-drawer:dir(rtl) {
+  /* RTL: `translate` percentages are physical. Flip the inline-axis sign for the
+     inline sides; the bare flip would also clobber the block sides' vertical
+     slide, so RE-ASSERT top/bottom (their (0,3,0) rules out-specify the bare
+     (0,2,0) flip). Matched with [dir="rtl"] (ancestor OR self) rather than :dir()
+     — :dir() needs Safari 16.4 (above the floor); the attribute works on the full
+     floor. Each `[dir="rtl"]` and `[open]`/`[data-side]` adds (0,1,0), so the
+     specificity (and the dock-ordering dance below) is identical to the old
+     :dir() form. */
+  [dir="rtl"] .re-drawer,
+  .re-drawer[dir="rtl"] {
     translate: -100% 0; /* end: off the inline-end (left) edge in RTL */
   }
-  .re-drawer[data-side="start"]:dir(rtl) {
+  [dir="rtl"] .re-drawer[data-side="start"],
+  .re-drawer[data-side="start"][dir="rtl"] {
     translate: 100% 0; /* start: off the inline-start (right) edge in RTL */
   }
-  .re-drawer[data-side="top"]:dir(rtl) {
+  [dir="rtl"] .re-drawer[data-side="top"],
+  .re-drawer[data-side="top"][dir="rtl"] {
     translate: 0 -100%;
   }
-  .re-drawer[data-side="bottom"]:dir(rtl) {
+  [dir="rtl"] .re-drawer[data-side="bottom"],
+  .re-drawer[data-side="bottom"][dir="rtl"] {
     translate: 0 100%;
   }
   /* Steady-state open docks every side. Placed last and at (0,3,0) it beats the
      bare (0,2,0) end flip and ties-then-wins-by-order the (0,3,0) side flips —
      without this an open RTL drawer stays slid off-screen. */
-  .re-drawer:dir(rtl)[open] {
+  [dir="rtl"] .re-drawer[open],
+  .re-drawer[dir="rtl"][open] {
     translate: 0 0;
   }
   @starting-style {
-    .re-drawer:dir(rtl)[open] {
+    [dir="rtl"] .re-drawer[open],
+    .re-drawer[dir="rtl"][open] {
       translate: -100% 0;
     }
-    .re-drawer[data-side="start"]:dir(rtl)[open] {
+    [dir="rtl"] .re-drawer[data-side="start"][open],
+    .re-drawer[data-side="start"][dir="rtl"][open] {
       translate: 100% 0;
     }
-    .re-drawer[data-side="top"]:dir(rtl)[open] {
+    [dir="rtl"] .re-drawer[data-side="top"][open],
+    .re-drawer[data-side="top"][dir="rtl"][open] {
       translate: 0 -100%;
     }
-    .re-drawer[data-side="bottom"]:dir(rtl)[open] {
+    [dir="rtl"] .re-drawer[data-side="bottom"][open],
+    .re-drawer[data-side="bottom"][dir="rtl"][open] {
       translate: 0 100%;
     }
   }

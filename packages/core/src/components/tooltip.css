@@ -136,17 +136,22 @@
     inset-inline-start: 0;
   }
 
-  /* In RTL the inline insets flip but `translate` stays physical, so the
-     -50% horizontal centering must flip sign. Engines without :dir() drop
-     these rules and keep the LTR offsets. */
-  .re-tooltip:dir(rtl) .re-tooltip__bubble {
+  /* In RTL the inline insets flip but `translate` stays physical, so the -50%
+     horizontal centering must flip sign. Matched with [dir="rtl"] (ancestor or
+     self) — :dir() needs Safari 16.4 (above the floor); the attribute works on
+     the full floor and keeps the same specificity. */
+  [dir="rtl"] .re-tooltip .re-tooltip__bubble,
+  .re-tooltip[dir="rtl"] .re-tooltip__bubble {
     translate: 50% 0;
   }
-  .re-tooltip[data-placement="start"]:dir(rtl) .re-tooltip__bubble,
-  .re-tooltip[data-placement="end"]:dir(rtl) .re-tooltip__bubble {
+  [dir="rtl"] .re-tooltip[data-placement="start"] .re-tooltip__bubble,
+  .re-tooltip[data-placement="start"][dir="rtl"] .re-tooltip__bubble,
+  [dir="rtl"] .re-tooltip[data-placement="end"] .re-tooltip__bubble,
+  .re-tooltip[data-placement="end"][dir="rtl"] .re-tooltip__bubble {
     translate: 0 -50%;
   }
-  .re-tooltip:dir(rtl) .re-tooltip__bubble::after {
+  [dir="rtl"] .re-tooltip .re-tooltip__bubble::after,
+  .re-tooltip[dir="rtl"] .re-tooltip__bubble::after {
     translate: 50% -50%;
   }
 
