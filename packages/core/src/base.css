@@ -93,7 +93,7 @@
 
   hr {
     border: 0;
-    border-top: var(--re-border-default);
+    border-block-start: var(--re-border-default);
     margin-block: var(--re-space-6);
   }
 

@@ -126,6 +126,11 @@
      sides' vertical slide, so RE-ASSERT top/bottom (their (0,3,0) rules
      out-specify the bare (0,2,0) flip). Progressive: engines without :dir()
      keep the LTR slide; placement still flips via the logical insets above. */
+  /* stylelint-disable selector-disallowed-list -- predates the [dir="rtl"]
+     convention; :dir() is used deliberately for true computed-direction matching
+     and degrades gracefully (LTR slide) below the floor. Converting to [dir="rtl"]
+     for full-floor RTL — without disturbing the tuned specificity dance above —
+     is a tracked follow-up. */
   .re-drawer:dir(rtl) {
     translate: -100% 0; /* end: off the inline-end (left) edge in RTL */
   }
@@ -158,6 +163,7 @@
       translate: 0 100%;
     }
   }
+  /* stylelint-enable selector-disallowed-list */
 
   /* Fade the shared backdrop in/out with the panel. The reset's reduced-motion
      rule targets `*`, which does NOT match `::backdrop`, so gate the transition

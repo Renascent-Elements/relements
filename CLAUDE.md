@@ -19,7 +19,7 @@ HTML-first, framework-agnostic design system. Published to npm as a **single pac
 
 - Build core: `pnpm build` (or `pnpm -F @relements/core build`). Always build core before the docs site or examples that consume `dist/`.
 - Tests: `pnpm test` (unit + browser). `pnpm test:unit` (Vitest, `tests/unit/**/*.spec.ts`). `pnpm test:browser` (Playwright). `pnpm build:examples` first if running browser tests manually.
-- Lint/format: `pnpm lint` (`prettier --check . && eslint .`), `pnpm format`.
+- Lint/format: `pnpm lint` (`prettier --check . && eslint . && stylelint`), `pnpm format`. `pnpm lint:css` runs Stylelint alone. Stylelint (`stylelint.config.mjs`) enforces the CSS-authoring conventions below on component CSS — tokens-only colors, logical properties, and the browser floor (`lh`/`:dir()` banned); intentional exceptions carry a `/* stylelint-disable-… -- reason */`.
 - Docs site: `pnpm -F @relements/docs dev | build | preview`.
 - Release: `pnpm changeset` per change; merge → Changesets opens a version PR → publishes on merge (npm Trusted Publishing, Node 24).
 
