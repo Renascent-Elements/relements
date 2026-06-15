@@ -16,8 +16,8 @@
  *     never narrower than the input (it may grow for longer options),
  *   - implements the ARIA editable-combobox pattern: typing filters
  *     (case-insensitive substring, like the native popup), Arrow keys move
- *     the highlight, Enter commits, Escape closes, focus stays in the input
- *     (aria-activedescendant).
+ *     the highlight (Home/End jump to first/last while open), Enter commits,
+ *     Escape closes, focus stays in the input (aria-activedescendant).
  *
  * Committing a value sets input.value and dispatches `input` and `change`
  * events (bubbling), so frameworks observe it like user typing.
@@ -212,6 +212,16 @@ function wireOne(input) {
         event.preventDefault();
         if (!isOpen()) open();
         move(event.key === "ArrowDown" ? 1 : -1);
+        return;
+      }
+      case "Home":
+      case "End": {
+        // Only when the listbox is open — otherwise let Home/End move the caret.
+        if (!isOpen()) return;
+        const all = options();
+        if (!all.length) return;
+        event.preventDefault();
+        setActive(all[event.key === "Home" ? 0 : all.length - 1]);
         return;
       }
       case "Enter": {

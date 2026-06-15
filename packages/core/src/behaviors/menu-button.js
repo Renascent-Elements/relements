@@ -14,8 +14,9 @@
  * Behavior:
  *   - Click the button toggles the menu.
  *   - ArrowDown opens the menu and focuses the first item.
- *   - Up/Down on items moves focus within the menu (wraps).
- *   - Home/End jump.
+ *   - Up/Down on items moves focus within the menu (wraps); `aria-disabled`
+ *     items are skipped.
+ *   - Home/End jump; first-character typeahead focuses a matching item.
  *   - Escape closes the menu and returns focus to the button.
  *   - Tab outside the menu closes it.
  *   - Clicking outside closes it.
@@ -71,8 +72,15 @@ function wireOne(host) {
 
   const items = () =>
     /** @type {HTMLElement[]} */ (
-      Array.from(panel.querySelectorAll('[role="menuitem"]:not([disabled])'))
+      Array.from(
+        panel.querySelectorAll('[role="menuitem"]:not([disabled]):not([aria-disabled="true"])'),
+      )
     );
+
+  // First-character typeahead (multi-char buffer, mirrors context-menu).
+  let typeBuf = "";
+  /** @type {ReturnType<typeof setTimeout> | undefined} */
+  let typeTimer;
 
   const isOpen = () => button.getAttribute("aria-expanded") === "true";
 
@@ -153,6 +161,20 @@ function wireOne(host) {
         closeMenu();
         return;
     }
+    // First-character typeahead: focus the first item whose label starts with
+    // the recently-typed characters.
+    if (event.key.length === 1 && !event.altKey && !event.ctrlKey && !event.metaKey) {
+      typeBuf += event.key.toLowerCase();
+      clearTimeout(typeTimer);
+      typeTimer = setTimeout(() => (typeBuf = ""), 500);
+      const match = all.find((el) =>
+        (el.textContent || "").trim().toLowerCase().startsWith(typeBuf),
+      );
+      if (match) {
+        event.preventDefault();
+        match.focus();
+      }
+    }
   };
 
   /** @param {Event} event */
@@ -161,6 +183,8 @@ function wireOne(host) {
     if (!target) return;
     const item = target.closest('[role="menuitem"]');
     if (!item) return;
+    // Disabled items are inert to clicks too (not just keyboard nav).
+    if (item.matches('[disabled], [aria-disabled="true"]')) return;
     const value =
       /** @type {HTMLElement} */ (item).dataset.value ??
       /** @type {HTMLElement} */ (item).textContent?.trim() ??
@@ -190,6 +214,7 @@ function wireOne(host) {
   document.addEventListener("click", onOutsideClick);
 
   return () => {
+    clearTimeout(typeTimer);
     button.removeEventListener("click", onButtonClick);
     button.removeEventListener("keydown", /** @type {EventListener} */ (onButtonKey));
     panel.removeEventListener("keydown", /** @type {EventListener} */ (onPanelKey));

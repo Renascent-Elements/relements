@@ -104,4 +104,23 @@ test.describe("enhanced combobox", () => {
     await expect(list(page)).toBeHidden();
     await expect(el).toHaveAttribute("aria-expanded", "false");
   });
+
+  test("Home/End jump to the first/last option in the open listbox", async ({ page }) => {
+    await page.goto("./combobox.html");
+    const el = input(page);
+    await el.click();
+    await expect(list(page)).toBeVisible();
+
+    const ids = await list(page)
+      .getByRole("option")
+      .evaluateAll((nodes) => nodes.map((n) => n.id));
+    const firstId = ids[0];
+    const lastId = ids[ids.length - 1];
+
+    await page.keyboard.press("End");
+    await expect(el).toHaveAttribute("aria-activedescendant", lastId);
+
+    await page.keyboard.press("Home");
+    await expect(el).toHaveAttribute("aria-activedescendant", firstId);
+  });
 });

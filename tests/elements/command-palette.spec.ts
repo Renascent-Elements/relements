@@ -50,6 +50,22 @@ test.describe("command-palette", () => {
     await expect(page.locator(`#${active}`)).not.toHaveAttribute("aria-disabled", "true");
   });
 
+  test("Home/End jump to the first/last visible option", async ({ page }) => {
+    await openPalette(page);
+    const input = page.locator(".re-command-palette__input");
+    await input.press("End");
+    const endId = await input.getAttribute("aria-activedescendant");
+    expect(endId).toBeTruthy();
+    // last VISIBLE non-disabled row — the disabled "Delete workspace" is skipped
+    const endRow = page.locator(`#${endId}`);
+    await expect(endRow).not.toHaveAttribute("aria-disabled", "true");
+    await expect(endRow).toContainText("Invite teammate");
+    await input.press("Home");
+    const homeId = await input.getAttribute("aria-activedescendant");
+    expect(homeId).toBeTruthy();
+    await expect(page.locator(`#${homeId}`)).toContainText("Go to Dashboard");
+  });
+
   test("Enter activates exactly once (re-command) and closes", async ({ page }) => {
     await openPalette(page);
     const input = page.locator(".re-command-palette__input");
