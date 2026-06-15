@@ -3,11 +3,14 @@ title: Relements
 description: HTML-first, framework-agnostic design system.
 template: splash
 hero:
-  tagline: An HTML-first, framework-agnostic design system. Native elements, progressive enhancement, zero runtime lock-in.
+  tagline: A design system built on native HTML — styled with classes and tokens, enhanced only where the platform falls short. The same API in React, Vue, Svelte, Angular, and plain HTML.
   actions:
     - text: Get started
-      link: /relements/guides/html-first/
+      link: /relements/guides/quickstart/
       icon: right-arrow
+    - text: Components
+      link: /relements/components/button/
+      variant: secondary
     - text: View on GitHub
       link: https://github.com/Renascent-Elements/relements
       icon: external
@@ -16,6 +19,26 @@ hero:
 
 import Demo from "../../components/Demo.astro";
 import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { CardGrid, Card, LinkCard } from "@astrojs/starlight/components";
+
+<CardGrid>
+  <Card title="HTML-first" icon="seti:html">
+    Native elements styled with `.re-*` classes and `data-*` attributes. Base functionality works
+    with **zero JavaScript** — behaviors are opt-in.
+  </Card>
+  <Card title="Framework-agnostic" icon="puzzle">
+    One class/attribute/event API for React, Vue, Svelte, Angular, and plain HTML. No wrappers, no
+    per-framework packages.
+  </Card>
+  <Card title="Accessible by default" icon="approve-check">
+    Keyboard, focus, and ARIA come from the platform. Automatic dark mode and Windows High Contrast
+    support, tested with axe on every change.
+  </Card>
+  <Card title="Themeable" icon="setting">
+    Re-theme globally or any subtree by redeclaring `--re-*` tokens. Cascade layers keep your own
+    overrides winning automatically.
+  </Card>
+</CardGrid>
 
 ## Install
 
@@ -50,7 +73,8 @@ bun add @relements/core
   </TabItem>
 </Tabs>
 
-Then import the stylesheet once at your app entry:
+Import the stylesheet once at your app entry — that single import gives you light
+**and** dark, following the OS automatically:
 
 ```js
 import "@relements/core/index.css";
@@ -58,7 +82,50 @@ import "@relements/core/index.css";
 
 ## A 30-second example
 
+No components to import and no JavaScript to run — style native elements with the
+`.re-*` classes:
+
 <Demo src="button.html" name="variants" />
 
-Relements styles native HTML and layers in optional behaviors. No wrappers, no
-framework lock-in — the same class and attribute API works everywhere.
+```html
+<button class="re-button" data-variant="primary">Save</button>
+```
+
+The [Quickstart](/relements/guides/quickstart/) walks through adding a field and
+an optional behavior; the [framework guides](/relements/frameworks/) show the
+one-line setup for React, Vue, Svelte, and Angular.
+
+## Explore
+
+<CardGrid>
+  <LinkCard
+    title="Quickstart"
+    href="/relements/guides/quickstart/"
+    description="Install to first component in under a minute."
+  />
+  <LinkCard
+    title="Components"
+    href="/relements/components/button/"
+    description="44 components with live demos and per-component keyboard/accessibility notes."
+  />
+  <LinkCard
+    title="Framework guides"
+    href="/relements/frameworks/"
+    description="React, Vue, Svelte, Angular — the idiomatic enhance pattern for each."
+  />
+  <LinkCard
+    title="Theming & tokens"
+    href="/relements/guides/theming/"
+    description="Cascade-layer theming and the full --re-* token reference."
+  />
+  <LinkCard
+    title="Accessibility"
+    href="/relements/guides/accessibility/"
+    description="The HTML-first a11y stance: focus, forced colors, honest ARIA roles."
+  />
+  <LinkCard
+    title="HTML-first policy"
+    href="/relements/guides/html-first/"
+    description="Why native semantics come first, and what progressive enhancement means here."
+  />
+</CardGrid>
