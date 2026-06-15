@@ -1,0 +1,21 @@
+docs/public/src/content/docs/index.mdx
+  s_2732c4df70b865::t_ca29f9d9b99147 6,9,11-13,22-41,76-77,85-87,90-131
+docs/public/src/content/docs/guides/quickstart.mdx
+  s_2732c4df70b865::t_2dc3246f753bae 1-135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "608fe0601645ffab660ae90590513e53ff7ba4ad",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "unknown"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
