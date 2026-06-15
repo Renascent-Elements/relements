@@ -1,0 +1,201 @@
+---
+title: Token reference
+description: Every --re-* design token — the stable, themeable public API of @relements/core.
+---
+
+Every value in the system is a `--re-*` CSS custom property. They are **stable public API** (see [versioning](/relements/guides/versioning/)) — override any of them at `:root` for a global change, or on any ancestor to re-theme a subtree. Values shown are the defaults; the **Dark** column lists the value under `prefers-color-scheme: dark` (and the built-in theme) when it differs. See [dark mode](/relements/guides/dark-mode/) for how that switch works.
+
+{/* AUTO-GENERATED from packages/core/src/tokens.css by scripts/gen-token-reference.mjs — run `node scripts/gen-token-reference.mjs` after editing tokens; the drift guard in tests/unit/token-reference.spec.ts enforces it. */}
+
+## Color: neutral scale
+
+| Token                    | Default   | Dark |
+| ------------------------ | --------- | ---- |
+| `--re-color-neutral-0`   | `#ffffff` | —    |
+| `--re-color-neutral-50`  | `#f8fafc` | —    |
+| `--re-color-neutral-100` | `#f1f5f9` | —    |
+| `--re-color-neutral-200` | `#e2e8f0` | —    |
+| `--re-color-neutral-300` | `#cbd5e1` | —    |
+| `--re-color-neutral-400` | `#94a3b8` | —    |
+| `--re-color-neutral-500` | `#64748b` | —    |
+| `--re-color-neutral-600` | `#475569` | —    |
+| `--re-color-neutral-700` | `#334155` | —    |
+| `--re-color-neutral-800` | `#1e293b` | —    |
+| `--re-color-neutral-900` | `#0f172a` | —    |
+| `--re-color-neutral-950` | `#020617` | —    |
+
+## Color: accent (brand)
+
+| Token                   | Default   | Dark |
+| ----------------------- | --------- | ---- |
+| `--re-color-accent-50`  | `#eff6ff` | —    |
+| `--re-color-accent-100` | `#dbeafe` | —    |
+| `--re-color-accent-200` | `#bfdbfe` | —    |
+| `--re-color-accent-300` | `#93c5fd` | —    |
+| `--re-color-accent-400` | `#60a5fa` | —    |
+| `--re-color-accent-500` | `#3b82f6` | —    |
+| `--re-color-accent-600` | `#2563eb` | —    |
+| `--re-color-accent-700` | `#1d4ed8` | —    |
+| `--re-color-accent-800` | `#1e40af` | —    |
+| `--re-color-accent-900` | `#1e3a8a` | —    |
+
+## Color: semantic
+
+| Token                    | Default   | Dark |
+| ------------------------ | --------- | ---- |
+| `--re-color-danger-500`  | `#ef4444` | —    |
+| `--re-color-danger-600`  | `#dc2626` | —    |
+| `--re-color-danger-700`  | `#b91c1c` | —    |
+| `--re-color-success-500` | `#10b981` | —    |
+| `--re-color-success-600` | `#059669` | —    |
+| `--re-color-success-700` | `#047857` | —    |
+| `--re-color-warning-500` | `#f59e0b` | —    |
+| `--re-color-warning-600` | `#d97706` | —    |
+| `--re-color-warning-700` | `#b45309` | —    |
+
+## Color: roles (resolve to neutral/accent above)
+
+| Token                       | Default                       | Dark                          |
+| --------------------------- | ----------------------------- | ----------------------------- |
+| `--re-color-bg`             | `var(--re-color-neutral-0)`   | `var(--re-color-neutral-950)` |
+| `--re-color-bg-subtle`      | `var(--re-color-neutral-50)`  | `var(--re-color-neutral-900)` |
+| `--re-color-bg-muted`       | `var(--re-color-neutral-100)` | `var(--re-color-neutral-800)` |
+| `--re-color-surface`        | `var(--re-color-neutral-0)`   | `var(--re-color-neutral-900)` |
+| `--re-color-overlay`        | `rgb(0 0 0 / 0.4)`            | —                             |
+| `--re-color-text`           | `var(--re-color-neutral-900)` | `var(--re-color-neutral-50)`  |
+| `--re-color-text-muted`     | `var(--re-color-neutral-600)` | `var(--re-color-neutral-300)` |
+| `--re-color-text-subtle`    | `var(--re-color-neutral-500)` | `var(--re-color-neutral-400)` |
+| `--re-color-text-on-accent` | `var(--re-color-neutral-0)`   | —                             |
+| `--re-color-border`         | `var(--re-color-neutral-200)` | `var(--re-color-neutral-700)` |
+| `--re-color-border-strong`  | `var(--re-color-neutral-300)` | `var(--re-color-neutral-600)` |
+| `--re-color-link`           | `var(--re-color-accent-700)`  | `var(--re-color-accent-300)`  |
+| `--re-color-link-hover`     | `var(--re-color-accent-800)`  | `var(--re-color-accent-200)`  |
+| `--re-color-link-visited`   | `var(--re-color-accent-800)`  | `var(--re-color-accent-200)`  |
+| `--re-color-focus-ring`     | `var(--re-color-accent-500)`  | `var(--re-color-accent-400)`  |
+| `--re-color-selection-bg`   | `var(--re-color-accent-100)`  | `var(--re-color-accent-900)`  |
+| `--re-color-selection-text` | `var(--re-color-neutral-900)` | `var(--re-color-neutral-50)`  |
+
+## Color: status surfaces
+
+| Token                        | Default                                                                      | Dark                                                                         |
+| ---------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `--re-color-info-surface`    | `color-mix( in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg) )`  | `color-mix( in oklab, var(--re-color-accent-500) 20%, var(--re-color-bg) )`  |
+| `--re-color-info-border`     | `var(--re-color-accent-500)`                                                 | `var(--re-color-accent-400)`                                                 |
+| `--re-color-info-text`       | `var(--re-color-accent-700)`                                                 | `var(--re-color-accent-200)`                                                 |
+| `--re-color-success-surface` | `color-mix( in oklab, var(--re-color-success-500) 12%, var(--re-color-bg) )` | `color-mix( in oklab, var(--re-color-success-500) 20%, var(--re-color-bg) )` |
+| `--re-color-success-border`  | `var(--re-color-success-500)`                                                | —                                                                            |
+| `--re-color-success-text`    | `var(--re-color-success-700)`                                                | `var(--re-color-success-500)`                                                |
+| `--re-color-warning-surface` | `color-mix( in oklab, var(--re-color-warning-500) 12%, var(--re-color-bg) )` | `color-mix( in oklab, var(--re-color-warning-500) 20%, var(--re-color-bg) )` |
+| `--re-color-warning-border`  | `var(--re-color-warning-500)`                                                | —                                                                            |
+| `--re-color-warning-text`    | `var(--re-color-warning-700)`                                                | `var(--re-color-warning-500)`                                                |
+| `--re-color-danger-surface`  | `color-mix( in oklab, var(--re-color-danger-500) 12%, var(--re-color-bg) )`  | `color-mix( in oklab, var(--re-color-danger-500) 20%, var(--re-color-bg) )`  |
+| `--re-color-danger-border`   | `var(--re-color-danger-500)`                                                 | —                                                                            |
+| `--re-color-danger-text`     | `var(--re-color-danger-700)`                                                 | `var(--re-color-danger-500)`                                                 |
+
+## Typography
+
+| Token                       | Default                                                                                          | Dark |
+| --------------------------- | ------------------------------------------------------------------------------------------------ | ---- |
+| `--re-font-sans`            | `system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif` | —    |
+| `--re-font-mono`            | `ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace`         | —    |
+| `--re-size-text-xs`         | `0.75rem`                                                                                        | —    |
+| `--re-size-text-sm`         | `0.875rem`                                                                                       | —    |
+| `--re-size-text-md`         | `1rem`                                                                                           | —    |
+| `--re-size-text-lg`         | `1.125rem`                                                                                       | —    |
+| `--re-size-text-xl`         | `1.25rem`                                                                                        | —    |
+| `--re-size-text-2xl`        | `1.5rem`                                                                                         | —    |
+| `--re-size-text-3xl`        | `1.875rem`                                                                                       | —    |
+| `--re-size-text-4xl`        | `2.25rem`                                                                                        | —    |
+| `--re-line-height-tight`    | `1.2`                                                                                            | —    |
+| `--re-line-height-snug`     | `1.35`                                                                                           | —    |
+| `--re-line-height-normal`   | `1.5`                                                                                            | —    |
+| `--re-line-height-relaxed`  | `1.65`                                                                                           | —    |
+| `--re-font-weight-regular`  | `400`                                                                                            | —    |
+| `--re-font-weight-medium`   | `500`                                                                                            | —    |
+| `--re-font-weight-semibold` | `600`                                                                                            | —    |
+| `--re-font-weight-bold`     | `700`                                                                                            | —    |
+
+## Spacing (4px scale)
+
+| Token           | Default   | Dark |
+| --------------- | --------- | ---- |
+| `--re-space-0`  | `0`       | —    |
+| `--re-space-1`  | `0.25rem` | —    |
+| `--re-space-2`  | `0.5rem`  | —    |
+| `--re-space-3`  | `0.75rem` | —    |
+| `--re-space-4`  | `1rem`    | —    |
+| `--re-space-5`  | `1.25rem` | —    |
+| `--re-space-6`  | `1.5rem`  | —    |
+| `--re-space-8`  | `2rem`    | —    |
+| `--re-space-10` | `2.5rem`  | —    |
+| `--re-space-12` | `3rem`    | —    |
+| `--re-space-16` | `4rem`    | —    |
+
+## Radii
+
+| Token              | Default    | Dark |
+| ------------------ | ---------- | ---- |
+| `--re-radius-none` | `0`        | —    |
+| `--re-radius-sm`   | `0.25rem`  | —    |
+| `--re-radius-md`   | `0.375rem` | —    |
+| `--re-radius-lg`   | `0.5rem`   | —    |
+| `--re-radius-xl`   | `0.75rem`  | —    |
+| `--re-radius-pill` | `9999px`   | —    |
+
+## Borders
+
+| Token                      | Default                                                             | Dark |
+| -------------------------- | ------------------------------------------------------------------- | ---- |
+| `--re-border-width`        | `1px`                                                               | —    |
+| `--re-border-width-strong` | `2px`                                                               | —    |
+| `--re-border-default`      | `var(--re-border-width) solid var(--re-color-border)`               | —    |
+| `--re-border-strong`       | `var(--re-border-width-strong) solid var(--re-color-border-strong)` | —    |
+| `--re-border-danger`       | `var(--re-border-width) solid var(--re-color-danger-border)`        | —    |
+
+## Focus ring
+
+| Token                    | Default                                                                                                                                                 | Dark                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `--re-focus-ring-width`  | `2px`                                                                                                                                                   | —                                      |
+| `--re-focus-ring-offset` | `2px`                                                                                                                                                   | `0px`                                  |
+| `--re-focus-ring-color`  | `var(--re-color-focus-ring)`                                                                                                                            | —                                      |
+| `--re-shadow-focus`      | `0 0 0 var(--re-focus-ring-offset) var(--re-color-bg), 0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring)` | `0 0 0 2px var(--re-color-focus-ring)` |
+
+## Elevation
+
+| Token            | Default                         | Dark |
+| ---------------- | ------------------------------- | ---- |
+| `--re-shadow-sm` | `0 1px 2px rgb(0 0 0 / 0.06)`   | —    |
+| `--re-shadow-md` | `0 4px 12px rgb(0 0 0 / 0.08)`  | —    |
+| `--re-shadow-lg` | `0 12px 32px rgb(0 0 0 / 0.12)` | —    |
+
+## Motion
+
+| Token                    | Default                      | Dark |
+| ------------------------ | ---------------------------- | ---- |
+| `--re-duration-instant`  | `0ms`                        | —    |
+| `--re-duration-fast`     | `120ms`                      | —    |
+| `--re-duration-normal`   | `200ms`                      | —    |
+| `--re-duration-slow`     | `320ms`                      | —    |
+| `--re-easing-standard`   | `cubic-bezier(0.2, 0, 0, 1)` | —    |
+| `--re-easing-emphasized` | `cubic-bezier(0.3, 0, 0, 1)` | —    |
+
+## z-index
+
+| Token            | Default | Dark |
+| ---------------- | ------- | ---- |
+| `--re-z-base`    | `0`     | —    |
+| `--re-z-overlay` | `100`   | —    |
+| `--re-z-popover` | `200`   | —    |
+| `--re-z-dialog`  | `300`   | —    |
+| `--re-z-toast`   | `400`   | —    |
+
+## Layout sizing
+
+| Token                    | Default             | Dark |
+| ------------------------ | ------------------- | ---- |
+| `--re-control-height-sm` | `1.75rem`           | —    |
+| `--re-control-height-md` | `2.25rem`           | —    |
+| `--re-control-height-lg` | `2.75rem`           | —    |
+| `--re-control-padding-x` | `var(--re-space-3)` | —    |
+| `--re-control-padding-y` | `var(--re-space-2)` | —    |
