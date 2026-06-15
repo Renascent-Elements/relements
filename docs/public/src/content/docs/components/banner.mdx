@@ -55,9 +55,6 @@ scrolls underneath. Under a fixed site header, override `--re-banner-sticky-top`
 
 ## Notes
 
-- **Roles:** use `<aside>` / `<div role="region">` + `aria-label` for a
-  persistent announcement, or `role="status"` (a polite live region) for a
-  status strip injected at runtime. The leading icon is `aria-hidden`.
 - **Sticky:** `data-sticky` pins the banner to the top of its scroll container.
   Under a fixed site header, override `--re-banner-sticky-top` in one line.
 - **Persistence:** `enhanceDismissible` only sets `[hidden]` for the session. A
@@ -66,3 +63,30 @@ scrolls underneath. Under a fixed site header, override `--re-banner-sticky-top`
   library adds no new JavaScript here.
 - **Full-bleed** is plain `inline-size: 100%` (no `calc(50% - 50vw)` hack): the
   band fills whatever slot you place it in.
+
+## Accessibility
+
+- **Keyboard** — the banner itself is not focusable; the only interactive parts
+  are native. The inline `.re-banner__action` link is a real `<a href>` (Tab to
+  focus, Enter to follow). The `[data-re-dismiss]` close button is a native
+  `<button>`, so Enter and Space activate it — `enhanceDismissible` also handles
+  Enter/Space itself and hides the closest `[data-re-dismissible]` host.
+- **Focus** — the action link and dismiss button show a visible
+  `:focus-visible` ring (`--re-shadow-focus`); the dismiss ring is an outer ring,
+  since the band's block padding gives it room to render unclipped. There is no
+  focus trap — a banner is inline page content, not a modal overlay, so focus is
+  never captured or returned.
+- **Semantics** — mark up a persistent strip as `<aside>` or
+  `<div role="region">` with an `aria-label`; for a strip injected at runtime,
+  use `role="status"` (a polite live region) so assistive tech announces it
+  without stealing focus. The leading `.re-banner__icon` is decorative and
+  carries `aria-hidden="true"`, and the dismiss button has an explicit
+  `aria-label` ("Dismiss") because its only child is a `×` glyph.
+- **Notes** — solid emphasis (`data-emphasis="solid"`) uses the `*-700` status
+  fill with `text-on-accent` text, and the dismiss `×` keeps full `currentColor`
+  (not a translucent mix), so message, link, icon, and close button all clear
+  WCAG AA contrast on both subtle and solid fills, in light and dark mode. Logical
+  properties (`margin-inline-start`, `border-block`) keep the layout and the
+  inline-end dismiss button correct under `dir="rtl"`. See the
+  [accessibility guide](/relements/guides/accessibility/) for the system-wide
+  baseline.

@@ -22,3 +22,10 @@ Opt-in styling for anchors. Add `.re-link` to any `<a>` and pick a variant with 
 ## External
 
 <Demo src="link.html" name="external" />
+
+## Accessibility
+
+- **Keyboard** — Native anchor behavior: Tab moves focus to the link, Enter follows the `href`. `.re-link` is styling only and adds no extra keys or behaviors.
+- **Focus** — A visible `:focus-visible` ring (`--re-shadow-focus`, with `outline: none`) marks the focused link, so it stays distinguishable inline within body text.
+- **Semantics** — A plain `<a href>`; assistive tech announces it as a link and reads its visible text as the accessible name. The `external` variant should open in a new context with `target="_blank"` plus `rel="noopener noreferrer"`, as shown above.
+- **Notes** — The `external` variant's `↗` glyph is a decorative CSS `::after` hint; it is not part of the accessible name (give the link descriptive text and, if needed, your own `aria-label`). See the [accessibility guide](/relements/guides/accessibility/).

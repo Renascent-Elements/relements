@@ -14,3 +14,11 @@ Compact labels for filters and metadata. Add `data-re-dismissible` with a `data-
 ## Removable
 
 <Demo src="tag.html" name="removable" />
+
+## Accessibility
+
+- **Semantics** — the tag is a plain `<span class="re-tag">`; tones (`data-tone`) are decorative styling only, so any meaning they carry must also be in the text. A removable tag adds a native `<button data-re-dismiss>` with an `aria-label` (e.g. `Remove Design`) so the action is announced even though the `×` glyph isn't descriptive.
+- **Keyboard** — a plain tag is not focusable. The remove button is a native button: Tab to focus, Enter or Space to activate. Activating it hides the tag and dispatches a cancelable `re-dismiss` event (see [Removable](#removable)).
+- **Focus** — the remove button shows a visible `:focus-visible` ring.
+
+See the [accessibility guide](/relements/guides/accessibility/) for project-wide conventions.

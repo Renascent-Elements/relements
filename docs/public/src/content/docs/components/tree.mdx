@@ -48,3 +48,29 @@ leaf uses `aria-current` (`page` for an `<a href>`, `true` for a `<button>`).
   to keep labels aligned.
 - A `<button>` leaf is an in-app action — wire your own click handler; only
   `<a href>` leaves navigate on their own.
+
+## Accessibility
+
+- **Keyboard** — entirely native, so every control is independently Tab-focusable
+  in DOM order. **Enter** / **Space** on a branch `<summary>` toggles it open or
+  closed; **Enter** follows an `<a href>` leaf; **Enter** / **Space** activates a
+  `<button>` leaf. There is intentionally **no** Arrow / Home / End / typeahead
+  roving between rows — see Notes.
+- **Focus** — a visible `:focus-visible` ring marks the active row. It's an
+  **inset** ring (overriding the default outer one) because a tree is a tight,
+  often scrolled container where an outer ring would clip at the edges.
+- **Semantics** — branches are native `<details>`/`<summary>`, leaves are real
+  `<a href>` / `<button>`, and every `<ul>` carries `role="list"` so Safari /
+  VoiceOver still announce "list, N items" under `list-style: none`. Wrap the tree
+  in `<nav aria-label="…">` to expose it as a named landmark. The selected leaf
+  uses `aria-current` — `page` for an `<a href>` document, `true` for a `<button>`
+  action — which AT announces as "current".
+- **Notes** — this is deliberately a styled nested-disclosure tree, **not** an
+  ARIA `role="tree"` widget: that role demands a full roving keyboard model
+  (Up/Down between items, Left/Right to collapse/expand, typeahead) this component
+  doesn't ship, and claiming the role without the model would mislead AT. The
+  optional `.re-tree__icon` is decorative (`aria-hidden="true"`), so it's skipped
+  in the accessible name. Under forced-colors / Windows High Contrast the selected
+  leaf is repainted with the system `Highlight` color (plus its medium weight) so
+  "you are here" survives. See the
+  [accessibility guide](/relements/guides/accessibility/).

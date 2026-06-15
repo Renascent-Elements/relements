@@ -44,3 +44,28 @@ For showing an average (no input), use `.re-rating-display` with `role="img"`, a
 `value / max`, so fractional values render a partial star.
 
 <Demo src="rating.html" name="display" />
+
+## Accessibility
+
+- **Keyboard** — it's a native radio group: Tab moves into the group (landing on
+  the checked star, or the first if none), and the arrow keys move the selection
+  within it. Because the group is reversed, native arrow direction varies by
+  browser; opt into `enhanceRating` and it normalizes to ArrowRight/ArrowUp =
+  next-higher, ArrowLeft/ArrowDown = next-lower (by value, identically
+  everywhere). From the cleared "No rating" state both arrows enter at the lowest
+  star, and the value-0 and disabled radios are skipped during arrow navigation.
+- **Focus** — `:focus-visible` on the focused (visually hidden) radio paints the
+  `--re-shadow-focus` ring on its visible star.
+- **Semantics** — the `<fieldset>` carries an `aria-label` naming the rating, and
+  each star `<label>` has an `aria-label` ("5 stars" … "1 star") so the choices
+  announce as a labelled radio group rather than bare glyphs. The read-only
+  display is a single `role="img"` with an `aria-label` like "Rated 3.5 out of 5"
+  — the stars are decorative text behind it.
+- **Notes** — the radios and the value-0 "No rating" label use `.re-sr-only`, so
+  the clear option is reachable and announced without showing a sixth star; the
+  `direction: rtl` on the fieldset is presentational only and the stars stay a
+  low→high left-to-right scale regardless of page direction. Disabled via the
+  native `:disabled`/`aria-disabled="true"`. Under forced colors (HCM) the filled
+  stars repaint with the system `Highlight` color and the focus ring becomes a
+  real `outline` on the visible star, since the sr-only radio can't show one. See
+  the [accessibility guide](/relements/guides/accessibility/).

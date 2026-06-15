@@ -15,3 +15,8 @@ caps to spell out a shortcut.
 ## Shortcut
 
 <Demo src="kbd.html" name="shortcut" />
+
+## Accessibility
+
+- **Semantics** — `.re-kbd` is a styled native `<kbd>`, the standard element for keyboard input. Its text content _is_ its accessible name and reads inline with the surrounding prose (e.g. "Open the palette with Command K"); it's a passive display element, not a focusable or interactive control, so there's no keyboard model.
+- **Notes** — purely visual. The raised key-cap look comes from border and shadow tokens, and the label is always a real character, so meaning never depends on color or styling alone. Spell a chord as separate adjacent `<kbd>` caps so each key is announced individually. When using a glyph that may not read clearly on its own (e.g. `⌘`, `↵`), pair it with a text label nearby or in a `.re-sr-only` span. See the [accessibility guide](/relements/guides/accessibility/).

@@ -18,3 +18,10 @@ Native radio buttons styled with `.re-radio`. The native `name` groups radios an
 ## States
 
 <Demo src="radio.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — fully native, no JavaScript keyboard layer. Radios sharing a `name` form a single tab stop: <kbd>Tab</kbd> moves into the checked radio (or the first one if none is checked), and <kbd>Arrow</kbd> keys move the selection between radios in the group, as the browser provides. <kbd>Space</kbd> selects the focused radio.
+- **Focus** — a visible ring shows only on `:focus-visible` (keyboard focus), drawn as a `box-shadow` (`--re-shadow-focus`) plus a focus-ring border color so it stays crisp at the radio's pill radius.
+- **Semantics** — each control stays a real `<input type="radio">`, so the accessible role, selected state, and form serialization are all native. Wrapping the input in `<label class="re-field re-field--inline">` with the `.re-field__label` text gives an implicit label that's announced as the radio's name and makes the whole label a click/tap target. Wrap the set in `<fieldset class="re-field-group">` with a `<legend class="re-field-group__legend">` so the group's name (e.g. "Plan") is announced alongside each option.
+- **Notes** — for validation, set `aria-invalid="true"` on the input (it tints the border via `--re-color-danger-border`). The checked dot is drawn with `::before` rather than an SVG asset so the input stays native, and a `@media (forced-colors: active)` block re-establishes the checked fill with system `Highlight` / `HighlightText` so a selected radio stays distinct from unselected ones in Windows High Contrast. `data-orientation="horizontal"` on the group is presentational only and changes nothing about the announced structure. See [Checkbox](/relements/components/checkbox/), [Field Group](/relements/components/field-group/), and the [accessibility guide](/relements/guides/accessibility/).

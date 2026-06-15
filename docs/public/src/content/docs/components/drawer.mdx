@@ -29,3 +29,26 @@ Dismissal is Escape or backdrop only — there's no swipe gesture.
 ## Sides
 
 <Demo src="drawer.html" name="sides" />
+
+## Accessibility
+
+A drawer is a native modal `<dialog>` opened with `showModal()`, so its
+accessibility comes straight from the platform — the same as
+[dialog](/relements/components/dialog/).
+
+- **Keyboard** — opens from the trigger button (Enter/Space). The browser traps
+  focus inside the open panel: Tab and Shift+Tab cycle through its controls
+  without leaving. Escape dismisses it (along with a backdrop click when
+  `data-re-dialog-close-on-backdrop` is set). There is no swipe gesture.
+- **Focus** — on open, focus moves into the panel and the background goes
+  `inert`; on close it returns to the trigger — all native `<dialog>` behavior.
+  Interactive controls show the standard `:focus-visible` ring (the close button
+  uses `--re-shadow-focus`).
+- **Semantics** — the `<dialog>` is announced as a modal dialog. Give every
+  drawer an accessible name: `aria-labelledby` pointing at its
+  `.re-dialog__title`, or `aria-label`. The icon close button carries
+  `aria-label="Close"`. `data-side` and `data-size` are presentation only and
+  add no semantics.
+- **Notes** — the slide-in and backdrop fade collapse to an instant show/hide
+  under `prefers-reduced-motion` and on engines without `@starting-style` /
+  `allow-discrete`. See the [accessibility guide](/relements/guides/accessibility/).

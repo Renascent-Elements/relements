@@ -14,3 +14,27 @@ A styled native `<dialog>`. `showModal()` gives a browser-owned focus trap, Esca
 ## Form `method="dialog"`
 
 <Demo src="dialog.html" name="form-dialog" />
+
+## Accessibility
+
+- **Keyboard** — Tab/Shift+Tab cycle the focusable controls inside the
+  browser-owned focus trap; Enter or Space activate the focused button. Escape
+  dismisses the modal (a native `cancel` then `close`). In the
+  `method="dialog"` form, Enter submits — the submitting button's `value`
+  becomes `returnValue`, and `formnovalidate` on Cancel lets it close past a
+  `required` field.
+- **Focus** — opening calls native `showModal()`, which traps focus and renders
+  the background inert; closing returns focus to the trigger. Focusable children
+  (the close `×`, footer buttons, form inputs) show a visible `:focus-visible`
+  ring — the dialog box itself has no ring (`outline: none`), since focus lives
+  on its contents.
+- **Semantics** — the native `<dialog>` carries `aria-labelledby` pointing at
+  `.re-dialog__title`, so assistive tech announces the dialog name on open. The
+  corner close button is an icon-only control labelled `aria-label="Close"`.
+- **Notes** — backdrop-click dismissal is opt-in via
+  `data-re-dialog-close-on-backdrop` and stays keyboard-equivalent to Escape;
+  for a confirmation that must force a choice, prefer the
+  [alert dialog](/relements/components/alert-dialog/) recipe.
+
+See the [accessibility guide](/relements/guides/accessibility/) for
+project-wide conventions.

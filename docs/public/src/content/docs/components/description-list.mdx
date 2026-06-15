@@ -31,3 +31,14 @@ Set the term column width with `--re-dl-term-width` (default `12rem`). Multiple
 `data-density="compact"` tightens the spacing.
 
 <Demo src="description-list.html" name="bordered" />
+
+## Accessibility
+
+- **Semantics** — a native `<dl>` with `<dt>` terms and `<dd>` details; assistive
+  technology announces it as a description list and pairs each term with its
+  details. Keep the flat, term-first structure so the term/details association
+  reads correctly — no roles or `aria-*` are added or needed. Multiple `<dd>` per
+  `<dt>` are valid and announce as several details for the one term.
+- **Notes** — the list is read-only and non-interactive, so there is no keyboard
+  model or focus styling; the borders, dividers, and density modifiers are purely
+  visual and carry no semantics. See the [accessibility guide](/relements/guides/accessibility/).

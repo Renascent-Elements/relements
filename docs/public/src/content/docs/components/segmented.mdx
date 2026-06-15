@@ -21,3 +21,22 @@ name the group.
 `disabled`.
 
 <Demo src="segmented.html" name="sizes" />
+
+## Accessibility
+
+- **Keyboard** — fully native radio-group behavior, no JavaScript. `Tab` moves
+  into the group, landing on the checked option; `Arrow` keys move between
+  options, selecting as they go (roving focus). A shared `name` enforces
+  single-selection, and the value submits with the form. A `disabled` option is
+  skipped.
+- **Focus** — the transparent radio sits over its option and stays focusable;
+  the visible `:focus-visible` ring (`--re-shadow-focus`) is drawn on the
+  `<span>` pill, so keyboard focus is clear while pointer clicks stay quiet.
+- **Semantics** — a native `<fieldset>` of `<input type="radio">` controls, so
+  assistive tech announces a real radio group with position and count. Name the
+  group with a `<legend>` or `aria-label` on the fieldset (the examples use
+  `aria-label`); each radio's `<span>` label supplies its accessible name.
+- **Notes** — under forced colors (HCM) the selected pill loses its surface and
+  shadow, so the checked option is marked with the system `Highlight` /
+  `HighlightText` colors to keep the selection visible. See the
+  [accessibility guide](/relements/guides/accessibility/).

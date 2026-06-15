@@ -5,9 +5,9 @@ description: A styled native range input.
 
 import Demo from "../../../components/Demo.astro";
 
-Add `.re-slider` to a native `<input type="range">`. Keyboard interaction
-(arrows, Home/End, Page Up/Down), form participation, and `role="slider"`
-semantics stay native — the class only restyles the track and thumb.
+Add `.re-slider` to a native `<input type="range">`. Keyboard interaction,
+form participation, and `role="slider"` semantics stay native — the class only
+restyles the track and thumb. See [Accessibility](#accessibility) below.
 
 ## Basic
 
@@ -25,3 +25,26 @@ directly.
 ## States
 
 <Demo src="slider.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — All native, since `.re-slider` only restyles the element.
+  Tab moves focus to the thumb; Arrow keys (and Home/End for min/max, Page
+  Up/Down for larger jumps) adjust the value. `step`, `min`, and `max` govern
+  the increments.
+- **Focus** — `:focus-visible` draws the `--re-shadow-focus` ring on the thumb
+  (the input's own `outline` is removed so the ring tracks the thumb). The thumb
+  also darkens on `:hover`.
+- **Semantics** — `<input type="range">` carries an implicit `role="slider"`,
+  so assistive tech announces the current, minimum, and maximum values from
+  `value`/`min`/`max` natively. Wrap the input in a `<label>` (the examples use
+  `.re-field` with a `.re-field__label`) so the control has an accessible name.
+- **Notes** — Disabled is the native `disabled` attribute (the thumb dims and
+  the cursor becomes `not-allowed`); no `aria-disabled` is needed. There is no
+  built-in value readout — pair the slider with a visible output if users need
+  to see the exact number.
+
+## Related
+
+- [Field](/relements/components/field/) — label and layout wrapper used above
+- [Accessibility guide](/relements/guides/accessibility/)

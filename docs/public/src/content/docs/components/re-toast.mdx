@@ -23,3 +23,25 @@ toaster.show("Network error.", { tone: "danger", duration: 8000 });
 The buttons below call `toaster.show(...)` on the `<re-toast>` element:
 
 <Demo src="re-toast.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — Toasts never steal focus, so there is no trap and nothing to
+  return to. Each toast carries a native dismiss `<button>` reachable with `Tab`
+  and activated with `Enter`/`Space`.
+- **Focus** — The dismiss button shows a visible `:focus-visible` ring
+  (`--re-shadow-focus`).
+- **Semantics** — On connection `<re-toast>` becomes the
+  `role="region"` live region, labelled `aria-label="Notifications"` (override by
+  setting `aria-label` on the element). Its inner list is `aria-live="polite"`
+  with `aria-relevant="additions"`, so screen readers announce each new toast as
+  it is appended; set `data-live="assertive"` on the element to interrupt
+  instead. Individual toasts are `role="status"`, except the `danger` tone, which
+  is `role="alert"`. The dismiss button is labelled `aria-label="Dismiss
+notification"`.
+- **Notes** — Tone is conveyed by both the live-region role and tinted
+  surface/border (not colour alone), and `--re-shadow-focus` plus the tone
+  borders keep the toast operable under forced-colors / High Contrast Mode. See
+  the [accessibility guide](/relements/guides/accessibility/) for the
+  system-wide stance. The same region and roles back the functional
+  [`showToast()`](/relements/components/toast/) API.

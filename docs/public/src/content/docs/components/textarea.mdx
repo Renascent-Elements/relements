@@ -18,3 +18,10 @@ Multiline text input styled with `.re-textarea`. Resizes vertically only.
 ## States
 
 <Demo src="textarea.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — fully native. `Tab` moves focus to and from the textarea; typing, caret movement, multiline newlines, and text selection all stay native. `.re-textarea` only styles the element — there is no extra JavaScript keyboard model.
+- **Focus** — a visible `:focus-visible` ring (`--re-shadow-focus`, drawn with `border-color: --re-color-focus-ring` plus a box-shadow) appears on keyboard focus; an invalid textarea keeps a ring in the danger color while focused.
+- **Semantics** — it stays a real `<textarea>`, so its role, value, and form serialization are all native. Wrapping it in a `<label class="re-field">` with a `.re-field__label` span associates the label implicitly, and `.re-field__hint` text should be wired to the textarea via `aria-describedby`.
+- **Notes** — the danger border lights up on `[aria-invalid="true"]` or the native `:user-invalid` pseudo-class (only after the user interacts), so error styling never fires prematurely; point `aria-describedby` at the `.re-validation-message` so the message is announced. Disabled textareas render at reduced opacity with a `not-allowed` cursor. Horizontal resize is locked (vertical only) to prevent layout breakage. The optional `data-autosize` grow-with-content is purely visual: native `field-sizing: content` where supported, with `enhanceAutosize` as a no-JS-safe fallback — neither changes the accessible value or keyboard model. See the [accessibility guide](/relements/guides/accessibility/).

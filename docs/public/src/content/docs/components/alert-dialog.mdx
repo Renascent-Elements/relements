@@ -34,3 +34,26 @@ Without `data-re-dialog-no-dismiss`, an alertdialog still dismisses on Escape
 non-critical alerts.
 
 <Demo src="alert-dialog.html" name="dismissible" />
+
+## Accessibility
+
+- **Keyboard** — Tab/Shift+Tab cycle the action buttons inside the
+  browser-owned focus trap; Enter or Space activate the focused button. Escape
+  dismisses a dismissible alert; a `data-re-dialog-no-dismiss` alert blocks
+  Escape (and backdrop), so the user must pick an explicit action — the Cancel
+  button is the only way out, which is why a no-dismiss dialog must always
+  contain one.
+- **Focus** — opening calls native `showModal()`, which traps focus and renders
+  the background inert; closing returns focus to the trigger. The
+  [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus)
+  attribute lands the initial focus on the **safe** action (Cancel / Stay
+  signed in) so the destructive button is never the default target. Buttons show
+  a visible `:focus-visible` ring.
+- **Semantics** — the native `<dialog>` carries `role="alertdialog"`;
+  `aria-labelledby` points at the title and `aria-describedby` at the message,
+  so assistive tech announces both on open and treats the content as an
+  interruption that needs a response.
+
+See the [dialog component](/relements/components/dialog/) for the underlying
+behavior and the [accessibility guide](/relements/guides/accessibility/) for
+project-wide conventions.

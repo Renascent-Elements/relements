@@ -10,3 +10,10 @@ A group of `<details>` sharing a `name`. The browser keeps one panel open at a t
 ## FAQ
 
 <Demo src="accordion.html" name="accordion" />
+
+## Accessibility
+
+- **Keyboard** — entirely native. `Tab` moves focus to each `<summary>`; `Enter` or `Space` toggles that panel open or closed. The shared `name` makes opening one panel close its sibling — the browser handles it, no JavaScript.
+- **Focus** — each `<summary>` shows a visible `:focus-visible` ring (`--re-shadow-focus`). The default disclosure marker is replaced by a decorative chevron, but the `<summary>` stays a real focusable, operable control.
+- **Semantics** — built on native `<details>`/`<summary>`, so assistive tech announces each summary as an expand/collapse control and reflects its open/closed state without any added `role` or `aria-*`. The chevron is a generated `::before` pseudo-element, so it is never announced.
+- **Notes** — the only motion is the chevron rotation; the global reset zeroes it out under `prefers-reduced-motion: reduce`. Because exclusivity relies on `<details name>`, older browsers without that feature simply allow multiple panels open — still fully operable. See the [disclosure component](/relements/components/disclosure/) for a single standalone panel, and the [accessibility guide](/relements/guides/accessibility/).

@@ -10,3 +10,10 @@ The ARIA tabs pattern. The initial state is server-rendered; the `enhanceTabs` b
 ## Basic
 
 <Demo src="tabs.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — `Tab` enters the tablist and lands on the selected tab only (roving `tabindex`: `enhanceTabs` keeps the active tab at `tabindex="0"` and the rest at `-1`); `Tab` again moves out to the panel. Within the list, `ArrowLeft`/`ArrowRight` move focus _and_ activate the tab — automatic activation, wrapping past the ends — `Home`/`End` jump to the first/last tab and activate it, and `Enter`/`Space` activate the focused tab. Without JavaScript the server-rendered selected panel stays visible and the page remains usable; the keyboard navigation is the only thing the behavior adds.
+- **Focus** — both the tabs and the active panel show a visible `:focus-visible` ring (`--re-shadow-focus`, replacing the default outline). Each panel carries `tabindex="0"` so keyboard users can focus and scroll a panel that has no focusable children of its own.
+- **Semantics** — `role="tablist"` (labelled with `aria-label`) wraps `role="tab"` buttons whose `aria-selected` marks the current tab and whose `aria-controls` points at the matching `role="tabpanel"`; each panel is `aria-labelledby` its tab, and inactive panels are `hidden`. Selecting a tab updates `aria-selected` and toggles `hidden`, so assistive tech announces the active tab and exposes only the visible panel.
+- **Notes** — the active-tab underline is a decorative `::after` and conveys nothing on its own (`aria-selected` carries the state); under `forced-colors: active` it is re-painted as the system `Highlight` color so the selected tab stays distinguishable in Windows High Contrast. The cancelable `re-change` event lets you veto a tab switch without breaking these semantics. See the [accessibility guide](/relements/guides/accessibility/) for the project-wide stance.

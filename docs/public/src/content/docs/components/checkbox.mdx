@@ -18,3 +18,10 @@ Native `<input type="checkbox">` styled with `.re-checkbox`. Click, keyboard, an
 ## States
 
 <Demo src="checkbox.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — fully native. <kbd>Tab</kbd> moves focus to the box; <kbd>Space</kbd> toggles it. There's no custom keyboard layer.
+- **Focus** — a visible ring shows only on `:focus-visible` (keyboard focus), drawn as a `box-shadow` plus a focus-ring border so it stays crisp at the box's tight radius.
+- **Semantics** — it stays a real `<input type="checkbox">`, so the accessible role, checked/unchecked state, and form serialization are all native. Wrapping the input in `<label class="re-field re-field--inline">` with the `.re-field__label` text gives an implicit label, so the text is announced as the checkbox's name and the whole label is a click/tap target.
+- **Notes** — the indeterminate state is the native DOM property (`el.indeterminate = true`), announced as "mixed"; the dash is purely visual via `:indeterminate`. For validation, set `aria-invalid="true"` (it tints the border) and point `aria-describedby` at a `.re-validation-message` so the error is announced. The checked and indeterminate glyphs are drawn with `clip-path`/`::before` rather than an SVG asset, and a `@media (forced-colors: active)` block re-establishes them with system `Highlight`/`HighlightText` so checked stays distinct from unchecked in Windows High Contrast. See the [accessibility guide](/relements/guides/accessibility/).

@@ -10,3 +10,10 @@ A custom-element wrapper for the tabs pattern, with the same DOM contract as the
 ## Basic
 
 <Demo src="re-tabs.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — `Tab` moves into the tablist and lands on the selected tab only (roving `tabindex`: the active tab is `tabindex="0"`, the rest `-1`); `Tab` again leaves the list for the panel. Within the list, `ArrowLeft`/`ArrowRight` move focus _and_ activate the tab (automatic activation, wrapping at the ends), `Home`/`End` jump to the first/last tab and activate it, and `Enter`/`Space` activate the focused tab.
+- **Focus** — both the tabs and the active panel show a visible `:focus-visible` ring (`--re-shadow-focus`). Panels carry `tabindex="0"` so keyboard users can scroll content that has no focusable children.
+- **Semantics** — `role="tablist"` (with `aria-label`) wraps `role="tab"` buttons whose `aria-selected` reflects the current tab and `aria-controls` points at the matching `role="tabpanel"`; each panel is `aria-labelledby` its tab, and inactive panels are `hidden`. Selecting a tab updates `aria-selected`/`hidden` so assistive tech announces the active tab and exposes only the visible panel.
+- **Notes** — the active-tab underline is a decorative `::after`; under `forced-colors` it is re-painted as the system `Highlight` color so the selected tab stays distinguishable in Windows High Contrast. See the [accessibility guide](/relements/guides/accessibility/).

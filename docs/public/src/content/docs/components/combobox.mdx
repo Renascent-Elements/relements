@@ -49,3 +49,40 @@ highlight, Enter commits, Escape closes; focus never leaves the input
 `change`, so frameworks see it like typing.
 
 <Demo src="combobox.html" name="enhanced" />
+
+## Accessibility
+
+The base combobox is a native `<input>` linked to a `<datalist>`, so filtering,
+the suggestion popup, and its keyboard model are the browser's — assistive tech
+announces the field, its label, and the native suggestions without any added
+`role` or `aria-*`. The notes below split the native base from the optional
+`enhanceCombobox` overlay.
+
+- **Keyboard** — base: native. Tab moves focus in and out, typing filters the
+  datalist, and the browser's own keys open and navigate the suggestion popup.
+  Enhanced: the input becomes an editable combobox — typing filters
+  (case-insensitive substring) and opens the list, `ArrowDown`/`ArrowUp` open it
+  (if closed) and move the highlight (wrapping at the ends), `Enter` commits the
+  highlighted option, `Escape` closes the list, and `Tab` closes it and moves on.
+  Committing sets the value and fires `input` and `change`, so frameworks observe
+  it like typing.
+- **Focus** — focus never leaves the input. In the enhanced mode the highlighted
+  option is tracked with `aria-activedescendant` (no roving focus on the list).
+  The input shows the `.re-input` `:focus-visible` ring (`--re-shadow-focus`,
+  border recoloured to `--re-color-focus-ring`); set `aria-invalid="true"` to
+  recolour the border to `--re-color-danger-border`, announced as invalid.
+- **Semantics** — wrap the input in `<label class="re-field">` with a
+  `.re-field__label` span (as the demos do) so the label is associated by
+  containment. Enhancing sets `role="combobox"`, `aria-autocomplete="list"`,
+  `aria-expanded`, and `aria-controls` on the input, renders a `role="listbox"`
+  with `role="option"` children, and marks the active option `aria-selected="true"`
+  — the editable-combobox pattern. The chevron is a CSS background image and the
+  browser's native picker indicator is suppressed, so neither is announced.
+- **Notes** — because the active option has no real DOM focus, the
+  `aria-selected` highlight (`--re-color-bg-muted`) flattens under forced colors;
+  the active option is re-cued with the system `Highlight`/`HighlightText` colors
+  so the selection survives Windows High Contrast Mode. Without JavaScript — or in
+  engines without the Popover API — the enhancement steps aside and the fully
+  operable native datalist remains. See the [field](/relements/components/field/)
+  and [select](/relements/components/select/) pages and the
+  [accessibility guide](/relements/guides/accessibility/).

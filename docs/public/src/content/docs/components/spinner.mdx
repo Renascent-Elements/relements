@@ -14,3 +14,9 @@ A busy indicator. Always give it an accessible name — `role="status"` + `aria-
 ## In a button
 
 <Demo src="spinner.html" name="inline" />
+
+## Accessibility
+
+- **Semantics** — the `<span class="re-spinner">` is decorative on its own. Give a standalone spinner `role="status"` plus an `aria-label` (e.g. `"Loading"`) so assistive tech announces it as a live status region with that name. When the spinner sits inside another busy control, mark it `aria-hidden="true"` and put the busy state on that control instead — the button demo uses `aria-busy="true"` with its visible "Saving…" text doing the announcing.
+- **Focus** — the spinner is a non-interactive `<span>`; it is not focusable and takes no keyboard input.
+- **Notes** — the spin animation is disabled under `prefers-reduced-motion: reduce`. `data-size` only changes its dimensions, not its accessible name. See the [accessibility guide](/relements/guides/accessibility/).

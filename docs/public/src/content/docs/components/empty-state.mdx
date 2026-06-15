@@ -7,10 +7,8 @@ import Demo from "../../../components/Demo.astro";
 
 An empty state is a centered placeholder for "nothing here yet" or "no results":
 an optional decorative icon, a title, a description, and an optional action area.
-CSS-only.
-
-Author the title at the right heading level for the page outline (the component
-doesn't force one). Mark the icon slot `aria-hidden="true"` — it's decorative.
+CSS-only. See [Accessibility](#accessibility) for the heading level and
+decorative-icon guidance.
 
 ## Basic
 
@@ -38,6 +36,25 @@ table font don't fight the block.
 ## Notes
 
 - Vertical rhythm is `gap`-only, so omitting the icon or actions reflows cleanly.
-- To announce an empty state that appears after an async update, wrap it in a
-  `role="status" aria-live="polite"` region that already exists in the DOM
-  **before** the content swaps in.
+
+## Accessibility
+
+The empty state is CSS-only — a passive container with no interactive behavior
+of its own. Any keyboard, focus, and announcement semantics come from the native
+elements you place inside it.
+
+- **Semantics** — Author the title as a real heading at the level that fits the
+  page outline (`<h2>`–`<h4>`); the component never forces one. The action area
+  holds native `.re-button` controls (`<button>` / `<a href>`), so they keep
+  their native focus order and `:focus-visible` ring — see the
+  [button](/relements/components/button/) page.
+- **Decorative icon** — The `.re-empty-state__icon` slot is mute to assistive
+  tech: mark it `aria-hidden="true"` and set `focusable="false"` on the inner
+  `<svg>` (as the examples do) so it's skipped and never tab-focusable.
+- **Async announcement** — To announce an empty state that appears after a load
+  or filter, wrap it in a `role="status" aria-live="polite"` region that already
+  exists in the DOM **before** the content swaps in; injecting the live region
+  together with the message won't reliably announce.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.

@@ -25,3 +25,30 @@ is disabled or read-only. Without JavaScript it's a normal number input with its
 native spinner.
 
 <Demo src="number-stepper.html" name="basic" />
+
+## Accessibility
+
+- **Keyboard** — All input lives on the native `<input type="number">`, the only
+  tab stop: Tab to focus, then type, or use Arrow Up / Arrow Down to step by
+  `step` (the browser also honours min/max here). The ± buttons are
+  `tabindex="-1"` and deliberately not in the tab order — they're pointer
+  shortcuts for the same native stepping that the arrow keys already provide.
+- **Focus** — The [input group](/relements/components/input-group/) owns the
+  visible `:focus-within` ring, so the whole control lights up when the input is
+  focused; the input's own ring is suppressed to avoid a double outline. A ±
+  button reached by pointer/script shows an inset `:focus-visible` ring.
+- **Semantics** — `<input type="number">` is an implicit `role="spinbutton"`,
+  and the behavior adds nothing to it — `min`/`max`/`step`, the current value,
+  and validity stay 100% native, announced by assistive tech as a spin button.
+  Each ± button is a `<button type="button">` with an `aria-label`
+  (`Decrease` / `Increase`) since its glyph (− / +) isn't reliable accessible
+  text. Buttons set `disabled` at the matching bound and when the input is
+  disabled or read-only, so AT and pointer users can't step past a limit; the
+  field's `aria-invalid` / `:user-invalid` state is reflected on the group.
+- **Notes** — Pressing a button calls native `stepUp()` / `stepDown()` and then
+  dispatches `input` + `change` (which those methods don't fire on their own),
+  so screen-reader value announcements and framework bindings update exactly as
+  if the user typed. Without JavaScript it degrades to a plain number input with
+  its native spinner — fully operable by keyboard. See the
+  [accessibility guide](/relements/guides/accessibility/) for cross-component
+  conventions.

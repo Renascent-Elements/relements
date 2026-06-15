@@ -23,3 +23,28 @@ textarea stays a normal resizable textarea — nothing breaks. Cap the growth wi
 ## Basic
 
 <Demo src="autosize-textarea.html" name="basic" />
+
+## Accessibility
+
+This is a native `<textarea>` with autosizing layered on top — autosizing is a
+visual concern only and changes nothing about how assistive technology sees the
+field.
+
+- **Keyboard** — native `<textarea>`: Tab moves focus in and out, typing edits
+  the value, Enter inserts a newline. No keys are added or intercepted; the
+  fallback behavior only listens to `input` to recompute height. When the value
+  exceeds `--re-autosize-max-block-size` the box stops growing and scrolls, so
+  all content stays reachable by caret and wheel.
+- **Focus** — a visible `:focus-visible` ring (`--re-shadow-focus`, with the
+  border recoloured to `--re-color-focus-ring`) shared with `.re-input` and
+  `.re-select`.
+- **Semantics** — wrap the `<textarea>` in `<label class="re-field">` with a
+  `.re-field__label` span (as the demo does) so the label is associated by
+  containment; screen readers announce it as a multi-line edit field with that
+  name. Set `aria-invalid="true"` to flag a validation error — it recolours the
+  border to `--re-color-danger-border` (matching the native `:user-invalid`
+  state) and is announced as invalid.
+
+See the [field](/relements/components/field/) and
+[textarea](/relements/components/textarea/) pages for label, required, and
+error-message wiring, and the [accessibility guide](/relements/guides/accessibility/).
