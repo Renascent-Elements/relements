@@ -1,0 +1,21 @@
+docs/public/src/content/docs/guides/quickstart.mdx
+  s_2732c4df70b865::t_2dc3246f753bae 1-135
+docs/public/src/content/docs/index.mdx
+  s_2732c4df70b865::t_ca29f9d9b99147 6,9,11-13,22-41,76-77,85-87,90-131
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "386f08078f57bfe952034fd9783d866081e58e9d",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": null
+    }
+  }
+}
