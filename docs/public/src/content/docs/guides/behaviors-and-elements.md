@@ -106,12 +106,12 @@ Four `<re-*>` custom elements wrap the behaviors above for consumers who prefer 
 import "@relements/core/elements/re-tabs";
 ```
 
-| Element                                             | Wraps               | Exposes                                                                                                                                        |
-| --------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`<re-tabs>`](/relements/components/re-tabs/)       | `enhanceTabs`       | `value` property (selected tab id; set to switch); re-dispatches `re-change`. Observes children so frameworks that project late still enhance. |
-| [`<re-menu>`](/relements/components/re-menu/)       | `enhanceMenuButton` | `open` boolean property; re-dispatches `re-select`.                                                                                            |
-| [`<re-popover>`](/relements/components/re-popover/) | `enhancePopover`    | `show()` / `hide()` / `toggle()` methods; `open` property (reflects `:popover-open`). Adds the native `popover` attribute on connect.          |
-| [`<re-toast>`](/relements/components/re-toast/)     | `showToast`         | `.show(message, options)` method scoped to its own region; materializes a `.re-toast-region` on connect.                                       |
+| Element                                           | Wraps               | Exposes                                                                                                                                        |
+| ------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`<re-tabs>`](/relements/elements/re-tabs/)       | `enhanceTabs`       | `value` property (selected tab id; set to switch); re-dispatches `re-change`. Observes children so frameworks that project late still enhance. |
+| [`<re-menu>`](/relements/elements/re-menu/)       | `enhanceMenuButton` | `open` boolean property; re-dispatches `re-select`.                                                                                            |
+| [`<re-popover>`](/relements/elements/re-popover/) | `enhancePopover`    | `show()` / `hide()` / `toggle()` methods; `open` property (reflects `:popover-open`). Adds the native `popover` attribute on connect.          |
+| [`<re-toast>`](/relements/elements/re-toast/)     | `showToast`         | `.show(message, options)` method scoped to its own region; materializes a `.re-toast-region` on connect.                                       |
 
 ## Behavior vs custom element — which to reach for
 

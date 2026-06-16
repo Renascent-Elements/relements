@@ -109,5 +109,5 @@ across all five; only the framework glue differs. Browse the source on
   full `enhance*` contract, the `<re-*>` elements, and which to reach for.
 - [HTML-first policy](/relements/guides/html-first/) — why JS is an optional
   layer over markup that already works.
-- [Tabs](/relements/components/tabs/) · [`<re-tabs>`](/relements/components/re-tabs/) —
+- [Tabs](/relements/components/tabs/) · [`<re-tabs>`](/relements/elements/re-tabs/) —
   the component used throughout the examples.

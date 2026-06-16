@@ -32,6 +32,7 @@ export default defineConfig({
         { label: "Introduction", slug: "index" },
         { label: "Guides", autogenerate: { directory: "guides" } },
         { label: "Components", autogenerate: { directory: "components" } },
+        { label: "Custom elements", autogenerate: { directory: "elements" } },
         { label: "Frameworks", autogenerate: { directory: "frameworks" } },
       ],
     }),
