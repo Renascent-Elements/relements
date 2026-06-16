@@ -7,7 +7,10 @@ import Demo from "../../../components/Demo.astro";
 
 A custom-element wrapper that hosts a toast region in light DOM. Its
 `.show(message, options)` method matches the `showToast()` API and returns the
-same controller:
+same controller. See the [custom elements overview](/relements/custom-elements/)
+for how the `<re-*>` tags work.
+
+Import once to register the tag, then call `.show(...)`:
 
 ```js
 import "@relements/core/elements/re-toast";

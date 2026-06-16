@@ -5,7 +5,13 @@ description: Custom-element wrapper around the native popover attribute.
 
 import Demo from "../../../components/Demo.astro";
 
-A custom-element wrapper around the native `popover` attribute. It auto-adopts `popover="auto"` on connect; `.show()`, `.hide()`, and `.toggle()` map to the native API.
+A custom-element wrapper around the native `popover` attribute. It auto-adopts `popover="auto"` on connect; `.show()`, `.hide()`, and `.toggle()` map to the native API. See the [custom elements overview](/relements/custom-elements/) for how the `<re-*>` tags work.
+
+Import once to register the tag, then use it declaratively:
+
+```js
+import "@relements/core/elements/re-popover";
+```
 
 ## Basic
 

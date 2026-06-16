@@ -5,7 +5,13 @@ description: Custom-element wrapper for the tabs pattern.
 
 import Demo from "../../../components/Demo.astro";
 
-A custom-element wrapper for the tabs pattern, with the same DOM contract as the JS enhancer. `element.value` reads and writes the selected tab id.
+A custom-element wrapper for the tabs pattern, with the same DOM contract as the JS enhancer. `element.value` reads and writes the selected tab id. See the [custom elements overview](/relements/custom-elements/) for how the `<re-*>` tags work.
+
+Import once to register the tag, then use it declaratively:
+
+```js
+import "@relements/core/elements/re-tabs";
+```
 
 ## Basic
 

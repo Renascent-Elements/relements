@@ -5,7 +5,13 @@ description: Custom-element wrapper for the menu-button pattern.
 
 import Demo from "../../../components/Demo.astro";
 
-A custom-element wrapper for the menu-button pattern. It keeps light DOM and reuses every ARIA attribute; `el.open` reflects and controls the open state.
+A custom-element wrapper for the menu-button pattern. It keeps light DOM and reuses every ARIA attribute; `el.open` reflects and controls the open state. See the [custom elements overview](/relements/custom-elements/) for how the `<re-*>` tags work.
+
+Import once to register the tag, then use it declaratively:
+
+```js
+import "@relements/core/elements/re-menu";
+```
 
 ## Basic
 

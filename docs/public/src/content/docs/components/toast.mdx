@@ -20,6 +20,8 @@ showToast("Could not connect.", { tone: "danger", duration: 8000 });
 auto-dismiss time in ms (`0` keeps it until dismissed). With no existing
 `[data-re-toast-region]` on the page, `showToast` creates a region on `<body>`.
 
+Prefer a declarative tag? The [`<re-toast>`](/relements/custom-elements/re-toast/) custom element hosts the same region and exposes a `.show(message, options)` method.
+
 ## Trigger toasts
 
 The buttons below fire real toasts (wired with `showToast` on click):
