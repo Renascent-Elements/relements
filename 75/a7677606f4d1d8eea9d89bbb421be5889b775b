@@ -1,0 +1,27 @@
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_8fc378481de690 111-114
+  s_2732c4df70b865::t_93ef8890236393 109-110
+docs/public/astro.config.mjs
+  s_2732c4df70b865::t_e1bcb10ed12ec5 7-8
+  s_2732c4df70b865::t_8fc378481de690 11-14,44
+docs/public/src/content/docs/frameworks/index.md
+  s_2732c4df70b865::t_8fc378481de690 112
+docs/public/src/content/docs/frameworks/svelte.md
+  s_2732c4df70b865::t_8fc378481de690 168-170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "75a7677606f4d1d8eea9d89bbb421be5889b775b",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
