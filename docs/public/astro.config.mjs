@@ -4,6 +4,15 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   site: "https://renascent-elements.github.io",
   base: "/relements",
+  // The custom elements moved from /components/re-* to /elements/re-*; keep the
+  // old URLs working. Astro applies `base` to the redirect SOURCE (file
+  // location) but NOT the destination, so the target must carry /relements.
+  redirects: {
+    "/components/re-tabs": "/relements/elements/re-tabs",
+    "/components/re-toast": "/relements/elements/re-toast",
+    "/components/re-menu": "/relements/elements/re-menu",
+    "/components/re-popover": "/relements/elements/re-popover",
+  },
   // Project root is docs/public/, so the default static dir would be
   // docs/public/public/. Use ./static instead to avoid the nested name.
   publicDir: "./static",
