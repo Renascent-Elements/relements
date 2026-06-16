@@ -1,0 +1,423 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "re-tabs",
+      "description": "Self-managing wrapper around the tabs pattern (enhanceTabs). `element.value` reads/writes the selected tab id; emits `re-change`. Register with `import \"@relements/core/elements/re-tabs\"`.",
+      "attributes": [
+        {
+          "name": "aria-label",
+          "description": "Accessible name for the tablist."
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://renascent-elements.github.io/relements/custom-elements/re-tabs/"
+        }
+      ]
+    },
+    {
+      "name": "re-menu",
+      "description": "Self-managing wrapper around the menu-button pattern (enhanceMenuButton). `element.open` reflects/controls the open state; emits `re-select`. Register with `import \"@relements/core/elements/re-menu\"`.",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://renascent-elements.github.io/relements/custom-elements/re-menu/"
+        }
+      ]
+    },
+    {
+      "name": "re-popover",
+      "description": "Self-managing wrapper around the native popover attribute (enhancePopover). Auto-adopts `popover=\"auto\"`; `.show()`/`.hide()`/`.toggle()` map to the native API; emits `re-toggle`. Register with `import \"@relements/core/elements/re-popover\"`.",
+      "attributes": [],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://renascent-elements.github.io/relements/custom-elements/re-popover/"
+        }
+      ]
+    },
+    {
+      "name": "re-toast",
+      "description": "Self-managing toast region in light DOM. `.show(message, options)` matches showToast() and returns the same controller. Register with `import \"@relements/core/elements/re-toast\"`.",
+      "attributes": [
+        {
+          "name": "data-live",
+          "description": "Live-region politeness for announcements.",
+          "values": [
+            {
+              "name": "polite"
+            },
+            {
+              "name": "assertive"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Documentation",
+          "url": "https://renascent-elements.github.io/relements/custom-elements/re-toast/"
+        }
+      ]
+    }
+  ],
+  "globalAttributes": [
+    {
+      "name": "data-align",
+      "description": "Alignment of content.",
+      "values": [
+        {
+          "name": "center"
+        }
+      ]
+    },
+    {
+      "name": "data-density",
+      "description": "Spacing density.",
+      "values": [
+        {
+          "name": "compact"
+        }
+      ]
+    },
+    {
+      "name": "data-emphasis",
+      "description": "Visual emphasis — `solid` uses a filled status surface.",
+      "values": [
+        {
+          "name": "solid"
+        }
+      ]
+    },
+    {
+      "name": "data-layout",
+      "description": "Layout direction.",
+      "values": [
+        {
+          "name": "horizontal"
+        }
+      ]
+    },
+    {
+      "name": "data-orientation",
+      "description": "Layout axis.",
+      "values": [
+        {
+          "name": "horizontal"
+        },
+        {
+          "name": "vertical"
+        }
+      ]
+    },
+    {
+      "name": "data-placement",
+      "description": "Placement of a floating part (tooltip bubble, etc.) around its anchor.",
+      "values": [
+        {
+          "name": "bottom"
+        },
+        {
+          "name": "end"
+        },
+        {
+          "name": "start"
+        }
+      ]
+    },
+    {
+      "name": "data-shape",
+      "description": "Shape variant (e.g. avatar circle / square / text).",
+      "values": [
+        {
+          "name": "circle"
+        },
+        {
+          "name": "text"
+        }
+      ]
+    },
+    {
+      "name": "data-side",
+      "description": "Side a part attaches to.",
+      "values": [
+        {
+          "name": "bottom"
+        },
+        {
+          "name": "start"
+        },
+        {
+          "name": "top"
+        }
+      ]
+    },
+    {
+      "name": "data-size",
+      "description": "Control size.",
+      "values": [
+        {
+          "name": "lg"
+        },
+        {
+          "name": "md"
+        },
+        {
+          "name": "sm"
+        }
+      ]
+    },
+    {
+      "name": "data-status",
+      "description": "Step/item status (e.g. complete / current).",
+      "values": [
+        {
+          "name": "complete"
+        },
+        {
+          "name": "current"
+        }
+      ]
+    },
+    {
+      "name": "data-tone",
+      "description": "Semantic color tone (info / success / warning / danger / neutral).",
+      "values": [
+        {
+          "name": "danger"
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "info"
+        },
+        {
+          "name": "neutral"
+        },
+        {
+          "name": "success"
+        },
+        {
+          "name": "warning"
+        }
+      ]
+    },
+    {
+      "name": "data-variant",
+      "description": "Structural variant of a component (e.g. button/link/table style).",
+      "values": [
+        {
+          "name": "danger"
+        },
+        {
+          "name": "external"
+        },
+        {
+          "name": "ghost"
+        },
+        {
+          "name": "lines"
+        },
+        {
+          "name": "muted"
+        },
+        {
+          "name": "plain"
+        },
+        {
+          "name": "primary"
+        },
+        {
+          "name": "secondary"
+        },
+        {
+          "name": "subtle"
+        }
+      ]
+    },
+    {
+      "name": "data-autosize",
+      "description": "Grow a textarea to fit its content."
+    },
+    {
+      "name": "data-bordered",
+      "description": "Add a border."
+    },
+    {
+      "name": "data-divided",
+      "description": "Add dividers between items."
+    },
+    {
+      "name": "data-full-width",
+      "description": "Stretch to the full available inline size."
+    },
+    {
+      "name": "data-hover",
+      "description": "Force the hover state (demo/visual aid)."
+    },
+    {
+      "name": "data-interactive",
+      "description": "Make the element interactive (hover/active affordances)."
+    },
+    {
+      "name": "data-invalid",
+      "description": "Mark the control as invalid (error styling)."
+    },
+    {
+      "name": "data-open",
+      "description": "Force the open/visible state without interaction."
+    },
+    {
+      "name": "data-required",
+      "description": "Mark the field as required."
+    },
+    {
+      "name": "data-sticky",
+      "description": "Stick the element to the viewport edge while scrolling."
+    },
+    {
+      "name": "data-sticky-header",
+      "description": "Keep the table header visible while scrolling."
+    },
+    {
+      "name": "data-wrap",
+      "description": "Allow items to wrap."
+    },
+    {
+      "name": "data-zebra",
+      "description": "Striped (zebra) rows."
+    },
+    {
+      "name": "data-re-combobox",
+      "description": "Host element for enhanceCombobox."
+    },
+    {
+      "name": "data-re-command-hotkey",
+      "description": "Keyboard shortcut that opens the command palette (e.g. `mod+k`)."
+    },
+    {
+      "name": "data-re-command-palette",
+      "description": "Host dialog for enhanceCommandPalette."
+    },
+    {
+      "name": "data-re-context-menu",
+      "description": "Host element for enhanceContextMenu."
+    },
+    {
+      "name": "data-re-dialog-close",
+      "description": "Marks a button that closes the enclosing dialog."
+    },
+    {
+      "name": "data-re-dialog-close-on-backdrop",
+      "description": "Dismiss the dialog on backdrop click."
+    },
+    {
+      "name": "data-re-dialog-no-dismiss",
+      "description": "Prevent Escape/backdrop dismissal."
+    },
+    {
+      "name": "data-re-dialog-target",
+      "description": "Id of the dialog a trigger opens."
+    },
+    {
+      "name": "data-re-dialog-trigger",
+      "description": "Marks a button that opens its target dialog (enhanceDialog)."
+    },
+    {
+      "name": "data-re-dismiss",
+      "description": "Marks a button that dismisses its dismissible container (enhanceDismissible)."
+    },
+    {
+      "name": "data-re-dismissible",
+      "description": "Marks a container that can be dismissed."
+    },
+    {
+      "name": "data-re-menu",
+      "description": "Host element for enhanceMenuButton."
+    },
+    {
+      "name": "data-re-number",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-number-step",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-otp",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-otp-numeric",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-password-toggle",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-popover",
+      "description": "Host element for enhancePopover."
+    },
+    {
+      "name": "data-re-range",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-range-gap",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-range-max",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-range-min",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tabs",
+      "description": "Host element for enhanceTabs."
+    },
+    {
+      "name": "data-re-tags-allow-duplicates",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tags-chip",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tags-input",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tags-max",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tags-name",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tags-remove",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-tags-tone",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-toast-region",
+      "description": "Relements behavior hook."
+    },
+    {
+      "name": "data-re-toolbar",
+      "description": "Relements behavior hook."
+    }
+  ]
+}

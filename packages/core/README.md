@@ -203,6 +203,21 @@ Light-DOM only (no Shadow DOM). Same HTML/CSS contract as the plain class API.
 | `<re-menu>`    | `enhanceMenuButton` | `.open` boolean                     |
 | `<re-popover>` | `enhancePopover`    | `.show()` / `.hide()` / `.toggle()` |
 
+## Editor support
+
+The package ships [VS Code custom-data](https://code.visualstudio.com/api/extension-guides/custom-data-extension) files for IntelliSense. Point your workspace at them in `.vscode/settings.json`:
+
+```json
+{
+  "html.customData": ["./node_modules/@relements/core/html.custom-data.json"],
+  "css.customData": ["./node_modules/@relements/core/css.custom-data.json"]
+}
+```
+
+You then get autocomplete + hovers for the `<re-*>` tags, the `data-*` attributes (with their allowed values — `data-tone`, `data-variant`, …), the declarative `data-re-*` hooks, and every `--re-*` token inside `var(…)`.
+
+Each element also ships a typed class (`ReTabsElement`, …) for TypeScript. See the [editor setup guide](https://renascent-elements.github.io/relements/guides/editor-setup/) for the custom-data settings and the per-framework `<re-*>` template typings.
+
 ## Theming
 
 All values are `--re-*` CSS custom properties. Override globally or on any subtree.

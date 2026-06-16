@@ -1,0 +1,191 @@
+---
+title: Editor setup
+description: Autocomplete and hovers for Relements classes, attributes, and tokens, plus TypeScript types for the <re-*> elements.
+sidebar:
+  order: 1
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+Relements ships two opt-in aids for authoring: **editor IntelliSense** (autocomplete
+and hovers for the `<re-*>` tags, the `data-*` attributes, and the `--re-*` tokens),
+and **TypeScript types** for the custom elements. Both are optional — nothing about
+the library requires them.
+
+## IntelliSense (autocomplete & hovers)
+
+The package ships two [VS Code custom-data](https://code.visualstudio.com/api/extension-guides/custom-data-extension)
+files. Point your workspace at them in `.vscode/settings.json`:
+
+```json
+{
+  "html.customData": ["./node_modules/@relements/core/html.custom-data.json"],
+  "css.customData": ["./node_modules/@relements/core/css.custom-data.json"]
+}
+```
+
+With that in place, in any HTML (or framework template VS Code treats as HTML) you get:
+
+- the four `<re-tabs>` / `<re-menu>` / `<re-popover>` / `<re-toast>` tags, with a
+  hover description and a link to the docs;
+- the styling attributes — `data-variant`, `data-tone`, `data-size`, `data-placement`,
+  … — **with their allowed values** offered as completions (e.g. `data-tone=` suggests
+  `info` · `success` · `warning` · `danger` · `neutral`);
+- the declarative `data-re-*` behavior hooks (`data-re-dialog-trigger`,
+  `data-re-dismiss`, …).
+
+And in any CSS, **every `--re-*` token autocompletes inside `var(…)`**, with its
+default (and dark) value shown on hover:
+
+```css
+.my-card {
+  padding: var(--re-space-4); /* hover shows: `1rem` */
+  color: var(--re-color-text);
+}
+```
+
+The custom-data files are plain JSON and editor-agnostic — any tool that consumes the
+[VS Code custom-data format](https://github.com/microsoft/vscode-custom-data) can read
+them from `@relements/core/html.custom-data.json` and `@relements/core/css.custom-data.json`.
+
+## TypeScript: typing the custom elements
+
+Each `<re-*>` element ships a typed class (`ReTabsElement`, `ReMenuElement`,
+`RePopoverElement`, `ReToastElement`) from its subpath. Two small declarations wire
+those types into the DOM and into your framework's templates. Drop them in a
+`relements.d.ts` that your `tsconfig.json` includes.
+
+### Typed DOM lookups (every framework)
+
+Augment `HTMLElementTagNameMap` so `document.querySelector` / `createElement` return
+the right element type everywhere:
+
+```ts
+// relements.d.ts
+import type { ReTabsElement } from "@relements/core/elements/re-tabs";
+import type { ReMenuElement } from "@relements/core/elements/re-menu";
+import type { RePopoverElement } from "@relements/core/elements/re-popover";
+import type { ReToastElement } from "@relements/core/elements/re-toast";
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "re-tabs": ReTabsElement;
+    "re-menu": ReMenuElement;
+    "re-popover": RePopoverElement;
+    "re-toast": ReToastElement;
+  }
+}
+
+export {};
+```
+
+```ts
+const tabs = document.querySelector("re-tabs"); // ReTabsElement | null
+tabs?.value; // string | null — typed
+```
+
+### Typed templates (per framework)
+
+So the `<re-*>` tags type-check inside your framework's templates, add the matching
+augmentation. Each uses the element class from `@relements/core/elements/*`.
+
+<Tabs syncKey="framework">
+  <TabItem label="React">
+
+```ts
+// relements.d.ts — React 19 (jsx: "react-jsx")
+import type { DetailedHTMLProps, HTMLAttributes } from "react";
+import type { ReTabsElement } from "@relements/core/elements/re-tabs";
+
+declare module "react/jsx-runtime" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "re-tabs": DetailedHTMLProps<HTMLAttributes<ReTabsElement>, ReTabsElement>;
+      // …repeat for re-menu / re-popover / re-toast
+    }
+  }
+}
+```
+
+For `jsx: "react"` or `"preserve"`, augment `"react"` instead of `"react/jsx-runtime"`.
+
+  </TabItem>
+  <TabItem label="Vue">
+
+Tell the Vue compiler the `re-*` tags are custom elements (runtime), then register the
+types:
+
+```ts
+// vite.config.ts
+vue({
+  template: { compilerOptions: { isCustomElement: (tag) => tag.startsWith("re-") } },
+});
+```
+
+```ts
+// relements.d.ts
+import type { HTMLAttributes } from "vue";
+import type { ReTabsElement } from "@relements/core/elements/re-tabs";
+
+declare module "vue" {
+  interface GlobalComponents {
+    "re-tabs": new () => ReTabsElement & {
+      $props: HTMLAttributes & Partial<ReTabsElement>;
+    };
+  }
+}
+```
+
+See Vue's [typing custom elements](https://vuejs.org/guide/extras/web-components.html#typing-custom-elements)
+for the full event-typed helper.
+
+  </TabItem>
+  <TabItem label="Svelte">
+
+```ts
+// relements.d.ts — Svelte 5
+import type { HTMLAttributes } from "svelte/elements";
+import type { ReTabsElement } from "@relements/core/elements/re-tabs";
+
+declare module "svelte/elements" {
+  interface SvelteHTMLElements {
+    "re-tabs": HTMLAttributes<ReTabsElement>;
+    // …repeat for re-menu / re-popover / re-toast
+  }
+}
+
+export {};
+```
+
+  </TabItem>
+  <TabItem label="Angular">
+
+Angular doesn't type unknown tags, but it stops erroring on them once you add
+`CUSTOM_ELEMENTS_SCHEMA` to the component/module that uses a `<re-*>` tag:
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from "@angular/core";
+
+@Component({
+  /* … */
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class MyComponent {}
+```
+
+The `HTMLElementTagNameMap` augmentation above still types any `ElementRef` /
+`document.querySelector` lookups of the element.
+
+  </TabItem>
+</Tabs>
+
+The runtime registration is unchanged — `import "@relements/core/elements/re-tabs"`
+once to define the tag. See the [custom elements overview](/relements/custom-elements/)
+for that, and the [framework guides](/relements/frameworks/) for the per-framework
+`enhance*` wiring.
+
+## Related
+
+- [Custom elements](/relements/custom-elements/) — the `<re-*>` tags and their APIs.
+- [Token reference](/relements/guides/tokens/) — every `--re-*` value the CSS IntelliSense surfaces.
+- [Framework guides](/relements/frameworks/) — React, Vue, Svelte, and Angular setup.
