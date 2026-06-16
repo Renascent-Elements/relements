@@ -4,14 +4,14 @@ import starlight from "@astrojs/starlight";
 export default defineConfig({
   site: "https://renascent-elements.github.io",
   base: "/relements",
-  // The custom elements moved from /components/re-* to /elements/re-*; keep the
-  // old URLs working. Astro applies `base` to the redirect SOURCE (file
+  // The custom elements moved from /components/re-* to /custom-elements/re-*;
+  // keep the old URLs working. Astro applies `base` to the redirect SOURCE (file
   // location) but NOT the destination, so the target must carry /relements.
   redirects: {
-    "/components/re-tabs": "/relements/elements/re-tabs",
-    "/components/re-toast": "/relements/elements/re-toast",
-    "/components/re-menu": "/relements/elements/re-menu",
-    "/components/re-popover": "/relements/elements/re-popover",
+    "/components/re-tabs": "/relements/custom-elements/re-tabs",
+    "/components/re-toast": "/relements/custom-elements/re-toast",
+    "/components/re-menu": "/relements/custom-elements/re-menu",
+    "/components/re-popover": "/relements/custom-elements/re-popover",
   },
   // Project root is docs/public/, so the default static dir would be
   // docs/public/public/. Use ./static instead to avoid the nested name.
@@ -41,7 +41,7 @@ export default defineConfig({
         { label: "Introduction", slug: "index" },
         { label: "Guides", autogenerate: { directory: "guides" } },
         { label: "Components", autogenerate: { directory: "components" } },
-        { label: "Custom elements", autogenerate: { directory: "elements" } },
+        { label: "Custom elements", autogenerate: { directory: "custom-elements" } },
         { label: "Frameworks", autogenerate: { directory: "frameworks" } },
       ],
     }),
