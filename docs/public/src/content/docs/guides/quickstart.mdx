@@ -1,0 +1,135 @@
+---
+title: Quickstart
+description: Install Relements and ship your first component in under a minute.
+sidebar:
+  order: 0
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+
+Relements is **HTML-first**: you style native elements with `.re-*` classes and
+`data-*` attributes. The base functionality needs **no JavaScript** — behaviors
+are opt-in. The same class/attribute API works in React, Vue, Svelte, Angular,
+and plain HTML, with no wrappers.
+
+## 1. Install
+
+<Tabs syncKey="pkg">
+  <TabItem label="npm">
+
+```sh
+npm install @relements/core
+```
+
+  </TabItem>
+  <TabItem label="pnpm">
+
+```sh
+pnpm add @relements/core
+```
+
+  </TabItem>
+  <TabItem label="yarn">
+
+```sh
+yarn add @relements/core
+```
+
+  </TabItem>
+  <TabItem label="bun">
+
+```sh
+bun add @relements/core
+```
+
+  </TabItem>
+</Tabs>
+
+## 2. Import the stylesheet once
+
+At your app entry:
+
+```js
+import "@relements/core/index.css";
+```
+
+Or, with no bundler, link the built file:
+
+```html
+<link rel="stylesheet" href="node_modules/@relements/core/dist/index.css" />
+```
+
+That single import gives you light **and** dark — the palette follows the OS via
+`prefers-color-scheme` automatically (see [Dark mode](/relements/guides/dark-mode/)).
+
+## 3. Use a component — no JavaScript
+
+Style native elements with the `.re-*` classes and `data-*` attributes:
+
+```html
+<button class="re-button" data-variant="primary">Save</button>
+
+<label class="re-field">
+  <span class="re-field__label">Email</span>
+  <input class="re-input" type="email" name="email" />
+  <span class="re-field__hint">We'll only use this to contact you.</span>
+</label>
+```
+
+That's a styled, accessible, themeable button and field — keyboard, focus, and
+form semantics all come from the native elements. No components to import, no
+JavaScript to run.
+
+## 4. (Optional) Add a behavior
+
+A few patterns layer an opt-in `enhance*` behavior for richer interaction. They
+work **declaratively** via `data-re-*` attributes — e.g. a dialog:
+
+```html
+<button class="re-button" data-re-dialog-trigger data-re-dialog-target="confirm">Delete…</button>
+<dialog class="re-dialog" id="confirm">
+  <form method="dialog" class="re-dialog__body">
+    <p>Delete this item?</p>
+    <button class="re-button" data-variant="danger">Delete</button>
+    <button class="re-button" data-re-dialog-close>Cancel</button>
+  </form>
+</dialog>
+```
+
+```js
+import { enhanceDialog } from "@relements/core/behaviors/dialog";
+
+// wires triggers, close buttons, backdrop dismiss, focus trap; returns { destroy() }
+enhanceDialog(document);
+```
+
+In a framework, run the behavior when the element mounts and call its
+`destroy()` on unmount — each [framework guide](/relements/frameworks/) shows the
+idiomatic one-liner (a React hook, a Vue directive, a Svelte action, an Angular
+directive).
+
+## Next steps
+
+<CardGrid>
+  <LinkCard
+    title="Components"
+    href="/relements/components/button/"
+    description="Every component, with live demos and a keyboard/accessibility section."
+  />
+  <LinkCard
+    title="Framework guides"
+    href="/relements/frameworks/"
+    description="Drop Relements into React, Vue, Svelte, or Angular."
+  />
+  <LinkCard
+    title="Theming & tokens"
+    href="/relements/guides/theming/"
+    description="Re-theme any subtree by redeclaring --re-* tokens; full token reference."
+  />
+  <LinkCard
+    title="Accessibility"
+    href="/relements/guides/accessibility/"
+    description="The HTML-first a11y stance: focus, forced colors, honest ARIA."
+  />
+</CardGrid>
