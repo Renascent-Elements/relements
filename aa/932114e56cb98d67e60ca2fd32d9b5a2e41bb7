@@ -1,0 +1,26 @@
+docs/public/src/content/docs/frameworks/svelte.md
+  s_2732c4df70b865::t_fcaf99ee171341 168-170
+docs/public/astro.config.mjs
+  s_2732c4df70b865::t_596907858b2ca0 35
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_cd82d02873f5c4 109-110
+  s_2732c4df70b865::t_fcaf99ee171341 111-114
+docs/public/src/content/docs/frameworks/index.md
+  s_2732c4df70b865::t_fcaf99ee171341 112
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "aa932114e56cb98d67e60ca2fd32d9b5a2e41bb7",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
