@@ -1,0 +1,37 @@
+docs/public/src/content/docs/custom-elements/re-tabs.mdx
+  s_2732c4df70b865::t_83de787c4c6bda 8-14
+docs/public/src/content/docs/custom-elements/index.mdx
+  s_2732c4df70b865::t_6e218c058b492a 1-37,41-61,68-107
+  s_2732c4df70b865::t_42700d74d0b7a9 38-40,62-67
+docs/public/src/content/docs/custom-elements/re-menu.mdx
+  s_2732c4df70b865::t_babe354ff1ebb5 8-14
+docs/public/src/content/docs/components/popover.mdx
+  s_2732c4df70b865::t_819349be0e09f0 8
+docs/public/src/content/docs/custom-elements/re-toast.mdx
+  s_2732c4df70b865::t_eedae5b1c8c2ee 10-11
+  s_2732c4df70b865::t_f55b87b35465da 13
+docs/public/src/content/docs/custom-elements/re-popover.mdx
+  s_2732c4df70b865::t_c3b0fe81ddf1d5 8-14
+docs/public/src/content/docs/components/menu-button.mdx
+  s_2732c4df70b865::t_b511fe0d98916e 8
+docs/public/src/content/docs/components/toast.mdx
+  s_2732c4df70b865::t_b3ffa2834e4403 23-24
+docs/public/src/content/docs/components/tabs.mdx
+  s_2732c4df70b865::t_3c06b360241dbf 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "372cf1bc1682234477566b074d03498b76e8f89d",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
