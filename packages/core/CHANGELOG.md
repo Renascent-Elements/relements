@@ -1,5 +1,11 @@
 # @relements/core
 
+## 1.2.0
+
+### Minor Changes
+
+- [#74](https://github.com/Renascent-Elements/relements/pull/74) [`5140cf7`](https://github.com/Renascent-Elements/relements/commit/5140cf7b9ac6735e2985ab9a4ea3afd5581e9e5a) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Editor IntelliSense across editors. Ship VS Code HTML/CSS custom-data files (`@relements/core/html.custom-data.json`, `@relements/core/css.custom-data.json`) and a JetBrains `web-types.json` (auto-discovered via the `web-types` field) so the `<re-*>` tags, the `data-*` attributes (with their allowed values), the declarative `data-re-*` hooks, and every `--re-*` token autocomplete with hovers — in VS Code, LSP editors (Neovim/Helix/Zed/Sublime/Emacs), and JetBrains IDEs. A new [editor setup guide](https://renascent-elements.github.io/relements/guides/editor-setup/) documents the per-editor wiring and the per-framework TypeScript typings for the custom elements (React, Vue, Svelte, Angular).
+
 ## 1.1.1
 
 ### Patch Changes
