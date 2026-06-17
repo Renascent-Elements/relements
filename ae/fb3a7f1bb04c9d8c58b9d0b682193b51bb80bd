@@ -1,0 +1,35 @@
+tests/unit/editor-data.spec.ts
+  s_2732c4df70b865::t_381dba88a8568b 5
+  s_2732c4df70b865::t_855bcc5aa3adc3 20-26
+  s_2732c4df70b865::t_1a6743fbf1fa4b 53,59-62
+.changeset/editor-intellisense.md
+  s_2732c4df70b865::t_bd2d3d2895fcfe 5
+packages/core/web-types.json
+  s_2732c4df70b865::t_0f5c16d5c87266 1-932
+packages/core/README.md
+  s_2732c4df70b865::t_521ed065e0afd4 208,210-217,219,221
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_568513b32c4d30 305-365,367
+  s_2732c4df70b865::t_6759e4d11fe86a 72-88
+  s_2732c4df70b865::t_1c0aedb773074b 380,383
+packages/core/package.json
+  s_2732c4df70b865::t_6ca4ed3884a450 35-36,38
+docs/public/src/content/docs/guides/editor-setup.mdx
+  s_2732c4df70b865::t_74233d1042ccde 17-49,58,60-62,64,66-76,79-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "aefb3a7f1bb04c9d8c58b9d0b682193b51bb80bd",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
