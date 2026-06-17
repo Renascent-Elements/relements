@@ -32,8 +32,10 @@
   "files": [
     "dist",
     "html.custom-data.json",
-    "css.custom-data.json"
+    "css.custom-data.json",
+    "web-types.json"
   ],
+  "web-types": "./web-types.json",
   "exports": {
     ".": {
       "import": "./dist/index.js",

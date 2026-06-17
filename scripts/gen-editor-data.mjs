@@ -69,6 +69,23 @@ const ELEMENTS = [
   },
 ];
 
+/** Per-element JS surface (reflected properties + emitted events) for web-types. */
+const ELEMENT_JS = {
+  "re-tabs": {
+    properties: [{ name: "value", type: "string", description: "The selected tab id." }],
+    events: [{ name: "re-change", description: "Fires when the selected tab changes." }],
+  },
+  "re-menu": {
+    properties: [{ name: "open", type: "boolean", description: "Whether the menu is open." }],
+    events: [{ name: "re-select", description: "Fires when a menu item is selected." }],
+  },
+  "re-popover": {
+    properties: [],
+    events: [{ name: "re-toggle", description: "Fires when the popover opens or closes." }],
+  },
+  "re-toast": { properties: [], events: [] },
+};
+
 /** Descriptions for the styling data-* attributes (values are derived from CSS). */
 const STYLING_ATTR_DESC = {
   "data-variant": "Structural variant of a component (e.g. button/link/table style).",
@@ -285,8 +302,69 @@ const cssData = {
   properties,
 };
 
+// ---------------------------------------------------------------------------
+// web-types — the JetBrains (WebStorm / IntelliJ) format. Auto-discovered via
+// the `web-types` field in package.json, so it needs no per-project settings.
+// Covers the four <re-*> elements (with their JS props/events), the global
+// data-* attribute names, and the --re-* tokens as CSS properties. (web-types
+// has no compact enum-value form for global attributes, so values are offered
+// only by the VS Code custom-data above; here attributes complete by name.)
+// ---------------------------------------------------------------------------
+
+const pkgVersion = JSON.parse(readFileSync(join(core, "package.json"), "utf8")).version;
+
+const webTypes = {
+  $schema: "http://json.schemastore.org/web-types",
+  name: "@relements/core",
+  version: pkgVersion,
+  "description-markup": "markdown",
+  "js-types-syntax": "typescript",
+  contributions: {
+    html: {
+      elements: ELEMENTS.map((el) => {
+        const js = ELEMENT_JS[el.name];
+        return {
+          name: el.name,
+          description: el.description,
+          "doc-url": `${DOCS}/custom-elements/${el.slug}/`,
+          ...(el.attributes.length
+            ? {
+                attributes: el.attributes.map((a) => ({
+                  name: a.name,
+                  ...(a.description ? { description: a.description } : {}),
+                })),
+              }
+            : {}),
+          ...(js && (js.properties.length || js.events.length)
+            ? {
+                js: {
+                  ...(js.properties.length ? { properties: js.properties } : {}),
+                  ...(js.events.length ? { events: js.events } : {}),
+                },
+              }
+            : {}),
+        };
+      }),
+      attributes: globalAttributes.map((a) => ({ name: a.name, description: a.description })),
+    },
+    css: {
+      properties: [...light].map(([name, value]) => {
+        const darkValue = dark.get(name);
+        return {
+          name,
+          description:
+            darkValue && darkValue !== value
+              ? `\`${value}\` (dark: \`${darkValue}\`)`
+              : `\`${value}\``,
+          "doc-url": `${DOCS}/guides/tokens/`,
+        };
+      }),
+    },
+  },
+};
+
 // Exported for the drift guard (tests/unit/editor-data.spec.ts).
-export { htmlData, cssData };
+export { htmlData, cssData, webTypes };
 
 // ---------------------------------------------------------------------------
 // Write (only when run directly, not when imported by the drift guard).
@@ -299,8 +377,9 @@ if (isMain) {
 
   write("html.custom-data.json", htmlData);
   write("css.custom-data.json", cssData);
+  write("web-types.json", webTypes);
 
   console.log(
-    `editor data: ${tags.length} tags, ${globalAttributes.length} global attributes, ${properties.length} tokens`,
+    `editor data: ${tags.length} tags, ${globalAttributes.length} global attributes, ${properties.length} tokens (VS Code custom-data + web-types)`,
   );
 }

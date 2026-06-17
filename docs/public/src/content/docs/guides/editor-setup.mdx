@@ -14,28 +14,28 @@ the library requires them.
 
 ## IntelliSense (autocomplete & hovers)
 
-The package ships two [VS Code custom-data](https://code.visualstudio.com/api/extension-guides/custom-data-extension)
-files. Point your workspace at them in `.vscode/settings.json`:
+The package ships editor metadata in **two formats**, so the completions work beyond
+VS Code:
 
-```json
-{
-  "html.customData": ["./node_modules/@relements/core/html.custom-data.json"],
-  "css.customData": ["./node_modules/@relements/core/css.custom-data.json"]
-}
-```
+- **[VS Code custom-data](https://code.visualstudio.com/api/extension-guides/custom-data-extension)**
+  (`html.custom-data.json` + `css.custom-data.json`) — read by VS Code and by any editor
+  that runs the same HTML/CSS language servers over LSP (Neovim, Helix, Zed, Sublime Text,
+  Emacs).
+- **[web-types](https://github.com/JetBrains/web-types)** (`web-types.json`) — read by
+  JetBrains IDEs (WebStorm, IntelliJ, …), **auto-discovered** from `node_modules` with no
+  configuration.
 
-With that in place, in any HTML (or framework template VS Code treats as HTML) you get:
+Either way you get, in HTML and framework templates:
 
-- the four `<re-tabs>` / `<re-menu>` / `<re-popover>` / `<re-toast>` tags, with a
-  hover description and a link to the docs;
-- the styling attributes — `data-variant`, `data-tone`, `data-size`, `data-placement`,
-  … — **with their allowed values** offered as completions (e.g. `data-tone=` suggests
-  `info` · `success` · `warning` · `danger` · `neutral`);
-- the declarative `data-re-*` behavior hooks (`data-re-dialog-trigger`,
-  `data-re-dismiss`, …).
+- the four `<re-tabs>` / `<re-menu>` / `<re-popover>` / `<re-toast>` tags, with a hover
+  description and a docs link;
+- the styling attributes — `data-variant`, `data-tone`, `data-size`, `data-placement`, …
+  (their allowed values, e.g. `data-tone=` → `info` · `success` · `warning` · `danger` ·
+  `neutral`, are offered in VS Code and LSP editors);
+- the declarative `data-re-*` behavior hooks (`data-re-dialog-trigger`, `data-re-dismiss`, …);
 
-And in any CSS, **every `--re-*` token autocompletes inside `var(…)`**, with its
-default (and dark) value shown on hover:
+and in CSS, **every `--re-*` token** inside `var(…)`, with its default (and dark) value on
+hover:
 
 ```css
 .my-card {
@@ -44,9 +44,42 @@ default (and dark) value shown on hover:
 }
 ```
 
-The custom-data files are plain JSON and editor-agnostic — any tool that consumes the
-[VS Code custom-data format](https://github.com/microsoft/vscode-custom-data) can read
-them from `@relements/core/html.custom-data.json` and `@relements/core/css.custom-data.json`.
+### VS Code
+
+Point your workspace at the two custom-data files in `.vscode/settings.json`:
+
+```json
+{
+  "html.customData": ["./node_modules/@relements/core/html.custom-data.json"],
+  "css.customData": ["./node_modules/@relements/core/css.custom-data.json"]
+}
+```
+
+### JetBrains (WebStorm, IntelliJ)
+
+Nothing to configure — JetBrains reads the package's `web-types` field automatically after
+`npm install`. The `<re-*>` tags, `data-*` attributes, and `--re-*` tokens complete out of
+the box.
+
+### Other editors (Neovim, Helix, Zed, Sublime, Emacs)
+
+These run the same language servers (`vscode-langservers-extracted`), which load the HTML
+custom-data from the server's `dataPaths` init option. For example, with Neovim's built-in
+LSP:
+
+```lua
+vim.lsp.config("html", {
+  init_options = {
+    provideFormatter = true,
+    dataPaths = { vim.fn.getcwd() .. "/node_modules/@relements/core/html.custom-data.json" },
+  },
+})
+```
+
+The files are editor-agnostic JSON at `@relements/core/html.custom-data.json` and
+`@relements/core/css.custom-data.json` — see your LSP client's docs for how it forwards
+custom data (CSS custom-data is delivered via an LSP notification that some clients wire
+up for you).
 
 ## TypeScript: typing the custom elements
 

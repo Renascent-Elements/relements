@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 // @ts-expect-error — plain ESM script, no type declarations.
-import { htmlData, cssData } from "../../scripts/gen-editor-data.mjs";
+import { htmlData, cssData, webTypes } from "../../scripts/gen-editor-data.mjs";
 import pkg from "../../packages/core/package.json" with { type: "json" };
 
 const core = join(__dirname, "..", "..", "packages/core");
@@ -15,6 +15,13 @@ describe("editor custom-data", () => {
 
   it("css.custom-data.json is up to date (regenerate via `node scripts/gen-editor-data.mjs`)", () => {
     expect(read("css.custom-data.json")).toEqual(cssData);
+  });
+
+  it("web-types.json is up to date (version-independent; regenerate via `node scripts/gen-editor-data.mjs`)", () => {
+    // `version` tracks package.json and is refreshed at publish (prepublishOnly),
+    // so a Changesets bump must not fail this guard — compare everything else.
+    const strip = (o: Record<string, unknown>) => ({ ...o, version: undefined });
+    expect(strip(read("web-types.json"))).toEqual(strip(webTypes));
   });
 
   it("covers the four custom-element tags and the core styling attributes", () => {
@@ -43,11 +50,15 @@ describe("editor custom-data", () => {
     );
   });
 
-  it("is published — both files are in package.json files + exports", () => {
+  it("is published — custom-data in files + exports, web-types in files + the web-types field", () => {
     const exportsMap = pkg.exports as Record<string, unknown>;
     for (const file of ["html.custom-data.json", "css.custom-data.json"]) {
       expect(pkg.files, `${file} missing from files`).toContain(file);
       expect(exportsMap[`./${file}`], `${file} missing from exports`).toBe(`./${file}`);
     }
+    expect(pkg.files, "web-types.json missing from files").toContain("web-types.json");
+    expect((pkg as { "web-types"?: string })["web-types"], "web-types field missing").toBe(
+      "./web-types.json",
+    );
   });
 });
