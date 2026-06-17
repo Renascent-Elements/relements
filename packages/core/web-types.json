@@ -1,0 +1,932 @@
+{
+  "$schema": "http://json.schemastore.org/web-types",
+  "name": "@relements/core",
+  "version": "1.1.1",
+  "description-markup": "markdown",
+  "js-types-syntax": "typescript",
+  "contributions": {
+    "html": {
+      "elements": [
+        {
+          "name": "re-tabs",
+          "description": "Self-managing wrapper around the tabs pattern (enhanceTabs). `element.value` reads/writes the selected tab id; emits `re-change`. Register with `import \"@relements/core/elements/re-tabs\"`.",
+          "doc-url": "https://renascent-elements.github.io/relements/custom-elements/re-tabs/",
+          "attributes": [
+            {
+              "name": "aria-label",
+              "description": "Accessible name for the tablist."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "value",
+                "type": "string",
+                "description": "The selected tab id."
+              }
+            ],
+            "events": [
+              {
+                "name": "re-change",
+                "description": "Fires when the selected tab changes."
+              }
+            ]
+          }
+        },
+        {
+          "name": "re-menu",
+          "description": "Self-managing wrapper around the menu-button pattern (enhanceMenuButton). `element.open` reflects/controls the open state; emits `re-select`. Register with `import \"@relements/core/elements/re-menu\"`.",
+          "doc-url": "https://renascent-elements.github.io/relements/custom-elements/re-menu/",
+          "js": {
+            "properties": [
+              {
+                "name": "open",
+                "type": "boolean",
+                "description": "Whether the menu is open."
+              }
+            ],
+            "events": [
+              {
+                "name": "re-select",
+                "description": "Fires when a menu item is selected."
+              }
+            ]
+          }
+        },
+        {
+          "name": "re-popover",
+          "description": "Self-managing wrapper around the native popover attribute (enhancePopover). Auto-adopts `popover=\"auto\"`; `.show()`/`.hide()`/`.toggle()` map to the native API; emits `re-toggle`. Register with `import \"@relements/core/elements/re-popover\"`.",
+          "doc-url": "https://renascent-elements.github.io/relements/custom-elements/re-popover/",
+          "js": {
+            "events": [
+              {
+                "name": "re-toggle",
+                "description": "Fires when the popover opens or closes."
+              }
+            ]
+          }
+        },
+        {
+          "name": "re-toast",
+          "description": "Self-managing toast region in light DOM. `.show(message, options)` matches showToast() and returns the same controller. Register with `import \"@relements/core/elements/re-toast\"`.",
+          "doc-url": "https://renascent-elements.github.io/relements/custom-elements/re-toast/",
+          "attributes": [
+            {
+              "name": "data-live",
+              "description": "Live-region politeness for announcements."
+            }
+          ]
+        }
+      ],
+      "attributes": [
+        {
+          "name": "data-align",
+          "description": "Alignment of content."
+        },
+        {
+          "name": "data-density",
+          "description": "Spacing density."
+        },
+        {
+          "name": "data-emphasis",
+          "description": "Visual emphasis — `solid` uses a filled status surface."
+        },
+        {
+          "name": "data-layout",
+          "description": "Layout direction."
+        },
+        {
+          "name": "data-orientation",
+          "description": "Layout axis."
+        },
+        {
+          "name": "data-placement",
+          "description": "Placement of a floating part (tooltip bubble, etc.) around its anchor."
+        },
+        {
+          "name": "data-shape",
+          "description": "Shape variant (e.g. avatar circle / square / text)."
+        },
+        {
+          "name": "data-side",
+          "description": "Side a part attaches to."
+        },
+        {
+          "name": "data-size",
+          "description": "Control size."
+        },
+        {
+          "name": "data-status",
+          "description": "Step/item status (e.g. complete / current)."
+        },
+        {
+          "name": "data-tone",
+          "description": "Semantic color tone (info / success / warning / danger / neutral)."
+        },
+        {
+          "name": "data-variant",
+          "description": "Structural variant of a component (e.g. button/link/table style)."
+        },
+        {
+          "name": "data-autosize",
+          "description": "Grow a textarea to fit its content."
+        },
+        {
+          "name": "data-bordered",
+          "description": "Add a border."
+        },
+        {
+          "name": "data-divided",
+          "description": "Add dividers between items."
+        },
+        {
+          "name": "data-full-width",
+          "description": "Stretch to the full available inline size."
+        },
+        {
+          "name": "data-hover",
+          "description": "Force the hover state (demo/visual aid)."
+        },
+        {
+          "name": "data-interactive",
+          "description": "Make the element interactive (hover/active affordances)."
+        },
+        {
+          "name": "data-invalid",
+          "description": "Mark the control as invalid (error styling)."
+        },
+        {
+          "name": "data-open",
+          "description": "Force the open/visible state without interaction."
+        },
+        {
+          "name": "data-required",
+          "description": "Mark the field as required."
+        },
+        {
+          "name": "data-sticky",
+          "description": "Stick the element to the viewport edge while scrolling."
+        },
+        {
+          "name": "data-sticky-header",
+          "description": "Keep the table header visible while scrolling."
+        },
+        {
+          "name": "data-wrap",
+          "description": "Allow items to wrap."
+        },
+        {
+          "name": "data-zebra",
+          "description": "Striped (zebra) rows."
+        },
+        {
+          "name": "data-re-combobox",
+          "description": "Host element for enhanceCombobox."
+        },
+        {
+          "name": "data-re-command-hotkey",
+          "description": "Keyboard shortcut that opens the command palette (e.g. `mod+k`)."
+        },
+        {
+          "name": "data-re-command-palette",
+          "description": "Host dialog for enhanceCommandPalette."
+        },
+        {
+          "name": "data-re-context-menu",
+          "description": "Host element for enhanceContextMenu."
+        },
+        {
+          "name": "data-re-dialog-close",
+          "description": "Marks a button that closes the enclosing dialog."
+        },
+        {
+          "name": "data-re-dialog-close-on-backdrop",
+          "description": "Dismiss the dialog on backdrop click."
+        },
+        {
+          "name": "data-re-dialog-no-dismiss",
+          "description": "Prevent Escape/backdrop dismissal."
+        },
+        {
+          "name": "data-re-dialog-target",
+          "description": "Id of the dialog a trigger opens."
+        },
+        {
+          "name": "data-re-dialog-trigger",
+          "description": "Marks a button that opens its target dialog (enhanceDialog)."
+        },
+        {
+          "name": "data-re-dismiss",
+          "description": "Marks a button that dismisses its dismissible container (enhanceDismissible)."
+        },
+        {
+          "name": "data-re-dismissible",
+          "description": "Marks a container that can be dismissed."
+        },
+        {
+          "name": "data-re-menu",
+          "description": "Host element for enhanceMenuButton."
+        },
+        {
+          "name": "data-re-number",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-number-step",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-otp",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-otp-numeric",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-password-toggle",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-popover",
+          "description": "Host element for enhancePopover."
+        },
+        {
+          "name": "data-re-range",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-range-gap",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-range-max",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-range-min",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tabs",
+          "description": "Host element for enhanceTabs."
+        },
+        {
+          "name": "data-re-tags-allow-duplicates",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tags-chip",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tags-input",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tags-max",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tags-name",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tags-remove",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-tags-tone",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-toast-region",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-toolbar",
+          "description": "Relements behavior hook."
+        }
+      ]
+    },
+    "css": {
+      "properties": [
+        {
+          "name": "--re-color-neutral-0",
+          "description": "`#ffffff`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-50",
+          "description": "`#f8fafc`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-100",
+          "description": "`#f1f5f9`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-200",
+          "description": "`#e2e8f0`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-300",
+          "description": "`#cbd5e1`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-400",
+          "description": "`#94a3b8`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-500",
+          "description": "`#64748b`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-600",
+          "description": "`#475569`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-700",
+          "description": "`#334155`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-800",
+          "description": "`#1e293b`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-900",
+          "description": "`#0f172a`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-neutral-950",
+          "description": "`#020617`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-50",
+          "description": "`#eff6ff`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-100",
+          "description": "`#dbeafe`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-200",
+          "description": "`#bfdbfe`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-300",
+          "description": "`#93c5fd`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-400",
+          "description": "`#60a5fa`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-500",
+          "description": "`#3b82f6`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-600",
+          "description": "`#2563eb`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-700",
+          "description": "`#1d4ed8`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-800",
+          "description": "`#1e40af`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-accent-900",
+          "description": "`#1e3a8a`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-danger-500",
+          "description": "`#ef4444`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-danger-600",
+          "description": "`#dc2626`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-danger-700",
+          "description": "`#b91c1c`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-success-500",
+          "description": "`#10b981`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-success-600",
+          "description": "`#059669`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-success-700",
+          "description": "`#047857`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-warning-500",
+          "description": "`#f59e0b`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-warning-600",
+          "description": "`#d97706`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-warning-700",
+          "description": "`#b45309`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-bg",
+          "description": "`var(--re-color-neutral-0)` (dark: `var(--re-color-neutral-950)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-bg-subtle",
+          "description": "`var(--re-color-neutral-50)` (dark: `var(--re-color-neutral-900)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-bg-muted",
+          "description": "`var(--re-color-neutral-100)` (dark: `var(--re-color-neutral-800)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-surface",
+          "description": "`var(--re-color-neutral-0)` (dark: `var(--re-color-neutral-900)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-overlay",
+          "description": "`rgb(0 0 0 / 0.4)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-text",
+          "description": "`var(--re-color-neutral-900)` (dark: `var(--re-color-neutral-50)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-text-muted",
+          "description": "`var(--re-color-neutral-600)` (dark: `var(--re-color-neutral-300)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-text-subtle",
+          "description": "`var(--re-color-neutral-500)` (dark: `var(--re-color-neutral-400)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-text-on-accent",
+          "description": "`var(--re-color-neutral-0)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-border",
+          "description": "`var(--re-color-neutral-200)` (dark: `var(--re-color-neutral-700)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-border-strong",
+          "description": "`var(--re-color-neutral-300)` (dark: `var(--re-color-neutral-600)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-link",
+          "description": "`var(--re-color-accent-700)` (dark: `var(--re-color-accent-300)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-link-hover",
+          "description": "`var(--re-color-accent-800)` (dark: `var(--re-color-accent-200)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-link-visited",
+          "description": "`var(--re-color-accent-800)` (dark: `var(--re-color-accent-200)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-focus-ring",
+          "description": "`var(--re-color-accent-500)` (dark: `var(--re-color-accent-400)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-selection-bg",
+          "description": "`var(--re-color-accent-100)` (dark: `var(--re-color-accent-900)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-selection-text",
+          "description": "`var(--re-color-neutral-900)` (dark: `var(--re-color-neutral-50)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-info-surface",
+          "description": "`color-mix( in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-accent-500) 20%, var(--re-color-bg) )`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-info-border",
+          "description": "`var(--re-color-accent-500)` (dark: `var(--re-color-accent-400)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-info-text",
+          "description": "`var(--re-color-accent-700)` (dark: `var(--re-color-accent-200)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-success-surface",
+          "description": "`color-mix( in oklab, var(--re-color-success-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-success-500) 20%, var(--re-color-bg) )`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-success-border",
+          "description": "`var(--re-color-success-500)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-success-text",
+          "description": "`var(--re-color-success-700)` (dark: `var(--re-color-success-500)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-warning-surface",
+          "description": "`color-mix( in oklab, var(--re-color-warning-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-warning-500) 20%, var(--re-color-bg) )`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-warning-border",
+          "description": "`var(--re-color-warning-500)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-warning-text",
+          "description": "`var(--re-color-warning-700)` (dark: `var(--re-color-warning-500)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-danger-surface",
+          "description": "`color-mix( in oklab, var(--re-color-danger-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-danger-500) 20%, var(--re-color-bg) )`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-danger-border",
+          "description": "`var(--re-color-danger-500)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-color-danger-text",
+          "description": "`var(--re-color-danger-700)` (dark: `var(--re-color-danger-500)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-font-sans",
+          "description": "`system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-font-mono",
+          "description": "`ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-xs",
+          "description": "`0.75rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-sm",
+          "description": "`0.875rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-md",
+          "description": "`1rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-lg",
+          "description": "`1.125rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-xl",
+          "description": "`1.25rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-2xl",
+          "description": "`1.5rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-3xl",
+          "description": "`1.875rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-size-text-4xl",
+          "description": "`2.25rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-line-height-tight",
+          "description": "`1.2`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-line-height-snug",
+          "description": "`1.35`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-line-height-normal",
+          "description": "`1.5`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-line-height-relaxed",
+          "description": "`1.65`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-font-weight-regular",
+          "description": "`400`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-font-weight-medium",
+          "description": "`500`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-font-weight-semibold",
+          "description": "`600`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-font-weight-bold",
+          "description": "`700`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-0",
+          "description": "`0`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-1",
+          "description": "`0.25rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-2",
+          "description": "`0.5rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-3",
+          "description": "`0.75rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-4",
+          "description": "`1rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-5",
+          "description": "`1.25rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-6",
+          "description": "`1.5rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-8",
+          "description": "`2rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-10",
+          "description": "`2.5rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-12",
+          "description": "`3rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-space-16",
+          "description": "`4rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-radius-none",
+          "description": "`0`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-radius-sm",
+          "description": "`0.25rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-radius-md",
+          "description": "`0.375rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-radius-lg",
+          "description": "`0.5rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-radius-xl",
+          "description": "`0.75rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-radius-pill",
+          "description": "`9999px`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-border-width",
+          "description": "`1px`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-border-width-strong",
+          "description": "`2px`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-border-default",
+          "description": "`var(--re-border-width) solid var(--re-color-border)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-border-strong",
+          "description": "`var(--re-border-width-strong) solid var(--re-color-border-strong)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-border-danger",
+          "description": "`var(--re-border-width) solid var(--re-color-danger-border)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-focus-ring-width",
+          "description": "`2px`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-focus-ring-offset",
+          "description": "`2px` (dark: `0px`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-focus-ring-color",
+          "description": "`var(--re-color-focus-ring)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-shadow-focus",
+          "description": "`0 0 0 var(--re-focus-ring-offset) var(--re-color-bg), 0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring)` (dark: `0 0 0 2px var(--re-color-focus-ring)`)",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-shadow-sm",
+          "description": "`0 1px 2px rgb(0 0 0 / 0.06)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-shadow-md",
+          "description": "`0 4px 12px rgb(0 0 0 / 0.08)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-shadow-lg",
+          "description": "`0 12px 32px rgb(0 0 0 / 0.12)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-duration-instant",
+          "description": "`0ms`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-duration-fast",
+          "description": "`120ms`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-duration-normal",
+          "description": "`200ms`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-duration-slow",
+          "description": "`320ms`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-easing-standard",
+          "description": "`cubic-bezier(0.2, 0, 0, 1)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-easing-emphasized",
+          "description": "`cubic-bezier(0.3, 0, 0, 1)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-z-base",
+          "description": "`0`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-z-overlay",
+          "description": "`100`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-z-popover",
+          "description": "`200`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-z-dialog",
+          "description": "`300`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-z-toast",
+          "description": "`400`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-control-height-sm",
+          "description": "`1.75rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-control-height-md",
+          "description": "`2.25rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-control-height-lg",
+          "description": "`2.75rem`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-control-padding-x",
+          "description": "`var(--re-space-3)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        },
+        {
+          "name": "--re-control-padding-y",
+          "description": "`var(--re-space-2)`",
+          "doc-url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    }
+  }
+}

@@ -203,6 +203,23 @@ Light-DOM only (no Shadow DOM). Same HTML/CSS contract as the plain class API.
 | `<re-menu>`    | `enhanceMenuButton` | `.open` boolean                     |
 | `<re-popover>` | `enhancePopover`    | `.show()` / `.hide()` / `.toggle()` |
 
+## Editor support
+
+IntelliSense (autocomplete + hovers for the `<re-*>` tags, the `data-*` attributes, the `data-re-*` hooks, and every `--re-*` token) ships in two formats:
+
+- **VS Code** / LSP editors (Neovim, Helix, Zed, Sublime, Emacs) — [VS Code custom-data](https://code.visualstudio.com/api/extension-guides/custom-data-extension). In `.vscode/settings.json`:
+
+  ```json
+  {
+    "html.customData": ["./node_modules/@relements/core/html.custom-data.json"],
+    "css.customData": ["./node_modules/@relements/core/css.custom-data.json"]
+  }
+  ```
+
+- **JetBrains** (WebStorm, IntelliJ) — a [web-types](https://github.com/JetBrains/web-types) file, auto-discovered from `node_modules` with no configuration.
+
+Each element also ships a typed class (`ReTabsElement`, …) for TypeScript. See the [editor setup guide](https://renascent-elements.github.io/relements/guides/editor-setup/) for the per-editor wiring and the per-framework `<re-*>` template typings.
+
 ## Theming
 
 All values are `--re-*` CSS custom properties. Override globally or on any subtree.

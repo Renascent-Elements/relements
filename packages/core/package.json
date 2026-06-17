@@ -30,14 +30,20 @@
     "src/elements/*.js"
   ],
   "files": [
-    "dist"
+    "dist",
+    "html.custom-data.json",
+    "css.custom-data.json",
+    "web-types.json"
   ],
+  "web-types": "./web-types.json",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./package.json": "./package.json",
+    "./html.custom-data.json": "./html.custom-data.json",
+    "./css.custom-data.json": "./css.custom-data.json",
     "./index.css": "./dist/index.css",
     "./tokens.css": "./dist/tokens.css",
     "./reset.css": "./dist/reset.css",
@@ -176,7 +182,8 @@
     "build:css": "node build-css.mjs",
     "build:js": "tsup",
     "build": "node build-css.mjs && tsup",
-    "prepublishOnly": "node build-css.mjs && tsup"
+    "gen:editor-data": "node ../../scripts/gen-editor-data.mjs",
+    "prepublishOnly": "node ../../scripts/gen-editor-data.mjs && node build-css.mjs && tsup"
   },
   "publishConfig": {
     "access": "public",

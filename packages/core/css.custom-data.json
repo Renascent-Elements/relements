@@ -1,0 +1,1604 @@
+{
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "--re-color-neutral-0",
+      "description": {
+        "kind": "markdown",
+        "value": "`#ffffff`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-50",
+      "description": {
+        "kind": "markdown",
+        "value": "`#f8fafc`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-100",
+      "description": {
+        "kind": "markdown",
+        "value": "`#f1f5f9`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-200",
+      "description": {
+        "kind": "markdown",
+        "value": "`#e2e8f0`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-300",
+      "description": {
+        "kind": "markdown",
+        "value": "`#cbd5e1`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-400",
+      "description": {
+        "kind": "markdown",
+        "value": "`#94a3b8`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-500",
+      "description": {
+        "kind": "markdown",
+        "value": "`#64748b`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-600",
+      "description": {
+        "kind": "markdown",
+        "value": "`#475569`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-700",
+      "description": {
+        "kind": "markdown",
+        "value": "`#334155`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-800",
+      "description": {
+        "kind": "markdown",
+        "value": "`#1e293b`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-900",
+      "description": {
+        "kind": "markdown",
+        "value": "`#0f172a`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-neutral-950",
+      "description": {
+        "kind": "markdown",
+        "value": "`#020617`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-50",
+      "description": {
+        "kind": "markdown",
+        "value": "`#eff6ff`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-100",
+      "description": {
+        "kind": "markdown",
+        "value": "`#dbeafe`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-200",
+      "description": {
+        "kind": "markdown",
+        "value": "`#bfdbfe`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-300",
+      "description": {
+        "kind": "markdown",
+        "value": "`#93c5fd`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-400",
+      "description": {
+        "kind": "markdown",
+        "value": "`#60a5fa`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-500",
+      "description": {
+        "kind": "markdown",
+        "value": "`#3b82f6`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-600",
+      "description": {
+        "kind": "markdown",
+        "value": "`#2563eb`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-700",
+      "description": {
+        "kind": "markdown",
+        "value": "`#1d4ed8`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-800",
+      "description": {
+        "kind": "markdown",
+        "value": "`#1e40af`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-accent-900",
+      "description": {
+        "kind": "markdown",
+        "value": "`#1e3a8a`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-danger-500",
+      "description": {
+        "kind": "markdown",
+        "value": "`#ef4444`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-danger-600",
+      "description": {
+        "kind": "markdown",
+        "value": "`#dc2626`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-danger-700",
+      "description": {
+        "kind": "markdown",
+        "value": "`#b91c1c`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-success-500",
+      "description": {
+        "kind": "markdown",
+        "value": "`#10b981`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-success-600",
+      "description": {
+        "kind": "markdown",
+        "value": "`#059669`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-success-700",
+      "description": {
+        "kind": "markdown",
+        "value": "`#047857`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-warning-500",
+      "description": {
+        "kind": "markdown",
+        "value": "`#f59e0b`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-warning-600",
+      "description": {
+        "kind": "markdown",
+        "value": "`#d97706`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-warning-700",
+      "description": {
+        "kind": "markdown",
+        "value": "`#b45309`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-bg",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-0)` (dark: `var(--re-color-neutral-950)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-bg-subtle",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-50)` (dark: `var(--re-color-neutral-900)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-bg-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-100)` (dark: `var(--re-color-neutral-800)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-surface",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-0)` (dark: `var(--re-color-neutral-900)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-overlay",
+      "description": {
+        "kind": "markdown",
+        "value": "`rgb(0 0 0 / 0.4)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-text",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-900)` (dark: `var(--re-color-neutral-50)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-text-muted",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-600)` (dark: `var(--re-color-neutral-300)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-text-subtle",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-500)` (dark: `var(--re-color-neutral-400)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-text-on-accent",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-0)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-border",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-200)` (dark: `var(--re-color-neutral-700)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-border-strong",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-300)` (dark: `var(--re-color-neutral-600)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-link",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-700)` (dark: `var(--re-color-accent-300)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-link-hover",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-800)` (dark: `var(--re-color-accent-200)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-link-visited",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-800)` (dark: `var(--re-color-accent-200)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-focus-ring",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-500)` (dark: `var(--re-color-accent-400)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-selection-bg",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-100)` (dark: `var(--re-color-accent-900)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-selection-text",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-neutral-900)` (dark: `var(--re-color-neutral-50)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-info-surface",
+      "description": {
+        "kind": "markdown",
+        "value": "`color-mix( in oklab, var(--re-color-accent-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-accent-500) 20%, var(--re-color-bg) )`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-info-border",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-500)` (dark: `var(--re-color-accent-400)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-info-text",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-accent-700)` (dark: `var(--re-color-accent-200)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-success-surface",
+      "description": {
+        "kind": "markdown",
+        "value": "`color-mix( in oklab, var(--re-color-success-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-success-500) 20%, var(--re-color-bg) )`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-success-border",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-success-500)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-success-text",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-success-700)` (dark: `var(--re-color-success-500)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-warning-surface",
+      "description": {
+        "kind": "markdown",
+        "value": "`color-mix( in oklab, var(--re-color-warning-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-warning-500) 20%, var(--re-color-bg) )`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-warning-border",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-warning-500)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-warning-text",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-warning-700)` (dark: `var(--re-color-warning-500)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-danger-surface",
+      "description": {
+        "kind": "markdown",
+        "value": "`color-mix( in oklab, var(--re-color-danger-500) 12%, var(--re-color-bg) )` (dark: `color-mix( in oklab, var(--re-color-danger-500) 20%, var(--re-color-bg) )`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-danger-border",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-danger-500)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-color-danger-text",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-danger-700)` (dark: `var(--re-color-danger-500)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-font-sans",
+      "description": {
+        "kind": "markdown",
+        "value": "`system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-font-mono",
+      "description": {
+        "kind": "markdown",
+        "value": "`ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-xs",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.75rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-sm",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.875rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-md",
+      "description": {
+        "kind": "markdown",
+        "value": "`1rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-lg",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.125rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-xl",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.25rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-2xl",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.5rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-3xl",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.875rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-size-text-4xl",
+      "description": {
+        "kind": "markdown",
+        "value": "`2.25rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-line-height-tight",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.2`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-line-height-snug",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.35`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-line-height-normal",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.5`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-line-height-relaxed",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.65`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-font-weight-regular",
+      "description": {
+        "kind": "markdown",
+        "value": "`400`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-font-weight-medium",
+      "description": {
+        "kind": "markdown",
+        "value": "`500`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-font-weight-semibold",
+      "description": {
+        "kind": "markdown",
+        "value": "`600`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-font-weight-bold",
+      "description": {
+        "kind": "markdown",
+        "value": "`700`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-0",
+      "description": {
+        "kind": "markdown",
+        "value": "`0`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-1",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.25rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-2",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.5rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-3",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.75rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-4",
+      "description": {
+        "kind": "markdown",
+        "value": "`1rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-5",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.25rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-6",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.5rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-8",
+      "description": {
+        "kind": "markdown",
+        "value": "`2rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-10",
+      "description": {
+        "kind": "markdown",
+        "value": "`2.5rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-12",
+      "description": {
+        "kind": "markdown",
+        "value": "`3rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-space-16",
+      "description": {
+        "kind": "markdown",
+        "value": "`4rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-radius-none",
+      "description": {
+        "kind": "markdown",
+        "value": "`0`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-radius-sm",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.25rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-radius-md",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.375rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-radius-lg",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.5rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-radius-xl",
+      "description": {
+        "kind": "markdown",
+        "value": "`0.75rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-radius-pill",
+      "description": {
+        "kind": "markdown",
+        "value": "`9999px`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-border-width",
+      "description": {
+        "kind": "markdown",
+        "value": "`1px`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-border-width-strong",
+      "description": {
+        "kind": "markdown",
+        "value": "`2px`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-border-default",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-border-width) solid var(--re-color-border)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-border-strong",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-border-width-strong) solid var(--re-color-border-strong)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-border-danger",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-border-width) solid var(--re-color-danger-border)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-focus-ring-width",
+      "description": {
+        "kind": "markdown",
+        "value": "`2px`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-focus-ring-offset",
+      "description": {
+        "kind": "markdown",
+        "value": "`2px` (dark: `0px`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-focus-ring-color",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-color-focus-ring)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-shadow-focus",
+      "description": {
+        "kind": "markdown",
+        "value": "`0 0 0 var(--re-focus-ring-offset) var(--re-color-bg), 0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width)) var(--re-color-focus-ring)` (dark: `0 0 0 2px var(--re-color-focus-ring)`)"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-shadow-sm",
+      "description": {
+        "kind": "markdown",
+        "value": "`0 1px 2px rgb(0 0 0 / 0.06)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-shadow-md",
+      "description": {
+        "kind": "markdown",
+        "value": "`0 4px 12px rgb(0 0 0 / 0.08)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-shadow-lg",
+      "description": {
+        "kind": "markdown",
+        "value": "`0 12px 32px rgb(0 0 0 / 0.12)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-duration-instant",
+      "description": {
+        "kind": "markdown",
+        "value": "`0ms`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-duration-fast",
+      "description": {
+        "kind": "markdown",
+        "value": "`120ms`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-duration-normal",
+      "description": {
+        "kind": "markdown",
+        "value": "`200ms`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-duration-slow",
+      "description": {
+        "kind": "markdown",
+        "value": "`320ms`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-easing-standard",
+      "description": {
+        "kind": "markdown",
+        "value": "`cubic-bezier(0.2, 0, 0, 1)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-easing-emphasized",
+      "description": {
+        "kind": "markdown",
+        "value": "`cubic-bezier(0.3, 0, 0, 1)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-z-base",
+      "description": {
+        "kind": "markdown",
+        "value": "`0`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-z-overlay",
+      "description": {
+        "kind": "markdown",
+        "value": "`100`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-z-popover",
+      "description": {
+        "kind": "markdown",
+        "value": "`200`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-z-dialog",
+      "description": {
+        "kind": "markdown",
+        "value": "`300`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-z-toast",
+      "description": {
+        "kind": "markdown",
+        "value": "`400`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-control-height-sm",
+      "description": {
+        "kind": "markdown",
+        "value": "`1.75rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-control-height-md",
+      "description": {
+        "kind": "markdown",
+        "value": "`2.25rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-control-height-lg",
+      "description": {
+        "kind": "markdown",
+        "value": "`2.75rem`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-control-padding-x",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-space-3)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    },
+    {
+      "name": "--re-control-padding-y",
+      "description": {
+        "kind": "markdown",
+        "value": "`var(--re-space-2)`"
+      },
+      "references": [
+        {
+          "name": "Token reference",
+          "url": "https://renascent-elements.github.io/relements/guides/tokens/"
+        }
+      ]
+    }
+  ]
+}
