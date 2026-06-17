@@ -1,20 +1,31 @@
 #!/usr/bin/env node
 /**
- * Generate the VS Code editor custom-data files that give consumers
- * IntelliSense for Relements:
+ * Generate the editor-IntelliSense metadata for Relements. Three files:
  *
- *   packages/core/html.custom-data.json — the four <re-*> custom-element tags
- *     plus the authored data-* attributes (styling hooks like data-variant /
- *     data-tone and the declarative data-re-* behavior hooks), with enumerated
- *     value sets where the CSS defines a finite set.
- *   packages/core/css.custom-data.json — every --re-* design token, so
- *     `var(--re-…)` autocompletes and hovers show the default (and dark) value.
+ *   packages/core/html.custom-data.json — VS Code / LSP: the <re-*> tags plus the
+ *     authored data-* attributes (styling hooks like data-variant / data-tone and
+ *     the declarative data-re-* behavior hooks), with value sets where finite.
+ *   packages/core/css.custom-data.json — VS Code / LSP: every --re-* design token,
+ *     so `var(--re-…)` autocompletes with the default (and dark) value on hover.
+ *   packages/core/web-types.json — JetBrains: the same elements/attributes/tokens.
  *
- * The *structure* (tag names, attribute names, value sets, token names/values)
- * is derived from source — tokens.css, the component CSS, and the behavior JS —
- * so it can't drift. Human-readable *descriptions* come from the small curated
- * maps below. Run: `node scripts/gen-editor-data.mjs`. The drift guard in
- * tests/unit/editor-data.spec.ts fails CI if the checked-in files are stale.
+ * ── How this stays maintained (important for AI-assisted edits) ──────────────
+ * The *structure* is DERIVED from source and never hand-listed:
+ *   • data-* attributes + their value sets ← the component CSS selectors
+ *   • data-re-* hooks                      ← the behavior JS
+ *   • --re-* tokens + values               ← tokens.css
+ * So adding a component / attribute / token shows up automatically — you only
+ * re-run the generator. The only HAND-CURATED part is the prose: the hover
+ * descriptions and the per-element list below. Missing prose degrades gracefully
+ * to a generic label (never wrong output); a missing *element* is caught.
+ *
+ * Two guards in tests/unit/editor-data.spec.ts keep it honest:
+ *   1. Drift — regenerates in-memory and fails CI if the committed files are
+ *      stale (so a forgotten `node scripts/gen-editor-data.mjs` can't merge).
+ *   2. Coverage — every src/elements/*.js must have an ELEMENTS entry here.
+ *
+ * To regenerate: `pnpm -F @relements/core gen:editor-data` (also run by
+ * prepublishOnly, so a publish can never ship stale data).
  */
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
@@ -31,34 +42,48 @@ const DOCS = "https://renascent-elements.github.io/relements";
 // autocomplete by name; this map only supplies the hover descriptions.
 // ---------------------------------------------------------------------------
 
-/** The four light-DOM custom elements. */
+/**
+ * The light-DOM custom elements. Each entry is curated prose plus the element's
+ * small JS surface (reflected `properties` + emitted `events`, used by web-types).
+ * The set of tags is NOT trusted blindly: the drift guard cross-checks it against
+ * src/elements/*.js, so adding an element file without an entry here (or vice
+ * versa) fails CI with an actionable message. `slug` defaults to `name`.
+ */
 const ELEMENTS = [
   {
     name: "re-tabs",
     description:
       'Self-managing wrapper around the tabs pattern (enhanceTabs). `element.value` reads/writes the selected tab id; emits `re-change`. Register with `import "@relements/core/elements/re-tabs"`.',
-    slug: "re-tabs",
     attributes: [{ name: "aria-label", description: "Accessible name for the tablist." }],
+    js: {
+      properties: [{ name: "value", type: "string", description: "The selected tab id." }],
+      events: [{ name: "re-change", description: "Fires when the selected tab changes." }],
+    },
   },
   {
     name: "re-menu",
     description:
       'Self-managing wrapper around the menu-button pattern (enhanceMenuButton). `element.open` reflects/controls the open state; emits `re-select`. Register with `import "@relements/core/elements/re-menu"`.',
-    slug: "re-menu",
     attributes: [],
+    js: {
+      properties: [{ name: "open", type: "boolean", description: "Whether the menu is open." }],
+      events: [{ name: "re-select", description: "Fires when a menu item is selected." }],
+    },
   },
   {
     name: "re-popover",
     description:
       'Self-managing wrapper around the native popover attribute (enhancePopover). Auto-adopts `popover="auto"`; `.show()`/`.hide()`/`.toggle()` map to the native API; emits `re-toggle`. Register with `import "@relements/core/elements/re-popover"`.',
-    slug: "re-popover",
     attributes: [],
+    js: {
+      properties: [],
+      events: [{ name: "re-toggle", description: "Fires when the popover opens or closes." }],
+    },
   },
   {
     name: "re-toast",
     description:
       'Self-managing toast region in light DOM. `.show(message, options)` matches showToast() and returns the same controller. Register with `import "@relements/core/elements/re-toast"`.',
-    slug: "re-toast",
     attributes: [
       {
         name: "data-live",
@@ -66,25 +91,9 @@ const ELEMENTS = [
         values: ["polite", "assertive"],
       },
     ],
+    js: { properties: [], events: [] },
   },
 ];
-
-/** Per-element JS surface (reflected properties + emitted events) for web-types. */
-const ELEMENT_JS = {
-  "re-tabs": {
-    properties: [{ name: "value", type: "string", description: "The selected tab id." }],
-    events: [{ name: "re-change", description: "Fires when the selected tab changes." }],
-  },
-  "re-menu": {
-    properties: [{ name: "open", type: "boolean", description: "Whether the menu is open." }],
-    events: [{ name: "re-select", description: "Fires when a menu item is selected." }],
-  },
-  "re-popover": {
-    properties: [],
-    events: [{ name: "re-toggle", description: "Fires when the popover opens or closes." }],
-  },
-  "re-toast": { properties: [], events: [] },
-};
 
 /** Descriptions for the styling data-* attributes (values are derived from CSS). */
 const STYLING_ATTR_DESC = {
@@ -221,7 +230,7 @@ const tags = ELEMENTS.map((el) => ({
     ...(a.description ? { description: a.description } : {}),
     ...(a.values ? { values: a.values.map((v) => ({ name: v })) } : {}),
   })),
-  references: [{ name: "Documentation", url: `${DOCS}/custom-elements/${el.slug}/` }],
+  references: [{ name: "Documentation", url: `${DOCS}/custom-elements/${el.name}/` }],
 }));
 
 // VS Code custom-data has no per-tag scoping for non-element attributes, so every
@@ -322,11 +331,11 @@ const webTypes = {
   contributions: {
     html: {
       elements: ELEMENTS.map((el) => {
-        const js = ELEMENT_JS[el.name];
+        const js = el.js;
         return {
           name: el.name,
           description: el.description,
-          "doc-url": `${DOCS}/custom-elements/${el.slug}/`,
+          "doc-url": `${DOCS}/custom-elements/${el.name}/`,
           ...(el.attributes.length
             ? {
                 attributes: el.attributes.map((a) => ({
@@ -363,8 +372,10 @@ const webTypes = {
   },
 };
 
-// Exported for the drift guard (tests/unit/editor-data.spec.ts).
-export { htmlData, cssData, webTypes };
+// Exported for the drift guard (tests/unit/editor-data.spec.ts). `elementTags` lets
+// the guard cross-check the curated element list against the actual src/elements/*.js.
+const elementTags = ELEMENTS.map((el) => el.name);
+export { htmlData, cssData, webTypes, elementTags };
 
 // ---------------------------------------------------------------------------
 // Write (only when run directly, not when imported by the drift guard).

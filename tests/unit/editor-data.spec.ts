@@ -1,8 +1,8 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 // @ts-expect-error — plain ESM script, no type declarations.
-import { htmlData, cssData, webTypes } from "../../scripts/gen-editor-data.mjs";
+import { htmlData, cssData, webTypes, elementTags } from "../../scripts/gen-editor-data.mjs";
 import pkg from "../../packages/core/package.json" with { type: "json" };
 
 const core = join(__dirname, "..", "..", "packages/core");
@@ -24,7 +24,20 @@ describe("editor custom-data", () => {
     expect(strip(read("web-types.json"))).toEqual(strip(webTypes));
   });
 
-  it("covers the four custom-element tags and the core styling attributes", () => {
+  it("curates every shipped custom element (no element silently missing from IntelliSense)", () => {
+    // Source of truth = the actual element modules. If they drift from the curated
+    // ELEMENTS list, the message says exactly which file needs an entry.
+    const shipped = readdirSync(join(core, "src/elements"))
+      .filter((f) => f.endsWith(".js"))
+      .map((f) => f.replace(/\.js$/, ""))
+      .sort();
+    expect(
+      [...elementTags].sort(),
+      "add/remove the element in ELEMENTS in scripts/gen-editor-data.mjs to match src/elements/*.js",
+    ).toEqual(shipped);
+  });
+
+  it("covers the curated custom-element tags and the core styling attributes", () => {
     const tagNames = htmlData.tags.map((t: { name: string }) => t.name);
     expect(tagNames).toEqual(["re-tabs", "re-menu", "re-popover", "re-toast"]);
 
