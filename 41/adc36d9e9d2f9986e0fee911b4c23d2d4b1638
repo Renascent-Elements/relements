@@ -1,0 +1,28 @@
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_81e9ac5649097b 375-378
+  s_2732c4df70b865::t_f7de80dd6e33a0 233
+  s_2732c4df70b865::t_b8c66d5b74152c 3,5-10,12-28
+  s_2732c4df70b865::t_eac910bffba8cd 45-51,58-61,68-71,78-81,94
+  s_2732c4df70b865::t_b911d605964d11 334,338
+tests/unit/editor-data.spec.ts
+  s_2732c4df70b865::t_b1806294595b1f 27-40
+  s_2732c4df70b865::t_57d3906b569251 1,5
+CLAUDE.md
+  s_2732c4df70b865::t_834bd744007395 66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "41adc36d9e9d2f9986e0fee911b4c23d2d4b1638",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
