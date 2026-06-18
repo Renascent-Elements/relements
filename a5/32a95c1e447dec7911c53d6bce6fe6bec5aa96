@@ -1,0 +1,42 @@
+docs/public/src/content/docs/frameworks/angular.md
+  s_2732c4df70b865::t_337c83859f71de 215-219
+docs/public/src/content/docs/frameworks/index.md
+  s_2732c4df70b865::t_b7b2d92f0673ed 85-89
+.npmrc
+  s_2732c4df70b865::t_9407f6dfea0ec5 1-4
+docs/examples/frameworks/svelte/package.json
+  s_2732c4df70b865::t_9407f6dfea0ec5 11
+docs/public/src/content/docs/frameworks/react.md
+  s_2732c4df70b865::t_2c446de6c1c66a 266-270
+docs/public/src/content/docs/frameworks/svelte.md
+  s_2732c4df70b865::t_c46d078abc114a 225-229
+docs/public/src/content/docs/frameworks/vue.md
+  s_2732c4df70b865::t_9bab23f42d2f6d 201-205
+docs/examples/frameworks/vue/package.json
+  s_2732c4df70b865::t_9407f6dfea0ec5 11
+docs/examples/frameworks/angular/package.json
+  s_2732c4df70b865::t_9407f6dfea0ec5 10
+docs/examples/frameworks/README.md
+  s_2732c4df70b865::t_273ce48f5caf48 25-30
+  s_2732c4df70b865::t_8ae8e48725fe58 20-24,31-37
+pnpm-lock.yaml
+  s_2732c4df70b865::t_1421edb3a42419 75,103,122,138
+docs/examples/frameworks/react/package.json
+  s_2732c4df70b865::t_9407f6dfea0ec5 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "a532a95c1e447dec7911c53d6bce6fe6bec5aa96",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
