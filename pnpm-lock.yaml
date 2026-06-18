@@ -72,7 +72,7 @@ importers:
         specifier: ^19.0.0
         version: 19.2.24(@angular/common@19.2.24(@angular/core@19.2.24(rxjs@7.8.2)(zone.js@0.15.1))(rxjs@7.8.2))(@angular/core@19.2.24(rxjs@7.8.2)(zone.js@0.15.1))
       '@relements/core':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../../../packages/core
       rxjs:
         specifier: ^7.8.0
@@ -100,7 +100,7 @@ importers:
   docs/examples/frameworks/react:
     dependencies:
       '@relements/core':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../../../packages/core
       react:
         specifier: ^19.0.0
@@ -119,7 +119,7 @@ importers:
   docs/examples/frameworks/svelte:
     dependencies:
       '@relements/core':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../../../packages/core
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
@@ -135,7 +135,7 @@ importers:
   docs/examples/frameworks/vue:
     dependencies:
       '@relements/core':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../../../packages/core
       vue:
         specifier: ^3.5.13

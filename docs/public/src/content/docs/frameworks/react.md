@@ -263,6 +263,11 @@ plain native `input`/`change`.
 
 ## Runnable example
 
+**Try it now, no install** — open it in a live editor:
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react?file=src%2FApp.jsx)
+[![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react)
+
 The full flow above — a `.re-button`, an `enhanceTabs()` region wired through
 `useEnhance`, and a `<re-tabs>` custom element whose `re-change` event drives an
 `<output>`, plus a "Toggle tabs" button that mounts/unmounts the subtree to

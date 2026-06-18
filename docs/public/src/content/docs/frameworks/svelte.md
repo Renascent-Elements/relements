@@ -222,6 +222,11 @@ comment above each panel if you want a clean build.
 
 ## Runnable example
 
+**Try it now, no install** — open it in a live editor:
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/svelte?file=src%2FApp.svelte)
+[![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/svelte)
+
 A complete, runnable app — `.re-button`, a tabs region enhanced on mount, and a
 `<re-tabs>` custom element whose `re-change` drives an `<output>`, plus a toggle
 that demonstrates teardown — lives in `docs/examples/frameworks/svelte/`, or on

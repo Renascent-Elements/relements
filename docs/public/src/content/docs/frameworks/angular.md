@@ -212,6 +212,11 @@ above and bind the control as usual.
 
 ## Runnable example
 
+**Try it now, no install** — open it in a live editor:
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular?file=src%2Fapp%2Fapp.component.ts)
+[![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular)
+
 See the full working app — the `[reEnhance]` lifecycle, a `<re-tabs>` element
 driving an `<output>` via `re-change`, and the "Toggle tabs" button proving
 `destroy()` runs on unmount — in `docs/examples/frameworks/angular/`, or on

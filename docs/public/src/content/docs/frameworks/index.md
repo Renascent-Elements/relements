@@ -82,6 +82,11 @@ above:
 - [Svelte](/relements/frameworks/svelte/)
 - [Angular](/relements/frameworks/angular/)
 
+**Open any example live, no install** — in
+[StackBlitz](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react?file=src%2FApp.jsx)
+or [CodeSandbox](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react)
+(each framework page has its own one-click buttons).
+
 Not using a framework? The same markup is the baseline everywhere — see
 [plain HTML usage](/relements/guides/html-first/), where `<re-*>` elements work
 as-is and you listen with `addEventListener("re-change", …)`.

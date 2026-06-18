@@ -17,6 +17,24 @@ across all five. Only the framework glue differs.
 Browse all five side by side: open [`_index.html`](./_index.html) (after
 `pnpm build:examples`).
 
+## Try online (no install)
+
+Each app opens in a live editor straight from this repo — the matching framework
+doc page (`docs/public/.../frameworks/<fw>.md`) carries the one-click buttons:
+
+| App     | StackBlitz                                                                                              | CodeSandbox                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| react   | <https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react>   | <https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react>   |
+| vue     | <https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue>     | <https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue>     |
+| svelte  | <https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/svelte>  | <https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/svelte>  |
+| angular | <https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular> | <https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular> |
+
+These work because each app declares `"@relements/core": "*"` — so opened standalone
+(no monorepo), the editor installs the **published** package from npm. Inside this
+repo, the root `.npmrc` sets `link-workspace-packages=true`, so the same `"*"` instead
+**links the local `packages/core`** — local dev, CI, and the e2e tests all exercise the
+in-repo source, not the published build.
+
 ## Run a single app
 
 ```bash
