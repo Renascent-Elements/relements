@@ -198,6 +198,11 @@ writes.
 
 ## Runnable example
 
+**Try it now, no install** — open it in a live editor:
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue?file=src%2FApp.vue)
+[![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue)
+
 See the runnable example in `docs/examples/frameworks/vue/`, or on
 [GitHub](https://github.com/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue).
 It wires `enhanceTabs` and `<re-tabs>` side by side, reads `event.detail.tabId`
