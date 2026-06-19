@@ -1,0 +1,27 @@
+tests/visual/button.visual.spec.ts
+  s_2732c4df70b865::t_9ed5796ddfcf86 28-41
+tests/visual/disclosure.visual.spec.ts
+  s_2732c4df70b865::t_642026058b9909 13-26
+tests/visual/tabs.visual.spec.ts
+  s_2732c4df70b865::t_97cfb1fb3be45f 29-41
+tests/visual/dialog.visual.spec.ts
+  s_2732c4df70b865::t_f49edac71403c8 32-46
+tests/visual/pagination.visual.spec.ts
+  s_2732c4df70b865::t_22902b93123f3c 18-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "0547d155aa9a2253dbe2fb6550abd8a20a015813",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
