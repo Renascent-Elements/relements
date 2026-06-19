@@ -1,0 +1,30 @@
+---
+title: File input
+description: The native <input type="file"> styled in place, with no JavaScript.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+The native `<input type="file">`, styled in place — no wrapper and no JavaScript.
+Add `.re-file` and the browser's own "Choose file" button is restyled via
+`::file-selector-button`, while the filename text the browser renders after it
+stays native (and accessible).
+
+## Basic
+
+<Demo src="file.html" name="basic" />
+
+## Sizes
+
+<Demo src="file.html" name="sizes" />
+
+## States
+
+<Demo src="file.html" name="states" />
+
+## Accessibility
+
+- **Keyboard** — fully native. <kbd>Tab</kbd> moves focus to the control; <kbd>Space</kbd> / <kbd>Enter</kbd> opens the OS file picker. There is no custom keyboard layer.
+- **Focus** — a visible `:focus-visible` ring (`--re-shadow-focus`, replacing the default outline) frames the whole control, drawn on the field rather than the inner button so it isn't clipped.
+- **Semantics** — it remains a real `<input type="file">`, so the file picker, `multiple`, `accept`, the selected-files list, and form submission are all native. Give it a name with a wrapping `<label class="re-field">` (or `aria-label`); the **filename text** ("No file chosen" / "report.pdf") is rendered by the browser, so it reaches assistive tech without any extra markup. Invalid state uses `aria-invalid="true"` (or `:user-invalid`), matching the other inputs.
+- **Notes** — only the `::file-selector-button` and the field's border/focus are styled; the button is a neutral fill (`--re-color-bg-muted`, which stays distinct from the field surface in dark mode) with a solid border so it remains a recognizable button under `@media (forced-colors: active)`, where the fill flattens to a system color. `:disabled` dims the control, shows a `not-allowed` cursor, and is removed from the tab order natively. See the [accessibility guide](/relements/guides/accessibility/).

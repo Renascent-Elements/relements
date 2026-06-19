@@ -62,3 +62,5 @@
 @import "./components/command-palette.css";
 @import "./components/steps.css";
 @import "./components/banner.css";
+@import "./components/file.css";
+@import "./components/color.css";

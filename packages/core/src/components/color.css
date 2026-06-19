@@ -1,0 +1,67 @@
+/**
+ * Relements color input.
+ *
+ * Styles the native `<input type="color">` swatch — no JavaScript. The browser's
+ * native colour picker opens on click and owns the value; we only restyle the
+ * swatch chrome (border, radius) via the vendor swatch pseudo-elements and give
+ * the control a square footprint sized from the control-height scale.
+ *
+ *   <input type="color" class="re-color" value="#2563eb" />
+ *   <input type="color" class="re-color" data-size="lg" />
+ *
+ * Sizes via data-size: sm, md (default), lg.
+ */
+
+@layer re.components {
+  .re-color {
+    inline-size: var(--re-control-height-md);
+    block-size: var(--re-control-height-md);
+    padding: var(--re-space-1);
+
+    background-color: var(--re-color-bg);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    cursor: pointer;
+
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  /* Strip the native swatch chrome so only our border frames the colour. */
+  .re-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  .re-color::-webkit-color-swatch {
+    border: 0;
+    border-radius: var(--re-radius-sm);
+  }
+  .re-color::-moz-color-swatch {
+    border: 0;
+    border-radius: var(--re-radius-sm);
+  }
+
+  .re-color:hover:not(:disabled) {
+    border-color: var(--re-color-border-strong);
+  }
+  .re-color:focus-visible {
+    outline: none;
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-color:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  /* Sizes — square footprint from the control-height scale. */
+  .re-color[data-size="sm"] {
+    inline-size: var(--re-control-height-sm);
+    block-size: var(--re-control-height-sm);
+  }
+  .re-color[data-size="lg"] {
+    inline-size: var(--re-control-height-lg);
+    block-size: var(--re-control-height-lg);
+  }
+}

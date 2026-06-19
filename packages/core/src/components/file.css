@@ -1,0 +1,98 @@
+/**
+ * Relements file input.
+ *
+ * Styles the NATIVE `<input type="file">` in place — no wrapper, no JavaScript.
+ * The browser still renders the filename ("No file chosen" / "report.pdf")
+ * after the button, so the accessible name and selection state stay native; we
+ * only restyle the `::file-selector-button` (as a neutral filled button) and
+ * the control's border + focus ring.
+ *
+ *   <input type="file" class="re-file" />
+ *   <input type="file" class="re-file" multiple data-size="sm" />
+ *
+ * Sizes via data-size: sm, md (default), lg. Invalid via [aria-invalid="true"]
+ * (or :user-invalid once the user interacts with a required control).
+ */
+
+@layer re.components {
+  .re-file {
+    display: block;
+    inline-size: 100%;
+    box-sizing: border-box;
+    min-block-size: var(--re-control-height-md);
+    padding-inline: var(--re-control-padding-x);
+    padding-block: var(--re-control-padding-y);
+
+    font: inherit;
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    cursor: pointer;
+
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  /* The "Choose file" button — a neutral filled button. A solid border keeps it
+     delineated under forced colors, where bg-muted flattens to a system color.
+     bg-muted (NOT bg-subtle) so it stays distinct from the field surface in
+     dark mode. */
+  .re-file::file-selector-button {
+    margin-inline-end: var(--re-space-3);
+    padding: var(--re-space-1) var(--re-space-3);
+    font: inherit;
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg-muted);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-file:hover:not(:disabled)::file-selector-button {
+    background-color: color-mix(in oklab, var(--re-color-bg-muted), var(--re-color-text) 10%);
+  }
+
+  .re-file:hover:not(:disabled) {
+    border-color: var(--re-color-border-strong);
+  }
+  .re-file:focus-visible {
+    outline: none;
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  .re-file[aria-invalid="true"],
+  .re-file:user-invalid {
+    border-color: var(--re-color-danger-border);
+  }
+
+  .re-file:disabled {
+    cursor: not-allowed;
+    background-color: var(--re-color-bg-muted);
+    color: var(--re-color-text-subtle);
+    opacity: 0.7;
+  }
+  .re-file:disabled::file-selector-button {
+    cursor: not-allowed;
+  }
+
+  /* Sizes */
+  .re-file[data-size="sm"] {
+    min-block-size: var(--re-control-height-sm);
+    font-size: var(--re-size-text-sm);
+  }
+  .re-file[data-size="sm"]::file-selector-button {
+    font-size: var(--re-size-text-xs);
+  }
+  .re-file[data-size="lg"] {
+    min-block-size: var(--re-control-height-lg);
+    font-size: var(--re-size-text-lg);
+  }
+}

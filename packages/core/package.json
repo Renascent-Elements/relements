@@ -92,6 +92,8 @@
     "./components/tree.css": "./dist/components/tree.css",
     "./components/steps.css": "./dist/components/steps.css",
     "./components/banner.css": "./dist/components/banner.css",
+    "./components/file.css": "./dist/components/file.css",
+    "./components/color.css": "./dist/components/color.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
