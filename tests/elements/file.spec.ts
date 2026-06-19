@@ -28,4 +28,13 @@ test.describe("File input", () => {
       page.getByLabel(name).evaluate((el) => getComputedStyle(el).borderTopColor);
     expect(await border("Invalid file input")).not.toBe(await border("Medium file input"));
   });
+
+  test("invalid border survives hover", async ({ page }) => {
+    const el = page.getByLabel("Invalid file input");
+    const danger = await el.evaluate((n) => getComputedStyle(n).borderTopColor);
+    await el.hover();
+    // The :hover rule is more specific; the fix re-asserts the danger border, so
+    // it must stay danger (not settle on the neutral hover border).
+    await expect.poll(() => el.evaluate((n) => getComputedStyle(n).borderTopColor)).toBe(danger);
+  });
 });

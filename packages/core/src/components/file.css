@@ -72,6 +72,13 @@
   .re-file:user-invalid {
     border-color: var(--re-color-danger-border);
   }
+  /* The :hover rule above carries :not(:disabled), so it outranks the plain
+     invalid rule — re-assert the danger border on hover or an errored field
+     loses its red border when hovered. */
+  .re-file[aria-invalid="true"]:hover,
+  .re-file:user-invalid:hover {
+    border-color: var(--re-color-danger-border);
+  }
   /* Invalid + focused → danger ring, matching .re-input et al. */
   .re-file[aria-invalid="true"]:focus-visible,
   .re-file:user-invalid:focus-visible {
