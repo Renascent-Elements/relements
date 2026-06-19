@@ -268,6 +268,10 @@ plain native `input`/`change`.
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react?file=src%2FApp.jsx)
 [![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react)
 
+:::note[Stuck on "Cloning…"?]
+An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlitz's in-browser runtime. Open it in incognito, try another browser, or allowlist `stackblitz.com`.
+:::
+
 The full flow above — a `.re-button`, an `enhanceTabs()` region wired through
 `useEnhance`, and a `<re-tabs>` custom element whose `re-change` event drives an
 `<output>`, plus a "Toggle tabs" button that mounts/unmounts the subtree to

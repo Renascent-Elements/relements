@@ -203,6 +203,10 @@ writes.
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue?file=src%2FApp.vue)
 [![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue)
 
+:::note[Stuck on "Cloning…"?]
+An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlitz's in-browser runtime. Open it in incognito, try another browser, or allowlist `stackblitz.com`.
+:::
+
 See the runnable example in `docs/examples/frameworks/vue/`, or on
 [GitHub](https://github.com/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue).
 It wires `enhanceTabs` and `<re-tabs>` side by side, reads `event.detail.tabId`
