@@ -1,0 +1,47 @@
+packages/core/package.json
+  s_2732c4df70b865::t_a4a57249b3698d 95-96
+docs/public/src/content/docs/components/color.mdx
+  s_2732c4df70b865::t_ae514a9ce3007c 1-29
+tests/a11y/file.a11y.spec.ts
+  s_2732c4df70b865::t_1e394fae9a3e41 1-10
+packages/core/README.md
+  s_2732c4df70b865::t_260d6fb14e3e7f 68-86,88
+  s_2732c4df70b865::t_caf4f7333ddc80 87
+tests/visual/color.visual.spec.ts
+  s_2732c4df70b865::t_0189ae1b7f4d3f 1-22
+.changeset/file-color-inputs.md
+  s_2732c4df70b865::t_c6aec9abd1d6a6 1-10
+packages/core/src/components/file.css
+  s_2732c4df70b865::t_77b0f98d987c1d 1-98
+packages/core/src/index.css
+  s_2732c4df70b865::t_ba7ac5d9e3d23f 65-66
+docs/public/src/content/docs/components/file.mdx
+  s_2732c4df70b865::t_b56d885f85bbef 1-30
+docs/examples/file.html
+  s_2732c4df70b865::t_62aca16972933f 1-68
+docs/examples/color.html
+  s_2732c4df70b865::t_7d6e4b04161f69 60
+  s_2732c4df70b865::t_f0130b242db671 1-59,61-65
+tests/a11y/color.a11y.spec.ts
+  s_2732c4df70b865::t_455852e7b8d56e 1-10
+tests/visual/file.visual.spec.ts
+  s_2732c4df70b865::t_54dd250dade5fb 1-22
+packages/core/src/components/color.css
+  s_2732c4df70b865::t_8d71b1554e3158 1-67
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "6d0daa0cadef8bd4b86b87d48097fc53a4647dfc",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
