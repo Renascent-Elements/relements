@@ -31,7 +31,9 @@ test.describe("Color input", () => {
     const el = page.getByLabel("Brand colour");
     const before = await el.evaluate((n) => getComputedStyle(n).borderTopColor);
     await el.evaluate((n) => n.setAttribute("aria-invalid", "true"));
-    const after = await el.evaluate((n) => getComputedStyle(n).borderTopColor);
-    expect(after).not.toBe(before);
+    // border-color transitions, so poll until it settles off the start value.
+    await expect
+      .poll(() => el.evaluate((n) => getComputedStyle(n).borderTopColor))
+      .not.toBe(before);
   });
 });

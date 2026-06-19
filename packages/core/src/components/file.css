@@ -91,16 +91,23 @@
     cursor: not-allowed;
   }
 
-  /* Sizes */
+  /* Sizes — scale the BUTTON, not just the font: a file control's height is
+     driven by its button content, so min-block-size alone (below that content
+     height) leaves md and lg identical. */
   .re-file[data-size="sm"] {
     min-block-size: var(--re-control-height-sm);
     font-size: var(--re-size-text-sm);
   }
   .re-file[data-size="sm"]::file-selector-button {
+    padding-block: 0;
     font-size: var(--re-size-text-xs);
   }
   .re-file[data-size="lg"] {
     min-block-size: var(--re-control-height-lg);
     font-size: var(--re-size-text-lg);
+  }
+  .re-file[data-size="lg"]::file-selector-button {
+    padding-block: var(--re-space-2);
+    font-size: var(--re-size-text-md);
   }
 }
