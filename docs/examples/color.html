@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Color input</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: var(--re-space-3);
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body data-page="color">
+    <header>
+      <h1>Color input</h1>
+      <p>The native <code>&lt;input type="color"&gt;</code> swatch, restyled — no JavaScript.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="row">
+        <input type="color" class="re-color" value="#2563eb" aria-label="Accent colour" />
+        <input type="color" class="re-color" value="#16a34a" aria-label="Success colour" />
+        <input type="color" class="re-color" value="#dc2626" aria-label="Danger colour" />
+        <input type="color" class="re-color" value="#0f172a" aria-label="Text colour" />
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="field-heading" data-testid="field">
+      <h2 id="field-heading">With a label</h2>
+      <!-- demo:start name="field" -->
+      <label class="re-field">
+        <span class="re-field__label">Brand colour</span>
+        <input type="color" class="re-color" value="#7c3aed" name="brand" />
+      </label>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <div class="row">
+        <input type="color" class="re-color" data-size="sm" value="#2563eb" aria-label="Small" />
+        <input type="color" class="re-color" value="#2563eb" aria-label="Medium" />
+        <input type="color" class="re-color" data-size="lg" value="#2563eb" aria-label="Large" />
+        <input type="color" class="re-color" value="#94a3b8" aria-label="Disabled" disabled />
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

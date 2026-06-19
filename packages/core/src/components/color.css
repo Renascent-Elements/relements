@@ -1,0 +1,83 @@
+/**
+ * Relements color input.
+ *
+ * Styles the native `<input type="color">` swatch — no JavaScript. The browser's
+ * native colour picker opens on click and owns the value; we only restyle the
+ * swatch chrome (border, radius) via the vendor swatch pseudo-elements and give
+ * the control a square footprint sized from the control-height scale.
+ *
+ *   <input type="color" class="re-color" value="#2563eb" />
+ *   <input type="color" class="re-color" data-size="lg" />
+ *
+ * Sizes via data-size: sm, md (default), lg.
+ */
+
+@layer re.components {
+  .re-color {
+    inline-size: var(--re-control-height-md);
+    block-size: var(--re-control-height-md);
+    /* Keep the padding: it insets the swatch (radius-sm) inside the frame
+       (radius-md), so the swatch corners never reach the outer radius —
+       WebKit renders the color input with overflow:visible and would otherwise
+       show square swatch corners poking past a rounded frame. */
+    padding: var(--re-space-1);
+
+    background-color: var(--re-color-bg);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    cursor: pointer;
+
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  /* Strip the native swatch chrome so only our border frames the colour. */
+  .re-color::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  .re-color::-webkit-color-swatch {
+    border: 0;
+    border-radius: var(--re-radius-sm);
+  }
+  .re-color::-moz-color-swatch {
+    border: 0;
+    border-radius: var(--re-radius-sm);
+  }
+
+  .re-color:hover:not(:disabled) {
+    border-color: var(--re-color-border-strong);
+  }
+  .re-color:focus-visible {
+    outline: none;
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* A colour input is always a valid hex and can't be required-empty, so there's
+     no :user-invalid — but honor an explicit aria-invalid for form parity. */
+  .re-color[aria-invalid="true"] {
+    border-color: var(--re-color-danger-border);
+  }
+  .re-color[aria-invalid="true"]:focus-visible {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
+  }
+
+  .re-color:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  /* Sizes — square footprint from the control-height scale. */
+  .re-color[data-size="sm"] {
+    inline-size: var(--re-control-height-sm);
+    block-size: var(--re-control-height-sm);
+  }
+  .re-color[data-size="lg"] {
+    inline-size: var(--re-control-height-lg);
+    block-size: var(--re-control-height-lg);
+  }
+}

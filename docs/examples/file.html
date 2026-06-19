@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · File input</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-4);
+        max-width: 28rem;
+      }
+    </style>
+  </head>
+  <body data-page="file">
+    <header>
+      <h1>File input</h1>
+      <p>The native <code>&lt;input type="file"&gt;</code>, styled in place — no JavaScript.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="stack">
+        <label class="re-field">
+          <span class="re-field__label">Resume</span>
+          <input type="file" class="re-file" name="resume" />
+        </label>
+        <label class="re-field">
+          <span class="re-field__label">Attachments</span>
+          <input type="file" class="re-file" name="attachments" multiple />
+          <span class="re-field__hint">You can select more than one file.</span>
+        </label>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <div class="stack">
+        <input type="file" class="re-file" data-size="sm" aria-label="Small file input" />
+        <input type="file" class="re-file" aria-label="Medium file input" />
+        <input type="file" class="re-file" data-size="lg" aria-label="Large file input" />
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <!-- demo:start name="states" -->
+      <div class="stack">
+        <input type="file" class="re-file" aria-label="Invalid file input" aria-invalid="true" />
+        <input type="file" class="re-file" aria-label="Disabled file input" disabled />
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
