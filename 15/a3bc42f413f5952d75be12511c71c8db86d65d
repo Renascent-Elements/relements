@@ -1,0 +1,36 @@
+packages/core/src/components/progress.css
+  s_2732c4df70b865::t_5d24c7a15e5070 112-135
+packages/core/src/components/card.css
+  s_2732c4df70b865::t_fbb70f0ef5159e 47-49
+.changeset/dark-mode-bg-subtle-conformance.md
+  s_2732c4df70b865::t_75b904c81b49f3 1-9
+packages/core/src/components/dialog.css
+  s_2732c4df70b865::t_e5c457d6c6b249 114-116
+  s_2732c4df70b865::t_034feeacf4f919 91-93
+packages/core/src/components/pagination.css
+  s_2732c4df70b865::t_b86a88fda175a1 34-36
+packages/core/src/components/button.css
+  s_2732c4df70b865::t_5a39561106a7fe 94-97,99,102,111,114
+packages/core/src/components/disclosure.css
+  s_2732c4df70b865::t_3f1b9a0b20de84 59-61
+packages/core/src/components/tabs.css
+  s_2732c4df70b865::t_33174fca493332 53-55
+packages/core/src/components/table.css
+  s_2732c4df70b865::t_5858b733b8edea 37-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "15a3bc42f413f5952d75be12511c71c8db86d65d",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
