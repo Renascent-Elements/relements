@@ -87,6 +87,10 @@ above:
 or [CodeSandbox](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react)
 (each framework page has its own one-click buttons).
 
+:::note[Stuck on "Cloning…"?]
+An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlitz's in-browser runtime. Open it in incognito, try another browser, or allowlist `stackblitz.com`.
+:::
+
 Not using a framework? The same markup is the baseline everywhere — see
 [plain HTML usage](/relements/guides/html-first/), where `<re-*>` elements work
 as-is and you listen with `addEventListener("re-change", …)`.

@@ -217,6 +217,10 @@ above and bind the control as usual.
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular?file=src%2Fapp%2Fapp.component.ts)
 [![Edit in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular)
 
+:::note[Stuck on "Cloning…"?]
+An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlitz's in-browser runtime. Open it in incognito, try another browser, or allowlist `stackblitz.com`.
+:::
+
 See the full working app — the `[reEnhance]` lifecycle, a `<re-tabs>` element
 driving an `<output>` via `re-change`, and the "Toggle tabs" button proving
 `destroy()` runs on unmount — in `docs/examples/frameworks/angular/`, or on
