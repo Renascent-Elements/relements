@@ -10,3 +10,17 @@ for (const section of ["default", "plain"] as const) {
     });
   });
 }
+
+// Guards the bg-subtle dark-mode trap: the summary hover (shared by accordion)
+// must stay visible in dark (bg-subtle collapses to surface; bg-muted does not).
+test.describe("disclosure visual — dark hover", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("summary hover stays visible in dark", async ({ page }) => {
+    await page.goto("./disclosure.html");
+    const region = page.getByTestId("default");
+    await region.locator(".re-disclosure__summary").first().hover();
+    await expect(region).toHaveScreenshot("disclosure-default-hover-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

@@ -29,3 +29,18 @@ test.describe("dialog visual — dark", () => {
     });
   });
 });
+
+// Guards the bg-subtle dark-mode trap: the close-button hover (shared by drawer)
+// must stay visible in dark (bg-subtle collapses to surface; bg-muted does not).
+test.describe("dialog visual — dark hover", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("close-button hover stays visible in dark", async ({ page }) => {
+    await page.goto("./dialog.html");
+    await page.locator("#open-modal").click();
+    await expect(page.locator("#modal")).toBeVisible();
+    await page.locator("#modal .re-dialog__close").hover();
+    await expect(page.locator("#modal")).toHaveScreenshot("dialog-close-hover-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});

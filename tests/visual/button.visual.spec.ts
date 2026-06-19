@@ -25,3 +25,17 @@ test("button states visual snapshot", async ({ page }) => {
     maxDiffPixelRatio: 0.01,
   });
 });
+
+// Guards the bg-subtle dark-mode trap: a ghost button's hover fill must stay
+// visible in dark (bg-subtle collapses to surface; bg-muted does not).
+test.describe("button visual — dark hover", () => {
+  test.use({ colorScheme: "dark", viewport: { width: 1024, height: 800 } });
+  test("ghost button hover stays visible in dark", async ({ page }) => {
+    await page.goto("./button.html");
+    const variants = page.getByTestId("variants");
+    await variants.getByRole("button", { name: "Ghost" }).hover();
+    await expect(variants).toHaveScreenshot("button-variants-hover-dark.png", {
+      maxDiffPixelRatio: 0.01,
+    });
+  });
+});
