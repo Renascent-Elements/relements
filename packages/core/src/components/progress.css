@@ -109,4 +109,28 @@
   .re-meter[data-size="lg"] {
     block-size: 0.75rem;
   }
+
+  /* Forced colors (Windows High Contrast): the UA flattens our token-based
+     track and fill to the same system colour, so the completion level — the
+     whole point — disappears. Re-base the track on Canvas with a CanvasText
+     outline and paint the value/fill with Highlight so the level stays visible.
+     (Meter range hue — success/warning/danger — is colour-only and can't survive
+     forced colors; the fill LEVEL is the information that must remain.) */
+  @media (forced-colors: active) {
+    .re-progress,
+    .re-meter,
+    .re-progress::-webkit-progress-bar,
+    .re-meter::-webkit-meter-bar {
+      background-color: Canvas;
+      border: var(--re-border-width) solid CanvasText;
+    }
+    .re-progress::-webkit-progress-value,
+    .re-meter::-webkit-meter-optimum-value,
+    .re-meter::-webkit-meter-suboptimum-value,
+    .re-meter::-webkit-meter-even-less-good-value,
+    .re-progress::-moz-progress-bar,
+    .re-meter::-moz-meter-bar {
+      background-color: Highlight;
+    }
+  }
 }

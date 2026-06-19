@@ -91,11 +91,15 @@
     background-color: var(--re-color-bg);
     border-color: var(--re-color-border-strong);
   }
+  /* Hover uses bg-muted, NOT bg-subtle: bg-subtle collapses to surface in dark,
+     so a ghost/secondary button on a surface card would lose its hover feedback.
+     Active goes one step darker (mix toward text) so the press state stays
+     distinct from hover in both light and dark. */
   .re-button[data-variant="secondary"]:hover {
-    background-color: var(--re-color-bg-subtle);
+    background-color: var(--re-color-bg-muted);
   }
   .re-button[data-variant="secondary"]:active {
-    background-color: var(--re-color-bg-muted);
+    background-color: color-mix(in oklab, var(--re-color-bg-muted), var(--re-color-text) 10%);
   }
 
   .re-button[data-variant="ghost"] {
@@ -104,10 +108,10 @@
     border-color: transparent;
   }
   .re-button[data-variant="ghost"]:hover {
-    background-color: var(--re-color-bg-subtle);
+    background-color: var(--re-color-bg-muted);
   }
   .re-button[data-variant="ghost"]:active {
-    background-color: var(--re-color-bg-muted);
+    background-color: color-mix(in oklab, var(--re-color-bg-muted), var(--re-color-text) 10%);
   }
 
   .re-button[data-variant="danger"] {

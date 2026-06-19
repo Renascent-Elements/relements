@@ -34,7 +34,10 @@
   }
 
   .re-table[data-zebra] tbody tr:nth-child(even) {
-    background-color: var(--re-color-bg-subtle);
+    /* A faint currentColor-derived wash, NOT bg-subtle (which collapses to the
+       table surface in dark). It stays weaker than the bg-muted row hover below,
+       so a hovered zebra row still reads as hovered in both schemes. */
+    background-color: color-mix(in oklab, transparent, var(--re-color-text) 5%);
   }
 
   .re-table[data-hover] tbody tr:hover {

@@ -31,7 +31,9 @@
   }
 
   .re-pagination__item:hover {
-    background-color: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle collapses to surface in dark, which
+       would erase the hover feedback on a surface-backed pager. */
+    background-color: var(--re-color-bg-muted);
   }
 
   .re-pagination__item:focus-visible {
