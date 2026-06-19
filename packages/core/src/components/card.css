@@ -44,7 +44,9 @@
   .re-card__footer {
     padding: var(--re-space-3) var(--re-space-4);
     border-block-start: var(--re-border-default);
-    background-color: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle collapses to the card surface in dark,
+       so the footer band would vanish. */
+    background-color: var(--re-color-bg-muted);
   }
 
   /* ---- Interactive ----------------------------------------------------- */

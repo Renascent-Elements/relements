@@ -88,7 +88,9 @@
   }
 
   .re-dialog__close:hover {
-    background-color: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle equals the dialog/drawer surface in
+       dark, so the close-button hover would be invisible. */
+    background-color: var(--re-color-bg-muted);
     color: var(--re-color-text);
   }
 
@@ -109,6 +111,8 @@
     gap: var(--re-space-3);
     padding: var(--re-space-4);
     border-block-start: var(--re-border-default);
-    background-color: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: the raised footer band must stay distinct from
+       the dialog/drawer surface, which bg-subtle collapses into in dark. */
+    background-color: var(--re-color-bg-muted);
   }
 }

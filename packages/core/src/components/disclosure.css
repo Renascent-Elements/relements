@@ -56,7 +56,9 @@
   }
 
   .re-disclosure__summary:hover {
-    background-color: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle collapses to the disclosure surface in
+       dark, so the summary hover (shared by accordion) would be invisible. */
+    background-color: var(--re-color-bg-muted);
   }
 
   .re-disclosure__summary:focus-visible {

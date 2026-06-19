@@ -50,7 +50,9 @@
 
   .re-tab:hover {
     color: var(--re-color-text);
-    background-color: var(--re-color-bg-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle equals surface in dark, so a tab hover
+       on a surface-backed tablist would be invisible. */
+    background-color: var(--re-color-bg-muted);
   }
 
   .re-tab:focus-visible {
