@@ -16,6 +16,10 @@
   .re-color {
     inline-size: var(--re-control-height-md);
     block-size: var(--re-control-height-md);
+    /* Keep the padding: it insets the swatch (radius-sm) inside the frame
+       (radius-md), so the swatch corners never reach the outer radius —
+       WebKit renders the color input with overflow:visible and would otherwise
+       show square swatch corners poking past a rounded frame. */
     padding: var(--re-space-1);
 
     background-color: var(--re-color-bg);
@@ -48,6 +52,18 @@
     outline: none;
     border-color: var(--re-color-focus-ring);
     box-shadow: var(--re-shadow-focus);
+  }
+
+  /* A colour input is always a valid hex and can't be required-empty, so there's
+     no :user-invalid — but honor an explicit aria-invalid for form parity. */
+  .re-color[aria-invalid="true"] {
+    border-color: var(--re-color-danger-border);
+  }
+  .re-color[aria-invalid="true"]:focus-visible {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
   }
 
   .re-color:disabled {

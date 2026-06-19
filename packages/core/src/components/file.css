@@ -72,6 +72,14 @@
   .re-file:user-invalid {
     border-color: var(--re-color-danger-border);
   }
+  /* Invalid + focused → danger ring, matching .re-input et al. */
+  .re-file[aria-invalid="true"]:focus-visible,
+  .re-file:user-invalid:focus-visible {
+    box-shadow:
+      0 0 0 var(--re-focus-ring-offset) var(--re-color-bg),
+      0 0 0 calc(var(--re-focus-ring-offset) + var(--re-focus-ring-width))
+        var(--re-color-danger-500);
+  }
 
   .re-file:disabled {
     cursor: not-allowed;
