@@ -1,0 +1,22 @@
+tests/elements/color.spec.ts
+  s_2732c4df70b865::t_474186a75095c7 34
+  s_2732c4df70b865::t_f1a6e39d22e2f7 35-37
+packages/core/src/components/file.css
+  s_2732c4df70b865::t_d7a65ae4540c3c 94-96,102,109-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "1b5d10343f096cc985e2f3795f64cdbd3074fe1f",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
