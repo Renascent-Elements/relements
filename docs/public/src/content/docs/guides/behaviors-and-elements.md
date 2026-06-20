@@ -63,7 +63,7 @@ Genuinely imperative APIs have no declarative form. [`showToast`](/relements/com
 
 ## The behaviors
 
-All 18 behaviors are exported by name from `@relements/core` and from `@relements/core/behaviors/<name>`.
+All 19 behaviors are exported by name from `@relements/core` and from `@relements/core/behaviors/<name>`.
 
 ### Overlays & menus
 
@@ -77,6 +77,7 @@ All 18 behaviors are exported by name from `@relements/core` and from `@relement
 
 - **`enhanceTabs`** — the ARIA tabs pattern with automatic activation and Arrow/Home/End keys; emits `re-change` (`{ tabId, panelId }`). See [Tabs](/relements/components/tabs/).
 - **`enhanceToolbar`** — collapses a `role="toolbar"` to one Tab stop with Arrow-key roving; composes with a hosted menu. See [Toolbar](/relements/components/toolbar/).
+- **`enhanceCarousel`** — back-fills prev/next + a dot strip over a native CSS scroll-snap track (`.re-carousel`), tracks the active slide by box geometry (RTL-safe), inerts off-screen slides, and announces the settled slide. No custom event — derive the index from native `scroll`. See [Carousel](/relements/components/carousel/).
 
 ### Form inputs
 

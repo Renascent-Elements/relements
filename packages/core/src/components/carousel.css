@@ -1,0 +1,138 @@
+/**
+ * Relements carousel.
+ *
+ * CSS does the scrolling; JavaScript is the thinnest possible shim for controls.
+ *
+ *   Rung A (this file, no JS) — a native scroll-snap strip: the track is an
+ *     overflowing flex row that snaps slide-to-slide. It scrolls by touch,
+ *     trackpad, scrollbar, and — because the track is a focusable scroll region
+ *     (tabindex="0") — by Arrow/Page/Home/End. Fully usable with zero JS.
+ *   Rung C (enhanceCarousel) — back-fills the discoverable controls: prev/next
+ *     buttons, a dot strip, active-slide tracking, and inerting of off-screen
+ *     slides. This file styles those controls; the behavior injects them.
+ *   Rung B (CSS Carousel pseudo-elements: ::scroll-button / ::scroll-marker) is
+ *     a fast-follow behind @supports — not in this file yet.
+ *
+ *   <div class="re-carousel">
+ *     <div class="re-carousel__track" role="group" aria-roledescription="carousel"
+ *          aria-label="Photos" tabindex="0">
+ *       <figure class="re-carousel__slide" aria-roledescription="slide"
+ *               aria-label="Sunset over the bay"><img … /></figure>
+ *       …
+ *     </div>
+ *   </div>
+ *
+ * Slide width: `--re-carousel-slide-size` (default 100% — one slide per view).
+ */
+
+@layer re.components {
+  .re-carousel {
+    position: relative; /* anchors the injected prev/next controls */
+  }
+
+  /* The scroll-snap strip. `overflow-x` (not the logical `overflow-inline`,
+     which is above the browser floor) — the SNAP axis stays logical `inline`,
+     which is at the floor and keeps RTL free. Scrollbar hidden two ways:
+     `scrollbar-width` (Firefox; Safari 18.2+) and `::-webkit-scrollbar`
+     (older WebKit/Blink). */
+  .re-carousel__track {
+    display: flex;
+    gap: var(--re-space-4);
+    overflow-x: auto;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+  }
+  .re-carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth programmatic + key scrolling, but never against the user's
+     reduced-motion preference (the JS scroll calls honor it too). */
+  @media (prefers-reduced-motion: no-preference) {
+    .re-carousel__track {
+      scroll-behavior: smooth;
+    }
+  }
+
+  .re-carousel__slide {
+    flex: 0 0 var(--re-carousel-slide-size, 100%);
+    min-inline-size: 0;
+    margin: 0; /* reset <figure> default margin */
+    scroll-snap-align: center;
+    scroll-snap-stop: always; /* don't fling past slides (ignored below FF 119) */
+  }
+
+  /* ---- Controls (injected by enhanceCarousel) ------------------------- */
+  .re-carousel__control {
+    position: absolute;
+    inset-block: 0;
+    margin-block: auto; /* vertical center */
+    inline-size: var(--re-control-height-md);
+    block-size: var(--re-control-height-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    box-shadow: var(--re-shadow-md);
+    cursor: pointer;
+  }
+  .re-carousel__control:hover {
+    background-color: var(--re-color-bg-muted);
+  }
+  .re-carousel__control[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .re-carousel__control[data-dir="prev"] {
+    inset-inline-start: var(--re-space-2);
+  }
+  .re-carousel__control[data-dir="next"] {
+    inset-inline-end: var(--re-space-2);
+  }
+  /* The chevron glyph flips for the end direction; logical so RTL is free. */
+  .re-carousel__control svg {
+    inline-size: 60%;
+    block-size: 60%;
+  }
+  .re-carousel__control[data-dir="next"] svg {
+    transform: scaleX(-1);
+  }
+
+  .re-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--re-space-2);
+    margin-block-start: var(--re-space-3);
+  }
+  .re-carousel__dot {
+    inline-size: var(--re-space-3);
+    block-size: var(--re-space-3);
+    padding: 0;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-pill);
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .re-carousel__dot[aria-current="true"] {
+    background-color: var(--re-color-accent-600);
+    border-color: var(--re-color-accent-600);
+  }
+
+  /* Forced colors: the dot's accent fill (the only cue for the current slide)
+     and the controls' surface/shadow all flatten away. Re-establish the active
+     dot with Highlight and give the controls a real border (box-shadow is
+     stripped) so they stay visible. */
+  @media (forced-colors: active) {
+    .re-carousel__dot[aria-current="true"] {
+      background-color: Highlight;
+      border-color: Highlight;
+    }
+    .re-carousel__control {
+      border: var(--re-border-width-strong) solid ButtonText;
+    }
+  }
+}

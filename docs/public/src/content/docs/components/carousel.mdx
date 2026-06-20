@@ -1,0 +1,36 @@
+---
+title: Carousel
+description: A native CSS scroll-snap strip; JavaScript only back-fills the controls.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A carousel built the platform's way: the track is a native **CSS scroll-snap**
+strip, so it scrolls and snaps with **zero JavaScript** — by touch, trackpad,
+scrollbar, and (because the track is a focusable scroll region) the arrow keys.
+The optional [`enhanceCarousel`](/relements/guides/behaviors-and-elements/) behavior
+back-fills the _discoverable_ controls: prev/next buttons, a dot strip, active
+tracking, and inerting of off-screen slides.
+
+## Basic
+
+<Demo src="carousel.html" name="basic" />
+
+## How it's layered
+
+- **Rung A (no JS)** — `.re-carousel__track` is `overflow-x: auto` + `scroll-snap-type: inline mandatory`. It already works: drag, swipe, scrollbar, and Arrow/Page/Home/End once the track has focus. This is the whole carousel for users without the behavior.
+- **Rung C (`enhanceCarousel`)** — injects the buttons + dots and tracks the active slide. This is the accessibility-tested control path.
+- **Rung B (CSS Carousel pseudo-elements)** — `::scroll-button()` / `::scroll-marker` can draw the controls with _no JS at all_, but only in Chrome 135+ today and with documented assistive-tech bugs. It's a fast-follow behind `@supports`, shipped experimental — not in this release.
+
+## Accessibility
+
+- **The scroll region is focusable** — `tabindex="0"` on the track makes the native arrow-key scrolling reachable (a scrollable region must be keyboard-operable). The buttons are the **primary, discoverable** control; arrow-key scrolling is the secondary path.
+- **Buttons, not tabs** — prev/next and the dots are plain `<button>`s with `aria-label` + `aria-current` (the active dot), **not** a `role="tablist"` — the scroll model isn't a tabpanel.
+- **Off-screen slides are inert** — the behavior sets `inert` on non-current slides so Tab can't land on a slide that's scrolled out of view (the classic carousel keyboard trap), and they leave the reading order.
+- **Settle announcement** — for a one-slide-per-view carousel a polite live region announces the settled slide ("Sunset over the bay (1 of 4)"), debounced to fire once per snap rather than on every scroll frame.
+- **Reduced motion** — programmatic scrolling drops to an instant jump under `prefers-reduced-motion: reduce` (and the CSS `scroll-behavior: smooth` is already gated on it).
+- **RTL** — navigation uses `scrollIntoView({ inline })` and active detection uses box geometry, so neither depends on the sign of `scrollLeft` (which differs across engines).
+- **Forced colors** — the active dot is re-established with `Highlight` and the buttons get a real `ButtonText` border (their surface + shadow flatten away).
+- **No custom event** — derive the index from the native `scroll` yourself if you need it. Dynamic slides are out of scope for now: re-run `enhanceCarousel` after adding or removing slides.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the project-wide approach.

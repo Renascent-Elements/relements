@@ -104,6 +104,18 @@
       ]
     },
     {
+      "name": "data-dir",
+      "description": "Relements styling attribute.",
+      "values": [
+        {
+          "name": "next"
+        },
+        {
+          "name": "prev"
+        }
+      ]
+    },
+    {
       "name": "data-emphasis",
       "description": "Visual emphasis — `solid` uses a filled status surface.",
       "values": [
@@ -318,6 +330,10 @@
     {
       "name": "data-zebra",
       "description": "Striped (zebra) rows."
+    },
+    {
+      "name": "data-re-carousel",
+      "description": "Host element for enhanceCarousel."
     },
     {
       "name": "data-re-combobox",
