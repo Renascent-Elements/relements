@@ -67,7 +67,7 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 | Class                       | Element                    | Variants / options                                                           |
 | --------------------------- | -------------------------- | ---------------------------------------------------------------------------- |
-| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg                                                      |
+| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg; incl. date/time types (polished picker indicator)   |
 | `.re-textarea`              | `<textarea>`               | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                     |
 | `.re-select`                | `<select>`                 | `data-size`: sm, md, lg                                                      |
 | `.re-checkbox`              | `<input type="checkbox">`  | —                                                                            |
