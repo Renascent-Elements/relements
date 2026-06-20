@@ -1,0 +1,44 @@
+---
+title: Date & time
+description: Native temporal inputs (date, time, datetime-local, month, week) styled with .re-input — no JavaScript.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+The native temporal input types — `date`, `time`, `datetime-local`, `month`, and
+`week` — wear the same [`.re-input`](/relements/components/field/) surface as every
+other field. The browser supplies the calendar/clock picker; Relements only polishes
+the trailing indicator. No JavaScript.
+
+## Types
+
+<Demo src="datetime.html" name="basic" />
+
+## Constraints
+
+`min` / `max` bound the allowed values; an out-of-range entry turns the field red via
+the native `:user-invalid`. That red is **visual only** — name the allowed range in
+text referenced by `aria-describedby` so the _reason_ reaches assistive tech.
+
+<Demo src="datetime.html" name="constraints" />
+
+## Accessibility
+
+- **Picker indicator is Chromium-only** — only Blink exposes
+  `::-webkit-calendar-picker-indicator` to style, so the polish (cursor, hit area,
+  hover wash) is scoped to it with `@supports`. WebKit renders no indicator and
+  Firefox draws its own; **all three** get the full `.re-input` surface and a working
+  native picker, and the spinner segments stay keyboard-editable everywhere. The
+  indicator is never hidden (`display:none` / `pointer-events:none` / `opacity:0`) —
+  it's the only pointer affordance for opening the picker.
+- **Constraint reason** — `min`/`max` give a free _visual_ invalid state, but not a
+  reason. Put the allowed range in an `aria-describedby` hint (or a
+  [`.re-validation-message`](/relements/components/field/) when you escalate to an
+  error) so it's announced, not just shown in red.
+- **Dark mode** — `color-scheme` lets the UA render the indicator glyph for the
+  active scheme automatically, so it stays visible on dark backgrounds with no
+  recolouring.
+- **Forced colors** — the dim + hover wash are dropped under forced colors so the UA
+  glyph keeps full system contrast.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the project-wide approach.

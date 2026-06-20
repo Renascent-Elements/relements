@@ -1,0 +1,51 @@
+---
+title: Progress ring
+description: A circular progress indicator drawn entirely in CSS — a conic-gradient arc with a masked centre.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A circular counterpart to the linear [progress bar](/relements/components/progress/).
+There is no native circular-progress element, so this is a `role="progressbar"`
+`<div>` drawn purely in CSS: a `conic-gradient` sweep (the value) with the centre
+punched out by a radial mask, leaving a ring — with the numeric label in the hole.
+No JavaScript: set the `--re-progress-value` custom property (0–100).
+
+## Values
+
+<Demo src="progress-ring.html" name="basic" />
+
+Keep three things in sync: `--re-progress-value` (draws the arc), the visible label
+text, and `aria-valuenow` / `aria-valuetext` (the value as it reaches assistive
+tech). If JavaScript drives the ring, it writes all three.
+
+## Sizes
+
+<Demo src="progress-ring.html" name="sizes" />
+
+## Indeterminate
+
+A spinning arc for work of unknown duration. Omit `aria-valuenow` and give the ring
+an `aria-label` instead — there is no value to report, only a name. The spin
+respects `prefers-reduced-motion`.
+
+<Demo src="progress-ring.html" name="indeterminate" />
+
+## Accessibility
+
+- **Role & name** — the ring is a `role="progressbar"`, which **must** have an
+  accessible **name** (`aria-label`, or `aria-labelledby` pointing at nearby text)
+  saying _what_ is progressing. The `%` is the **value**, not the name, so it can't
+  stand in for it — a nameless progressbar is a WCAG 1.1.1 failure.
+- **Value** — `aria-valuenow` / `aria-valuemin` / `aria-valuemax` carry the value;
+  `aria-valuetext` gives it a human form ("70%"). The visible `%` label is
+  `aria-hidden` (the value already reaches AT through the ARIA attributes) but stays
+  in the DOM so it survives forced colors.
+- **Forced colors (Windows High Contrast)** — a `conic-gradient` is a background
+  _image_, which the UA drops, so the arc disappears. The fallback keeps the numeric
+  `%` on screen and draws a neutral `CanvasText` track ring, so the control still
+  reads as a ring and the value is still visible. (Rendering the filled _level_ under
+  HCM would need an SVG stroke; that's intentionally out of scope here.)
+- **Motion** — the indeterminate spin is paused under `prefers-reduced-motion: reduce`.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the project-wide approach.

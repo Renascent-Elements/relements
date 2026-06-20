@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@relements/core",
-  "version": "1.3.0",
+  "version": "1.5.1",
   "description-markup": "markdown",
   "js-types-syntax": "typescript",
   "contributions": {
@@ -186,12 +186,20 @@
           "description": "Force the hover state (demo/visual aid)."
         },
         {
+          "name": "data-indeterminate",
+          "description": "Show an indeterminate (spinning) progress ring with no known value."
+        },
+        {
           "name": "data-interactive",
           "description": "Make the element interactive (hover/active affordances)."
         },
         {
           "name": "data-invalid",
           "description": "Mark the control as invalid (error styling)."
+        },
+        {
+          "name": "data-label",
+          "description": "Render a separator as a labeled divider — a horizontal rule with centred text."
         },
         {
           "name": "data-open",

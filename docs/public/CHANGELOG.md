@@ -1,5 +1,26 @@
 # @relements/docs
 
+## 0.0.27
+
+### Patch Changes
+
+- Updated dependencies [[`73365f7`](https://github.com/Renascent-Elements/relements/commit/73365f73fc79f18855fb26ca430ba56248d2501e)]:
+  - @relements/core@1.5.1
+
+## 0.0.26
+
+### Patch Changes
+
+- Updated dependencies [[`7d94cd5`](https://github.com/Renascent-Elements/relements/commit/7d94cd5e1203eba073a9ffec164e3037d52d0f6e)]:
+  - @relements/core@1.5.0
+
+## 0.0.25
+
+### Patch Changes
+
+- Updated dependencies [[`b1ef811`](https://github.com/Renascent-Elements/relements/commit/b1ef811444dfa67abecf1ec21dd09747787c991a)]:
+  - @relements/core@1.4.0
+
 ## 0.0.24
 
 ### Patch Changes

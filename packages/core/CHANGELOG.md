@@ -1,5 +1,31 @@
 # @relements/core
 
+## 1.5.1
+
+### Patch Changes
+
+- [#86](https://github.com/Renascent-Elements/relements/pull/86) [`73365f7`](https://github.com/Renascent-Elements/relements/commit/73365f73fc79f18855fb26ca430ba56248d2501e) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Polish the native picker indicator on temporal `.re-input`s (`date`, `time`, `datetime-local`, `month`, `week`): a larger hit area, pointer cursor, and a hover wash on `::-webkit-calendar-picker-indicator`. Chromium-only (scoped with `@supports`; WebKit and Firefox keep their native indicator), excludes `.re-combobox`, adapts to dark via `color-scheme`, and drops the dim/wash under forced colors so the glyph keeps system contrast. No new API — the base `.re-input` already styles these fields on every engine.
+
+## 1.5.0
+
+### Minor Changes
+
+- [#85](https://github.com/Renascent-Elements/relements/pull/85) [`7d94cd5`](https://github.com/Renascent-Elements/relements/commit/7d94cd5e1203eba073a9ffec164e3037d52d0f6e) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add three display components:
+  - **`.re-progress-ring`** (CSS only) — a circular progress indicator with no native equivalent, drawn entirely in CSS: a `conic-gradient` sweep masked into a ring with the `%` label in the centre. `role="progressbar"` with `aria-valuenow`/`aria-valuetext`, `data-size` sm/md/lg, and a `data-indeterminate` spinner that respects `prefers-reduced-motion`. Under forced colors (where the gradient is dropped) the numeric label stays visible and a neutral `CanvasText` track ring is drawn, so the control still reads as a ring. New export `@relements/core/components/progress-ring.css`.
+  - **`.re-avatar-group`** — an overlapping avatar stack with an optional `.re-avatar-group__count` overflow chip ("+3"). `role="group"` + an `aria-label` that owns the real total; each avatar's page-colour separation border becomes a real `CanvasText` outline under forced colors. Extends `avatar.css`.
+  - **`.re-separator[data-label]`** — a labeled divider (a horizontal rule with centred text, e.g. "OR"). The lines are pseudo-elements with a real border (so they survive forced colors); the label rides the rendered text node and the host declares an explicit `aria-orientation`. `data-align` start/center/end. Extends `separator.css`.
+
+## 1.4.0
+
+### Minor Changes
+
+- [#83](https://github.com/Renascent-Elements/relements/pull/83) [`b1ef811`](https://github.com/Renascent-Elements/relements/commit/b1ef811444dfa67abecf1ec21dd09747787c991a) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add the **file picker** — a custom-styled file selection control, the richer sibling of `.re-file`. A progressive-enhancement ladder:
+  - **`.re-file-picker`** (CSS only) — a styled drop/browse area built by visually hiding the native `<input type="file">` (which stays the form value). Click-to-pick works with no JavaScript. `data-size` sm/md/lg, aria-invalid/disabled states. New export `@relements/core/components/file-picker.css`.
+  - **`enhanceFilePicker`** — echoes the selected filenames (visible list + an sr-only `role="status"` announcement), wires drag-and-drop, a clear button, and `accept`/`data-re-file-max-files`/`data-re-file-max-size` validation. A rejected drop sets `aria-invalid` and emits `re-error` (`{ reason, rejected, accepted }`); value changes use the native `change` event. New export `@relements/core/behaviors/file-picker`.
+  - **`<re-file-picker>`** — a thin custom-element wrapper: reflects `name`/`multiple`/`accept`/`disabled`/`required` onto the input, exposes `.files` (read/write) and `.clear()`, and runs the behavior on connect. New export `@relements/core/elements/re-file-picker`.
+
+  Built to the project's a11y conventions: the picker is keyboard-operable via the native OS picker (drag-drop is a pointer-only enhancement), the focus ring shows on the visible UI via `:focus-within` (restored under forced colors), the clear button sits outside the `<label>` so it can't reopen the picker, and dark/forced-colors states stay distinguishable.
+
 ## 1.3.0
 
 ### Minor Changes
