@@ -1,0 +1,31 @@
+packages/core/src/behaviors/carousel.js
+  s_2732c4df70b865::t_5dba45f5bc7e6b 86-93,96-98
+.changeset/carousel-rung-b.md
+  s_2732c4df70b865::t_31a4d3d60e2825 1-7
+tests/elements/carousel.spec.ts
+  s_2732c4df70b865::t_40e325b0bc8eee 3-4,10-20,24-34,37-43,45-54,56-64,69-88
+  s_2732c4df70b865::t_551f38ac6cc08b 66-68
+packages/core/src/components/carousel.css
+  s_2732c4df70b865::t_72e4a1d41383c3 138-216
+tests/visual/carousel.visual.spec.ts
+  s_2732c4df70b865::t_163a9b2789d0dd 3-11,16-19,25,36
+  s_2732c4df70b865::t_551f38ac6cc08b 12-15
+docs/public/src/content/docs/components/carousel.mdx
+  s_2732c4df70b865::t_61ac4cb0371df3 23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "9ee8d1f28cc422b453792f420ea0119e7a98113b",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
