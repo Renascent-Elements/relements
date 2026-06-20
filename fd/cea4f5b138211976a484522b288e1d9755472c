@@ -1,0 +1,75 @@
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_c88b2bfc6243b0 156-157
+docs/public/src/content/docs/components/separator.mdx
+  s_2732c4df70b865::t_c88b2bfc6243b0 16-23,35-37
+docs/public/CHANGELOG.md
+  s_2732c4df70b865::t_c88b2bfc6243b0 3-23
+packages/core/src/components/avatar.css
+  s_2732c4df70b865::t_c88b2bfc6243b0 9-16,56-85
+tests/visual/datetime.visual.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-22
+packages/core/CHANGELOG.md
+  s_2732c4df70b865::t_c88b2bfc6243b0 3-28
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_c88b2bfc6243b0 94-99,296-299,308-310
+docs/examples/separator.html
+  s_2732c4df70b865::t_c88b2bfc6243b0 50-67
+packages/core/src/components/form.css
+  s_2732c4df70b865::t_c88b2bfc6243b0 176-215
+packages/core/web-types.json
+  s_2732c4df70b865::t_c88b2bfc6243b0 188-191,200-203
+  s_2732c4df70b865::t_9d206b6962e8d1 4
+tests/visual/separator.visual.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 12-28
+docs/public/src/content/docs/components/progress-ring.mdx
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-51
+tests/a11y/datetime.a11y.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-10
+packages/core/src/components/separator.css
+  s_2732c4df70b865::t_c88b2bfc6243b0 12-17,19,44-76
+packages/core/src/components/progress-ring.css
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-114
+packages/core/README.md
+  s_2732c4df70b865::t_05be4dd6e28280 70
+  s_2732c4df70b865::t_c88b2bfc6243b0 103-114,146,149
+docs/public/src/content/docs/components/datetime.mdx
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-44
+tests/visual/progress-ring.visual.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-32
+packages/core/package.json
+  s_2732c4df70b865::t_c88b2bfc6243b0 3,59
+tests/visual/avatar.visual.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 12-28
+tests/a11y/progress-ring.a11y.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-10
+docs/examples/avatar.html
+  s_2732c4df70b865::t_c88b2bfc6243b0 53-64
+docs/public/package.json
+  s_2732c4df70b865::t_c88b2bfc6243b0 3
+docs/examples/datetime.html
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-82
+docs/public/src/content/docs/components/avatar.mdx
+  s_2732c4df70b865::t_c88b2bfc6243b0 18-26,32
+tests/a11y/forced-colors.spec.ts
+  s_2732c4df70b865::t_c88b2bfc6243b0 20-22,24,29-31,129-165
+docs/examples/progress-ring.html
+  s_2732c4df70b865::t_c88b2bfc6243b0 1-145
+packages/core/src/index.css
+  s_2732c4df70b865::t_c88b2bfc6243b0 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "fdcea4f5b138211976a484522b288e1d9755472c",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
