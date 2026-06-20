@@ -17,16 +17,18 @@ test.describe("forced colors (HCM)", () => {
     await page.emulateMedia({ forcedColors: "active" });
   });
 
-  // The resolved value of the `Highlight` system color in the current emulation.
-  const resolveHighlight = (page: import("@playwright/test").Page) =>
-    page.evaluate(() => {
+  // The resolved value of a system color keyword in the current emulation.
+  const resolveSystemColor = (page: import("@playwright/test").Page, keyword: string) =>
+    page.evaluate((kw) => {
       const probe = document.createElement("span");
-      probe.style.color = "Highlight";
+      probe.style.color = kw;
       document.body.appendChild(probe);
       const c = getComputedStyle(probe).color;
       probe.remove();
       return c;
-    });
+    }, keyword);
+  const resolveHighlight = (page: import("@playwright/test").Page) =>
+    resolveSystemColor(page, "Highlight");
 
   test("the media query is actually active (guards against false greens)", async ({ page }) => {
     await page.goto("./button.html");
@@ -123,5 +125,42 @@ test.describe("forced colors (HCM)", () => {
       (el) => getComputedStyle(el.nextElementSibling as Element).outlineStyle,
     );
     expect(style).toBe("solid");
+  });
+
+  test("the progress ring's arc vanishes but a neutral track ring + the % label survive", async ({
+    page,
+  }) => {
+    // A conic-gradient is a background IMAGE → the UA computes it to `none`, so the
+    // arc disappears. The numeric label (never display:none) carries the value and
+    // a CanvasText ring keeps the control reading as a ring.
+    await page.goto("./progress-ring.html");
+    const canvasText = await resolveSystemColor(page, "CanvasText");
+    const ring = await page
+      .locator(".re-progress-ring")
+      .first()
+      .evaluate((el) => {
+        const before = getComputedStyle(el, "::before");
+        const label = el.querySelector(".re-progress-ring__label");
+        return {
+          bgImage: before.backgroundImage,
+          borderColor: before.borderColor,
+          labelDisplay: label ? getComputedStyle(label as Element).display : "missing",
+        };
+      });
+    expect(ring.bgImage).toBe("none");
+    expect(ring.borderColor).toBe(canvasText);
+    expect(ring.labelDisplay).not.toBe("none");
+  });
+
+  test("avatar-group separation survives as a real CanvasText border (box-shadow rings are stripped)", async ({
+    page,
+  }) => {
+    await page.goto("./avatar.html");
+    const canvasText = await resolveSystemColor(page, "CanvasText");
+    const borderColor = await page
+      .locator(".re-avatar-group > .re-avatar")
+      .nth(1)
+      .evaluate((el) => getComputedStyle(el).borderColor);
+    expect(borderColor).toBe(canvasText);
   });
 });

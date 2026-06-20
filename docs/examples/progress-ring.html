@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Progress ring</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--re-space-5);
+      }
+    </style>
+  </head>
+  <body data-page="progress-ring">
+    <header>
+      <h1>Progress ring</h1>
+      <p>A circular counterpart to the linear progress bar — drawn entirely in CSS.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Values</h2>
+      <!-- demo:start name="basic" -->
+      <div class="row">
+        <div
+          class="re-progress-ring"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="25"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="25%"
+          style="--re-progress-value: 25"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">25%</span>
+        </div>
+        <div
+          class="re-progress-ring"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="50"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="50%"
+          style="--re-progress-value: 50"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">50%</span>
+        </div>
+        <div
+          class="re-progress-ring"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="75"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="75%"
+          style="--re-progress-value: 75"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">75%</span>
+        </div>
+        <div
+          class="re-progress-ring"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="100"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="100%"
+          style="--re-progress-value: 100"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">100%</span>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <div class="row">
+        <div
+          class="re-progress-ring"
+          data-size="sm"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="60"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="60%"
+          style="--re-progress-value: 60"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">60%</span>
+        </div>
+        <div
+          class="re-progress-ring"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="60"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="60%"
+          style="--re-progress-value: 60"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">60%</span>
+        </div>
+        <div
+          class="re-progress-ring"
+          data-size="lg"
+          role="progressbar"
+          aria-label="Progress"
+          aria-valuenow="60"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuetext="60%"
+          style="--re-progress-value: 60"
+        >
+          <span class="re-progress-ring__label" aria-hidden="true">60%</span>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="indeterminate-heading" data-testid="indeterminate">
+      <h2 id="indeterminate-heading">Indeterminate</h2>
+      <!-- demo:start name="indeterminate" -->
+      <div
+        class="re-progress-ring"
+        role="progressbar"
+        data-indeterminate
+        aria-label="Loading"
+      ></div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
