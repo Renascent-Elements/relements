@@ -1,44 +1,90 @@
 import { expect, test } from "@playwright/test";
 
+const CSS_CAROUSEL = "(scroll-marker-group: after) and selector(::scroll-marker)";
+
 test.describe("Carousel", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("./carousel.html");
   });
 
-  test("injects controls; the track is a focusable scroll region; prev starts disabled", async ({
+  // Rung A markup — true on every engine, with or without JS.
+  test("the track is a focusable scroll region", async ({ page }) => {
+    await expect(page.getByTestId("basic").locator(".re-carousel__track")).toHaveAttribute(
+      "tabindex",
+      "0",
+    );
+  });
+
+  // The two control rungs are mutually exclusive, keyed on the SAME feature test
+  // the CSS @supports and the behavior's gate both use.
+  test("exactly one control set renders — CSS markers (Rung B) or JS dots (Rung C), never both", async ({
     page,
   }) => {
     const host = page.getByTestId("basic").locator(".re-carousel");
-    await expect(host.locator(".re-carousel__dot")).toHaveCount(4);
-    await expect(host.locator(".re-carousel__track")).toHaveAttribute("tabindex", "0");
-    await expect(host.locator('[data-dir="prev"]')).toBeDisabled();
-    await expect(host.locator('[data-dir="next"]')).toBeEnabled();
-    await expect(host.locator(".re-carousel__dot").first()).toHaveAttribute("aria-current", "true");
+    const native = await page.evaluate((q) => CSS.supports(q), CSS_CAROUSEL);
+    const jsDots = await host.locator(".re-carousel__dot").count();
+    if (native) {
+      expect(jsDots).toBe(0); // the UA draws the markers/buttons; the behavior stood down
+      const smg = await host
+        .locator(".re-carousel__track")
+        .evaluate((el) => getComputedStyle(el).scrollMarkerGroup);
+      expect(smg.startsWith("after")).toBe(true);
+    } else {
+      expect(jsDots).toBe(4); // the behavior injected the dots
+    }
   });
 
-  test("next advances the active slide and enables prev", async ({ page }) => {
-    const host = page.getByTestId("basic").locator(".re-carousel");
-    await host.locator('[data-dir="next"]').click();
-    await expect(host.locator(".re-carousel__dot").nth(1)).toHaveAttribute("aria-current", "true");
-    await expect(host.locator('[data-dir="prev"]')).toBeEnabled();
-  });
+  // Rung C — the JS controls. Skipped where the browser draws them itself (Rung B,
+  // Chromium 135+); exercised on Firefox/WebKit, which is the a11y-tested path.
+  test.describe("JS controls (Rung C)", () => {
+    test.skip(
+      ({ browserName }) => browserName === "chromium",
+      "Chromium 135+ uses the CSS-Carousel pseudos (Rung B); Rung C is tested on Firefox/WebKit",
+    );
 
-  test("a dot jumps to its slide; next disables at the last slide (no wrap)", async ({ page }) => {
-    const host = page.getByTestId("basic").locator(".re-carousel");
-    await host.locator(".re-carousel__dot").nth(3).click();
-    await expect(host.locator(".re-carousel__dot").nth(3)).toHaveAttribute("aria-current", "true");
-    await expect(host.locator('[data-dir="next"]')).toBeDisabled();
-  });
+    test("injects prev/next + dots; prev starts disabled", async ({ page }) => {
+      const host = page.getByTestId("basic").locator(".re-carousel");
+      await expect(host.locator(".re-carousel__dot")).toHaveCount(4);
+      await expect(host.locator('[data-dir="prev"]')).toBeDisabled();
+      await expect(host.locator('[data-dir="next"]')).toBeEnabled();
+      await expect(host.locator(".re-carousel__dot").first()).toHaveAttribute(
+        "aria-current",
+        "true",
+      );
+    });
 
-  test("off-screen slides are inert (only the active slide is interactive)", async ({ page }) => {
-    const slides = page.getByTestId("basic").locator(".re-carousel__slide");
-    await expect(slides.nth(0)).toHaveJSProperty("inert", false);
-    await expect(slides.nth(1)).toHaveJSProperty("inert", true);
-  });
+    test("next advances the active slide and enables prev", async ({ page }) => {
+      const host = page.getByTestId("basic").locator(".re-carousel");
+      await host.locator('[data-dir="next"]').click();
+      await expect(host.locator(".re-carousel__dot").nth(1)).toHaveAttribute(
+        "aria-current",
+        "true",
+      );
+      await expect(host.locator('[data-dir="prev"]')).toBeEnabled();
+    });
 
-  test("the settled slide is announced by name + position", async ({ page }) => {
-    const host = page.getByTestId("basic").locator(".re-carousel");
-    await host.locator('[data-dir="next"]').click();
-    await expect(host.locator("[aria-live]")).toHaveText("Forest trail in autumn (2 of 4)");
+    test("a dot jumps to its slide; next disables at the last slide (no wrap)", async ({
+      page,
+    }) => {
+      const host = page.getByTestId("basic").locator(".re-carousel");
+      await host.locator(".re-carousel__dot").nth(3).click();
+      await expect(host.locator(".re-carousel__dot").nth(3)).toHaveAttribute(
+        "aria-current",
+        "true",
+      );
+      await expect(host.locator('[data-dir="next"]')).toBeDisabled();
+    });
+
+    test("off-screen slides are inert (only the active slide is interactive)", async ({ page }) => {
+      const slides = page.getByTestId("basic").locator(".re-carousel__slide");
+      await expect(slides.nth(0)).toHaveJSProperty("inert", false);
+      await expect(slides.nth(1)).toHaveJSProperty("inert", true);
+    });
+
+    test("the settled slide is announced by name + position", async ({ page }) => {
+      const host = page.getByTestId("basic").locator(".re-carousel");
+      await host.locator('[data-dir="next"]').click();
+      await expect(host.locator("[aria-live]")).toHaveText("Forest trail in autumn (2 of 4)");
+    });
   });
 });

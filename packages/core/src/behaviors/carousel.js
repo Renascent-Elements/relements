@@ -83,8 +83,19 @@ export function enhanceCarousel(root = document) {
  * @param {HTMLElement} host
  * @returns {() => void}
  */
+/** True where the browser draws the CSS-Carousel markers/buttons itself (Rung B). */
+function nativeControls() {
+  return (
+    typeof CSS !== "undefined" &&
+    CSS.supports("(scroll-marker-group: after) and selector(::scroll-marker)")
+  );
+}
+
 function wireOne(host) {
   if (host.hasAttribute("data-re-carousel-ready")) return () => {}; // idempotent
+  // Rung B: where the UA generates the scroll markers + buttons, stand down so the
+  // two control sets never both appear. The CSS @supports uses the SAME test.
+  if (nativeControls()) return () => {};
   const track = /** @type {HTMLElement | null} */ (host.querySelector(".re-carousel__track"));
   if (!track) return () => {};
   const slides = /** @type {HTMLElement[]} */ (
