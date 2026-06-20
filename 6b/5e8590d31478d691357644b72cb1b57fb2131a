@@ -1,0 +1,88 @@
+packages/core/src/index.js
+  s_2732c4df70b865::t_9e3cfb17a9443b 25
+tests/visual/re-file-picker.visual.spec.ts
+  s_2732c4df70b865::t_73f353e4ca8eb7 1-10
+tests/a11y/file-picker.a11y.spec.ts
+  s_2732c4df70b865::t_f3d016e4b3bd44 1-10
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_b31ac891b5f5a3 123
+  s_2732c4df70b865::t_dc39d5af68f4b1 66
+  s_2732c4df70b865::t_25099fa7e02614 91
+docs/public/src/content/docs/custom-elements/re-file-picker.mdx
+  s_2732c4df70b865::t_b797a9c046a344 1-33
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_9ddbc4d7e7aa88 23,28
+packages/core/src/index.css
+  s_2732c4df70b865::t_2bcf5e93c013f7 67
+docs/examples/file-picker.html
+  s_2732c4df70b865::t_2ad94fef4bfde1 1-116,123-130,173-174
+  s_2732c4df70b865::t_b56e6ca297ef7b 132-168
+  s_2732c4df70b865::t_78a377a361cb58 117-122
+  s_2732c4df70b865::t_0e8f4ac06b308f 131,169-172
+packages/core/src/components/file-picker.css
+  s_2732c4df70b865::t_f1e6176fa769a4 1-189
+tests/unit/editor-data.spec.ts
+  s_2732c4df70b865::t_14fd417265c115 42
+tests/elements/re-file-picker.spec.ts
+  s_2732c4df70b865::t_7a27e810986993 1-22,26-29,33-46,49-50
+  s_2732c4df70b865::t_78a377a361cb58 23-25
+  s_2732c4df70b865::t_f958c97b09be8d 30-32,47-48
+docs/public/src/content/docs/components/file-picker.mdx
+  s_2732c4df70b865::t_17659d330f104e 1-44,46-48
+  s_2732c4df70b865::t_e9dc2680faf883 45
+packages/core/README.md
+  s_2732c4df70b865::t_cd439fd1ea9731 89
+  s_2732c4df70b865::t_78a377a361cb58 68-88,163-180,182,203-209
+  s_2732c4df70b865::t_ae76b2f14bb9f2 181
+tests/visual/file-picker.visual.spec.ts
+  s_2732c4df70b865::t_a8119fe4f93940 1-22
+packages/core/src/behaviors/file-picker.js
+  s_2732c4df70b865::t_51d8ab20af0701 1-66,70-82,84-92,101-143,148-245
+  s_2732c4df70b865::t_78a377a361cb58 67-69
+  s_2732c4df70b865::t_c4d34df32c9d90 144-147
+  s_2732c4df70b865::t_c54327cc2d4e75 83,93-100
+packages/core/package.json
+  s_2732c4df70b865::t_9914836ebe1db6 167-170
+  s_2732c4df70b865::t_f44759115585e3 97
+  s_2732c4df70b865::t_1bcffa8eaa9c85 186-189
+docs/examples/re-file-picker.html
+  s_2732c4df70b865::t_3e298e686a38d3 1-68
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_78a377a361cb58 106-108
+  s_2732c4df70b865::t_c83b82639c5515 96-105,109-110
+.changeset/file-picker.md
+  s_2732c4df70b865::t_0a535217c81184 1-11
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_72b3a1b1536546 65-84,274-277,282-285,366-380
+docs/public/src/content/docs/custom-elements/index.mdx
+  s_2732c4df70b865::t_04c6aea215bbd0 60,62-68
+  s_2732c4df70b865::t_70c0f7f31b856f 17
+packages/core/src/elements/re-file-picker.js
+  s_2732c4df70b865::t_0f2ee935a7898f 33
+  s_2732c4df70b865::t_255311f93af241 1-32,34-121
+packages/core/web-types.json
+  s_2732c4df70b865::t_72b3a1b1536546 4,79-108,172-175,180-183,264-278
+tests/elements/file-picker.spec.ts
+  s_2732c4df70b865::t_78a377a361cb58 6-9,54-56,67-69,86-88,90-92,106-108
+  s_2732c4df70b865::t_acc8bc031bb9dd 1-5,10-53,57-66,70-85,89,93-105,109-111
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_c46a14d69ad506 18,27
+  s_2732c4df70b865::t_52249bdd6d0ef3 62
+  s_2732c4df70b865::t_9c7143fa1029c4 34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "6b5e8590d31478d691357644b72cb1b57fb2131a",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
