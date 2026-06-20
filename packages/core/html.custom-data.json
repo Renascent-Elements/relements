@@ -91,6 +91,12 @@
       "values": [
         {
           "name": "center"
+        },
+        {
+          "name": "end"
+        },
+        {
+          "name": "start"
         }
       ]
     },
@@ -300,12 +306,20 @@
       "description": "Force the hover state (demo/visual aid)."
     },
     {
+      "name": "data-indeterminate",
+      "description": "Show an indeterminate (spinning) progress ring with no known value."
+    },
+    {
       "name": "data-interactive",
       "description": "Make the element interactive (hover/active affordances)."
     },
     {
       "name": "data-invalid",
       "description": "Mark the control as invalid (error styling)."
+    },
+    {
+      "name": "data-label",
+      "description": "Render a separator as a labeled divider — a horizontal rule with centred text."
     },
     {
       "name": "data-open",

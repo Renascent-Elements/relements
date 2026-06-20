@@ -1,0 +1,114 @@
+/**
+ * Relements circular progress (ring).
+ *
+ * A radial counterpart to the linear <progress>. There is no native circular
+ * progress element, so this is a `role="progressbar"` <div> drawn entirely in
+ * CSS: a conic-gradient sweep (the value) with the centre punched out by a
+ * radial mask, leaving a ring. A visible `%` label sits in the hole.
+ *
+ *   <div class="re-progress-ring" role="progressbar"
+ *        aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+ *        aria-valuetext="70%" style="--re-progress-value: 70">
+ *     <span class="re-progress-ring__label" aria-hidden="true">70%</span>
+ *   </div>
+ *
+ *   <!-- indeterminate: omit aria-valuenow, name it instead -->
+ *   <div class="re-progress-ring" role="progressbar" data-indeterminate
+ *        aria-label="Loading"></div>
+ *
+ * The author keeps three things in sync: the `--re-progress-value` (0–100) that
+ * draws the arc, the visible label text, and `aria-valuenow`/`aria-valuetext`
+ * (the value as it reaches assistive tech). If JavaScript drives the ring it
+ * writes all three.
+ *
+ * Sizes (data-size): sm, md (default), lg. Override `--re-progress-ring-size` /
+ * `--re-progress-ring-thickness` to retheme.
+ */
+
+@layer re.components {
+  .re-progress-ring {
+    --re-progress-value: 0;
+    --_size: var(--re-progress-ring-size, calc(var(--re-control-height-lg) * 1.6));
+    --_thickness: var(--re-progress-ring-thickness, calc(var(--_size) / 10));
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--_size);
+    block-size: var(--_size);
+    color: var(--re-color-text);
+    font-size: var(--re-size-text-md);
+    font-weight: var(--re-font-weight-semibold);
+    line-height: 1;
+  }
+
+  /* The ring itself: conic sweep (filled portion = accent, rest = track),
+     centre removed by a radial mask. A sub-pixel feather on the mask edge
+     avoids a hard aliased seam on WebKit. */
+  .re-progress-ring::before {
+    content: "";
+    grid-area: 1 / 1;
+    inline-size: 100%;
+    block-size: 100%;
+    border-radius: var(--re-radius-pill);
+    background: conic-gradient(
+      var(--re-color-accent-600) calc(var(--re-progress-value) * 1%),
+      var(--re-color-bg-muted) 0
+    );
+    -webkit-mask: radial-gradient(
+      closest-side,
+      transparent calc(100% - var(--_thickness)),
+      currentColor calc(100% - var(--_thickness) + 0.5px)
+    );
+    mask: radial-gradient(
+      closest-side,
+      transparent calc(100% - var(--_thickness)),
+      currentColor calc(100% - var(--_thickness) + 0.5px)
+    );
+  }
+
+  /* Numeric label sits in the punched-out centre, above the ring. */
+  .re-progress-ring__label {
+    grid-area: 1 / 1;
+    z-index: 1;
+  }
+
+  /* ---- Indeterminate ----------------------------------------------------
+     A short arc that spins. No value reaches AT, so the host names it
+     (aria-label) and omits aria-valuenow. */
+  .re-progress-ring[data-indeterminate]::before {
+    background: conic-gradient(var(--re-color-accent-600) 0 25%, var(--re-color-bg-muted) 0);
+    animation: re-progress-ring-spin 900ms linear infinite;
+  }
+  @keyframes re-progress-ring-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .re-progress-ring[data-indeterminate]::before {
+      animation-duration: 0.01ms;
+    }
+  }
+
+  /* ---- Sizes ------------------------------------------------------------ */
+  .re-progress-ring[data-size="sm"] {
+    --re-progress-ring-size: var(--re-control-height-lg);
+    font-size: var(--re-size-text-xs);
+  }
+  .re-progress-ring[data-size="lg"] {
+    --re-progress-ring-size: calc(var(--re-control-height-lg) * 2.4);
+    font-size: var(--re-size-text-xl);
+  }
+
+  /* Forced colors (Windows High Contrast): a conic-gradient is a background
+     IMAGE, which the UA computes to `none` — the arc vanishes entirely. The
+     surviving signal is the numeric label (kept in the DOM, never display:none)
+     plus a neutral CanvasText ring so the control still reads as a ring. The
+     fill LEVEL can't be drawn here (no image survives); the `%` text carries it,
+     and aria-valuenow/valuetext carry it to AT regardless of paint. */
+  @media (forced-colors: active) {
+    .re-progress-ring::before {
+      background: none;
+      border: var(--re-border-width-strong) solid CanvasText;
+    }
+  }
+}

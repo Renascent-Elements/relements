@@ -67,7 +67,7 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 | Class                       | Element                    | Variants / options                                                           |
 | --------------------------- | -------------------------- | ---------------------------------------------------------------------------- |
-| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg                                                      |
+| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg; incl. date/time types (polished picker indicator)   |
 | `.re-textarea`              | `<textarea>`               | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                     |
 | `.re-select`                | `<select>`                 | `data-size`: sm, md, lg                                                      |
 | `.re-checkbox`              | `<input type="checkbox">`  | —                                                                            |
@@ -99,17 +99,18 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Feedback & status
 
-| Class              | Element            | Variants / options                                                                                                                                                              |
-| ------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.re-alert`        | `<div>` + `role`   | `data-tone`: info, success, warning, danger; dismissible                                                                                                                        |
-| `.re-banner`       | `<aside>` + `role` | full-bleed announcement strip; `data-tone`: info, success, warning, danger; `data-emphasis="solid"`; `data-sticky`; `data-align="center"`; dismissible via `enhanceDismissible` |
-| `.re-badge`        | `<span>`           | `data-tone`: neutral, info, success, warning, danger                                                                                                                            |
-| `.re-tag`          | `<span>`           | `data-tone`: neutral, info, success, warning, danger; removable                                                                                                                 |
-| `.re-progress`     | `<progress>`       | `data-size`: sm, md, lg                                                                                                                                                         |
-| `.re-meter`        | `<meter>`          | `data-size`: sm, md, lg                                                                                                                                                         |
-| `.re-spinner`      | `<span>`           | `data-size`: sm, md, lg                                                                                                                                                         |
-| `.re-skeleton`     | `<span>`           | `data-shape`: text, circle                                                                                                                                                      |
-| `.re-toast-region` | live region host   | pairs with `showToast`                                                                                                                                                          |
+| Class               | Element            | Variants / options                                                                                                                                                              |
+| ------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.re-alert`         | `<div>` + `role`   | `data-tone`: info, success, warning, danger; dismissible                                                                                                                        |
+| `.re-banner`        | `<aside>` + `role` | full-bleed announcement strip; `data-tone`: info, success, warning, danger; `data-emphasis="solid"`; `data-sticky`; `data-align="center"`; dismissible via `enhanceDismissible` |
+| `.re-badge`         | `<span>`           | `data-tone`: neutral, info, success, warning, danger                                                                                                                            |
+| `.re-tag`           | `<span>`           | `data-tone`: neutral, info, success, warning, danger; removable                                                                                                                 |
+| `.re-progress`      | `<progress>`       | `data-size`: sm, md, lg                                                                                                                                                         |
+| `.re-progress-ring` | `<div>` + `role`   | circular progress, CSS-only (conic + mask); `data-size`: sm, md, lg; `data-indeterminate`                                                                                       |
+| `.re-meter`         | `<meter>`          | `data-size`: sm, md, lg                                                                                                                                                         |
+| `.re-spinner`       | `<span>`           | `data-size`: sm, md, lg                                                                                                                                                         |
+| `.re-skeleton`      | `<span>`           | `data-shape`: text, circle                                                                                                                                                      |
+| `.re-toast-region`  | live region host   | pairs with `showToast`                                                                                                                                                          |
 
 ### Overlays
 
@@ -141,9 +142,10 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 | ---------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------ |
 | `.re-card`             | `<article>`          | `__header` / `__body` / `__footer`; `data-interactive`                                                       |
 | `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials                                                                 |
+| `.re-avatar-group`     | `<div>` + `role`     | overlapping avatar stack; `.re-avatar-group__count` overflow chip ("+3")                                     |
 | `.re-table`            | `<table>`            | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll      |
 | `.re-description-list` | `<dl>`               | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                        |
-| `.re-separator`        | `<hr>` / `[role]`    | `data-orientation`: vertical                                                                                 |
+| `.re-separator`        | `<hr>` / `[role]`    | `data-orientation`: vertical; `data-label` labeled divider (`data-align`: start, center, end)                |
 | `.re-kbd`              | `<kbd>`              | keyboard key                                                                                                 |
 | `.re-code`             | `<code>` / `<pre>`   | inline + block code                                                                                          |
 | `.re-empty-state`      | `<div>`              | centered "no data" placeholder; `data-size="sm"`, `data-bordered`; `.re-empty-state-cell` for table cells    |

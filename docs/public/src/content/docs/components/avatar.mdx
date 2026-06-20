@@ -15,11 +15,21 @@ A circular user image, or a text-initials fallback. Size with `data-size`.
 
 <Demo src="avatar.html" name="image" />
 
+## Group
+
+An overlapping stack with an optional overflow count. Give the group a
+`role="group"` and an `aria-label` that states its purpose and the **true total** —
+the count must include the hidden people, since the "+N" chip is `aria-hidden`. Each
+avatar still carries its own name.
+
+<Demo src="avatar.html" name="group" />
+
 ## Accessibility
 
 Avatar is presentational — a `<span>` with no keyboard interaction or focus ring.
 
 - **Semantics** — give every avatar an accessible name. The image variant relies on the native `<img alt="…">`; the initials variant adds `role="img"` with `aria-label` so assistive tech announces the person's name rather than spelling out the letters. Decorative-only avatars can be omitted from the tree (`aria-hidden`) where context already names the user.
+- **Group** — the `aria-label` on the `role="group"` is the source of truth for the total count; the visible "+N" is decorative (`aria-hidden`). Each avatar carries a page-colour border that reads as a gap between neighbours — under forced colors (where that border colour flattens and box-shadow rings are stripped) it becomes a real `CanvasText` outline, so the avatars stay individually distinguishable.
 - **Notes** — the rendered initials are uppercased and unselectable (`user-select: none`) for presentation; they carry no semantics, which is why the `aria-label` provides the real name. The muted fallback background meets text contrast for the initials.
 
 See the [accessibility guide](/relements/guides/accessibility/) for the project-wide approach.
