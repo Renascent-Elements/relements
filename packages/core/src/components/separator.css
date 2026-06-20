@@ -9,7 +9,14 @@
  *   <div class="re-separator" role="separator" aria-orientation="vertical"
  *        data-orientation="vertical"></div>
  *
+ * Labeled — a horizontal rule with centred text ("OR"):
+ *
+ *   <div class="re-separator" data-label role="separator" aria-orientation="horizontal">
+ *     <span class="re-separator__label">OR</span>
+ *   </div>
+ *
  * Orientation (data-orientation): horizontal (default), vertical.
+ * Label alignment (data-align): center (default), start, end.
  */
 
 @layer re.components {
@@ -33,5 +40,38 @@
     margin-block: 0;
     margin-inline: var(--re-space-2);
     border-inline-start: var(--re-border-default);
+  }
+
+  /* ---- Labeled divider ------------------------------------------------
+     A horizontal rule with text in the middle. The two rules are flex
+     pseudo-elements carrying a real `border-block-start` (so they survive
+     forced colors as a system-coloured line); the meaning rides the rendered
+     __label text node, not the separator's accessible name — which screen
+     readers expose inconsistently — so the host declares an explicit
+     aria-orientation. */
+  .re-separator[data-label] {
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-3);
+    margin-block: var(--re-space-4);
+  }
+  .re-separator[data-label]::before,
+  .re-separator[data-label]::after {
+    content: "";
+    flex: 1 1 0;
+    border-block-start: var(--re-border-default);
+  }
+  .re-separator__label {
+    color: var(--re-color-text-muted);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    white-space: nowrap;
+  }
+
+  /* Alignment — shorten one side so the label sits toward it. */
+  .re-separator[data-label][data-align="start"]::before,
+  .re-separator[data-label][data-align="end"]::after {
+    flex-grow: 0;
+    flex-basis: var(--re-space-4);
   }
 }

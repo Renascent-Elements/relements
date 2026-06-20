@@ -6,6 +6,14 @@
  *   <span class="re-avatar"><img src="…" alt="Ada Lovelace" /></span>
  *   <span class="re-avatar" data-size="lg" role="img" aria-label="Ada Lovelace">AL</span>
  *
+ * Group — an overlapping stack with an optional overflow count:
+ *
+ *   <div class="re-avatar-group" role="group" aria-label="5 collaborators">
+ *     <span class="re-avatar" role="img" aria-label="Ada Lovelace">AL</span>
+ *     …
+ *     <span class="re-avatar re-avatar-group__count" aria-hidden="true">+3</span>
+ *   </div>
+ *
  * Sizes (data-size): sm, md (default), lg.
  */
 
@@ -44,5 +52,35 @@
     inline-size: var(--re-control-height-lg);
     block-size: var(--re-control-height-lg);
     font-size: var(--re-size-text-md);
+  }
+
+  /* ---- Group ----------------------------------------------------------
+     An overlapping stack. Each avatar carries a border the colour of the page
+     so it reads as a gap cut between neighbours. Under forced colors that
+     border colour would flatten away (and box-shadow rings are stripped
+     entirely), so it becomes a real CanvasText outline and the separation
+     survives. */
+  .re-avatar-group {
+    --re-avatar-group-overlap: calc(var(--re-control-height-md) * -0.3);
+    display: inline-flex;
+    align-items: center;
+  }
+  .re-avatar-group > .re-avatar {
+    border: var(--re-border-width-strong) solid var(--re-color-bg);
+  }
+  .re-avatar-group > .re-avatar:not(:first-child) {
+    margin-inline-start: var(--re-avatar-group-overlap);
+  }
+
+  /* Overflow count chip ("+3") — presentational; the group's aria-label
+     carries the real total, so this is aria-hidden in the markup. */
+  .re-avatar-group__count {
+    font-size: var(--re-size-text-xs);
+  }
+
+  @media (forced-colors: active) {
+    .re-avatar-group > .re-avatar {
+      border-color: CanvasText;
+    }
   }
 }

@@ -151,6 +151,8 @@ const BOOLEAN_ATTR_DESC = {
   "data-interactive": "Make the element interactive (hover/active affordances).",
   "data-autosize": "Grow a textarea to fit its content.",
   "data-sticky-header": "Keep the table header visible while scrolling.",
+  "data-label": "Render a separator as a labeled divider — a horizontal rule with centred text.",
+  "data-indeterminate": "Show an indeterminate (spinning) progress ring with no known value.",
 };
 
 /** Descriptions for the declarative data-re-* behavior hooks. */
