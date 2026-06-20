@@ -1,0 +1,73 @@
+.changeset/batch2-display-components.md
+  s_2732c4df70b865::t_20eb9a94a2e1d0 1-9
+packages/core/src/index.css
+  s_2732c4df70b865::t_de317776c12095 28
+tests/visual/avatar.visual.spec.ts
+  s_2732c4df70b865::t_c074878df68b4f 12-28
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_884fc8321082f6 155
+  s_2732c4df70b865::t_7b0d2d3937b100 154
+docs/examples/progress-ring.html
+  s_2732c4df70b865::t_1ce61a61cbd92c 38,50,62,74,95,107,120
+  s_2732c4df70b865::t_e276add6a7f2de 136-141
+  s_2732c4df70b865::t_5f17bf64067605 1-37,39-49,51-61,63-73,75-94,96-106,108-119,121-135,142-145
+tests/a11y/forced-colors.spec.ts
+  s_2732c4df70b865::t_efc2e8c9dae371 129-137,150-165
+  s_2732c4df70b865::t_e276add6a7f2de 138-149
+  s_2732c4df70b865::t_332427533956ca 20-22,24,29-31
+docs/public/src/content/docs/components/avatar.mdx
+  s_2732c4df70b865::t_e9b9fa7b56eac8 21-23
+  s_2732c4df70b865::t_80a8b246e83479 18-20,24-26
+  s_2732c4df70b865::t_d0b588409c2875 32
+tests/visual/separator.visual.spec.ts
+  s_2732c4df70b865::t_ab64ad9f47dd43 12-28
+tests/a11y/progress-ring.a11y.spec.ts
+  s_2732c4df70b865::t_c3b3542dc96cc1 1-10
+docs/public/src/content/docs/components/progress-ring.mdx
+  s_2732c4df70b865::t_d9cddfb223302c 1-51
+docs/examples/avatar.html
+  s_2732c4df70b865::t_32ab28ec042304 53-56,58-64
+  s_2732c4df70b865::t_be874ec067a4b2 57
+packages/core/src/components/separator.css
+  s_2732c4df70b865::t_67466c352d1c2b 44-76
+  s_2732c4df70b865::t_92083fe5ca27b5 12-17,19
+packages/core/src/components/avatar.css
+  s_2732c4df70b865::t_1e1ed1ec3244a4 9-16
+  s_2732c4df70b865::t_17c70eae86606f 56-85
+tests/visual/progress-ring.visual.spec.ts
+  s_2732c4df70b865::t_24c1553132b8ad 1-32
+packages/core/package.json
+  s_2732c4df70b865::t_d584fca86eff68 58
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_5e20e7e07372a6 94-99,296-299,308-310
+packages/core/web-types.json
+  s_2732c4df70b865::t_5e20e7e07372a6 4,188-191,200-202
+docs/examples/separator.html
+  s_2732c4df70b865::t_ffd081709949d9 50-67
+docs/public/src/content/docs/components/separator.mdx
+  s_2732c4df70b865::t_94c021b40effc1 16-23
+  s_2732c4df70b865::t_387a0f91dd5b93 35-37
+packages/core/src/components/progress-ring.css
+  s_2732c4df70b865::t_e87b947f917c49 59,64
+  s_2732c4df70b865::t_e276add6a7f2de 78
+  s_2732c4df70b865::t_b8fde963e2cb73 1-58,60-63,65-77,79-114
+packages/core/README.md
+  s_2732c4df70b865::t_884fc8321082f6 102-113,148
+  s_2732c4df70b865::t_3770b34acc5640 145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "cd072a8d83b875ed7fe4753918f217e53e1c21ce",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
