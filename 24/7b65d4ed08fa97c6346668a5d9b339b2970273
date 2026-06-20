@@ -1,0 +1,32 @@
+tests/a11y/datetime.a11y.spec.ts
+  s_2732c4df70b865::t_ed41b2147e72f3 1-10
+tests/visual/datetime.visual.spec.ts
+  s_2732c4df70b865::t_90d3a7f1a76362 1-22
+.changeset/datetime-picker-indicator.md
+  s_2732c4df70b865::t_55aca0c8275bad 1-5
+docs/examples/datetime.html
+  s_2732c4df70b865::t_7fa277629ac5dc 1-43,45-73,76-82
+  s_2732c4df70b865::t_9631d27eeb5cb5 44,74-75
+packages/core/README.md
+  s_2732c4df70b865::t_e920322fc3b5fd 70
+packages/core/src/components/form.css
+  s_2732c4df70b865::t_fce74e33d1b116 176-215
+docs/public/src/content/docs/components/datetime.mdx
+  s_2732c4df70b865::t_ad4d84aa8d883c 1-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "247b65d4ed08fa97c6346668a5d9b339b2970273",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
