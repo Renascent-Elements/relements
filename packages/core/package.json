@@ -94,6 +94,7 @@
     "./components/banner.css": "./dist/components/banner.css",
     "./components/file.css": "./dist/components/file.css",
     "./components/color.css": "./dist/components/color.css",
+    "./components/file-picker.css": "./dist/components/file-picker.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
@@ -163,6 +164,10 @@
       "import": "./dist/behaviors/command-palette.js",
       "types": "./dist/behaviors/command-palette.d.ts"
     },
+    "./behaviors/file-picker": {
+      "import": "./dist/behaviors/file-picker.js",
+      "types": "./dist/behaviors/file-picker.d.ts"
+    },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",
       "types": "./dist/elements/re-tabs.d.ts"
@@ -178,6 +183,10 @@
     "./elements/re-popover": {
       "import": "./dist/elements/re-popover.js",
       "types": "./dist/elements/re-popover.d.ts"
+    },
+    "./elements/re-file-picker": {
+      "import": "./dist/elements/re-file-picker.js",
+      "types": "./dist/elements/re-file-picker.d.ts"
     }
   },
   "scripts": {

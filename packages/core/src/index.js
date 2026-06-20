@@ -22,3 +22,4 @@ export { enhanceToolbar } from "./behaviors/toolbar.js";
 export { enhanceRange } from "./behaviors/range.js";
 export { enhanceContextMenu } from "./behaviors/context-menu.js";
 export { enhanceCommandPalette } from "./behaviors/command-palette.js";
+export { enhanceFilePicker } from "./behaviors/file-picker.js";
