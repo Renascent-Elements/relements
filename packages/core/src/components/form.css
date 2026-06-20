@@ -173,6 +173,47 @@
   }
 
   /* ============================================================
+     Date & time
+     ============================================================
+     Polish the trailing calendar/clock picker indicator on temporal inputs
+     (date / time / datetime-local / month / week). This is Chromium-only in
+     practice: WebKit renders no indicator to style and Firefox uses its own
+     non-addressable one, so `@supports selector(...)` scopes the rules to
+     Blink — every engine still gets the full `.re-input` surface and a working
+     native picker. `color-scheme` (base.css) already makes the UA glyph adapt
+     to light/dark, so no recolouring is needed. Excludes `.re-combobox`, which
+     hides this same pseudo to substitute its own chevron. The indicator is
+     never removed (display:none / pointer-events:none / opacity:0) — it's the
+     only pointer affordance for opening the picker. */
+  @supports selector(::-webkit-calendar-picker-indicator) {
+    .re-input:not(.re-combobox)::-webkit-calendar-picker-indicator {
+      padding: var(--re-space-1);
+      border-radius: var(--re-radius-sm);
+      cursor: pointer;
+      opacity: 0.75;
+      transition:
+        opacity var(--re-duration-fast) var(--re-easing-standard),
+        background-color var(--re-duration-fast) var(--re-easing-standard);
+    }
+    .re-input:not(.re-combobox):hover::-webkit-calendar-picker-indicator,
+    .re-input:not(.re-combobox):focus-visible::-webkit-calendar-picker-indicator {
+      opacity: 1;
+      background-color: var(--re-color-bg-muted);
+    }
+    .re-input:disabled::-webkit-calendar-picker-indicator {
+      cursor: not-allowed;
+    }
+    /* Forced colors: drop the dim + hover wash so the UA glyph keeps full
+       system contrast. */
+    @media (forced-colors: active) {
+      .re-input:not(.re-combobox)::-webkit-calendar-picker-indicator {
+        opacity: 1;
+        background-color: transparent;
+      }
+    }
+  }
+
+  /* ============================================================
      Checkbox & radio (native, styled)
      ============================================================ */
   .re-checkbox,

@@ -13,6 +13,14 @@ a vertical divider for toolbars via `data-orientation="vertical"` (pair it with
 
 <Demo src="separator.html" name="orientations" />
 
+## Labeled
+
+A horizontal rule with text in the middle ("OR"). The two lines are pseudo-elements
+carrying a real border (so they survive forced colors); position the label with
+`data-align` (`center` default, `start`, `end`).
+
+<Demo src="separator.html" name="labeled" />
+
 ## Accessibility
 
 A separator is decorative structure, not an interactive control — it takes no
@@ -24,6 +32,9 @@ focus and has no keyboard interaction.
   `role="separator"` and `aria-orientation="vertical"` explicitly to expose the
   same boundary. (`<hr>`'s default orientation is horizontal, so no
   `aria-orientation` is needed there.)
+- **Labeled** — the label's meaning rides the rendered `__label` text node, not the
+  separator's accessible name (which screen readers expose inconsistently), so the
+  element declares an explicit `aria-orientation="horizontal"`.
 - **Notes** — the divider is drawn with a `--re-border-default` border against
   `--re-color-text-muted`; it conveys grouping visually but the labels it sits
   between (Edit / Duplicate / Delete) remain the meaningful content. If a
