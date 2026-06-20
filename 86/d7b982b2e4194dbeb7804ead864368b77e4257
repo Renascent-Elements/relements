@@ -1,0 +1,66 @@
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_5204f35bf07509 154-155,176-177
+  s_2732c4df70b865::t_1b8879aed138d1 175
+packages/core/src/components/multiselect.css
+  s_2732c4df70b865::t_afbb7a8556b72c 1-26,29-163
+  s_2732c4df70b865::t_b098e9c98aeb66 27-28
+packages/core/src/behaviors/multiselect.js
+  s_2732c4df70b865::t_d8fd59d2f949b4 141-142
+  s_2732c4df70b865::t_e86acee527cda7 1-28,30-64,68-74,80-140,143-181
+  s_2732c4df70b865::t_0248a01194046b 75-79
+  s_2732c4df70b865::t_c230c4ee785bcb 29
+  s_2732c4df70b865::t_5204f35bf07509 65-67
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_c0af78e5587ca5 24
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_4ca3b26b39a569 92
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_e40ef7b393dc03 302-305,390-397
+docs/examples/multiselect.html
+  s_2732c4df70b865::t_f37152d8746add 144-146
+  s_2732c4df70b865::t_60a85b608c866d 1-59,62-141,143,147-158
+  s_2732c4df70b865::t_5204f35bf07509 60-61
+  s_2732c4df70b865::t_879a015d060a13 142
+tests/visual/multiselect.visual.spec.ts
+  s_2732c4df70b865::t_40060fb7d826fd 1-27
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_dfc773c3700e6b 19
+  s_2732c4df70b865::t_8f09edd52a0111 64
+packages/core/README.md
+  s_2732c4df70b865::t_5204f35bf07509 68-89,164-182,184
+  s_2732c4df70b865::t_fea6b9ba3fd681 90
+  s_2732c4df70b865::t_f6ebecb4526de0 183
+.changeset/multiselect.md
+  s_2732c4df70b865::t_6398b9b169bb7c 1-10
+packages/core/src/index.js
+  s_2732c4df70b865::t_2ff7913371bcf8 26
+tests/elements/multiselect.spec.ts
+  s_2732c4df70b865::t_aafff778640ae9 1-74
+packages/core/web-types.json
+  s_2732c4df70b865::t_e40ef7b393dc03 4,200-203,288-295
+packages/core/src/index.css
+  s_2732c4df70b865::t_08aeaee86e3c77 24
+tests/a11y/multiselect.a11y.spec.ts
+  s_2732c4df70b865::t_ebd7d7d2497587 1-10
+packages/core/package.json
+  s_2732c4df70b865::t_1ee1f39c32c3eb 172-175
+  s_2732c4df70b865::t_09ec8de3a6e58c 54
+docs/public/src/content/docs/components/multiselect.mdx
+  s_2732c4df70b865::t_87a7041639823d 1-57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "86d7b982b2e4194dbeb7804ead864368b77e4257",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
