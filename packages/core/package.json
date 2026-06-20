@@ -55,6 +55,7 @@
     "./components/dialog.css": "./dist/components/dialog.css",
     "./components/drawer.css": "./dist/components/drawer.css",
     "./components/progress.css": "./dist/components/progress.css",
+    "./components/progress-ring.css": "./dist/components/progress-ring.css",
     "./components/tabs.css": "./dist/components/tabs.css",
     "./components/menu.css": "./dist/components/menu.css",
     "./components/popover.css": "./dist/components/popover.css",

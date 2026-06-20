@@ -25,6 +25,7 @@
 @import "./components/dialog.css";
 @import "./components/drawer.css";
 @import "./components/progress.css";
+@import "./components/progress-ring.css";
 @import "./components/tabs.css";
 @import "./components/menu.css";
 @import "./components/popover.css";
