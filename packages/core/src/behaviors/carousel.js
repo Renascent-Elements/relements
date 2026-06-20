@@ -327,12 +327,17 @@ function wireOne(host) {
   }
 
   update();
+  // Re-run once after layout settles: some engines size the track a frame late,
+  // which would otherwise leave the initial active state stale until the first
+  // scroll/resize.
+  const initRaf = win.requestAnimationFrame(update);
 
   return () => {
     track.removeEventListener("scroll", onScroll);
     if (ro) ro.disconnect();
     else win.removeEventListener("resize", update);
     if (raf) win.cancelAnimationFrame(raf);
+    win.cancelAnimationFrame(initRaf);
     win.clearTimeout(announceTimer);
     teardown.forEach((fn) => fn());
     slides.forEach((s) => (s.inert = false));
