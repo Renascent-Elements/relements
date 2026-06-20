@@ -1,5 +1,11 @@
 # @relements/core
 
+## 1.5.1
+
+### Patch Changes
+
+- [#86](https://github.com/Renascent-Elements/relements/pull/86) [`73365f7`](https://github.com/Renascent-Elements/relements/commit/73365f73fc79f18855fb26ca430ba56248d2501e) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Polish the native picker indicator on temporal `.re-input`s (`date`, `time`, `datetime-local`, `month`, `week`): a larger hit area, pointer cursor, and a hover wash on `::-webkit-calendar-picker-indicator`. Chromium-only (scoped with `@supports`; WebKit and Firefox keep their native indicator), excludes `.re-combobox`, adapts to dark via `color-scheme`, and drops the dim/wash under forced colors so the glyph keeps system contrast. No new API — the base `.re-input` already styles these fields on every engine.
+
 ## 1.5.0
 
 ### Minor Changes
