@@ -89,6 +89,7 @@ All 18 behaviors are exported by name from `@relements/core` and from `@relement
 - **`enhanceRating`** — normalizes arrow-key direction in a star-rating radio group across browsers. See [Rating](/relements/components/rating/).
 - **`enhanceRange`** — turns two overlaid range inputs into a two-thumb min–max slider; no custom events (native `input`/`change` bubble). See [Range](/relements/components/range/).
 - **`enhanceFilePicker`** — echoes the filenames, wires drag-and-drop, clear, and `accept`/size/count validation over a `.re-file-picker`; the native input stays the form value. Emits `re-error` on a rejected drop (value changes use native `change`). See [File picker](/relements/components/file-picker/).
+- **`enhanceMultiSelect`** — over a `.re-multiselect` (`<details>` of checkboxes): writes the live "N selected" summary, closes on Escape / outside-click, and enforces `data-re-multiselect-required` (blocks submit, `aria-invalid` on the `<fieldset>`, reveals the message). The checkboxes stay the form value; value changes use native `change`. See [Multi-select](/relements/components/multiselect/).
 
 ### Dismissal & notifications
 

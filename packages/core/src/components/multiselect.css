@@ -1,0 +1,163 @@
+/**
+ * Relements multi-select.
+ *
+ * A native <details>/<summary> disclosure wrapping a <fieldset> of native
+ * checkboxes — multi-selection with real form submission (one `name`, many
+ * values), native keyboard, and a closed "N selected" summary. No custom ARIA
+ * widget; the checkboxes ARE the control.
+ *
+ *   <div class="re-field">
+ *     <span class="re-field__label" id="fw-label">Frameworks</span>
+ *     <details class="re-multiselect" data-re-multiselect>
+ *       <summary class="re-multiselect__summary"
+ *                aria-roledescription="multi-select"
+ *                aria-labelledby="fw-label fw-value">
+ *         <span class="re-multiselect__value" id="fw-value" data-placeholder>
+ *           Select frameworks
+ *         </span>
+ *       </summary>
+ *       <fieldset class="re-multiselect__panel" aria-describedby="fw-error">
+ *         <legend class="re-sr-only">Frameworks</legend>
+ *         <label class="re-multiselect__option">
+ *           <input type="checkbox" class="re-checkbox" name="fw" value="react" /> React
+ *         </label>
+ *         …
+ *       </fieldset>
+ *     </details>
+ *     <!-- message is a SIBLING of <details> so it shows while collapsed -->
+ *     <span class="re-validation-message" id="fw-error" hidden>Pick at least one.</span>
+ *   </div>
+ *
+ * The summary's accessible name is `label + value` (aria-labelledby), so the
+ * collapsed control announces both what it's for and what's chosen — but the
+ * LIVE value text is written by `enhanceMultiSelect`; without the behavior the
+ * summary shows (and submits) correctly but only ever reads the authored
+ * placeholder. The panel is plain `position: absolute` (no collision flipping
+ * in v1); the host is `position: relative` to anchor it.
+ *
+ * Sizes (data-size): sm, md (default), lg.
+ */
+
+@layer re.components {
+  .re-multiselect {
+    position: relative;
+    display: block;
+    inline-size: 100%;
+  }
+
+  /* ---- Summary (the closed control surface) ---------------------------
+     Mirrors the .re-input / .re-select surface. */
+  .re-multiselect__summary {
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-2);
+    box-sizing: border-box;
+    min-block-size: var(--re-control-height-md);
+    padding-inline: var(--re-control-padding-x);
+    padding-block: var(--re-control-padding-y);
+    font: inherit;
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    cursor: pointer;
+    user-select: none;
+    list-style: none; /* remove the disclosure triangle … */
+  }
+  .re-multiselect__summary::-webkit-details-marker {
+    display: none; /* … and again for Safari, which ignores list-style here */
+  }
+
+  .re-multiselect__summary:hover {
+    border-color: var(--re-color-border-strong);
+  }
+  .re-multiselect__summary:focus-visible {
+    outline: none;
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* Value text — fills the row and truncates so a long selection can't break
+     the fixed summary height. */
+  .re-multiselect__value {
+    flex: 1;
+    min-inline-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: start;
+  }
+  .re-multiselect__value[data-placeholder] {
+    color: var(--re-color-text-subtle);
+  }
+
+  /* Chevron — a border triangle that flips when open (the open state is also
+     carried structurally by the panel appearing). */
+  .re-multiselect__summary::after {
+    content: "";
+    flex-shrink: 0;
+    inline-size: 0;
+    block-size: 0;
+    border-inline: 0.3em solid transparent;
+    border-block-start: 0.35em solid currentColor;
+    transition: transform var(--re-duration-fast) var(--re-easing-standard);
+  }
+  .re-multiselect[open] .re-multiselect__summary::after {
+    transform: rotate(180deg);
+  }
+
+  /* Invalid — the behavior mirrors aria-invalid on the <fieldset> (for AT) and
+     data-invalid on the host (for CSS, since :has() is above the browser
+     floor). The validation message is the cue that survives forced colors. */
+  .re-multiselect[data-invalid] .re-multiselect__summary {
+    border-color: var(--re-color-danger-border);
+  }
+
+  /* ---- Panel (the open dropdown) -------------------------------------- */
+  .re-multiselect__panel {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-start: calc(100% + var(--re-space-1));
+    z-index: var(--re-z-popover);
+    box-sizing: border-box;
+    margin: 0;
+    padding: var(--re-space-2);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-md);
+    background-color: var(--re-color-surface);
+    box-shadow: var(--re-shadow-md);
+    max-block-size: 16rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-1);
+    min-inline-size: 0;
+  }
+
+  .re-multiselect__option {
+    display: flex;
+    align-items: center;
+    gap: var(--re-space-3);
+    padding-block: var(--re-space-2);
+    padding-inline: var(--re-space-2);
+    border-radius: var(--re-radius-sm);
+    cursor: pointer;
+  }
+  .re-multiselect__option:hover {
+    background-color: var(--re-color-bg-muted);
+  }
+
+  /* ---- Sizes ----------------------------------------------------------- */
+  .re-multiselect[data-size="sm"] .re-multiselect__summary {
+    min-block-size: var(--re-control-height-sm);
+    font-size: var(--re-size-text-sm);
+    padding-inline: var(--re-space-2);
+  }
+  .re-multiselect[data-size="lg"] .re-multiselect__summary {
+    min-block-size: var(--re-control-height-lg);
+    font-size: var(--re-size-text-lg);
+    padding-inline: var(--re-space-4);
+  }
+}

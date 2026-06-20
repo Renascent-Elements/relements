@@ -151,6 +151,8 @@ const BOOLEAN_ATTR_DESC = {
   "data-interactive": "Make the element interactive (hover/active affordances).",
   "data-autosize": "Grow a textarea to fit its content.",
   "data-sticky-header": "Keep the table header visible while scrolling.",
+  "data-placeholder":
+    "Marks the multi-select value text while the placeholder (no selection) shows.",
 };
 
 /** Descriptions for the declarative data-re-* behavior hooks. */
@@ -170,6 +172,9 @@ const HOOK_DESC = {
   "data-re-context-menu": "Host element for enhanceContextMenu.",
   "data-re-command-palette": "Host dialog for enhanceCommandPalette.",
   "data-re-command-hotkey": "Keyboard shortcut that opens the command palette (e.g. `mod+k`).",
+  "data-re-multiselect": "Host <details> for enhanceMultiSelect.",
+  "data-re-multiselect-required":
+    "Require at least one selection (enhanceMultiSelect enforces it on submit).",
 };
 
 // ---------------------------------------------------------------------------

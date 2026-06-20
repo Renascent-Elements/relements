@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@relements/core",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description-markup": "markdown",
   "js-types-syntax": "typescript",
   "contributions": {
@@ -198,6 +198,10 @@
           "description": "Force the open/visible state without interaction."
         },
         {
+          "name": "data-placeholder",
+          "description": "Marks the multi-select value text while the placeholder (no selection) shows."
+        },
+        {
           "name": "data-required",
           "description": "Mark the field as required."
         },
@@ -280,6 +284,14 @@
         {
           "name": "data-re-menu",
           "description": "Host element for enhanceMenuButton."
+        },
+        {
+          "name": "data-re-multiselect",
+          "description": "Host <details> for enhanceMultiSelect."
+        },
+        {
+          "name": "data-re-multiselect-required",
+          "description": "Require at least one selection (enhanceMultiSelect enforces it on submit)."
         },
         {
           "name": "data-re-number",

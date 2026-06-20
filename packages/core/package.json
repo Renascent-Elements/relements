@@ -51,6 +51,7 @@
     "./components/button.css": "./dist/components/button.css",
     "./components/link.css": "./dist/components/link.css",
     "./components/form.css": "./dist/components/form.css",
+    "./components/multiselect.css": "./dist/components/multiselect.css",
     "./components/disclosure.css": "./dist/components/disclosure.css",
     "./components/dialog.css": "./dist/components/dialog.css",
     "./components/drawer.css": "./dist/components/drawer.css",
@@ -167,6 +168,10 @@
     "./behaviors/file-picker": {
       "import": "./dist/behaviors/file-picker.js",
       "types": "./dist/behaviors/file-picker.d.ts"
+    },
+    "./behaviors/multiselect": {
+      "import": "./dist/behaviors/multiselect.js",
+      "types": "./dist/behaviors/multiselect.d.ts"
     },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",
