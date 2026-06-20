@@ -1,0 +1,21 @@
+tests/visual/carousel.visual.spec.ts
+  s_2732c4df70b865::t_b905b4f6a9200e 10-21,24
+packages/core/src/behaviors/carousel.js
+  s_2732c4df70b865::t_af5495720929e1 330-333,340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "c036b4284d8a20a3f2fe92e666d84e7d7652b28e",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
