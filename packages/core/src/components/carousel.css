@@ -122,6 +122,34 @@
     border-color: var(--re-color-accent-600);
   }
 
+  /* Autoplay Pause/Play toggle (injected by enhanceCarousel) — overlaid in the
+     leading top corner. Its presence is the WCAG 2.2.2 stop mechanism. */
+  .re-carousel__autoplay {
+    position: absolute;
+    z-index: 1;
+    inset-block-start: var(--re-space-2);
+    inset-inline-start: var(--re-space-2);
+    inline-size: var(--re-control-height-sm);
+    block-size: var(--re-control-height-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-surface);
+    color: var(--re-color-text);
+    box-shadow: var(--re-shadow-md);
+    cursor: pointer;
+  }
+  .re-carousel__autoplay:hover {
+    background-color: var(--re-color-bg-muted);
+  }
+  .re-carousel__autoplay svg {
+    inline-size: 55%;
+    block-size: 55%;
+  }
+
   /* Forced colors: the dot's accent fill (the only cue for the current slide)
      and the controls' surface/shadow all flatten away. Re-establish the active
      dot with Highlight and give the controls a real border (box-shadow is
@@ -131,7 +159,8 @@
       background-color: Highlight;
       border-color: Highlight;
     }
-    .re-carousel__control {
+    .re-carousel__control,
+    .re-carousel__autoplay {
       border: var(--re-border-width-strong) solid ButtonText;
     }
   }

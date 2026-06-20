@@ -137,17 +137,17 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Content & layout
 
-| Class                  | Element              | Variants / options                                                                                           |
-| ---------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `.re-card`             | `<article>`          | `__header` / `__body` / `__footer`; `data-interactive`                                                       |
-| `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials                                                                 |
-| `.re-table`            | `<table>`            | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll      |
-| `.re-description-list` | `<dl>`               | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                        |
-| `.re-separator`        | `<hr>` / `[role]`    | `data-orientation`: vertical                                                                                 |
-| `.re-kbd`              | `<kbd>`              | keyboard key                                                                                                 |
-| `.re-code`             | `<code>` / `<pre>`   | inline + block code                                                                                          |
-| `.re-empty-state`      | `<div>`              | centered "no data" placeholder; `data-size="sm"`, `data-bordered`; `.re-empty-state-cell` for table cells    |
-| `.re-carousel`         | `<div>` scroll strip | CSS scroll-snap slides; prev/next + dots + active tracking via `enhanceCarousel`; `--re-carousel-slide-size` |
+| Class                  | Element              | Variants / options                                                                                                                                     |
+| ---------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.re-card`             | `<article>`          | `__header` / `__body` / `__footer`; `data-interactive`                                                                                                 |
+| `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials                                                                                                           |
+| `.re-table`            | `<table>`            | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll                                                |
+| `.re-description-list` | `<dl>`               | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                                                                  |
+| `.re-separator`        | `<hr>` / `[role]`    | `data-orientation`: vertical                                                                                                                           |
+| `.re-kbd`              | `<kbd>`              | keyboard key                                                                                                                                           |
+| `.re-code`             | `<code>` / `<pre>`   | inline + block code                                                                                                                                    |
+| `.re-empty-state`      | `<div>`              | centered "no data" placeholder; `data-size="sm"`, `data-bordered`; `.re-empty-state-cell` for table cells                                              |
+| `.re-carousel`         | `<div>` scroll strip | CSS scroll-snap slides; prev/next + dots + active tracking via `enhanceCarousel`; `data-re-carousel-autoplay` (pause/play); `--re-carousel-slide-size` |
 
 ## JavaScript behaviors
 
@@ -161,27 +161,27 @@ const controller = enhanceTabs(document);
 controller.destroy();
 ```
 
-| Behavior                | What it does                                                                              | Key event        |
-| ----------------------- | ----------------------------------------------------------------------------------------- | ---------------- |
-| `enhanceTabs`           | Arrow keys, Home/End, roving tabindex                                                     | `re-change`      |
-| `enhanceMenuButton`     | Keyboard nav, outside-click close                                                         | `re-select`      |
-| `enhanceDialog`         | Trigger binding, close buttons, backdrop dismiss, alert-dialog cancel-guard               | —                |
-| `enhancePopover`        | Anchored positioning, toggle event bridge                                                 | `re-toggle`      |
-| `enhanceDismissible`    | Dismiss buttons via `[data-re-dismiss]`                                                   | `re-dismiss`     |
-| `enhanceCombobox`       | Styled listbox over a native `<datalist>` (ARIA editable combobox)                        | `change`         |
-| `enhanceAutosize`       | `<textarea>` grows to its content (`field-sizing` + fallback)                             | —                |
-| `enhancePasswordToggle` | Show/hide password button (`aria-pressed`)                                                | —                |
-| `enhanceNumberStepper`  | +/− stepper buttons for `<input type="number">`                                           | `input`/`change` |
-| `enhanceOtp`            | Optional OTP polish: active-cell hook + opt-in digit strip                                | —                |
-| `enhanceTagsInput`      | Chip/token editor backed by hidden inputs (submits an array)                              | `re-tags-change` |
-| `enhanceRating`         | Cross-engine arrow-key normalization for the star rating                                  | `input`/`change` |
-| `enhanceToolbar`        | Toolbar roving tabindex (one Tab stop, Arrow/Home/End, RTL-aware)                         | —                |
-| `enhanceRange`          | Two-thumb range: non-crossing clamp + fill + track-click routing                          | `input`/`change` |
-| `enhanceContextMenu`    | Right-click / Shift+F10 menu at the pointer (reuses the menu keyboard model)              | `re-select`      |
-| `enhanceCommandPalette` | ⌘K palette: combobox/listbox ARIA, type-to-filter, activedescendant nav                   | `re-command`     |
-| `enhanceFilePicker`     | File picker: filename readout, drag-drop, clear, accept/size/count validation             | `re-error`       |
-| `enhanceCarousel`       | Scroll-snap carousel controls: prev/next + dots, active tracking, inert off-screen slides | —                |
-| `showToast(msg, opts)`  | `aria-live` toast notifications                                                           | —                |
+| Behavior                | What it does                                                                                                                          | Key event        |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `enhanceTabs`           | Arrow keys, Home/End, roving tabindex                                                                                                 | `re-change`      |
+| `enhanceMenuButton`     | Keyboard nav, outside-click close                                                                                                     | `re-select`      |
+| `enhanceDialog`         | Trigger binding, close buttons, backdrop dismiss, alert-dialog cancel-guard                                                           | —                |
+| `enhancePopover`        | Anchored positioning, toggle event bridge                                                                                             | `re-toggle`      |
+| `enhanceDismissible`    | Dismiss buttons via `[data-re-dismiss]`                                                                                               | `re-dismiss`     |
+| `enhanceCombobox`       | Styled listbox over a native `<datalist>` (ARIA editable combobox)                                                                    | `change`         |
+| `enhanceAutosize`       | `<textarea>` grows to its content (`field-sizing` + fallback)                                                                         | —                |
+| `enhancePasswordToggle` | Show/hide password button (`aria-pressed`)                                                                                            | —                |
+| `enhanceNumberStepper`  | +/− stepper buttons for `<input type="number">`                                                                                       | `input`/`change` |
+| `enhanceOtp`            | Optional OTP polish: active-cell hook + opt-in digit strip                                                                            | —                |
+| `enhanceTagsInput`      | Chip/token editor backed by hidden inputs (submits an array)                                                                          | `re-tags-change` |
+| `enhanceRating`         | Cross-engine arrow-key normalization for the star rating                                                                              | `input`/`change` |
+| `enhanceToolbar`        | Toolbar roving tabindex (one Tab stop, Arrow/Home/End, RTL-aware)                                                                     | —                |
+| `enhanceRange`          | Two-thumb range: non-crossing clamp + fill + track-click routing                                                                      | `input`/`change` |
+| `enhanceContextMenu`    | Right-click / Shift+F10 menu at the pointer (reuses the menu keyboard model)                                                          | `re-select`      |
+| `enhanceCommandPalette` | ⌘K palette: combobox/listbox ARIA, type-to-filter, activedescendant nav                                                               | `re-command`     |
+| `enhanceFilePicker`     | File picker: filename readout, drag-drop, clear, accept/size/count validation                                                         | `re-error`       |
+| `enhanceCarousel`       | Scroll-snap carousel controls: prev/next + dots, active tracking, inert off-screen slides, optional autoplay (pause/play, WCAG 2.2.2) | —                |
+| `showToast(msg, opts)`  | `aria-live` toast notifications                                                                                                       | —                |
 
 ## Custom elements
 
