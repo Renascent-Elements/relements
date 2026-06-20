@@ -1,0 +1,60 @@
+packages/core/web-types.json
+  s_2732c4df70b865::t_50ac26f5c7a4ca 4,120-123,224-227
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_60662c7b5851c5 19
+  s_2732c4df70b865::t_ec3d7c61e62734 64
+docs/examples/carousel.html
+  s_2732c4df70b865::t_e35edeabe4496a 1-97
+packages/core/src/index.js
+  s_2732c4df70b865::t_9bce6571fb4336 26
+packages/core/src/index.css
+  s_2732c4df70b865::t_b4f93d6961adf6 68
+packages/core/src/behaviors/carousel.js
+  s_2732c4df70b865::t_78c966738a2c38 38-58
+  s_2732c4df70b865::t_36c2450681b624 1-37,59-110,112-221
+  s_2732c4df70b865::t_29af30aacc143a 111
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_a55d80e764bfb3 66
+  s_2732c4df70b865::t_01a6b8c59bcd56 80
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_b83840670cadc7 24
+tests/a11y/carousel.a11y.spec.ts
+  s_2732c4df70b865::t_6e0a1f2eaa7a99 1-10
+tests/visual/carousel.visual.spec.ts
+  s_2732c4df70b865::t_d8262a393513ce 1-31
+packages/core/README.md
+  s_2732c4df70b865::t_2c4f13bb87b5bc 183
+  s_2732c4df70b865::t_11d822ff363dda 140-149,164-182,184
+  s_2732c4df70b865::t_033bdd390b2334 150
+tests/elements/carousel.spec.ts
+  s_2732c4df70b865::t_5425bb659e0beb 1-44
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_50ac26f5c7a4ca 106-117,334-337
+docs/public/src/content/docs/components/carousel.mdx
+  s_2732c4df70b865::t_35f7a5aea4ef30 1-36
+packages/core/src/components/carousel.css
+  s_2732c4df70b865::t_c885a10c5e70c3 1-138
+.changeset/carousel.md
+  s_2732c4df70b865::t_325f4ebaee1a01 1-10
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_b580d31d9e5c51 173
+packages/core/package.json
+  s_2732c4df70b865::t_cf1444307be9bc 98
+  s_2732c4df70b865::t_f7a0201048eb91 172-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "154f59ce6b674ceb6930f8e2bc57c6d496f54994",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
