@@ -1,0 +1,189 @@
+/**
+ * Relements file picker — a custom-styled file selection control.
+ *
+ * The richer sibling of `.re-file`: a styled drop/browse area built by visually
+ * hiding the native `<input type="file">` (kept focusable + the form value) and
+ * driving a custom `__ui`. Click-to-pick works with **zero JS** (the `<label>`
+ * opens the OS picker). The optional `enhanceFilePicker` behavior adds the
+ * filename readout, drag-and-drop, clear, and validation — without it you still
+ * have a working native picker (the file just isn't echoed in the UI).
+ *
+ *   <div class="re-file-picker" data-re-file-picker>
+ *     <label class="re-file-picker__field">
+ *       <input type="file" class="re-file-picker__input" name="docs" />
+ *       <span class="re-file-picker__ui">
+ *         <svg class="re-file-picker__icon" aria-hidden="true">…</svg>
+ *         <span class="re-file-picker__prompt">Choose a file</span>
+ *       </span>
+ *     </label>
+ *     <p class="re-file-picker__list" hidden></p>          <!-- filled by JS -->
+ *     <button class="re-file-picker__clear" data-re-file-clear hidden
+ *             type="button" aria-label="Clear selection">×</button>
+ *     <span class="re-file-picker__status re-sr-only" role="status"
+ *           aria-live="polite"></span>
+ *   </div>
+ *
+ * The `<label>` wraps ONLY the input + `__ui`; `__clear`/`__list`/`__status` are
+ * its siblings, so clicking Clear (a real button) never reopens the picker.
+ * Sizes via data-size: sm, md (default), lg. Invalid via aria-invalid on the
+ * input. Drop/has-files states (`data-dragover` / `data-has-files`) are set by
+ * the behavior.
+ */
+
+@layer re.components {
+  .re-file-picker {
+    display: grid;
+    gap: var(--re-space-2);
+  }
+
+  .re-file-picker__field {
+    display: block;
+    cursor: pointer;
+  }
+
+  /* Visually hidden but keyboard-focusable + still the form value (clip
+     pattern, NOT display:none/opacity:0). outline:none so no ghost ring leaks
+     from the clipped box — the ring is shown on __ui via :focus-within. */
+  .re-file-picker__input {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+  .re-file-picker__input:focus-visible {
+    outline: none;
+  }
+
+  /* The visible drop / browse area. */
+  .re-file-picker__ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--re-space-2);
+    padding-block: var(--re-space-6);
+    padding-inline: var(--re-space-4);
+    text-align: center;
+    color: var(--re-color-text-muted);
+    background-color: var(--re-color-bg);
+    border: var(--re-border-width) dashed var(--re-color-border-strong);
+    border-radius: var(--re-radius-md);
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      color var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-file-picker__icon {
+    inline-size: var(--re-size-text-2xl);
+    block-size: var(--re-size-text-2xl);
+    color: var(--re-color-text-subtle);
+  }
+  .re-file-picker__prompt {
+    font-size: var(--re-size-text-sm);
+  }
+
+  /* Hover: bg-muted, NOT bg-subtle (which collapses to surface in dark). */
+  .re-file-picker__field:hover .re-file-picker__ui {
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg-muted);
+    border-color: var(--re-color-focus-ring);
+  }
+
+  /* Keyboard/any focus on the hidden input → ring on the visible UI. */
+  .re-file-picker__field:focus-within .re-file-picker__ui {
+    border-color: var(--re-color-focus-ring);
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* Drag-over (set by the behavior) — solid accent border + faint accent wash. */
+  .re-file-picker[data-dragover] .re-file-picker__ui {
+    color: var(--re-color-text);
+    background-color: color-mix(in oklab, var(--re-color-accent-600) 8%, var(--re-color-bg));
+    border-style: solid;
+    border-color: var(--re-color-accent-600);
+  }
+
+  /* A selection is present (set by the behavior). */
+  .re-file-picker[data-has-files] .re-file-picker__ui {
+    border-style: solid;
+    border-color: var(--re-color-border-strong);
+  }
+
+  /* Invalid — the input precedes __ui, so target it via the adjacent sibling
+     (no :has(), which is above the browser floor). */
+  .re-file-picker__input[aria-invalid="true"] + .re-file-picker__ui,
+  .re-file-picker__input:user-invalid + .re-file-picker__ui {
+    border-color: var(--re-color-danger-border);
+  }
+
+  /* Disabled. */
+  .re-file-picker__input:disabled + .re-file-picker__ui {
+    cursor: not-allowed;
+    opacity: 0.7;
+    background-color: var(--re-color-bg-muted);
+  }
+
+  /* Filename readout. */
+  .re-file-picker__list {
+    margin: 0;
+    font-size: var(--re-size-text-sm);
+    color: var(--re-color-text);
+    word-break: break-word;
+  }
+
+  /* Clear button — a compact neutral control; the × glyph uses full currentColor
+     (the AA-verified container foreground), never a translucent mix. */
+  .re-file-picker__clear {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--re-space-1);
+    padding-block: var(--re-space-1);
+    padding-inline: var(--re-space-2);
+    font: inherit;
+    font-size: var(--re-size-text-sm);
+    color: var(--re-color-text-muted);
+    background-color: transparent;
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-sm);
+    cursor: pointer;
+  }
+  .re-file-picker__clear:hover {
+    color: var(--re-color-text);
+    background-color: var(--re-color-bg-muted);
+  }
+
+  /* Sizes. */
+  .re-file-picker[data-size="sm"] .re-file-picker__ui {
+    padding-block: var(--re-space-4);
+  }
+  .re-file-picker[data-size="sm"] .re-file-picker__icon {
+    inline-size: var(--re-size-text-lg);
+    block-size: var(--re-size-text-lg);
+  }
+  .re-file-picker[data-size="lg"] .re-file-picker__ui {
+    padding-block: var(--re-space-8);
+  }
+
+  /* Forced colors: the box-shadow ring is stripped and bg/border flatten, so
+     re-establish focus + the two states with DISTINCT system colors (the global
+     :focus-visible Highlight lands on the clipped input, not the visible __ui). */
+  @media (forced-colors: active) {
+    .re-file-picker__field:focus-within .re-file-picker__ui {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+    }
+    .re-file-picker[data-dragover] .re-file-picker__ui {
+      outline: 2px solid Highlight;
+    }
+    .re-file-picker[data-has-files] .re-file-picker__ui {
+      outline: 1px solid ButtonText;
+    }
+  }
+}

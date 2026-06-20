@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@relements/core",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description-markup": "markdown",
   "js-types-syntax": "typescript",
   "contributions": {
@@ -76,6 +76,36 @@
               "description": "Live-region politeness for announcements."
             }
           ]
+        },
+        {
+          "name": "re-file-picker",
+          "description": "Self-managing wrapper around the custom file picker (enhanceFilePicker). `.files` reads/writes the selection, `.clear()` empties it; emits `re-error` on a rejected drop. Reflects `multiple`/`accept`/`disabled`/`required` onto the native input. Register with `import \"@relements/core/elements/re-file-picker\"`.",
+          "doc-url": "https://renascent-elements.github.io/relements/custom-elements/re-file-picker/",
+          "attributes": [
+            {
+              "name": "multiple",
+              "description": "Allow selecting more than one file."
+            },
+            {
+              "name": "accept",
+              "description": "Comma-separated list of accepted file types."
+            }
+          ],
+          "js": {
+            "properties": [
+              {
+                "name": "files",
+                "type": "File[]",
+                "description": "The selected files."
+              }
+            ],
+            "events": [
+              {
+                "name": "re-error",
+                "description": "Fires when a drop is rejected (type/size/count)."
+              }
+            ]
+          }
         }
       ],
       "attributes": [
@@ -140,8 +170,16 @@
           "description": "Add dividers between items."
         },
         {
+          "name": "data-dragover",
+          "description": "Relements boolean styling attribute."
+        },
+        {
           "name": "data-full-width",
           "description": "Stretch to the full available inline size."
+        },
+        {
+          "name": "data-has-files",
+          "description": "Relements boolean styling attribute."
         },
         {
           "name": "data-hover",
@@ -222,6 +260,22 @@
         {
           "name": "data-re-dismissible",
           "description": "Marks a container that can be dismissed."
+        },
+        {
+          "name": "data-re-file-clear",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-file-max-files",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-file-max-size",
+          "description": "Relements behavior hook."
+        },
+        {
+          "name": "data-re-file-picker",
+          "description": "Relements behavior hook."
         },
         {
           "name": "data-re-menu",

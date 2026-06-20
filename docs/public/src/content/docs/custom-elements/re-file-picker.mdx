@@ -1,0 +1,33 @@
+---
+title: <re-file-picker>
+description: Custom-element wrapper for the file picker.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A self-managing wrapper around the [file picker](/relements/components/file-picker/)
+(`enhanceFilePicker`). Author the `.re-file-picker__*` parts inside it; the element
+adds the container class + behavior marker, reflects `name`/`multiple`/`accept`/
+`disabled`/`required` onto the native input, and enhances on connect. See the
+[custom elements overview](/relements/custom-elements/) for how the `<re-*>` tags
+work.
+
+Import once to register the tag, then use it declaratively:
+
+```js
+import "@relements/core/elements/re-file-picker";
+```
+
+## Basic
+
+<Demo src="re-file-picker.html" name="basic" />
+
+## API
+
+- **`element.files`** — the selected files as a `File[]` (read/write; writing dispatches `change`).
+- **`element.clear()`** — empties the selection.
+- Emits a bubbling **`re-error`** (`{ reason, rejected, accepted }`) when a drop is rejected by `accept` / `data-re-file-max-files` / `data-re-file-max-size`. Value changes use the native bubbling `change` event (it already carries `event.target.files`).
+
+## Accessibility
+
+The element adds no semantics of its own — the native `<input type="file">` stays the form value and the focusable control, the OS picker is the keyboard path, and the selection is announced through the sr-only `role="status"` region the behavior writes to. Give the input an accessible name (`aria-label` or a `.re-field` label). See the [file picker](/relements/components/file-picker/#accessibility) accessibility notes and the [accessibility guide](/relements/guides/accessibility/).

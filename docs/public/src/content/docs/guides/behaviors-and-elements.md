@@ -63,7 +63,7 @@ Genuinely imperative APIs have no declarative form. [`showToast`](/relements/com
 
 ## The behaviors
 
-All 17 behaviors are exported by name from `@relements/core` and from `@relements/core/behaviors/<name>`.
+All 18 behaviors are exported by name from `@relements/core` and from `@relements/core/behaviors/<name>`.
 
 ### Overlays & menus
 
@@ -88,6 +88,7 @@ All 17 behaviors are exported by name from `@relements/core` and from `@relement
 - **`enhanceTagsInput`** — turns a text input into a token/chip editor that submits an array; emits `re-tags-change` (`{ values }`) + `change`. See [Tags input](/relements/components/tags-input/).
 - **`enhanceRating`** — normalizes arrow-key direction in a star-rating radio group across browsers. See [Rating](/relements/components/rating/).
 - **`enhanceRange`** — turns two overlaid range inputs into a two-thumb min–max slider; no custom events (native `input`/`change` bubble). See [Range](/relements/components/range/).
+- **`enhanceFilePicker`** — echoes the filenames, wires drag-and-drop, clear, and `accept`/size/count validation over a `.re-file-picker`; the native input stays the form value. Emits `re-error` on a rejected drop (value changes use native `change`). See [File picker](/relements/components/file-picker/).
 
 ### Dismissal & notifications
 
@@ -119,7 +120,7 @@ Both wire the same logic; pick by integration style.
 
 **Reach for a behavior when** you want to enhance existing markup imperatively and control the lifecycle yourself — a global page init, a framework component enhancing its own subtree on mount and calling `destroy()` on unmount, or scoping enhancement to a `ShadowRoot`. Behaviors are also the only option for the form inputs and dismissal helpers, which have no custom-element wrapper.
 
-**Reach for a custom element when** you want a declarative, self-managing tag — drop `<re-tabs>` into any template and it enhances and cleans itself up via `connectedCallback`/`disconnectedCallback`, no init call to remember. It is the natural fit for plain HTML pages and for frameworks that render custom elements directly. The four elements wrap tabs, menu, popover, and toast; everything else is behavior-only.
+**Reach for a custom element when** you want a declarative, self-managing tag — drop `<re-tabs>` into any template and it enhances and cleans itself up via `connectedCallback`/`disconnectedCallback`, no init call to remember. It is the natural fit for plain HTML pages and for frameworks that render custom elements directly. The five elements wrap tabs, menu, popover, toast, and the file picker; everything else is behavior-only.
 
 Either way the underlying markup is the same semantic HTML, so you can start with one and switch later without changing the document's structure.
 

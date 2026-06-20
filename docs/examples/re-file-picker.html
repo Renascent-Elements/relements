@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · &lt;re-file-picker&gt;</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="re-file-picker">
+    <header>
+      <h1>&lt;re-file-picker&gt;</h1>
+      <p>The custom-element wrapper for the file picker. It enhances on connect.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <re-file-picker name="docs" multiple>
+        <label class="re-file-picker__field">
+          <input type="file" class="re-file-picker__input" aria-label="Upload documents" />
+          <span class="re-file-picker__ui">
+            <svg
+              class="re-file-picker__icon"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            <span class="re-file-picker__prompt">Choose files or drag them here</span>
+          </span>
+        </label>
+        <p class="re-file-picker__list" hidden></p>
+        <button
+          class="re-file-picker__clear"
+          data-re-file-clear
+          hidden
+          type="button"
+          aria-label="Clear selection"
+        >
+          Clear
+        </button>
+        <span class="re-file-picker__status re-sr-only" role="status" aria-live="polite"></span>
+      </re-file-picker>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import "/packages/core/src/elements/re-file-picker.js";
+    </script>
+  </body>
+</html>

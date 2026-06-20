@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · File picker</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-4);
+        max-width: 26rem;
+      }
+    </style>
+  </head>
+  <body data-page="file-picker">
+    <header>
+      <h1>File picker</h1>
+      <p>A custom-styled file selection control. Click-to-pick works with no JavaScript.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-file-picker" data-re-file-picker>
+        <label class="re-file-picker__field">
+          <input
+            type="file"
+            class="re-file-picker__input"
+            name="docs"
+            aria-label="Upload documents"
+          />
+          <span class="re-file-picker__ui">
+            <svg
+              class="re-file-picker__icon"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            <span class="re-file-picker__prompt">Choose a file or drag it here</span>
+          </span>
+        </label>
+        <p class="re-file-picker__list" hidden></p>
+        <button
+          class="re-file-picker__clear"
+          data-re-file-clear
+          hidden
+          type="button"
+          aria-label="Clear selection"
+        >
+          Clear
+        </button>
+        <span class="re-file-picker__status re-sr-only" role="status" aria-live="polite"></span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <div class="stack">
+        <div class="re-file-picker" data-size="sm">
+          <label class="re-file-picker__field">
+            <input type="file" class="re-file-picker__input" aria-label="Small picker" />
+            <span class="re-file-picker__ui">
+              <span class="re-file-picker__prompt">Choose a file</span>
+            </span>
+          </label>
+        </div>
+        <div class="re-file-picker" data-size="lg">
+          <label class="re-file-picker__field">
+            <input type="file" class="re-file-picker__input" aria-label="Large picker" />
+            <span class="re-file-picker__ui">
+              <span class="re-file-picker__prompt">Choose a file or drag it here</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="states-heading" data-testid="states">
+      <h2 id="states-heading">States</h2>
+      <!-- demo:start name="states" -->
+      <div class="stack">
+        <div class="re-file-picker">
+          <label class="re-file-picker__field">
+            <input
+              type="file"
+              class="re-file-picker__input"
+              aria-label="Invalid picker"
+              aria-invalid="true"
+            />
+            <span class="re-file-picker__ui">
+              <span class="re-file-picker__prompt">Choose a file</span>
+            </span>
+          </label>
+        </div>
+        <div class="re-file-picker">
+          <label class="re-file-picker__field">
+            <input
+              type="file"
+              class="re-file-picker__input"
+              aria-label="Disabled picker"
+              disabled
+            />
+            <span class="re-file-picker__ui">
+              <span class="re-file-picker__prompt">Choose a file</span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="validation-heading" data-testid="validation">
+      <h2 id="validation-heading">Validation</h2>
+      <!-- demo:start name="validation" -->
+      <div
+        class="re-file-picker"
+        data-re-file-picker
+        data-re-file-max-files="1"
+        data-re-file-max-size="1000000"
+      >
+        <label class="re-file-picker__field">
+          <input
+            type="file"
+            class="re-file-picker__input"
+            name="image"
+            accept="image/*"
+            multiple
+            aria-label="Upload one image"
+          />
+          <span class="re-file-picker__ui">
+            <span class="re-file-picker__prompt">One image, up to 1&nbsp;MB</span>
+          </span>
+        </label>
+        <p class="re-file-picker__list" hidden></p>
+        <button
+          class="re-file-picker__clear"
+          data-re-file-clear
+          hidden
+          type="button"
+          aria-label="Clear selection"
+        >
+          Clear
+        </button>
+        <span class="re-file-picker__status re-sr-only" role="status" aria-live="polite"></span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceFilePicker } from "/packages/core/src/behaviors/file-picker.js";
+      enhanceFilePicker();
+    </script>
+  </body>
+</html>

@@ -93,6 +93,21 @@ const ELEMENTS = [
     ],
     js: { properties: [], events: [] },
   },
+  {
+    name: "re-file-picker",
+    description:
+      'Self-managing wrapper around the custom file picker (enhanceFilePicker). `.files` reads/writes the selection, `.clear()` empties it; emits `re-error` on a rejected drop. Reflects `multiple`/`accept`/`disabled`/`required` onto the native input. Register with `import "@relements/core/elements/re-file-picker"`.',
+    attributes: [
+      { name: "multiple", description: "Allow selecting more than one file." },
+      { name: "accept", description: "Comma-separated list of accepted file types." },
+    ],
+    js: {
+      properties: [{ name: "files", type: "File[]", description: "The selected files." }],
+      events: [
+        { name: "re-error", description: "Fires when a drop is rejected (type/size/count)." },
+      ],
+    },
+  },
 ];
 
 /** Descriptions for the styling data-* attributes (values are derived from CSS). */

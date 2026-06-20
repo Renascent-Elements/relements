@@ -1,0 +1,48 @@
+---
+title: File picker
+description: A custom-styled file selection control — click-to-pick with no JS, plus an optional drag-and-drop layer.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+The richer sibling of [`.re-file`](/relements/components/file/): a styled drop /
+browse area built by visually hiding the native `<input type="file">` (which
+stays the form value) and driving a custom surface. **Click-to-pick works with
+zero JavaScript** — the `<label>` opens the OS picker. The optional
+[`enhanceFilePicker`](/relements/guides/behaviors-and-elements/) behavior (or the
+[`<re-file-picker>`](/relements/custom-elements/re-file-picker/) element) layers
+on the filename readout, drag-and-drop, clear, and validation.
+
+Reach for `.re-file` when you just want the native button styled; reach for this
+when you want an icon, a drop zone, or a custom prompt.
+
+## Basic
+
+<Demo src="file-picker.html" name="basic" />
+
+## Sizes
+
+<Demo src="file-picker.html" name="sizes" />
+
+## States
+
+<Demo src="file-picker.html" name="states" />
+
+## Validation
+
+`enhanceFilePicker` enforces `accept`, `data-re-file-max-files`, and
+`data-re-file-max-size` on **dropped** files (the OS picker already filters by
+`accept`); a rejected set sets `aria-invalid` and emits a `re-error` event with
+`{ reason, rejected, accepted }`. Client checks are a convenience — the server is
+the only trust boundary.
+
+<Demo src="file-picker.html" name="validation" />
+
+## Accessibility
+
+- **Keyboard** — fully native. <kbd>Tab</kbd> moves focus to the (visually hidden but focusable) input; <kbd>Space</kbd> / <kbd>Enter</kbd> opens the OS picker. Drag-and-drop is a pointer-only enhancement (WCAG 2.5.7) — the picker is always the keyboard path, so nothing is keyboard-inaccessible.
+- **Focus** — the input is clipped offscreen, so the visible `:focus-visible` ring is drawn on `__ui` via `:focus-within` (and re-established as a `Highlight` outline under forced colors, where the box-shadow ring is stripped). The input's own ring is suppressed so it can't ghost.
+- **Name vs. instruction** — give the input an accessible **name** with `aria-label` (or an associated [`.re-field`](/relements/components/field/) label) that says _what_ to upload ("Resume"); the visible `__prompt` is the _instruction_ ("Choose a file or drag it here"), not the name.
+- **Selection announced** — without the behavior the picker still works, but the chosen file isn't echoed (the native text is on the hidden input). `enhanceFilePicker` writes the filenames into `__list` (visible) and announces a summary through the sr-only `role="status"` `__status` region — so the selection reaches assistive tech.
+- **Clear** — the `__clear` button is a real `<button>` placed **outside** the `<label>` (inside, every click would reopen the picker); it's authored `hidden` and only revealed by the behavior, with an `aria-label`.
+- **Notes** — `[data-dragover]` and `[data-has-files]` use distinct system colors under forced colors so the two states stay distinguishable; hover uses `--re-color-bg-muted` so it survives dark mode. See the [accessibility guide](/relements/guides/accessibility/).

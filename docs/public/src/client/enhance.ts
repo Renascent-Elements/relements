@@ -15,6 +15,7 @@ import {
   enhanceRange,
   enhanceContextMenu,
   enhanceCommandPalette,
+  enhanceFilePicker,
   showToast,
 } from "@relements/core";
 
@@ -23,13 +24,14 @@ import "@relements/core/elements/re-tabs";
 import "@relements/core/elements/re-toast";
 import "@relements/core/elements/re-menu";
 import "@relements/core/elements/re-popover";
+import "@relements/core/elements/re-file-picker";
 
 // The custom elements (`re-menu`, `re-popover`, `re-tabs`) enhance their own
 // light-DOM subtree in connectedCallback. Running the global enhancers over the
 // whole document would wire those same hosts a second time — harmless for tabs,
 // but it double-binds the menu/popover toggle handlers so they open-then-close.
 // So enhance only hosts that are NOT a self-enhancing custom element.
-const SELF_ENHANCING = "re-menu, re-popover, re-tabs";
+const SELF_ENHANCING = "re-menu, re-popover, re-tabs, re-file-picker";
 
 function enhanceScoped(selector: string, enhance: (root: Element) => unknown) {
   for (const host of document.querySelectorAll(selector)) {
@@ -57,6 +59,7 @@ function init() {
   enhanceRange(document);
   enhanceScoped("[data-re-context-menu]", enhanceContextMenu);
   enhanceCommandPalette(document);
+  enhanceScoped("[data-re-file-picker]", enhanceFilePicker);
 
   // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it
   // for any demo checkbox that opts in with `data-demo-indeterminate`.
