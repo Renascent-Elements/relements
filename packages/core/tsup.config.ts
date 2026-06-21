@@ -22,6 +22,7 @@ export default defineConfig({
     "behaviors/command-palette": "src/behaviors/command-palette.js",
     "behaviors/file-picker": "src/behaviors/file-picker.js",
     "behaviors/carousel": "src/behaviors/carousel.js",
+    "behaviors/multiselect": "src/behaviors/multiselect.js",
     "elements/re-tabs": "src/elements/re-tabs.js",
     "elements/re-toast": "src/elements/re-toast.js",
     "elements/re-menu": "src/elements/re-menu.js",

@@ -1,6 +1,6 @@
 {
   "name": "@relements/core",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "HTML-first design system core: tokens, styles, and progressive enhancement.",
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     "./components/button.css": "./dist/components/button.css",
     "./components/link.css": "./dist/components/link.css",
     "./components/form.css": "./dist/components/form.css",
+    "./components/multiselect.css": "./dist/components/multiselect.css",
     "./components/disclosure.css": "./dist/components/disclosure.css",
     "./components/dialog.css": "./dist/components/dialog.css",
     "./components/drawer.css": "./dist/components/drawer.css",
@@ -173,6 +174,10 @@
     "./behaviors/carousel": {
       "import": "./dist/behaviors/carousel.js",
       "types": "./dist/behaviors/carousel.d.ts"
+    },
+    "./behaviors/multiselect": {
+      "import": "./dist/behaviors/multiselect.js",
+      "types": "./dist/behaviors/multiselect.d.ts"
     },
     "./elements/re-tabs": {
       "import": "./dist/elements/re-tabs.js",

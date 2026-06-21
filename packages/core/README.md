@@ -65,28 +65,29 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Forms & inputs
 
-| Class                       | Element                    | Variants / options                                                           |
-| --------------------------- | -------------------------- | ---------------------------------------------------------------------------- |
-| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg; incl. date/time types (polished picker indicator)   |
-| `.re-textarea`              | `<textarea>`               | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                     |
-| `.re-select`                | `<select>`                 | `data-size`: sm, md, lg                                                      |
-| `.re-checkbox`              | `<input type="checkbox">`  | —                                                                            |
-| `.re-radio`                 | `<input type="radio">`     | —                                                                            |
-| `.re-switch`                | `<input type="checkbox">`  | `role="switch"`; `:checked`, `:disabled`                                     |
-| `.re-field`                 | `<label>`                  | `__label` / `__hint`; `re-field--inline` for checkbox/radio rows             |
-| `.re-field-group`           | `<fieldset>`               | `data-orientation`: horizontal                                               |
-| `.re-validation-message`    | `<span>`                   | `data-tone`: success, hint, warning                                          |
-| `.re-input-group`           | wrapper                    | prefix/suffix text + attached buttons; base for password & number inputs     |
-| `.re-segmented`             | `<fieldset>` radios        | single-select pill group; `data-size`: sm, lg                                |
-| `.re-slider`                | `<input type="range">`     | `data-size`: sm, md, lg                                                      |
-| `.re-combobox`              | `<input>` + `<datalist>`   | native autocomplete; styled listbox via `enhanceCombobox`                    |
-| `.re-otp` / `.re-otp-field` | single `<input>`           | segmented one-time-code; `--re-otp-length`; `data-size`: sm, lg              |
-| `.re-rating`                | `<fieldset>` radios        | star rating; `.re-rating-display` (read-only, fractional); sizes sm/lg       |
-| `.re-tags-input`            | wrapper                    | chip/token editor via `enhanceTagsInput`; `data-size`: sm, lg                |
-| `.re-range`                 | two `<input type="range">` | two-thumb min–max slider via `enhanceRange`; `data-size`: sm, lg             |
-| `.re-file`                  | `<input type="file">`      | styled `::file-selector-button`, native filename; `data-size`: sm, md, lg    |
-| `.re-color`                 | `<input type="color">`     | framed native swatch; `data-size`: sm, md, lg                                |
-| `.re-file-picker`           | wrapper + `<input file>`   | custom drop/browse area; filenames, drag-drop, clear via `enhanceFilePicker` |
+| Class                       | Element                    | Variants / options                                                                 |
+| --------------------------- | -------------------------- | ---------------------------------------------------------------------------------- |
+| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg; incl. date/time types (polished picker indicator)         |
+| `.re-textarea`              | `<textarea>`               | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                           |
+| `.re-select`                | `<select>`                 | `data-size`: sm, md, lg                                                            |
+| `.re-checkbox`              | `<input type="checkbox">`  | —                                                                                  |
+| `.re-radio`                 | `<input type="radio">`     | —                                                                                  |
+| `.re-switch`                | `<input type="checkbox">`  | `role="switch"`; `:checked`, `:disabled`                                           |
+| `.re-field`                 | `<label>`                  | `__label` / `__hint`; `re-field--inline` for checkbox/radio rows                   |
+| `.re-field-group`           | `<fieldset>`               | `data-orientation`: horizontal                                                     |
+| `.re-validation-message`    | `<span>`                   | `data-tone`: success, hint, warning                                                |
+| `.re-input-group`           | wrapper                    | prefix/suffix text + attached buttons; base for password & number inputs           |
+| `.re-segmented`             | `<fieldset>` radios        | single-select pill group; `data-size`: sm, lg                                      |
+| `.re-slider`                | `<input type="range">`     | `data-size`: sm, md, lg                                                            |
+| `.re-combobox`              | `<input>` + `<datalist>`   | native autocomplete; styled listbox via `enhanceCombobox`                          |
+| `.re-otp` / `.re-otp-field` | single `<input>`           | segmented one-time-code; `--re-otp-length`; `data-size`: sm, lg                    |
+| `.re-rating`                | `<fieldset>` radios        | star rating; `.re-rating-display` (read-only, fractional); sizes sm/lg             |
+| `.re-tags-input`            | wrapper                    | chip/token editor via `enhanceTagsInput`; `data-size`: sm, lg                      |
+| `.re-range`                 | two `<input type="range">` | two-thumb min–max slider via `enhanceRange`; `data-size`: sm, lg                   |
+| `.re-file`                  | `<input type="file">`      | styled `::file-selector-button`, native filename; `data-size`: sm, md, lg          |
+| `.re-color`                 | `<input type="color">`     | framed native swatch; `data-size`: sm, md, lg                                      |
+| `.re-file-picker`           | wrapper + `<input file>`   | custom drop/browse area; filenames, drag-drop, clear via `enhanceFilePicker`       |
+| `.re-multiselect`           | `<details>` + checkboxes   | dropdown of checkboxes; "N selected" summary + validation via `enhanceMultiSelect` |
 
 ### Actions
 
@@ -163,27 +164,28 @@ const controller = enhanceTabs(document);
 controller.destroy();
 ```
 
-| Behavior                | What it does                                                                              | Key event        |
-| ----------------------- | ----------------------------------------------------------------------------------------- | ---------------- |
-| `enhanceTabs`           | Arrow keys, Home/End, roving tabindex                                                     | `re-change`      |
-| `enhanceMenuButton`     | Keyboard nav, outside-click close                                                         | `re-select`      |
-| `enhanceDialog`         | Trigger binding, close buttons, backdrop dismiss, alert-dialog cancel-guard               | —                |
-| `enhancePopover`        | Anchored positioning, toggle event bridge                                                 | `re-toggle`      |
-| `enhanceDismissible`    | Dismiss buttons via `[data-re-dismiss]`                                                   | `re-dismiss`     |
-| `enhanceCombobox`       | Styled listbox over a native `<datalist>` (ARIA editable combobox)                        | `change`         |
-| `enhanceAutosize`       | `<textarea>` grows to its content (`field-sizing` + fallback)                             | —                |
-| `enhancePasswordToggle` | Show/hide password button (`aria-pressed`)                                                | —                |
-| `enhanceNumberStepper`  | +/− stepper buttons for `<input type="number">`                                           | `input`/`change` |
-| `enhanceOtp`            | Optional OTP polish: active-cell hook + opt-in digit strip                                | —                |
-| `enhanceTagsInput`      | Chip/token editor backed by hidden inputs (submits an array)                              | `re-tags-change` |
-| `enhanceRating`         | Cross-engine arrow-key normalization for the star rating                                  | `input`/`change` |
-| `enhanceToolbar`        | Toolbar roving tabindex (one Tab stop, Arrow/Home/End, RTL-aware)                         | —                |
-| `enhanceRange`          | Two-thumb range: non-crossing clamp + fill + track-click routing                          | `input`/`change` |
-| `enhanceContextMenu`    | Right-click / Shift+F10 menu at the pointer (reuses the menu keyboard model)              | `re-select`      |
-| `enhanceCommandPalette` | ⌘K palette: combobox/listbox ARIA, type-to-filter, activedescendant nav                   | `re-command`     |
-| `enhanceFilePicker`     | File picker: filename readout, drag-drop, clear, accept/size/count validation             | `re-error`       |
-| `enhanceCarousel`       | Scroll-snap carousel controls: prev/next + dots, active tracking, inert off-screen slides | —                |
-| `showToast(msg, opts)`  | `aria-live` toast notifications                                                           | —                |
+| Behavior                | What it does                                                                                    | Key event        |
+| ----------------------- | ----------------------------------------------------------------------------------------------- | ---------------- |
+| `enhanceTabs`           | Arrow keys, Home/End, roving tabindex                                                           | `re-change`      |
+| `enhanceMenuButton`     | Keyboard nav, outside-click close                                                               | `re-select`      |
+| `enhanceDialog`         | Trigger binding, close buttons, backdrop dismiss, alert-dialog cancel-guard                     | —                |
+| `enhancePopover`        | Anchored positioning, toggle event bridge                                                       | `re-toggle`      |
+| `enhanceDismissible`    | Dismiss buttons via `[data-re-dismiss]`                                                         | `re-dismiss`     |
+| `enhanceCombobox`       | Styled listbox over a native `<datalist>` (ARIA editable combobox)                              | `change`         |
+| `enhanceAutosize`       | `<textarea>` grows to its content (`field-sizing` + fallback)                                   | —                |
+| `enhancePasswordToggle` | Show/hide password button (`aria-pressed`)                                                      | —                |
+| `enhanceNumberStepper`  | +/− stepper buttons for `<input type="number">`                                                 | `input`/`change` |
+| `enhanceOtp`            | Optional OTP polish: active-cell hook + opt-in digit strip                                      | —                |
+| `enhanceTagsInput`      | Chip/token editor backed by hidden inputs (submits an array)                                    | `re-tags-change` |
+| `enhanceRating`         | Cross-engine arrow-key normalization for the star rating                                        | `input`/`change` |
+| `enhanceToolbar`        | Toolbar roving tabindex (one Tab stop, Arrow/Home/End, RTL-aware)                               | —                |
+| `enhanceRange`          | Two-thumb range: non-crossing clamp + fill + track-click routing                                | `input`/`change` |
+| `enhanceContextMenu`    | Right-click / Shift+F10 menu at the pointer (reuses the menu keyboard model)                    | `re-select`      |
+| `enhanceCommandPalette` | ⌘K palette: combobox/listbox ARIA, type-to-filter, activedescendant nav                         | `re-command`     |
+| `enhanceFilePicker`     | File picker: filename readout, drag-drop, clear, accept/size/count validation                   | `re-error`       |
+| `enhanceCarousel`       | Scroll-snap carousel controls: prev/next + dots, active tracking, inert off-screen slides       | —                |
+| `enhanceMultiSelect`    | `<details>` of checkboxes: live "N selected" summary, Escape/outside-close, required validation | `change`         |
+| `showToast(msg, opts)`  | `aria-live` toast notifications                                                                 | —                |
 
 ## Custom elements
 

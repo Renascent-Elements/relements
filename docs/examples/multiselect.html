@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Multi-select</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .stack {
+        display: grid;
+        gap: var(--re-space-4);
+        max-width: 24rem;
+      }
+      /* Tall enough that the open panel falls inside the section box for the
+         visual baseline. */
+      .tall {
+        min-block-size: 22rem;
+      }
+    </style>
+  </head>
+  <body data-page="multiselect">
+    <header>
+      <h1>Multi-select</h1>
+      <p>A native &lt;details&gt; of checkboxes — real form submission, native keyboard.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="stack">
+        <div class="re-field">
+          <span class="re-field__label" id="fw-label">Frameworks</span>
+          <details class="re-multiselect" data-re-multiselect>
+            <summary
+              class="re-multiselect__summary"
+              aria-roledescription="multi-select"
+              aria-labelledby="fw-label fw-value"
+            >
+              <span class="re-multiselect__value" id="fw-value" data-placeholder>
+                Select frameworks
+              </span>
+            </summary>
+            <fieldset class="re-multiselect__panel">
+              <legend class="re-sr-only">Frameworks</legend>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="fw" value="react" /> React
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="fw" value="vue" checked /> Vue
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="fw" value="svelte" checked />
+                Svelte
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="fw" value="angular" /> Angular
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="fw" value="solid" /> Solid
+              </label>
+            </fieldset>
+          </details>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="open-heading" data-testid="open" class="tall">
+      <h2 id="open-heading">Open</h2>
+      <!-- demo:start name="open" -->
+      <div class="stack">
+        <div class="re-field">
+          <span class="re-field__label" id="tz-label">Time zones</span>
+          <details class="re-multiselect" data-re-multiselect open>
+            <summary
+              class="re-multiselect__summary"
+              aria-roledescription="multi-select"
+              aria-labelledby="tz-label tz-value"
+            >
+              <span class="re-multiselect__value" id="tz-value" data-placeholder>
+                Select time zones
+              </span>
+            </summary>
+            <fieldset class="re-multiselect__panel">
+              <legend class="re-sr-only">Time zones</legend>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="tz" value="utc" checked /> UTC
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="tz" value="cet" checked /> Central
+                European
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="tz" value="est" /> Eastern
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="tz" value="pst" /> Pacific
+              </label>
+            </fieldset>
+          </details>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="required-heading" data-testid="required">
+      <h2 id="required-heading">Required</h2>
+      <!-- demo:start name="required" -->
+      <form class="stack" id="prefs-form">
+        <div class="re-field">
+          <span class="re-field__label" id="diet-label">Dietary needs</span>
+          <details class="re-multiselect" data-re-multiselect data-re-multiselect-required>
+            <summary
+              class="re-multiselect__summary"
+              aria-roledescription="multi-select"
+              aria-labelledby="diet-label diet-value"
+            >
+              <span class="re-multiselect__value" id="diet-value" data-placeholder>
+                Select at least one
+              </span>
+            </summary>
+            <fieldset class="re-multiselect__panel" aria-describedby="diet-error">
+              <legend class="re-sr-only">Dietary needs</legend>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="diet" value="vegan" /> Vegan
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="diet" value="halal" /> Halal
+              </label>
+              <label class="re-multiselect__option">
+                <input type="checkbox" class="re-checkbox" name="diet" value="gluten-free" />
+                Gluten-free
+              </label>
+            </fieldset>
+          </details>
+          <span class="re-validation-message" id="diet-error" hidden>
+            Pick at least one option.
+          </span>
+        </div>
+        <button class="re-button" data-variant="primary" type="submit">Save</button>
+      </form>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import { enhanceMultiSelect } from "/packages/core/src/behaviors/multiselect.js";
+      enhanceMultiSelect();
+    </script>
+  </body>
+</html>

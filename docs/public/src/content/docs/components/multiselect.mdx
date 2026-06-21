@@ -1,0 +1,57 @@
+---
+title: Multi-select
+description: A native <details> disclosure of checkboxes — multi-selection with real form submission, native keyboard, and a "N selected" summary.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Multi-selection without a custom ARIA widget: a native `<details>` / `<summary>`
+disclosure wrapping a `<fieldset>` of native checkboxes. One `name`, many values,
+real form submission, native keyboard — the checkboxes **are** the control. The
+optional [`enhanceMultiSelect`](/relements/guides/behaviors-and-elements/) behavior
+adds the live "N selected" summary, Escape / outside-click close, and required
+validation.
+
+## Basic
+
+<Demo src="multiselect.html" name="basic" />
+
+## Open
+
+<Demo src="multiselect.html" name="open" />
+
+## Required
+
+`data-re-multiselect-required` enforces at least one selection: an empty submit is
+blocked, the `<fieldset>` gets `aria-invalid`, and the `.re-validation-message`
+(referenced by `aria-describedby`) is revealed.
+
+<Demo src="multiselect.html" name="required" />
+
+## Accessibility
+
+- **It's checkboxes** — no `role="listbox"` / `option` re-implementation, so native
+  checkbox semantics, keyboard, and grouping (`<fieldset>` / `<legend>`) come for
+  free. A closed `<details>` keeps its checkboxes out of the tab order natively; open
+  puts them back in.
+- **The summary names _and_ values the control** — `aria-labelledby` points the
+  summary at the field label **and** the value text, so collapsed it announces both
+  "what" and "what's chosen". `aria-roledescription="multi-select"` says what kind of
+  control it is.
+- **The live value is a JS enhancement, not a no-JS guarantee** — the "N selected"
+  text is written by `enhanceMultiSelect`. Without it the control still submits and
+  works as a native disclosure, but the summary only ever reads the authored
+  placeholder. Be honest about that: the value reaches assistive tech _through the
+  behavior_.
+- **Required is behavior-owned** — a checkbox group has no native "≥1" constraint, so
+  the behavior enforces it: `aria-invalid` on the `<fieldset>`, the message revealed
+  via `aria-describedby`, and the form submit blocked. The message lives **outside**
+  `<details>` so it stays visible while the control is collapsed.
+- **Escape** closes the panel and returns focus to the summary; an outside click
+  closes it too. `aria-expanded` is the native `<summary>`'s — not managed by JS.
+- **Forced colors** — checked boxes keep the `Highlight` fill from
+  [`.re-checkbox`](/relements/components/checkbox/); the summary's focus ring becomes
+  the global system outline; invalid is carried by the message text (which survives
+  forced colors), not colour alone.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the project-wide approach.

@@ -24,3 +24,4 @@ export { enhanceContextMenu } from "./behaviors/context-menu.js";
 export { enhanceCommandPalette } from "./behaviors/command-palette.js";
 export { enhanceFilePicker } from "./behaviors/file-picker.js";
 export { enhanceCarousel } from "./behaviors/carousel.js";
+export { enhanceMultiSelect } from "./behaviors/multiselect.js";
