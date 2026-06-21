@@ -234,6 +234,37 @@ starlight-toc a:focus-visible {
   inline-size: 100%;
 }
 
+/* The context-menu example's right-click target is a demo-only `.re-context-region`
+   box (a dashed, 8rem-tall "Right-click here" area) styled in the example <head>,
+   so on the site it collapses to a line of text with no visible target. Restore it
+   demo-scoped (full-width like the other block demos). */
+.demo__preview .re-context-region {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  min-block-size: 8rem;
+  padding: var(--re-space-6);
+  border: var(--re-border-width) dashed var(--re-color-border);
+  border-radius: var(--re-radius-md);
+  color: var(--re-color-text-muted);
+  text-align: center;
+}
+
+/* The example pages' flex-row helpers (`.row`, switch's `.opt`, drawer's
+   `.drawer-triggers`) and the `.grid` column helper also live in their <head>.
+   Inline content still flows without them, but the gap is lost — restore them so
+   demo spacing matches the example pages (exact gap is cosmetic in a demo). */
+.demo__preview :is(.row, .opt, .drawer-triggers) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--re-space-3);
+}
+.demo__preview .grid {
+  display: grid;
+  gap: var(--re-space-4);
+}
+
 /* The carousel example's slide-art box (its 16/9 frame), the `.frame` max-width,
    and the caption styling all live in the example page's <head> <style> (not
    extracted by Demo.astro, like `.stack`), so on the site the slides collapse to
