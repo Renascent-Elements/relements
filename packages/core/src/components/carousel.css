@@ -219,11 +219,11 @@
       line-height: 1;
     }
     .re-carousel__track::scroll-button(inline-start) {
-      content: "\2039" / "Previous slide";
+      content: "\276E" / "Previous slide";
       inset-inline-start: var(--re-space-2);
     }
     .re-carousel__track::scroll-button(inline-end) {
-      content: "\203A" / "Next slide";
+      content: "\276F" / "Next slide";
       inset-inline-end: var(--re-space-2);
     }
     .re-carousel__track::scroll-button(inline-start):disabled,
