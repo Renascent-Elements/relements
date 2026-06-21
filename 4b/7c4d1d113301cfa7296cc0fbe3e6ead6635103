@@ -1,0 +1,59 @@
+docs/public/CHANGELOG.md
+  s_2732c4df70b865::t_3d8c7483e3c5d2 3-9
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_3d8c7483e3c5d2 19,65
+packages/core/README.md
+  s_2732c4df70b865::t_3d8c7483e3c5d2 142-153,186
+packages/core/src/components/carousel.css
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-246
+docs/public/src/content/docs/components/carousel.mdx
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-48
+packages/core/src/index.js
+  s_2732c4df70b865::t_3d8c7483e3c5d2 26
+tests/visual/carousel.visual.spec.ts
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-75
+packages/core/CHANGELOG.md
+  s_2732c4df70b865::t_3d8c7483e3c5d2 3-20
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_3d8c7483e3c5d2 24
+docs/examples/carousel.html
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-125
+packages/core/web-types.json
+  s_2732c4df70b865::t_3d8c7483e3c5d2 4,120-123,236-243
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_3d8c7483e3c5d2 177
+docs/public/src/styles/site.css
+  s_2732c4df70b865::t_3d8c7483e3c5d2 268-293
+packages/core/package.json
+  s_2732c4df70b865::t_3d8c7483e3c5d2 3,100,174-176
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_3d8c7483e3c5d2 66,80
+packages/core/src/index.css
+  s_2732c4df70b865::t_3d8c7483e3c5d2 70
+tests/a11y/carousel.a11y.spec.ts
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-10
+tests/elements/carousel.spec.ts
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-169
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_3d8c7483e3c5d2 112-123,352-359
+packages/core/src/behaviors/carousel.js
+  s_2732c4df70b865::t_3d8c7483e3c5d2 1-346
+docs/public/package.json
+  s_2732c4df70b865::t_3d8c7483e3c5d2 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "4b7c4d1d113301cfa7296cc0fbe3e6ead6635103",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
