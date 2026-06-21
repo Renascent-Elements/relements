@@ -1,5 +1,13 @@
 # @relements/core
 
+## 1.7.1
+
+### Patch Changes
+
+- [#97](https://github.com/Renascent-Elements/relements/pull/97) [`94d315b`](https://github.com/Renascent-Elements/relements/commit/94d315bad269931c178ca444790f9aea3bf1de11) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Carousel fixes:
+  - **Autoplay no longer scrolls the page.** `enhanceCarousel`'s navigation centred the slide with `scrollIntoView()`, which scrolls _every_ ancestor — so an autoplaying carousel below the fold yanked the whole page down on each advance. It now scrolls only the track (centre offset computed from box geometry); native scroll-snap still drives touch/keyboard.
+  - **Centre the Rung B chevrons.** The CSS-Carousel `::scroll-button()` prev/next glyphs used the single guillemets (`‹`/`›`), which render off-centre in the button; switched to the `❮`/`❯` chevron ornaments (U+276E/U+276F).
+
 ## 1.7.0
 
 ### Minor Changes
