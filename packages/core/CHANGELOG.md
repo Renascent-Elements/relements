@@ -1,5 +1,23 @@
 # @relements/core
 
+## 1.7.0
+
+### Minor Changes
+
+- [#88](https://github.com/Renascent-Elements/relements/pull/88) [`b414b9a`](https://github.com/Renascent-Elements/relements/commit/b414b9ae9eeafa8f78f6a52d3508f2d960baceab) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Carousel: add **autoplay** (opt-in via `data-re-carousel-autoplay`; optional ms value, default 5000). `enhanceCarousel` injects an auto-advance timer plus a **Pause/Play button** — the WCAG 2.2.2 (Pause, Stop, Hide) stop mechanism — and pauses while the carousel is hovered, while focus is inside it, and while the tab is hidden. Under `prefers-reduced-motion: reduce` it starts paused, and it suppresses the live-region announcement while playing.
+
+  Autoplay runs on **either control rung** — the timer + pause button are JS even where the browser draws the dots/buttons itself (Rung B). The behavior's gate now skips only the _control injection_ on Rung B, not autoplay.
+
+- [#88](https://github.com/Renascent-Elements/relements/pull/88) [`b414b9a`](https://github.com/Renascent-Elements/relements/commit/b414b9ae9eeafa8f78f6a52d3508f2d960baceab) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Carousel: add the zero-JS **CSS-Carousel** control rung (Rung B). Where the browser supports the CSS Carousel pseudo-elements (`scroll-marker-group`, `::scroll-marker`, `::scroll-button()` — Chrome 135+ today), `.re-carousel` now draws its dot strip and prev/next buttons with no JavaScript, styled to match the JS controls. `enhanceCarousel` feature-tests the same condition and stands down, so the two control sets never both appear (and a test asserts exactly one renders).
+
+  Shipped behind `@supports` and labeled **experimental**: the UA-generated markers/buttons are ahead of assistive tech (documented tab-exposure bugs), so the JS controls (Rung C) remain the accessibility-tested path on engines without the feature. Autoplay is still deferred to a later release.
+
+- [#88](https://github.com/Renascent-Elements/relements/pull/88) [`b414b9a`](https://github.com/Renascent-Elements/relements/commit/b414b9ae9eeafa8f78f6a52d3508f2d960baceab) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add **carousel** — a native CSS scroll-snap strip with the thinnest possible JS for controls.
+  - **`.re-carousel`** (CSS only) — `.re-carousel__track` is `overflow-x: auto` + `scroll-snap-type: inline mandatory`; it scrolls and snaps with zero JS (touch, trackpad, scrollbar, and Arrow/Page/Home/End since the track is a focusable scroll region). New export `@relements/core/components/carousel.css`.
+  - **`enhanceCarousel`** — back-fills the discoverable controls: prev/next buttons + a dot strip (plain buttons with `aria-label` / `aria-current`, **not** a tablist), active-slide tracking by box geometry (RTL-safe — no `scrollLeft`-sign math), end-disable (no wrap), `inert` on off-screen slides, and a debounced polite announcement of the settled slide. Navigation uses `scrollIntoView({ inline })` and honors `prefers-reduced-motion`. No custom event — derive the index from native `scroll`. New export `@relements/core/behaviors/carousel`.
+
+  This is the first rung: the CSS-Carousel pseudo-element rung (`::scroll-button()` / `::scroll-marker`, zero-JS controls) lands later behind `@supports` as experimental; autoplay is deferred. Dynamic slides are out of scope for now — re-run `enhanceCarousel` after mutating the slide list. Forced colors: the active dot uses `Highlight` and the controls get a real `ButtonText` border.
+
 ## 1.6.0
 
 ### Minor Changes
