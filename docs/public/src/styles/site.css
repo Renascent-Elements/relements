@@ -234,6 +234,32 @@ starlight-toc a:focus-visible {
   inline-size: 100%;
 }
 
+/* The carousel example's slide-art box (its 16/9 frame), the `.frame` max-width,
+   and the caption styling all live in the example page's <head> <style> (not
+   extracted by Demo.astro, like `.stack`), so on the site the slides collapse to
+   a thin text-height strip. Restore them demo-scoped, keyed on the component
+   classes + the demo's `.slide-art` helper; values come from the core tokens. */
+.demo__preview .re-carousel {
+  inline-size: 100%;
+  max-inline-size: 32rem;
+  margin-inline: auto;
+}
+.demo__preview .slide-art {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  border-radius: var(--re-radius-md);
+  color: var(--re-color-text-on-accent);
+  font-size: var(--re-size-text-3xl);
+  font-weight: var(--re-font-weight-semibold);
+}
+.demo__preview .re-carousel__slide figcaption {
+  margin-block-start: var(--re-space-2);
+  color: var(--re-color-text-muted);
+  font-size: var(--re-size-text-sm);
+  text-align: center;
+}
+
 /* Example pages wrap multi-control demos in a page-local `.stack` helper that
    lives in each page's own <head> <style>. Demo.astro extracts only the markup
    between the demo delimiters — not that <style> — so on the site `.stack`

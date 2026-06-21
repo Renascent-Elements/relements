@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@relements/core",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description-markup": "markdown",
   "js-types-syntax": "typescript",
   "contributions": {
@@ -118,6 +118,10 @@
           "description": "Spacing density."
         },
         {
+          "name": "data-dir",
+          "description": "Relements styling attribute."
+        },
+        {
           "name": "data-emphasis",
           "description": "Visual emphasis — `solid` uses a filled status surface."
         },
@@ -228,6 +232,14 @@
         {
           "name": "data-zebra",
           "description": "Striped (zebra) rows."
+        },
+        {
+          "name": "data-re-carousel",
+          "description": "Host element for enhanceCarousel."
+        },
+        {
+          "name": "data-re-carousel-autoplay",
+          "description": "Relements behavior hook."
         },
         {
           "name": "data-re-combobox",

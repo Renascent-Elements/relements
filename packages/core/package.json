@@ -97,6 +97,7 @@
     "./components/file.css": "./dist/components/file.css",
     "./components/color.css": "./dist/components/color.css",
     "./components/file-picker.css": "./dist/components/file-picker.css",
+    "./components/carousel.css": "./dist/components/carousel.css",
     "./themes/renascent.css": "./dist/themes/renascent.css",
     "./behaviors/dismissible": {
       "import": "./dist/behaviors/dismissible.js",
@@ -169,6 +170,10 @@
     "./behaviors/file-picker": {
       "import": "./dist/behaviors/file-picker.js",
       "types": "./dist/behaviors/file-picker.d.ts"
+    },
+    "./behaviors/carousel": {
+      "import": "./dist/behaviors/carousel.js",
+      "types": "./dist/behaviors/carousel.d.ts"
     },
     "./behaviors/multiselect": {
       "import": "./dist/behaviors/multiselect.js",
