@@ -1,0 +1,24 @@
+.changeset/carousel-button-align-pagescroll.md
+  s_2732c4df70b865::t_a33b4eca748262 1-8
+packages/core/src/behaviors/carousel.js
+  s_2732c4df70b865::t_26757d1c92ec86 165-167
+  s_2732c4df70b865::t_e4a1ae58871549 163-164,168-171
+packages/core/src/components/carousel.css
+  s_2732c4df70b865::t_21dc09c57d19f4 222,226
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "dcf642834d692851c064d8585772e956b78af805",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
