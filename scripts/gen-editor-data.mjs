@@ -173,6 +173,8 @@ const HOOK_DESC = {
   "data-re-command-palette": "Host dialog for enhanceCommandPalette.",
   "data-re-command-hotkey": "Keyboard shortcut that opens the command palette (e.g. `mod+k`).",
   "data-re-carousel": "Host element for enhanceCarousel.",
+  "data-re-carousel-autoplay":
+    "Auto-advance the carousel (optional ms value, default 5000); adds a Pause/Play button.",
 };
 
 // ---------------------------------------------------------------------------

@@ -88,3 +88,82 @@ test.describe("Carousel", () => {
     });
   });
 });
+
+// Autoplay (opt-in) runs on BOTH rungs — the pause button + timer are JS even
+// where the UA draws the dots/buttons (Rung B). So these don't skip on Chromium.
+test.describe("Carousel autoplay", () => {
+  test.use({ reducedMotion: "no-preference" });
+
+  const activeIndex = (host: import("@playwright/test").Locator) =>
+    host.evaluate((el) => {
+      const track = el.querySelector(".re-carousel__track") as HTMLElement;
+      const slides = [...el.querySelectorAll(".re-carousel__slide")];
+      const box = track.getBoundingClientRect();
+      const c = (box.left + box.right) / 2;
+      let best = 0;
+      let bd = Infinity;
+      slides.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        const d = Math.abs((r.left + r.right) / 2 - c);
+        if (d < bd) {
+          bd = d;
+          best = i;
+        }
+      });
+      return best;
+    });
+
+  test("injects a Pause/Play button (the WCAG 2.2.2 stop mechanism) that toggles", async ({
+    page,
+  }) => {
+    await page.goto("./carousel.html");
+    const btn = page.getByTestId("autoplay").locator(".re-carousel__autoplay");
+    await expect(btn).toBeVisible();
+    await expect(btn).toHaveAttribute("aria-label", "Pause automatic slideshow");
+    await btn.click();
+    await expect(btn).toHaveAttribute("aria-label", "Play automatic slideshow");
+    await btn.click();
+    await expect(btn).toHaveAttribute("aria-label", "Pause automatic slideshow");
+  });
+
+  test("advances on a timer, and Pause stops it", async ({ page }) => {
+    await page.goto("./carousel.html");
+    const host = page.getByTestId("autoplay").locator(".re-carousel");
+    const start = await activeIndex(host);
+    await expect.poll(() => activeIndex(host), { timeout: 6000 }).not.toBe(start);
+
+    await host.locator(".re-carousel__autoplay").click(); // pause
+    const paused = await activeIndex(host);
+    await page.waitForTimeout(3500);
+    expect(await activeIndex(host)).toBe(paused);
+  });
+
+  test("hovering pauses the slideshow", async ({ page }) => {
+    await page.goto("./carousel.html");
+    const host = page.getByTestId("autoplay").locator(".re-carousel");
+    await host.hover();
+    const at = await activeIndex(host);
+    await page.waitForTimeout(3500);
+    expect(await activeIndex(host)).toBe(at);
+  });
+
+  test("starts paused under reduced motion", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("./carousel.html");
+    const host = page.getByTestId("autoplay").locator(".re-carousel");
+    await expect(host.locator(".re-carousel__autoplay")).toHaveAttribute(
+      "aria-label",
+      "Play automatic slideshow",
+    );
+    const at = await activeIndex(host);
+    await page.waitForTimeout(3500);
+    expect(await activeIndex(host)).toBe(at);
+  });
+
+  test("honours the same rung gate (no double controls)", async ({ page }) => {
+    await page.goto("./carousel.html");
+    const host = page.getByTestId("autoplay").locator(".re-carousel");
+    const native = await page.evaluate((q) => CSS.supports(q), CSS_CAROUSEL);
+    expect(await host.locator(".re-carousel__dot").count()).toBe(native ? 0 : 3);
+  });
+});
