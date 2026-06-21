@@ -238,6 +238,10 @@
           "description": "Host element for enhanceCarousel."
         },
         {
+          "name": "data-re-carousel-autoplay",
+          "description": "Relements behavior hook."
+        },
+        {
           "name": "data-re-combobox",
           "description": "Host element for enhanceCombobox."
         },

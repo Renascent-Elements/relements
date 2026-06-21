@@ -89,6 +89,34 @@
       <!-- demo:end -->
     </section>
 
+    <section aria-labelledby="autoplay-heading" data-testid="autoplay">
+      <h2 id="autoplay-heading">Autoplay</h2>
+      <!-- demo:start name="autoplay" -->
+      <div class="re-carousel frame" data-re-carousel data-re-carousel-autoplay="3000">
+        <div
+          class="re-carousel__track"
+          role="group"
+          aria-roledescription="carousel"
+          aria-label="Product highlights (auto-advancing)"
+          tabindex="0"
+        >
+          <figure class="re-carousel__slide" aria-roledescription="slide" aria-label="Fast">
+            <div class="slide-art" style="background-color: var(--re-color-accent-600)">A</div>
+            <figcaption>Fast</figcaption>
+          </figure>
+          <figure class="re-carousel__slide" aria-roledescription="slide" aria-label="Accessible">
+            <div class="slide-art" style="background-color: var(--re-color-success-600)">B</div>
+            <figcaption>Accessible</figcaption>
+          </figure>
+          <figure class="re-carousel__slide" aria-roledescription="slide" aria-label="Native">
+            <div class="slide-art" style="background-color: var(--re-color-warning-600)">C</div>
+            <figcaption>Native</figcaption>
+          </figure>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
     <script type="module">
       import { enhanceCarousel } from "/packages/core/src/behaviors/carousel.js";
       enhanceCarousel();

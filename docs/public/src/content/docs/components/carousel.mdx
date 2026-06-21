@@ -16,11 +16,22 @@ tracking, and inerting of off-screen slides.
 
 <Demo src="carousel.html" name="basic" />
 
+## Autoplay
+
+Add `data-re-carousel-autoplay` (optionally `="3000"` for the interval in ms,
+default 5000) to auto-advance. The behavior injects a **Pause/Play button** — the
+WCAG 2.2.2 stop mechanism — and pauses on hover, on focus within the carousel, and
+when the tab is hidden. Under `prefers-reduced-motion: reduce` it **starts paused**.
+It works on either control rung (the timer + pause button are JS regardless of who
+draws the dots).
+
+<Demo src="carousel.html" name="autoplay" />
+
 ## How it's layered
 
 - **Rung A (no JS)** — `.re-carousel__track` is `overflow-x: auto` + `scroll-snap-type: inline mandatory`. It already works: drag, swipe, scrollbar, and Arrow/Page/Home/End once the track has focus. This is the whole carousel for users without the behavior.
 - **Rung C (`enhanceCarousel`)** — injects the buttons + dots and tracks the active slide. This is the accessibility-tested control path.
-- **Rung B (CSS Carousel pseudo-elements)** — `::scroll-button()` / `::scroll-marker` can draw the controls with _no JS at all_, but only in Chrome 135+ today and with documented assistive-tech bugs. It's a fast-follow behind `@supports`, shipped experimental — not in this release.
+- **Rung B (CSS Carousel pseudo-elements)** — `::scroll-button()` / `::scroll-marker` draw the controls with _no JS at all_. It's shipped behind `@supports` and active where the browser supports it (Chrome 135+ today); `enhanceCarousel` feature-tests the same condition and stands down, so you never get both control sets. It's labeled **experimental**: the UA markers/buttons are ahead of assistive tech (documented tab-exposure bugs), so Rung C stays the a11y-tested path and the manual SR pass is done against it.
 
 ## Accessibility
 
@@ -28,6 +39,7 @@ tracking, and inerting of off-screen slides.
 - **Buttons, not tabs** — prev/next and the dots are plain `<button>`s with `aria-label` + `aria-current` (the active dot), **not** a `role="tablist"` — the scroll model isn't a tabpanel.
 - **Off-screen slides are inert** — the behavior sets `inert` on non-current slides so Tab can't land on a slide that's scrolled out of view (the classic carousel keyboard trap), and they leave the reading order.
 - **Settle announcement** — for a one-slide-per-view carousel a polite live region announces the settled slide ("Sunset over the bay (1 of 4)"), debounced to fire once per snap rather than on every scroll frame.
+- **Autoplay is stoppable** — auto-advancing content needs a way to pause it (WCAG 2.2.2 Pause, Stop, Hide). The injected Pause/Play button is that mechanism; the carousel also pauses while hovered, while focus is inside it, and while the tab is hidden, and it announces nothing while playing (so the live region isn't spammed). Under `prefers-reduced-motion: reduce` it starts paused.
 - **Reduced motion** — programmatic scrolling drops to an instant jump under `prefers-reduced-motion: reduce` (and the CSS `scroll-behavior: smooth` is already gated on it).
 - **RTL** — navigation uses `scrollIntoView({ inline })` and active detection uses box geometry, so neither depends on the sign of `scrollLeft` (which differs across engines).
 - **Forced colors** — the active dot is re-established with `Highlight` and the buttons get a real `ButtonText` border (their surface + shadow flatten away).

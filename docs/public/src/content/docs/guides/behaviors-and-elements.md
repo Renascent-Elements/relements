@@ -77,7 +77,7 @@ All 20 behaviors are exported by name from `@relements/core` and from `@relement
 
 - **`enhanceTabs`** — the ARIA tabs pattern with automatic activation and Arrow/Home/End keys; emits `re-change` (`{ tabId, panelId }`). See [Tabs](/relements/components/tabs/).
 - **`enhanceToolbar`** — collapses a `role="toolbar"` to one Tab stop with Arrow-key roving; composes with a hosted menu. See [Toolbar](/relements/components/toolbar/).
-- **`enhanceCarousel`** — back-fills prev/next + a dot strip over a native CSS scroll-snap track (`.re-carousel`), tracks the active slide by box geometry (RTL-safe), inerts off-screen slides, and announces the settled slide. No custom event — derive the index from native `scroll`. See [Carousel](/relements/components/carousel/).
+- **`enhanceCarousel`** — back-fills prev/next + a dot strip over a native CSS scroll-snap track (`.re-carousel`), tracks the active slide by box geometry (RTL-safe), inerts off-screen slides, and announces the settled slide. Optional `data-re-carousel-autoplay` adds an auto-advance timer with a Pause/Play button (WCAG 2.2.2), pausing on hover/focus/hidden-tab and starting paused under reduced motion. No custom event — derive the index from native `scroll`. See [Carousel](/relements/components/carousel/).
 
 ### Form inputs
 
