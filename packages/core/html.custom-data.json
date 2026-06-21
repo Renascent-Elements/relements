@@ -350,6 +350,10 @@
       "description": "Host element for enhanceCarousel."
     },
     {
+      "name": "data-re-carousel-autoplay",
+      "description": "Auto-advance the carousel (optional ms value, default 5000); adds a Pause/Play button."
+    },
+    {
       "name": "data-re-combobox",
       "description": "Host element for enhanceCombobox."
     },
