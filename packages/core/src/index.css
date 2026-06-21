@@ -21,6 +21,7 @@
 @import "./components/button.css";
 @import "./components/link.css";
 @import "./components/form.css";
+@import "./components/multiselect.css";
 @import "./components/disclosure.css";
 @import "./components/dialog.css";
 @import "./components/drawer.css";
