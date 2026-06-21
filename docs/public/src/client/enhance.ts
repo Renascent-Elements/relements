@@ -16,6 +16,7 @@ import {
   enhanceContextMenu,
   enhanceCommandPalette,
   enhanceFilePicker,
+  enhanceCarousel,
   enhanceMultiSelect,
   showToast,
 } from "@relements/core";
@@ -61,6 +62,7 @@ function init() {
   enhanceScoped("[data-re-context-menu]", enhanceContextMenu);
   enhanceCommandPalette(document);
   enhanceScoped("[data-re-file-picker]", enhanceFilePicker);
+  enhanceCarousel(document);
   enhanceMultiSelect(document);
 
   // `indeterminate` is a JS-only property, not an HTML attribute. Reflect it

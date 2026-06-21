@@ -174,6 +174,7 @@ const HOOK_DESC = {
   "data-re-context-menu": "Host element for enhanceContextMenu.",
   "data-re-command-palette": "Host dialog for enhanceCommandPalette.",
   "data-re-command-hotkey": "Keyboard shortcut that opens the command palette (e.g. `mod+k`).",
+  "data-re-carousel": "Host element for enhanceCarousel.",
   "data-re-multiselect": "Host <details> for enhanceMultiSelect.",
   "data-re-multiselect-required":
     "Require at least one selection (enhanceMultiSelect enforces it on submit).",
