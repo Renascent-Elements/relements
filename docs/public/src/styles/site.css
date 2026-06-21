@@ -216,6 +216,24 @@ starlight-toc a:focus-visible {
   margin-inline: auto;
 }
 
+/* The same `* { margin: 0 }` reset zeroes the avatar group's overlap (a negative
+   `margin-inline-start` on every avatar after the first, in the re.components
+   layer). Re-assert it from the component's own `--re-avatar-group-overlap`
+   custom property (untouched by the reset) so the stack overlaps as shipped. */
+.demo__preview .re-avatar-group > .re-avatar:not(:first-child) {
+  margin-inline-start: var(--re-avatar-group-overlap);
+}
+
+/* `.demo__preview` is a flex row, so a horizontal separator (a block-level
+   element) becomes a flex item that shrinks to its content — an `<hr>` collapses
+   to 0 width, and a labeled divider's two `flex: 1` rule pseudo-elements get 0px,
+   so the lines vanish. Make horizontal separators span the row (it wraps, so each
+   sits on its own line); the vertical divider is excluded so it stays a thin rule. */
+.demo__preview hr.re-separator,
+.demo__preview .re-separator[data-label] {
+  inline-size: 100%;
+}
+
 /* Example pages wrap multi-control demos in a page-local `.stack` helper that
    lives in each page's own <head> <style>. Demo.astro extracts only the markup
    between the demo delimiters — not that <style> — so on the site `.stack`
