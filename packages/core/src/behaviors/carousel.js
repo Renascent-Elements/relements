@@ -160,11 +160,15 @@ function wireOne(host) {
   };
   const nav = (i) => {
     const target = Math.max(0, Math.min(slides.length - 1, i));
-    slides[target].scrollIntoView({
-      behavior: reduce() ? "auto" : "smooth",
-      inline: "center",
-      block: "nearest",
-    });
+    // Centre the slide WITHIN the track's own scroll only. scrollIntoView() would
+    // also scroll every ancestor — so an autoplaying carousel below the fold yanks
+    // the whole page down on each advance. Compute the centre offset from box
+    // geometry and scroll just the track. (Native scroll-snap still drives
+    // touch/keyboard/RTL; this is only the prev/next + dot + autoplay path.)
+    const trackBox = track.getBoundingClientRect();
+    const slideBox = slides[target].getBoundingClientRect();
+    const delta = slideBox.left - trackBox.left - (trackBox.width - slideBox.width) / 2;
+    track.scrollTo({ left: track.scrollLeft + delta, behavior: reduce() ? "auto" : "smooth" });
   };
 
   /** @type {Array<() => void>} */
