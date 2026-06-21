@@ -1,0 +1,63 @@
+docs/public/src/client/enhance.ts
+  s_2732c4df70b865::t_490e489c574b69 20,66
+packages/core/CHANGELOG.md
+  s_2732c4df70b865::t_490e489c574b69 3-12
+packages/core/tsup.config.ts
+  s_2732c4df70b865::t_490e489c574b69 25
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_cb21db9e39ba53 66
+  s_2732c4df70b865::t_490e489c574b69 93
+packages/core/src/index.js
+  s_2732c4df70b865::t_490e489c574b69 27
+packages/core/README.md
+  s_2732c4df70b865::t_cb21db9e39ba53 167-186,188
+  s_2732c4df70b865::t_9eaab80984c72e 187
+  s_2732c4df70b865::t_490e489c574b69 68-90
+docs/public/src/content/docs/components/multiselect.mdx
+  s_2732c4df70b865::t_490e489c574b69 1-57
+packages/core/package.json
+  s_2732c4df70b865::t_490e489c574b69 3,54,178-180
+docs/public/src/styles/site.css
+  s_2732c4df70b865::t_490e489c574b69 219-236
+tests/elements/multiselect.spec.ts
+  s_2732c4df70b865::t_490e489c574b69 1-74
+tests/visual/multiselect.visual.spec.ts
+  s_2732c4df70b865::t_490e489c574b69 1-27
+docs/examples/multiselect.html
+  s_2732c4df70b865::t_490e489c574b69 1-158
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_490e489c574b69 328-331,420-427
+packages/core/src/components/multiselect.css
+  s_2732c4df70b865::t_490e489c574b69 1-163
+docs/public/CHANGELOG.md
+  s_2732c4df70b865::t_490e489c574b69 3-9
+packages/core/web-types.json
+  s_2732c4df70b865::t_cb21db9e39ba53 4
+  s_2732c4df70b865::t_490e489c574b69 212-215,304-311
+docs/public/package.json
+  s_2732c4df70b865::t_490e489c574b69 3
+scripts/gen-editor-data.mjs
+  s_2732c4df70b865::t_490e489c574b69 154-155,178-180
+packages/core/src/behaviors/multiselect.js
+  s_2732c4df70b865::t_490e489c574b69 1-181
+packages/core/src/index.css
+  s_2732c4df70b865::t_490e489c574b69 24
+tests/a11y/multiselect.a11y.spec.ts
+  s_2732c4df70b865::t_490e489c574b69 1-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "bafc773207f6e85517a94772de206fa2c8945abb",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
