@@ -168,7 +168,7 @@ payload (e.g. [Tabs](/relements/components/tabs/) emits `{ tabId, panelId }`,
 
 ## Custom elements
 
-The four [`<re-*>` custom elements](/relements/guides/behaviors-and-elements/#custom-elements)
+The five [`<re-*>` custom elements](/relements/guides/behaviors-and-elements/#custom-elements)
 are a declarative alternative to calling a behavior yourself — drop the tag in
 and it enhances and cleans itself up via `connectedCallback` /
 `disconnectedCallback`. React 19 renders unknown tags like `<re-tabs>` as-is and
