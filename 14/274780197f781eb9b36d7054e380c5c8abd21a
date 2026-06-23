@@ -1,0 +1,37 @@
+docs/public/src/content/docs/frameworks/angular.md
+  s_2732c4df70b865::t_3db4e4c2b10444 151
+docs/public/src/content/docs/frameworks/react.md
+  s_2732c4df70b865::t_8cb424defd8cfb 171
+docs/public/src/content/docs/frameworks/svelte.md
+  s_2732c4df70b865::t_5552479024108b 170
+  s_2732c4df70b865::t_3640a3ffa20184 168
+docs/public/src/content/docs/index.mdx
+  s_2732c4df70b865::t_e71793302af182 109
+docs/public/src/content/docs/guides/editor-setup.mdx
+  s_2732c4df70b865::t_ffb4e56ab68184 34
+  s_2732c4df70b865::t_16c41e3ee61840 30
+docs/public/src/content/docs/guides/browser-support.md
+  s_2732c4df70b865::t_bb79488074336a 24
+  s_2732c4df70b865::t_7dad5d785bafe7 31
+docs/public/src/content/docs/guides/versioning.md
+  s_2732c4df70b865::t_9d0aa2a0d87671 13
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_2732c4df70b865::t_bc2c932a501b00 102
+  s_2732c4df70b865::t_48f498b46f911c 112-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "14274780197f781eb9b36d7054e380c5c8abd21a",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
