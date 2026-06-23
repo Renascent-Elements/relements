@@ -1,0 +1,25 @@
+docs/public/package.json
+  s_2732c4df70b865::t_43f6fa394c4822 13,15
+.github/workflows/ci.yml
+  s_2732c4df70b865::t_dda30b0cb6aec3 23,35,48,61
+.github/workflows/docs.yml
+  s_2732c4df70b865::t_c898d96a144df3 30
+docs/public/astro.config.mjs
+  s_2732c4df70b865::t_21b3fb014057f8 40-41,44-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "a2197eba0874b18b1c1d23bf7cfa49dd84dc9689",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
