@@ -10,7 +10,7 @@ Relements follows [Semantic Versioning](https://semver.org) (`MAJOR.MINOR.PATCH`
 Versioning guarantees apply to the documented public surface (see "Public API Conventions" in [`TECHNICAL_DOCUMENTATION.md`](https://github.com/Renascent-Elements/relements/blob/main/docs/TECHNICAL_DOCUMENTATION.md)):
 
 - **CSS classes** — `re-*` (e.g. `re-button`, `re-field`).
-- **Data attributes** — documented `data-variant`, `data-size`, `data-state`, … and `data-re-*` enhancement hooks.
+- **Data attributes** — documented `data-variant`, `data-size`, `data-tone`, … and `data-re-*` enhancement hooks.
 - **CSS custom properties** — `--re-*` design tokens and documented component-level properties.
 - **JavaScript exports** — named exports and the package subpath entry points (`@relements/core/...`).
 - **Custom elements** — `<re-*>` tag names, their attributes, and emitted events.

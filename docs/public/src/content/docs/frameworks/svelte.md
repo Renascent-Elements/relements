@@ -165,9 +165,9 @@ way as any DOM event — `onre-change` — and read `event.detail.tabId`:
 ```
 
 `<re-tabs>` observes its children, so it still enhances correctly when Svelte
-projects markup into it later. Four elements ship — [`<re-tabs>`](/relements/custom-elements/re-tabs/),
+projects markup into it later. Five elements ship — [`<re-tabs>`](/relements/custom-elements/re-tabs/),
 [`<re-menu>`](/relements/custom-elements/re-menu/), [`<re-popover>`](/relements/custom-elements/re-popover/),
-and [`<re-toast>`](/relements/custom-elements/re-toast/); everything else is
+[`<re-toast>`](/relements/custom-elements/re-toast/), and [`<re-file-picker>`](/relements/custom-elements/re-file-picker/); everything else is
 behavior-only. Reach for the `use:enhance` action when you want to enhance your
 own markup and own the lifecycle; reach for a custom element when you want a
 declarative, self-managing tag.

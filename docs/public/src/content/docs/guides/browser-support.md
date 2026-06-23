@@ -21,14 +21,14 @@ _(Roughly early 2022.)_ Below this, layered styles will not apply correctly. Thi
 
 Some components use the newest platform features:
 
-- **Popover API** — `<re-popover>`, `enhancePopover`. Chrome 114+, Firefox 114+, Safari 17+.
+- **Popover API** — `<re-popover>`, `enhancePopover`. Chrome 114+, Firefox 125+, Safari 17+.
 - **`:user-invalid` validation styling** — form fields. Chrome 118+, Firefox 116+, Safari 16.4+.
 - **`color-mix()`** — popover tonal backgrounds. Chrome 111+, Firefox 113+, Safari 16.4+.
 
 | Engine        | Minimum |
 | ------------- | ------- |
 | Chrome / Edge | 118+    |
-| Firefox       | 116+    |
+| Firefox       | 125+    |
 | Safari        | 17+     |
 
 _(Roughly late 2023.)_

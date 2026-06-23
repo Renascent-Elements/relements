@@ -99,7 +99,7 @@ All 20 behaviors are exported by name from `@relements/core` and from `@relement
 
 ## Custom elements
 
-Four `<re-*>` custom elements wrap the behaviors above for consumers who prefer a tag over an imperative call. They are:
+Five `<re-*>` custom elements wrap the behaviors above for consumers who prefer a tag over an imperative call. They are:
 
 - **Light-DOM only** — no Shadow DOM. Your markup stays in the light tree, so component CSS, page styles, forms, and `querySelector` all work normally.
 - **Self-registering on import** — importing the module calls `customElements.define()` as a side effect. Import each element you use; `package.json` lists `elements/*.js` under `sideEffects` so bare imports survive tree-shaking (see [HTML-first policy](/relements/guides/html-first/)).
@@ -109,12 +109,13 @@ Four `<re-*>` custom elements wrap the behaviors above for consumers who prefer 
 import "@relements/core/elements/re-tabs";
 ```
 
-| Element                                                  | Wraps               | Exposes                                                                                                                                        |
-| -------------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`<re-tabs>`](/relements/custom-elements/re-tabs/)       | `enhanceTabs`       | `value` property (selected tab id; set to switch); re-dispatches `re-change`. Observes children so frameworks that project late still enhance. |
-| [`<re-menu>`](/relements/custom-elements/re-menu/)       | `enhanceMenuButton` | `open` boolean property; re-dispatches `re-select`.                                                                                            |
-| [`<re-popover>`](/relements/custom-elements/re-popover/) | `enhancePopover`    | `show()` / `hide()` / `toggle()` methods; `open` property (reflects `:popover-open`). Adds the native `popover` attribute on connect.          |
-| [`<re-toast>`](/relements/custom-elements/re-toast/)     | `showToast`         | `.show(message, options)` method scoped to its own region; materializes a `.re-toast-region` on connect.                                       |
+| Element                                                          | Wraps               | Exposes                                                                                                                                        |
+| ---------------------------------------------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`<re-tabs>`](/relements/custom-elements/re-tabs/)               | `enhanceTabs`       | `value` property (selected tab id; set to switch); re-dispatches `re-change`. Observes children so frameworks that project late still enhance. |
+| [`<re-menu>`](/relements/custom-elements/re-menu/)               | `enhanceMenuButton` | `open` boolean property; re-dispatches `re-select`.                                                                                            |
+| [`<re-popover>`](/relements/custom-elements/re-popover/)         | `enhancePopover`    | `show()` / `hide()` / `toggle()` methods; `open` property (reflects `:popover-open`). Adds the native `popover` attribute on connect.          |
+| [`<re-toast>`](/relements/custom-elements/re-toast/)             | `showToast`         | `.show(message, options)` method scoped to its own region; materializes a `.re-toast-region` on connect.                                       |
+| [`<re-file-picker>`](/relements/custom-elements/re-file-picker/) | `enhanceFilePicker` | `files` property (read/write the `FileList`) and `clear()` method; re-dispatches `re-error` when files are rejected.                           |
 
 ## Behavior vs custom element — which to reach for
 
