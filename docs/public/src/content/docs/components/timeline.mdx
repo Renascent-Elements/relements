@@ -1,0 +1,56 @@
+---
+title: Timeline
+description: A vertical, chronological list of events on a connector rail.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A timeline is a vertical, chronological list of events — each a dot on a
+continuous connector rail, with a title, a machine-readable time, and an
+optional description. CSS-only, built on a native ordered list. See
+[Accessibility](#accessibility) for the list semantics and the decorative-dot
+guidance.
+
+## Basic
+
+Each event is an `<li class="re-timeline__item">` with a decorative
+`__marker`, a `__title`, a `<time class="re-timeline__time" datetime="…">`, and
+an optional `__description`. The rail joins every dot except the last.
+
+<Demo src="timeline.html" name="basic" />
+
+## With a current event
+
+Mark the latest or active event with `data-current` for an accent dot, and pair
+it with `aria-current` so assistive tech hears it — the colour is reinforcement,
+not the only cue.
+
+<Demo src="timeline.html" name="current" />
+
+## Compact
+
+`data-size="sm"` tightens the rhythm and meta type for dense logs.
+
+<Demo src="timeline.html" name="compact" />
+
+## Accessibility
+
+The timeline is CSS-only — a passive container with no interactive behaviour of
+its own.
+
+- **Ordered-list semantics are kept** — the timeline is a real `<ol>`; the list
+  is stripped visually in CSS (`list-style/margin/padding: 0`) rather than with
+  `role="list"`, which would downgrade the `<ol>` and drop the chronological
+  sequence. Author events in chronological order.
+- **The dot and rail are decorative** — `.re-timeline__marker` is
+  `aria-hidden="true"`; the meaning lives in the `__title` and the
+  `<time datetime="…">`. Use a real `<time>` with a machine-readable `datetime`
+  so the date is unambiguous to assistive tech and crawlers.
+- **Current event** — `data-current` only restyles the dot. Add `aria-current`
+  (e.g. `="step"`) to the `<li>` so the position is programmatically exposed;
+  the accent colour reinforces it visually. Because the cue is carried by
+  `aria-current` (and a system-colour dot under forced colors), nothing is lost
+  when colour flattens — no `forced-colors` override is needed.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.
