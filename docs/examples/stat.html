@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Stat</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="stat">
+    <header>
+      <h1>Stat</h1>
+      <p>A single key figure — label, value, and an optional trend delta.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-stat">
+        <span class="re-stat__label">Total users</span>
+        <span class="re-stat__value">12,486</span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="trend-heading" data-testid="trend">
+      <h2 id="trend-heading">With a trend</h2>
+      <!-- demo:start name="trend" -->
+      <div class="re-stat">
+        <span class="re-stat__label">Monthly revenue</span>
+        <span class="re-stat__value">$48,200</span>
+        <span class="re-stat__trend" data-trend="up">
+          <span class="re-sr-only">Trending up </span>12% vs last month
+        </span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="group-heading" data-testid="group">
+      <h2 id="group-heading">A stats bar</h2>
+      <!-- demo:start name="group" -->
+      <div class="re-stat-group" data-divided>
+        <div class="re-stat">
+          <span class="re-stat__label">Revenue</span>
+          <span class="re-stat__value">$48,200</span>
+          <span class="re-stat__trend" data-trend="up">
+            <span class="re-sr-only">Trending up </span>12%
+          </span>
+        </div>
+        <div class="re-stat">
+          <span class="re-stat__label">Refunds</span>
+          <span class="re-stat__value">$1,940</span>
+          <span class="re-stat__trend" data-trend="down">
+            <span class="re-sr-only">Trending down </span>3%
+          </span>
+        </div>
+        <div class="re-stat">
+          <span class="re-stat__label">Active plans</span>
+          <span class="re-stat__value">2,310</span>
+          <span class="re-stat__trend" data-trend="flat">
+            <span class="re-sr-only">No change </span>0%
+          </span>
+        </div>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="compact-heading" data-testid="compact">
+      <h2 id="compact-heading">Compact &amp; centered</h2>
+      <!-- demo:start name="compact" -->
+      <div class="re-stat" data-size="sm" data-align="center">
+        <span class="re-stat__label">Uptime</span>
+        <span class="re-stat__value">99.98%</span>
+        <span class="re-stat__description">Last 90 days</span>
+      </div>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

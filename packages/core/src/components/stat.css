@@ -1,0 +1,118 @@
+/**
+ * Relements stat (metric / KPI).
+ *
+ * A single key figure: a label, a prominent value, and an optional trend delta
+ * and description. CSS-only.
+ *
+ *   <div class="re-stat">
+ *     <span class="re-stat__label">Monthly revenue</span>
+ *     <span class="re-stat__value">$48,200</span>
+ *     <span class="re-stat__trend" data-trend="up">
+ *       <span class="re-sr-only">Trending up </span>12% vs last month
+ *     </span>
+ *   </div>
+ *
+ * Trend direction is conveyed THREE ways so it never depends on colour alone
+ * (WCAG 1.4.1): a leading arrow glyph (↑ ↓ →, a *shape* that survives Windows
+ * High Contrast), the success/danger/muted text colour, and — for assistive
+ * tech, which doesn't reliably read generated content — an author-supplied
+ * `.re-sr-only` direction word inside the trend. Always include that sr-only
+ * text; the glyph is decorative. Because the shape + sr-only text carry the
+ * meaning, no `forced-colors` override is needed (colour is enhancement only).
+ *
+ * `.re-stat__value` uses tabular figures so digits line up when stats stack.
+ * Compose a row with `.re-stat-group` (add `data-divided` for separators).
+ *
+ * Size (data-size): md (default), sm (compact — dense dashboards, cards).
+ * Align (data-align): start (default), center.
+ */
+
+@layer re.components {
+  .re-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-1);
+    min-inline-size: 0;
+    color: inherit;
+  }
+
+  .re-stat__label {
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-muted);
+  }
+
+  .re-stat__value {
+    font-size: var(--re-size-text-3xl);
+    font-weight: var(--re-font-weight-bold);
+    line-height: var(--re-line-height-snug);
+    color: var(--re-color-text);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .re-stat__description {
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-subtle);
+  }
+
+  /* ---- Trend delta ----------------------------------------------------- */
+  .re-stat__trend {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--re-space-1);
+    font-size: var(--re-size-text-sm);
+    font-weight: var(--re-font-weight-medium);
+    line-height: var(--re-line-height-normal);
+    font-variant-numeric: tabular-nums;
+    color: var(--re-color-text-muted);
+  }
+  /* Leading arrow — a decorative shape cue (the meaning also rides the
+     `.re-sr-only` text the author writes inside the trend). */
+  .re-stat__trend::before {
+    content: "\2192"; /* → flat default */
+  }
+  .re-stat__trend[data-trend="up"] {
+    color: var(--re-color-success-text);
+  }
+  .re-stat__trend[data-trend="up"]::before {
+    content: "\2191"; /* ↑ */
+  }
+  .re-stat__trend[data-trend="down"] {
+    color: var(--re-color-danger-text);
+  }
+  .re-stat__trend[data-trend="down"]::before {
+    content: "\2193"; /* ↓ */
+  }
+  .re-stat__trend[data-trend="flat"] {
+    color: var(--re-color-text-muted);
+  }
+
+  /* ---- Compact (sm) ---------------------------------------------------- */
+  .re-stat[data-size="sm"] .re-stat__value {
+    font-size: var(--re-size-text-xl);
+  }
+
+  /* ---- Centered -------------------------------------------------------- */
+  .re-stat[data-align="center"] {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ---- Group: a row of stats ------------------------------------------- */
+  .re-stat-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--re-space-8);
+  }
+  .re-stat-group > .re-stat {
+    flex: 1 1 auto;
+  }
+  /* Optional separators between stats. Uses a logical inline-start border so it
+     mirrors in RTL; the first item in each visual row never shows one. */
+  .re-stat-group[data-divided] > .re-stat:not(:first-child) {
+    border-inline-start: var(--re-border-width) solid var(--re-color-border);
+    padding-inline-start: var(--re-space-8);
+  }
+}

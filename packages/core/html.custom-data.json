@@ -245,6 +245,21 @@
       ]
     },
     {
+      "name": "data-trend",
+      "description": "Relements styling attribute.",
+      "values": [
+        {
+          "name": "down"
+        },
+        {
+          "name": "flat"
+        },
+        {
+          "name": "up"
+        }
+      ]
+    },
+    {
       "name": "data-variant",
       "description": "Structural variant of a component (e.g. button/link/table style).",
       "values": [
