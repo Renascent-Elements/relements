@@ -1,5 +1,16 @@
 # @relements/core
 
+## 1.8.0
+
+### Minor Changes
+
+- [#102](https://github.com/Renascent-Elements/relements/pull/102) [`68e80d8`](https://github.com/Renascent-Elements/relements/commit/68e80d8b92bb71f7bc0797f6d63047d301bb3c3a) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add the **stat** component — a CSS-only metric / KPI display. `.re-stat` shows a
+  `__label`, a prominent `__value` (tabular figures), and an optional `__trend`
+  (`data-trend="up|down|flat"` — direction carried by an arrow glyph + colour + an
+  author-supplied `.re-sr-only` word, never colour alone) and `__description`.
+  Compose a row with `.re-stat-group` (`data-divided` for separators).
+  `data-size="sm"` and `data-align="center"` variants.
+
 ## 1.7.1
 
 ### Patch Changes
