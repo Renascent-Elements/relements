@@ -139,19 +139,20 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Content & layout
 
-| Class                  | Element              | Variants / options                                                                                                          |
-| ---------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `.re-card`             | `<article>`          | `__header` / `__body` / `__footer`; `data-interactive`                                                                      |
-| `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials                                                                                |
-| `.re-avatar-group`     | `<div>` + `role`     | overlapping avatar stack; `.re-avatar-group__count` overflow chip ("+3")                                                    |
-| `.re-table`            | `<table>`            | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll                     |
-| `.re-description-list` | `<dl>`               | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                                       |
-| `.re-separator`        | `<hr>` / `[role]`    | `data-orientation`: vertical; `data-label` labeled divider (`data-align`: start, center, end)                               |
-| `.re-kbd`              | `<kbd>`              | keyboard key                                                                                                                |
-| `.re-code`             | `<code>` / `<pre>`   | inline + block code                                                                                                         |
-| `.re-empty-state`      | `<div>`              | centered "no data" placeholder; `data-size="sm"`, `data-bordered`; `.re-empty-state-cell` for table cells                   |
-| `.re-carousel`         | `<div>` scroll strip | CSS scroll-snap slides; prev/next + dots + active tracking via `enhanceCarousel`; `--re-carousel-slide-size`                |
-| `.re-stat`             | `<div>`              | metric: `__label` / `__value` / `__trend` (`data-trend`); `data-size="sm"`, `data-align`; `.re-stat-group` (`data-divided`) |
+| Class                  | Element              | Variants / options                                                                                                              |
+| ---------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `.re-card`             | `<article>`          | `__header` / `__body` / `__footer`; `data-interactive`                                                                          |
+| `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials                                                                                    |
+| `.re-avatar-group`     | `<div>` + `role`     | overlapping avatar stack; `.re-avatar-group__count` overflow chip ("+3")                                                        |
+| `.re-table`            | `<table>`            | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll                         |
+| `.re-description-list` | `<dl>`               | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                                           |
+| `.re-separator`        | `<hr>` / `[role]`    | `data-orientation`: vertical; `data-label` labeled divider (`data-align`: start, center, end)                                   |
+| `.re-kbd`              | `<kbd>`              | keyboard key                                                                                                                    |
+| `.re-code`             | `<code>` / `<pre>`   | inline + block code                                                                                                             |
+| `.re-empty-state`      | `<div>`              | centered "no data" placeholder; `data-size="sm"`, `data-bordered`; `.re-empty-state-cell` for table cells                       |
+| `.re-carousel`         | `<div>` scroll strip | CSS scroll-snap slides; prev/next + dots + active tracking via `enhanceCarousel`; `--re-carousel-slide-size`                    |
+| `.re-stat`             | `<div>`              | metric: `__label` / `__value` / `__trend` (`data-trend`); `data-size="sm"`, `data-align`; `.re-stat-group` (`data-divided`)     |
+| `.re-timeline`         | `<ol>`               | chronological events on a connector rail; `__marker` / `__title` / `__time` / `__description`; `data-current`, `data-size="sm"` |
 
 ## JavaScript behaviors
 

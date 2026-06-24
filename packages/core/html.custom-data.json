@@ -301,6 +301,10 @@
       "description": "Add a border."
     },
     {
+      "name": "data-current",
+      "description": "Relements boolean styling attribute."
+    },
+    {
       "name": "data-divided",
       "description": "Add dividers between items."
     },

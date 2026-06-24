@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Timeline</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .re-timeline {
+        max-inline-size: 28rem;
+      }
+    </style>
+  </head>
+  <body data-page="timeline">
+    <header>
+      <h1>Timeline</h1>
+      <p>A vertical, chronological list of events on a connector rail.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <ol class="re-timeline">
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Project created</p>
+            <time class="re-timeline__time" datetime="2026-01-04">Jan 4, 2026</time>
+            <p class="re-timeline__description">Repository initialized and the team invited.</p>
+          </div>
+        </li>
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">First release</p>
+            <time class="re-timeline__time" datetime="2026-02-18">Feb 18, 2026</time>
+            <p class="re-timeline__description">Version 1.0.0 published to the registry.</p>
+          </div>
+        </li>
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Docs site launched</p>
+            <time class="re-timeline__time" datetime="2026-03-09">Mar 9, 2026</time>
+            <p class="re-timeline__description">
+              Guides, component pages, and live demos went live.
+            </p>
+          </div>
+        </li>
+      </ol>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="current-heading" data-testid="current">
+      <h2 id="current-heading">With a current event</h2>
+      <!-- demo:start name="current" -->
+      <ol class="re-timeline">
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Order placed</p>
+            <time class="re-timeline__time" datetime="2026-06-22">Jun 22</time>
+          </div>
+        </li>
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Shipped</p>
+            <time class="re-timeline__time" datetime="2026-06-23">Jun 23</time>
+          </div>
+        </li>
+        <li class="re-timeline__item" data-current aria-current="step">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Out for delivery</p>
+            <time class="re-timeline__time" datetime="2026-06-24">Jun 24</time>
+            <p class="re-timeline__description">Arriving today by 8pm.</p>
+          </div>
+        </li>
+      </ol>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="compact-heading" data-testid="compact">
+      <h2 id="compact-heading">Compact</h2>
+      <!-- demo:start name="compact" -->
+      <ol class="re-timeline" data-size="sm">
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Signed up</p>
+            <time class="re-timeline__time" datetime="2026-05-01">May 1</time>
+          </div>
+        </li>
+        <li class="re-timeline__item">
+          <span class="re-timeline__marker" aria-hidden="true"></span>
+          <div class="re-timeline__content">
+            <p class="re-timeline__title">Upgraded to Pro</p>
+            <time class="re-timeline__time" datetime="2026-05-14">May 14</time>
+          </div>
+        </li>
+      </ol>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

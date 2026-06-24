@@ -1,0 +1,160 @@
+/**
+ * Relements timeline.
+ *
+ * A vertical, chronological list of events — each a dot on a continuous
+ * connector rail, with a title, a machine-readable time, and an optional
+ * description. CSS-only. Built HTML-first on a native ordered list:
+ *
+ *   <ol class="re-timeline">
+ *     <li class="re-timeline__item">
+ *       <span class="re-timeline__marker" aria-hidden="true"></span>
+ *       <div class="re-timeline__content">
+ *         <p class="re-timeline__title">Order placed</p>
+ *         <time class="re-timeline__time" datetime="2026-01-15">Jan 15, 2026</time>
+ *         <p class="re-timeline__description">We received your order.</p>
+ *       </div>
+ *     </li>
+ *     <li class="re-timeline__item" data-current aria-current="step"> … </li>
+ *   </ol>
+ *
+ * Like the stepper, the rail is a per-item segment anchored to the item's own
+ * height (block-size: 100% + gap), so it meets the next dot's centre at ANY
+ * content height and the last item draws no trailing stub. Ordered-list
+ * semantics are KEPT by stripping the list in CSS (list-style/margin/padding: 0,
+ * like breadcrumb/steps) — NOT role="list", which would drop the sequence read.
+ *
+ * The dot and rail are decorative (`aria-hidden` marker): the meaning lives in
+ * the title + `<time datetime>`. Mark the latest/active event with `data-current`
+ * (an accent dot) plus author-supplied `aria-current` so assistive tech hears it
+ * — the colour is reinforcement, not the only cue, so no forced-colors gap.
+ *
+ * Size (data-size): md (default), sm (compact).
+ * Geometry is token-seeded and uses logical properties, so RTL is free.
+ */
+
+@layer re.components {
+  .re-timeline {
+    /* ---- token-seeded geometry knobs (no magic rems) ---- */
+    --re-timeline-marker-size: var(--re-space-4);
+    --re-timeline-rail-width: var(--re-border-width-strong);
+    --re-timeline-gap: var(--re-space-5);
+    --re-timeline-rail-color: var(--re-color-border);
+    --re-timeline-marker-color: var(--re-color-border-strong);
+    --re-timeline-marker-color-current: var(--re-color-accent-600);
+
+    /* Strip the list IN CSS (not role="list") so ordered semantics survive. */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-timeline-gap);
+    font-size: var(--re-size-text-md);
+    color: var(--re-color-text);
+  }
+
+  .re-timeline__item {
+    position: relative; /* anchors the rail segment */
+    display: flex;
+    align-items: flex-start;
+    gap: var(--re-space-4);
+  }
+
+  /* ---- Marker (dot) ---------------------------------------------------- */
+  .re-timeline__marker {
+    position: relative; /* paint above the rail */
+    z-index: 1;
+    flex-shrink: 0;
+    inline-size: var(--re-timeline-marker-size);
+    block-size: var(--re-timeline-marker-size);
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-timeline-marker-color);
+    /* Centre the dot on the title's line box. The line box is 1em × the normal
+       line-height (em + calc are floor-safe, unlike the `lh` unit); 1em here is
+       the item font-size, which equals the (un-resized) title size. Use a
+       transform, NOT margin-block-start: an unlayered `* { margin: 0 }` (e.g.
+       Starlight's reset on the docs site) would beat our layered rule and zero
+       a margin, dropping the dot to the top — a transform is immune and doesn't
+       affect the rail's height calc. */
+    transform: translateY(
+      calc((1em * var(--re-line-height-normal) - var(--re-timeline-marker-size)) / 2)
+    );
+  }
+
+  /* ---- Connector rail -------------------------------------------------- */
+  /* Segment from THIS dot's centre to the NEXT dot's centre: the dot centre sits
+     at half a line box from the item top, and 100% + gap lands exactly on the
+     next dot regardless of content height. Suppressed on the last item. */
+  .re-timeline__item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: calc(
+      var(--re-timeline-marker-size) / 2 - var(--re-timeline-rail-width) / 2
+    );
+    inset-block-start: calc(1em * var(--re-line-height-normal) / 2);
+    block-size: calc(100% + var(--re-timeline-gap));
+    inline-size: var(--re-timeline-rail-width);
+    background-color: var(--re-timeline-rail-color);
+  }
+
+  /* ---- Content --------------------------------------------------------- */
+  .re-timeline__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-1);
+    min-inline-size: 0;
+  }
+  .re-timeline__title {
+    margin: 0;
+    font-weight: var(--re-font-weight-semibold);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text);
+  }
+  .re-timeline__time {
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-muted);
+  }
+  .re-timeline__description {
+    margin: 0;
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-subtle);
+  }
+
+  /* ---- Current (latest / active) event --------------------------------- */
+  .re-timeline__item[data-current] .re-timeline__marker {
+    background-color: var(--re-timeline-marker-color-current);
+    box-shadow: 0 0 0 var(--re-border-width-strong)
+      color-mix(in srgb, var(--re-timeline-marker-color-current) 25%, transparent);
+  }
+
+  /* ---- Compact --------------------------------------------------------- */
+  .re-timeline[data-size="sm"] {
+    --re-timeline-gap: var(--re-space-4);
+
+    font-size: var(--re-size-text-sm);
+  }
+  .re-timeline[data-size="sm"] .re-timeline__time,
+  .re-timeline[data-size="sm"] .re-timeline__description {
+    font-size: var(--re-size-text-xs);
+  }
+
+  /* ---- Forced colors (Windows High Contrast) --------------------------
+     Backgrounds flatten, so the dot and rail would vanish against Canvas.
+     Re-establish them with system colors: dots + rail as CanvasText, the
+     current dot as Highlight (also reinforced by author aria-current).
+     Not visually tested — Playwright doesn't emulate forced-colors. */
+  @media (forced-colors: active) {
+    .re-timeline__marker {
+      background-color: CanvasText;
+    }
+    .re-timeline__item[data-current] .re-timeline__marker {
+      background-color: Highlight;
+      box-shadow: none;
+    }
+    .re-timeline__item:not(:last-child)::before {
+      background-color: CanvasText;
+    }
+  }
+}
