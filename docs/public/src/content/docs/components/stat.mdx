@@ -1,0 +1,60 @@
+---
+title: Stat
+description: A single key figure — label, value, and an optional trend delta.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A stat presents one key figure: a label, a prominent value, and an optional
+trend delta and description. CSS-only. The value uses tabular figures so digits
+line up when stats stack into a row. See [Accessibility](#accessibility) for how
+the trend stays legible without relying on colour.
+
+## Basic
+
+<Demo src="stat.html" name="basic" />
+
+## With a trend
+
+`data-trend="up"` / `"down"` / `"flat"` colours the delta and prepends a
+direction arrow (`↑ ↓ →`). The arrow is decorative — always include a
+`.re-sr-only` direction word so assistive tech announces the direction too.
+
+<Demo src="stat.html" name="trend" />
+
+## A stats bar
+
+Wrap stats in `.re-stat-group` for an evenly-spaced row; add `data-divided` for
+separators between them.
+
+<Demo src="stat.html" name="group" />
+
+## Compact &amp; centered
+
+`data-size="sm"` shrinks the value for dense dashboards; `data-align="center"`
+centers the column. A `.re-stat__description` adds a secondary note.
+
+<Demo src="stat.html" name="compact" />
+
+## Accessibility
+
+The stat is CSS-only — a passive container with no interactive behaviour. Label
+and value are plain text read in document order (label first), so author them in
+that order.
+
+- **Trend direction never depends on colour alone** (WCAG 1.4.1). It is carried
+  three ways: the success/danger/muted **colour**, a leading **arrow glyph**
+  (`↑ ↓ →` — a _shape_ that still distinguishes the directions under Windows
+  High Contrast, where colour flattens), and an author-supplied
+  **`.re-sr-only` direction word** inside the trend (`Trending up`, `Trending
+down`, `No change`). Always include that sr-only text: the arrow is a CSS
+  `::before` glyph, which assistive tech does not reliably announce.
+- **Value semantics** — the value is plain text. If it needs a unit or context
+  for screen readers that the visual layout implies, put it in the value or the
+  label rather than relying on proximity alone.
+- **No forced-colors override is needed** — because the arrow shape and sr-only
+  text carry the meaning, the colour is pure enhancement; nothing is lost when
+  the UA flattens it.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.
