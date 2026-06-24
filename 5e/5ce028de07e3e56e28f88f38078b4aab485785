@@ -1,0 +1,42 @@
+tests/elements/stat.spec.ts
+  s_2732c4df70b865::t_d30ed5871af44f 1-82
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_d54e15cfebc8af 248-261
+packages/core/web-types.json
+  s_2732c4df70b865::t_d54e15cfebc8af 4,160-162
+packages/core/src/components/stat.css
+  s_2732c4df70b865::t_c646ee6f93105a 1-118
+docs/examples/stat.html
+  s_2732c4df70b865::t_2b543f611edbc0 1-88
+packages/core/src/index.css
+  s_2732c4df70b865::t_b0da2490f2b043 71
+docs/public/src/content/docs/components/stat.mdx
+  s_2732c4df70b865::t_a221bcd774727e 1-49,51-60
+  s_2732c4df70b865::t_f3dca2bd3315dc 50
+.changeset/stat-component.md
+  s_2732c4df70b865::t_c3899f829d0f39 1-10
+tests/visual/stat.visual.spec.ts
+  s_2732c4df70b865::t_636a30b55dce8d 1-36
+tests/a11y/stat.a11y.spec.ts
+  s_2732c4df70b865::t_5da3701c1561f1 1-36
+packages/core/README.md
+  s_2732c4df70b865::t_f3dca2bd3315dc 142-154
+packages/core/package.json
+  s_2732c4df70b865::t_4c883bc1db2cd1 90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "5e5ce028de07e3e56e28f88f38078b4aab485785",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
