@@ -1,0 +1,43 @@
+packages/core/html.custom-data.json
+  s_2732c4df70b865::t_47d4aa90bb3fb7 304-306
+.changeset/timeline-component.md
+  s_2732c4df70b865::t_56bf8614a40fe9 1-11
+packages/core/src/components/timeline.css
+  s_2732c4df70b865::t_c0f18a30f055fe 74-80
+  s_2732c4df70b865::t_8e676dc1dfc9a0 1-73,81-160
+packages/core/web-types.json
+  s_2732c4df70b865::t_47d4aa90bb3fb7 177-179
+packages/core/src/index.css
+  s_2732c4df70b865::t_ce08e0b64ebc83 72
+docs/public/src/content/docs/components/timeline.mdx
+  s_2732c4df70b865::t_bc97f0dbf444ea 1-56
+packages/core/README.md
+  s_2732c4df70b865::t_b85081d18936a9 155
+tests/a11y/timeline.a11y.spec.ts
+  s_2732c4df70b865::t_b2c4b8caad2582 1-28
+docs/examples/timeline.html
+  s_2732c4df70b865::t_6a7f7c0e7d8057 53-55
+  s_2732c4df70b865::t_a5f10d262e9609 1-52,56-114
+tests/visual/timeline.visual.spec.ts
+  s_2732c4df70b865::t_90045c6be514d8 1-33
+packages/core/package.json
+  s_2732c4df70b865::t_15c38d384ce0dc 91
+tests/elements/timeline.spec.ts
+  s_2732c4df70b865::t_5a9615292ffa1f 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "27bd19c70983e597ed4c37872fc02c8e9738e571",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
