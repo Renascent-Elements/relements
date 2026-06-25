@@ -1,0 +1,64 @@
+---
+title: Toggle group
+description: A multi-select cluster of toggle buttons, built on native checkboxes.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A toggle group is a cluster of toggle buttons where **any number** can be
+pressed at once — built on native checkboxes, so the pressed state,
+multi-selection, and form submission are all native. CSS-only, no JavaScript.
+It's the many-of-N sibling of the single-select [segmented
+control](/relements/components/segmented/).
+
+## Basic
+
+Each option is a `<label class="re-toggle-group__option">` wrapping a
+`<input type="checkbox">` (its own `name`/`value`) and a visible `<span>`. The
+pressed set submits natively — no hidden inputs.
+
+<Demo src="toggle-group.html" name="basic" />
+
+## Icon-only
+
+Give an icon-only `<input>` an `aria-label`, and mark the glyph
+`aria-hidden="true"` / `focusable="false"`.
+
+<Demo src="toggle-group.html" name="icons" />
+
+## Sizes
+
+`data-size="sm"` and `data-size="lg"` adjust padding and type.
+
+<Demo src="toggle-group.html" name="sizes" />
+
+## Disabled option
+
+A `disabled` checkbox renders a muted, non-interactive member.
+
+<Demo src="toggle-group.html" name="disabled" />
+
+## Choosing between the toggle families
+
+| Need                         | Use                                                   |
+| ---------------------------- | ----------------------------------------------------- |
+| **Many** of N, pressed state | **Toggle group** (this)                               |
+| **One** of N                 | [Segmented control](/relements/components/segmented/) |
+| Stateless joined actions     | [Button group](/relements/components/button-group/)   |
+
+## Accessibility
+
+- **Native multi-select** — each option is a real `<input type="checkbox">`, so
+  the pressed state is announced by assistive tech ("checked") with no
+  `aria-pressed` bookkeeping, and the selected values submit with the form.
+- **Group name** — give the `<fieldset>` an `aria-label` (or a `<legend>`) so
+  the cluster is announced as a named group.
+- **Icon-only options** — the `<span>` has no text, so the accessible name must
+  come from an `aria-label` on the `<input>`; keep the `<svg>`
+  `aria-hidden="true"` and `focusable="false"`.
+- **Pressed survives forced colors** — the accent fill flattens under Windows
+  High Contrast, so pressed members are re-marked with the system `Highlight`
+  colour; the on/off distinction is never carried by colour alone.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.

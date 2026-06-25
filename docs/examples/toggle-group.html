@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Toggle group</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="toggle-group">
+    <header>
+      <h1>Toggle group</h1>
+      <p>A multi-select cluster of toggle buttons, built on native checkboxes.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <fieldset class="re-toggle-group" aria-label="Text formatting">
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="format" value="bold" checked />
+          <span>Bold</span>
+        </label>
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="format" value="italic" checked />
+          <span>Italic</span>
+        </label>
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="format" value="underline" />
+          <span>Underline</span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="icons-heading" data-testid="icons">
+      <h2 id="icons-heading">Icon-only</h2>
+      <!-- demo:start name="icons" -->
+      <fieldset class="re-toggle-group" aria-label="Text alignment">
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="align" value="left" aria-label="Align left" checked />
+          <span>
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="4" y1="12" x2="14" y2="12" />
+              <line x1="4" y1="17" x2="17" y2="17" />
+            </svg>
+          </span>
+        </label>
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="align" value="center" aria-label="Align center" />
+          <span>
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="7" y1="12" x2="17" y2="12" />
+              <line x1="6" y1="17" x2="18" y2="17" />
+            </svg>
+          </span>
+        </label>
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="align" value="right" aria-label="Align right" />
+          <span>
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <line x1="4" y1="7" x2="20" y2="7" />
+              <line x1="10" y1="12" x2="20" y2="12" />
+              <line x1="7" y1="17" x2="20" y2="17" />
+            </svg>
+          </span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="sizes-heading" data-testid="sizes">
+      <h2 id="sizes-heading">Sizes</h2>
+      <!-- demo:start name="sizes" -->
+      <div class="row">
+        <fieldset class="re-toggle-group" data-size="sm" aria-label="Days (small)">
+          <label class="re-toggle-group__option">
+            <input type="checkbox" name="day-sm" value="mon" checked />
+            <span>Mon</span>
+          </label>
+          <label class="re-toggle-group__option">
+            <input type="checkbox" name="day-sm" value="tue" />
+            <span>Tue</span>
+          </label>
+          <label class="re-toggle-group__option">
+            <input type="checkbox" name="day-sm" value="wed" checked />
+            <span>Wed</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="re-toggle-group" data-size="lg" aria-label="Days (large)">
+          <label class="re-toggle-group__option">
+            <input type="checkbox" name="day-lg" value="mon" checked />
+            <span>Mon</span>
+          </label>
+          <label class="re-toggle-group__option">
+            <input type="checkbox" name="day-lg" value="tue" />
+            <span>Tue</span>
+          </label>
+          <label class="re-toggle-group__option">
+            <input type="checkbox" name="day-lg" value="wed" checked />
+            <span>Wed</span>
+          </label>
+        </fieldset>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="disabled-heading" data-testid="disabled">
+      <h2 id="disabled-heading">Disabled option</h2>
+      <!-- demo:start name="disabled" -->
+      <fieldset class="re-toggle-group" aria-label="Layout">
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="layout" value="list" checked />
+          <span>List</span>
+        </label>
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="layout" value="grid" />
+          <span>Grid</span>
+        </label>
+        <label class="re-toggle-group__option">
+          <input type="checkbox" name="layout" value="map" disabled />
+          <span>Map</span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

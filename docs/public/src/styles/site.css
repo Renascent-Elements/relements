@@ -224,6 +224,13 @@ starlight-toc a:focus-visible {
   margin-inline-start: var(--re-avatar-group-overlap);
 }
 
+/* Same `* { margin: 0 }` reset zeroes the toggle-group's seam-collapse (a
+   negative `margin-inline-start` on every option after the first), which would
+   leave a doubled border between members. Re-assert the token-derived value. */
+.demo__preview .re-toggle-group__option:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--re-border-width));
+}
+
 /* `.demo__preview` is a flex row, so a horizontal separator (a block-level
    element) becomes a flex item that shrinks to its content — an `<hr>` collapses
    to 0 width, and a labeled divider's two `flex: 1` rule pseudo-elements get 0px,

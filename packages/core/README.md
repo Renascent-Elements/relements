@@ -78,6 +78,7 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 | `.re-validation-message`    | `<span>`                   | `data-tone`: success, hint, warning                                                |
 | `.re-input-group`           | wrapper                    | prefix/suffix text + attached buttons; base for password & number inputs           |
 | `.re-segmented`             | `<fieldset>` radios        | single-select pill group; `data-size`: sm, lg                                      |
+| `.re-toggle-group`          | `<fieldset>` checkboxes    | multi-select toggle buttons; pressed = accent fill; `data-size`: sm, lg            |
 | `.re-slider`                | `<input type="range">`     | `data-size`: sm, md, lg                                                            |
 | `.re-combobox`              | `<input>` + `<datalist>`   | native autocomplete; styled listbox via `enhanceCombobox`                          |
 | `.re-otp` / `.re-otp-field` | single `<input>`           | segmented one-time-code; `--re-otp-length`; `data-size`: sm, lg                    |
