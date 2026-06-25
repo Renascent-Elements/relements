@@ -1,0 +1,43 @@
+.changeset/toggle-group-component.md
+  s_2732c4df70b865::t_425cbb75e54104 1-12
+packages/core/package.json
+  s_2732c4df70b865::t_ebe875588a3d21 92
+packages/core/src/components/toggle-group.css
+  s_2732c4df70b865::t_f4932c030e9459 1-152
+docs/public/src/content/docs/components/toggle-group.mdx
+  s_2732c4df70b865::t_7d0e69a0dabacd 1-42,48-64
+  s_2732c4df70b865::t_c2cc1657a483f3 43-47
+packages/core/web-types.json
+  s_2732c4df70b865::t_ba2a87cf89ba29 4
+tests/a11y/toggle-group.a11y.spec.ts
+  s_2732c4df70b865::t_9f9b141ab0729f 1-37
+tests/visual/toggle-group.visual.spec.ts
+  s_2732c4df70b865::t_6351e08c024727 1-36
+packages/core/README.md
+  s_2732c4df70b865::t_c2cc1657a483f3 81
+docs/public/src/styles/site.css
+  s_2732c4df70b865::t_644fafe2737ce7 227-233
+tests/elements/toggle-group.spec.ts
+  s_2732c4df70b865::t_13d7f5d01b6370 1-68
+docs/examples/toggle-group.html
+  s_2732c4df70b865::t_3570e5607ccb9c 1-57,68-76,87-95,106-173
+  s_2732c4df70b865::t_af8e4f382ea515 58-67,77-86,96-105
+packages/core/src/index.css
+  s_2732c4df70b865::t_df2dfa28bab722 73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "95a7bdc0922ff208367849381ead27ce38fb1c80",
+  "prompts": {},
+  "sessions": {
+    "s_2732c4df70b865": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e57b91b-efab-45d5-826a-e67a392907fe",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
