@@ -1,6 +1,9 @@
 # Implementation Progress
 
-Tracks the 21-element pragmatic scope of Relements per `IMPLEMENTATION_PLAN.md`.
+Build-out history by the release that introduced each component / behavior / element.
+The **live catalog** is the component tables in `packages/core/README.md`; per-release
+detail is `packages/core/CHANGELOG.md`. The per-element definition of done is the
+**Acceptance per element** checklist at the bottom.
 
 Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, committed).
 
@@ -65,6 +68,15 @@ and the work is committed.
 - [x] accordion — grouped exclusive `<details name>` (adds single-open over the existing disclosure)
 - [x] switch (`<input type="checkbox" role="switch">`)
 
+## Component expansion (0.5.0)
+
+CSS-only commons over native elements (PR #27).
+
+- [x] table (`<table class="re-table">`; `data-zebra`/`data-hover`/`data-density`/`data-sticky-header`; `.re-table-wrap` scroll container)
+- [x] pagination (`<nav>`/`<ol>` of native links; `aria-current="page"`, `aria-disabled` prev/next)
+- [x] skeleton (`.re-skeleton` reduced-motion-safe shimmer; `data-shape`: text, circle)
+- [x] spinner (`.re-spinner` accessible busy indicator; `data-size`: sm, md, lg)
+
 ## Component expansion (0.6.0)
 
 Pure-CSS enhancements over native elements already styled in `re.base`.
@@ -104,6 +116,42 @@ The HTML-first form-control family — native bases, CSS-first, optional enhance
 - [x] rating (`.re-rating` fieldset of hidden radios + star labels; CSS-only; `direction: rtl` aligns fill + arrow keys; `.re-rating-display` read-only fractional)
 - [x] otp (single native `<input class="re-otp">` in `.re-otp-field`; segmented look, native paste/autofill; optional `enhanceOtp` active-cell + numeric strip)
 - [x] tags-input (`enhanceTagsInput`: chips reuse `.re-tag`, hidden inputs submit an array, Enter/comma commit, max + dedupe; degrades to a comma-separated plain input)
+
+## Tier-2 structural (0.12.0)
+
+- [x] button-group (`.re-button-group`: CSS-only joined `.re-button` cluster, collapsed seams; `data-orientation`: vertical)
+- [x] empty-state (`.re-empty-state`: centered no-data placeholder; `data-size="sm"`, `data-bordered`; `.re-empty-state-cell` for table cells)
+- [x] toolbar (`.re-toolbar` `role="toolbar"` band + `enhanceToolbar` roving tabindex; `data-orientation`, `data-wrap`; RTL-aware)
+
+## Tier-2 power-user (0.13.0)
+
+- [x] range (two overlaid `<input type="range">`; `enhanceRange` non-crossing clamp + fill + track-click; reuses `.re-slider`; `data-re-range-gap`)
+- [x] context-menu (`enhanceContextMenu`: pointer / Shift+F10 menu reusing `.re-menu__panel`; light-dismiss + typeahead; dispatches `re-select`)
+- [x] command-palette (`.re-command-palette` ⌘K dialog + `enhanceCommandPalette` combobox/listbox ARIA, type-to-filter, activedescendant nav; dispatches `re-command`)
+
+## Navigation + announcement (0.14.0)
+
+- [x] banner (`.re-banner` full-bleed strip; `data-tone`, `data-emphasis="solid"`, `data-sticky`, `data-align="center"`; reuses `enhanceDismissible`)
+- [x] steps (`<ol class="re-steps">` CSS-counter stepper; `data-status` per `<li>`, `data-orientation`, `data-size`; `aria-current="step"`, keeps ordered-list semantics, no `role="list"`)
+- [x] tree (`.re-tree` native `<details>` nested-disclosure nav; `data-variant="lines"`, `data-density="compact"`; `aria-current`; not an ARIA `role="tree"` widget by design)
+
+## 1.0.0 — first stable release
+
+API frozen under semver (`.re-*` / `data-*` / `--re-*` / `enhance*(root) → { destroy() }` / `re-*` events / `<re-*>`). 44 components, 17 behaviors, 4 elements at the cut; `data-tone` normalization, dark-mode baselines, forced-colors policy, generated token reference. Drop-in from latest 0.x.
+
+## Post-1.0 component additions (1.x)
+
+- [x] file (`.re-file` native `<input type="file">`; restyled `::file-selector-button`; `data-size`) — 1.3.0
+- [x] color (`.re-color` native `<input type="color">`; framed swatch; `data-size`) — 1.3.0
+- [x] file-picker (`.re-file-picker` drop/browse area + `enhanceFilePicker` + `<re-file-picker>`; drag-drop, clear, accept/size/count validation; `re-error`) — 1.4.0
+- [x] progress-ring (`.re-progress-ring` CSS conic+mask circular progress; `role="progressbar"`, `data-size`, `data-indeterminate`) — 1.5.0
+- [x] avatar-group (`.re-avatar-group` overlapping stack + `__count` overflow chip; extends `avatar.css`) — 1.5.0
+- [x] separator label (`.re-separator[data-label]` labeled divider, `data-align`; extends `separator.css`) — 1.5.0
+- [x] multiselect (`.re-multiselect` native `<details>` of checkboxes + `enhanceMultiSelect`: "N selected" summary, Escape/outside-close, required validation) — 1.6.0
+- [x] carousel (`.re-carousel` CSS scroll-snap + `enhanceCarousel` prev/next/dots/autoplay; zero-JS CSS-Carousel rung behind `@supports`, experimental) — 1.7.0
+- [x] stat (`.re-stat` metric/KPI: `__label`/`__value`/`__trend`/`__description`; `.re-stat-group`; `data-size="sm"`, `data-align`) — 1.8.0
+- [x] timeline (`<ol class="re-timeline">` dot-on-rail events; `__marker`/`__title`/`__time`/`__description`; `data-current`, `data-size="sm"`) — 1.9.0
+- [x] toggle-group (`<fieldset class="re-toggle-group">` multi-select checkbox toggles; pressed = accent fill; `data-size`) — 1.10.0
 
 ## Acceptance per element
 
