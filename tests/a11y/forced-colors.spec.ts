@@ -163,4 +163,63 @@ test.describe("forced colors (HCM)", () => {
       .evaluate((el) => getComputedStyle(el).borderColor);
     expect(borderColor).toBe(canvasText);
   });
+
+  test("a checked toggle-group option fills with the Highlight system color", async ({ page }) => {
+    await page.goto("./toggle-group.html");
+    const highlight = await resolveHighlight(page);
+    // the visible button is the <span> right after the checked checkbox
+    const bg = await page
+      .getByTestId("basic")
+      .locator(".re-toggle-group__option input:checked + span")
+      .first()
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(bg).toBe(highlight); // accent pressed-fill flattens → Highlight
+  });
+
+  test("the timeline's current dot uses Highlight while plain dots stay CanvasText", async ({
+    page,
+  }) => {
+    await page.goto("./timeline.html");
+    const highlight = await resolveHighlight(page);
+    const canvasText = await resolveSystemColor(page, "CanvasText");
+    const current = page.getByTestId("current");
+    const currentDot = await current
+      .locator(".re-timeline__item[data-current] .re-timeline__marker")
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    const plainDot = await current
+      .locator(".re-timeline__item:not([data-current]) .re-timeline__marker")
+      .first()
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(currentDot).toBe(highlight); // accent current-dot flattens → Highlight
+    expect(plainDot).toBe(canvasText); // background-fill dot survives as CanvasText
+  });
+
+  test("the file picker's focus ring survives as a real Highlight outline on the visible UI", async ({
+    page,
+  }) => {
+    // The native <input> is visually hidden, so :focus-within paints the ring on
+    // the visible .re-file-picker__ui; in HCM that must be a real outline (the
+    // base box-shadow ring is stripped).
+    await page.goto("./file-picker.html");
+    const highlight = await resolveHighlight(page);
+    await page.getByTestId("basic").locator(".re-file-picker__input").focus();
+    const ui = await page
+      .getByTestId("basic")
+      .locator(".re-file-picker__ui")
+      .evaluate((el) => {
+        const s = getComputedStyle(el);
+        return { style: s.outlineStyle, color: s.outlineColor };
+      });
+    expect(ui.style).toBe("solid");
+    expect(ui.color).toBe(highlight);
+  });
+
+  // Carousel is intentionally NOT covered here. Its forced-colors cues split by
+  // control rung: the JS controls (Rung C — `.re-carousel__dot` → Highlight,
+  // `.re-carousel__control` → ButtonText) only render on engines WITHOUT the CSS
+  // Carousel feature, i.e. Firefox/WebKit — but forced-colors emulation is
+  // Chromium-only, and Chromium draws Rung B (UA `::scroll-marker` /
+  // `::scroll-button` pseudo-elements, whose computed styles aren't reliably
+  // reachable). The two correct @media (forced-colors) blocks live in
+  // carousel.css; they just aren't machine-assertable with this harness.
 });

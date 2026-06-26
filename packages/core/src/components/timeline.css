@@ -144,7 +144,7 @@
      Backgrounds flatten, so the dot and rail would vanish against Canvas.
      Re-establish them with system colors: dots + rail as CanvasText, the
      current dot as Highlight (also reinforced by author aria-current).
-     Not visually tested — Playwright doesn't emulate forced-colors. */
+     Asserted in tests/a11y/forced-colors.spec.ts (page.emulateMedia, Chromium). */
   @media (forced-colors: active) {
     .re-timeline__marker {
       background-color: CanvasText;
