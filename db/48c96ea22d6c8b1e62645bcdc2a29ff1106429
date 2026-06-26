@@ -1,0 +1,21 @@
+docs/public/src/content/docs/components/segmented.mdx
+  s_8d4d586a26790b::t_ab40c20f25fee8 14-18
+docs/public/src/content/docs/components/button-group.mdx
+  s_8d4d586a26790b::t_a538a61ba79b74 39-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "db48c96ea22d6c8b1e62645bcdc2a29ff1106429",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
