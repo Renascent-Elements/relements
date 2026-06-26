@@ -1,0 +1,23 @@
+packages/core/src/components/carousel.css
+  s_8d4d586a26790b::t_cb3f8e43cb6dd1 156-159
+packages/core/src/components/timeline.css
+  s_8d4d586a26790b::t_9d99e3eebfd39d 147
+tests/a11y/forced-colors.spec.ts
+  s_8d4d586a26790b::t_fc6cba14dfa188 166-224
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "bf8daaf0081f54d639be0e51d01a89d0ce50756a",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
