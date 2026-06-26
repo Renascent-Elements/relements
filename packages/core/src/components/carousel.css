@@ -153,7 +153,10 @@
   /* Forced colors: the dot's accent fill (the only cue for the current slide)
      and the controls' surface/shadow all flatten away. Re-establish the active
      dot with Highlight and give the controls a real border (box-shadow is
-     stripped) so they stay visible. */
+     stripped) so they stay visible.
+     Not unit-asserted: these Rung-C controls only render where the CSS Carousel
+     feature is ABSENT (Firefox/WebKit), but forced-colors emulation is
+     Chromium-only — see the note in tests/a11y/forced-colors.spec.ts. */
   @media (forced-colors: active) {
     .re-carousel__dot[aria-current="true"] {
       background-color: Highlight;
