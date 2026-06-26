@@ -36,6 +36,11 @@ Any `.re-button` element works — including `<a>`. A disabled link uses
 
 - For a band of unrelated controls with arrow-key roving, use the
   [Toolbar](/relements/components/toolbar/) instead.
+- For a control with a **persistent selection** that submits with the form, use
+  the [segmented control](/relements/components/segmented/) (one-of-N) or
+  [toggle group](/relements/components/toggle-group/) (many-of-N). A button
+  group is for stateless actions — its toggle members carry JS-only
+  `aria-pressed`, not a submitted form value.
 - The group sets no `overflow`, so a focused member's ring is never clipped; the
   focused member lifts above its neighbors via `z-index`.
 - Everything is logical-property based, so it mirrors correctly in RTL.
