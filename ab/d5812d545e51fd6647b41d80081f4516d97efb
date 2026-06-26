@@ -1,0 +1,21 @@
+docs/PROGRESS.md
+  s_8d4d586a26790b::t_f4be0b22f0fd85 71-79
+  s_8d4d586a26790b::t_560e05d240b11d 120-155
+  s_8d4d586a26790b::t_9add3064826c37 3-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "abd5812d545e51fd6647b41d80081f4516d97efb",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
