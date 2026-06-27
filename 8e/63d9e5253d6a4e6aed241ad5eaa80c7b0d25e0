@@ -1,0 +1,21 @@
+.changeset/a11y-behavior-hardening.md
+  s_8d4d586a26790b::t_76fbf4afefa83b 1-13
+docs/examples/multiselect.html
+  s_8d4d586a26790b::t_316e5c56dad9be 42,79,113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "8e63d9e5253d6a4e6aed241ad5eaa80c7b0d25e0",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
