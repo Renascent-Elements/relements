@@ -7,8 +7,8 @@
  *   - (Rung C) where the browser does NOT draw the CSS-Carousel controls itself,
  *     injects prev/next buttons + a dot strip (plain `<button>`s with `aria-label`
  *     + `aria-current`), tracks the active slide by rect centre-distance (RTL-safe),
- *     disables prev/next at the ends, inerts off-screen slides, and politely
- *     announces the settled slide;
+ *     marks prev/next `aria-disabled` at the ends (kept focusable, not removed),
+ *     inerts off-screen slides, and politely announces the settled slide;
  *   - (autoplay, opt-in via `data-re-carousel-autoplay`) auto-advances on a timer
  *     with a real Pause/Play button (WCAG 2.2.2), pausing on hover, focus-within,
  *     and a hidden tab, and starting PAUSED under `prefers-reduced-motion`.
@@ -140,7 +140,6 @@ function wireOne(host) {
   const doc = host.ownerDocument;
   const win = doc.defaultView ?? window;
   const reduce = () => win.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const singlePerView = () => slides[0].offsetWidth >= track.clientWidth * 0.9;
 
   /** Active = the slide whose box centre is closest to the track's centre. */
   const activeIndex = () => {
@@ -191,8 +190,14 @@ function wireOne(host) {
     };
     prev = control("prev", "Previous slide");
     next = control("next", "Next slide");
-    const onPrev = () => nav(activeIndex() - 1);
-    const onNext = () => nav(activeIndex() + 1);
+    // aria-disabled (not the `disabled` property) keeps the end button focusable
+    // and in the a11y tree (APG), so guard the handler instead of the browser.
+    const onPrev = () => {
+      if (prev?.getAttribute("aria-disabled") !== "true") nav(activeIndex() - 1);
+    };
+    const onNext = () => {
+      if (next?.getAttribute("aria-disabled") !== "true") nav(activeIndex() + 1);
+    };
     prev.addEventListener("click", onPrev);
     next.addEventListener("click", onNext);
 
@@ -259,6 +264,9 @@ function wireOne(host) {
       userPlaying = !userPlaying;
       syncButton();
       syncTimer();
+      // Pausing settles on the current slide with no scroll event to drive the
+      // usual announce — so announce here (isPlaying() is now false, so it runs).
+      if (!userPlaying) announce();
     };
     const onEnter = () => ((hovered = true), syncTimer());
     const onLeave = () => ((hovered = false), syncTimer());
@@ -292,19 +300,29 @@ function wireOne(host) {
   }
 
   // ---- Shared bookkeeping ---------------------------------------------
+  // A slide is reachable only while it overlaps the track viewport; inert the
+  // rest. Geometry-based, so it works for ANY slide-per-view count — the old
+  // index check silently did nothing once more than one slide showed at a time.
+  const overlapsTrack = (s) => {
+    const sb = s.getBoundingClientRect();
+    const tb = track.getBoundingClientRect();
+    return Math.min(sb.right, tb.right) - Math.max(sb.left, tb.left) > 1;
+  };
   const update = () => {
     const active = activeIndex();
     if (controls) {
-      /** @type {HTMLButtonElement} */ (prev).disabled = active <= 0;
-      /** @type {HTMLButtonElement} */ (next).disabled = active >= slides.length - 1;
+      /** @type {HTMLButtonElement} */ (prev).setAttribute("aria-disabled", String(active <= 0));
+      /** @type {HTMLButtonElement} */ (next).setAttribute(
+        "aria-disabled",
+        String(active >= slides.length - 1),
+      );
       dots.forEach((d, i) => d.setAttribute("aria-current", String(i === active)));
     }
-    if (singlePerView()) slides.forEach((s, i) => (s.inert = i !== active));
+    slides.forEach((s) => (s.inert = !overlapsTrack(s)));
   };
   const announce = () => {
     if (!controls || !live) return; // no live region on Rung B
     if (isPlaying()) return; // don't narrate auto-advances
-    if (!singlePerView()) return;
     const i = activeIndex();
     const name = slides[i].getAttribute("aria-label");
     live.textContent = name

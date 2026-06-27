@@ -70,6 +70,66 @@ test.describe("context-menu", () => {
     await expect(page.locator("#ctx-1")).toBeVisible();
   });
 
+  test("Space activates the focused item without polluting the typeahead buffer", async ({
+    page,
+  }) => {
+    await page.goto("./context-menu.html");
+    // Keep the menu open on select so we can type AFTER the space.
+    await page.evaluate(() => {
+      document
+        .querySelector("[data-re-context-menu]")!
+        .addEventListener("re-select", (e) => e.preventDefault());
+    });
+    await openAtPointer(page); // "Open" focused
+    await page.keyboard.press(" "); // activates Open (kept open); must NOT buffer a space
+    await expect(page.locator("#ctx-1")).toBeVisible();
+    await page.keyboard.press("r"); // typeahead → "Rename"; " r" would never match if space leaked
+    await expect(page.locator('#ctx-1 [data-value="rename"]')).toBeFocused();
+  });
+
+  test("a scroll while open dismisses the menu and returns focus to the region (not body)", async ({
+    page,
+  }) => {
+    await page.goto("./context-menu.html");
+    await page.locator("[data-re-context-menu]").focus();
+    await page.keyboard.press("Shift+F10");
+    await page.waitForTimeout(50); // let the deferred scroll/resize listeners attach
+    await page.evaluate(() => window.dispatchEvent(new Event("scroll")));
+    await expect(page.locator("#ctx-1")).toBeHidden();
+    await expect(page.locator("[data-re-context-menu]")).toBeFocused();
+  });
+
+  test("an aria-disabled item is skipped by keyboard nav and is not activatable", async ({
+    page,
+  }) => {
+    await page.goto("./context-menu.html");
+    // Inject a disabled item after "Open" at runtime (no fixture/baseline change).
+    await page.evaluate(() => {
+      const panel = document.querySelector("#ctx-1")!;
+      const first = panel.querySelector('[data-value="open"]')!;
+      const d = document.createElement("button");
+      d.className = "re-menu__item";
+      d.setAttribute("role", "menuitem");
+      d.type = "button";
+      d.setAttribute("aria-disabled", "true");
+      d.dataset.value = "archive";
+      d.textContent = "Archive";
+      first.after(d);
+    });
+    await openAtPointer(page); // "Open" focused
+    await page.keyboard.press("ArrowDown"); // must skip the disabled "Archive"
+    await expect(page.locator('#ctx-1 [data-value="rename"]')).toBeFocused();
+    const fired = await page.evaluate(() => {
+      let f = false;
+      document
+        .querySelector("[data-re-context-menu]")!
+        .addEventListener("re-select", () => (f = true), { once: true });
+      (document.querySelector('#ctx-1 [data-value="archive"]') as HTMLElement).click();
+      return f;
+    });
+    expect(fired).toBe(false);
+  });
+
   test("a region inside a hosted .re-menu is skipped", async ({ page }) => {
     await page.goto("./context-menu.html");
     const ready = await page.evaluate(async () => {

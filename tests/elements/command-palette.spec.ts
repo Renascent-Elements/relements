@@ -33,6 +33,21 @@ test.describe("command-palette", () => {
     await expect(input).toHaveAttribute("aria-expanded", "false");
   });
 
+  test("announces the result count + empty state to a polite status region", async ({ page }) => {
+    await openPalette(page);
+    const input = page.locator(".re-command-palette__input");
+    // The announcer is present at rest (NOT toggled hidden like the visible card),
+    // so it can reliably announce a later mutation.
+    const status = page.locator("#cmdk [role=status].re-sr-only");
+    await expect(status).toHaveCount(1);
+    await input.fill("go"); // "Go to Dashboard" + "Go to Settings"
+    await expect(status).toHaveText("2 results");
+    await input.fill("settings"); // one match
+    await expect(status).toHaveText("1 result");
+    await input.fill("zzzzz"); // none
+    await expect(status).toHaveText(/^No results for/);
+  });
+
   test("arrow keys move aria-activedescendant across visible options (skip disabled)", async ({
     page,
   }) => {

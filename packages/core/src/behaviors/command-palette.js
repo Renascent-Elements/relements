@@ -81,6 +81,18 @@ function wireOne(dialog) {
   input.setAttribute("aria-controls", listId);
   input.setAttribute("aria-expanded", "true");
 
+  // Behavior-owned, always-present polite status line. It announces the result
+  // COUNT as the user filters (APG combobox) and the empty state. The visible
+  // `.re-command-palette__empty` card is toggled `hidden`, so a live region that
+  // only exists while empty is unreliable — mute its own role=status so it can't
+  // double-speak, and let this always-rendered sr-only node be the single source.
+  const status = doc.createElement("span");
+  status.className = "re-sr-only";
+  status.setAttribute("role", "status");
+  list.before(status);
+  const emptyHadLive = empty?.getAttribute("aria-live") ?? null;
+  if (empty) empty.setAttribute("aria-live", "off");
+
   /** @type {Array<{ group: Element; inner: Element | null; label: Element | null; labelGenerated: boolean }>} */
   const groups = [];
   dialog.querySelectorAll(".re-command-palette__group").forEach((group, gi) => {
@@ -175,6 +187,16 @@ function wireOne(dialog) {
     setActive(vis[0] ?? null);
   };
 
+  // Announce the result count / empty state. Called only on user input (not on
+  // open/close/init filters), so the dialog doesn't announce a count the instant
+  // it opens — only as the user actually narrows.
+  const announceResults = () => {
+    const n = visibleItems().length;
+    const q = input.value.trim();
+    status.textContent =
+      n === 0 ? (q ? `No results for “${q}”.` : "No results.") : `${n} result${n === 1 ? "" : "s"}`;
+  };
+
   /** @param {1 | -1} dir */
   const move = (dir) => {
     const vis = visibleItems();
@@ -202,7 +224,10 @@ function wireOne(dialog) {
     if (href) win.location.assign(href);
   };
 
-  const onInput = () => filter();
+  const onInput = () => {
+    filter();
+    announceResults();
+  };
   /** @param {KeyboardEvent} event */
   const onKeydown = (event) => {
     if (event.key === "ArrowDown") {
@@ -337,6 +362,11 @@ function wireOne(dialog) {
     input.removeAttribute("aria-controls");
     input.removeAttribute("aria-expanded");
     input.removeAttribute("aria-activedescendant");
+    status.remove();
+    if (empty) {
+      if (emptyHadLive == null) empty.removeAttribute("aria-live");
+      else empty.setAttribute("aria-live", emptyHadLive);
+    }
     dialog.removeAttribute("data-re-command-palette-ready");
   };
 }

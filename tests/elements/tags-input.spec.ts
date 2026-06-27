@@ -157,4 +157,34 @@ test.describe("tags input", () => {
     expect(restored.groups).toBe(0);
     expect(restored.chips).toBe(0);
   });
+
+  test("a rejected duplicate is announced (not silent)", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const ed = editor(page, "basic");
+    const live = page.getByTestId("basic").locator(".re-tags-input [aria-live]");
+    await ed.click();
+    await ed.fill("Design"); // already present (case-insensitive)
+    await ed.press("Enter");
+    await expect(live).toHaveText(/already added/i);
+    expect(await hiddenValues(page, "basic")).toEqual(["design", "engineering"]); // unchanged
+  });
+
+  test("the editor is described by the field hint", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const describedby = await editor(page, "basic").getAttribute("aria-describedby");
+    expect(describedby).toBeTruthy();
+    await expect(page.locator(`#${describedby}`)).toHaveText(/Enter or comma/i);
+  });
+
+  test("chips form a reviewable list (role=list / listitem)", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const group = page.getByTestId("basic").locator(".re-tags-input");
+    await expect(group.locator("[role=list]")).toHaveCount(1);
+    await expect(group.locator("[role=listitem]")).toHaveCount(2); // seeded design + engineering
+    const ed = editor(page, "basic");
+    await ed.click();
+    await ed.fill("ops");
+    await ed.press("Enter");
+    await expect(group.locator("[role=listitem]")).toHaveCount(3);
+  });
 });

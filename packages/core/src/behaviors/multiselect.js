@@ -20,8 +20,7 @@
  * instead of the live selection.
  *
  *   <details class="re-multiselect" data-re-multiselect data-re-multiselect-required>
- *     <summary class="re-multiselect__summary" aria-roledescription="multi-select"
- *              aria-labelledby="fw-label fw-value">
+ *     <summary class="re-multiselect__summary" aria-labelledby="fw-label fw-value">
  *       <span class="re-multiselect__value" id="fw-value" data-placeholder>Select…</span>
  *     </summary>
  *     <fieldset class="re-multiselect__panel" aria-describedby="fw-error">…</fieldset>
@@ -80,6 +79,19 @@ function wireOne(host) {
   const required = host.hasAttribute("data-re-multiselect-required");
   const placeholder = (valueEl.textContent ?? "").trim(); // stash the authored placeholder
 
+  // A polite live region for the selection count. The summary value is the
+  // control's accessible NAME (aria-labelledby), which screen readers don't
+  // re-announce when it changes on an unfocused element — so toggling boxes
+  // while the panel is open would otherwise be silent. Lives as a sibling of
+  // the host so it stays rendered while the panel is collapsed.
+  const liveRegion = host.ownerDocument.createElement("span");
+  liveRegion.className = "re-sr-only";
+  liveRegion.setAttribute("aria-live", "polite");
+  host.after(liveRegion);
+  // Make the required-error message an alert so its reveal is announced (it is
+  // not focused — onSubmit moves focus to the summary, see validate()).
+  if (message) message.setAttribute("role", "alert");
+
   const boxes = () =>
     /** @type {HTMLInputElement[]} */ (
       Array.from(host.querySelectorAll('.re-multiselect__option input[type="checkbox"]'))
@@ -90,6 +102,8 @@ function wireOne(host) {
     const labels = boxes()
       .filter((b) => b.checked)
       .map(labelText);
+    // Announce the plain count (the visual value abbreviates to "+K more").
+    liveRegion.textContent = labels.length ? `${labels.length} selected` : "";
     if (labels.length === 0) {
       valueEl.textContent = placeholder;
       valueEl.setAttribute("data-placeholder", "");
@@ -107,8 +121,18 @@ function wireOne(host) {
     if (!required) return false;
     const invalid = boxes().every((b) => !b.checked);
     host.toggleAttribute("data-invalid", invalid);
-    if (invalid) fieldset.setAttribute("aria-invalid", "true");
-    else fieldset.removeAttribute("aria-invalid");
+    // Mirror invalid + the error association onto BOTH the fieldset (the group)
+    // and the summary — onSubmit moves focus to the summary, so it must be the
+    // node that announces "invalid" and carries aria-describedby to the message.
+    if (invalid) {
+      fieldset.setAttribute("aria-invalid", "true");
+      summary.setAttribute("aria-invalid", "true");
+      if (message) summary.setAttribute("aria-describedby", message.id);
+    } else {
+      fieldset.removeAttribute("aria-invalid");
+      summary.removeAttribute("aria-invalid");
+      summary.removeAttribute("aria-describedby");
+    }
     if (message && reveal) message.hidden = !invalid;
     return invalid;
   };
@@ -164,7 +188,13 @@ function wireOne(host) {
     host.removeAttribute("data-re-multiselect-ready");
     host.removeAttribute("data-invalid");
     fieldset.removeAttribute("aria-invalid");
-    if (message) message.hidden = true;
+    summary.removeAttribute("aria-invalid");
+    summary.removeAttribute("aria-describedby");
+    if (message) {
+      message.hidden = true;
+      message.removeAttribute("role");
+    }
+    liveRegion.remove();
     // Restore the authored placeholder; leave the user's checkbox state intact.
     valueEl.setAttribute("data-placeholder", "");
     valueEl.textContent = placeholder;
