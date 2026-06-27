@@ -24,6 +24,12 @@ Options via `data-*`: `data-re-tags-max`, `data-re-tags-name` (the hidden-input
 name; defaults to the input's), `data-re-tags-allow-duplicates`,
 `data-re-tags-tone`. Duplicates are rejected case-insensitively by default.
 
+**Using it in a framework:** `enhanceTagsInput` is the one behavior that
+_reparents_ your `<input>` — it moves it into the chip container. Keep the
+enhanced input the **sole, positionally-stable child** of its element (don't
+render conditional siblings next to it), or a vdom reconciler can throw
+`insertBefore … not a child`. See the [framework guide](/relements/frameworks/).
+
 ## Basic
 
 <Demo src="tags-input.html" name="basic" />
