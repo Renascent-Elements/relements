@@ -83,3 +83,10 @@ region as a sibling via `host.after()`): give the host a **single-child wrapper*
 element and enhance the wrapper — the injected node then lands inside a container
 the framework treats as opaque, so it survives re-renders (rather than being
 reconciled away from between vdom siblings). `destroy()` removes it on unmount.
+
+A sharper case: **`enhanceTagsInput` reparents** the `<input>` you rendered (it
+moves your input into a chip-host `<div>`). That survives unmount and ordinary
+re-renders, but a vdom framework throws `insertBefore … not a child` if it renders
+a sibling _positionally adjacent_ to the enhanced input. Keep the enhanced input
+the **sole, positionally-stable child** of its container — conditional siblings go
+outside it.

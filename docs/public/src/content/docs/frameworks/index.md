@@ -72,6 +72,23 @@ Every framework page boils down to the same five steps:
 That is it. The DOM, class names, `--re-*` tokens, and event contract are
 identical across stacks; only the glue in steps 2 and 4 changes.
 
+### When a behavior restructures the DOM
+
+Almost every behavior only _adds_ nodes — it injects siblings or children around
+the element you enhanced and never moves your markup, so it's robust to any
+re-render or unmount (enhance a stable wrapper and you're done; that's how
+`enhanceMultiSelect` injects its live region).
+
+One behavior **reparents** your markup: `enhanceTagsInput` moves the `<input>`
+you rendered into a `<div>` it creates to host the chips. In a vdom framework
+that's fine on unmount and on ordinary re-renders, but it throws
+`insertBefore … is not a child of this node` if the framework makes a
+**positional** DOM change at the input's original slot — e.g. conditionally
+rendering a sibling _next to_ the enhanced input. So render the enhanced input as
+the **sole, positionally-stable child** of its container, and keep any
+conditionally-rendered siblings (re-render triggers, adjacent UI) **outside** that
+container. It's the same wrapper discipline additive behaviors want, made strict.
+
 ## Pick your framework
 
 Each page mirrors a **runnable example app** and walks through the five steps
