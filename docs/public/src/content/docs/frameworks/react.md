@@ -273,9 +273,10 @@ An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlit
 :::
 
 The full flow above — a `.re-button`, an `enhanceTabs()` region wired through
-`useEnhance`, and a `<re-tabs>` custom element whose `re-change` event drives an
-`<output>`, plus a "Toggle tabs" button that mounts/unmounts the subtree to
-exercise the `destroy()` teardown — lives in
+`useEnhance`, a `<re-tabs>` custom element whose `re-change` event drives an
+`<output>`, and an `enhanceMultiSelect` control (a DOM-injecting behavior whose
+injected live region survives a re-render), plus a "Toggle demo" button that
+mounts/unmounts the subtree to exercise the `destroy()` teardown — lives in
 `docs/examples/frameworks/react/`, or on
 [GitHub](https://github.com/Renascent-Elements/relements/tree/main/docs/examples/frameworks/react).
 

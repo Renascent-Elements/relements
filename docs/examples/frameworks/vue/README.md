@@ -15,6 +15,6 @@ pnpm dev      # or: pnpm build
   `CustomEvent`; read `event.detail.tabId`.
 - **Behavior lifecycle:** run `enhanceTabs(ref)` in `onMounted` and call
   `controller.destroy()` in `onUnmounted`.
-- **Teardown demo:** the "Toggle tabs" button toggles the `<Tabs>` child with
+- **Teardown demo:** the "Toggle demo" button toggles the `<Tabs>` and `<Multiselect>` children with
   `v-if`, demonstrating teardown — `onUnmounted` runs `controller.destroy()`, and
   remounting re-runs `onMounted` to re-initialize a fresh instance.

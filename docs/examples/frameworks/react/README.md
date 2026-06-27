@@ -21,7 +21,7 @@ pnpm dev      # or: pnpm build
   `import "@relements/core/elements/re-tabs";` — `@relements/core` marks its
   element modules as side-effectful in `sideEffects`, so the self-registering
   `customElements.define` survives bundler tree-shaking.
-- **Teardown demo:** the "Toggle tabs" button conditionally renders the `<Tabs>`
-  child, demonstrating the documented teardown — unmounting runs the `useEffect`
+- **Teardown demo:** the "Toggle demo" button conditionally renders the `<Tabs>`
+  and `<Multiselect>` children, demonstrating the documented teardown — unmounting runs the `useEffect`
   cleanup (`controller.destroy()` + `removeEventListener`), and remounting
   re-initializes a fresh instance.

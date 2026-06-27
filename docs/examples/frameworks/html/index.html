@@ -27,12 +27,13 @@
     <p><button class="re-button" type="button">Save</button></p>
 
     <!-- Lifecycle demo: mount/unmount the enhanced subtree to exercise destroy(). -->
-    <p><button id="toggle" type="button">Toggle tabs</button></p>
+    <p><button id="toggle" type="button">Toggle demo</button></p>
 
     <div id="demo"></div>
 
     <script type="module">
       import { enhanceTabs } from "/packages/core/src/behaviors/tabs.js";
+      import { enhanceMultiSelect } from "/packages/core/src/behaviors/multiselect.js";
       import "/packages/core/src/elements/re-tabs.js";
 
       const demo = document.getElementById("demo");
@@ -65,30 +66,69 @@
           </re-tabs>
           <p>Last tab: <output id="last-tab">none</output></p>
         </section>
+
+        <section aria-labelledby="ms-h">
+          <h2 id="ms-h">enhanceMultiSelect</h2>
+          <!-- Above the field: the open (absolutely-positioned) panel must not
+               cover this control. -->
+          <p><button id="ms-rerender" type="button">Re-render</button> <output id="ms-renders">0</output> renders</p>
+          <div class="re-field">
+            <span class="re-field__label" id="ms-label">Frameworks</span>
+            <!-- enhanceMultiSelect injects a live-region SIBLING via host.after(),
+                 so wrap the <details> ALONE: the injected node then lands inside
+                 #ms-wrap, which a framework treats as opaque (no vdom-sibling
+                 conflict). Enhance the wrapper, not the <details>. -->
+            <div id="ms-wrap">
+              <details class="re-multiselect" id="ms" data-re-multiselect>
+                <summary class="re-multiselect__summary" aria-labelledby="ms-label ms-value">
+                  <span class="re-multiselect__value" id="ms-value" data-placeholder>Select frameworks</span>
+                </summary>
+                <fieldset class="re-multiselect__panel">
+                  <legend class="re-sr-only">Frameworks</legend>
+                  <label class="re-multiselect__option"><input type="checkbox" class="re-checkbox" name="fw" value="react" /> React</label>
+                  <label class="re-multiselect__option"><input type="checkbox" class="re-checkbox" name="fw" value="vue" /> Vue</label>
+                  <label class="re-multiselect__option"><input type="checkbox" class="re-checkbox" name="fw" value="svelte" /> Svelte</label>
+                </fieldset>
+              </details>
+            </div>
+          </div>
+        </section>
       `;
 
-      let controller = null;
+      let tabs = null;
+      let multiselect = null;
 
       function mount() {
         demo.innerHTML = markup;
         // Scope enhanceTabs to #enhanced so it does not double-enhance <re-tabs>
         // (which enhances itself in connectedCallback).
-        controller = enhanceTabs(demo.querySelector("#enhanced"));
+        tabs = enhanceTabs(demo.querySelector("#enhanced"));
+        // Enhance the WRAPPER, not the <details>: the behavior's injected live
+        // region then lands inside #ms-wrap, matching the framework apps where it
+        // must survive reconciliation.
+        multiselect = enhanceMultiSelect(demo.querySelector("#ms-wrap"));
         demo.querySelector("#ce").addEventListener("re-change", (event) => {
           demo.querySelector("#last-tab").textContent = event.detail.tabId;
+        });
+        // Plain HTML has no reconciler, so this is just a no-op baseline for the
+        // shared contract's "survives a re-render" step.
+        let renders = 0;
+        demo.querySelector("#ms-rerender").addEventListener("click", () => {
+          demo.querySelector("#ms-renders").textContent = String(++renders);
         });
       }
 
       function unmount() {
-        // Tear down the enhancer, then remove the subtree (its listeners and the
-        // <re-tabs> element — whose disconnectedCallback also runs — go with it).
-        controller?.destroy();
-        controller = null;
+        // Tear down both enhancers, then remove the subtree (listeners + the
+        // <re-tabs> element, whose disconnectedCallback also runs, go with it).
+        tabs?.destroy();
+        multiselect?.destroy();
+        tabs = multiselect = null;
         demo.innerHTML = "";
       }
 
       document.getElementById("toggle").addEventListener("click", () => {
-        if (controller) unmount();
+        if (tabs) unmount();
         else mount();
       });
 

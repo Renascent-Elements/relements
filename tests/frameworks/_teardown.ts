@@ -24,15 +24,23 @@ import { expect, type Page } from "@playwright/test";
 export async function assertTeardown(page: Page, errors: string[]): Promise<void> {
   // Mounted by default: the demo subtree is present and wired.
   await expect(page.locator("#e-tab-1")).toBeVisible();
+  await expect(page.locator("#ms-wrap [aria-live]")).toHaveCount(1); // injected region present
 
   // Unmount: the lifecycle-bearing subtree is removed.
   await page.locator("#toggle").click();
   await expect(page.locator("#e-tab-1")).toHaveCount(0);
   await expect(page.locator("re-tabs")).toHaveCount(0);
+  // The behavior-INJECTED live region must be gone too — proof it didn't leak
+  // into a persistent parent (the `host.after()` sibling-injection risk that the
+  // single-child wrapper guards against). A leaked node neither throws nor
+  // changes tabs behaviour, so only this count would catch it.
+  await expect(page.locator("#ms")).toHaveCount(0);
+  await expect(page.locator("[aria-live]")).toHaveCount(0);
 
   // Remount: a fresh instance re-initializes and works.
   await page.locator("#toggle").click();
   await expect(page.locator("#e-tab-1")).toBeVisible();
+  await expect(page.locator("#ms-wrap [aria-live]")).toHaveCount(1); // re-injected
   // Wait until the remounted <re-tabs> is actually enhanced before clicking:
   // enhanceTabs() sets the selected tab's roving tabindex to 0. Without this
   // gate the click can land before the element's delegated listener is wired

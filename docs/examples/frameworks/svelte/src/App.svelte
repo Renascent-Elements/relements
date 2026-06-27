@@ -1,5 +1,6 @@
 <script>
   import Tabs from "./Tabs.svelte";
+  import Multiselect from "./Multiselect.svelte";
   let mounted = $state(true);
 </script>
 
@@ -8,9 +9,10 @@
 
   <p><button class="re-button" type="button">Save</button></p>
 
-  <p><button id="toggle" type="button" onclick={() => (mounted = !mounted)}>Toggle tabs</button></p>
+  <p><button id="toggle" type="button" onclick={() => (mounted = !mounted)}>Toggle demo</button></p>
 
   {#if mounted}
     <Tabs />
+    <Multiselect />
   {/if}
 </main>

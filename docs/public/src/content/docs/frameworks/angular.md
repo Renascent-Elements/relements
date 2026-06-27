@@ -222,7 +222,8 @@ An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlit
 :::
 
 See the full working app — the `[reEnhance]` lifecycle, a `<re-tabs>` element
-driving an `<output>` via `re-change`, and the "Toggle tabs" button proving
+driving an `<output>` via `re-change`, an `enhanceMultiSelect` control (DOM-
+injecting, survives change detection), and the "Toggle demo" button proving
 `destroy()` runs on unmount — in `docs/examples/frameworks/angular/`, or on
 [GitHub](https://github.com/Renascent-Elements/relements/tree/main/docs/examples/frameworks/angular).
 
