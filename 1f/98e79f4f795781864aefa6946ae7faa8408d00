@@ -1,0 +1,26 @@
+docs/public/src/content/docs/components/command-palette.mdx
+  s_8d4d586a26790b::t_5631ff64a31535 65-69
+tests/elements/command-palette.spec.ts
+  s_8d4d586a26790b::t_9276eb8a1968dd 36-50
+packages/core/src/behaviors/command-palette.js
+  s_8d4d586a26790b::t_5e0681d46526df 190-199
+  s_8d4d586a26790b::t_db3b185f152c9d 84-95
+  s_8d4d586a26790b::t_b90bc99731e8b3 227-230
+  s_8d4d586a26790b::t_b950d0f675220d 365-369
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "1f98e79f4f795781864aefa6946ae7faa8408d00",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
