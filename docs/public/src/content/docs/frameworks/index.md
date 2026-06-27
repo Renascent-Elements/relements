@@ -106,7 +106,10 @@ Every framework page is backed by an app under
   its `re-change` event and `destroy()` teardown (the apps mount/unmount the
   region to prove cleanup);
 - a `<re-tabs>` custom element whose `re-change` event updates an `<output>` —
-  the **custom-element + event** surface.
+  the **custom-element + event** surface;
+- a multi-select enhanced by `enhanceMultiSelect()` — the **DOM-injecting
+  behavior** surface (it appends a live region, survives an in-place re-render,
+  and tears down on unmount).
 
 The DOM, class names, `--re-*` tokens, and `re-change` contract are identical
 across all five; only the framework glue differs. Browse the source on

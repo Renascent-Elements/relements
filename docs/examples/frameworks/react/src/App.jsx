@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Tabs from "./Tabs.jsx";
+import Multiselect from "./Multiselect.jsx";
 
 export default function App() {
   const [mounted, setMounted] = useState(true);
@@ -15,10 +16,15 @@ export default function App() {
       </p>
 
       <button id="toggle" type="button" onClick={() => setMounted((m) => !m)}>
-        Toggle tabs
+        Toggle demo
       </button>
 
-      {mounted && <Tabs />}
+      {mounted && (
+        <>
+          <Tabs />
+          <Multiselect />
+        </>
+      )}
     </main>
   );
 }

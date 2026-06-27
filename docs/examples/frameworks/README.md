@@ -9,7 +9,11 @@ Every example renders:
 - a tabs region enhanced by `enhanceTabs()` — the **behavior** surface
   (`re-change` event, `.destroy()` teardown);
 - a `<re-tabs>` custom element whose `re-change` event updates an `<output>` —
-  the **custom-element + event** surface.
+  the **custom-element + event** surface;
+- a multi-select enhanced by `enhanceMultiSelect()` — the **DOM-injecting
+  behavior** surface: it appends a live region via `host.after()`, rides the
+  native `change` event, survives an in-place re-render, and tears down on
+  unmount.
 
 The DOM, class names, `--re-*` tokens, and `re-change` event contract are identical
 across all five. Only the framework glue differs.
@@ -73,3 +77,9 @@ pnpm exec playwright test tests/frameworks
 | Angular   | needs `CUSTOM_ELEMENTS_SCHEMA`          | `(re-change)="…($event)"`                                        |
 
 See each app's own README for details.
+
+**DOM-injecting behaviors** (e.g. `enhanceMultiSelect`, which appends its live
+region as a sibling via `host.after()`): give the host a **single-child wrapper**
+element and enhance the wrapper — the injected node then lands inside a container
+the framework treats as opaque, so it survives re-renders (rather than being
+reconciled away from between vdom siblings). `destroy()` removes it on unmount.

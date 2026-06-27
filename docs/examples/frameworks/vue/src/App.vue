@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Tabs from "./Tabs.vue";
+import Multiselect from "./Multiselect.vue";
 
 const mounted = ref(true);
 </script>
@@ -11,8 +12,11 @@ const mounted = ref(true);
 
     <p><button class="re-button" type="button">Save</button></p>
 
-    <button id="toggle" type="button" @click="mounted = !mounted">Toggle tabs</button>
+    <button id="toggle" type="button" @click="mounted = !mounted">Toggle demo</button>
 
-    <Tabs v-if="mounted" />
+    <template v-if="mounted">
+      <Tabs />
+      <Multiselect />
+    </template>
   </main>
 </template>
