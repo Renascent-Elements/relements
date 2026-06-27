@@ -94,7 +94,10 @@ function wireOne(region) {
     panel.style.top = `${top}px`;
   };
 
-  const reposition = () => close(); // close on scroll/resize rather than chase the pointer
+  // Close on scroll/resize rather than chase the pointer — and return focus to
+  // the region so a keyboard user isn't dropped to <body> (hiding the panel
+  // would otherwise discard the focused menuitem's focus).
+  const reposition = () => close({ returnFocus: true });
 
   /** @param {number} x @param {number} y */
   const open = (x, y) => {
@@ -191,6 +194,9 @@ function wireOne(region) {
         close({ returnFocus: true });
         return;
     }
+    // Space activates the focused menuitem natively (it's a <button>) — let that
+    // happen, and don't let the space character pollute the typeahead buffer.
+    if (event.key === " ") return;
     // First-character typeahead.
     if (event.key.length === 1 && !event.altKey && !event.ctrlKey && !event.metaKey) {
       typeBuf += event.key.toLowerCase();
