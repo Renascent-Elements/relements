@@ -79,15 +79,17 @@ the element you enhanced and never moves your markup, so it's robust to any
 re-render or unmount (enhance a stable wrapper and you're done; that's how
 `enhanceMultiSelect` injects its live region).
 
-One behavior **reparents** your markup: `enhanceTagsInput` moves the `<input>`
-you rendered into a `<div>` it creates to host the chips. In a vdom framework
-that's fine on unmount and on ordinary re-renders, but it throws
-`insertBefore … is not a child of this node` if the framework makes a
-**positional** DOM change at the input's original slot — e.g. conditionally
-rendering a sibling _next to_ the enhanced input. So render the enhanced input as
-the **sole, positionally-stable child** of its container, and keep any
-conditionally-rendered siblings (re-render triggers, adjacent UI) **outside** that
-container. It's the same wrapper discipline additive behaviors want, made strict.
+One behavior can **reparent** your markup: applied directly to an
+`<input data-re-tags-input>`, `enhanceTagsInput` moves that input into a chip
+container it creates — and a vdom framework that owns the input can throw
+`insertBefore … is not a child of this node` when it later mutates the input's
+slot. Use a framework-safe form, both of which leave the input where you rendered
+it: the [`<re-tags-input>`](/relements/components/tags-input/#framework-use)
+custom element (it owns its subtree, so the framework sees an opaque tag), or
+**container mode** — put `data-re-tags-input` on a container that _wraps_ the
+input, and the behavior injects the chips around it without moving it. The
+general lesson: a behavior that only _adds_ nodes around your markup is safe; one
+that _moves_ your markup needs a boundary the framework treats as opaque.
 
 ## Pick your framework
 

@@ -24,11 +24,9 @@ Options via `data-*`: `data-re-tags-max`, `data-re-tags-name` (the hidden-input
 name; defaults to the input's), `data-re-tags-allow-duplicates`,
 `data-re-tags-tone`. Duplicates are rejected case-insensitively by default.
 
-**Using it in a framework:** `enhanceTagsInput` is the one behavior that
-_reparents_ your `<input>` — it moves it into the chip container. Keep the
-enhanced input the **sole, positionally-stable child** of its element (don't
-render conditional siblings next to it), or a vdom reconciler can throw
-`insertBefore … not a child`. See the [framework guide](/relements/frameworks/).
+**In a framework?** Use the [`<re-tags-input>` element or container mode](#framework-use)
+below — both inject the chips without moving the input, so a vdom re-render can't
+throw.
 
 ## Basic
 
@@ -45,6 +43,34 @@ At the limit, further entries are rejected and the field is marked invalid.
 Submitting sends one `name` entry per tag.
 
 <Demo src="tags-input.html" name="form" />
+
+## Framework use
+
+`enhanceTagsInput` on a bare `<input>` (above) **reparents** it into the chip
+container. That's ideal for plain HTML, but in a vdom framework that owns the
+input, a re-render touching its slot can throw `insertBefore … not a child`. Two
+forms never move the input:
+
+- **`<re-tags-input>`** (recommended) — the editor as a custom element. It owns
+  its light DOM, so React/Vue/Svelte/Angular treat it as opaque. Give it an
+  `aria-label` (it has no `<label>`); `.values` reads the committed tags and
+  `.clear()` empties them. The inner `<input>` is the no-JS fallback.
+
+  ```html
+  <re-tags-input name="tags" value="design, eng" aria-label="Tags">
+    <input class="re-input" type="text" placeholder="Add tags" />
+  </re-tags-input>
+  <script type="module">
+    import "@relements/core/elements/re-tags-input";
+  </script>
+  ```
+
+- **Container mode** — put `data-re-tags-input` on a **container** that wraps the
+  input (instead of on the input itself); the behavior adopts the container as
+  the group and injects the chips as siblings, leaving the input where the
+  framework rendered it.
+
+See the [framework guide](/relements/frameworks/) for the underlying reason.
 
 ## Accessibility
 

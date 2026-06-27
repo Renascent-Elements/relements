@@ -28,6 +28,7 @@ export default defineConfig({
     "elements/re-menu": "src/elements/re-menu.js",
     "elements/re-popover": "src/elements/re-popover.js",
     "elements/re-file-picker": "src/elements/re-file-picker.js",
+    "elements/re-tags-input": "src/elements/re-tags-input.js",
   },
   format: ["esm"],
   dts: true,

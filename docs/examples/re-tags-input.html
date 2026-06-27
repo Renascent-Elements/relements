@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · &lt;re-tags-input&gt;</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 36rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="re-tags-input">
+    <header>
+      <h1>&lt;re-tags-input&gt;</h1>
+      <p>The token editor as a framework-safe custom element (container mode).</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic</h2>
+      <!-- demo:start name="basic" -->
+      <div class="re-field">
+        <span class="re-field__label" id="ti-label">Project tags</span>
+        <re-tags-input name="tags" value="design, eng" aria-labelledby="ti-label">
+          <input class="re-input" type="text" placeholder="Add tags" />
+        </re-tags-input>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="max-heading" data-testid="max">
+      <h2 id="max-heading">Max 3</h2>
+      <!-- demo:start name="max" -->
+      <div class="re-field">
+        <span class="re-field__label" id="ti-max-label">Skills</span>
+        <re-tags-input name="skills" value="html, css" max="3" aria-labelledby="ti-max-label">
+          <input class="re-input" type="text" placeholder="Up to 3" />
+        </re-tags-input>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <script type="module">
+      import "/packages/core/src/elements/re-tags-input.js";
+    </script>
+  </body>
+</html>

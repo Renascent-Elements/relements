@@ -216,6 +216,7 @@ Light-DOM only (no Shadow DOM). Same HTML/CSS contract as the plain class API.
 | `<re-menu>`        | `enhanceMenuButton` | `.open` boolean                     |
 | `<re-popover>`     | `enhancePopover`    | `.show()` / `.hide()` / `.toggle()` |
 | `<re-file-picker>` | `enhanceFilePicker` | `.files` (read/write) / `.clear()`  |
+| `<re-tags-input>`  | `enhanceTagsInput`  | `.values` (read) / `.clear()`       |
 
 ## Editor support
 

@@ -13,6 +13,13 @@
  */
 
 @layer re.components {
+  /* The <re-tags-input> custom element becomes the `.re-tags-input` group once
+     enhanced; give it a block box before upgrade so it isn't display:inline
+     wrapping its fallback input. */
+  re-tags-input {
+    display: block;
+  }
+
   .re-tags-input {
     display: flex;
     flex-wrap: wrap;
