@@ -187,4 +187,60 @@ test.describe("tags input", () => {
     await ed.press("Enter");
     await expect(group.locator("[role=listitem]")).toHaveCount(3);
   });
+
+  // ---- Container mode (the framework-safe, no-reparent path) ----------------
+  test("container mode adopts the container WITHOUT moving the input", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const section = page.getByTestId("container");
+    const container = section.locator("[data-re-tags-input]");
+    // The author's container becomes the group; the editor is still its child.
+    await expect(container).toHaveClass(/re-tags-input/);
+    await expect(container).toHaveAttribute("role", "group");
+    await expect(container).toHaveAttribute("aria-labelledby", /.+/); // labelled from .re-field
+    // The crux: the input was NOT reparented into a behavior-created wrapper — its
+    // parent is still the author's marked container (input mode would be false).
+    const parentIsMarkedContainer = await section
+      .locator("#tags-container")
+      .evaluate((el) => el.parentElement?.hasAttribute("data-re-tags-input") ?? false);
+    expect(parentIsMarkedContainer).toBe(true);
+    expect(await hiddenValues(page, "container")).toEqual(["design", "eng"]);
+    await expect(section.locator("#tags-container")).not.toHaveAttribute("name", /.*/);
+  });
+
+  test("container mode: commit + remove behave exactly like input mode", async ({ page }) => {
+    await page.goto("./tags-input.html");
+    const ed = editor(page, "container");
+    await ed.click();
+    await ed.fill("ops");
+    await ed.press("Enter");
+    expect(await hiddenValues(page, "container")).toEqual(["design", "eng", "ops"]);
+    await page.getByTestId("container").locator("[data-re-tags-remove]").first().click();
+    expect(await hiddenValues(page, "container")).toEqual(["eng", "ops"]);
+  });
+
+  test("container mode survives a framework-style sibling mutation at the input's slot", async ({
+    page,
+  }) => {
+    await page.goto("./tags-input.html");
+    const errors: string[] = [];
+    page.on("pageerror", (e) => errors.push(e.message));
+    // Mimic a vdom re-render inserting then removing a sibling next to the input
+    // inside the container — the #114 crash shape, but valid here because the
+    // input was never moved out of the container.
+    await page
+      .getByTestId("container")
+      .locator("[data-re-tags-input]")
+      .evaluate((container) => {
+        const input = container.querySelector("input:not([type=hidden])");
+        const sib = document.createElement("span");
+        container.insertBefore(sib, input); // input IS a child → no throw
+        sib.remove();
+      });
+    const ed = editor(page, "container");
+    await ed.click();
+    await ed.fill("qa");
+    await ed.press("Enter");
+    expect(await hiddenValues(page, "container")).toEqual(["design", "eng", "qa"]);
+    expect(errors).toEqual([]);
+  });
 });

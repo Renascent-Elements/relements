@@ -84,9 +84,8 @@ element and enhance the wrapper — the injected node then lands inside a contai
 the framework treats as opaque, so it survives re-renders (rather than being
 reconciled away from between vdom siblings). `destroy()` removes it on unmount.
 
-A sharper case: **`enhanceTagsInput` reparents** the `<input>` you rendered (it
-moves your input into a chip-host `<div>`). That survives unmount and ordinary
-re-renders, but a vdom framework throws `insertBefore … not a child` if it renders
-a sibling _positionally adjacent_ to the enhanced input. Keep the enhanced input
-the **sole, positionally-stable child** of its container — conditional siblings go
-outside it.
+A sharper case: applied to a bare `<input data-re-tags-input>`, **`enhanceTagsInput`
+reparents** the input into a chip-host `<div>`, which a vdom framework that owns
+the input can choke on (`insertBefore … not a child`). Use a form that leaves the
+input in place: the **`<re-tags-input>`** custom element (it owns its subtree), or
+**container mode** — put `data-re-tags-input` on a container that wraps the input.

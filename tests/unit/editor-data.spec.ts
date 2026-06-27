@@ -39,7 +39,14 @@ describe("editor custom-data", () => {
 
   it("covers the curated custom-element tags and the core styling attributes", () => {
     const tagNames = htmlData.tags.map((t: { name: string }) => t.name);
-    expect(tagNames).toEqual(["re-tabs", "re-menu", "re-popover", "re-toast", "re-file-picker"]);
+    expect(tagNames).toEqual([
+      "re-tabs",
+      "re-menu",
+      "re-popover",
+      "re-toast",
+      "re-file-picker",
+      "re-tags-input",
+    ]);
 
     const attrs = new Map(
       htmlData.globalAttributes.map((a: { name: string; values?: { name: string }[] }) => [

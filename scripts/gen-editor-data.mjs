@@ -108,6 +108,25 @@ const ELEMENTS = [
       ],
     },
   },
+  {
+    name: "re-tags-input",
+    description:
+      'Self-managing wrapper around the token editor (enhanceTagsInput) in container mode — framework-safe, since it never reparents the input. `.values` reads the committed tags and `.clear()` empties them; emits `re-tags-change`. Give it an `aria-label` (it has no `<label>`). Register with `import "@relements/core/elements/re-tags-input"`.',
+    attributes: [
+      { name: "aria-label", description: "Accessible name for the token group." },
+      { name: "name", description: "Form-field name for the submitted tag array." },
+      { name: "value", description: "Initial comma-separated tags to seed." },
+      { name: "max", description: "Maximum number of tags." },
+      {
+        name: "allow-duplicates",
+        description: "Keep duplicate tags (case-insensitive dedupe is off).",
+      },
+    ],
+    js: {
+      properties: [{ name: "values", type: "string[]", description: "The committed tag values." }],
+      events: [{ name: "re-tags-change", description: "Fires when tags are added or removed." }],
+    },
+  },
 ];
 
 /** Descriptions for the styling data-* attributes (values are derived from CSS). */

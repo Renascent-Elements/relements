@@ -85,6 +85,27 @@
       <!-- demo:end -->
     </section>
 
+    <section aria-labelledby="container-heading" data-testid="container">
+      <h2 id="container-heading">Container mode (framework-safe)</h2>
+      <!-- The marker is on a CONTAINER holding the input. The behavior injects
+           chips as siblings without MOVING the input, so a vdom framework that
+           owns the container can't choke on the input's slot on a re-render. -->
+      <div class="re-field">
+        <label class="re-field__label" for="tags-container">Skills</label>
+        <div data-re-tags-input>
+          <input
+            class="re-input"
+            type="text"
+            id="tags-container"
+            name="skills"
+            value="design, eng"
+            placeholder="Add skills"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    </section>
+
     <script type="module">
       import { enhanceTagsInput } from "/packages/core/src/behaviors/tags-input.js";
       window.__reController = enhanceTagsInput(document);

@@ -201,6 +201,10 @@
     "./elements/re-file-picker": {
       "import": "./dist/elements/re-file-picker.js",
       "types": "./dist/elements/re-file-picker.d.ts"
+    },
+    "./elements/re-tags-input": {
+      "import": "./dist/elements/re-tags-input.js",
+      "types": "./dist/elements/re-tags-input.d.ts"
     }
   },
   "scripts": {
