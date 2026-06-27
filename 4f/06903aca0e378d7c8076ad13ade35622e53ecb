@@ -1,0 +1,28 @@
+packages/core/src/behaviors/multiselect.js
+  s_8d4d586a26790b::t_de9bc6eb62f4d2 82-94
+  s_8d4d586a26790b::t_5dc21df283773b 23
+  s_8d4d586a26790b::t_e216f8d3186f93 105-106
+  s_8d4d586a26790b::t_b026410084fda3 124-135
+  s_8d4d586a26790b::t_2bcb1f3234b102 191-197
+tests/elements/multiselect.spec.ts
+  s_8d4d586a26790b::t_1558a54ab7ded5 81-102
+  s_8d4d586a26790b::t_cd80624905e059 56-60,66-67
+docs/public/src/content/docs/components/multiselect.mdx
+  s_8d4d586a26790b::t_cd15b235691935 39-47,49-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "4f06903aca0e378d7c8076ad13ade35622e53ecb",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
