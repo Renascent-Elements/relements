@@ -1,0 +1,33 @@
+packages/core/src/behaviors/tags-input.js
+  s_8d4d586a26790b::t_67724ffac515f5 104-119,122
+  s_8d4d586a26790b::t_47e46a7295f61e 139-140,143-149
+  s_8d4d586a26790b::t_65b933561996ea 83-90
+  s_8d4d586a26790b::t_8202bca772076b 65
+  s_8d4d586a26790b::t_56026eb6ea6692 163-166
+  s_8d4d586a26790b::t_4f70e7f7eabbd7 176
+  s_8d4d586a26790b::t_a009bb9aae6710 281,287,293
+  s_8d4d586a26790b::t_07e092d791cab9 224
+  s_8d4d586a26790b::t_004b8d20687718 193
+docs/public/src/content/docs/components/tags-input.mdx
+  s_8d4d586a26790b::t_c5a961dbbc75b8 57-60,62-64
+tests/elements/tags-input.spec.ts
+  s_8d4d586a26790b::t_70ab6d8e8528ab 160-189
+packages/core/src/components/tags-input.css
+  s_8d4d586a26790b::t_e3f2bc12b6cd41 43-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "94b1b47575e17509e2bc99d2993ccc55f1a12ac8",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
