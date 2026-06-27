@@ -1,0 +1,25 @@
+packages/core/src/behaviors/context-menu.js
+  s_8d4d586a26790b::t_5dc2385def608c 197-199
+  s_8d4d586a26790b::t_f9645a231c3c5d 97-100
+docs/public/src/content/docs/components/context-menu.mdx
+  s_8d4d586a26790b::t_95c4b0c7fbcc86 47-48,53-55
+tests/elements/context-menu.spec.ts
+  s_8d4d586a26790b::t_3208d5324e8aa9 73-85,88-132
+  s_8d4d586a26790b::t_7af60c072d4cb9 86-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "e0253fceca2e760d33dc520175af09abcd3c9ac8",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
