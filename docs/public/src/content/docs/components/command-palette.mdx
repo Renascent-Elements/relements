@@ -62,8 +62,11 @@ href, option }`); if not prevented and the row is a link, it navigates.
   reflecting whether any rows match, and `aria-activedescendant` pointing at the
   highlighted row); the list becomes `role="listbox"`, each group a labelled
   `role="group"`, and each row a `role="option"` toggling `aria-selected`. The
-  empty-state carries `role="status"` and rewrites its text on the transition to
-  zero results, so the change is announced.
+  behavior also injects an always-present `role="status"` live region that
+  announces the result **count** as you filter ("3 results") and the empty state
+  ("No results for …"). The visible empty card is toggled `hidden`, so a region
+  that only exists while empty is unreliable — hence the always-present one; the
+  card's own `role="status"` is muted so it can't double-announce.
 - **Notes** — none of that ARIA ships in the static markup; the no-JS baseline is
   a plain search field over real links/`<span>` rows (see Notes above). The
   keyboard-hint footer is `aria-hidden`, the search icon is decorative
