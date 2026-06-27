@@ -1,0 +1,69 @@
+docs/examples/frameworks/vue/src/Multiselect.vue
+  s_8d4d586a26790b::t_8b13bdeb98f7c0 1-33,37-54
+  s_8d4d586a26790b::t_ee4538b8f17dc1 34-36
+docs/examples/frameworks/angular/src/app/multiselect.component.ts
+  s_8d4d586a26790b::t_709d7557891076 1-20,24-60
+  s_8d4d586a26790b::t_ee4538b8f17dc1 21-23
+docs/public/src/content/docs/frameworks/index.md
+  s_8d4d586a26790b::t_6bc578819a471d 109-112
+docs/examples/frameworks/react/README.md
+  s_8d4d586a26790b::t_09a43ea701a12b 24-25
+tests/frameworks/_contract.ts
+  s_8d4d586a26790b::t_fe2e2b7cf2ced3 5-7,23-49,51-52,55-57
+  s_8d4d586a26790b::t_86033d4d48486c 50,53-54
+docs/public/src/content/docs/frameworks/vue.md
+  s_8d4d586a26790b::t_1e9ce20b9691c6 212
+docs/examples/frameworks/react/src/Multiselect.jsx
+  s_8d4d586a26790b::t_b1088b2f7a37de 1-59
+docs/examples/frameworks/angular/README.md
+  s_8d4d586a26790b::t_f7389bd5680ddb 18-19
+docs/examples/frameworks/react/src/App.jsx
+  s_8d4d586a26790b::t_4f7a33c29903b8 3,19,22-27
+tests/frameworks/_teardown.ts
+  s_8d4d586a26790b::t_967b9887656b40 27,33-38,43
+docs/examples/frameworks/svelte/src/Multiselect.svelte
+  s_8d4d586a26790b::t_4185ab2073d54a 1-41
+docs/examples/frameworks/README.md
+  s_8d4d586a26790b::t_b1c4409a62487d 12-16
+  s_8d4d586a26790b::t_5d731ef255b51c 80-85
+docs/public/src/content/docs/frameworks/svelte.md
+  s_8d4d586a26790b::t_f9412729d70ba0 234-236
+docs/examples/frameworks/vue/README.md
+  s_8d4d586a26790b::t_2fc4b8c39d4af4 18
+docs/examples/frameworks/_index.html
+  s_8d4d586a26790b::t_898173b55952fd 23-25
+docs/examples/frameworks/vue/src/App.vue
+  s_8d4d586a26790b::t_e3831892d1070e 4,15,17-20
+docs/public/src/content/docs/frameworks/angular.md
+  s_8d4d586a26790b::t_f68dc324a54642 225-226
+docs/examples/frameworks/svelte/src/App.svelte
+  s_8d4d586a26790b::t_bfacaa06fefd89 3,12,16
+docs/examples/frameworks/svelte/README.md
+  s_8d4d586a26790b::t_97ec63600a830c 18
+docs/examples/frameworks/angular/src/app/app.component.ts
+  s_8d4d586a26790b::t_f584af9b187960 3,8,16,21
+docs/public/src/content/docs/frameworks/react.md
+  s_8d4d586a26790b::t_4789c565b2d507 276-279
+docs/examples/frameworks/html/index.html
+  s_8d4d586a26790b::t_1cfde9d114d1ec 30
+  s_8d4d586a26790b::t_b0845d7ad9b3f5 69-71,75-95
+  s_8d4d586a26790b::t_34206a80104074 98-99,105-109,113-118,122-126,131
+  s_8d4d586a26790b::t_9f44c3378b78a1 36
+  s_8d4d586a26790b::t_6d19662844acd1 72-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "8fbe396834082c268e3569e7d9106c6a74afcb70",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
