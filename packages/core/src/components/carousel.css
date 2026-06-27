@@ -83,7 +83,7 @@
   .re-carousel__control:hover {
     background-color: var(--re-color-bg-muted);
   }
-  .re-carousel__control[disabled] {
+  .re-carousel__control[aria-disabled="true"] {
     opacity: 0.4;
     cursor: not-allowed;
   }

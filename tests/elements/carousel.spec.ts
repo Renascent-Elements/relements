@@ -45,12 +45,23 @@ test.describe("Carousel", () => {
     test("injects prev/next + dots; prev starts disabled", async ({ page }) => {
       const host = page.getByTestId("basic").locator(".re-carousel");
       await expect(host.locator(".re-carousel__dot")).toHaveCount(4);
-      await expect(host.locator('[data-dir="prev"]')).toBeDisabled();
-      await expect(host.locator('[data-dir="next"]')).toBeEnabled();
+      await expect(host.locator('[data-dir="prev"]')).toHaveAttribute("aria-disabled", "true");
+      await expect(host.locator('[data-dir="next"]')).toHaveAttribute("aria-disabled", "false");
       await expect(host.locator(".re-carousel__dot").first()).toHaveAttribute(
         "aria-current",
         "true",
       );
+    });
+
+    test("an end control uses aria-disabled and stays focusable (not dropped to body)", async ({
+      page,
+    }) => {
+      // Native `disabled` removes the button from the a11y tree and yanks focus to
+      // <body> at the ends; aria-disabled keeps it focusable + announced (APG).
+      const prev = page.getByTestId("basic").locator('[data-dir="prev"]');
+      await expect(prev).toHaveAttribute("aria-disabled", "true"); // slide 0
+      await prev.focus();
+      await expect(prev).toBeFocused(); // a native [disabled] button could not be focused
     });
 
     test("next advances the active slide and enables prev", async ({ page }) => {
@@ -60,7 +71,7 @@ test.describe("Carousel", () => {
         "aria-current",
         "true",
       );
-      await expect(host.locator('[data-dir="prev"]')).toBeEnabled();
+      await expect(host.locator('[data-dir="prev"]')).toHaveAttribute("aria-disabled", "false");
     });
 
     test("a dot jumps to its slide; next disables at the last slide (no wrap)", async ({
@@ -72,7 +83,7 @@ test.describe("Carousel", () => {
         "aria-current",
         "true",
       );
-      await expect(host.locator('[data-dir="next"]')).toBeDisabled();
+      await expect(host.locator('[data-dir="next"]')).toHaveAttribute("aria-disabled", "true");
     });
 
     test("off-screen slides are inert (only the active slide is interactive)", async ({ page }) => {
@@ -136,6 +147,20 @@ test.describe("Carousel autoplay", () => {
     const paused = await activeIndex(host);
     await page.waitForTimeout(3500);
     expect(await activeIndex(host)).toBe(paused);
+  });
+
+  test("pausing announces the settled slide (Rung C live region)", async ({
+    page,
+    browserName,
+  }) => {
+    // The live region only exists on Rung C (no UA-drawn controls); autoplay
+    // suppresses announcements while playing, so pausing is when it must speak.
+    test.skip(browserName === "chromium", "Rung C live region absent where the UA draws controls");
+    await page.goto("./carousel.html");
+    const host = page.getByTestId("autoplay").locator(".re-carousel");
+    await expect.poll(() => activeIndex(host), { timeout: 6000 }).not.toBe(0); // let it advance
+    await host.locator(".re-carousel__autoplay").click(); // pause → announce
+    await expect(host.locator("[aria-live]")).toHaveText(/\d+ of \d+/);
   });
 
   test("hovering pauses the slideshow", async ({ page }) => {
