@@ -1,0 +1,23 @@
+docs/public/src/content/docs/components/tags-input.mdx
+  s_8d4d586a26790b::t_b42db301be2ee8 27-32
+docs/public/src/content/docs/frameworks/index.md
+  s_8d4d586a26790b::t_db9907e8427e56 75-91
+docs/examples/frameworks/README.md
+  s_8d4d586a26790b::t_42bec1fc5b746e 86-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "92d7be84f9735fa3d4ca59649c389c3166dbb8c1",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
