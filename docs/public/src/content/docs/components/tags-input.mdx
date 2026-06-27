@@ -54,10 +54,14 @@ Submitting sends one `name` entry per tag.
   marked `[data-invalid]` and the ring turns danger-colored.
 - **Semantics** — enhancing wraps the input in a `role="group"` labelled from the
   field's `<label for>` via `aria-labelledby`, so AT announces the group by its
-  label. Each `×` button carries an `aria-label="Remove <tag>"`, and a visually
+  label, and the editor is `aria-describedby` the field's `.re-field__hint` so the
+  "Press Enter to add" instructions reach AT (not just sighted users). The chips
+  sit in a `role="list"` (each chip a `listitem`) so they can be reviewed as a
+  list. Each `×` button carries an `aria-label="Remove <tag>"`, and a visually
   hidden (`.re-sr-only`) `aria-live="polite"` region announces "Added …",
-  "Removed …", and "Maximum N tags reached" as you edit. Committed tags are backed
-  by hidden inputs that carry the submitted array values.
+  "Removed …", "Maximum N tags reached", and "… is already added" as you edit
+  (cleared then re-set so an identical repeat still speaks). Committed tags are
+  backed by hidden inputs that carry the submitted array values.
 - **Notes** — pre-seeded tags are not announced on enhance, only edits you make.
   Without JavaScript the base degrades to a plain labelled `.re-input`. See the
   [accessibility guide](/relements/guides/accessibility/).

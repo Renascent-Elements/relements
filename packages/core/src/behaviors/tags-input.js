@@ -62,6 +62,7 @@ function wireOne(input) {
   input.setAttribute("data-re-tags-input-ready", "");
 
   const doc = input.ownerDocument;
+  const win = doc.defaultView ?? window;
   const id = `re-tags-${++uid}`;
   const tagsName = input.dataset.reTagsName || input.getAttribute("name") || "tags";
   const max = parseInt(input.dataset.reTagsMax || "", 10);
@@ -79,6 +80,14 @@ function wireOne(input) {
   group.className = "re-tags-input";
   group.setAttribute("role", "group");
 
+  // Chips live in a display:contents list wrapper so AT announces "list, N
+  // items" and can review each tag — while the chips stay flex children of the
+  // group, so there's no layout change. (The group itself can't be the list: its
+  // other children — the editor input and the live region — aren't list items.)
+  const chipList = doc.createElement("span");
+  chipList.className = "re-tags-input__list";
+  chipList.setAttribute("role", "list");
+
   // Label the group from the field's label (explicit <label for> pattern).
   const label = /** @type {HTMLElement | null} */ (
     input.id ? input.closest(".re-field")?.querySelector(`label[for="${input.id}"]`) : null
@@ -92,8 +101,25 @@ function wireOne(input) {
     group.setAttribute("aria-labelledby", label.id);
   }
 
+  // Associate the editor with the field hint (e.g. "Press Enter to add") so the
+  // operating instructions reach AT, not only sighted users.
+  const hint = /** @type {HTMLElement | null} */ (
+    input.closest(".re-field")?.querySelector(".re-field__hint") ?? null
+  );
+  let injectedHintId = false;
+  let injectedDescribedBy = false;
+  if (hint && !input.getAttribute("aria-describedby")) {
+    if (!hint.id) {
+      hint.id = `${id}-hint`;
+      injectedHintId = true;
+    }
+    input.setAttribute("aria-describedby", hint.id);
+    injectedDescribedBy = true;
+  }
+
   input.before(group);
   group.append(input);
+  group.prepend(chipList); // chips render before the editor
   input.removeAttribute("name");
   input.className = "re-tags-input__field";
   input.setAttribute("autocomplete", "off");
@@ -110,9 +136,17 @@ function wireOne(input) {
       (h) => /** @type {HTMLInputElement} */ (h).value,
     );
 
+  let muted = true; // suppress announcements while seeding the initial chips
+  let announceRaf = 0;
   /** @param {string} msg */
   const announce = (msg) => {
-    live.textContent = msg;
+    if (muted) return;
+    // Clear then set on the next frame so an identical consecutive message (a
+    // repeated "Maximum N reached" / "X is already added") still mutates the
+    // text node and re-announces — a polite region is silent on no-op writes.
+    live.textContent = "";
+    win.cancelAnimationFrame(announceRaf);
+    announceRaf = win.requestAnimationFrame(() => (live.textContent = msg));
   };
 
   const fireChange = () => {
@@ -126,7 +160,10 @@ function wireOne(input) {
   const addTag = (value) => {
     const tag = value.trim();
     if (!tag) return false;
-    if (!allowDupes && values().some((v) => v.toLowerCase() === tag.toLowerCase())) return false;
+    if (!allowDupes && values().some((v) => v.toLowerCase() === tag.toLowerCase())) {
+      announce(`${tag} is already added`);
+      return false;
+    }
     if (Number.isFinite(max) && values().length >= max) {
       group.setAttribute("data-invalid", "");
       announce(`Maximum ${max} tags reached`);
@@ -136,6 +173,7 @@ function wireOne(input) {
     chip.className = "re-tag";
     if (tone) chip.dataset.tone = tone;
     chip.dataset.reTagsChip = "";
+    chip.setAttribute("role", "listitem");
     const text = doc.createElement("span");
     text.textContent = tag;
     const remove = doc.createElement("button");
@@ -152,8 +190,7 @@ function wireOne(input) {
     hidden.name = tagsName;
     hidden.value = tag;
     chip.append(hidden);
-    // Insert chips before the editor input so the editor stays last.
-    group.insertBefore(chip, input);
+    chipList.append(chip); // the list wrapper renders before the editor input
     if (!Number.isFinite(max) || values().length <= max) group.removeAttribute("data-invalid");
     announce(`Added ${tag}`);
     return true;
@@ -184,7 +221,7 @@ function wireOne(input) {
     .filter(Boolean)
     .forEach(addTag);
   input.value = "";
-  live.textContent = ""; // don't announce the seeded tags on enhance
+  muted = false; // seeded chips are placed — announce real edits from here
 
   /** @param {KeyboardEvent} event */
   const onKeydown = (event) => {
@@ -241,15 +278,18 @@ function wireOne(input) {
     input.removeEventListener("input", onInput);
     group.removeEventListener("click", onClick);
     group.removeEventListener("mousedown", onGroupClick);
+    win.cancelAnimationFrame(announceRaf);
     // Restore the plain input (with the current tokens) in place of the group.
     input.className = origClass;
     if (origName !== null) input.setAttribute("name", origName);
     if (origAutocomplete !== null) input.setAttribute("autocomplete", origAutocomplete);
     else input.removeAttribute("autocomplete");
+    if (injectedDescribedBy) input.removeAttribute("aria-describedby");
     input.value = values().length ? values().join(", ") : origValue;
     input.removeAttribute("data-re-tags-input-ready");
     group.before(input);
     group.remove();
     if (injectedLabelId && label) label.removeAttribute("id");
+    if (injectedHintId && hint) hint.removeAttribute("id");
   };
 }

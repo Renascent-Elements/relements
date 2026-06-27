@@ -40,6 +40,12 @@
     box-shadow: var(--re-shadow-focus);
   }
 
+  /* The chips' list wrapper (role="list") is layout-transparent, so chips stay
+     flex children of the group — semantics without a visual box. */
+  .re-tags-input__list {
+    display: contents;
+  }
+
   /* The editor sheds the .re-input frame — the group owns it. */
   .re-tags-input__field {
     flex: 1 1 6ch;
