@@ -1,0 +1,62 @@
+docs/public/src/content/docs/frameworks/index.md
+  s_8d4d586a26790b::t_78763b6f69513f 82-92
+docs/examples/frameworks/README.md
+  s_8d4d586a26790b::t_570fbf349c0273 87-91
+packages/core/html.custom-data.json
+  s_8d4d586a26790b::t_631b7ebf3f5fc3 85-116
+tests/unit/editor-data.spec.ts
+  s_8d4d586a26790b::t_8e2dd32e7b5c8a 42-49
+packages/core/src/components/tags-input.css
+  s_8d4d586a26790b::t_d3837a1690158e 16-22
+tests/elements/tags-input.spec.ts
+  s_8d4d586a26790b::t_5fb2730d01e811 190-229,239-245
+  s_8d4d586a26790b::t_78e5bc407fab9b 230-238
+docs/public/src/content/docs/components/tags-input.mdx
+  s_8d4d586a26790b::t_fffbb63b66dc59 47-74
+  s_8d4d586a26790b::t_f53c60f21cc562 27-29
+tests/visual/re-tags-input.visual.spec.ts
+  s_8d4d586a26790b::t_de02e5b21bb2dd 1-25
+packages/core/src/behaviors/tags-input.js
+  s_8d4d586a26790b::t_54570f505ddcc2 4,6-20,23-25,27,31-38,54,56-59,69-70,73-80,90,96-97,102-140,145-146,152,155,170,172,174,186-187,223-224,323-324,326,331-347
+tests/a11y/re-tags-input.a11y.spec.ts
+  s_8d4d586a26790b::t_6e80f6e328f012 1-22
+scripts/gen-editor-data.mjs
+  s_8d4d586a26790b::t_3253a36de939ed 111-126,128-129
+  s_8d4d586a26790b::t_78e5bc407fab9b 127
+packages/core/tsup.config.ts
+  s_8d4d586a26790b::t_ea402040b4198d 31
+packages/core/web-types.json
+  s_8d4d586a26790b::t_631b7ebf3f5fc3 4,109-148
+  s_8d4d586a26790b::t_798787242f05e4 149-150
+packages/core/package.json
+  s_8d4d586a26790b::t_37d16377987017 204-207
+packages/core/README.md
+  s_8d4d586a26790b::t_7ac8c69061894b 219
+packages/core/src/elements/re-tags-input.js
+  s_8d4d586a26790b::t_c8c96f59ffd0b1 1-131
+docs/examples/re-tags-input.html
+  s_8d4d586a26790b::t_c5ac8b72acd904 1-53
+.changeset/re-tags-input.md
+  s_8d4d586a26790b::t_f4f3de719960c7 1-12
+tests/elements/re-tags-input.spec.ts
+  s_8d4d586a26790b::t_ebf3303f32ee60 3-4,16,31,42,47,54-57,60,68,71,86-88,93
+  s_8d4d586a26790b::t_9d515e199f65c3 1-2,5-15,17-30,32-41,43-46,48-53,58-59,61-67,69-70,72-85,89-92,94-104
+docs/examples/tags-input.html
+  s_8d4d586a26790b::t_5e8456dc6dc99c 88-108
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "7f49c222fa95f779df7401c4f3be2999058d188c",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
