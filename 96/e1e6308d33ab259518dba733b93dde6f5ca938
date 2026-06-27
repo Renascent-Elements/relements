@@ -1,0 +1,32 @@
+tests/elements/carousel.spec.ts
+  s_8d4d586a26790b::t_5912d3b53acba0 48-49,56-64
+  s_8d4d586a26790b::t_a104bc1e53d0a1 74
+  s_8d4d586a26790b::t_34921621f55ed9 152-165
+  s_8d4d586a26790b::t_37637c4f5a254b 86
+  s_8d4d586a26790b::t_1288acba525321 65-66
+packages/core/src/components/carousel.css
+  s_8d4d586a26790b::t_8dc66d14fac5d8 86
+docs/public/src/content/docs/components/carousel.mdx
+  s_8d4d586a26790b::t_51fbc743fd9580 40-41
+packages/core/src/behaviors/carousel.js
+  s_8d4d586a26790b::t_2b401e2e075d5e 193-200
+  s_8d4d586a26790b::t_3a73f746c63d75 267-269
+  s_8d4d586a26790b::t_4964d2d0a6c8b5 303-310,314-318,321
+  s_8d4d586a26790b::t_404b477d5bf8c2 10-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "96e1e6308d33ab259518dba733b93dde6f5ca938",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
