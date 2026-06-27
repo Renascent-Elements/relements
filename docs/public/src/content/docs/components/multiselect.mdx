@@ -36,17 +36,21 @@ blocked, the `<fieldset>` gets `aria-invalid`, and the `.re-validation-message`
   puts them back in.
 - **The summary names _and_ values the control** — `aria-labelledby` points the
   summary at the field label **and** the value text, so collapsed it announces both
-  "what" and "what's chosen". `aria-roledescription="multi-select"` says what kind of
-  control it is.
-- **The live value is a JS enhancement, not a no-JS guarantee** — the "N selected"
-  text is written by `enhanceMultiSelect`. Without it the control still submits and
-  works as a native disclosure, but the summary only ever reads the authored
-  placeholder. Be honest about that: the value reaches assistive tech _through the
-  behavior_.
+  "what" and "what's chosen", while the native `<summary>` keeps its disclosure role
+  and expanded/collapsed state (no `aria-roledescription` override — that would
+  suppress the state cue).
+- **The live value reaches assistive tech through the behavior** — `enhanceMultiSelect`
+  writes the "N selected" summary text _and_ the count into a polite live region, so
+  toggling boxes while the panel is open is announced (the summary value is the
+  control's _name_, which screen readers don't re-announce on change). Without the
+  behavior the control still submits and works as a native disclosure, but the summary
+  only ever reads the authored placeholder — be honest about that.
 - **Required is behavior-owned** — a checkbox group has no native "≥1" constraint, so
-  the behavior enforces it: `aria-invalid` on the `<fieldset>`, the message revealed
-  via `aria-describedby`, and the form submit blocked. The message lives **outside**
-  `<details>` so it stays visible while the control is collapsed.
+  the behavior enforces it: `aria-invalid` and the `aria-describedby` error link on
+  **both** the `<fieldset>` and the summary (the blocked submit moves focus to the
+  summary, so it must carry them), the message is a `role="alert"` so its reveal is
+  announced, and the form submit is blocked. The message lives **outside** `<details>`
+  so it stays visible while the control is collapsed.
 - **Escape** closes the panel and returns focus to the summary; an outside click
   closes it too. `aria-expanded` is the native `<summary>`'s — not managed by JS.
 - **Forced colors** — checked boxes keep the `Highlight` fill from
