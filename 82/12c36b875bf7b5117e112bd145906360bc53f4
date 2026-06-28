@@ -1,0 +1,79 @@
+docs/public/src/content/docs/frameworks/index.md
+  s_8d4d586a26790b::t_26a6533f8ab76c 131-136
+docs/examples/frameworks/react/src/CommandPalette.jsx
+  s_8d4d586a26790b::t_ad9fa700c2329c 1-79
+tests/frameworks/_teardown.ts
+  s_8d4d586a26790b::t_cbb5bfd9442854 50-51
+  s_8d4d586a26790b::t_71824adcc27ddb 41-44
+  s_8d4d586a26790b::t_4f35667c99a3af 28-29
+docs/examples/frameworks/angular/src/app/carousel.component.ts
+  s_8d4d586a26790b::t_56d95a9c1fddab 1-52
+docs/examples/frameworks/svelte/src/App.svelte
+  s_8d4d586a26790b::t_63f161ad98c9eb 4-5
+  s_8d4d586a26790b::t_40db24808d7d26 19-20
+docs/examples/frameworks/README.md
+  s_8d4d586a26790b::t_452c6a2048b085 16-24
+tests/frameworks/_contract.ts
+  s_8d4d586a26790b::t_fac716a902d908 99-102
+  s_8d4d586a26790b::t_47403c37729fe4 10-11
+  s_8d4d586a26790b::t_141f9bd0c32bf8 24-25,28-29
+  s_8d4d586a26790b::t_2c43135d296fd1 26-27
+  s_8d4d586a26790b::t_00884c7a5cfd52 6-7
+  s_8d4d586a26790b::t_d002dec4cd539e 64-98,103-110
+docs/examples/frameworks/svelte/src/Carousel.svelte
+  s_8d4d586a26790b::t_662ccebe0c2168 1-44
+docs/public/src/content/docs/frameworks/vue.md
+  s_8d4d586a26790b::t_16d59244990ff4 212
+docs/public/src/content/docs/frameworks/angular.md
+  s_8d4d586a26790b::t_61da184d3ff79f 225-227
+docs/examples/frameworks/angular/src/app/app.component.ts
+  s_8d4d586a26790b::t_119b4e86563b27 4-5
+  s_8d4d586a26790b::t_5adbbae41649c1 10
+  s_8d4d586a26790b::t_2a26a9fa0564b5 24-25
+docs/examples/frameworks/svelte/src/CommandPalette.svelte
+  s_8d4d586a26790b::t_333a0468ec6390 1-70
+docs/examples/frameworks/react/src/App.jsx
+  s_8d4d586a26790b::t_75a633ae403eed 28-29
+  s_8d4d586a26790b::t_c751aa91b2ff52 4-5
+docs/examples/frameworks/vue/src/App.vue
+  s_8d4d586a26790b::t_98addcd7bb649a 5-6
+  s_8d4d586a26790b::t_8e61c2296e8150 22-23
+docs/examples/frameworks/react/src/Carousel.jsx
+  s_8d4d586a26790b::t_59ce6453e8c4ed 37-41,44-48
+  s_8d4d586a26790b::t_1c9d823e8052b7 1-36,42-43,49-62
+docs/examples/frameworks/html/index.html
+  s_8d4d586a26790b::t_e0d897b781a765 142-144
+  s_8d4d586a26790b::t_68d42191c9216a 184-187
+  s_8d4d586a26790b::t_b260fe793cae63 158-161,165-167,169-175
+  s_8d4d586a26790b::t_0b842edc7b1e3d 99,101-125,127-137
+  s_8d4d586a26790b::t_e8704ad552be6e 37-39
+  s_8d4d586a26790b::t_9855fca50aa44b 100
+  s_8d4d586a26790b::t_f6551984565b4c 126
+  s_8d4d586a26790b::t_228ab35a977fc9 155-157
+docs/public/src/content/docs/frameworks/svelte.md
+  s_8d4d586a26790b::t_b355ab596bad96 235-237
+docs/examples/frameworks/vue/src/CommandPalette.vue
+  s_8d4d586a26790b::t_14efca95d769b7 1-76
+docs/examples/frameworks/vue/src/Carousel.vue
+  s_8d4d586a26790b::t_4f2a7c71121927 1-48
+docs/examples/frameworks/angular/src/app/command-palette.component.ts
+  s_8d4d586a26790b::t_b3015530e3c38d 1-79
+docs/public/src/content/docs/frameworks/react.md
+  s_8d4d586a26790b::t_6b96ee2acb7289 277-279
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "8212c36b875bf7b5117e112bd145906360bc53f4",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
