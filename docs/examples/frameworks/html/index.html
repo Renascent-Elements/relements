@@ -34,6 +34,9 @@
     <script type="module">
       import { enhanceTabs } from "/packages/core/src/behaviors/tabs.js";
       import { enhanceMultiSelect } from "/packages/core/src/behaviors/multiselect.js";
+      import { enhanceCarousel } from "/packages/core/src/behaviors/carousel.js";
+      import { enhanceDialog } from "/packages/core/src/behaviors/dialog.js";
+      import { enhanceCommandPalette } from "/packages/core/src/behaviors/command-palette.js";
       import "/packages/core/src/elements/re-tabs.js";
 
       const demo = document.getElementById("demo");
@@ -93,10 +96,52 @@
             </div>
           </div>
         </section>
+
+        <section id="car-wrap" aria-labelledby="car-h">
+          <h2 id="car-h">enhanceCarousel</h2>
+          <!-- Autoplay so the .re-carousel__autoplay pause button is injected on
+               EVERY rung (Rung B/Chromium too) — the engine-agnostic marker the
+               contract asserts survives reconciliation. Long interval = no advance
+               during the test. The behavior appends its controls as trailing
+               CHILDREN of #car, which the framework's reconciler leaves alone. -->
+          <p><button id="car-rerender" type="button">Re-render</button> <output id="car-renders">0</output> renders</p>
+          <div class="re-carousel" id="car" data-re-carousel data-re-carousel-autoplay="100000">
+            <div class="re-carousel__track" role="group" aria-roledescription="carousel" aria-label="Demo carousel" tabindex="0">
+              <figure class="re-carousel__slide" aria-roledescription="slide" aria-label="Slide one">One</figure>
+              <figure class="re-carousel__slide" aria-roledescription="slide" aria-label="Slide two">Two</figure>
+              <figure class="re-carousel__slide" aria-roledescription="slide" aria-label="Slide three">Three</figure>
+            </div>
+          </div>
+        </section>
+
+        <section id="cmd-wrap" aria-labelledby="cmd-h">
+          <h2 id="cmd-h">enhanceCommandPalette</h2>
+          <!-- enhanceDialog wires #cmd-open → #cmdk; enhanceCommandPalette applies
+               combobox/listbox ARIA to the input/list and injects an sr-only
+               role=status announcer (additive sibling — never moves author DOM). -->
+          <p><button id="cmd-rerender" type="button">Re-render</button> <output id="cmd-renders">0</output> renders</p>
+          <button id="cmd-open" type="button" class="re-button" data-re-dialog-trigger data-re-dialog-target="cmdk">Search</button>
+          <dialog id="cmdk" class="re-dialog re-command-palette" aria-label="Commands" data-re-dialog-close-on-backdrop data-re-command-palette>
+            <form class="re-command-palette__search" role="search" method="dialog">
+              <input type="search" class="re-command-palette__input" id="cmd-input" autocomplete="off" aria-label="Search commands" />
+              <button type="submit" class="re-sr-only" data-re-dialog-close>Close</button>
+            </form>
+            <ul class="re-command-palette__list">
+              <li class="re-command-palette__item"><a href="#alpha" class="re-command-palette__action"><span class="re-command-palette__item-label">Alpha</span></a></li>
+              <li class="re-command-palette__item"><a href="#beta" class="re-command-palette__action"><span class="re-command-palette__item-label">Beta</span></a></li>
+            </ul>
+            <div class="re-command-palette__empty" hidden>
+              <div class="re-empty-state" data-size="sm" role="status"><p class="re-empty-state__description">No results.</p></div>
+            </div>
+          </dialog>
+        </section>
       `;
 
       let tabs = null;
       let multiselect = null;
+      let carousel = null;
+      let dialog = null;
+      let cmd = null;
 
       function mount() {
         demo.innerHTML = markup;
@@ -107,14 +152,27 @@
         // region then lands inside #ms-wrap, matching the framework apps where it
         // must survive reconciliation.
         multiselect = enhanceMultiSelect(demo.querySelector("#ms-wrap"));
+        // Carousel: enhance an ancestor (enhanceCarousel searches descendants for
+        // [data-re-carousel]); controls inject as trailing children of #car.
+        carousel = enhanceCarousel(demo.querySelector("#car-wrap"));
+        // Command palette: enhanceDialog wires the trigger, enhanceCommandPalette
+        // the combobox/listbox + the injected status announcer.
+        dialog = enhanceDialog(demo.querySelector("#cmd-wrap"));
+        cmd = enhanceCommandPalette(demo.querySelector("#cmd-wrap"));
         demo.querySelector("#ce").addEventListener("re-change", (event) => {
           demo.querySelector("#last-tab").textContent = event.detail.tabId;
         });
-        // Plain HTML has no reconciler, so this is just a no-op baseline for the
-        // shared contract's "survives a re-render" step.
-        let renders = 0;
+        // Plain HTML has no reconciler, so these are just no-op baselines for the
+        // shared contract's "survives a re-render" steps.
+        const renders = { ms: 0, car: 0, cmd: 0 };
         demo.querySelector("#ms-rerender").addEventListener("click", () => {
-          demo.querySelector("#ms-renders").textContent = String(++renders);
+          demo.querySelector("#ms-renders").textContent = String(++renders.ms);
+        });
+        demo.querySelector("#car-rerender").addEventListener("click", () => {
+          demo.querySelector("#car-renders").textContent = String(++renders.car);
+        });
+        demo.querySelector("#cmd-rerender").addEventListener("click", () => {
+          demo.querySelector("#cmd-renders").textContent = String(++renders.cmd);
         });
       }
 
@@ -123,7 +181,10 @@
         // <re-tabs> element, whose disconnectedCallback also runs, go with it).
         tabs?.destroy();
         multiselect?.destroy();
-        tabs = multiselect = null;
+        carousel?.destroy();
+        dialog?.destroy();
+        cmd?.destroy();
+        tabs = multiselect = carousel = dialog = cmd = null;
         demo.innerHTML = "";
       }
 

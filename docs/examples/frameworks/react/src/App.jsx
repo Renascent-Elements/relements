@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Tabs from "./Tabs.jsx";
 import Multiselect from "./Multiselect.jsx";
+import Carousel from "./Carousel.jsx";
+import CommandPalette from "./CommandPalette.jsx";
 
 export default function App() {
   const [mounted, setMounted] = useState(true);
@@ -23,6 +25,8 @@ export default function App() {
         <>
           <Tabs />
           <Multiselect />
+          <Carousel />
+          <CommandPalette />
         </>
       )}
     </main>
