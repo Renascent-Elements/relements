@@ -13,7 +13,15 @@ Every example renders:
 - a multi-select enhanced by `enhanceMultiSelect()` — the **DOM-injecting
   behavior** surface: it appends a live region via `host.after()`, rides the
   native `change` event, survives an in-place re-render, and tears down on
-  unmount.
+  unmount;
+- a carousel enhanced by `enhanceCarousel()` — appends its controls (including
+  the autoplay button, injected on every rung) as trailing **children** of the
+  host; and
+- a command palette (`enhanceDialog()` + `enhanceCommandPalette()`) — applies
+  combobox/listbox ARIA to existing nodes and injects an sr-only status
+  announcer as a **sibling** of the list. Both survive an in-place re-render and
+  tear down on unmount — proving the additive (never-reparenting) injection is
+  framework-safe everywhere.
 
 The DOM, class names, `--re-*` tokens, and `re-change` event contract are identical
 across all five. Only the framework glue differs.

@@ -209,6 +209,6 @@ An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlit
 
 See the runnable example in `docs/examples/frameworks/vue/`, or on
 [GitHub](https://github.com/Renascent-Elements/relements/tree/main/docs/examples/frameworks/vue).
-It wires `enhanceTabs`, `<re-tabs>`, and `enhanceMultiSelect` side by side, reads `event.detail.tabId`
+It wires `enhanceTabs`, `<re-tabs>`, `enhanceMultiSelect`, `enhanceCarousel`, and `enhanceCommandPalette` side by side, reads `event.detail.tabId`
 via `@re-change`, and toggles the tabs component with `v-if` to demonstrate
 `destroy()` on unmount.

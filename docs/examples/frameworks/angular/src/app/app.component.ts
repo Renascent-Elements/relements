@@ -1,11 +1,13 @@
 import { Component } from "@angular/core";
 import { TabsComponent } from "./tabs.component";
 import { MultiselectComponent } from "./multiselect.component";
+import { CarouselComponent } from "./carousel.component";
+import { CommandPaletteComponent } from "./command-palette.component";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [TabsComponent, MultiselectComponent],
+  imports: [TabsComponent, MultiselectComponent, CarouselComponent, CommandPaletteComponent],
   template: `
     <main style="padding: var(--re-space-8); max-width: 48rem; margin: 0 auto">
       <h1>Angular</h1>
@@ -19,6 +21,8 @@ import { MultiselectComponent } from "./multiselect.component";
       @if (mounted) {
         <app-tabs />
         <app-multiselect />
+        <app-carousel />
+        <app-command-palette />
       }
     </main>
   `,

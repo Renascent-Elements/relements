@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import Tabs from "./Tabs.vue";
 import Multiselect from "./Multiselect.vue";
+import Carousel from "./Carousel.vue";
+import CommandPalette from "./CommandPalette.vue";
 
 const mounted = ref(true);
 </script>
@@ -17,6 +19,8 @@ const mounted = ref(true);
     <template v-if="mounted">
       <Tabs />
       <Multiselect />
+      <Carousel />
+      <CommandPalette />
     </template>
   </main>
 </template>

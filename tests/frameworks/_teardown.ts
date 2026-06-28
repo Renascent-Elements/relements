@@ -25,6 +25,8 @@ export async function assertTeardown(page: Page, errors: string[]): Promise<void
   // Mounted by default: the demo subtree is present and wired.
   await expect(page.locator("#e-tab-1")).toBeVisible();
   await expect(page.locator("#ms-wrap [aria-live]")).toHaveCount(1); // injected region present
+  await expect(page.locator("#car .re-carousel__autoplay")).toHaveCount(1); // carousel control injected
+  await expect(page.locator("#cmd-input")).toHaveAttribute("role", "combobox"); // palette enhanced
 
   // Unmount: the lifecycle-bearing subtree is removed.
   await page.locator("#toggle").click();
@@ -36,11 +38,17 @@ export async function assertTeardown(page: Page, errors: string[]): Promise<void
   // changes tabs behaviour, so only this count would catch it.
   await expect(page.locator("#ms")).toHaveCount(0);
   await expect(page.locator("[aria-live]")).toHaveCount(0);
+  // Carousel's host-child controls and the palette's injected status announcer
+  // ride inside the removed subtree — assert their markers are gone, not leaked.
+  await expect(page.locator(".re-carousel__autoplay")).toHaveCount(0);
+  await expect(page.locator("#cmdk")).toHaveCount(0);
 
   // Remount: a fresh instance re-initializes and works.
   await page.locator("#toggle").click();
   await expect(page.locator("#e-tab-1")).toBeVisible();
   await expect(page.locator("#ms-wrap [aria-live]")).toHaveCount(1); // re-injected
+  await expect(page.locator("#car .re-carousel__autoplay")).toHaveCount(1); // carousel re-injected
+  await expect(page.locator("#cmd-input")).toHaveAttribute("role", "combobox"); // palette re-enhanced
   // Wait until the remounted <re-tabs> is actually enhanced before clicking:
   // enhanceTabs() sets the selected tab's roving tabindex to 0. Without this
   // gate the click can land before the element's delegated listener is wired

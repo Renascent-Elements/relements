@@ -1,6 +1,8 @@
 <script>
   import Tabs from "./Tabs.svelte";
   import Multiselect from "./Multiselect.svelte";
+  import Carousel from "./Carousel.svelte";
+  import CommandPalette from "./CommandPalette.svelte";
   let mounted = $state(true);
 </script>
 
@@ -14,5 +16,7 @@
   {#if mounted}
     <Tabs />
     <Multiselect />
+    <Carousel />
+    <CommandPalette />
   {/if}
 </main>

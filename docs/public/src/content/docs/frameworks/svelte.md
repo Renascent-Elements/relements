@@ -232,8 +232,9 @@ An ad-blocker or privacy shield (Brave Shields, uBlock, …) can block StackBlit
 :::
 
 A complete, runnable app — `.re-button`, a tabs region enhanced on mount, a
-`<re-tabs>` custom element whose `re-change` drives an `<output>`, and an
-`enhanceMultiSelect` control (DOM-injecting, survives a re-render), plus a toggle
+`<re-tabs>` custom element whose `re-change` drives an `<output>`, and
+`enhanceMultiSelect`, `enhanceCarousel`, and `enhanceCommandPalette` controls
+(DOM-injecting, survive a re-render), plus a toggle
 that demonstrates teardown — lives in `docs/examples/frameworks/svelte/`, or on
 [GitHub](https://github.com/Renascent-Elements/relements/tree/main/docs/examples/frameworks/svelte).
 

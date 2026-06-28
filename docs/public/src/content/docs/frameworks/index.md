@@ -128,7 +128,12 @@ Every framework page is backed by an app under
   the **custom-element + event** surface;
 - a multi-select enhanced by `enhanceMultiSelect()` — the **DOM-injecting
   behavior** surface (it appends a live region, survives an in-place re-render,
-  and tears down on unmount).
+  and tears down on unmount);
+- a carousel enhanced by `enhanceCarousel()`, which appends its controls as
+  trailing **children** of the host; and
+- a command palette (`enhanceDialog()` + `enhanceCommandPalette()`), which
+  applies combobox/listbox ARIA and injects an sr-only status announcer as a
+  **sibling** — both survive an in-place re-render and tear down on unmount.
 
 The DOM, class names, `--re-*` tokens, and `re-change` contract are identical
 across all five; only the framework glue differs. Browse the source on

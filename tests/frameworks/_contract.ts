@@ -3,12 +3,12 @@ import { expect, type Page } from "@playwright/test";
 /**
  * Asserts the canonical one-flow contract on an already-loaded page:
  * CSS class surface, enhanceTabs behavior surface, the <re-tabs>
- * custom-element + re-change event surface, and the DOM-injecting
- * enhanceMultiSelect behavior surface.
+ * custom-element + re-change event surface, and three DOM-injecting behavior
+ * surfaces (enhanceMultiSelect, enhanceCarousel, enhanceCommandPalette).
  */
 export async function assertContract(page: Page): Promise<void> {
-  // CSS surface
-  await expect(page.locator(".re-button")).toBeVisible();
+  // CSS surface (the palette trigger adds a second .re-button, so scope to the first).
+  await expect(page.locator(".re-button").first()).toBeVisible();
 
   // Behavior surface: arrow keys move + select within the enhanced region.
   await page.locator("#e-tab-1").focus();
@@ -21,7 +21,12 @@ export async function assertContract(page: Page): Promise<void> {
   await page.locator("#c-tab-2").click();
   await expect(page.locator("#last-tab")).toHaveText("c-tab-2");
 
-  // DOM-injecting behavior surface (the one tabs doesn't exercise).
+  // DOM-injecting behavior surfaces (the ones tabs doesn't exercise) — each
+  // injects behavior-created nodes that must survive the host's reconciler.
+  // Carousel + palette first (both end with a clean page); multiselect LAST
+  // because it leaves its absolutely-positioned panel open by design.
+  await assertCarouselBehavior(page);
+  await assertCommandPaletteBehavior(page);
   await assertMultiselectBehavior(page);
 }
 
@@ -55,4 +60,51 @@ async function assertMultiselectBehavior(page: Page): Promise<void> {
   await ms.locator('input[value="vue"]').check();
   await expect(live).toHaveText("2 selected"); // still wired after the re-render
   await expect(page.locator("#ms-value")).toHaveText("React, Vue");
+}
+
+/**
+ * enhanceCarousel APPENDS its controls as trailing CHILDREN of the host (not a
+ * sibling). With autoplay configured, the `.re-carousel__autoplay` pause button
+ * is injected on EVERY rung — including Chromium's CSS-controls path (Rung B),
+ * where prev/next/dots stand down but autoplay still runs — so it's the one
+ * engine-agnostic marker. Assert it's injected and SURVIVES an in-place
+ * re-render of the carousel (the reconciler must leave the trailing child alone).
+ */
+async function assertCarouselBehavior(page: Page): Promise<void> {
+  const autoplay = page.locator("#car .re-carousel__autoplay");
+  await expect(autoplay).toHaveCount(1); // behavior injected its control onto the host
+
+  await page.locator("#car-rerender").click(); // re-render the carousel component
+  await expect(autoplay).toHaveCount(1); // trailing child not reconciled away or duplicated
+}
+
+/**
+ * enhanceCommandPalette applies combobox/listbox ARIA to existing nodes and
+ * injects an sr-only role=status announcer as a sibling of the list (additive —
+ * it never moves author DOM); enhanceDialog wires the trigger. Assert both
+ * integrated, the palette opens + type-to-filters, and the applied ARIA + the
+ * injected announcer SURVIVE an in-place re-render.
+ */
+async function assertCommandPaletteBehavior(page: Page): Promise<void> {
+  const input = page.locator("#cmd-input");
+  const status = page.locator("#cmdk .re-sr-only[role='status']");
+  await expect(input).toHaveAttribute("role", "combobox"); // enhanceCommandPalette ran
+  await expect(status).toHaveCount(1); // injected announcer present
+
+  // enhanceDialog wired the trigger: open the modal, then filter the list.
+  await page.locator("#cmd-open").click();
+  await expect(page.locator("#cmdk")).toBeVisible();
+  await input.fill("alp");
+  await expect(page.locator("#cmdk .re-command-palette__item:visible")).toHaveCount(1); // "Alpha"
+  // Close deterministically: a type=search input swallows the first Escape to
+  // clear its own value (engine-dependent), and Escape semantics aren't the
+  // cross-framework property under test — the enhance + injection are.
+  await page.locator("#cmdk").evaluate((d) => (d as HTMLDialogElement).close());
+  await expect(page.locator("#cmdk")).toBeHidden();
+
+  // Survives an in-place re-render (closed): the applied ARIA + injected status
+  // are not reconciled away.
+  await page.locator("#cmd-rerender").click();
+  await expect(input).toHaveAttribute("role", "combobox");
+  await expect(status).toHaveCount(1);
 }
