@@ -13,6 +13,16 @@ import pkg from "../../packages/core/package.json" with { type: "json" };
 const coreRoot = join(import.meta.dirname, "../../packages/core");
 const exportsMap = pkg.exports as Record<string, unknown>;
 
+/** Parse `npm pack --json` defensively — its shape has shifted across npm majors,
+ *  and a pack error returns `{ error }`, so fail with a readable message. */
+function packManifest(out: string): { filename: string; files: { path: string }[] } {
+  const parsed = JSON.parse(out);
+  if (!Array.isArray(parsed) || !parsed[0]?.files) {
+    throw new Error(`unexpected \`npm pack --json\` output: ${out.slice(0, 200)}`);
+  }
+  return parsed[0];
+}
+
 /** Every file path an exports entry (any condition) or `web-types` points at. */
 function exportTargets(): string[] {
   const targets = new Set<string>();
@@ -43,9 +53,7 @@ describe("published tarball", () => {
       cwd: coreRoot,
       encoding: "utf8",
     });
-    const packed = new Set<string>(
-      (JSON.parse(out)[0].files as { path: string }[]).map((f) => f.path),
-    );
+    const packed = new Set(packManifest(out).files.map((f) => f.path));
     const missing = exportTargets().filter((t) => !packed.has(t));
     expect(
       missing,
@@ -53,14 +61,14 @@ describe("published tarball", () => {
     ).toEqual([]);
   });
 
-  it("installs as a real consumer and resolves every documented subpath", () => {
+  it("installs as a real consumer and resolves every documented subpath to a shipped file", () => {
     // Pack a real tarball (core has zero runtime deps → the install is offline).
     const packed = execFileSync(
       "npm",
       ["pack", "--json", "--ignore-scripts", "--pack-destination", work],
       { cwd: coreRoot, encoding: "utf8" },
     );
-    const tgz = join(work, JSON.parse(packed)[0].filename as string);
+    const tgz = join(work, packManifest(packed).filename);
 
     const consumer = join(work, "consumer");
     mkdirSync(consumer);
@@ -68,17 +76,27 @@ describe("published tarball", () => {
       join(consumer, "package.json"),
       JSON.stringify({ name: "consumer", private: true, type: "module" }),
     );
-    execFileSync("npm", ["install", tgz, "--no-audit", "--no-fund"], {
+    // Hermetic install: an empty userconfig (never the developer's ~/.npmrc, which
+    // may hold auth tokens), offline, and no install scripts.
+    const npmrc = join(work, ".npmrc");
+    writeFileSync(npmrc, "");
+    execFileSync("npm", ["install", tgz, "--no-audit", "--no-fund", "--ignore-scripts"], {
       cwd: consumer,
       stdio: "pipe",
+      env: { ...process.env, npm_config_userconfig: npmrc, npm_config_offline: "true" },
     });
 
-    // From the installed package: resolve EVERY documented subpath (no execution —
-    // element modules legitimately throw in Node since they subclass HTMLElement),
-    // then execute-import the SSR-safe ones to assert the public API shape.
+    // From the installed package: resolve EVERY documented subpath through Node's
+    // exports algorithm AND stat the target to prove the file actually shipped
+    // (resolve alone only validates the map). Then execute-import the SSR-safe
+    // representatives (root + two behaviors) for API shape — element modules
+    // subclass HTMLElement and throw in Node by design, so they're resolve-only;
+    // their runtime is covered by the framework e2e suite.
     const script = `
+      import { statSync } from "node:fs";
+      import { fileURLToPath } from "node:url";
       const specifiers = ${JSON.stringify(specifiers())};
-      for (const s of specifiers) import.meta.resolve(s); // throws if a subpath is unresolvable
+      for (const s of specifiers) statSync(fileURLToPath(import.meta.resolve(s)));
       const tabs = await import("@relements/core/behaviors/tabs");
       const carousel = await import("@relements/core/behaviors/carousel");
       await import("@relements/core"); // root must be Node-import-safe (no top-level DOM)
