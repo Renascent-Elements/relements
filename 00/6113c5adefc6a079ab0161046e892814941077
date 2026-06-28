@@ -1,0 +1,24 @@
+tests/unit/tree-shaking.spec.ts
+  s_8d4d586a26790b::t_77f5501413d71a 75-81
+  s_8d4d586a26790b::t_c2c67ac85239ac 1-26,32-74,82-85
+  s_8d4d586a26790b::t_d7b1adbee1bcc3 27-31
+tests/unit/packaging.spec.ts
+  s_8d4d586a26790b::t_27e7161c5db557 1-45,48,54-70,75-95
+  s_8d4d586a26790b::t_d7b1adbee1bcc3 46-47,49-53,71-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "006113c5adefc6a079ab0161046e892814941077",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
