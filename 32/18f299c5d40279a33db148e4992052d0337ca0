@@ -1,0 +1,21 @@
+docs/SCREEN_READER_TESTING.md
+  s_8d4d586a26790b::t_770baeb6b404b9 1-501
+docs/TESTING_STRATEGY.md
+  s_8d4d586a26790b::t_a15eb5fbd19cbf 43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "3218f299c5d40279a33db148e4992052d0337ca0",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
