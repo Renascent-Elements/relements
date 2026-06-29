@@ -1,0 +1,29 @@
+docs/SCREEN_READER_TESTING.md
+  s_8d4d586a26790b::t_14338151fcdd5f 224
+  s_8d4d586a26790b::t_f95c5d92af108a 137-138
+  s_8d4d586a26790b::t_57bd753f38c597 452
+  s_8d4d586a26790b::t_311af841a03cf0 160-161,165-169
+  s_8d4d586a26790b::t_d7ac57549076fe 20-22
+  s_8d4d586a26790b::t_3a6282b69edc96 198-200
+  s_8d4d586a26790b::t_a9eab9499db38d 448-451,453-459
+tests/unit/screen-reader-doc.spec.ts
+  s_8d4d586a26790b::t_1c1c33e10db64e 1-46
+docs/TECHNICAL_DOCUMENTATION.md
+  s_8d4d586a26790b::t_3f8e579685254b 637
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "1cc6d7de4ca94bcaae00d7e0ece7f2cf265f70e3",
+  "prompts": {},
+  "sessions": {
+    "s_8d4d586a26790b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb07f72d-bad1-4a99-bd43-4d03d7713595",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
