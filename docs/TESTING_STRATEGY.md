@@ -40,7 +40,7 @@ Use it for:
 - Checking examples and element states.
 - Preventing obvious regressions.
 
-Do not treat axe results as complete accessibility certification. Manual keyboard and screen reader checks are still required.
+Do not treat axe results as complete accessibility certification. Manual keyboard and screen reader checks are still required — see [`SCREEN_READER_TESTING.md`](./SCREEN_READER_TESTING.md) for the per-component NVDA/VoiceOver checklist (expected announcements derived from each component's real ARIA).
 
 ### Vitest
 
