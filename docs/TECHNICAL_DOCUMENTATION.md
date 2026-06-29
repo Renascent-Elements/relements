@@ -634,7 +634,7 @@ Primary tools:
 - Keyboard-only operation.
 - Focus visibility.
 - Native form submission.
-- Basic screen reader smoke tests.
+- Basic screen reader smoke tests — see [`SCREEN_READER_TESTING.md`](./SCREEN_READER_TESTING.md) for the per-component NVDA/VoiceOver checklist.
 - High contrast and forced colors review.
 - axe-core smoke tests for example pages and component states.
 
