@@ -17,10 +17,11 @@ AT behavior.
 
 ## How to run
 
-Test against the example pages (the same corpus Playwright uses), served locally:
+Test against the example pages (the same corpus Playwright uses). They link the
+raw `src/` CSS, so **no build is needed** for this pass — just serve the repo
+root (the framework/docs-site apps aren't involved):
 
 ```bash
-pnpm build:examples        # only needed for the docs site / framework apps
 pnpm exec http-server . -p 4173 -s -c-1
 # then open http://localhost:4173/docs/examples/<component>.html
 ```
@@ -133,8 +134,8 @@ On Chromium the browser draws native CSS-Carousel controls and there is **no liv
 region**. Run this one on **Firefox and Safari**.
 
 - **Test:** Tab to the track.
-  **Expect:** `"Featured photos, carousel, group"` (role description "carousel"),
-  a focusable scroll region.
+  **Expect:** `"Featured photos, carousel"` — `aria-roledescription` substitutes for
+  the role word, so you hear "carousel", not "group". A focusable scroll region.
 - **Test:** press Next (or arrow-scroll the track) and let it settle (~150ms debounce).
   **Expect:** live region announces `"Forest trail in autumn (2 of 4)"` (or
   `"Slide 2 of 4"` when a slide has no label). The active dot exposes
@@ -156,14 +157,16 @@ region**. Run this one on **Firefox and Safari**.
 A polite live region announces add/remove/reject; chips are a `role="list"` of
 `role="listitem"` via `display:contents`.
 
-- **Test:** type "react" and press Enter.
+- **Test:** type "react" and press Enter (the basic demo starts with the chips
+  "design, engineering").
   **Expect:** the editor stays focused; live region announces `"Added react"`. The
   chip, navigated later, reads `"react, list item"` within `"list, N items"`.
 - **Test:** press Backspace in the empty editor.
-  **Expect:** the last chip is removed, `"Removed eng"`, focus stays in the editor.
-- **Test:** click a chip's × button.
-  **Expect:** `"Removed design"`; focus moves to the previous chip's remove button
-  (`"Remove css, button"`) or back to the editor.
+  **Expect:** the last chip ("engineering") is removed — `"Removed engineering"` —
+  and focus stays in the editor.
+- **Test:** click the × on the "engineering" chip.
+  **Expect:** `"Removed engineering"`; but this time focus moves to the previous
+  chip's remove button (`"Remove design, button"`), not the editor.
 - **Test:** add a duplicate, then exceed `max`.
   **Expect:** `"react is already added"`; then `"Maximum 3 tags reached"`.
 - **Watch:** max/invalid is announced **only** by the transient message — there is
@@ -192,7 +195,9 @@ carries name/disabled/required.
 
 ### toast — `toast.html` (and `re-toast.html`)
 
-The toast list is the polite live region; each toast's role depends on tone.
+The toast list is the polite live region; each toast's role depends on tone. (On
+`toast.html` the buttons fire via a docs-only `data-demo-toast` hook plus one
+inline `showToast(…)`; the region is created on `<body>` if absent.)
 
 - **Test:** trigger a default/success/warning toast.
   **Expect:** the message text is announced **politely** (`role="status"`), no focus
@@ -216,7 +221,7 @@ The toast list is the polite live region; each toast's role depends on tone.
 No live region — state reaches AT through roles, `aria-*`, and focus. Verify the
 announcement on each interaction.
 
-### dialog — `dialog.html`
+### dialog — `dialog.html` (alertdialog + no-dismiss: `alert-dialog.html`)
 
 - **Test:** open a modal.
   **Expect:** `"<title>, dialog"` (name via `aria-labelledby` the title); for a
@@ -440,18 +445,18 @@ both right after the element upgrades and after a framework projects children la
 
 One read each — confirm the role + name announce; nothing dynamic.
 
-| Component          | Expect (role · name)                                                                                                   |
-| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| card               | `article` (interactive variant: `link` named by content)                                                               |
-| avatar             | `image`, name from `aria-label` / `<img alt>`                                                                          |
-| avatar-group       | `group` named e.g. "5 collaborators"; **the "+2" overflow is `aria-hidden`** — the count lives only in the group label |
-| separator          | native `separator`; labeled variant reads its `<span>` ("OR")                                                          |
-| stat               | text (label/value/description); trend exposed via `.re-sr-only` "Trending up" — **not** colour-only                    |
-| timeline           | ordered `list` (position kept); current item `aria-current="step"`                                                     |
-| kbd / code         | read as text; code block `figure` named by its `<figcaption>`                                                          |
-| skeleton / spinner | wrap as `role="status"` `aria-label="Loading"` (placeholders `aria-hidden`)                                            |
-| badge              | **no role/name** — read as text only; **tone is colour-only** (a danger count reads just "3")                          |
-| link               | native `link`; **external variant has no "opens in new tab" cue** (glyph is CSS-only)                                  |
+| Component                       | Expect (role · name)                                                                                                   |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| card                            | `article` (interactive variant: `link` named by content)                                                               |
+| avatar                          | `image`, name from `aria-label` / `<img alt>`                                                                          |
+| avatar-group (in `avatar.html`) | `group` named e.g. "5 collaborators"; **the "+2" overflow is `aria-hidden`** — the count lives only in the group label |
+| separator                       | native `separator`; labeled variant reads its `<span>` ("OR")                                                          |
+| stat                            | text (label/value/description); trend exposed via `.re-sr-only` "Trending up" — **not** colour-only                    |
+| timeline                        | ordered `list` (position kept); current item `aria-current="step"`                                                     |
+| kbd / code                      | read as text; code block `figure` named by its `<figcaption>`                                                          |
+| skeleton / spinner              | wrap as `role="status"` `aria-label="Loading"` (placeholders `aria-hidden`)                                            |
+| badge                           | **no role/name** — read as text only; **tone is colour-only** (a danger count reads just "3")                          |
+| link                            | native `link`; **external variant has no "opens in new tab" cue** (glyph is CSS-only)                                  |
 
 ---
 
