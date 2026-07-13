@@ -14,7 +14,7 @@ markup on connect and cleans up on disconnect, with no init call to remember.
 
 They are a convenience layer, not a new contract: the inner markup is the same
 semantic HTML with the same `.re-*` classes, so an element and its behavior are
-interchangeable. There are five of them — everything else is
+interchangeable. There are six of them — everything else is
 [behavior-only](/relements/guides/behaviors-and-elements/#the-behaviors).
 
 ## Register, then use
@@ -57,7 +57,7 @@ tabs.addEventListener("re-change", (e) => console.log(e.detail)); // { tabId, pa
 Registration is **not** part of the root `@relements/core` import — pull in each
 element's subpath so you only ship the tags you use.
 
-## The five elements
+## The six elements
 
 | Element                                                          | Wraps                                                     | JS API                                                   | Emits                              |
 | ---------------------------------------------------------------- | --------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------- |
@@ -66,6 +66,7 @@ element's subpath so you only ship the tags you use.
 | [`<re-popover>`](/relements/custom-elements/re-popover/)         | [`enhancePopover`](/relements/components/popover/)        | `.show()` / `.hide()` / `.toggle()` — native popover API | `re-toggle`                        |
 | [`<re-toast>`](/relements/custom-elements/re-toast/)             | [`showToast`](/relements/components/toast/)               | `.show(message, options)` — returns the toast controller | —                                  |
 | [`<re-file-picker>`](/relements/custom-elements/re-file-picker/) | [`enhanceFilePicker`](/relements/components/file-picker/) | `.files` — read/write the selection; `.clear()`          | `re-error` (`{ reason, … }`)       |
+| [`<re-tags-input>`](/relements/custom-elements/re-tags-input/)   | [`enhanceTagsInput`](/relements/components/tags-input/)   | `.values` — read the committed tags; `.clear()`          | `re-tags-change` (`{ values }`)    |
 
 ## Custom element or behavior?
 

@@ -37,7 +37,7 @@ packages/
       base.css        Document-level defaults
       components/     Button, form, dialog, disclosure, tabs, …
       behaviors/      enhanceTabs, showToast, enhanceDialog, …
-      elements/       <re-tabs>, <re-toast>, <re-menu>, <re-popover>
+      elements/       <re-tabs>, <re-toast>, <re-menu>, <re-popover>, <re-file-picker>, <re-tags-input>
       themes/         renascent.css — brand dark theme
 docs/
   examples/           Plain HTML example pages (served at localhost:4173; also the Playwright fixtures)

@@ -99,7 +99,7 @@ All 20 behaviors are exported by name from `@relements/core` and from `@relement
 
 ## Custom elements
 
-Five `<re-*>` custom elements wrap the behaviors above for consumers who prefer a tag over an imperative call. They are:
+Six `<re-*>` custom elements wrap the behaviors above for consumers who prefer a tag over an imperative call. They are:
 
 - **Light-DOM only** — no Shadow DOM. Your markup stays in the light tree, so component CSS, page styles, forms, and `querySelector` all work normally.
 - **Self-registering on import** — importing the module calls `customElements.define()` as a side effect. Import each element you use; `package.json` lists `elements/*.js` under `sideEffects` so bare imports survive tree-shaking (see [HTML-first policy](/relements/guides/html-first/)).
@@ -116,14 +116,15 @@ import "@relements/core/elements/re-tabs";
 | [`<re-popover>`](/relements/custom-elements/re-popover/)         | `enhancePopover`    | `show()` / `hide()` / `toggle()` methods; `open` property (reflects `:popover-open`). Adds the native `popover` attribute on connect.          |
 | [`<re-toast>`](/relements/custom-elements/re-toast/)             | `showToast`         | `.show(message, options)` method scoped to its own region; materializes a `.re-toast-region` on connect.                                       |
 | [`<re-file-picker>`](/relements/custom-elements/re-file-picker/) | `enhanceFilePicker` | `files` property (read/write the `FileList`) and `clear()` method; re-dispatches `re-error` when files are rejected.                           |
+| [`<re-tags-input>`](/relements/custom-elements/re-tags-input/)   | `enhanceTagsInput`  | `values` property (read-only `string[]`) and `clear()` method; the element IS the group (container mode), so `re-tags-change` fires on it.     |
 
 ## Behavior vs custom element — which to reach for
 
 Both wire the same logic; pick by integration style.
 
-**Reach for a behavior when** you want to enhance existing markup imperatively and control the lifecycle yourself — a global page init, a framework component enhancing its own subtree on mount and calling `destroy()` on unmount, or scoping enhancement to a `ShadowRoot`. Behaviors are also the only option for the form inputs and dismissal helpers, which have no custom-element wrapper.
+**Reach for a behavior when** you want to enhance existing markup imperatively and control the lifecycle yourself — a global page init, a framework component enhancing its own subtree on mount and calling `destroy()` on unmount, or scoping enhancement to a `ShadowRoot`. Behaviors are also the only option for most form inputs and the dismissal helpers, which have no custom-element wrapper.
 
-**Reach for a custom element when** you want a declarative, self-managing tag — drop `<re-tabs>` into any template and it enhances and cleans itself up via `connectedCallback`/`disconnectedCallback`, no init call to remember. It is the natural fit for plain HTML pages and for frameworks that render custom elements directly. The five elements wrap tabs, menu, popover, toast, and the file picker; everything else is behavior-only.
+**Reach for a custom element when** you want a declarative, self-managing tag — drop `<re-tabs>` into any template and it enhances and cleans itself up via `connectedCallback`/`disconnectedCallback`, no init call to remember. It is the natural fit for plain HTML pages and for frameworks that render custom elements directly. The six elements wrap tabs, menu, popover, toast, the file picker, and the tags input; everything else is behavior-only.
 
 Either way the underlying markup is the same semantic HTML, so you can start with one and switch later without changing the document's structure.
 

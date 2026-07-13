@@ -27,13 +27,14 @@ import "@relements/core/elements/re-toast";
 import "@relements/core/elements/re-menu";
 import "@relements/core/elements/re-popover";
 import "@relements/core/elements/re-file-picker";
+import "@relements/core/elements/re-tags-input";
 
 // The custom elements (`re-menu`, `re-popover`, `re-tabs`) enhance their own
 // light-DOM subtree in connectedCallback. Running the global enhancers over the
 // whole document would wire those same hosts a second time — harmless for tabs,
 // but it double-binds the menu/popover toggle handlers so they open-then-close.
 // So enhance only hosts that are NOT a self-enhancing custom element.
-const SELF_ENHANCING = "re-menu, re-popover, re-tabs, re-file-picker";
+const SELF_ENHANCING = "re-menu, re-popover, re-tabs, re-file-picker, re-tags-input";
 
 function enhanceScoped(selector: string, enhance: (root: Element) => unknown) {
   for (const host of document.querySelectorAll(selector)) {
@@ -52,7 +53,7 @@ function init() {
   enhanceNumberStepper(document);
   enhanceAutosize(document);
   enhanceOtp(document);
-  enhanceTagsInput(document);
+  enhanceScoped("[data-re-tags-input]", enhanceTagsInput);
   enhanceRating(document);
   // Toolbar roving-tabindex. Its item filter excludes controls inside a nested
   // [role=menu] panel, so it composes with the enhanceMenuButton pass above and

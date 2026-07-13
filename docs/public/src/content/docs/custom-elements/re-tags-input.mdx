@@ -1,0 +1,52 @@
+---
+title: <re-tags-input>
+description: Custom-element wrapper for the tags input token editor.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A self-managing wrapper around the [tags input](/relements/components/tags-input/)
+(`enhanceTagsInput`) in **container mode** — the element _is_ the `.re-tags-input`
+group, so the chips are injected as siblings of the authored `<input>` without
+ever moving it. That makes it the framework-safe form of the token editor: the
+host framework treats the element's light DOM as opaque (see the
+[framework guide](/relements/frameworks/)). See the
+[custom elements overview](/relements/custom-elements/) for how the `<re-*>` tags
+work.
+
+Import once to register the tag, then use it declaratively:
+
+```js
+import "@relements/core/elements/re-tags-input";
+```
+
+The inner `<input>` is the no-JS fallback (a plain comma-separated field) and the
+form control the behavior adopts. Host attributes — `name`, `value`,
+`placeholder`, `disabled`, `max`, `allow-duplicates`, `tone`, `tags-name` — are
+reflected onto it on connect.
+
+## Basic
+
+<Demo src="re-tags-input.html" name="basic" />
+
+## Max tags
+
+`max` caps the number of committed tags (here 3):
+
+<Demo src="re-tags-input.html" name="max" />
+
+## API
+
+- **`element.values`** — the committed tag values as a read-only `string[]`.
+- **`element.clear()`** — removes all tags and dispatches `re-tags-change` + `change`.
+- Emits a bubbling **`re-tags-change`** (`{ values }`) on every add/remove; a
+  native bubbling `change` fires alongside it.
+
+## Accessibility
+
+Give the element an accessible name with `aria-label` or `aria-labelledby` — it
+has no `<label>`, and that name becomes the group's. Everything else is the
+behavior's contract: the editor stays a native text field, each chip's remove
+button is a real `<button>`, and adds/removes are announced through a polite
+live region. See the [tags input](/relements/components/tags-input/#accessibility)
+accessibility notes and the [accessibility guide](/relements/guides/accessibility/).
