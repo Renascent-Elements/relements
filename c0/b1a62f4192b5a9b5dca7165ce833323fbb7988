@@ -1,0 +1,44 @@
+docs/public/src/content/docs/guides/editor-setup.mdx
+  s_37f878607bcf31::t_aed2c6c61def19 30-31
+docs/public/src/content/docs/guides/behaviors-and-elements.md
+  s_37f878607bcf31::t_ef2d7c6ddfeddc 125
+  s_37f878607bcf31::t_0e9aeb7007df8a 119
+  s_37f878607bcf31::t_555f37b491d7b4 127
+  s_37f878607bcf31::t_55e4f7aa8756c9 102
+docs/public/src/content/docs/frameworks/angular.md
+  s_37f878607bcf31::t_038e5141b46c1c 151
+docs/public/src/client/enhance.ts
+  s_37f878607bcf31::t_7a6deb418dd118 30
+  s_37f878607bcf31::t_a8fb95b740a674 56
+  s_37f878607bcf31::t_cb8b14ab63c79a 37
+docs/public/src/content/docs/frameworks/react.md
+  s_37f878607bcf31::t_038e5141b46c1c 171
+docs/public/src/content/docs/custom-elements/re-tags-input.mdx
+  s_37f878607bcf31::t_bc8b311aa77233 1-52
+docs/public/src/content/docs/components/tags-input.mdx
+  s_37f878607bcf31::t_f6fa458590f7cf 54
+docs/PROGRESS.md
+  s_37f878607bcf31::t_b4510a9bfe4fa9 55-56
+README.md
+  s_37f878607bcf31::t_d9c423b168684c 40
+docs/public/src/content/docs/custom-elements/index.mdx
+  s_37f878607bcf31::t_3dae27c894e8c7 60
+  s_37f878607bcf31::t_9bad253778a865 17
+  s_37f878607bcf31::t_9226143982ed1d 69
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "c0b1a62f4192b5a9b5dca7165ce833323fbb7988",
+  "prompts": {},
+  "sessions": {
+    "s_37f878607bcf31": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "481555ac-dbed-4745-bb8d-33f71c29d19e",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
