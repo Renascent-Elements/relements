@@ -148,7 +148,7 @@ behavior documents its event payload — e.g. tabs emits `re-change` with
 
 ## Custom elements
 
-The five [`<re-*>` custom elements](/relements/guides/behaviors-and-elements/#custom-elements)
+The six [`<re-*>` custom elements](/relements/guides/behaviors-and-elements/#custom-elements)
 are light-DOM and self-register on import. Angular's template compiler rejects
 unknown tag names by default, so add `CUSTOM_ELEMENTS_SCHEMA` to `schemas` to let
 `<re-tabs>` (and friends) compile. In a standalone component the schema goes on

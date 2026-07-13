@@ -52,6 +52,8 @@ Legend: `[ ]` pending · `[~]` in progress · `[x]` complete (tests green, commi
 - [x] `re-toast`
 - [x] `re-menu`
 - [x] `re-popover`
+- [x] `re-file-picker` (added later, with the file picker) — 1.4.0
+- [x] `re-tags-input` (container-mode wrapper; the framework-safe token editor) — 1.12.0
 
 ## Component expansion (0.2.0)
 

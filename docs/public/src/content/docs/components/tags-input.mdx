@@ -51,7 +51,7 @@ container. That's ideal for plain HTML, but in a vdom framework that owns the
 input, a re-render touching its slot can throw `insertBefore … not a child`. Two
 forms never move the input:
 
-- **`<re-tags-input>`** (recommended) — the editor as a custom element. It owns
+- **[`<re-tags-input>`](/relements/custom-elements/re-tags-input/)** (recommended) — the editor as a custom element. It owns
   its light DOM, so React/Vue/Svelte/Angular treat it as opaque. Give it an
   `aria-label` (it has no `<label>`); `.values` reads the committed tags and
   `.clear()` empties them. The inner `<input>` is the no-JS fallback.
