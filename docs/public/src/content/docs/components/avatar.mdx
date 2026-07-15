@@ -15,6 +15,15 @@ A circular user image, or a text-initials fallback. Size with `data-size`.
 
 <Demo src="avatar.html" name="image" />
 
+## Presence
+
+A `.re-avatar__presence` dot pins a status to the avatar's bottom-end corner.
+`data-presence` sets the state: `online` (green), `away` (amber), `busy` (red
+with a do-not-disturb bar), `offline` (hollow); without the attribute the dot
+is a neutral "unknown" grey.
+
+<Demo src="avatar.html" name="presence" />
+
 ## Group
 
 An overlapping stack with an optional overflow count. Give the group a
@@ -29,6 +38,7 @@ avatar still carries its own name.
 Avatar is presentational — a `<span>` with no keyboard interaction or focus ring.
 
 - **Semantics** — give every avatar an accessible name. The image variant relies on the native `<img alt="…">`; the initials variant adds `role="img"` with `aria-label` so assistive tech announces the person's name rather than spelling out the letters. Decorative-only avatars can be omitted from the tree (`aria-hidden`) where context already names the user.
+- **Presence never rides colour alone.** The dot's _shape_ splits present (filled) / offline (hollow) / busy (bar) — a split that also survives Windows High Contrast, where the fills flatten to system colors — and the exact state must reach assistive tech as **text**. On an **image avatar**, put an `.re-sr-only` status word inside the dot (`<span class="re-sr-only">Online</span>`). On an **initials avatar**, `role="img"` makes descendant text presentational — an sr-only word inside the dot would never be announced — so fold the status into the `aria-label` (`"Grace Hopper, away"`) and leave the dot empty. Online vs away is colour-only _visually_; the text is the real cue.
 - **Group** — the `aria-label` on the `role="group"` is the source of truth for the total count; the visible "+N" is decorative (`aria-hidden`). Each avatar carries a page-colour border that reads as a gap between neighbours — under forced colors (where that border colour flattens and box-shadow rings are stripped) it becomes a real `CanvasText` outline, so the avatars stay individually distinguishable.
 - **Notes** — the rendered initials are uppercased and unselectable (`user-select: none`) for presentation; they carry no semantics, which is why the `aria-label` provides the real name. The muted fallback background meets text contrast for the initials.
 

@@ -180,6 +180,10 @@
           "description": "Placement of a floating part (tooltip bubble, etc.) around its anchor."
         },
         {
+          "name": "data-presence",
+          "description": "Relements styling attribute."
+        },
+        {
           "name": "data-shape",
           "description": "Shape variant (e.g. avatar circle / square / text)."
         },

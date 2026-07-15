@@ -51,6 +51,42 @@
       <!-- demo:end -->
     </section>
 
+    <section aria-labelledby="presence-heading" data-testid="presence">
+      <h2 id="presence-heading">Presence</h2>
+      <!-- demo:start name="presence" -->
+      <div class="row">
+        <!-- Image avatar: the dot carries a screen-reader status word. -->
+        <span class="re-avatar" data-size="lg">
+          <img
+            alt="Sample avatar"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='44'%20height='44'%3E%3Crect%20width='44'%20height='44'%20fill='%232563eb'/%3E%3Ccircle%20cx='22'%20cy='17'%20r='8'%20fill='white'/%3E%3Crect%20x='9'%20y='29'%20width='26'%20height='15'%20rx='7.5'%20fill='white'/%3E%3C/svg%3E"
+          />
+          <span class="re-avatar__presence" data-presence="online">
+            <span class="re-sr-only">Online</span>
+          </span>
+        </span>
+        <!-- Initials avatars: role="img" makes descendants presentational, so
+             the status lives in the aria-label and the dot stays empty. -->
+        <span class="re-avatar" role="img" aria-label="Grace Hopper, away">
+          GH
+          <span class="re-avatar__presence" data-presence="away"></span>
+        </span>
+        <span class="re-avatar" role="img" aria-label="Alan Turing, busy">
+          AT
+          <span class="re-avatar__presence" data-presence="busy"></span>
+        </span>
+        <span class="re-avatar" role="img" aria-label="Ada Lovelace, offline">
+          AL
+          <span class="re-avatar__presence" data-presence="offline"></span>
+        </span>
+        <span class="re-avatar" data-size="sm" role="img" aria-label="Katherine Johnson, online">
+          KJ
+          <span class="re-avatar__presence" data-presence="online"></span>
+        </span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
     <section aria-labelledby="group-heading" data-testid="group">
       <h2 id="group-heading">Group</h2>
       <!-- demo:start name="group" -->

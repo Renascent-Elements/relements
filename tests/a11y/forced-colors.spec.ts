@@ -164,6 +164,26 @@ test.describe("forced colors (HCM)", () => {
     expect(borderColor).toBe(canvasText);
   });
 
+  test("presence dots keep their filled/hollow split via system colors", async ({ page }) => {
+    await page.goto("./avatar.html");
+    const highlight = await resolveHighlight(page);
+    const canvasText = await resolveSystemColor(page, "CanvasText");
+    const presence = page.getByTestId("presence");
+    const onlineBg = await presence
+      .locator('.re-avatar__presence[data-presence="online"]')
+      .first()
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    const offline = await presence
+      .locator('.re-avatar__presence[data-presence="offline"]')
+      .evaluate((el) => ({
+        bg: getComputedStyle(el).backgroundColor,
+        ringColor: getComputedStyle(el, "::after").borderColor,
+      }));
+    expect(onlineBg).toBe(highlight); // filled dot survives as Highlight
+    expect(offline.bg).not.toBe(highlight); // hollow stays unfilled (Canvas)
+    expect(offline.ringColor).toBe(canvasText); // …with a real CanvasText ring
+  });
+
   test("a checked toggle-group option fills with the Highlight system color", async ({ page }) => {
     await page.goto("./toggle-group.html");
     const highlight = await resolveHighlight(page);
