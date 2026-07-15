@@ -1,5 +1,11 @@
 # @relements/core
 
+## 1.15.0
+
+### Minor Changes
+
+- [#124](https://github.com/Renascent-Elements/relements/pull/124) [`cbdb10f`](https://github.com/Renascent-Elements/relements/commit/cbdb10f7961d9746548b8ceb272b41fd31b720c9) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add prose (`.re-prose`) — typographic flow for rendered content (markdown output, CMS bodies, articles). Restores the vertical rhythm reset.css zeroes and styles the flow-only elements base.css doesn't cover: blockquote (logical start border + byline `footer`/`cite`), figure/figcaption, lists, fluid media, bare tables, and bare `dl`. Line length caps at a readable `65ch` measure. All selectors are wrapped in `:where()` so prose adds zero specificity — components dropped inside the flow keep their own look. CSS-only.
+
 ## 1.14.0
 
 ### Minor Changes
