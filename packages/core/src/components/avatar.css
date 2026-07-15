@@ -83,4 +83,110 @@
       border-color: CanvasText;
     }
   }
+
+  /* ---- Presence dot ------------------------------------------------------
+     A status dot pinned to the avatar's bottom-end corner:
+
+       <span class="re-avatar">
+         <img src="…" alt="Ada Lovelace" />
+         <span class="re-avatar__presence" data-presence="online">
+           <span class="re-sr-only">Online</span>
+         </span>
+       </span>
+
+     Colour alone never carries the state. The dot's SHAPE splits
+     present (filled) / offline (hollow) / busy (bar) — a split that survives
+     forced colors, where fills flatten — and the exact state rides real text:
+     an `.re-sr-only` word inside the dot. Online vs away IS colour-only
+     visually; the text is the real cue there. One trap: on an INITIALS avatar
+     (`role="img"` + `aria-label`) descendant text is presentational, so the
+     sr-only word would never be announced — fold the status into the
+     aria-label ("Ada Lovelace, online") and leave the dot empty instead.
+
+     `.re-avatar` clips to its circle with overflow:hidden, which would shave
+     the dot's outer corner — an avatar carrying a dot hands the clip to its
+     <img> and lets the corner overflow. */
+  .re-avatar:has(> .re-avatar__presence) {
+    position: relative;
+    overflow: visible;
+  }
+  .re-avatar:has(> .re-avatar__presence) > img {
+    border-radius: inherit;
+  }
+
+  .re-avatar__presence {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    display: grid;
+    place-content: center;
+    inline-size: calc(var(--re-control-height-md) * 0.3);
+    block-size: calc(var(--re-control-height-md) * 0.3);
+    border-radius: var(--re-radius-pill);
+    /* page-colour cutout ring, so the dot reads as punched out of the avatar */
+    border: var(--re-border-width-strong) solid var(--re-color-bg);
+    /* no data-presence → neutral "unknown", so a missing attribute can't lie */
+    background-color: var(--re-color-text-subtle);
+  }
+
+  .re-avatar__presence[data-presence="online"] {
+    background-color: var(--re-color-success-600);
+  }
+  .re-avatar__presence[data-presence="away"] {
+    background-color: var(--re-color-warning-500);
+  }
+  .re-avatar__presence[data-presence="busy"] {
+    background-color: var(--re-color-danger-600);
+  }
+  /* do-not-disturb bar — a shape, so busy survives colour flattening */
+  .re-avatar__presence[data-presence="busy"]::after {
+    content: "";
+    inline-size: 60%;
+    block-size: var(--re-border-width-strong);
+    border-radius: var(--re-radius-pill);
+    background-color: var(--re-color-text-on-accent);
+  }
+  /* offline is hollow — filled vs hollow splits present/absent without colour */
+  .re-avatar__presence[data-presence="offline"] {
+    background-color: var(--re-color-bg);
+  }
+  .re-avatar__presence[data-presence="offline"]::after {
+    content: "";
+    box-sizing: border-box;
+    inline-size: 100%;
+    block-size: 100%;
+    border: var(--re-border-width-strong) solid var(--re-color-text-subtle);
+    border-radius: var(--re-radius-pill);
+  }
+
+  .re-avatar[data-size="sm"] .re-avatar__presence {
+    inline-size: calc(var(--re-control-height-sm) * 0.3);
+    block-size: calc(var(--re-control-height-sm) * 0.3);
+  }
+  .re-avatar[data-size="lg"] .re-avatar__presence {
+    inline-size: calc(var(--re-control-height-lg) * 0.3);
+    block-size: calc(var(--re-control-height-lg) * 0.3);
+  }
+
+  /* Fills flatten in forced colors — re-establish the states with system
+     colors; the filled/hollow/bar shapes keep the coarse split visible. The
+     [data-presence] selector matches the per-state rules' specificity, or the
+     authored state fills (higher-specificity, earlier) would win and flatten
+     to Canvas. */
+  @media (forced-colors: active) {
+    .re-avatar__presence,
+    .re-avatar__presence[data-presence] {
+      background-color: Highlight;
+      border-color: Canvas;
+    }
+    .re-avatar__presence[data-presence="offline"] {
+      background-color: Canvas;
+    }
+    .re-avatar__presence[data-presence="offline"]::after {
+      border-color: CanvasText;
+    }
+    .re-avatar__presence[data-presence="busy"]::after {
+      background-color: HighlightText;
+    }
+  }
 }

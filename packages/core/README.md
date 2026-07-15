@@ -144,7 +144,7 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 | Class                  | Element              | Variants / options                                                                                                              |
 | ---------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `.re-card`             | `<article>`          | `__header` / `__body` / `__footer`; `data-interactive`                                                                          |
-| `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials                                                                                    |
+| `.re-avatar`           | `<span>`             | `data-size`: sm, md, lg; `<img>` or initials; `__presence` status dot (`data-presence`: online, away, busy, offline)            |
 | `.re-avatar-group`     | `<div>` + `role`     | overlapping avatar stack; `.re-avatar-group__count` overflow chip ("+3")                                                        |
 | `.re-table`            | `<table>`            | `data-zebra`, `data-hover`, `data-density="compact"`, `data-sticky-header`; `.re-table-wrap` for scroll                         |
 | `.re-description-list` | `<dl>`               | `data-layout="horizontal"`, `data-divided`, `data-bordered`, `data-density="compact"`                                           |

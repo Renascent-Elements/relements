@@ -199,6 +199,24 @@
       ]
     },
     {
+      "name": "data-presence",
+      "description": "Relements styling attribute.",
+      "values": [
+        {
+          "name": "away"
+        },
+        {
+          "name": "busy"
+        },
+        {
+          "name": "offline"
+        },
+        {
+          "name": "online"
+        }
+      ]
+    },
+    {
       "name": "data-shape",
       "description": "Shape variant (e.g. avatar circle / square / text).",
       "values": [
