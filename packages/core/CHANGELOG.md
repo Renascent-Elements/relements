@@ -1,5 +1,11 @@
 # @relements/core
 
+## 1.14.0
+
+### Minor Changes
+
+- [#123](https://github.com/Renascent-Elements/relements/pull/123) [`d2a4460`](https://github.com/Renascent-Elements/relements/commit/d2a44608d233a6bb3a4faafedcbf64efedb19743) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add avatar presence dot (`.re-avatar__presence`) — a status dot pinned to the avatar's bottom-end corner. `data-presence` sets the state: `online`, `away`, `busy` (with a do-not-disturb bar), `offline` (hollow); no attribute renders a neutral "unknown" grey. The filled/hollow/bar shape split survives forced colors via system-color re-establishment, and the docs/tests enforce that the exact state reaches assistive tech as text (sr-only word in the dot for image avatars, status folded into the `aria-label` for `role="img"` initials avatars). CSS-only, extends `avatar.css`.
+
 ## 1.13.0
 
 ### Minor Changes
