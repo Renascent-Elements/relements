@@ -1,0 +1,43 @@
+tests/visual/prose.visual.spec.ts
+  s_d1466ac3f69073::t_88409c2c46467b 33-35
+  s_d1466ac3f69073::t_f3e1225922e894 1-32,36-44
+packages/core/web-types.json
+  s_d1466ac3f69073::t_88409c2c46467b 4
+packages/core/README.md
+  s_d1466ac3f69073::t_94088e8b51d453 158
+docs/examples/prose.html
+  s_d1466ac3f69073::t_b95459f7468158 1-32,35-114,118-122
+  s_d1466ac3f69073::t_88409c2c46467b 33-34,115-117
+tests/a11y/prose.a11y.spec.ts
+  s_d1466ac3f69073::t_a0eee0dce7c0ba 1-20,22
+  s_d1466ac3f69073::t_88409c2c46467b 21
+tests/elements/prose.spec.ts
+  s_d1466ac3f69073::t_88409c2c46467b 80,92-95
+  s_d1466ac3f69073::t_340e8293192b46 1-79,81-91,96-123
+docs/public/src/content/docs/components/prose.mdx
+  s_d1466ac3f69073::t_9c8b7980e6a60a 1-61
+packages/core/package.json
+  s_d1466ac3f69073::t_f4ec2f80760921 94
+packages/core/src/components/prose.css
+  s_d1466ac3f69073::t_24e630d84ac02a 1-114
+packages/core/src/index.css
+  s_d1466ac3f69073::t_defa007e07c478 75
+.changeset/prose.md
+  s_d1466ac3f69073::t_4a01afb3554793 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "e9aa71d962ef366f5ad233c3268eeb156143a820",
+  "prompts": {},
+  "sessions": {
+    "s_d1466ac3f69073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d4a1b9-1bee-4192-a447-664f94d5d3f6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
