@@ -1,5 +1,11 @@
 # @relements/core
 
+## 1.13.0
+
+### Minor Changes
+
+- [#121](https://github.com/Renascent-Elements/relements/pull/121) [`5443a34`](https://github.com/Renascent-Elements/relements/commit/5443a342077fdfb22aecfa8645b0f4363d5e53a3) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Add choice card (`.re-choice`) — a selectable card built on a native, visible radio or checkbox. CSS-only: the card-level selection ring rides `:has(:checked)`, keyboard roving and form participation are native. `.re-choice-group` wraps a set in a `<fieldset>` (stacked by default, `data-orientation="horizontal"` for an equal-width row); `__title` and `__description` structure the card text. Checked state survives Windows High Contrast via a `Highlight` border, and the native control's glyph keeps the state visible to everyone regardless.
+
 ## 1.12.0
 
 ### Minor Changes
