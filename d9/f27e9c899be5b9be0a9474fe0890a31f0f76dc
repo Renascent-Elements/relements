@@ -1,0 +1,46 @@
+tests/visual/choice.visual.spec.ts
+  s_d1466ac3f69073::t_d7ea358c9bea33 1-42
+tests/a11y/forced-colors.spec.ts
+  s_d1466ac3f69073::t_d6cff5797734f2 217-226
+docs/public/src/content/docs/components/choice.mdx
+  s_d1466ac3f69073::t_bb901832a975c7 1-60
+packages/core/web-types.json
+  s_d1466ac3f69073::t_ddb9c42bff0b5e 4
+packages/core/package.json
+  s_d1466ac3f69073::t_ee017a94c04c99 93
+tests/elements/choice.spec.ts
+  s_d1466ac3f69073::t_23c4e502182611 17-18
+  s_d1466ac3f69073::t_c04a15ba50dc46 23,25-28,31-32
+  s_d1466ac3f69073::t_ed91269dc53408 1-16,19-22,24,29-30,35-36,40-75
+  s_d1466ac3f69073::t_5957621671a9d1 33-34,37-39
+docs/examples/choice.html
+  s_d1466ac3f69073::t_7ae58d248840a5 1-123
+packages/core/src/components/choice.css
+  s_d1466ac3f69073::t_c6f78a1927fc07 1-137
+tests/a11y/choice.a11y.spec.ts
+  s_d1466ac3f69073::t_b57d093aa21cd6 1-32
+packages/core/README.md
+  s_d1466ac3f69073::t_25251200dfca25 68-92
+.changeset/choice-card.md
+  s_d1466ac3f69073::t_b2121924cd8e19 1-5
+docs/PROGRESS.md
+  s_d1466ac3f69073::t_b61a6146618ed3 157
+packages/core/src/index.css
+  s_d1466ac3f69073::t_30ddcdb1bfe223 74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d9f27e9c899be5b9be0a9474fe0890a31f0f76dc",
+  "prompts": {},
+  "sessions": {
+    "s_d1466ac3f69073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d4a1b9-1bee-4192-a447-664f94d5d3f6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
