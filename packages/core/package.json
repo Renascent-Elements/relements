@@ -90,6 +90,7 @@
     "./components/stat.css": "./dist/components/stat.css",
     "./components/timeline.css": "./dist/components/timeline.css",
     "./components/toggle-group.css": "./dist/components/toggle-group.css",
+    "./components/choice.css": "./dist/components/choice.css",
     "./components/toolbar.css": "./dist/components/toolbar.css",
     "./components/range.css": "./dist/components/range.css",
     "./components/context-menu.css": "./dist/components/context-menu.css",

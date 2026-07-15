@@ -65,30 +65,31 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 
 ### Forms & inputs
 
-| Class                       | Element                    | Variants / options                                                                 |
-| --------------------------- | -------------------------- | ---------------------------------------------------------------------------------- |
-| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg; incl. date/time types (polished picker indicator)         |
-| `.re-textarea`              | `<textarea>`               | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                           |
-| `.re-select`                | `<select>`                 | `data-size`: sm, md, lg                                                            |
-| `.re-checkbox`              | `<input type="checkbox">`  | —                                                                                  |
-| `.re-radio`                 | `<input type="radio">`     | —                                                                                  |
-| `.re-switch`                | `<input type="checkbox">`  | `role="switch"`; `:checked`, `:disabled`                                           |
-| `.re-field`                 | `<label>`                  | `__label` / `__hint`; `re-field--inline` for checkbox/radio rows                   |
-| `.re-field-group`           | `<fieldset>`               | `data-orientation`: horizontal                                                     |
-| `.re-validation-message`    | `<span>`                   | `data-tone`: success, hint, warning                                                |
-| `.re-input-group`           | wrapper                    | prefix/suffix text + attached buttons; base for password & number inputs           |
-| `.re-segmented`             | `<fieldset>` radios        | single-select pill group; `data-size`: sm, lg                                      |
-| `.re-toggle-group`          | `<fieldset>` checkboxes    | multi-select toggle buttons; pressed = accent fill; `data-size`: sm, lg            |
-| `.re-slider`                | `<input type="range">`     | `data-size`: sm, md, lg                                                            |
-| `.re-combobox`              | `<input>` + `<datalist>`   | native autocomplete; styled listbox via `enhanceCombobox`                          |
-| `.re-otp` / `.re-otp-field` | single `<input>`           | segmented one-time-code; `--re-otp-length`; `data-size`: sm, lg                    |
-| `.re-rating`                | `<fieldset>` radios        | star rating; `.re-rating-display` (read-only, fractional); sizes sm/lg             |
-| `.re-tags-input`            | wrapper                    | chip/token editor via `enhanceTagsInput`; `data-size`: sm, lg                      |
-| `.re-range`                 | two `<input type="range">` | two-thumb min–max slider via `enhanceRange`; `data-size`: sm, lg                   |
-| `.re-file`                  | `<input type="file">`      | styled `::file-selector-button`, native filename; `data-size`: sm, md, lg          |
-| `.re-color`                 | `<input type="color">`     | framed native swatch; `data-size`: sm, md, lg                                      |
-| `.re-file-picker`           | wrapper + `<input file>`   | custom drop/browse area; filenames, drag-drop, clear via `enhanceFilePicker`       |
-| `.re-multiselect`           | `<details>` + checkboxes   | dropdown of checkboxes; "N selected" summary + validation via `enhanceMultiSelect` |
+| Class                       | Element                    | Variants / options                                                                                                     |
+| --------------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `.re-input`                 | `<input>`                  | `data-size`: sm, md, lg; incl. date/time types (polished picker indicator)                                             |
+| `.re-textarea`              | `<textarea>`               | `data-size`: sm, md, lg; auto-grow via `enhanceAutosize`                                                               |
+| `.re-select`                | `<select>`                 | `data-size`: sm, md, lg                                                                                                |
+| `.re-checkbox`              | `<input type="checkbox">`  | —                                                                                                                      |
+| `.re-radio`                 | `<input type="radio">`     | —                                                                                                                      |
+| `.re-switch`                | `<input type="checkbox">`  | `role="switch"`; `:checked`, `:disabled`                                                                               |
+| `.re-field`                 | `<label>`                  | `__label` / `__hint`; `re-field--inline` for checkbox/radio rows                                                       |
+| `.re-field-group`           | `<fieldset>`               | `data-orientation`: horizontal                                                                                         |
+| `.re-validation-message`    | `<span>`                   | `data-tone`: success, hint, warning                                                                                    |
+| `.re-input-group`           | wrapper                    | prefix/suffix text + attached buttons; base for password & number inputs                                               |
+| `.re-segmented`             | `<fieldset>` radios        | single-select pill group; `data-size`: sm, lg                                                                          |
+| `.re-toggle-group`          | `<fieldset>` checkboxes    | multi-select toggle buttons; pressed = accent fill; `data-size`: sm, lg                                                |
+| `.re-choice`                | `<label>` + radio/checkbox | selectable card (`__title` / `__description`); `.re-choice-group` `<fieldset>` wrapper, `data-orientation`: horizontal |
+| `.re-slider`                | `<input type="range">`     | `data-size`: sm, md, lg                                                                                                |
+| `.re-combobox`              | `<input>` + `<datalist>`   | native autocomplete; styled listbox via `enhanceCombobox`                                                              |
+| `.re-otp` / `.re-otp-field` | single `<input>`           | segmented one-time-code; `--re-otp-length`; `data-size`: sm, lg                                                        |
+| `.re-rating`                | `<fieldset>` radios        | star rating; `.re-rating-display` (read-only, fractional); sizes sm/lg                                                 |
+| `.re-tags-input`            | wrapper                    | chip/token editor via `enhanceTagsInput`; `data-size`: sm, lg                                                          |
+| `.re-range`                 | two `<input type="range">` | two-thumb min–max slider via `enhanceRange`; `data-size`: sm, lg                                                       |
+| `.re-file`                  | `<input type="file">`      | styled `::file-selector-button`, native filename; `data-size`: sm, md, lg                                              |
+| `.re-color`                 | `<input type="color">`     | framed native swatch; `data-size`: sm, md, lg                                                                          |
+| `.re-file-picker`           | wrapper + `<input file>`   | custom drop/browse area; filenames, drag-drop, clear via `enhanceFilePicker`                                           |
+| `.re-multiselect`           | `<details>` + checkboxes   | dropdown of checkboxes; "N selected" summary + validation via `enhanceMultiSelect`                                     |
 
 ### Actions
 

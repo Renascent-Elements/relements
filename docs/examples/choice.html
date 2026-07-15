@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Choice card</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="choice">
+    <header>
+      <h1>Choice card</h1>
+      <p>A selectable card built on a native radio or checkbox — no JavaScript.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Basic (single-select)</h2>
+      <!-- demo:start name="basic" -->
+      <fieldset class="re-choice-group">
+        <legend>Plan</legend>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="plan" value="starter" checked />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Starter</span>
+            <span class="re-choice__description">2 projects, community support</span>
+          </span>
+        </label>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="plan" value="pro" />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Pro</span>
+            <span class="re-choice__description">Unlimited projects, priority support</span>
+          </span>
+        </label>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="plan" value="team" />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Team</span>
+            <span class="re-choice__description">Everything in Pro, plus SSO and audit logs</span>
+          </span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="horizontal-heading" data-testid="horizontal">
+      <h2 id="horizontal-heading">Horizontal</h2>
+      <!-- demo:start name="horizontal" -->
+      <fieldset class="re-choice-group" data-orientation="horizontal">
+        <legend>Billing period</legend>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="billing" value="monthly" />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Monthly</span>
+            <span class="re-choice__description">$12 / month</span>
+          </span>
+        </label>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="billing" value="yearly" checked />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Yearly</span>
+            <span class="re-choice__description">$120 / year — two months free</span>
+          </span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="multi-heading" data-testid="multi">
+      <h2 id="multi-heading">Multi-select (checkboxes)</h2>
+      <!-- demo:start name="multi" -->
+      <fieldset class="re-choice-group">
+        <legend>Add-ons</legend>
+        <label class="re-choice">
+          <input type="checkbox" class="re-checkbox" name="addons" value="backups" checked />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Daily backups</span>
+            <span class="re-choice__description">Retained for 30 days</span>
+          </span>
+        </label>
+        <label class="re-choice">
+          <input type="checkbox" class="re-checkbox" name="addons" value="monitoring" />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Uptime monitoring</span>
+            <span class="re-choice__description">Alerts by email and webhook</span>
+          </span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="disabled-heading" data-testid="disabled">
+      <h2 id="disabled-heading">Disabled option</h2>
+      <!-- demo:start name="disabled" -->
+      <fieldset class="re-choice-group">
+        <legend>Region</legend>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="region" value="eu" checked />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Europe (Frankfurt)</span>
+          </span>
+        </label>
+        <label class="re-choice">
+          <input type="radio" class="re-radio" name="region" value="ap" disabled />
+          <span class="re-choice__body">
+            <span class="re-choice__title">Asia Pacific (Tokyo)</span>
+            <span class="re-choice__description">Coming soon</span>
+          </span>
+        </label>
+      </fieldset>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>

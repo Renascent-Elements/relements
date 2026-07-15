@@ -154,6 +154,7 @@ API frozen under semver (`.re-*` / `data-*` / `--re-*` / `enhance*(root) → { d
 - [x] stat (`.re-stat` metric/KPI: `__label`/`__value`/`__trend`/`__description`; `.re-stat-group`; `data-size="sm"`, `data-align`) — 1.8.0
 - [x] timeline (`<ol class="re-timeline">` dot-on-rail events; `__marker`/`__title`/`__time`/`__description`; `data-current`, `data-size="sm"`) — 1.9.0
 - [x] toggle-group (`<fieldset class="re-toggle-group">` multi-select checkbox toggles; pressed = accent fill; `data-size`) — 1.10.0
+- [x] choice card (`.re-choice` selectable radio/checkbox card via `:has(:checked)`; `__title`/`__description`; `.re-choice-group` fieldset, `data-orientation`) — 1.13.0
 
 ## Acceptance per element
 

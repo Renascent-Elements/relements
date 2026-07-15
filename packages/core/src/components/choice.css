@@ -1,0 +1,137 @@
+/**
+ * Relements choice card.
+ *
+ * A selectable card built on a native radio or checkbox — pick-a-plan tiles,
+ * shipping options, settings. The input is the standard visible .re-radio /
+ * .re-checkbox control, so the affordance, checked state, arrow-key roving,
+ * and form participation are all native. CSS-only; the card-level selection
+ * ring rides :has(:checked). No JavaScript.
+ *
+ *   <fieldset class="re-choice-group">
+ *     <legend>Plan</legend>
+ *     <label class="re-choice">
+ *       <input type="radio" class="re-radio" name="plan" value="starter" checked />
+ *       <span class="re-choice__body">
+ *         <span class="re-choice__title">Starter</span>
+ *         <span class="re-choice__description">2 projects, community support</span>
+ *       </span>
+ *     </label>
+ *     …
+ *   </fieldset>
+ *
+ * Checkboxes work the same markup for multi-select. Lay cards in an
+ * equal-width row with data-orientation="horizontal" on the group.
+ */
+
+@layer re.components {
+  .re-choice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--re-space-3);
+    padding: var(--re-space-4);
+    background-color: var(--re-color-surface);
+    border: var(--re-border-default);
+    border-radius: var(--re-radius-lg);
+    color: var(--re-color-text);
+    cursor: pointer;
+    transition:
+      border-color var(--re-duration-fast) var(--re-easing-standard),
+      background-color var(--re-duration-fast) var(--re-easing-standard),
+      box-shadow var(--re-duration-fast) var(--re-easing-standard);
+  }
+
+  .re-choice:hover {
+    border-color: var(--re-color-border-strong);
+  }
+
+  /* Optically center the control against the title's first line box (the
+     control is 1.125rem — see .re-radio/.re-checkbox in form.css). */
+  .re-choice > .re-radio,
+  .re-choice > .re-checkbox {
+    margin-block-start: calc((1em * var(--re-line-height-normal) - 1.125rem) / 2);
+  }
+
+  .re-choice__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-1);
+    min-inline-size: 0;
+  }
+
+  .re-choice__title {
+    font-weight: var(--re-font-weight-medium);
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-choice__description {
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-muted);
+  }
+
+  /* ---- Checked ---------------------------------------------------------- */
+  /* Ordered after :hover so a checked card keeps its accent border while
+     hovered. The card cue is an enhancement — the native control's dot/tick
+     carries the state for AT and High Contrast. */
+  .re-choice:has(:checked) {
+    border-color: var(--re-color-accent-600);
+    /* faint tint mixed on the card surface, so it tracks dark automatically */
+    background-color: color-mix(in oklab, var(--re-color-accent-600) 6%, var(--re-color-surface));
+  }
+  /* Forced colors keep the border but flatten its colour to CanvasText — mark
+     the checked card with system Highlight so the card-level cue survives. */
+  @media (forced-colors: active) {
+    .re-choice:has(:checked) {
+      border-color: Highlight;
+    }
+  }
+
+  /* ---- Focus ------------------------------------------------------------ */
+  /* Ring the whole card, not the tiny control inside it. In forced colors the
+     global !important outline still lands on the (visible) control itself. */
+  .re-choice .re-radio:focus-visible,
+  .re-choice .re-checkbox:focus-visible {
+    box-shadow: none;
+  }
+  .re-choice:has(:focus-visible) {
+    box-shadow: var(--re-shadow-focus);
+  }
+
+  /* ---- Disabled ---------------------------------------------------------- */
+  .re-choice:has(:disabled) {
+    color: var(--re-color-text-subtle);
+    /* bg-muted, NOT bg-subtle: bg-subtle collapses to the surface in dark */
+    background-color: var(--re-color-bg-muted);
+    border-color: var(--re-color-border);
+    cursor: not-allowed;
+  }
+  .re-choice:has(:disabled) .re-choice__description {
+    color: var(--re-color-text-subtle);
+  }
+
+  /* ---- Group ------------------------------------------------------------ */
+  .re-choice-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--re-space-3);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-inline-size: 0;
+  }
+
+  .re-choice-group > legend {
+    padding: 0;
+    margin-block-end: var(--re-space-2);
+    font-weight: var(--re-font-weight-medium);
+    line-height: var(--re-line-height-normal);
+  }
+
+  .re-choice-group[data-orientation="horizontal"] {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .re-choice-group[data-orientation="horizontal"] > .re-choice {
+    flex: 1 1 0;
+  }
+}
