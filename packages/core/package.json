@@ -1,6 +1,6 @@
 {
   "name": "@relements/core",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "description": "HTML-first design system core: tokens, styles, and progressive enhancement.",
   "repository": {
     "type": "git",
