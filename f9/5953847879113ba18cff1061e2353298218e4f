@@ -1,0 +1,43 @@
+tests/a11y/avatar.a11y.spec.ts
+  s_d1466ac3f69073::t_6b30dc9b03e556 11-28
+packages/core/web-types.json
+  s_d1466ac3f69073::t_20786977056b23 4,182-184
+  s_d1466ac3f69073::t_b93305fa68c651 185
+packages/core/html.custom-data.json
+  s_d1466ac3f69073::t_20786977056b23 202-218
+  s_d1466ac3f69073::t_a04d43ba2debcf 201
+docs/examples/avatar.html
+  s_d1466ac3f69073::t_3dcf0c44ad70b0 54-89
+packages/core/README.md
+  s_d1466ac3f69073::t_b2e3a652381a49 147
+.changeset/avatar-presence.md
+  s_d1466ac3f69073::t_a936b0b1205a4b 1-5
+tests/visual/avatar.visual.spec.ts
+  s_d1466ac3f69073::t_7c57f61ecd6e8c 20-26,35-37,40
+  s_d1466ac3f69073::t_91f47af2df2a90 38-39
+docs/public/src/content/docs/components/avatar.mdx
+  s_d1466ac3f69073::t_1613663518522f 18-26,41
+packages/core/src/components/avatar.css
+  s_d1466ac3f69073::t_b69d92b89debc0 172-175,177-178
+  s_d1466ac3f69073::t_8d7b40d24edd6c 86-171,176,179-191
+docs/PROGRESS.md
+  s_d1466ac3f69073::t_e66f697c0c1078 158
+tests/a11y/forced-colors.spec.ts
+  s_d1466ac3f69073::t_30fcf79623bf76 167-186
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "f95953847879113ba18cff1061e2353298218e4f",
+  "prompts": {},
+  "sessions": {
+    "s_d1466ac3f69073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d4a1b9-1bee-4192-a447-664f94d5d3f6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
