@@ -1,0 +1,114 @@
+/**
+ * Relements prose.
+ *
+ * Typographic flow for RENDERED content — markdown output, CMS bodies,
+ * long-form articles — where you don't control the markup. base.css already
+ * styles the elements themselves (heading scale, links, inline code, pre, hr)
+ * and reset.css zeroes their margins; prose restores the vertical rhythm and
+ * dresses the flow-only elements nothing else covers: blockquote,
+ * figure / figcaption, lists, images, and bare tables.
+ *
+ *   <article class="re-prose">…rendered HTML…</article>
+ *
+ * Every selector is wrapped in :where() so it adds ZERO specificity beyond the
+ * root class — a component (or your own CSS) dropped inside prose wins without
+ * a fight. Width is capped at a readable measure; override `max-inline-size`
+ * (unlayered CSS beats this layer) to opt out.
+ */
+
+@layer re.components {
+  .re-prose {
+    max-inline-size: 65ch;
+    color: var(--re-color-text);
+    font-size: var(--re-size-text-md);
+    line-height: var(--re-line-height-relaxed);
+  }
+
+  /* ---- Vertical rhythm --------------------------------------------------
+     Top-level flow spacing (reset.css zeroed the UA margins). The three rules
+     tie at zero :where() specificity, so source order resolves them:
+     headings get extra air above and stay snug to the text they introduce. */
+  .re-prose > :where(* + *) {
+    margin-block-start: var(--re-space-4);
+  }
+  .re-prose > :where(* + h2, * + h3, * + h4, * + h5, * + h6) {
+    margin-block-start: var(--re-space-8);
+  }
+  .re-prose > :where(h1, h2, h3, h4, h5, h6) + :where(*) {
+    margin-block-start: var(--re-space-3);
+  }
+  /* nested flow (inside a quote or list item) breathes less than top level */
+  .re-prose :where(blockquote, li) > :where(* + *) {
+    margin-block-start: var(--re-space-2);
+  }
+
+  /* ---- Lists ------------------------------------------------------------ */
+  .re-prose :where(ul, ol) {
+    margin: 0;
+    padding-inline-start: var(--re-space-6);
+  }
+  .re-prose :where(li + li),
+  .re-prose :where(li) > :where(ul, ol) {
+    margin-block-start: var(--re-space-1);
+  }
+  .re-prose :where(li)::marker {
+    color: var(--re-color-text-subtle);
+  }
+
+  /* ---- Blockquote --------------------------------------------------------- */
+  .re-prose :where(blockquote) {
+    padding-inline-start: var(--re-space-4);
+    border-inline-start: var(--re-border-width-strong) solid var(--re-color-border-strong);
+    color: var(--re-color-text-muted);
+  }
+  /* base.css sets `color` on <p> directly, which blocks inheritance from the
+     quote — hand it back explicitly. */
+  .re-prose :where(blockquote p) {
+    color: inherit;
+  }
+  /* attribution (<footer> / <cite>) reads as a byline, not more quote */
+  .re-prose :where(blockquote footer, blockquote cite) {
+    font-size: var(--re-size-text-sm);
+    font-style: normal;
+    color: var(--re-color-text-subtle);
+  }
+
+  /* ---- Figure & media ----------------------------------------------------- */
+  .re-prose :where(img, video) {
+    max-inline-size: 100%;
+    block-size: auto;
+    border-radius: var(--re-radius-md);
+  }
+  .re-prose :where(figcaption) {
+    margin-block-start: var(--re-space-2);
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+    color: var(--re-color-text-muted);
+  }
+
+  /* ---- Bare table ----------------------------------------------------------
+     Markdown emits a classless <table>; `.re-table` stays the app-table look. */
+  .re-prose :where(table) {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--re-size-text-sm);
+    line-height: var(--re-line-height-normal);
+  }
+  .re-prose :where(th) {
+    text-align: start;
+    font-weight: var(--re-font-weight-semibold);
+  }
+  .re-prose :where(th, td) {
+    padding: var(--re-space-2) var(--re-space-3);
+    border-block-end: var(--re-border-width) solid var(--re-color-border);
+  }
+
+  /* ---- Description list (bare) ------------------------------------------- */
+  .re-prose :where(dt) {
+    font-weight: var(--re-font-weight-semibold);
+  }
+  .re-prose :where(dd) {
+    margin-inline-start: var(--re-space-4);
+    color: var(--re-color-text-muted);
+  }
+}

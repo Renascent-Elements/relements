@@ -155,6 +155,7 @@ Every component is plain semantic HTML styled with `.re-*` classes and `data-*` 
 | `.re-carousel`         | `<div>` scroll strip | CSS scroll-snap slides; prev/next + dots + active tracking via `enhanceCarousel`; `--re-carousel-slide-size`                    |
 | `.re-stat`             | `<div>`              | metric: `__label` / `__value` / `__trend` (`data-trend`); `data-size="sm"`, `data-align`; `.re-stat-group` (`data-divided`)     |
 | `.re-timeline`         | `<ol>`               | chronological events on a connector rail; `__marker` / `__title` / `__time` / `__description`; `data-current`, `data-size="sm"` |
+| `.re-prose`            | `<article>` wrapper  | typographic flow for rendered markdown/CMS content: rhythm, blockquote, figure, lists, bare tables; zero-specificity `:where()` |
 
 ## JavaScript behaviors
 
