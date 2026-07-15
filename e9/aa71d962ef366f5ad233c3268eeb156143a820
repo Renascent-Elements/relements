@@ -24,6 +24,8 @@ packages/core/src/index.css
   s_d1466ac3f69073::t_defa007e07c478 75
 .changeset/prose.md
   s_d1466ac3f69073::t_4a01afb3554793 1-5
+docs/PROGRESS.md
+  s_d1466ac3f69073::t_5f9df0268aaa66 159
 ---
 {
   "schema_version": "authorship/3.0.0",
