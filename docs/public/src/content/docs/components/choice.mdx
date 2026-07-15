@@ -1,0 +1,60 @@
+---
+title: Choice card
+description: A selectable card built on a native radio or checkbox — CSS-only.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+A choice card wraps a native radio or checkbox in a card-shaped `<label>` —
+pick-a-plan tiles, shipping options, settings. Selection, keyboard roving, and
+form participation are all native; CSS marks the selected card via
+`:has(:checked)`. No JavaScript.
+
+## Basic (single-select)
+
+Wrap the cards in a `.re-choice-group` `<fieldset>` with a `<legend>` naming
+the question. Each card is a `.re-choice` `<label>` containing a visible
+`.re-radio` control and a `.re-choice__body` with a title and optional
+description.
+
+<Demo src="choice.html" name="basic" />
+
+## Horizontal
+
+`data-orientation="horizontal"` on the group lays equal-width cards in a
+wrapping row.
+
+<Demo src="choice.html" name="horizontal" />
+
+## Multi-select (checkboxes)
+
+Swap in `type="checkbox"` + `.re-checkbox` for independent options — same
+markup otherwise.
+
+<Demo src="choice.html" name="multi" />
+
+## Disabled option
+
+Disable the input; the card follows via `:has(:disabled)`.
+
+<Demo src="choice.html" name="disabled" />
+
+## Accessibility
+
+- **The control stays visible.** The card doesn't hide the radio/checkbox
+  behind styling — the native control carries the checked state, so assistive
+  tech, Windows High Contrast, and muscle memory all get the standard control.
+  The accent border + tint on the selected card is an enhancement, never the
+  only cue (WCAG 1.4.1).
+- **Name comes from the label.** The wrapping `<label>` gives the input its
+  accessible name from the visible title and description; the `<legend>` names
+  the group. Keep both.
+- **Focus ring on the card.** Keyboard focus rings the whole card rather than
+  the small control, so the focused option is obvious at a glance. Under
+  forced colors the selected card's border is re-established with the system
+  `Highlight` color.
+- **Arrow keys work natively.** Radio groups rove with arrow keys; checkboxes
+  Tab individually — both are browser behavior, nothing to configure.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.

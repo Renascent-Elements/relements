@@ -214,6 +214,16 @@ test.describe("forced colors (HCM)", () => {
     expect(ui.color).toBe(highlight);
   });
 
+  test("a checked choice card keeps its selection border via Highlight", async ({ page }) => {
+    await page.goto("./choice.html");
+    const highlight = await resolveHighlight(page);
+    const border = (card: import("@playwright/test").Locator) =>
+      card.evaluate((el) => getComputedStyle(el).borderColor);
+    const cards = page.getByTestId("basic").locator(".re-choice");
+    expect(await border(cards.nth(0))).toBe(highlight); // checked card → Highlight border
+    expect(await border(cards.nth(1))).not.toBe(highlight); // unchecked stays flattened neutral
+  });
+
   // Carousel is intentionally NOT covered here. Its forced-colors cues split by
   // control rung: the JS controls (Rung C — `.re-carousel__dot` → Highlight,
   // `.re-carousel__control` → ButtonText) only render on engines WITHOUT the CSS
