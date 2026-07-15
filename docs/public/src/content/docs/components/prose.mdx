@@ -1,0 +1,61 @@
+---
+title: Prose
+description: Typographic flow for rendered content — markdown output, CMS bodies, articles.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+Prose styles **markup you don't control** — the classless HTML a markdown
+renderer or CMS emits. Wrap it once:
+
+```html
+<article class="re-prose"><!-- rendered HTML --></article>
+```
+
+`base.css` already styles the elements themselves (heading scale, links, inline
+code, `pre`, `hr`) and `reset.css` zeroes their margins — prose restores the
+vertical rhythm and dresses the flow-only pieces nothing else covers:
+blockquote, figure/figcaption, lists, images, and bare tables. Line length is
+capped at a readable `65ch` measure (override `max-inline-size` to opt out —
+your unlayered CSS wins over the `re.components` layer automatically).
+
+## Headings, paragraphs & lists
+
+<Demo src="prose.html" name="basic" />
+
+## Blockquote & figure
+
+The quote takes a start-side border (logical, so it flips under RTL) and muted
+text; a `<footer>`/`<cite>` inside reads as a byline. Figures get fluid,
+rounded media and a smaller muted `<figcaption>`.
+
+<Demo src="prose.html" name="quote-figure" />
+
+## Code & table
+
+Bare `<pre>` and inline `<code>` come from `base.css`; prose adds the bare
+`<table>` treatment (full-width, collapsed borders, start-aligned headers).
+`.re-table` remains the app-table look for markup you do control.
+
+<Demo src="prose.html" name="code-table" />
+
+## Components inside prose
+
+Every prose selector is wrapped in `:where()`, so it adds **zero specificity**
+beyond the root class — a Relements component (or your own classes) dropped
+into the flow keeps its own look; prose only contributes the block spacing.
+
+## Accessibility
+
+Prose is CSS-only and semantics-neutral: it adds no ARIA and hides nothing —
+the rendered markup keeps its native roles (headings, lists, `blockquote`,
+`table`, `figure`). Two notes:
+
+- **Give images real `alt` text** — prose can't invent it for you, and a
+  markdown pipeline that drops `alt` fails WCAG regardless of styling.
+- **No forced-colors override is needed** — nothing here conveys state by
+  colour; the blockquote's border is structural and flattens to `CanvasText`
+  legibly on its own.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.

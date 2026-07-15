@@ -91,6 +91,7 @@
     "./components/timeline.css": "./dist/components/timeline.css",
     "./components/toggle-group.css": "./dist/components/toggle-group.css",
     "./components/choice.css": "./dist/components/choice.css",
+    "./components/prose.css": "./dist/components/prose.css",
     "./components/toolbar.css": "./dist/components/toolbar.css",
     "./components/range.css": "./dist/components/range.css",
     "./components/context-menu.css": "./dist/components/context-menu.css",

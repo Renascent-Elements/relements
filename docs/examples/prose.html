@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Prose</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+    </style>
+  </head>
+  <body data-page="prose">
+    <header>
+      <h1>Prose</h1>
+      <p>Typographic flow for rendered content — markdown output, CMS bodies, articles.</p>
+    </header>
+
+    <section aria-labelledby="basic-heading" data-testid="basic">
+      <h2 id="basic-heading">Headings, paragraphs &amp; lists</h2>
+      <!-- demo:start name="basic" -->
+      <article class="re-prose">
+        <h1>The Analytical Engine</h1>
+        <p>
+          The Engine is <strong>not merely a calculator</strong> — it weaves
+          <em>algebraical patterns</em> just as the Jacquard loom weaves flowers and leaves. Its
+          store holds a thousand numbers of forty digits, addressed by <code>column</code> and
+          <code>cage</code>.
+        </p>
+        <h2>What it needs to run</h2>
+        <p>Three things, in <a href="#basic-heading">Menabrea's account</a>:</p>
+        <ul>
+          <li>a store for the variables</li>
+          <li>a mill where operations happen</li>
+          <li>
+            punched cards of two kinds:
+            <ol>
+              <li>operation cards</li>
+              <li>variable cards</li>
+            </ol>
+          </li>
+        </ul>
+        <h3>Terminology</h3>
+        <dl>
+          <dt>Store</dt>
+          <dd>the memory — columns of figure wheels</dd>
+          <dt>Mill</dt>
+          <dd>the arithmetic unit</dd>
+        </dl>
+      </article>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="quote-heading" data-testid="quote-figure">
+      <h2 id="quote-heading">Blockquote &amp; figure</h2>
+      <!-- demo:start name="quote-figure" -->
+      <article class="re-prose">
+        <p>Ada Lovelace drew the boundary that still defines the field:</p>
+        <blockquote>
+          <p>
+            The Analytical Engine has no pretensions whatever to originate anything. It can do
+            whatever we know how to order it to perform.
+          </p>
+          <footer><cite>Note G, 1843</cite></footer>
+        </blockquote>
+        <p>Her diagram of the Bernoulli-number program is often called the first algorithm:</p>
+        <figure>
+          <img
+            alt="Decorative diagram standing in for Note G"
+            width="560"
+            height="140"
+            src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='560'%20height='140'%3E%3Crect%20width='560'%20height='140'%20fill='%232563eb'/%3E%3Crect%20x='24'%20y='24'%20width='512'%20height='16'%20rx='8'%20fill='white'%20opacity='.9'/%3E%3Crect%20x='24'%20y='56'%20width='420'%20height='16'%20rx='8'%20fill='white'%20opacity='.7'/%3E%3Crect%20x='24'%20y='88'%20width='470'%20height='16'%20rx='8'%20fill='white'%20opacity='.5'/%3E%3C/svg%3E"
+          />
+          <figcaption>Note G — the table of operations for computing Bernoulli numbers.</figcaption>
+        </figure>
+      </article>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="code-heading" data-testid="code-table">
+      <h2 id="code-heading">Code &amp; table</h2>
+      <!-- demo:start name="code-table" -->
+      <article class="re-prose">
+        <p>Rendered markdown emits bare <code>&lt;pre&gt;</code> and <code>&lt;table&gt;</code>:</p>
+        <pre><code>let v4 = v1 * v2;   // operation card 1
+let v5 = v4 - v3;   // operation card 2</code></pre>
+        <table>
+          <thead>
+            <tr>
+              <th>Card</th>
+              <th>Operation</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>multiplication</td>
+              <td><code>v4</code></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>subtraction</td>
+              <td><code>v5</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <p>
+          Everything above is classless markup — only the wrapper carries <code>.re-prose</code>.
+        </p>
+      </article>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
