@@ -199,6 +199,15 @@
       ]
     },
     {
+      "name": "data-position",
+      "description": "Relements styling attribute.",
+      "values": [
+        {
+          "name": "bottom-end"
+        }
+      ]
+    },
+    {
       "name": "data-presence",
       "description": "Relements styling attribute.",
       "values": [
@@ -357,6 +366,10 @@
     {
       "name": "data-divided",
       "description": "Add dividers between items."
+    },
+    {
+      "name": "data-dot",
+      "description": "Relements boolean styling attribute."
     },
     {
       "name": "data-dragover",

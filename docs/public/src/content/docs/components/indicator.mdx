@@ -1,0 +1,63 @@
+---
+title: Indicator
+description: A count bubble or status dot pinned to the corner of any element.
+---
+
+import Demo from "../../../components/Demo.astro";
+
+An indicator pins a count bubble or a status dot to the corner of any element:
+unread counts on an inbox button, a "new" dot on a nav item, a mention count on
+an avatar. CSS-only. The inline [badge](/relements/components/badge/) stays the
+in-flow label; this is the positioned overlay.
+
+## Count
+
+Wrap the target in `.re-indicator` and add a `.re-indicator__badge` after it.
+A single digit renders as a circle; longer counts grow into a pill. Overflow
+("99+") is authored content, not CSS.
+
+<Demo src="indicator.html" name="count" />
+
+## Dot
+
+`data-dot` renders a small dot with no visible text, for a binary "something
+new" signal.
+
+<Demo src="indicator.html" name="dot" />
+
+## Tones
+
+`data-tone`: `danger` (default, the notification convention), `info`,
+`success`, `warning`, `neutral`. Fills use the solid `*-700` scale with
+`--re-color-text-on-accent` so the count text keeps AA contrast.
+
+<Demo src="indicator.html" name="tones" />
+
+## Position
+
+`data-position="bottom-end"` moves the badge to the lower corner. Corners are
+logical, so both positions mirror automatically under RTL.
+
+<Demo src="indicator.html" name="position" />
+
+## Accessibility
+
+The badge reads **after** its target in source order, and a bare number (or an
+empty dot) means nothing to assistive tech, so always provide real text:
+
+- **Count on a normal target**: append an `.re-sr-only` suffix inside the
+  badge, e.g. `3<span class="re-sr-only"> unread messages</span>`.
+- **Dot**: the sr-only text is the entire content,
+  `<span class="re-sr-only">New alerts</span>`.
+- **On a `role="img"` initials avatar**: descendant text is presentational
+  (same trap as the [avatar presence dot](/relements/components/avatar/)), so
+  fold the meaning into the avatar's `aria-label` ("Grace Hopper, 2 mentions")
+  and leave the badge visual-only.
+- **Forced colors**: backgrounds flatten, which would erase the bubble and the
+  dot, so both are re-established with system `Highlight`/`HighlightText`
+  (tone variants included, at matched specificity).
+- Keep counts truthful and fresh: a stale visual count that contradicts the
+  spoken text is worse than none.
+
+See the [accessibility guide](/relements/guides/accessibility/) for the
+project-wide stance.
