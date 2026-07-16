@@ -184,6 +184,21 @@ test.describe("forced colors (HCM)", () => {
     expect(offline.ringColor).toBe(canvasText); // …with a real CanvasText ring
   });
 
+  test("indicator badges keep their bubble via Highlight, tones included", async ({ page }) => {
+    await page.goto("./indicator.html");
+    const highlight = await resolveHighlight(page);
+    const bg = (locator: import("@playwright/test").Locator) =>
+      locator.evaluate((el) => getComputedStyle(el).backgroundColor);
+    // default (danger) badge and a [data-tone] variant: the tone selector's
+    // higher specificity must not beat the forced-colors re-establishment
+    const plain = page.getByTestId("count").locator(".re-indicator__badge").first();
+    const toned = page.getByTestId("tones").locator('.re-indicator__badge[data-tone="info"]');
+    const dot = page.getByTestId("dot").locator(".re-indicator__badge[data-dot]");
+    expect(await bg(plain)).toBe(highlight);
+    expect(await bg(toned)).toBe(highlight);
+    expect(await bg(dot)).toBe(highlight);
+  });
+
   test("a checked toggle-group option fills with the Highlight system color", async ({ page }) => {
     await page.goto("./toggle-group.html");
     const highlight = await resolveHighlight(page);

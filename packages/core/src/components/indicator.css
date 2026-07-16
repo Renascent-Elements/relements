@@ -1,0 +1,106 @@
+/**
+ * Relements indicator.
+ *
+ * A count bubble or status dot pinned to the corner of any element: unread
+ * counts on an inbox button, a "new" dot on a nav item, a count on an avatar.
+ * CSS-only. The inline `.re-badge` stays the in-flow label; this is the
+ * positioned overlay.
+ *
+ *   <span class="re-indicator">
+ *     <button class="re-button" data-variant="secondary">Inbox</button>
+ *     <span class="re-indicator__badge">3<span class="re-sr-only"> unread messages</span></span>
+ *   </span>
+ *
+ *   <span class="re-indicator">
+ *     <button class="re-button" data-variant="ghost">Alerts</button>
+ *     <span class="re-indicator__badge" data-dot><span class="re-sr-only">New alerts</span></span>
+ *   </span>
+ *
+ * The badge reads AFTER its target in source order, so give it the context a
+ * screen reader needs: an `.re-sr-only` suffix on a count ("3 unread
+ * messages"), or sr-only text as the whole content of a dot. A bare number or
+ * an empty dot is meaningless to AT.
+ *
+ * Tones (data-tone): danger (default, the notification convention), info,
+ * success, warning, neutral. Solid `*-700` fills with `text-on-accent` so the
+ * count text keeps AA contrast. Position: top-end (default) or
+ * data-position="bottom-end". Corners are logical, so RTL mirrors for free.
+ * Overflow ("99+") is authored content, not CSS.
+ */
+
+@layer re.components {
+  .re-indicator {
+    position: relative;
+    display: inline-flex;
+  }
+
+  .re-indicator__badge {
+    position: absolute;
+    /* pull the badge outward by half its own height so it straddles the
+       corner; negative LOGICAL insets stay outward-pointing under RTL,
+       where a transform's physical X would push the wrong way */
+    --re-indicator-overlap: calc(-0.5 * 1em * var(--re-line-height-normal));
+    inset-block-start: var(--re-indicator-overlap);
+    inset-inline-end: var(--re-indicator-overlap);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* min-inline-size == block-size, so a single digit renders as a CIRCLE
+       and longer counts grow into a pill (padding takes over) */
+    min-inline-size: calc(1em * var(--re-line-height-normal) + 2 * var(--re-border-width-strong));
+    block-size: calc(1em * var(--re-line-height-normal) + 2 * var(--re-border-width-strong));
+    padding-inline: var(--re-space-1);
+    border-radius: var(--re-radius-pill);
+    /* page-colour cutout ring, same trick as the avatar presence dot */
+    border: var(--re-border-width-strong) solid var(--re-color-bg);
+    background-color: var(--re-color-danger-700);
+    color: var(--re-color-text-on-accent);
+    font-size: var(--re-size-text-xs);
+    font-weight: var(--re-font-weight-semibold);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .re-indicator__badge[data-position="bottom-end"] {
+    inset-block-start: auto;
+    inset-block-end: var(--re-indicator-overlap);
+  }
+
+  /* ---- Dot (no count) --------------------------------------------------- */
+  .re-indicator__badge[data-dot] {
+    min-inline-size: auto;
+    inline-size: calc(0.5em * var(--re-line-height-normal) + 2 * var(--re-border-width-strong));
+    block-size: calc(0.5em * var(--re-line-height-normal) + 2 * var(--re-border-width-strong));
+    padding: 0;
+    --re-indicator-overlap: calc(-0.25 * 1em * var(--re-line-height-normal));
+  }
+
+  /* ---- Tones ------------------------------------------------------------- */
+  .re-indicator__badge[data-tone="info"] {
+    background-color: var(--re-color-accent-700);
+  }
+  .re-indicator__badge[data-tone="success"] {
+    background-color: var(--re-color-success-700);
+  }
+  .re-indicator__badge[data-tone="warning"] {
+    background-color: var(--re-color-warning-700);
+  }
+  .re-indicator__badge[data-tone="neutral"] {
+    background-color: var(--re-color-neutral-700);
+  }
+
+  /* Backgrounds flatten in forced colors, which would erase the bubble around
+     the count (and the dot entirely). Re-establish with system colors, and
+     match the tone/dot attribute selectors' specificity so the authored fills
+     (higher-specificity, earlier) cannot win and flatten to Canvas. */
+  @media (forced-colors: active) {
+    .re-indicator__badge,
+    .re-indicator__badge[data-tone],
+    .re-indicator__badge[data-dot] {
+      background-color: Highlight;
+      color: HighlightText;
+      border-color: Canvas;
+    }
+  }
+}

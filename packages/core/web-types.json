@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/web-types",
   "name": "@relements/core",
-  "version": "1.13.0",
+  "version": "1.15.0",
   "description-markup": "markdown",
   "js-types-syntax": "typescript",
   "contributions": {
@@ -180,6 +180,10 @@
           "description": "Placement of a floating part (tooltip bubble, etc.) around its anchor."
         },
         {
+          "name": "data-position",
+          "description": "Relements styling attribute."
+        },
+        {
           "name": "data-presence",
           "description": "Relements styling attribute."
         },
@@ -226,6 +230,10 @@
         {
           "name": "data-divided",
           "description": "Add dividers between items."
+        },
+        {
+          "name": "data-dot",
+          "description": "Relements boolean styling attribute."
         },
         {
           "name": "data-dragover",

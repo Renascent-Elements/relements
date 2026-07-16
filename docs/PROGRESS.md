@@ -157,6 +157,7 @@ API frozen under semver (`.re-*` / `data-*` / `--re-*` / `enhance*(root) → { d
 - [x] choice card (`.re-choice` selectable radio/checkbox card via `:has(:checked)`; `__title`/`__description`; `.re-choice-group` fieldset, `data-orientation`) — 1.13.0
 - [x] avatar presence (`.re-avatar__presence` corner status dot; `data-presence` online/away/busy/offline, filled/hollow/bar shape split; extends `avatar.css`) — 1.14.0
 - [x] prose (`.re-prose` typographic flow for rendered content: rhythm restore, blockquote, figure/figcaption, lists, bare tables; zero-specificity `:where()` selectors) — 1.15.0
+- [x] indicator (`.re-indicator` corner overlay: count bubble / `data-dot`; solid `*-700` fills, `data-tone`, `data-position="bottom-end"`; logical corners) — 1.16.0
 
 ## Acceptance per element
 

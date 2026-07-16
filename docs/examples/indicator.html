@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relements · Indicator</title>
+    <link rel="stylesheet" href="/packages/core/src/index.css" />
+    <style>
+      body {
+        padding: var(--re-space-8);
+        max-width: 48rem;
+        margin-inline: auto;
+      }
+      section {
+        margin-block: var(--re-space-6);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--re-space-4);
+      }
+    </style>
+  </head>
+  <body data-page="indicator">
+    <header>
+      <h1>Indicator</h1>
+      <p>A count bubble or status dot pinned to the corner of any element.</p>
+    </header>
+
+    <section aria-labelledby="count-heading" data-testid="count">
+      <h2 id="count-heading">Count</h2>
+      <!-- demo:start name="count" -->
+      <div class="row">
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Inbox</button>
+          <span class="re-indicator__badge">3<span class="re-sr-only"> unread messages</span></span>
+        </span>
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Notifications</button>
+          <span class="re-indicator__badge">99+<span class="re-sr-only"> notifications</span></span>
+        </span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="dot-heading" data-testid="dot">
+      <h2 id="dot-heading">Dot</h2>
+      <!-- demo:start name="dot" -->
+      <span class="re-indicator">
+        <button class="re-button" data-variant="ghost">Alerts</button>
+        <span class="re-indicator__badge" data-dot><span class="re-sr-only">New alerts</span></span>
+      </span>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="tones-heading" data-testid="tones">
+      <h2 id="tones-heading">Tones</h2>
+      <!-- demo:start name="tones" -->
+      <div class="row">
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Danger</button>
+          <span class="re-indicator__badge">5<span class="re-sr-only"> alerts</span></span>
+        </span>
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Info</button>
+          <span class="re-indicator__badge" data-tone="info"
+            >2<span class="re-sr-only"> updates</span></span
+          >
+        </span>
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Success</button>
+          <span class="re-indicator__badge" data-tone="success"
+            >4<span class="re-sr-only"> completed</span></span
+          >
+        </span>
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Warning</button>
+          <span class="re-indicator__badge" data-tone="warning"
+            >7<span class="re-sr-only"> pending</span></span
+          >
+        </span>
+        <span class="re-indicator">
+          <button class="re-button" data-variant="secondary">Neutral</button>
+          <span class="re-indicator__badge" data-tone="neutral"
+            >9<span class="re-sr-only"> archived</span></span
+          >
+        </span>
+      </div>
+      <!-- demo:end -->
+    </section>
+
+    <section aria-labelledby="position-heading" data-testid="position">
+      <h2 id="position-heading">Position</h2>
+      <!-- demo:start name="position" -->
+      <span class="re-indicator">
+        <span class="re-avatar" role="img" aria-label="Grace Hopper, 2 mentions">GH</span>
+        <span class="re-indicator__badge" data-position="bottom-end" data-tone="info">2</span>
+      </span>
+      <!-- demo:end -->
+    </section>
+  </body>
+</html>
