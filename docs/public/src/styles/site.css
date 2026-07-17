@@ -231,6 +231,16 @@ starlight-toc a:focus-visible {
   margin-inline-start: calc(-1 * var(--re-border-width));
 }
 
+/* Same again for the button group's seam-collapse, in both orientations
+   (horizontal uses margin-inline-start, vertical margin-block-start). Without
+   this the members show a doubled 2px border between them. */
+.demo__preview .re-button-group:not([data-orientation="vertical"]) > .re-button:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--re-border-width));
+}
+.demo__preview .re-button-group[data-orientation="vertical"] > .re-button:not(:first-child) {
+  margin-block-start: calc(-1 * var(--re-border-width));
+}
+
 /* `.demo__preview` is a flex row, so a horizontal separator (a block-level
    element) becomes a flex item that shrinks to its content — an `<hr>` collapses
    to 0 width, and a labeled divider's two `flex: 1` rule pseudo-elements get 0px,
