@@ -74,3 +74,47 @@
 @import "./components/choice.css";
 @import "./components/prose.css";
 @import "./components/indicator.css";
+
+/* ============================================================
+   Reset-hardened geometry (deliberately UNLAYERED)
+   ============================================================
+   Everything above lives in the re.components layer so consumer CSS wins by
+   default. That has one failure mode: a host's unlayered global reset
+   (`* { margin: 0 }` in Starlight, Tailwind preflight, most "modern reset"
+   snippets) also beats the layer, and a handful of declarations are not
+   decoration but GEOMETRY the component cannot survive losing. Those margins
+   are re-asserted here, outside any layer, where plain specificity beats the
+   reset's `*` (0,0,0) the classic way. Values stay token-derived, so theming
+   is untouched, and consumers can still override these normally with their
+   own unlayered CSS. Single-element offsets don't belong here: they ride
+   `transform` instead (see choice.css / timeline.css). Keep this list short
+   and mirrored to the source declarations it repeats. */
+
+/* button-group seam collapse (button-group.css) */
+.re-button-group:not([data-orientation="vertical"]) > .re-button:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--re-border-width));
+}
+.re-button-group[data-orientation="vertical"] > .re-button:not(:first-child) {
+  margin-block-start: calc(-1 * var(--re-border-width));
+}
+
+/* toggle-group seam collapse (toggle-group.css) */
+.re-toggle-group__option:not(:first-child) {
+  margin-inline-start: calc(-1 * var(--re-border-width));
+}
+
+/* avatar-group overlap (avatar.css) */
+.re-avatar-group > .re-avatar:not(:first-child) {
+  margin-inline-start: var(--re-avatar-group-overlap);
+}
+
+/* empty-state centering (empty-state.css) */
+.re-empty-state {
+  margin-inline: auto;
+}
+
+/* Modal centering comes from the UA's `dialog:modal { margin: auto }`, which
+   an author-level reset also beats; re-assert it for our dialogs. */
+.re-dialog:modal {
+  margin: auto;
+}

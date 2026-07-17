@@ -27,6 +27,8 @@ HTML-first, framework-agnostic design system. Published to npm as a **single pac
 
 Order: `@layer re.tokens, re.reset, re.base, re.components;`. Component styles live in the low-priority `re.components` layer **on purpose** — consumer overrides land in the unlayered cascade and win automatically. Subtree theming = redeclare token custom properties on any ancestor. Consequence: any unlayered third-party CSS (e.g. a host framework's) will beat Relements styles — isolate when embedding (see docs site below).
 
+**Margin-reset survival rule.** A host's unlayered `* { margin: 0 }` (Starlight, Tailwind preflight) beats the layer, so a margin must never be the only thing holding component GEOMETRY together. Single-element offsets ride `transform` (choice card control, timeline dot). Multi-member offsets that must cascade through layout (group seams, avatar overlap, `margin: auto` centering) can't use transform; they are re-asserted in the UNLAYERED "reset-hardened geometry" block at the end of `index.css`, where classed selectors beat `*` on plain specificity while staying consumer-overridable. New component with load-bearing margins: add it to that block + a case in `tests/elements/reset-hardening.spec.ts` (it injects the hostile reset). Spacing-only margins need no hardening.
+
 ## CSS authoring (the non-obvious parts)
 
 - **Browser floor: Chrome 99 / Firefox 97 / Safari 15.4.** Safe above the floor (use freely): `color-mix()`, `:has()`, the Popover API, anchor positioning, `<details name>` (exclusive accordion). **Above the floor — avoid:** the `lh` unit and `:dir()` (both Safari 16.4+). Center against line boxes with `calc(… - 1em * var(--re-line-height-normal))`; target RTL with `[dir="rtl"]` ancestor/self selectors, not `:dir()`.

@@ -202,44 +202,12 @@ starlight-toc a:focus-visible {
   border-radius: 0;
 }
 
-/* Starlight's reset applies a global, unlayered `* { margin: 0 }`, which
-   overrides the UA `dialog:modal { margin: auto }` that centers modal dialogs
-   in the top layer — leaving demo dialogs pinned to the top-left. Restore it. */
-.re-dialog:modal {
-  margin: auto;
-}
-
-/* Same `* { margin: 0 }` reset also zeroes the empty-state's `margin-inline:
-   auto`, so the demo would left-align in the flex `.demo__preview` row. Restore
-   it (this unlayered selector beats `*`) so the block sits centered. */
-.demo__preview .re-empty-state {
-  margin-inline: auto;
-}
-
-/* The same `* { margin: 0 }` reset zeroes the avatar group's overlap (a negative
-   `margin-inline-start` on every avatar after the first, in the re.components
-   layer). Re-assert it from the component's own `--re-avatar-group-overlap`
-   custom property (untouched by the reset) so the stack overlaps as shipped. */
-.demo__preview .re-avatar-group > .re-avatar:not(:first-child) {
-  margin-inline-start: var(--re-avatar-group-overlap);
-}
-
-/* Same `* { margin: 0 }` reset zeroes the toggle-group's seam-collapse (a
-   negative `margin-inline-start` on every option after the first), which would
-   leave a doubled border between members. Re-assert the token-derived value. */
-.demo__preview .re-toggle-group__option:not(:first-child) {
-  margin-inline-start: calc(-1 * var(--re-border-width));
-}
-
-/* Same again for the button group's seam-collapse, in both orientations
-   (horizontal uses margin-inline-start, vertical margin-block-start). Without
-   this the members show a doubled 2px border between them. */
-.demo__preview .re-button-group:not([data-orientation="vertical"]) > .re-button:not(:first-child) {
-  margin-inline-start: calc(-1 * var(--re-border-width));
-}
-.demo__preview .re-button-group[data-orientation="vertical"] > .re-button:not(:first-child) {
-  margin-block-start: calc(-1 * var(--re-border-width));
-}
+/* Margin-reset survival (dialog centering, empty-state centering, the
+   avatar-group overlap, and the button/toggle-group seam collapse) is handled
+   by core itself: index.css ends with an UNLAYERED "reset-hardened geometry"
+   block whose classed selectors beat Starlight's `* { margin: 0 }` on plain
+   specificity. No demo-scoped counter-resets are needed here anymore; if a new
+   component's geometry rides a margin, harden it there, not here. */
 
 /* `.demo__preview` is a flex row, so a horizontal separator (a block-level
    element) becomes a flex item that shrinks to its content — an `<hr>` collapses
