@@ -1,6 +1,25 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("choice card", () => {
+  test("the control stays centered on the title even under a host margin reset", async ({
+    page,
+  }) => {
+    await page.goto("./choice.html");
+    // Starlight (and many app resets) ship an UNLAYERED `* { margin: 0 }`,
+    // which beats the re.components layer. The control's optical offset must
+    // therefore ride a transform, not a margin. Simulate the hostile host:
+    await page.addStyleTag({ content: "* { margin: 0; }" });
+    const card = page.getByTestId("basic").locator(".re-choice").first();
+    const centers = await card.evaluate((el) => {
+      const mid = (r: DOMRect) => r.top + r.height / 2;
+      return {
+        control: mid(el.querySelector(".re-radio")!.getBoundingClientRect()),
+        title: mid(el.querySelector(".re-choice__title")!.getBoundingClientRect()),
+      };
+    });
+    expect(Math.abs(centers.control - centers.title)).toBeLessThan(0.5);
+  });
+
   test("clicking a card selects its radio and moves the card-level cue", async ({ page }) => {
     await page.goto("./choice.html");
     const cards = page.getByTestId("basic").locator(".re-choice");
