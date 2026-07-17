@@ -1,5 +1,13 @@
 # @relements/core
 
+## 1.16.1
+
+### Patch Changes
+
+- [#129](https://github.com/Renascent-Elements/relements/pull/129) [`0209996`](https://github.com/Renascent-Elements/relements/commit/02099960dff75c1ef719019b7ef0306e9e8e8aa8) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Fix choice card control alignment under host CSS resets: the radio/checkbox's optical centering offset now rides a `transform` instead of `margin-block-start`. An unlayered `* { margin: 0 }` reset (Starlight, common app resets) beats the `re.components` layer and zeroed the margin, leaving the control about 3px above the title's vertical center, including on the docs site's own demos. No visual change on reset-free pages.
+
+- [#129](https://github.com/Renascent-Elements/relements/pull/129) [`0209996`](https://github.com/Renascent-Elements/relements/commit/02099960dff75c1ef719019b7ef0306e9e8e8aa8) Thanks [@cstuncsik](https://github.com/cstuncsik)! - Survive host margin resets: index.css now ends with a small UNLAYERED "reset-hardened geometry" block. A host's unlayered `* { margin: 0 }` (Starlight, Tailwind preflight, common reset snippets) outranks the `re.components` layer and was stripping margins that are structural, not decorative: the button-group and toggle-group seam collapse (leaving doubled 2px borders), the avatar-group overlap (stack fell apart), the empty-state's `margin-inline: auto` centering, and the UA `dialog:modal { margin: auto }` that centers modal dialogs. Those six declarations are re-asserted outside any layer, where their classed selectors beat `*` on plain specificity, so they hold in any host while remaining overridable by normal consumer CSS (values stay token-derived for theming). Guarded by a spec that injects the hostile reset per component.
+
 ## 1.16.0
 
 ### Minor Changes
