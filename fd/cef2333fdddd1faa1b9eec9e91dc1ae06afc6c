@@ -1,0 +1,24 @@
+packages/core/src/index.css
+  s_d1466ac3f69073::t_7b1f34c8734a6b 131
+  s_d1466ac3f69073::t_2b1afb0a124d19 116-123,126-130
+tests/elements/reset-hardening.spec.ts
+  s_d1466ac3f69073::t_5b4d9429e82b2d 83-87,89-93
+  s_d1466ac3f69073::t_179a597b07f679 78
+  s_d1466ac3f69073::t_307621dca96fcf 70-77,79-82,88,94
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "fdcef2333fdddd1faa1b9eec9e91dc1ae06afc6c",
+  "prompts": {},
+  "sessions": {
+    "s_d1466ac3f69073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d4a1b9-1bee-4192-a447-664f94d5d3f6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
