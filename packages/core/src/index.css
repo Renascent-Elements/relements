@@ -113,8 +113,19 @@
   margin-inline: auto;
 }
 
-/* Modal centering comes from the UA's `dialog:modal { margin: auto }`, which
-   an author-level reset also beats; re-assert it for our dialogs. */
-.re-dialog:modal {
+/* Modal dialog positioning is margin-based and each variant wants a DIFFERENT
+   margin, so re-assert per variant (a blanket `margin: auto` would drag the
+   palette off its top offset and unpin the drawer). Rules are mutually
+   exclusive, so order/specificity ties never matter:
+     - base dialog: the UA `dialog:modal { margin: auto }` centering
+     - command palette: sits below the top (command-palette.css)
+     - drawer: edge-pinned via insets with zero margin (drawer.css) */
+.re-dialog:modal:not(.re-command-palette):not(.re-drawer) {
   margin: auto;
+}
+.re-command-palette:modal {
+  margin: 12vh auto auto;
+}
+.re-drawer:modal {
+  margin: 0;
 }

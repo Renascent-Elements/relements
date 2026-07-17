@@ -67,4 +67,29 @@ test.describe("reset-hardened geometry", () => {
     expect(m.left).toBeGreaterThan(0);
     expect(m.top).toBeGreaterThan(0);
   });
+
+  test("the command palette keeps its top offset, not the base dialog's centering", async ({
+    page,
+  }) => {
+    // The palette hardening must re-assert ITS margin (12vh auto auto), not the
+    // base `margin: auto` — a blanket dialog rule would drag it to center.
+    await page.goto("./command-palette.html");
+    await page.addStyleTag({ content: HOSTILE_RESET });
+    await page.locator("[data-re-dialog-trigger]").click();
+    const palette = page.locator(".re-command-palette[open]");
+    await expect(palette).toBeVisible();
+    const m = await palette.evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return {
+        top: parseFloat(cs.marginTop),
+        bottom: parseFloat(cs.marginBottom),
+        vh12: window.innerHeight * 0.12,
+      };
+    });
+    // margin-top is the literal 12vh offset, not the auto value symmetric
+    // centering would produce — so it matches 12vh and is smaller than the
+    // auto bottom margin that soaks up the remaining space.
+    expect(Math.abs(m.top - m.vh12)).toBeLessThan(1);
+    expect(m.top).toBeLessThan(m.bottom);
+  });
 });
