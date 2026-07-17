@@ -1,0 +1,23 @@
+packages/core/src/components/choice.css
+  s_d1466ac3f69073::t_b27b418e239394 48-51,54
+.changeset/choice-control-alignment.md
+  s_d1466ac3f69073::t_eead2346df2833 1-5
+tests/elements/choice.spec.ts
+  s_d1466ac3f69073::t_5491aa43e0314c 4-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "8fed887d91de58bf2d3b0d19f0398b9346320556",
+  "prompts": {},
+  "sessions": {
+    "s_d1466ac3f69073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d4a1b9-1bee-4192-a447-664f94d5d3f6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
