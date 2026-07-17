@@ -45,10 +45,13 @@
   }
 
   /* Optically center the control against the title's first line box (the
-     control is 1.125rem — see .re-radio/.re-checkbox in form.css). */
+     control is 1.125rem, see .re-radio/.re-checkbox in form.css). A transform,
+     NOT a margin: hosts with an unlayered `* { margin: 0 }` reset (Starlight,
+     many app resets) beat the re.components layer and would zero a margin,
+     dropping the control 3px high (the timeline-dot lesson). */
   .re-choice > .re-radio,
   .re-choice > .re-checkbox {
-    margin-block-start: calc((1em * var(--re-line-height-normal) - 1.125rem) / 2);
+    transform: translateY(calc((1em * var(--re-line-height-normal) - 1.125rem) / 2));
   }
 
   .re-choice__body {
