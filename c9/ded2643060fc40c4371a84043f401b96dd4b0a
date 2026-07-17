@@ -1,0 +1,28 @@
+packages/core/src/index.css
+  s_d1466ac3f69073::t_c0e93e259d64d8 76-119
+tests/elements/reset-hardening.spec.ts
+  s_d1466ac3f69073::t_4dbad83a2d5deb 18
+  s_d1466ac3f69073::t_8c211dfe8d73f5 1-17,19-70
+docs/public/src/styles/site.css
+  s_d1466ac3f69073::t_dbfba00e7e75e6 205-210
+CLAUDE.md
+  s_d1466ac3f69073::t_4dbad83a2d5deb 30-31
+.changeset/reset-hardened-geometry.md
+  s_d1466ac3f69073::t_ca5938b6aa876d 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "c9ded2643060fc40c4371a84043f401b96dd4b0a",
+  "prompts": {},
+  "sessions": {
+    "s_d1466ac3f69073": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3d4a1b9-1bee-4192-a447-664f94d5d3f6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Csaba Tuncsik <csaba.tuncsik@gmail.com>"
+    }
+  }
+}
